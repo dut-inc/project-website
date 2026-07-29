@@ -4,19 +4,19 @@ const links = [
   { href: "/fish-quiz", label: "Fish Quiz" },
   { href: "/sports", label: "Sports Lab" },
   { href: "/conservation", label: "Field Watch" },
-  { href: "/board", label: "The Board" },
+  { href: "/board", label: "Loose Ends" },
 ];
 
 export default function Nav() {
   return (
-    <header className="border-b border-paper/10">
-      <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-5">
-        <Link href="/" className="font-display text-xl tracking-tight text-paper">
-          The Log<span className="text-stamp">.</span>
+    <header className="relative z-20">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-6 sm:px-8">
+        <Link href="/" className="font-display text-xl italic tracking-tight text-cream">
+          The Board
         </Link>
-        <nav className="flex gap-6 font-mono text-xs uppercase tracking-widest text-paper2">
+        <nav className="flex gap-5 font-mono text-[11px] uppercase tracking-widest text-cream/50">
           {links.map((l) => (
-            <Link key={l.href} href={l.href} className="transition-colors hover:text-moss">
+            <Link key={l.href} href={l.href} className="transition-colors hover:text-pinGold">
               {l.label}
             </Link>
           ))}

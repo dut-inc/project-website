@@ -1,27 +1,31 @@
-import ProjectCard from "@/components/ProjectCard";
+import Board from "@/components/Board";
+import PinnedNote from "@/components/PinnedNote";
+import { PennantSticker, AnchorSticker, RainDropSticker } from "@/components/Stickers";
 import { projects } from "@/lib/projects";
 
 export default function HomePage() {
   return (
-    <div>
-      <div className="ledger-rule mb-12 border-b border-paper/10 pb-8">
-        <p className="font-mono text-xs uppercase tracking-[0.3em] text-moss">
-          Entry log &middot; {projects.length} open cases
+    <div className="relative">
+      <PennantSticker className="pointer-events-none absolute -left-4 -top-8 hidden w-28 lg:block xl:-left-10 xl:w-32" />
+      <AnchorSticker className="pointer-events-none absolute -right-2 top-16 hidden w-24 lg:block xl:-right-8 xl:w-28" />
+      <RainDropSticker className="pointer-events-none absolute -left-6 bottom-10 hidden w-20 xl:block" />
+
+      <div className="mb-8 text-center">
+        <p className="font-mono text-xs uppercase tracking-[0.3em] text-cream/40">
+          {projects.length} things pinned up
         </p>
-        <h1 className="mt-3 font-display text-4xl italic text-paper sm:text-5xl">
-          The Log
+        <h1 className="mt-2 font-display text-4xl italic text-cream sm:text-5xl">
+          What we&apos;re building
         </h1>
-        <p className="mt-4 max-w-lg text-sm leading-relaxed text-paper2">
-          A shared clubhouse for whatever we're building — quizzes, models,
-          and field notes, all logged as they open.
-        </p>
       </div>
 
-      <div className="grid gap-5 sm:grid-cols-2">
-        {projects.map((p) => (
-          <ProjectCard key={p.case} project={p} />
-        ))}
-      </div>
+      <Board>
+        <div className="grid gap-x-6 gap-y-10 pt-4 sm:grid-cols-2">
+          {projects.map((p) => (
+            <PinnedNote key={p.case} project={p} />
+          ))}
+        </div>
+      </Board>
     </div>
   );
 }

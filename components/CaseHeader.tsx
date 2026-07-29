@@ -1,32 +1,45 @@
 import Link from "next/link";
-import StampBadge from "./StampBadge";
-import type { Status } from "@/lib/projects";
+import Pin from "./Pin";
+import type { Status, PinColor } from "@/lib/projects";
+
+const statusColor: Record<Status, string> = {
+  ACTIVE: "text-pinTeal",
+  PLANNING: "text-pinGold",
+  OPEN: "text-pinRed",
+};
 
 export default function CaseHeader({
   caseNumber,
   title,
   status,
   description,
+  pin = "gold",
 }: {
   caseNumber: string;
   title: string;
   status: Status;
   description: string;
+  pin?: PinColor;
 }) {
   return (
-    <div className="mb-10 border-b border-paper/10 pb-8">
+    <div>
       <Link
         href="/"
-        className="font-mono text-xs uppercase tracking-widest text-paper2 hover:text-moss"
+        className="mb-6 inline-block font-mono text-xs uppercase tracking-widest text-cream/50 hover:text-pinGold"
       >
-        &larr; Back to the log
+        &larr; Back to the board
       </Link>
-      <div className="mt-4 flex items-center gap-3">
-        <span className="font-mono text-xs text-paper2">CASE &#8470; {caseNumber}</span>
-        <StampBadge status={status} />
+      <div className="relative mx-auto max-w-xl -rotate-1">
+        <Pin color={pin} />
+        <div className="paper-torn bg-cream p-7 text-ink shadow-[0_14px_28px_-8px_rgba(0,0,0,0.55)]">
+          <div className="mb-3 flex items-center justify-between font-mono text-[10px] uppercase tracking-widest text-ink2">
+            <span>Case №{caseNumber}</span>
+            <span className={statusColor[status]}>{status}</span>
+          </div>
+          <h1 className="font-display text-4xl text-ink">{title}</h1>
+          <p className="mt-3 text-sm leading-relaxed text-ink/80">{description}</p>
+        </div>
       </div>
-      <h1 className="mt-3 font-display text-4xl text-paper">{title}</h1>
-      <p className="mt-3 max-w-lg text-sm leading-relaxed text-paper2">{description}</p>
     </div>
   );
 }

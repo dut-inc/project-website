@@ -7,11 +7,21 @@ people — each project lives on its own route and can grow independently.
 
 ## Design concept
 
-Visual theme is a "field log / case file" — deep ink background, moss/stamp/gold
-accents, Fraunces for display type, IBM Plex Sans/Mono for body and data. Each
-project is a "case" with a status stamp (`ACTIVE` / `PLANNING` / `OPEN`), logged
-chronologically on the home page. Add new projects by adding an entry to
-`lib/projects.ts` — the home page grid picks it up automatically.
+Visual theme is a corkboard mounted on a dark wall. The board itself doesn't
+span the full screen — there's wall showing on the sides, which is where a
+few original (non-logo) Seattle sports stickers live for personality
+(`components/Stickers.tsx`). Projects are pinned index/kraft cards
+(`components/PinnedNote.tsx`), each with a colored pushpin and a status
+(`ACTIVE` / `PLANNING` / `OPEN`). Fraunces for display type, IBM Plex
+Sans/Mono for body and data. Add new projects by adding an entry to
+`lib/projects.ts` (including rotation, paper color, and pin color) — the
+home page grid picks it up automatically.
+
+The stickers are original art referencing Seattle basketball/baseball
+fandom (a pennant, an anchor, a rain drop) rather than reproductions of
+actual team logos, since those are trademarked. Swap in real merch photos
+of your own stuff if you'd rather — `components/Stickers.tsx` is just three
+small components positioned absolutely in `app/page.tsx`.
 
 ## Getting started
 

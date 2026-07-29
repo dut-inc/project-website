@@ -3,15 +3,48 @@
 @tailwind utilities;
 
 ::selection {
-  background-color: #7e9471;
-  color: #1a1d19;
+  background-color: #c9a227;
+  color: #0e0f11;
 }
 
-.ledger-rule {
-  background-image: repeating-linear-gradient(
-    to bottom,
-    transparent,
-    transparent 27px,
-    rgba(231, 227, 211, 0.06) 28px
+.wall-bg {
+  background-color: #24262a;
+  background-image: radial-gradient(ellipse at 50% 0%, rgba(87, 89, 94, 0.3), transparent 60%),
+    repeating-linear-gradient(
+      118deg,
+      rgba(255, 255, 255, 0.015) 0px,
+      rgba(255, 255, 255, 0.015) 1px,
+      transparent 1px,
+      transparent 3px
+    ),
+    repeating-linear-gradient(
+      28deg,
+      rgba(0, 0, 0, 0.03) 0px,
+      rgba(0, 0, 0, 0.03) 1px,
+      transparent 1px,
+      transparent 4px
+    ),
+    radial-gradient(circle at 15% 25%, rgba(255, 255, 255, 0.025) 0, transparent 2px),
+    radial-gradient(circle at 65% 60%, rgba(0, 0, 0, 0.05) 0, transparent 2px),
+    radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.02) 0, transparent 1.5px),
+    radial-gradient(circle at 85% 35%, rgba(0, 0, 0, 0.04) 0, transparent 2px);
+  background-size: auto, auto, auto, 19px 19px, 23px 23px, 15px 15px, 27px 27px;
+}
+
+.cork-bg {
+  background-color: #7c5a3c;
+  background-image: radial-gradient(circle at 20% 30%, rgba(94, 68, 41, 0.55) 0, transparent 3px),
+    radial-gradient(circle at 70% 65%, rgba(143, 107, 73, 0.5) 0, transparent 2.5px),
+    radial-gradient(circle at 40% 80%, rgba(94, 68, 41, 0.45) 0, transparent 2px),
+    radial-gradient(circle at 85% 20%, rgba(143, 107, 73, 0.45) 0, transparent 2.5px),
+    radial-gradient(circle at 55% 45%, rgba(94, 68, 41, 0.4) 0, transparent 2px);
+  background-size: 38px 38px, 44px 44px, 30px 30px, 50px 50px, 26px 26px;
+}
+
+.paper-torn {
+  clip-path: polygon(
+    0% 2%, 6% 0%, 14% 1.5%, 22% 0%, 31% 1%, 40% 0%, 50% 1.2%, 60% 0%, 70% 1%, 80% 0%,
+    90% 1.5%, 100% 0%, 100% 98%, 92% 100%, 83% 98.5%, 74% 100%, 65% 98.7%, 55% 100%,
+    45% 98.5%, 35% 100%, 25% 98.8%, 15% 100%, 7% 98.6%, 0% 100%
   );
 }

@@ -1,4 +1,5 @@
 export type Status = "ACTIVE" | "PLANNING" | "OPEN";
+export type PinColor = "red" | "teal" | "gold" | "navy";
 
 export type Project = {
   case: string;
@@ -7,6 +8,10 @@ export type Project = {
   status: Status;
   logged: string;
   summary: string;
+  rotation: number;
+  paper: "cream" | "kraft";
+  pin: PinColor;
+  taped?: boolean;
 };
 
 export const projects: Project[] = [
@@ -18,6 +23,9 @@ export const projects: Project[] = [
     logged: "2026-07-26",
     summary:
       "Which-fish-are-you personality quiz now, species ID from a photo later once the model's trained.",
+    rotation: -2,
+    paper: "cream",
+    pin: "teal",
   },
   {
     case: "002",
@@ -27,6 +35,9 @@ export const projects: Project[] = [
     logged: "2026-07-26",
     summary:
       "Basketball and baseball models: win probability, scouting recaps, and a fantasy assistant for the group.",
+    rotation: 2.5,
+    paper: "kraft",
+    pin: "gold",
   },
   {
     case: "003",
@@ -36,13 +47,20 @@ export const projects: Project[] = [
     logged: "2026-07-26",
     summary:
       "Citizen-science log: upload a photo on a hike, get a species ID, watch the group map fill in.",
+    rotation: -3,
+    paper: "cream",
+    pin: "navy",
   },
   {
     case: "004",
-    title: "The Board",
+    title: "Loose Ends",
     href: "/board",
     status: "OPEN",
     logged: "2026-07-26",
     summary: "Whatever doesn't need its own case file yet — links, notes, running jokes.",
+    rotation: 1.5,
+    paper: "kraft",
+    pin: "red",
+    taped: true,
   },
 ];

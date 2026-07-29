@@ -23,8 +23,8 @@ const mono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "The Log",
-  description: "Our shared clubhouse — quizzes, sports models, and field notes.",
+  title: "The Board",
+  description: "Our shared clubhouse — pinned projects and a little bit of Seattle.",
 };
 
 export default function RootLayout({
@@ -35,10 +35,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${display.variable} ${body.variable} ${mono.variable} font-body bg-ink text-paper min-h-screen bg-grain`}
+        className={`${display.variable} ${body.variable} ${mono.variable} font-body wall-bg text-cream min-h-screen`}
       >
         <Nav />
-        <main className="mx-auto max-w-5xl px-6 pb-24 pt-10">{children}</main>
+        <main className="relative mx-auto max-w-7xl px-4 pb-16 pt-6 sm:px-8">{children}</main>
       </body>
     </html>
   );
