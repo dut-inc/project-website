@@ -67,7 +67,7 @@ export default function FishQuiz() {
 
   async function copyResult() {
     if (!result) return;
-    const text = `I'm a ${result.fish.name} — "${result.fish.tagline}" 🐟\nTake the quiz at The Board: http://localhost:3000/fish-quiz`;
+    const text = `I'm a ${result.fish.name} — "${result.fish.tagline}" 🐟\nTake the quiz at The Board: https://ibisboard.vercel.app/fish-quiz`;
     try {
       await navigator.clipboard.writeText(text);
       setCopied(true);
