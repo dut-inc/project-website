@@ -11,7 +11,19 @@ export default function PlayerSearchModern({ players }: { players: PlayerArchety
   const suggestions = useMemo(() => {
     if (!query.trim()) return [];
     const q = query.toLowerCase();
-    return players.filter((p) => p.player_name.toLowerCase().includes(q)).slice(0, 6);
+    // Dedupe by player_id — the dataset contains duplicate rows for the same
+    // player, which would otherwise flood the top-6 slots with copies of one
+    // name and make the dropdown look "stuck".
+    const seen = new Set<number>();
+    const out: PlayerArchetype[] = [];
+    for (const p of players) {
+      if (!p.player_name.toLowerCase().includes(q)) continue;
+      if (seen.has(p.player_id)) continue;
+      seen.add(p.player_id);
+      out.push(p);
+      if (out.length === 6) break;
+    }
+    return out;
   }, [players, query]);
 
   return (
@@ -50,7 +62,9 @@ export default function PlayerSearchModern({ players }: { players: PlayerArchety
       <div className="mt-10 w-full">
         {selected ? (
           <div className="flex justify-center">
-            <PlayerCardModern player={selected} />
+            {/* key forces a remount when switching players so the card's
+                internal imgFailed state resets for each new selection. */}
+            <PlayerCardModern key={selected.player_id} player={selected} />
           </div>
         ) : (
           <p className="text-center font-mono text-xs uppercase tracking-widest text-white/30">
