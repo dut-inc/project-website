@@ -19,10 +19,10 @@ export const projects: Project[] = [
     case: "001",
     title: "Fish Quiz",
     href: "/fish-quiz",
-    status: "PLANNING",
+    status: "ACTIVE",
     logged: "2026-07-26",
     summary:
-      "Which-fish-are-you personality quiz now, species ID from a photo later once the model's trained.",
+      "Which-PNW-fish-are-you personality quiz is live — photo-based species ID comes later once the model's trained.",
     rotation: -2,
     paper: "cream",
     pin: "teal",
