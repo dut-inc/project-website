@@ -1,4 +1,4 @@
-import data from "@/public/data/player-archetypes.json";
+import data from "@/public/data/player-archetypes-25-26.json";
 
 export type PlayerArchetype = {
   player_id: number;
