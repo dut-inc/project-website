@@ -1,3 +1,5 @@
 {
-  "/page": "app/page.js"
+  "/sports/offensive-profiles/page": "app/sports/offensive-profiles/page.js",
+  "/page": "app/page.js",
+  "/sports/page": "app/sports/page.js"
 }
