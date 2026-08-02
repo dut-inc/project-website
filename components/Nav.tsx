@@ -10,8 +10,8 @@ const links = [
 export default function Nav() {
   return (
     <header className="relative z-20">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-6 sm:px-8">
-        <Link href="/" className="font-display text-xl italic tracking-tight text-cream">
+      <div className="flex w-full items-center justify-between px-4 py-6 sm:px-8">
+        <Link href="/"className="font-display text-xl italic tracking-tight text-cream">
           The Board
         </Link>
         <nav className="flex gap-5 font-mono text-[11px] uppercase tracking-widest text-cream/50">

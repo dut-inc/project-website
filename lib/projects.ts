@@ -6,7 +6,7 @@ export type Project = {
   title: string;
   href: string;
   status: Status;
-  logged: string;
+  updated: string;
   summary: string;
   rotation: number;
   paper: "cream" | "kraft";
@@ -20,9 +20,9 @@ export const projects: Project[] = [
     title: "Fish Quiz",
     href: "/fish-quiz",
     status: "ACTIVE",
-    logged: "2026-07-26",
+    updated: "2026-08-01",
     summary:
-      "Which-PNW-fish-are-you personality quiz is live — photo-based species ID comes later once the model's trained.",
+      "pnw fish personality quiz live, guess the fish quiz and photo-based species ID coming soon",
     rotation: -2,
     paper: "cream",
     pin: "teal",
@@ -31,10 +31,10 @@ export const projects: Project[] = [
     case: "002",
     title: "Sports Lab",
     href: "/sports",
-    status: "PLANNING",
-    logged: "2026-07-26",
+    status: "ACTIVE",
+    updated: "2026-08-01",
     summary:
-      "Basketball and baseball models: win probability, scouting recaps, and a fantasy assistant for the group.",
+      "basketball and baseball models, Seattle sports dashboard, etc.",
     rotation: 2.5,
     paper: "kraft",
     pin: "gold",
@@ -44,9 +44,9 @@ export const projects: Project[] = [
     title: "Field Watch",
     href: "/conservation",
     status: "PLANNING",
-    logged: "2026-07-26",
+    updated: "2026-0",
     summary:
-      "Citizen-science log: upload a photo on a hike, get a species ID, watch the group map fill in.",
+      "citizen-science log, e.g. upload a photo on a hike, get a species ID, fill in the map",
     rotation: -3,
     paper: "cream",
     pin: "navy",
@@ -56,8 +56,8 @@ export const projects: Project[] = [
     title: "Loose Ends",
     href: "/board",
     status: "OPEN",
-    logged: "2026-07-26",
-    summary: "Whatever doesn't need its own case file yet — links, notes, running jokes.",
+    updated: "2027-07-27",
+    summary: "random notes, smaller things",
     rotation: 1.5,
     paper: "kraft",
     pin: "red",
