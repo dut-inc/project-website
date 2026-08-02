@@ -1,5 +1,5 @@
 import CaseHeader from "@/components/CaseHeader";
-import FishQuiz from "@/components/FishQuiz";
+import FishQuiz from "@/components/fish-quiz/FishQuiz";
 
 export default function FishQuizPage() {
   return (

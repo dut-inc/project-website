@@ -1,5 +1,5 @@
 import Link from "next/link";
-import PlayerSearchModern from "@/components/PlayerSearchModern";
+import PlayerSearchModern from "@/components/sports/PlayerSearchModern";
 import { archetypeData } from "@/lib/archetypes";
 
 export default function OffensiveProfilesPage() {

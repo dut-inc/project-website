@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Pin from "./Pin";
+import Pin from "@/components/Pin";
 import FishIcon from "./FishIcon";
 import {
   FISHES,
