@@ -14,8 +14,8 @@ export type Project = {
   taped?: boolean;
 };
 
-export const projects: Project[] = [
-  {
+export const projects: Map<string, Project> = new Map([
+  ["fish-quiz", {
     case: "001",
     title: "Fish Quiz",
     href: "/fish-quiz",
@@ -26,8 +26,8 @@ export const projects: Project[] = [
     rotation: -2,
     paper: "cream",
     pin: "teal",
-  },
-  {
+  }],
+  ["sports", {
     case: "002",
     title: "Sports Lab",
     href: "/sports",
@@ -38,8 +38,8 @@ export const projects: Project[] = [
     rotation: 2.5,
     paper: "kraft",
     pin: "gold",
-  },
-  {
+  }],
+  ["conservation", {
     case: "003",
     title: "Field Watch",
     href: "/conservation",
@@ -50,8 +50,8 @@ export const projects: Project[] = [
     rotation: -3,
     paper: "cream",
     pin: "navy",
-  },
-  {
+  }],
+  ["board", {
     case: "004",
     title: "Loose Ends",
     href: "/board",
@@ -62,5 +62,5 @@ export const projects: Project[] = [
     paper: "kraft",
     pin: "red",
     taped: true,
-  },
-];
+  }],
+])

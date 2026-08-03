@@ -2,8 +2,14 @@ import Board from "@/components/Board";
 import PinnedNote from "@/components/PinnedNote";
 import { PennantSticker, AnchorSticker, RainDropSticker } from "@/components/Stickers";
 import { projects } from "@/lib/projects";
+import type { ReactElement } from "react";
 
 export default function HomePage() {
+  const projectCards: ReactElement[] = [];
+  for (const project of projects.values()) {
+    projectCards.push(<PinnedNote key={project.case} project={project} />);
+  }
+
   return (
     <div className="relative">
       <PennantSticker className="pointer-events-none absolute -left-4 -top-8 hidden w-28 lg:block xl:-left-10 xl:w-32" />
@@ -18,9 +24,7 @@ export default function HomePage() {
 
       <Board>
         <div className="grid gap-x-6 gap-y-10 pt-4 sm:grid-cols-2">
-          {projects.map((p) => (
-            <PinnedNote key={p.case} project={p} />
-          ))}
+          {projectCards}
         </div>
       </Board>
     </div>
