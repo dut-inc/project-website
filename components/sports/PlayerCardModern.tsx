@@ -17,7 +17,7 @@ function initials(name: string) {
 function StatRow({ label, value }: { label: string; value: string | number }) {
   return (
     <div className="flex items-baseline justify-between border-b border-white/10 py-2 last:border-0">
-      <span className="font-mono text-[11px] uppercase tracking-widest text-white/50">{label}</span>
+      <span className="font-mono text-[11px] uppercase tracking-widest text-white/70">{label}</span>
       <span className="font-mono text-sm font-semibold text-white">{value}</span>
     </div>
   );
@@ -31,7 +31,7 @@ export default function PlayerCardModern({ player }: { player: PlayerArchetype }
 
   return (
     <div
-      className="w-full max-w-3xl overflow-hidden rounded-3xl border border-white/10 shadow-[0_30px_60px_-20px_rgba(0,0,0,0.7)]"
+      className="w-full max-w-3xl overflow-hidden rounded-3xl border border-white/10 shadow-[0_30px_60px_-20px_rgba(0,0,0,0.7)]" aria-label={`${player.player_name} offensive profile`}
       style={{ background: `linear-gradient(135deg, ${primary} 0%, ${secondary} 100%)` }}
     >
       <div className="grid gap-6 bg-black/55 p-6 sm:grid-cols-[1.1fr_1fr] sm:p-8">
@@ -64,10 +64,7 @@ export default function PlayerCardModern({ player }: { player: PlayerArchetype }
                     {teamName}
                   </span>
                 )}
-                <span
-                  className="rounded-full px-2.5 py-0.5 font-mono text-[11px] font-semibold uppercase tracking-wide text-black"
-                  style={{ backgroundColor: "#FF9552" }}
-                >
+                <span className="rounded-full bg-sports-accent px-2.5 py-0.5 font-mono text-[11px] font-semibold uppercase tracking-wide text-black">
                   {player.archetype}
                 </span>
               </div>

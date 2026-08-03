@@ -20,6 +20,10 @@ const config: Config = {
         pinTeal: "#2F7A6B",
         pinGold: "#C9A227",
         pinNavy: "#274B6D",
+        sports: {
+          bg: "#0B0B0D",
+          accent: "#FF9552",
+        },
       },
       fontFamily: {
         display: ["var(--font-display)"],

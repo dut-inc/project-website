@@ -1,14 +1,17 @@
 import Link from "next/link";
 import CaseHeader from "@/components/CaseHeader";
+import { getProject } from "@/lib/projects";
 
 export default function SportsPage() {
+  const project = getProject("sports");
+
   return (
     <div>
       <CaseHeader
-        caseNumber="002"
-        title="Sports Lab"
-        status="PLANNING"
-        pin="gold"
+        caseNumber={project.case}
+        title={project.title}
+        status={project.status}
+        pin={project.pin}
         description="Basketball and baseball models — win probability, scouting recaps, and a fantasy assistant for the group."
       />
       <div className="mx-auto mt-10 max-w-xl space-y-3 font-mono text-sm text-cream/60">

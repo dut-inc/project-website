@@ -29,17 +29,31 @@ export default function PlayerSearchModern({ players }: { players: PlayerArchety
   return (
     <div className="flex flex-col items-center">
       <div className="relative w-full max-w-md">
+        <label htmlFor="player-search" className="sr-only">
+          Search players
+        </label>
         <input
+          id="player-search"
           value={query}
           onChange={(e) => {
             setQuery(e.target.value);
             setSelected(null);
           }}
           placeholder="Search a player…"
-          className="w-full rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm text-white placeholder:text-white/40 outline-none focus:border-[#FF7A45]"
+          autoComplete="off"
+          aria-controls="player-suggestions"
+          role="combobox"
+          aria-autocomplete="list"
+          aria-expanded={suggestions.length > 0 && !selected}
+          className="w-full rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm text-white placeholder:text-white/40 outline-none transition-colors focus:border-sports-accent focus:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-dashed focus-visible:outline-pinGold focus-visible:outline-offset-4"
         />
         {suggestions.length > 0 && !selected && (
-          <div className="absolute left-0 right-0 top-full z-10 mt-2 overflow-hidden rounded-2xl border border-white/10 bg-[#16171c] shadow-xl">
+          <div
+            id="player-suggestions"
+            role="listbox"
+            aria-label="Player suggestions"
+            className="absolute left-0 right-0 top-full z-10 mt-2 overflow-hidden rounded-2xl border border-white/10 bg-[#16171c] shadow-xl"
+          >
             {suggestions.map((p) => (
               <button
                 key={p.player_id}
@@ -47,7 +61,9 @@ export default function PlayerSearchModern({ players }: { players: PlayerArchety
                   setSelected(p);
                   setQuery(p.player_name);
                 }}
-                className="flex w-full items-center justify-between px-5 py-3 text-left text-sm text-white/80 transition-colors hover:bg-white/10"
+                role="option"
+                aria-selected={false}
+                className="flex min-h-11 w-full items-center justify-between px-5 py-3 text-left text-sm text-white/80 transition-colors hover:bg-white/10"
               >
                 <span>{p.player_name}</span>
                 <span className="font-mono text-[10px] uppercase tracking-widest text-white/40">

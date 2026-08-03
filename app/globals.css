@@ -7,6 +7,17 @@
   color: #0e0f11;
 }
 
+:focus-visible {
+  outline: 2px dashed #c9a227;
+  outline-offset: 4px;
+}
+
+button,
+a,
+input {
+  -webkit-tap-highlight-color: transparent;
+}
+
 .wall-bg {
   background-color: #24262a;
   background-image: radial-gradient(ellipse at 50% 0%, rgba(87, 89, 94, 0.3), transparent 60%),
