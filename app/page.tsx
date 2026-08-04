@@ -27,7 +27,7 @@ export default function HomePage() {
           ))}
         </div>
       </Board>
-      <Review />
+      <Review paperClass = {"bg-cream"}/>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import Pin from "@/components/Pin";
 import Image from "next/image";
 
-export default function Review() { 
+export default function Review({ paperClass }: { paperClass: string }) { 
     return (
     <div className="mt-12 flex justify-center">
     <div
@@ -9,7 +9,7 @@ export default function Review() {
     style={{ filter: "drop-shadow(0 8px 20px rgba(0,0,0,0.5))" }}
     >
     <Pin color="navy" />
-    <div className="bg-white px-[18px] pb-6 pt-[18px] shadow-lg">
+    <div className={`paper-torn ${paperClass} px-[18px] pb-6 pt-[18px] shadow-lg`}>
         <div className="relative overflow-hidden bg-ink/5" style={{ width: 360, height: 400 }}>
         <Image
             src="/images/ibisreview.png"
