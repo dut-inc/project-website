@@ -12,7 +12,7 @@ export default function Review() {
     <div className="bg-white px-[18px] pb-6 pt-[18px] shadow-lg">
         <div className="relative overflow-hidden bg-ink/5" style={{ width: 360, height: 400 }}>
         <Image
-            src="/ibisreview.png"
+            src="/images/ibisreview.png"
             alt="review"
             fill
             className="object-cover"
