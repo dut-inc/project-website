@@ -1,7 +1,7 @@
 "use client";
 
 import type { DragEvent } from "react";
-import { GAME_TIERS, type BoardGameEntry, type GameTier } from "@/lib/boardGames";
+import { GAME_TIERS, type BoardGameEntry, type GameDetailsUpdate, type GameTier } from "@/lib/boardGames";
 import TierRow from "./TierRow";
 
 type TierListProps = {
@@ -11,9 +11,9 @@ type TierListProps = {
   onDragOver: (event: DragEvent<HTMLDivElement>, tier: GameTier) => void;
   onDragLeave: (event: DragEvent<HTMLDivElement>) => void;
   onDrop: (event: DragEvent<HTMLDivElement>, tier: GameTier) => void;
-  onSave: (id: string, updates: Pick<BoardGameEntry, "name" | "description">) => void;
-  onRemove: (id: string) => void;
-  onMoveToTier: (id: string, tier: GameTier) => void;
+  onSave: (id: string, updates: GameDetailsUpdate) => Promise<void> | void;
+  onRemove: (id: string) => Promise<void> | void;
+  onMoveToTier: (id: string, tier: GameTier) => Promise<void> | void;
   onDragStart: (event: DragEvent<HTMLElement>, game: BoardGameEntry) => void;
   onDragEnd: () => void;
 };

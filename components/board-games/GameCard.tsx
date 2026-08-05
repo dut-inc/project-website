@@ -1,14 +1,14 @@
 "use client";
 
 import { useRef, useState, type DragEvent } from "react";
-import { GAME_TIERS, type BoardGameEntry, type GameTier } from "@/lib/boardGames";
+import { GAME_TIERS, type BoardGameEntry, type GameDetailsUpdate, type GameTier } from "@/lib/boardGames";
 import GameDetailsPopup from "./GameDetailsPopup";
 
 export type GameCardProps = {
   game: BoardGameEntry;
   isDragging: boolean;
-  onSave: (updates: Pick<BoardGameEntry, "name" | "description">) => void;
-  onDelete: () => void;
+  onSave: (updates: GameDetailsUpdate) => Promise<void> | void;
+  onDelete: () => Promise<void> | void;
   onMoveToTier: (tier: GameTier) => void;
   onDragStart: (event: DragEvent<HTMLElement>) => void;
   onDragEnd: () => void;
@@ -62,7 +62,7 @@ export default function GameCard({
     const nextIndex = currentIndex + (event.key === "ArrowUp" ? -1 : 1);
     if (nextIndex < 0 || nextIndex >= GAME_TIERS.length) return;
     event.preventDefault();
-    onMoveToTier(GAME_TIERS[nextIndex]);
+    void Promise.resolve(onMoveToTier(GAME_TIERS[nextIndex])).catch(() => undefined);
   }
 
   return (
@@ -107,12 +107,12 @@ export default function GameCard({
         <GameDetailsPopup
           game={game}
           onClose={closeDetails}
-          onSave={(updates) => {
-            onSave(updates);
+          onSave={async (updates) => {
+            await onSave(updates);
             closeDetails();
           }}
-          onDelete={() => {
-            onDelete();
+          onDelete={async () => {
+            await onDelete();
             setIsDetailsOpen(false);
           }}
         />

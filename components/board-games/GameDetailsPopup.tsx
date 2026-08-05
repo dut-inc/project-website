@@ -6,8 +6,8 @@ import type { BoardGameEntry, GameDetailsUpdate } from "@/lib/boardGames";
 type GameDetailsPopupProps = {
   game: BoardGameEntry;
   onClose: () => void;
-  onSave: (updates: GameDetailsUpdate) => void;
-  onDelete: () => void;
+  onSave: (updates: GameDetailsUpdate) => Promise<void> | void;
+  onDelete: () => Promise<void> | void;
 };
 
 const detailFields = [
@@ -38,6 +38,7 @@ export default function GameDetailsPopup({
   onDelete,
 }: GameDetailsPopupProps) {
   const [isEditing, setIsEditing] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
   const dialogRef = useRef<HTMLElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const [name, setName] = useState(game.name);
@@ -80,13 +81,27 @@ export default function GameDetailsPopup({
     setDetails((current) => ({ ...current, [key]: value }));
   }
 
-  function save() {
-    onSave({
-      name: name.trim() || game.name,
-      description: description.trim() || game.description,
-      ...details,
-    });
-    setIsEditing(false);
+  async function save() {
+    setIsSaving(true);
+    try {
+      await onSave({
+        name: name.trim() || game.name,
+        description: description.trim() || game.description,
+        ...details,
+      });
+      setIsEditing(false);
+    } finally {
+      setIsSaving(false);
+    }
+  }
+
+  async function remove() {
+    setIsSaving(true);
+    try {
+      await onDelete();
+    } finally {
+      setIsSaving(false);
+    }
   }
 
   return (
@@ -167,10 +182,10 @@ export default function GameDetailsPopup({
               </div>
             ))}
             <div className="flex flex-wrap gap-3">
-              <button type="button" onClick={save} className="min-h-11 rounded-full bg-shelf-walnut px-5 font-mono text-[11px] uppercase tracking-widest text-shelf-paper transition-colors hover:bg-shelf-wood">
-                Save changes
+              <button type="button" onClick={() => void save()} disabled={isSaving} className="min-h-11 rounded-full bg-shelf-walnut px-5 font-mono text-[11px] uppercase tracking-widest text-shelf-paper transition-colors hover:bg-shelf-wood disabled:cursor-wait disabled:opacity-60">
+                {isSaving ? "Saving…" : "Save changes"}
               </button>
-              <button type="button" onClick={() => setIsEditing(false)} className="min-h-11 rounded-full border border-shelf-paperDark/60 px-5 font-mono text-[11px] uppercase tracking-widest text-shelf-ink/80 transition-colors hover:border-shelf-brass hover:text-shelf-ink">
+              <button type="button" onClick={() => setIsEditing(false)} disabled={isSaving} className="min-h-11 rounded-full border border-shelf-paperDark/60 px-5 font-mono text-[11px] uppercase tracking-widest text-shelf-ink/80 transition-colors hover:border-shelf-brass hover:text-shelf-ink disabled:opacity-60">
                 Cancel
               </button>
             </div>
@@ -205,8 +220,8 @@ export default function GameDetailsPopup({
               <button type="button" onClick={() => setIsEditing(true)} className="min-h-11 rounded-full bg-shelf-walnut px-5 font-mono text-[11px] uppercase tracking-widest text-shelf-paper transition-colors hover:bg-shelf-wood">
                 Edit game
               </button>
-              <button type="button" onClick={onDelete} className="min-h-11 rounded-full px-3 font-mono text-[11px] uppercase tracking-widest text-shelf-burgundy transition-colors hover:bg-shelf-burgundy/10">
-                Delete game
+              <button type="button" onClick={() => void remove()} disabled={isSaving} className="min-h-11 rounded-full px-3 font-mono text-[11px] uppercase tracking-widest text-shelf-burgundy transition-colors hover:bg-shelf-burgundy/10 disabled:opacity-60">
+                {isSaving ? "Working…" : "Delete game"}
               </button>
             </div>
           </>

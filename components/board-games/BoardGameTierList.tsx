@@ -1,67 +1,172 @@
 "use client";
 
-import { useEffect, useState, type DragEvent } from "react";
+import { useCallback, useEffect, useRef, useState, type DragEvent } from "react";
+import { createClient } from "@/utils/supabase/client";
 import {
-  BOARD_GAMES_STORAGE_KEY,
-  BOARD_GAME_NOTES_KEY,
-  readSavedGames,
-} from "@/lib/boardGameStorage";
-import { STARTER_GAMES, type BoardGameEntry, type GameTier } from "@/lib/boardGames";
+  BOARD_GAME_COLUMNS,
+  BOARD_GAMES_TABLE,
+  boardGameFromDatabase,
+  boardGameToDatabase,
+  boardGameUpdatesToDatabase,
+  getDatabaseErrorMessage,
+} from "@/lib/boardGamesDatabase";
+import { BOARD_GAMES_STORAGE_KEY, BOARD_GAME_NOTES_KEY, readSavedGames } from "@/lib/boardGameStorage";
+import type { BoardGameEntry, GameTier } from "@/lib/boardGames";
 import AddGameForm from "./AddGameForm";
 import GroupNotes from "./GroupNotes";
 import TierList from "./TierList";
 
 export default function BoardGameTierList() {
-  const [games, setGames] = useState<BoardGameEntry[]>(STARTER_GAMES);
+  const [games, setGames] = useState<BoardGameEntry[]>([]);
   const [notes, setNotes] = useState("");
-  const [isReady, setIsReady] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isWorking, setIsWorking] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [draggingId, setDraggingId] = useState<string | null>(null);
   const [dragOverTier, setDragOverTier] = useState<GameTier | null>(null);
+  const loadPromiseRef = useRef<Promise<void> | null>(null);
+
+  const loadGames = useCallback(() => {
+    if (loadPromiseRef.current) return loadPromiseRef.current;
+
+    const loadPromise = (async () => {
+    setError(null);
+
+    try {
+      const supabase = createClient();
+      const { data, error: queryError } = await supabase
+        .from(BOARD_GAMES_TABLE)
+        .select(BOARD_GAME_COLUMNS)
+        .order("created_at", { ascending: true });
+
+      if (queryError) throw queryError;
+      const remoteGames = (data ?? [])
+        .map((row) => boardGameFromDatabase(row))
+        .filter((game): game is BoardGameEntry => game !== null);
+
+      if (remoteGames.length > 0) {
+        setGames(remoteGames);
+        return;
+      }
+
+      const savedGames = readSavedGames(window.localStorage.getItem(BOARD_GAMES_STORAGE_KEY));
+      if (!savedGames?.length) {
+        setGames([]);
+        return;
+      }
+
+      const migrationPayload = savedGames.map(({ name, description, houseRules, fullRules, quickNotes, tier }) =>
+        boardGameToDatabase({ name, description, houseRules, fullRules, quickNotes, tier }),
+      );
+      const { error: migrationError } = await supabase
+        .from(BOARD_GAMES_TABLE)
+        .insert(migrationPayload);
+      if (migrationError) throw migrationError;
+
+      const { data: migratedData, error: reloadError } = await supabase
+        .from(BOARD_GAMES_TABLE)
+        .select(BOARD_GAME_COLUMNS)
+        .order("created_at", { ascending: true });
+      if (reloadError) throw reloadError;
+
+      window.localStorage.removeItem(BOARD_GAMES_STORAGE_KEY);
+      setGames(
+        (migratedData ?? [])
+          .map((row) => boardGameFromDatabase(row))
+          .filter((game): game is BoardGameEntry => game !== null),
+      );
+    } catch (caughtError) {
+      setError(getDatabaseErrorMessage(caughtError));
+    } finally {
+      setIsLoading(false);
+    }
+    })();
+
+    loadPromiseRef.current = loadPromise;
+    void loadPromise
+      .finally(() => {
+        if (loadPromiseRef.current === loadPromise) loadPromiseRef.current = null;
+      })
+      .catch(() => undefined);
+    return loadPromise;
+  }, []);
+
+  useEffect(() => {
+    // The initial fetch synchronizes component state with the remote table.
+    void loadGames();
+  }, [loadGames]);
 
   useEffect(() => {
     try {
-      const savedGames = readSavedGames(window.localStorage.getItem(BOARD_GAMES_STORAGE_KEY));
       const savedNotes = window.localStorage.getItem(BOARD_GAME_NOTES_KEY);
-      if (savedGames) {
+      if (savedNotes) {
         // eslint-disable-next-line react-hooks/set-state-in-effect
-        setGames(savedGames);
+        setNotes(savedNotes);
       }
-      if (savedNotes) setNotes(savedNotes);
     } catch {
-      // Keep the starter list if storage is unavailable or contains bad data.
-    } finally {
-      setIsReady(true);
+      // Notes remain empty if browser storage is unavailable.
     }
   }, []);
 
   useEffect(() => {
-    if (!isReady) return;
-    try {
-      window.localStorage.setItem(BOARD_GAMES_STORAGE_KEY, JSON.stringify(games));
-    } catch {
-      // Storage can be unavailable in private browsing or when full.
-    }
-  }, [games, isReady]);
-
-  useEffect(() => {
-    if (!isReady) return;
     try {
       window.localStorage.setItem(BOARD_GAME_NOTES_KEY, notes);
     } catch {
       // Storage can be unavailable in private browsing or when full.
     }
-  }, [notes, isReady]);
+  }, [notes]);
 
-  function updateGame(id: string, updates: Partial<BoardGameEntry>) {
-    setGames((current) =>
-      current.map((game) => (game.id === id ? { ...game, ...updates } : game)),
-    );
+  async function updateGame(id: string, updates: Partial<BoardGameEntry>) {
+    setIsWorking(true);
+    setError(null);
+
+    try {
+      const supabase = createClient();
+      const { error: queryError } = await supabase
+        .from(BOARD_GAMES_TABLE)
+        .update(boardGameUpdatesToDatabase(updates))
+        .eq("id", id);
+
+      if (queryError) throw queryError;
+      setGames((current) =>
+        current.map((game) => (game.id === id ? { ...game, ...updates } : game)),
+      );
+    } catch (caughtError) {
+      setError(getDatabaseErrorMessage(caughtError));
+      throw caughtError;
+    } finally {
+      setIsWorking(false);
+    }
   }
 
-  function moveGameToTier(id: string, tier: GameTier) {
-    updateGame(id, { tier });
-    setDraggingId(null);
-    setDragOverTier(null);
+  async function addGame(game: Omit<BoardGameEntry, "id">) {
+    setIsWorking(true);
+    setError(null);
+
+    try {
+      const supabase = createClient();
+      const { error: queryError } = await supabase
+        .from(BOARD_GAMES_TABLE)
+        .insert(boardGameToDatabase(game));
+
+      if (queryError) throw queryError;
+      await loadGames();
+    } catch (caughtError) {
+      setError(getDatabaseErrorMessage(caughtError));
+      throw caughtError;
+    } finally {
+      setIsWorking(false);
+    }
+  }
+
+  async function moveGameToTier(id: string, tier: GameTier) {
+    try {
+      if (games.find((game) => game.id === id)?.tier === tier) return;
+      await updateGame(id, { tier });
+    } finally {
+      setDraggingId(null);
+      setDragOverTier(null);
+    }
   }
 
   function handleDragStart(event: DragEvent<HTMLElement>, game: BoardGameEntry) {
@@ -85,63 +190,79 @@ export default function BoardGameTierList() {
   function handleDrop(event: DragEvent<HTMLDivElement>, tier: GameTier) {
     event.preventDefault();
     const id = event.dataTransfer.getData("text/plain");
-    if (id) moveGameToTier(id, tier);
+    if (id) void moveGameToTier(id, tier).catch(() => undefined);
     else {
       setDraggingId(null);
       setDragOverTier(null);
     }
   }
 
-  function removeGame(id: string) {
-    setGames((current) => current.filter((game) => game.id !== id));
-    window.requestAnimationFrame(() => {
-      document.getElementById("tier-list-focus-target")?.focus();
-    });
-  }
+  async function removeGame(id: string): Promise<void> {
+    setIsWorking(true);
+    setError(null);
 
-  function resetBoard() {
-    if (!window.confirm("Reset the tier list to the starter games?")) return;
-    setGames(STARTER_GAMES);
-    setNotes("");
+    try {
+      const supabase = createClient();
+      const { error: queryError } = await supabase
+        .from(BOARD_GAMES_TABLE)
+        .delete()
+        .eq("id", id);
+
+      if (queryError) throw queryError;
+      setGames((current) => current.filter((entry) => entry.id !== id));
+      window.requestAnimationFrame(() => {
+        document.getElementById("tier-list-focus-target")?.focus();
+      });
+    } catch (caughtError) {
+      setError(getDatabaseErrorMessage(caughtError));
+      throw caughtError;
+    } finally {
+      setIsWorking(false);
+    }
   }
 
   return (
     <div className="mx-auto mt-10 max-w-6xl space-y-6">
-
-      <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_18rem] lg:items-start">
-        <div>
-          <TierList
-            games={games}
-            draggingId={draggingId}
-            dragOverTier={dragOverTier}
-            onDragOver={handleDragOver}
-            onDragLeave={handleDragLeave}
-            onDrop={handleDrop}
-            onSave={(id, updates) => updateGame(id, updates)}
-            onRemove={removeGame}
-            onMoveToTier={moveGameToTier}
-            onDragStart={handleDragStart}
-            onDragEnd={() => {
-              setDraggingId(null);
-              setDragOverTier(null);
-            }}
-          />
-          <button
-            type="button"
-            onClick={resetBoard}
-            className="mt-4 min-h-11 rounded-full px-3 font-mono text-[10px] uppercase tracking-widest text-shelf-paper/60 transition-colors hover:text-shelf-brass"
-          >
-            Reset list
-          </button>
+      {error && (
+        <div role="alert" className="rounded-xl border border-shelf-burgundy/70 bg-shelf-burgundy/20 px-4 py-3 text-sm text-shelf-paper">
+          <p>{error}</p>
+          <p className="mt-2 font-mono text-[10px] uppercase tracking-wider text-shelf-paper/75">
+            Run the latest supabase/schema.sql in the Supabase SQL editor, then refresh the page.
+          </p>
         </div>
+      )}
 
-        <aside className="space-y-5">
-          <AddGameForm
-            onAdd={(game) => setGames((current) => [...current, game])}
-          />
-          <GroupNotes notes={notes} onChange={setNotes} />
-        </aside>
-      </div>
+      {isLoading ? (
+        <div className="rounded-xl border border-shelf-paper/20 bg-shelf-walnut/70 px-4 py-12 text-center text-sm text-shelf-paper/75">
+          Reading the shelf from Supabase…
+        </div>
+      ) : (
+        <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_18rem] lg:items-start">
+          <div className={isWorking ? "opacity-75 transition-opacity" : ""}>
+            <TierList
+              games={games}
+              draggingId={draggingId}
+              dragOverTier={dragOverTier}
+              onDragOver={handleDragOver}
+              onDragLeave={handleDragLeave}
+              onDrop={handleDrop}
+              onSave={(id, updates) => updateGame(id, updates)}
+              onRemove={removeGame}
+              onMoveToTier={(id, tier) => moveGameToTier(id, tier)}
+              onDragStart={handleDragStart}
+              onDragEnd={() => {
+                setDraggingId(null);
+                setDragOverTier(null);
+              }}
+            />
+          </div>
+
+          <aside className="space-y-5">
+            <AddGameForm onAdd={addGame} />
+            <GroupNotes notes={notes} onChange={setNotes} />
+          </aside>
+        </div>
+      )}
     </div>
   );
 }

@@ -1,29 +1,39 @@
 "use client";
 
 import { useState } from "react";
-import { makeBoardGameId } from "@/lib/boardGameStorage";
 import type { BoardGameEntry } from "@/lib/boardGames";
 
-export default function AddGameForm({ onAdd }: { onAdd: (game: BoardGameEntry) => void }) {
+type NewGame = Omit<BoardGameEntry, "id">;
+
+type AddGameFormProps = {
+  onAdd: (game: NewGame) => Promise<void> | void;
+};
+
+export default function AddGameForm({ onAdd }: AddGameFormProps) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+  const [isAdding, setIsAdding] = useState(false);
 
-  function submit(event: React.FormEvent<HTMLFormElement>) {
+  async function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const trimmedName = name.trim();
-    if (!trimmedName) return;
+    if (!trimmedName || isAdding) return;
 
-    onAdd({
-      id: makeBoardGameId(),
-      name: trimmedName,
-      description: description.trim() || "Add a memorable detail later.",
-      houseRules: "",
-      fullRules: "",
-      quickNotes: "",
-      tier: "Unranked",
-    });
-    setName("");
-    setDescription("");
+    setIsAdding(true);
+    try {
+      await onAdd({
+        name: trimmedName,
+        description: description.trim(),
+        houseRules: "",
+        fullRules: "",
+        quickNotes: "",
+        tier: "Unranked",
+      });
+      setName("");
+      setDescription("");
+    } finally {
+      setIsAdding(false);
+    }
   }
 
   return (
@@ -52,8 +62,8 @@ export default function AddGameForm({ onAdd }: { onAdd: (game: BoardGameEntry) =
           placeholder="Why does it belong here?"
           className="w-full resize-y rounded-lg border border-shelf-paperDark/60 bg-white/35 px-3 py-2.5 text-sm text-shelf-ink placeholder:text-shelf-ink/70"
         />
-        <button type="submit" className="min-h-11 w-full rounded-full bg-shelf-walnut px-4 font-mono text-[11px] uppercase tracking-widest text-shelf-paper transition-transform hover:-translate-y-0.5 hover:bg-shelf-wood">
-          Add unranked game
+        <button type="submit" disabled={isAdding} className="min-h-11 w-full rounded-full bg-shelf-walnut px-4 font-mono text-[11px] uppercase tracking-widest text-shelf-paper transition-transform hover:-translate-y-0.5 hover:bg-shelf-wood disabled:cursor-wait disabled:opacity-60">
+          {isAdding ? "Adding…" : "Add unranked game"}
         </button>
       </form>
     </section>
