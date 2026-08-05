@@ -187,8 +187,10 @@ export function applyAnswer(
   return next;
 }
 
+export type QuizResult = { fish: FishSpecies; ranked: FishSpecies[] };
+
 // Ranked scoring with species order above doubles as tiebreak.
-export function scoreToResult(scores: Scores) {
+export function scoreToResult(scores: Scores): QuizResult {
   const ranked = [...FISHES].sort((a, b) => scores[b.id] - scores[a.id]);
   return { fish: ranked[0], ranked };
 }

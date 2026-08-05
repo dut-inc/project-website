@@ -1,0 +1,67 @@
+"use client";
+
+import { liveStatusLine } from "@/lib/sports/leagues";
+import type { Team } from "@/lib/sports/types";
+import LeadersList from "./LeadersList";
+import LiveScoreboard from "./LiveScoreboard";
+import ScoringSummary from "./ScoringSummary";
+import StatSections from "./StatSections";
+import { LiveDot } from "./icons";
+
+/** "Game" tab for the expanded view — only rendered while a game is live. */
+export default function GameStatsPanel({ team }: { team: Team }) {
+  const game = team.currentGame;
+  if (!game) return null;
+
+  const stats = team.gameStats;
+
+  return (
+    <div className="space-y-5">
+      {/* Live score banner */}
+      <div
+        className="rounded-2xl border border-white/5 p-4 sm:p-5"
+        style={{
+          background: `linear-gradient(135deg, ${team.colors.primary}33 0%, rgba(22,23,27,0.6) 55%, ${team.colors.secondary}26 100%)`,
+        }}
+      >
+        <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
+          <p className="flex items-center gap-1.5 font-mono text-[11px] font-semibold uppercase tracking-widest text-red-400">
+            <LiveDot className="h-1.5 w-1.5" />
+            {game.at === "home" ? "vs" : "at"} {game.opponent}
+          </p>
+          <p className="font-mono text-xs font-semibold text-white/90">{liveStatusLine(team)}</p>
+        </div>
+        <div className="mt-4">
+          <LiveScoreboard team={team} large />
+        </div>
+        {game.channel && (
+          <p className="mt-3 text-center font-mono text-[10px] uppercase tracking-wider text-white/40">
+            {game.channel}
+          </p>
+        )}
+      </div>
+
+      {stats?.teamStats && stats.teamStats.length > 0 && (
+        <StatSections sections={[{ title: "Team stats", stats: stats.teamStats }]} />
+      )}
+
+      {stats?.scoring && stats.scoring.length > 0 && (
+        <section>
+          <h4 className="mb-2 font-mono text-[10px] uppercase tracking-widest text-white/40">
+            Scoring summary
+          </h4>
+          <ScoringSummary events={stats.scoring} />
+        </section>
+      )}
+
+      {stats?.leaders && stats.leaders.length > 0 && (
+        <section>
+          <h4 className="mb-2 font-mono text-[10px] uppercase tracking-widest text-white/40">
+            Player leaders
+          </h4>
+          <LeadersList leaders={stats.leaders} />
+        </section>
+      )}
+    </div>
+  );
+}

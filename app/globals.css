@@ -7,6 +7,17 @@
   color: #0e0f11;
 }
 
+:focus-visible {
+  outline: 2px dashed #c9a227;
+  outline-offset: 4px;
+}
+
+button,
+a,
+input {
+  -webkit-tap-highlight-color: transparent;
+}
+
 .wall-bg {
   background-color: #24262a;
   background-image: radial-gradient(ellipse at 50% 0%, rgba(87, 89, 94, 0.3), transparent 60%),
@@ -70,6 +81,35 @@
   }
 }
 
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes backdrop-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modal-pop {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 .animate-fade-up {
   animation: fade-up 0.45s ease-out both;
 }
@@ -78,9 +118,24 @@
   animation: floaty 5s ease-in-out infinite;
 }
 
+.animate-fade-in {
+  animation: fade-in 0.2s ease-out both;
+}
+
+.animate-backdrop-in {
+  animation: backdrop-in 0.2s ease-out both;
+}
+
+.animate-modal-pop {
+  animation: modal-pop 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-fade-up,
-  .animate-floaty {
+  .animate-floaty,
+  .animate-fade-in,
+  .animate-backdrop-in,
+  .animate-modal-pop {
     animation: none;
   }
 }

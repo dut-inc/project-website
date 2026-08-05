@@ -1,25 +1,21 @@
 import Link from "next/link";
-
-const links = [
-  { href: "/fish-quiz", label: "Fish Quiz" },
-  { href: "/sports", label: "Sports Lab" },
-  { href: "/conservation", label: "Field Watch" },
-  { href: "/board", label: "Loose Ends" },
-];
+import { projects } from "@/lib/projects";
 
 export default function Nav() {
   return (
     <header className="relative z-20">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-6 sm:px-8">
+      <div className="flex w-full flex-wrap items-center justify-between gap-x-6 gap-y-4 px-4 py-6 sm:px-8">
         <Link href="/" className="font-display text-xl italic tracking-tight text-cream">
           The Board
         </Link>
-        <nav className="flex gap-5 font-mono text-[11px] uppercase tracking-widest text-cream/50">
-          {links.map((l) => (
-            <Link key={l.href} href={l.href} className="transition-colors hover:text-pinGold">
-              {l.label}
-            </Link>
-          ))}
+        <nav aria-label="Primary navigation" className="flex flex-wrap justify-end gap-x-5 gap-y-2 font-mono text-[11px] uppercase tracking-widest text-cream/60">
+          {[...projects.values()]
+            .filter((p) => p.href !== "/db-management")
+            .map((p) => (
+              <Link key={p.href} href={p.href} className="transition-colors hover:text-cream">
+                {p.title}
+              </Link>
+            ))}
         </nav>
       </div>
     </header>

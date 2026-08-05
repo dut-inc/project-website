@@ -1,4 +1,5 @@
 import data from "@/public/data/player-archetypes-25-26.json";
+import type { PinColor } from "@/lib/projects";
 
 export type PlayerArchetype = {
   player_id: number;
@@ -34,9 +35,10 @@ export type ArchetypeDataset = {
 
 export const archetypeData = data as ArchetypeDataset;
 
-const PIN_CYCLE = ["navy", "teal", "gold", "red"] as const;
+// Same palette as the site-wide pins so archetype pins match the board look.
+const PIN_CYCLE: readonly PinColor[] = ["navy", "teal", "gold", "red"];
 
-export function pinForArchetype(archetype: string): (typeof PIN_CYCLE)[number] {
+export function pinForArchetype(archetype: string): PinColor {
   let hash = 0;
   for (let i = 0; i < archetype.length; i++) hash = (hash * 31 + archetype.charCodeAt(i)) >>> 0;
   return PIN_CYCLE[hash % PIN_CYCLE.length];
@@ -49,9 +51,10 @@ export function groupByArchetype(players: PlayerArchetype[]) {
     list.push(p);
     groups.set(p.archetype, list);
   }
-  return Array.from(groups.entries()).map(([archetype, players]) => ({
+  return Array.from(groups.entries()).map(([archetype, groupPlayers]) => ({
     archetype,
-    players: players.sort((a, b) => b.total_fga - a.total_fga),
+    // Copy before sorting so the shared input array isn't mutated in place.
+    players: [...groupPlayers].sort((a, b) => b.total_fga - a.total_fga),
     pin: pinForArchetype(archetype),
   }));
 }

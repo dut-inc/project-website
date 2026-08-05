@@ -1,12 +1,6 @@
 import Link from "next/link";
 import Pin from "./Pin";
-import type { Project } from "@/lib/projects";
-
-const statusColor: Record<Project["status"], string> = {
-  ACTIVE: "text-pinTeal",
-  PLANNING: "text-pinGold",
-  OPEN: "text-pinRed",
-};
+import { statusColor, type Project } from "@/lib/projects";
 
 export default function PinnedNote({ project }: { project: Project }) {
   const paperClass = project.paper === "kraft" ? "bg-kraft" : "bg-cream";
@@ -37,7 +31,7 @@ export default function PinnedNote({ project }: { project: Project }) {
         </h3>
         <p className="mt-2 text-sm leading-relaxed text-ink/80">{project.summary}</p>
         <div className="mt-4 font-mono text-[10px] uppercase tracking-widest text-ink2">
-          Logged {project.logged}
+          Updated {project.updated}
         </div>
       </div>
     </Link>
