@@ -8,20 +8,24 @@ export default function CaseHeader({
   status,
   description,
   pin = "gold",
+  backHref = "/",
+  backLabel = "Back to the board",
 }: {
   caseNumber: string;
   title: string;
   status: Status;
   description: string;
   pin?: PinColor;
+  backHref?: string;
+  backLabel?: string;
 }) {
   return (
     <div>
       <Link
-        href="/"
-        className="mb-6 inline-block rounded-sm font-mono text-xs uppercase tracking-widest text-cream/60 transition-colors hover:text-cream"
+        href={backHref}
+        className="mb-6 inline-block font-mono text-xs uppercase tracking-widest text-cream/50 hover:text-pinGold"
       >
-        &larr; Back to the board
+        &larr; {backLabel}
       </Link>
       <div className="relative mx-auto max-w-xl -rotate-1">
         <Pin color={pin} />

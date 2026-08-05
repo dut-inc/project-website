@@ -2,6 +2,23 @@ import Link from "next/link";
 import CaseHeader from "@/components/CaseHeader";
 import { getProject } from "@/lib/projects";
 
+const features = [
+  {
+    href: "/sports/dashboard",
+    tag: "Flagship",
+    title: "Seattle Sports Dashboard",
+    blurb:
+      "Live scores, schedules, standings, and season stats for every major Seattle pro team — reorderable cards, saved to your browser.",
+  },
+  {
+    href: "/sports/offensive-profiles",
+    tag: "Analytics",
+    title: "Offensive Archetypes",
+    blurb:
+      "Basketball and baseball shot-archetype clustering — win probability, scouting recaps, and a fantasy assistant for the group.",
+  },
+];
+
 export default function SportsPage() {
   const project = getProject("sports");
 
@@ -14,17 +31,23 @@ export default function SportsPage() {
         pin={project.pin}
         description="Basketball and baseball models — win probability, scouting recaps, and a fantasy assistant for the group."
       />
-      <div className="mx-auto mt-10 max-w-xl space-y-3 font-mono text-sm text-cream/60">
-        <p>
-          &gt; data pipeline (nba_api / pybaseball): partial —{" "}
-          <Link href="/sports/offensive-profiles" className="text-pinGold underline">
-            offensive archetype clustering
-          </Link>{" "}
-          running on sample data
-        </p>
-        <p>&gt; win-probability model: not started</p>
-        <p>&gt; scouting/recap agent: not started</p>
-        <p>&gt; fantasy assistant: not started</p>
+      <div className="mx-auto mt-10 grid max-w-3xl gap-4 sm:grid-cols-2">
+        {features.map((f) => (
+          <Link
+            key={f.href}
+            href={f.href}
+            className="group rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition-colors hover:border-pinGold/50 hover:bg-white/[0.06]"
+          >
+            <span className="font-mono text-[10px] uppercase tracking-widest text-pinGold/80">{f.tag}</span>
+            <h2 className="mt-2 font-display text-xl text-cream transition-colors group-hover:text-white">
+              {f.title}
+            </h2>
+            <p className="mt-2 text-sm leading-relaxed text-cream/55">{f.blurb}</p>
+            <span className="mt-4 inline-flex items-center gap-1 font-mono text-[11px] uppercase tracking-widest text-cream/40 transition-colors group-hover:text-pinGold">
+              Open <span aria-hidden>→</span>
+            </span>
+          </Link>
+        ))}
       </div>
     </div>
   );
