@@ -1,5 +1,6 @@
 import Link from "next/link";
 import CaseHeader from "@/components/CaseHeader";
+import { getProject } from "@/lib/projects";
 
 const features = [
   {
@@ -19,14 +20,16 @@ const features = [
 ];
 
 export default function SportsPage() {
+  const project = getProject("sports");
+
   return (
     <div>
       <CaseHeader
-        caseNumber="002"
-        title="Sports Lab"
-        status="ACTIVE"
-        pin="gold"
-        description="Where the group's Seattle sports work lives — the team dashboard on the front end, and basketball/baseball models in the data pipeline."
+        caseNumber={project.case}
+        title={project.title}
+        status={project.status}
+        pin={project.pin}
+        description="Basketball and baseball models — win probability, scouting recaps, and a fantasy assistant for the group."
       />
       <div className="mx-auto mt-10 grid max-w-3xl gap-4 sm:grid-cols-2">
         {features.map((f) => (

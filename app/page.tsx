@@ -19,7 +19,7 @@ export default function HomePage() {
 
       <div className="mb-8 text-center">
         <h1 className="mt-2 font-display text-4xl italic text-cream sm:text-5xl">
-          what we're up to
+          what we&apos;re up to
         </h1>
       </div>
 
