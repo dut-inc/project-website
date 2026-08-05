@@ -20,7 +20,8 @@ export type ProjectId =
   | "sports"
   | "conservation"
   | "board"
-  | "board-games";
+  | "board-games"
+  | "db-management";
 
 export const statusColor: Record<Status, string> = {
   ACTIVE: "text-pinTeal",
@@ -101,6 +102,20 @@ export const projects: Map<ProjectId, Project> = new Map([
       rotation: -1.5,
       paper: "cream",
       pin: "teal",
+    },
+  ],
+  [
+    "db-management",
+    {
+      case: "006",
+      title: "DB Management",
+      href: "/db-management",
+      status: "OPEN",
+      updated: "2026-08-05",
+      summary: "prototype Supabase controls for the shared board-game database",
+      rotation: 1.5,
+      paper: "kraft",
+      pin: "gold",
     },
   ],
 ]);
