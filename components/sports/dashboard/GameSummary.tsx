@@ -1,6 +1,6 @@
 "use client";
 
-import { formatGameDate } from "@/lib/sports/leagues";
+import { formatGameDate, formatGameNote } from "@/lib/sports/leagues";
 import type { GameSummary as GameSummaryData } from "@/lib/sports/types";
 
 const outcomeStyles: Record<string, string> = {
@@ -35,7 +35,9 @@ export default function GameSummary({ game }: { game: GameSummaryData }) {
             </span>
           </div>
           {game.note && (
-            <p className="mt-0.5 font-mono text-[11px] uppercase tracking-wide text-white/40">{game.note}</p>
+            <p className="mt-0.5 font-mono text-[11px] uppercase tracking-wide text-white/40">
+              {formatGameNote(game.note)}
+            </p>
           )}
         </div>
         <span className="shrink-0 font-mono text-base font-semibold text-white tabular-nums">

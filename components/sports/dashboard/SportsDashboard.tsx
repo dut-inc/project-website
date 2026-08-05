@@ -58,14 +58,11 @@ export default function SportsDashboard() {
 
   return (
     <div className="mt-8">
-      {/* Page header row */}
-      <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-3">
-        <div>
-          <h2 className="font-display text-2xl text-cream sm:text-3xl">Seattle Sports Dashboard</h2>
-          <p className="mt-1.5 max-w-2xl font-mono text-[11px] uppercase tracking-widest text-cream/45">
-            {metadata?.note ?? "Sample data while the Supabase backend is in development."}
-          </p>
-        </div>
+      {/* Data-source badge row + hint */}
+      <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-3">
+        <p className="max-w-2xl font-mono text-[11px] uppercase tracking-widest text-cream/45">
+          {metadata?.note ?? "Sample data while the Supabase backend is in development."}
+        </p>
         <div className="flex items-center gap-2">
           <span className="rounded-full border border-pinGold/40 bg-pinGold/10 px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-widest text-pinGold">
             {metadata?.source ?? "mock"} data

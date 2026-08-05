@@ -105,20 +105,20 @@ export default function TeamCard({
         </div>
 
         {/* Footer: drag handle + expand hint */}
-        <div className="flex items-center justify-between border-t border-white/5 px-2.5 py-1">
+        <div className="flex items-center justify-between border-t border-white/5 px-4 py-1.5">
           <button
             type="button"
             {...dragHandleProps}
             onClick={(e) => e.stopPropagation()}
             aria-label={`Drag to reorder ${team.name}`}
             title="Drag to reorder"
-            className="flex cursor-grab items-center gap-1.5 rounded-md px-1.5 py-1 font-mono text-[10px] uppercase tracking-widest text-white/35 transition-colors hover:bg-white/5 hover:text-white/70 active:cursor-grabbing"
+            className="flex cursor-grab items-center gap-1.5 rounded-md px-2 py-1 font-mono text-[10px] uppercase tracking-widest text-white/35 transition-colors hover:bg-white/5 hover:text-white/70 active:cursor-grabbing"
             style={{ touchAction: "none" }}
           >
             <GripIcon className="h-3.5 w-3.5" />
             <span className="hidden sm:inline">Reorder</span>
           </button>
-          <span className="flex items-center gap-1 pr-1.5 font-mono text-[10px] uppercase tracking-widest text-white/35 transition-colors group-hover:text-white/75">
+          <span className="flex items-center gap-1 font-mono text-[10px] uppercase tracking-widest text-white/35 transition-colors group-hover:text-white/75">
             Details
             <ChevronDownIcon className="h-3 w-3" />
           </span>

@@ -120,6 +120,18 @@ export function formatStreak(streak: Streak): string {
   return `${streak.type}${streak.count}`;
 }
 
+/**
+ * Friendly display for a completed-game note/status. Raw feeds typically
+ * abbreviate: "F" → "Final", "F/9" → "Final · 9 innings". Other notes
+ * ("Preseason", "OT", "SO", …) pass through unchanged.
+ */
+export function formatGameNote(note: string): string {
+  if (note === "F") return "Final";
+  const innings = note.match(/^F\/(\d{1,2})$/);
+  if (innings) return `Final · ${innings[1]} innings`;
+  return note;
+}
+
 /** Full status line for a live game, e.g. "Top 7th · 2 outs · 1st & 2nd". */
 export function liveStatusLine(team: Team): string {
   const game = team.currentGame;

@@ -25,20 +25,20 @@ export default function LiveGameDisplay({ team }: { team: Team }) {
       </div>
 
       <div className="mt-3 flex items-end justify-between gap-3">
-        <div>
+        <div className="min-w-0">
           <div className="font-display text-3xl font-semibold leading-none text-white tabular-nums">
             {game.teamScore}
             <span className="mx-1.5 text-lg font-normal text-white/30">–</span>
             {game.opponentScore}
           </div>
-          <p className="mt-1.5 text-sm font-medium text-white/70">
+          <p className="mt-1.5 truncate text-sm font-medium text-white/70">
             {game.at === "home" ? "vs" : "at"} {game.opponent}
           </p>
         </div>
-        <div className="shrink-0 text-right">
-          <p className="font-mono text-xs font-semibold text-white/90">{liveStatusLine(team)}</p>
+        <div className="min-w-0 max-w-[55%] text-right">
+          <p className="font-mono text-xs font-semibold leading-snug text-white/90">{liveStatusLine(team)}</p>
           {sportSpecific.length > 0 && (
-            <div className="mt-1.5 flex flex-wrap justify-end gap-1">
+            <div className="mt-2 flex flex-wrap justify-end gap-1">
               {sportSpecific.map(([label, value]) => (
                 <span
                   key={label}
@@ -54,7 +54,7 @@ export default function LiveGameDisplay({ team }: { team: Team }) {
       </div>
 
       {next && (
-        <p className="mt-3 border-t border-white/5 pt-2.5 font-mono text-[11px] text-white/45">
+        <p className="mt-3.5 border-t border-white/5 pt-3 font-mono text-[11px] text-white/45">
           Next: {next.at === "home" ? "vs" : "at"} {next.opponent} · {formatShortDate(next.date)} ·{" "}
           {next.time}
         </p>
