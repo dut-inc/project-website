@@ -92,19 +92,3 @@ To use real data:
 
 Cluster naming is manual by design: K-Means only gives you numbers, and which
 number corresponds to "rim runner" isn't stable across reruns.
-
-## Suggested next steps
-
-- **Fish Quiz**: start with the personality-quiz version (a few questions →
-  a result mapped to a fish); the photo-based species ID model can slot in later
-  and double as the model for Field Watch.
-- **Sports Lab**: pick one narrow thing first — a win-probability chart for a
-  single game is enough to prove the data pipeline (`nba_api` / `pybaseball`)
-  works end to end.
-- **Field Watch**: once the species ID model exists, this is mostly a shared
-  map/log UI — could reuse Sports Lab's data-viz components.
-- **Auth**: none yet — this is meant for a small trusted group. If you want to
-  gate it, [NextAuth](https://authjs.dev) with a single shared password or
-  GitHub OAuth (just you + friends) is the least-fuss option.
-- **Deploy**: push to GitHub, import into [Vercel](https://vercel.com) — zero
-  config needed for a project this shape.
