@@ -36,10 +36,10 @@ export default function TierList({
       <div className="mb-4 flex flex-wrap items-end justify-between gap-3">
         <span id="tier-list-focus-target" tabIndex={-1} className="sr-only">Tier list updated</span>
         <div>
-          <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-cream/45">
+          <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-shelf-paper/75">
             {games.filter((game) => game.tier !== "Unranked").length} ranked / {games.length} total
           </p>
-          <h2 id="tier-list-heading" className="mt-1 font-display text-3xl italic text-cream">
+          <h2 id="tier-list-heading" className="mt-1 font-display text-3xl italic text-shelf-paper">
             The shelf, sorted
           </h2>
         </div>

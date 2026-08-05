@@ -9,7 +9,6 @@ import {
 import { STARTER_GAMES, type BoardGameEntry, type GameTier } from "@/lib/boardGames";
 import AddGameForm from "./AddGameForm";
 import GroupNotes from "./GroupNotes";
-import QuickStartGuide from "./QuickStartGuide";
 import TierList from "./TierList";
 
 export default function BoardGameTierList() {
@@ -108,7 +107,6 @@ export default function BoardGameTierList() {
 
   return (
     <div className="mx-auto mt-10 max-w-6xl space-y-6">
-      <QuickStartGuide />
 
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_18rem] lg:items-start">
         <div>
@@ -131,7 +129,7 @@ export default function BoardGameTierList() {
           <button
             type="button"
             onClick={resetBoard}
-            className="mt-4 min-h-11 rounded-full px-3 font-mono text-[10px] uppercase tracking-widest text-cream/45 transition-colors hover:text-pinGold"
+            className="mt-4 min-h-11 rounded-full px-3 font-mono text-[10px] uppercase tracking-widest text-shelf-paper/60 transition-colors hover:text-shelf-brass"
           >
             Reset list
           </button>

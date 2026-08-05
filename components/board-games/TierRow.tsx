@@ -40,8 +40,8 @@ export default function TierRow({
       onDragOver={(event) => onDragOver(event, tier)}
       onDragLeave={onDragLeave}
       onDrop={(event) => onDrop(event, tier)}
-      className={`overflow-hidden rounded-xl border border-black/20 bg-black/20 shadow-inner transition-colors ${
-        dragOverTier === tier && draggingId ? "bg-pinGold/10 ring-2 ring-inset ring-pinGold/60" : ""
+      className={`overflow-hidden rounded-xl border border-shelf-walnut/70 bg-shelf-wood shadow-[inset_0_-10px_20px_rgba(38,24,15,0.32),0_4px_10px_rgba(38,24,15,0.18)] transition-colors ${
+        dragOverTier === tier ? "bg-shelf-brass/20 ring-2 ring-inset ring-shelf-brass/70" : ""
       }`}
     >
       <div
@@ -49,8 +49,8 @@ export default function TierRow({
         style={{ borderLeft: `5px solid ${detail.color}` }}
       >
         <div className="pt-0.5">
-          <span className="block whitespace-nowrap font-display text-2xl italic text-cream">{tier}</span>
-          <span className="font-mono text-[9px] uppercase tracking-wider text-cream/45">{detail.hint}</span>
+          <span className="block whitespace-nowrap font-display text-2xl italic text-shelf-paper">{tier}</span>
+          <span className="font-mono text-[9px] uppercase tracking-wider text-shelf-paper/80">{detail.hint}</span>
         </div>
         <div className="grid min-w-0 gap-3 sm:grid-cols-2 xl:grid-cols-3">
           {games.map((game) => (
@@ -66,7 +66,7 @@ export default function TierRow({
             />
           ))}
           {games.length === 0 && (
-            <p className="col-span-full py-3 text-xs italic text-cream/35">
+            <p className="col-span-full py-3 text-xs italic text-shelf-paper/60">
               Nothing here yet — move a card in.
             </p>
           )}

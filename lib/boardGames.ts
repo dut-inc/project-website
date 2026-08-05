@@ -21,12 +21,12 @@ export const TIER_DETAILS: Record<
   GameTier,
   { label: string; color: string; hint: string }
 > = {
-  S: { label: "S tier", color: "#C1442D", hint: "clear the table" },
-  A: { label: "A tier", color: "#D47A35", hint: "almost perfect" },
-  B: { label: "B tier", color: "#C9A227", hint: "would play again" },
-  C: { label: "C tier", color: "#2F7A6B", hint: "has its moments" },
-  D: { label: "D tier", color: "#274B6D", hint: "probably not" },
-  Unranked: { label: "Unranked", color: "#6B6250", hint: "still deciding" },
+  S: { label: "S tier", color: "#7B302E", hint: "clear the table" },
+  A: { label: "A tier", color: "#A8793F", hint: "almost perfect" },
+  B: { label: "B tier", color: "#4D674D", hint: "would play again" },
+  C: { label: "C tier", color: "#536579", hint: "has its moments" },
+  D: { label: "D tier", color: "#554D48", hint: "probably not" },
+  Unranked: { label: "Unranked", color: "#8B7762", hint: "still deciding" },
 };
 
 export const STARTER_GAMES: BoardGameEntry[] = [
