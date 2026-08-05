@@ -81,10 +81,20 @@ export interface ScheduledGame {
   note?: string;
 }
 
+/** Per-side game status shown under the scoreboard logo (timeouts, challenges, …). */
+export interface LiveTeamStatus {
+  /** Remaining timeouts/challenges → rendered as filled dots under the logo. */
+  remaining?: number;
+  /** Total dots to render; defaults to `remaining` when omitted. */
+  total?: number;
+  /** Tooltip, e.g. "Timeouts" / "Challenges". */
+  label?: string;
+}
+
 /**
  * A game in progress. Only present when the team is currently playing.
- * Sport-specific game state lives in `sportSpecific` (e.g. MLB outs /
- * balls / strikes) — the UI must not assume every sport has an inning,
+ * Sport-specific game state lives in `sportSpecific` (e.g. MLB balls /
+ * strikes / outs) — the UI must not assume every sport has an inning,
  * quarter, period, or clock, which is why `period` / `clock` / `detail`
  * are free-form display strings.
  */
@@ -100,6 +110,11 @@ export interface LiveGame {
   /** Extra situational detail, e.g. "2 outs · runners on 1st & 2nd". */
   detail?: string;
   channel?: string;
+  /** Status dots under the away logo (left side of the scoreboard). */
+  awayStatus?: LiveTeamStatus;
+  /** Status dots under the home logo (right side of the scoreboard). */
+  homeStatus?: LiveTeamStatus;
+  /** Sport-specific live detail (e.g. MLB Balls/Strikes/Outs). */
   sportSpecific?: Record<string, string | number>;
 }
 
@@ -157,6 +172,12 @@ export interface Team {
   name: string;
   /** e.g. "Mariners". Used for placeholder logo initials. */
   shortName: string;
+  /**
+   * Optional logo asset URL (PNG/SVG). When set, the placeholder initials
+   * circle is swapped for this image — drop real team logos in here without
+   * touching any component.
+   */
+  logoUrl?: string;
   status: TeamStatus;
   /** Shown when `status === "inactive"` (SuperSonics placeholder). */
   note?: string;

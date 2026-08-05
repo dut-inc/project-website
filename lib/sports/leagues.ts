@@ -144,15 +144,21 @@ export function liveStatusLine(team: Team): string {
   return parts.join(" · ");
 }
 
-/** "SEA" vs "HOU" style scoreboard line. */
-export function scoreLine(team: Team): string {
+/** Short status line for the scoreboard: period + clock only (no detail). */
+export function liveScoreboardLine(team: Team): string {
   const game = team.currentGame;
-  if (!game) return "";
-  const home = game.at === "home" ? team.shortName : game.opponent.split(" ").pop() ?? game.opponent;
-  const away = game.at === "home" ? game.opponent.split(" ").pop() ?? game.opponent : team.shortName;
-  const homeScore = game.at === "home" ? game.teamScore : game.opponentScore;
-  const awayScore = game.at === "home" ? game.opponentScore : game.teamScore;
-  return `${away} ${awayScore} – ${home} ${homeScore}`;
+  if (!game) return "In progress";
+  const cfg = LEAGUES[team.league];
+  const parts = [cfg.livePeriod(game)];
+  const clock = cfg.liveClock(game);
+  if (clock) parts.push(clock);
+  return parts.join(" · ");
+}
+
+/** Compact team name for scoreboards: "Las Vegas Aces" → "Aces". */
+export function shortTeamName(name: string): string {
+  const parts = name.split(" ").filter(Boolean);
+  return parts[parts.length - 1] ?? name;
 }
 
 // ---------------------------------------------------------------------------

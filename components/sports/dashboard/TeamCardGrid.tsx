@@ -36,8 +36,9 @@ const DRAG_THRESHOLD = 6; // px of pointer movement before a drag starts
  * tracked with window-level listeners (the dragged card is unmounted from
  * the grid while dragging, so element capture would be lost). The dragged
  * card becomes a fixed-position ghost following the pointer, the remaining
- * cards shuffle out of the way via a small FLIP animation, and the final
- * order is reported up through `onReorder` — team data is never modified.
+ * cards snap out of the way (no chase animations — see the FLIP effect
+ * below), and the final order is reported up through `onReorder` — team
+ * data is never modified.
  */
 export default function TeamCardGrid({
   teams,
@@ -74,6 +75,14 @@ export default function TeamCardGrid({
   }, [teams, drag]);
 
   // FLIP: after each commit, animate cards that moved to their new slots.
+  //
+  // While a drag is active the remaining cards snap instantly instead —
+  // otherwise every pointermove would restart a 240ms transition on every
+  // shifted card every frame and they'd perpetually chase the moving gap
+  // (the messy "everything flies around" look). The ghost already follows
+  // the pointer smoothly, so the drag still feels fluid. Drops are
+  // seamless: the card remounts exactly where the gap was, so nothing
+  // animates there either.
   useLayoutEffect(() => {
     const els = gridRef.current?.querySelectorAll<HTMLElement>("[data-card-id]");
     if (!els) return;
@@ -83,13 +92,20 @@ export default function TeamCardGrid({
       const id = el.dataset.cardId!;
       const prev = prevRects.current.get(id);
       const cur = rects.get(id)!;
-      if (prev && (prev.left !== cur.left || prev.top !== cur.top)) {
+      if (!drag && prev && (prev.left !== cur.left || prev.top !== cur.top)) {
         el.style.transition = "none";
         el.style.transform = `translate(${prev.left - cur.left}px, ${prev.top - cur.top}px)`;
         requestAnimationFrame(() => {
-          el.style.transition = "transform 240ms cubic-bezier(0.2, 0.8, 0.2, 1)";
-          el.style.transform = "";
+          if (dragRef.current) return; // a drag began mid-animation — stay snapped
+          const live = gridRef.current?.querySelector<HTMLElement>(`[data-card-id="${id}"]`);
+          if (!live) return;
+          live.style.transition = "transform 240ms cubic-bezier(0.2, 0.8, 0.2, 1)";
+          live.style.transform = "";
         });
+      } else {
+        // Clear leftover inline transforms/transitions so a drag starts clean.
+        el.style.transition = "";
+        el.style.transform = "";
       }
     });
     prevRects.current = rects;
@@ -143,24 +159,59 @@ export default function TeamCardGrid({
       const nx = e.clientX - d.offsetX;
       const ny = e.clientY - d.offsetY;
 
-      // Find where the gap should move, scanning cards in visual order.
+      // Find where the gap should move. Cards are laid out row-major, so we
+      // first locate which row the pointer is in (cards in the same row share
+      // a top), then which column within that row by scanning every card in
+      // the row horizontally. A naive single pass that breaks on the first
+      // vertically-overlapping card can never move the gap past a same-row
+      // neighbor — e.g. dragging left-to-right would stall at the middle
+      // column because the pointer is always inside the neighbor's vertical
+      // band too.
       const rest = teamsRef.current.filter((t) => t.id !== d.id);
-      let targetIndex = 0;
-      for (let i = 0; i < rest.length; i++) {
-        const el = cardEls.current.get(rest[i].id);
-        if (!el) continue;
-        const r = el.getBoundingClientRect();
-        if (e.clientY < r.top) {
-          targetIndex = i;
-          break;
+      const rects = rest
+        .map((t) => cardEls.current.get(t.id))
+        .filter((el): el is HTMLDivElement => Boolean(el))
+        .map((el) => el.getBoundingClientRect());
+
+      const rows: { start: number; rects: DOMRect[] }[] = [];
+      for (const r of rects) {
+        const last = rows[rows.length - 1];
+        if (last && Math.abs(last.rects[0].top - r.top) < 8) {
+          last.rects.push(r);
+        } else {
+          rows.push({ start: last ? last.start + last.rects.length : 0, rects: [r] });
         }
-        if (e.clientY <= r.bottom) {
-          targetIndex = e.clientX <= r.left + r.width / 2 ? i : i + 1;
-          break;
-        }
-        targetIndex = i + 1;
       }
-      targetIndex = Math.max(0, Math.min(targetIndex, rest.length));
+
+      let targetIndex: number;
+      if (rows.length === 0) {
+        targetIndex = 0;
+      } else {
+        // Row under the pointer (or below every row → end of the list).
+        let rowIndex = rows.length;
+        for (let i = 0; i < rows.length; i++) {
+          const bottom = Math.max(...rows[i].rects.map((c) => c.bottom));
+          if (e.clientY <= bottom) {
+            rowIndex = i;
+            break;
+          }
+        }
+
+        if (rowIndex === rows.length) {
+          targetIndex = rest.length;
+        } else {
+          const row = rows[rowIndex];
+          let colIndex = row.rects.length;
+          for (let i = 0; i < row.rects.length; i++) {
+            const c = row.rects[i];
+            if (e.clientX < c.left + c.width / 2) {
+              colIndex = i;
+              break;
+            }
+          }
+          targetIndex = row.start + colIndex;
+        }
+      }
 
       if (targetIndex === d.placeholderIndex) {
         dragRef.current = { ...d, x: nx, y: ny };
@@ -260,7 +311,7 @@ export default function TeamCardGrid({
         <div
           className="pointer-events-none fixed left-0 top-0 z-50 animate-fade-in"
           style={{
-            transform: `translate(${drag.x}px, ${drag.y}px)`,
+            transform: `translate(${drag.x}px, ${drag.y}px) scale(1.02)`,
             width: drag.width,
             willChange: "transform",
           }}

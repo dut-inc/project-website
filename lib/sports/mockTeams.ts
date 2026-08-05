@@ -45,9 +45,11 @@ export const mockTeams: Team[] = [
       opponentScore: 3,
       period: "Top 7th",
       clock: undefined,
-      detail: "2 outs · runners on 1st & 2nd",
+      detail: "Gilbert at 84 pitches",
       channel: "ROOT Sports NW",
-      sportSpecific: { Balls: 1, Strikes: 2, "Runners on": "1st & 2nd", "Pitch count": 84 },
+      awayStatus: { remaining: 1, total: 1, label: "Challenge" },
+      homeStatus: { remaining: 1, total: 1, label: "Challenge" },
+      sportSpecific: { Balls: 1, Strikes: 2, Outs: 2, "Runners on": "1st & 2nd" },
     },
     nextGames: [
       { date: "2026-08-05", time: "7:10 PM", opponent: "Los Angeles Angels", at: "home" },
@@ -251,7 +253,8 @@ export const mockTeams: Team[] = [
       clock: "4:32",
       detail: "Aces on a 12-4 run",
       channel: "ESPN",
-      sportSpecific: { "Biggest lead": "SEA +8", Lead: "LVA +3", "Timeouts": "SEA 3 – LVA 2" },
+      awayStatus: { remaining: 3, total: 6, label: "Timeouts" },
+      homeStatus: { remaining: 2, total: 6, label: "Timeouts" },
     },
     nextGames: [
       { date: "2026-08-06", time: "6:00 PM", opponent: "Minnesota Lynx", at: "home" },

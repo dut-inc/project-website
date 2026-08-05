@@ -1,7 +1,8 @@
 "use client";
 
-import { formatShortDate, liveStatusLine } from "@/lib/sports/leagues";
+import { liveScoreboardLine } from "@/lib/sports/leagues";
 import type { Team } from "@/lib/sports/types";
+import LiveScoreboard from "./LiveScoreboard";
 import { LiveDot } from "./icons";
 
 /** Live score panel shown on the collapsed card while a game is in progress. */
@@ -9,54 +10,27 @@ export default function LiveGameDisplay({ team }: { team: Team }) {
   const game = team.currentGame;
   if (!game) return null;
 
-  const next = team.nextGames[0];
-  const sportSpecific = game.sportSpecific ? Object.entries(game.sportSpecific) : [];
-
   return (
-    <div className="rounded-xl border border-white/5 bg-white/[0.03] p-3.5">
-      <div className="flex items-center justify-between">
+    <div className="rounded-xl border border-white/5 bg-white/[0.03] p-4">
+      <div className="flex items-center justify-between gap-3">
         <span className="flex items-center gap-1.5 font-mono text-[10px] font-semibold uppercase tracking-widest text-red-400">
           <LiveDot className="h-1.5 w-1.5" />
           Live
         </span>
-        <span className="font-mono text-[10px] uppercase tracking-wider text-white/35">
-          {game.channel ?? "In progress"}
+        <span className="truncate text-right font-mono text-[10px] uppercase tracking-wider text-white/45">
+          {liveScoreboardLine(team)}
         </span>
       </div>
 
-      <div className="mt-3 flex items-end justify-between gap-3">
-        <div className="min-w-0">
-          <div className="font-display text-3xl font-semibold leading-none text-white tabular-nums">
-            {game.teamScore}
-            <span className="mx-1.5 text-lg font-normal text-white/30">–</span>
-            {game.opponentScore}
-          </div>
-          <p className="mt-1.5 truncate text-sm font-medium text-white/70">
-            {game.at === "home" ? "vs" : "at"} {game.opponent}
-          </p>
-        </div>
-        <div className="min-w-0 max-w-[55%] text-right">
-          <p className="font-mono text-xs font-semibold leading-snug text-white/90">{liveStatusLine(team)}</p>
-          {sportSpecific.length > 0 && (
-            <div className="mt-2 flex flex-wrap justify-end gap-1">
-              {sportSpecific.map(([label, value]) => (
-                <span
-                  key={label}
-                  className="rounded bg-white/5 px-1.5 py-0.5 font-mono text-[10px] text-white/50 tabular-nums"
-                  title={label}
-                >
-                  {label} {value}
-                </span>
-              ))}
-            </div>
-          )}
-        </div>
+      <div className="mt-4">
+        <LiveScoreboard team={team} />
       </div>
 
-      {next && (
-        <p className="mt-3.5 border-t border-white/5 pt-3 font-mono text-[11px] text-white/45">
-          Next: {next.at === "home" ? "vs" : "at"} {next.opponent} · {formatShortDate(next.date)} ·{" "}
-          {next.time}
+      {/* Situational line, e.g. a basketball run. MLB's B-S-O widget already
+          carries its own caption, so it doesn't repeat one here. */}
+      {team.league !== "mlb" && game.detail && (
+        <p className="mt-3 text-center font-mono text-[11px] uppercase tracking-wider text-white/50">
+          {game.detail}
         </p>
       )}
     </div>

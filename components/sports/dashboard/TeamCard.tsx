@@ -87,9 +87,10 @@ export default function TeamCard({
 
         <div className="flex-1 space-y-3 px-4 pb-4">
           {team.status === "inactive" ? (
-            <div className="rounded-xl border border-dashed border-pinGold/25 bg-pinGold/[0.04] p-3.5">
-              <p className="font-mono text-[10px] uppercase tracking-widest text-pinGold/80">Placeholder</p>
-              {team.note && <p className="mt-1.5 text-[13px] leading-relaxed text-white/60">{team.note}</p>}
+            <div className="flex min-h-28 items-center justify-center rounded-xl border border-dashed border-pinGold/25 bg-pinGold/[0.04] px-4 py-6">
+              <p className="text-center font-display text-xl font-semibold tracking-tight text-pinGold/90">
+                bring em back!
+              </p>
             </div>
           ) : isLive ? (
             <LiveGameDisplay team={team} />

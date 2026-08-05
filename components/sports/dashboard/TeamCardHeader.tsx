@@ -15,58 +15,58 @@ const streakStyles: Record<string, string> = {
 export default function TeamCardHeader({ team }: { team: Team }) {
   const cfg = LEAGUES[team.league];
   const streak = formatStreak(team.streak);
+  // Inactive teams (e.g. the SuperSonics placeholder) carry no real data, so
+  // the header shows just the identity: logo + name.
+  const inactive = team.status === "inactive";
 
   return (
     <div className="flex items-center gap-3.5">
-      <TeamLogo team={team} size={52} />
+      <TeamLogo colors={team.colors} shortName={team.shortName} logoUrl={team.logoUrl} size={52} />
 
       <div className="min-w-0 flex-1">
-        <div className="flex items-center gap-2">
-          <h3 className="truncate font-display text-lg font-semibold leading-tight text-white">
-            {team.name}
-          </h3>
-          {team.status === "inactive" && (
-            <span className="shrink-0 rounded-full border border-pinGold/40 bg-pinGold/10 px-2 py-0.5 font-mono text-[9px] font-semibold uppercase tracking-widest text-pinGold">
-              Placeholder
+        <h3 className="truncate font-display text-lg font-semibold leading-tight text-white">
+          {team.name}
+        </h3>
+        {!inactive && (
+          <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-0.5 font-mono text-[11px] uppercase tracking-wider text-white/45">
+            <span>{cfg.shortName}</span>
+            <span className="text-white/20">·</span>
+            <span>{formatRecord(team)}</span>
+            {team.record.label && (
+              <>
+                <span className="text-white/20">·</span>
+                <span>{team.record.label}</span>
+              </>
+            )}
+          </div>
+        )}
+      </div>
+
+      {!inactive && (
+        <div className="flex shrink-0 flex-col items-end gap-2">
+          {streak !== "—" ? (
+            <span
+              className={`rounded-full px-2 py-0.5 font-mono text-[11px] font-semibold tabular-nums ${
+                streakStyles[team.streak.type] ?? streakStyles.T
+              }`}
+              title={`${team.streak.type === "W" ? "Won" : team.streak.type === "L" ? "Lost" : "Drawn"} ${team.streak.count} straight`}
+            >
+              {streak}
+            </span>
+          ) : (
+            <span className="rounded-full bg-white/5 px-2 py-0.5 font-mono text-[11px] text-white/35">—</span>
+          )}
+          {team.championships > 0 && (
+            <span
+              className="flex items-center gap-1 font-mono text-[11px] font-semibold text-pinGold"
+              title={`${team.championships} championship${team.championships === 1 ? "" : "s"}`}
+            >
+              <TrophyIcon className="h-3.5 w-3.5" />
+              {team.championships}
             </span>
           )}
         </div>
-        <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-0.5 font-mono text-[11px] uppercase tracking-wider text-white/45">
-          <span>{cfg.shortName}</span>
-          <span className="text-white/20">·</span>
-          <span>{formatRecord(team)}</span>
-          {team.record.label && (
-            <>
-              <span className="text-white/20">·</span>
-              <span>{team.record.label}</span>
-            </>
-          )}
-        </div>
-      </div>
-
-      <div className="flex shrink-0 flex-col items-end gap-2">
-        {streak !== "—" ? (
-          <span
-            className={`rounded-full px-2 py-0.5 font-mono text-[11px] font-semibold tabular-nums ${
-              streakStyles[team.streak.type] ?? streakStyles.T
-            }`}
-            title={`${team.streak.type === "W" ? "Won" : team.streak.type === "L" ? "Lost" : "Drawn"} ${team.streak.count} straight`}
-          >
-            {streak}
-          </span>
-        ) : (
-          <span className="rounded-full bg-white/5 px-2 py-0.5 font-mono text-[11px] text-white/35">—</span>
-        )}
-        {team.championships > 0 && (
-          <span
-            className="flex items-center gap-1 font-mono text-[11px] font-semibold text-pinGold"
-            title={`${team.championships} championship${team.championships === 1 ? "" : "s"}`}
-          >
-            <TrophyIcon className="h-3.5 w-3.5" />
-            {team.championships}
-          </span>
-        )}
-      </div>
+      )}
     </div>
   );
 }
