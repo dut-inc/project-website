@@ -71,7 +71,7 @@ export default function GameCard({
     <>
       <article
         aria-label={`${game.name}. ${isEditable ? "Use the right side to move it between tiers." : "View details; developer controls are locked."}`}
-        className={`group relative grid min-w-0 grid-cols-[minmax(0,1fr)_1.5rem] items-stretch overflow-hidden rounded-sm border border-shelf-paperDark/80 bg-shelf-paper shadow-[0_4px_0_-3px_rgba(38,24,15,0.9),0_7px_10px_rgba(0,0,0,0.38),inset_0_1px_rgba(255,255,255,0.32)] transition-all hover:border-shelf-brass hover:shadow-[0_4px_0_-3px_rgba(38,24,15,0.9),0_10px_14px_rgba(0,0,0,0.46),inset_0_1px_rgba(255,255,255,0.38)] ${
+        className={`group relative mb-2 grid min-w-0 grid-cols-[minmax(0,1fr)_1.5rem] items-stretch overflow-hidden rounded-sm border border-shelf-paperDark/80 bg-shelf-paper shadow-[0_4px_0_-3px_rgba(38,24,15,0.9),0_7px_10px_rgba(0,0,0,0.38),inset_0_1px_rgba(255,255,255,0.32)] transition-all hover:border-shelf-brass hover:shadow-[0_4px_0_-3px_rgba(38,24,15,0.9),0_10px_14px_rgba(0,0,0,0.46),inset_0_1px_rgba(255,255,255,0.38)] ${
           isDragging ? "scale-[0.98] opacity-40" : ""
         }`}
       >
@@ -87,7 +87,7 @@ export default function GameCard({
             <span className="block truncate font-body text-sm font-semibold leading-tight text-shelf-ink" title={game.name}>
               {game.name}
             </span>
-            <span className="mt-1 block min-h-[1.25rem] overflow-hidden text-[11px] leading-tight text-shelf-ink/70 [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:1]">
+            <span className="mt-1 block min-h-[4rem] overflow-hidden text-[11px] leading-tight text-shelf-ink/70 [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:1]">
               {game.description || "No description yet."}
             </span>
           </button>
