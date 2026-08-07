@@ -66,10 +66,10 @@ export const projects: Map<ProjectId, Project> = new Map([
       case: "003",
       title: "Field Watch",
       href: "/conservation",
-      status: "PLANNING",
-      updated: "2026-08-01",
+      status: "ACTIVE",
+      updated: "2026-08-05",
       summary:
-        "citizen-science log, e.g. upload a photo on a hike, get a species ID, fill in the map",
+        "geotagged sighting map with photos, pin a spot from your next hike, species ID coming soon",
       rotation: -3,
       paper: "cream",
       pin: "navy",
