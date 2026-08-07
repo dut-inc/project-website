@@ -20,12 +20,10 @@ export default function GameStatsPanel({ team }: { team: Team }) {
       {/* Live score banner */}
       <div
         className="rounded-2xl border border-white/5 p-4 sm:p-5"
-        style={{
-          background: `linear-gradient(135deg, ${team.colors.primary}33 0%, rgba(22,23,27,0.6) 55%, ${team.colors.secondary}26 100%)`,
-        }}
+        style={{ background: `${team.colors.primary}1F` }}
       >
         <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
-          <p className="flex items-center gap-1.5 font-mono text-[11px] font-semibold uppercase tracking-widest text-red-400">
+          <p className="neon-soft flex items-center gap-1.5 font-mono text-[11px] font-semibold uppercase tracking-widest">
             <LiveDot className="h-1.5 w-1.5" />
             {game.at === "home" ? "vs" : "at"} {game.opponent}
           </p>

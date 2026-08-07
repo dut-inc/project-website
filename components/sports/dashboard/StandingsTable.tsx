@@ -1,5 +1,6 @@
 "use client";
 
+import { displayName } from "@/lib/sports/leagues";
 import type { StandingsRow } from "@/lib/sports/types";
 
 /** Compact league standings table. */
@@ -27,7 +28,7 @@ export default function StandingsTable({ rows }: { rows: StandingsRow[] }) {
                 row.position <= 3 ? "font-medium text-white" : "text-white/65"
               }`}
             >
-              {row.team}
+              {displayName(row.team)}
             </span>
             <span className="shrink-0 font-mono text-xs font-semibold text-white tabular-nums">
               {row.points !== undefined ? row.points : row.record}

@@ -36,8 +36,8 @@ export default function GameSeasonTabs({
             onClick={() => onChange(tab.id)}
             className={`relative rounded-full px-4 py-1.5 font-mono text-[11px] font-semibold uppercase tracking-widest transition-colors duration-150 ${
               isActive
-                ? "bg-white/15 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]"
-                : "text-white/45 hover:text-white/80"
+                ? "bg-market-red text-[#2a0c07] shadow-[0_0_8px_rgba(255,70,56,0.3)]"
+                : "text-cream/45 hover:text-cream/85"
             }`}
           >
             {tab.label}

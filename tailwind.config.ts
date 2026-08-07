@@ -39,11 +39,20 @@ const config: Config = {
           bg: "#0B0B0D",
           accent: "#FF9552",
         },
+        market: {
+          green: "#1C6B4F",
+          deep: "#113F30",
+          card: "#175C46",
+          cardHover: "#1D6B53",
+          red: "#FF4638",
+          redSoft: "rgba(255,70,56,0.12)",
+        },
       },
       fontFamily: {
         display: ["var(--font-display)"],
         body: ["var(--font-body)"],
         mono: ["var(--font-mono)"],
+        sign: ["var(--font-sign)"],
       },
       backgroundImage: {
         grain: "radial-gradient(circle at 1px 1px, rgba(231,227,211,0.05) 1px, transparent 0)",

@@ -1,8 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
 import type { PointerEvent as ReactPointerEvent } from "react";
-import { shade } from "@/lib/sports/leagues";
 import type { Team } from "@/lib/sports/types";
 import GameSummary from "./GameSummary";
 import LiveGameDisplay from "./LiveGameDisplay";
@@ -19,10 +17,12 @@ export interface DragHandleProps {
 }
 
 /**
- * One reorderable team card. The whole card is clickable to expand; the
- * grip in the footer starts drag-to-reorder (via pointer events wired up
- * by TeamCardGrid). Hover intensifies the team's colors — the card never
- * scales or resizes.
+ * One reorderable team card — a wide, flat box that stacks full-width on
+ * the board. Left is the team identity (with a solid team-color accent
+ * bar), middle carries the live game / last game + next games, and the
+ * right rail holds the drag grip. For live teams the score sits in the
+ * exact middle of the box (1fr | auto | 1fr). The whole box is clickable
+ * to expand; hovering brightens the border without scaling it.
  */
 export default function TeamCard({
   team,
@@ -37,25 +37,44 @@ export default function TeamCard({
   dragHandleProps?: DragHandleProps;
 }) {
   const isLive = Boolean(team.currentGame);
+  const inactive = team.status === "inactive";
+  const accent = team.colors.primary;
 
-  const gradients = useMemo(() => {
-    const { primary, secondary } = team.colors;
-    return {
-      base: `linear-gradient(135deg, ${primary} 0%, ${secondary} 100%)`,
-      hover: `linear-gradient(135deg, ${shade(primary, 0.24)} 0%, ${primary} 40%, ${secondary} 65%, ${shade(
-        secondary,
-        0.28
-      )} 100%)`,
-      rest: "0 6px 24px -14px rgba(0,0,0,0.9)",
-      glow: `0 12px 36px -8px ${primary}66, 0 3px 14px -2px ${secondary}55`,
-    };
-  }, [team.colors]);
+  const rail = (
+    <div className="flex shrink-0 items-center justify-between gap-3 pt-1 md:flex-col md:items-end md:justify-center md:gap-1.5 md:pt-0">
+      <button
+        type="button"
+        {...dragHandleProps}
+        onClick={(e) => e.stopPropagation()}
+        aria-label={`Drag to reorder ${team.shortName}`}
+        title="Drag to reorder"
+        className="flex cursor-grab items-center gap-1.5 rounded-md px-2 py-1 font-mono text-[10px] uppercase tracking-widest text-cream/40 transition-colors hover:bg-white/5 hover:text-cream/80 active:cursor-grabbing"
+        style={{ touchAction: "none" }}
+      >
+        <GripIcon className="h-3.5 w-3.5" />
+        <span className="hidden sm:inline">Reorder</span>
+      </button>
+      <span className="flex items-center gap-1 font-mono text-[10px] uppercase tracking-widest text-cream/35 transition-colors group-hover:text-cream/75">
+        Details
+        <ChevronDownIcon className="h-3 w-3" />
+      </span>
+    </div>
+  );
+
+  const body = inactive ? (
+    <p className="font-display text-lg font-semibold tracking-tight text-cream/90">bring em back!</p>
+  ) : (
+    <div className="flex flex-col gap-2">
+      {team.previousGame && <GameSummary game={team.previousGame} />}
+      <ScheduleList games={team.nextGames} />
+    </div>
+  );
 
   return (
     <div
       role="button"
       tabIndex={0}
-      aria-label={`${team.name} — click for the full view`}
+      aria-label={`${team.shortName} — click for the full view`}
       onClick={() => onExpand(team)}
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === " ") {
@@ -63,68 +82,41 @@ export default function TeamCard({
           onExpand(team);
         }
       }}
-      className={`group relative h-full cursor-pointer rounded-2xl outline-none transition-shadow duration-300 focus-visible:ring-2 focus-visible:ring-white/40 ${
-        dragging ? "ring-2 ring-white/15" : ""
+      className={`group relative w-full cursor-pointer overflow-hidden rounded-2xl border border-white/10 bg-market-card shadow-[0_6px_18px_-12px_rgba(0,0,0,0.7)] outline-none transition-all duration-300 hover:border-white/25 hover:bg-market-cardHover hover:shadow-[0_14px_30px_-14px_rgba(0,0,0,0.8)] focus-visible:ring-2 focus-visible:ring-market-red/60 ${
+        dragging ? "ring-1 ring-white/20" : ""
       }`}
     >
-      {/* Gradient border layers (rest + intensified on hover). */}
-      <div
-        aria-hidden
-        className="absolute inset-0 rounded-2xl opacity-100 transition-opacity duration-300"
-        style={{ background: gradients.base, boxShadow: gradients.rest }}
-      />
-      <div
-        aria-hidden
-        className="absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-        style={{ background: gradients.hover, boxShadow: gradients.glow }}
-      />
+      {/* Solid team-color accent bar (flat — no gradients). */}
+      <span aria-hidden className="absolute inset-y-0 left-0 w-1.5" style={{ background: accent }} />
 
-      {/* Card sheet */}
-      <div className="relative m-[2px] flex h-[calc(100%-4px)] flex-col overflow-hidden rounded-[calc(1rem-2px)] bg-[#16171B] transition-colors duration-300 group-hover:bg-[#191B21]">
-        <div className="px-4 pt-4 pb-3">
-          <TeamCardHeader team={team} />
-        </div>
+      {isLive ? (
+        /* Live card — the score lands in the true middle of the box. The
+           centered grid only kicks in at lg+ (below that the identity, score
+           and rail stack so the team name never gets squeezed). */
+        <div className="flex flex-col gap-3 px-5 py-4 lg:grid lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] lg:items-center lg:gap-0 lg:py-5">
+          <div className="min-w-0 lg:pr-6">
+            <TeamCardHeader team={team} />
+          </div>
 
-        <div className="flex-1 space-y-3 px-4 pb-4">
-          {team.status === "inactive" ? (
-            <div className="flex min-h-28 items-center justify-center rounded-xl border border-dashed border-pinGold/25 bg-pinGold/[0.04] px-4 py-6">
-              <p className="text-center font-display text-xl font-semibold tracking-tight text-pinGold/90">
-                bring em back!
-              </p>
-            </div>
-          ) : isLive ? (
+          <div className="flex justify-center py-1 lg:py-0">
             <LiveGameDisplay team={team} />
-          ) : (
-            <>
-              {team.previousGame && <GameSummary game={team.previousGame} />}
-              <div>
-                <p className="mb-1.5 font-mono text-[10px] uppercase tracking-widest text-white/40">Upcoming</p>
-                <ScheduleList games={team.nextGames} />
-              </div>
-            </>
-          )}
-        </div>
+          </div>
 
-        {/* Footer: drag handle + expand hint */}
-        <div className="flex items-center justify-between border-t border-white/5 px-4 py-1.5">
-          <button
-            type="button"
-            {...dragHandleProps}
-            onClick={(e) => e.stopPropagation()}
-            aria-label={`Drag to reorder ${team.name}`}
-            title="Drag to reorder"
-            className="flex cursor-grab items-center gap-1.5 rounded-md px-2 py-1 font-mono text-[10px] uppercase tracking-widest text-white/35 transition-colors hover:bg-white/5 hover:text-white/70 active:cursor-grabbing"
-            style={{ touchAction: "none" }}
-          >
-            <GripIcon className="h-3.5 w-3.5" />
-            <span className="hidden sm:inline">Reorder</span>
-          </button>
-          <span className="flex items-center gap-1 font-mono text-[10px] uppercase tracking-widest text-white/35 transition-colors group-hover:text-white/75">
-            Details
-            <ChevronDownIcon className="h-3 w-3" />
-          </span>
+          <div className="lg:justify-self-end lg:pl-6">{rail}</div>
         </div>
-      </div>
+      ) : (
+        <div className="flex flex-col gap-3 px-5 py-4 md:flex-row md:items-center md:gap-0 md:py-5">
+          <div className="md:w-[280px] md:shrink-0 md:pr-5">
+            <TeamCardHeader team={team} />
+          </div>
+
+          <div className="flex-1 py-1 md:min-w-0 md:border-l md:border-white/5 md:px-5 md:py-0">
+            {body}
+          </div>
+
+          <div className="md:border-l md:border-white/5 md:pl-4">{rail}</div>
+        </div>
+      )}
     </div>
   );
 }

@@ -29,12 +29,12 @@ interface PendingDrag {
 const DRAG_THRESHOLD = 6; // px of pointer movement before a drag starts
 
 /**
- * Reorderable grid of team cards.
+ * Reorderable stack of team cards.
  *
  * Drag-and-drop uses native Pointer Events (mouse + touch) driven by a
  * dedicated grip handle, so clicking a card still expands it. Movement is
  * tracked with window-level listeners (the dragged card is unmounted from
- * the grid while dragging, so element capture would be lost). The dragged
+ * the stack while dragging, so element capture would be lost). The dragged
  * card becomes a fixed-position ghost following the pointer, the remaining
  * cards snap out of the way (no chase animations — see the FLIP effect
  * below), and the final order is reported up through `onReorder` — team
@@ -135,8 +135,11 @@ export default function TeamCardGrid({
         if (Math.hypot(e.clientX - pending.startX, e.clientY - pending.startY) < DRAG_THRESHOLD) return;
         pendingRef.current = null;
         const r = pending.rect;
-        const rest = teamsRef.current.filter((t) => t.id !== pending.id);
-        const placeholderIndex = Math.max(0, rest.findIndex((t) => t.id === pending.id));
+        // The gap starts exactly where the dragged card was. rest-coords
+        // equal the original index (later cards shift up by one), so the
+        // stack doesn't jump when the drag begins.
+        const origIdx = teamsRef.current.findIndex((t) => t.id === pending.id);
+        const placeholderIndex = Math.max(0, origIdx);
         dragRef.current = {
           id: pending.id,
           pointerId: pending.pointerId,
@@ -159,57 +162,23 @@ export default function TeamCardGrid({
       const nx = e.clientX - d.offsetX;
       const ny = e.clientY - d.offsetY;
 
-      // Find where the gap should move. Cards are laid out row-major, so we
-      // first locate which row the pointer is in (cards in the same row share
-      // a top), then which column within that row by scanning every card in
-      // the row horizontally. A naive single pass that breaks on the first
-      // vertically-overlapping card can never move the gap past a same-row
-      // neighbor — e.g. dragging left-to-right would stall at the middle
-      // column because the pointer is always inside the neighbor's vertical
-      // band too.
+      // Find where the gap should move. Cards stack in a single column, so
+      // the gap follows the pointer's vertical position relative to each
+      // card's midpoint — the pointer's x is irrelevant. (The grip sits on
+      // the right edge, so an x-based scan could never let a card jump ahead
+      // of a neighbor when dragging upward.)
       const rest = teamsRef.current.filter((t) => t.id !== d.id);
       const rects = rest
         .map((t) => cardEls.current.get(t.id))
         .filter((el): el is HTMLDivElement => Boolean(el))
         .map((el) => el.getBoundingClientRect());
 
-      const rows: { start: number; rects: DOMRect[] }[] = [];
-      for (const r of rects) {
-        const last = rows[rows.length - 1];
-        if (last && Math.abs(last.rects[0].top - r.top) < 8) {
-          last.rects.push(r);
-        } else {
-          rows.push({ start: last ? last.start + last.rects.length : 0, rects: [r] });
-        }
-      }
-
-      let targetIndex: number;
-      if (rows.length === 0) {
-        targetIndex = 0;
-      } else {
-        // Row under the pointer (or below every row → end of the list).
-        let rowIndex = rows.length;
-        for (let i = 0; i < rows.length; i++) {
-          const bottom = Math.max(...rows[i].rects.map((c) => c.bottom));
-          if (e.clientY <= bottom) {
-            rowIndex = i;
-            break;
-          }
-        }
-
-        if (rowIndex === rows.length) {
-          targetIndex = rest.length;
-        } else {
-          const row = rows[rowIndex];
-          let colIndex = row.rects.length;
-          for (let i = 0; i < row.rects.length; i++) {
-            const c = row.rects[i];
-            if (e.clientX < c.left + c.width / 2) {
-              colIndex = i;
-              break;
-            }
-          }
-          targetIndex = row.start + colIndex;
+      let targetIndex = rects.length;
+      for (let i = 0; i < rects.length; i++) {
+        const r = rects[i];
+        if (e.clientY < r.top + r.height / 2) {
+          targetIndex = i;
+          break;
         }
       }
 
@@ -280,7 +249,7 @@ export default function TeamCardGrid({
     <div className="relative">
       <div
         ref={gridRef}
-        className={`grid gap-4 sm:grid-cols-2 lg:grid-cols-3 ${drag ? "pointer-events-none select-none" : ""}`}
+        className={`flex flex-col gap-3 ${drag ? "pointer-events-none select-none" : ""}`}
       >
         {display.map((team) =>
           team ? (
@@ -298,7 +267,7 @@ export default function TeamCardGrid({
           ) : (
             <div key="drag-placeholder" className="animate-fade-in">
               <div
-                className="rounded-2xl border-2 border-dashed border-white/10 bg-white/[0.02]"
+                className="rounded-xl border-2 border-dashed border-white/10 bg-white/[0.02]"
                 style={{ height: drag?.height }}
               />
             </div>

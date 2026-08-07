@@ -13,9 +13,11 @@ const ORDER_KEY = "seattle-sports-dashboard-order";
  * Seattle Sports Dashboard.
  *
  * Consumes the frontend TeamService (currently mock data) and renders the
- * reorderable card grid. The user's preferred card order is saved to local
- * storage and restored on revisit — only the presentation order changes,
- * never the team data itself. Clicking a card opens the expanded view.
+ * reorderable card board. The user's preferred card order is saved to
+ * local storage and restored on revisit — only the presentation order
+ * changes, never the team data itself. Clicking a card opens the expanded
+ * view. The visual language is Pike Place Market: deep Seattle green with
+ * neon-red signage.
  */
 export default function SportsDashboard() {
   const { teams, metadata, loading } = useTeams();
@@ -58,17 +60,32 @@ export default function SportsDashboard() {
 
   return (
     <div className="mt-8">
+      {/* Neon market sign */}
+      <header className="text-center">
+        <p className="font-mono text-[10px] uppercase tracking-[0.4em] text-cream/40">
+          Pike Place · Seattle
+        </p>
+        <h2 className="neon-red animate-neon-breathe mt-2 whitespace-nowrap font-sign text-3xl leading-none uppercase tracking-[0.08em] sm:text-4xl md:text-5xl">
+          Seattle Sports
+        </h2>
+        <div className="mx-auto mt-3 flex max-w-xs items-center justify-center gap-3">
+          <span className="h-px flex-1 bg-pinGold/50" />
+          <span className="text-cream/40">✦</span>
+          <span className="h-px flex-1 bg-pinGold/50" />
+        </div>
+      </header>
+
       {/* Data-source badge row + hint */}
-      <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-3">
+      <div className="mt-8 flex flex-wrap items-center justify-between gap-x-6 gap-y-3">
         <p className="max-w-2xl font-mono text-[11px] uppercase tracking-widest text-cream/45">
           {metadata?.note ?? "Sample data while the Supabase backend is in development."}
         </p>
         <div className="flex items-center gap-2">
-          <span className="rounded-full border border-pinGold/40 bg-pinGold/10 px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-widest text-pinGold">
+          <span className="rounded-full border border-market-red/30 bg-market-redSoft px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-widest text-market-red">
             {metadata?.source ?? "mock"} data
           </span>
           {metadata?.asOf && (
-            <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-white/50">
+            <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-cream/50">
               as of {metadata.asOf}
             </span>
           )}
@@ -82,15 +99,15 @@ export default function SportsDashboard() {
 
       {/* Live-now ticker */}
       {liveTeams.length > 0 && (
-        <div className="mt-5 flex flex-wrap items-center gap-2 rounded-xl border border-red-400/20 bg-red-400/[0.06] px-3.5 py-2.5">
-          <span className="flex items-center gap-1.5 font-mono text-[10px] font-semibold uppercase tracking-widest text-red-400">
+        <div className="mt-5 flex flex-wrap items-center gap-2 rounded-xl border border-market-red/25 bg-market-redSoft px-3.5 py-2.5">
+          <span className="neon-soft flex items-center gap-1.5 font-mono text-[10px] font-semibold uppercase tracking-widest">
             <LiveDot className="h-1.5 w-1.5" /> Live now
           </span>
           {liveTeams.map((t) => (
             <button
               key={t.id}
               onClick={() => setSelected(t)}
-              className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 font-mono text-[11px] text-white/70 transition-colors hover:border-white/25 hover:text-white"
+              className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 font-mono text-[11px] text-cream/70 transition-colors hover:border-market-red/40 hover:text-white"
             >
               {t.shortName} {t.currentGame?.teamScore}–{t.currentGame?.opponentScore}
             </button>
@@ -98,18 +115,18 @@ export default function SportsDashboard() {
         </div>
       )}
 
-      {/* Card grid */}
-      {loading ? (
-        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {Array.from({ length: 6 }).map((_, i) => (
-            <div key={i} className="h-72 animate-pulse rounded-2xl border border-white/5 bg-white/[0.03]" />
-          ))}
-        </div>
-      ) : (
-        <div className="mt-6">
+      {/* Pike Place board */}
+      <div className="market-board mt-6 rounded-3xl p-4 sm:p-6">
+        {loading ? (
+          <div className="flex flex-col gap-3">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <div key={i} className="h-28 animate-pulse rounded-xl border border-white/5 bg-white/[0.04]" />
+            ))}
+          </div>
+        ) : (
           <TeamCardGrid teams={orderedTeams} onReorder={handleReorder} onSelect={setSelected} />
-        </div>
-      )}
+        )}
+      </div>
 
       {/* Expanded team view */}
       {selected && <ExpandedTeamView team={selected} onClose={() => setSelected(null)} />}

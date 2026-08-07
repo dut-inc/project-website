@@ -130,12 +130,56 @@ input {
   animation: modal-pop 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
 
+/* ---------------------------------------------------------------------------
+   Pike Place Market theme — deep Seattle green + neon red signage
+   --------------------------------------------------------------------------- */
+
+/* Neon red text with a soft tube glow (like the Public Market Center sign). */
+.neon-red {
+  color: #ff4638;
+  text-shadow:
+    0 0 2px rgba(255, 70, 56, 0.9),
+    0 0 6px rgba(255, 70, 56, 0.55),
+    0 0 14px rgba(255, 70, 56, 0.3);
+}
+
+/* Dimmer neon accent for small meta text. */
+.neon-soft {
+  color: #ff9c8a;
+  text-shadow: 0 0 5px rgba(255, 70, 56, 0.35);
+}
+
+@keyframes neon-breathe {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.86;
+  }
+}
+
+.animate-neon-breathe {
+  animation: neon-breathe 3.4s ease-in-out infinite;
+}
+
+/* Flat deep-green board the cards sit on (no gradients). */
+.market-board {
+  background-color: #123f31;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 0 60px rgba(0, 0, 0, 0.28),
+    0 24px 48px -24px rgba(0, 0, 0, 0.75);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-fade-up,
   .animate-floaty,
   .animate-fade-in,
   .animate-backdrop-in,
-  .animate-modal-pop {
+  .animate-modal-pop,
+  .animate-neon-breathe {
     animation: none;
   }
 }

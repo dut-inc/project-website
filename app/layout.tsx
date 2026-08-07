@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fraunces, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
+import { Bungee_Shade, Fraunces, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 
@@ -22,6 +22,14 @@ const mono = IBM_Plex_Mono({
   variable: "--font-mono",
 });
 
+// Bungee Shade draws each letter from widely-spaced parallel strokes — the
+// lined, multi-tube lettering of the Public Market sign. Caps-only.
+const sign = Bungee_Shade({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-sign",
+});
+
 export const metadata: Metadata = {
   title: "The Board",
   description: "Our shared clubhouse — pinned projects and a little bit of Seattle.",
@@ -35,7 +43,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${display.variable} ${body.variable} ${mono.variable} font-body wall-bg text-cream min-h-screen`}
+        className={`${display.variable} ${body.variable} ${mono.variable} ${sign.variable} font-body wall-bg text-cream min-h-screen`}
       >
         <Nav />
         <main className="relative mx-auto max-w-7xl px-4 pb-16 pt-6 sm:px-8">{children}</main>
