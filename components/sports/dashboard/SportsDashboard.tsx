@@ -16,8 +16,8 @@ const ORDER_KEY = "seattle-sports-dashboard-order";
  * reorderable card board. The user's preferred card order is saved to
  * local storage and restored on revisit — only the presentation order
  * changes, never the team data itself. Clicking a card opens the expanded
- * view. The visual language is Pike Place Market: deep Seattle green with
- * neon-red signage.
+ * view. The visual language is Pike Place Market: Fir-Green sign housing
+ * with red neon-tube signage.
  */
 export default function SportsDashboard() {
   const { teams, metadata, loading } = useTeams();
@@ -60,15 +60,15 @@ export default function SportsDashboard() {
 
   return (
     <div className="mt-8">
-      {/* Neon market sign */}
+      {/* Neon market sign — SEATTLE SPORTS CENTER, stacked vertically like
+          the Public Market Center sign, with SEATTLE and CENTER indented. */}
       <header className="text-center">
-        <p className="font-mono text-[10px] uppercase tracking-[0.4em] text-cream/40">
-          Pike Place · Seattle
-        </p>
-        <h2 className="neon-red animate-neon-breathe mt-2 whitespace-nowrap font-sign text-3xl leading-none uppercase tracking-[0.08em] sm:text-4xl md:text-5xl">
-          Seattle Sports
+        <h2 className="neon-sign animate-neon-breathe mx-auto w-fit text-left font-sign text-4xl uppercase leading-none tracking-[0.02em] sm:text-5xl md:text-6xl">
+          <span className="block pl-5 sm:pl-7">Seattle</span>
+          <span className="block">Sports</span>
+          <span className="block pl-5 sm:pl-7">Center</span>
         </h2>
-        <div className="mx-auto mt-3 flex max-w-xs items-center justify-center gap-3">
+        <div className="mx-auto mt-6 flex max-w-xs items-center justify-center gap-3">
           <span className="h-px flex-1 bg-pinGold/50" />
           <span className="text-cream/40">✦</span>
           <span className="h-px flex-1 bg-pinGold/50" />
@@ -76,10 +76,7 @@ export default function SportsDashboard() {
       </header>
 
       {/* Data-source badge row + hint */}
-      <div className="mt-8 flex flex-wrap items-center justify-between gap-x-6 gap-y-3">
-        <p className="max-w-2xl font-mono text-[11px] uppercase tracking-widest text-cream/45">
-          {metadata?.note ?? "Sample data while the Supabase backend is in development."}
-        </p>
+      <div className="mt-8 flex flex-wrap items-center justify-end gap-x-6 gap-y-3">
         <div className="flex items-center gap-2">
           <span className="rounded-full border border-market-red/30 bg-market-redSoft px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-widest text-market-red">
             {metadata?.source ?? "mock"} data

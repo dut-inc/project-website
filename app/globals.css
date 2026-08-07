@@ -134,13 +134,18 @@ input {
    Pike Place Market theme — deep Seattle green + neon red signage
    --------------------------------------------------------------------------- */
 
-/* Neon red text with a soft tube glow (like the Public Market Center sign). */
-.neon-red {
-  color: #ff4638;
+/* Neon tube lettering like the Public Market Center sign: each character
+   is a red neon tube with a bright white-hot core — white fill, red tube
+   edge, and a red halo that bleeds into the dark green of the sign. */
+.neon-sign {
+  color: #fff;
+  -webkit-text-stroke: 0.04em rgba(255, 70, 56, 0.95);
   text-shadow:
-    0 0 2px rgba(255, 70, 56, 0.9),
-    0 0 6px rgba(255, 70, 56, 0.55),
-    0 0 14px rgba(255, 70, 56, 0.3);
+    0 0 2px rgba(255, 255, 255, 0.9),
+    0 0 6px rgba(255, 70, 56, 0.85),
+    0 0 14px rgba(255, 70, 56, 0.65),
+    0 0 30px rgba(255, 70, 56, 0.45),
+    0 0 60px rgba(255, 70, 56, 0.3);
 }
 
 /* Dimmer neon accent for small meta text. */
@@ -163,9 +168,10 @@ input {
   animation: neon-breathe 3.4s ease-in-out infinite;
 }
 
-/* Flat deep-green board the cards sit on (no gradients). */
+/* Flat Fir-Green board the cards sit on — the same deep green as the
+   Public Market Center sign housing (no gradients). */
 .market-board {
-  background-color: #123f31;
+  background-color: #1d2d20;
   border: 1px solid rgba(255, 255, 255, 0.07);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.08),

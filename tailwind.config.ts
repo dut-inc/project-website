@@ -40,10 +40,12 @@ const config: Config = {
           accent: "#FF9552",
         },
         market: {
-          green: "#1C6B4F",
-          deep: "#113F30",
-          card: "#175C46",
-          cardHover: "#1D6B53",
+          // Fir Green — the official heritage green of the Public Market
+          // Center sign housing (per Pike Place Market PDA standards).
+          green: "#1D2D20",
+          deep: "#151E18",
+          card: "#2A4534",
+          cardHover: "#335A40",
           red: "#FF4638",
           redSoft: "rgba(255,70,56,0.12)",
         },
