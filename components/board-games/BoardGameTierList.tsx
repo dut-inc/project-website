@@ -15,25 +15,15 @@ import type { BoardGameEntry, GameTier } from "@/lib/boardGames";
 import AddGameForm from "./AddGameForm";
 import GroupNotes from "./GroupNotes";
 import TierList from "./TierList";
-import DeveloperAccess from "./DeveloperAccess";
-
-export default function BoardGameTierList() {
+export default function BoardGameTierList({ isEditable }: { isEditable: boolean }) {
   const [games, setGames] = useState<BoardGameEntry[]>([]);
   const [notes, setNotes] = useState("");
-  const [isEditable, setIsEditable] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [isWorking, setIsWorking] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [draggingId, setDraggingId] = useState<string | null>(null);
   const [dragOverTier, setDragOverTier] = useState<GameTier | null>(null);
   const loadPromiseRef = useRef<Promise<void> | null>(null);
-  const handleUnlocked = useCallback(() => setIsEditable(true), []);
-  const handleLocked = useCallback(() => {
-    setIsEditable(false);
-    setDraggingId(null);
-    setDragOverTier(null);
-  }, []);
-
   const loadGames = useCallback(() => {
     if (loadPromiseRef.current) return loadPromiseRef.current;
 
@@ -103,6 +93,14 @@ export default function BoardGameTierList() {
     // The initial fetch synchronizes component state with the remote table.
     void loadGames();
   }, [loadGames]);
+
+  useEffect(() => {
+    if (isEditable) return;
+    // Clear any visual drag state if the session is locked while dragging.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setDraggingId(null);
+    setDragOverTier(null);
+  }, [isEditable]);
 
   useEffect(() => {
     try {
@@ -238,13 +236,7 @@ export default function BoardGameTierList() {
   }
 
   return (
-    <div className="mx-auto mt-10 max-w-6xl space-y-6">
-      <DeveloperAccess
-        isUnlocked={isEditable}
-        onUnlocked={handleUnlocked}
-        onLocked={handleLocked}
-      />
-
+    <div className="mx-auto mt-12 max-w-6xl space-y-7">
       {error && (
         <div role="alert" className="rounded-xl border border-shelf-burgundy/70 bg-shelf-burgundy/20 px-4 py-3 text-sm text-shelf-paper">
           <p>{error}</p>
@@ -255,7 +247,7 @@ export default function BoardGameTierList() {
       )}
 
       {isLoading ? (
-        <div className="rounded-xl border border-shelf-paper/20 bg-shelf-walnut/70 px-4 py-12 text-center text-sm text-shelf-paper/75">
+        <div className="rounded-lg border-4 border-shelf-wood bg-shelf-walnut px-4 py-12 text-center text-sm text-shelf-paper/75 shadow-[0_18px_35px_rgba(38,24,15,0.35),inset_0_0_0_1px_rgba(203,184,147,0.18)]">
           Reading the shelf from Supabase…
         </div>
       ) : (
@@ -280,7 +272,7 @@ export default function BoardGameTierList() {
             />
           </div>
 
-          <aside className="space-y-5">
+          <aside className="space-y-5 lg:pt-16">
             <AddGameForm onAdd={addGame} disabled={!isEditable} />
             <GroupNotes notes={notes} onChange={setNotes} />
           </aside>

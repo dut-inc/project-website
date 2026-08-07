@@ -227,11 +227,7 @@ export default function GameDetailsPopup({
                   {isSaving ? "Working…" : "Delete game"}
                 </button>
               </div>
-            ) : (
-              <p className="mt-7 rounded-lg border border-shelf-paperDark/45 bg-shelf-paperDark/15 px-4 py-3 font-mono text-[10px] uppercase tracking-wider text-shelf-ink/70">
-                Developer controls are locked. Unlock above to edit or delete this game.
-              </p>
-            )}
+            ) : null}
           </>
         )}
       </section>
