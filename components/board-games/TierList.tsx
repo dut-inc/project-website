@@ -6,6 +6,7 @@ import TierRow from "./TierRow";
 
 type TierListProps = {
   games: BoardGameEntry[];
+  isEditable: boolean;
   draggingId: string | null;
   dragOverTier: GameTier | null;
   onDragOver: (event: DragEvent<HTMLDivElement>, tier: GameTier) => void;
@@ -20,6 +21,7 @@ type TierListProps = {
 
 export default function TierList({
   games,
+  isEditable,
   draggingId,
   dragOverTier,
   onDragOver,
@@ -51,6 +53,7 @@ export default function TierList({
             key={tier}
             tier={tier}
             games={games.filter((game) => game.tier === tier)}
+            isEditable={isEditable}
             draggingId={draggingId}
             dragOverTier={dragOverTier}
             onDragOver={onDragOver}

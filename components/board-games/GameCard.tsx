@@ -7,6 +7,7 @@ import GameDetailsPopup from "./GameDetailsPopup";
 export type GameCardProps = {
   game: BoardGameEntry;
   isDragging: boolean;
+  isEditable: boolean;
   onSave: (updates: GameDetailsUpdate) => Promise<void> | void;
   onDelete: () => Promise<void> | void;
   onMoveToTier: (tier: GameTier) => void;
@@ -17,6 +18,7 @@ export type GameCardProps = {
 export default function GameCard({
   game,
   isDragging,
+  isEditable,
   onSave,
   onDelete,
   onMoveToTier,
@@ -57,7 +59,7 @@ export default function GameCard({
   }
 
   function handleDragZoneKeyDown(event: React.KeyboardEvent<HTMLButtonElement>) {
-    if (event.key !== "ArrowUp" && event.key !== "ArrowDown") return;
+    if (!isEditable || (event.key !== "ArrowUp" && event.key !== "ArrowDown")) return;
     const currentIndex = GAME_TIERS.indexOf(game.tier);
     const nextIndex = currentIndex + (event.key === "ArrowUp" ? -1 : 1);
     if (nextIndex < 0 || nextIndex >= GAME_TIERS.length) return;
@@ -68,14 +70,14 @@ export default function GameCard({
   return (
     <>
       <article
-        aria-label={`${game.name}. Use the right side to move it between tiers.`}
+        aria-label={`${game.name}. ${isEditable ? "Use the right side to move it between tiers." : "View details; developer controls are locked."}`}
         className={`group relative grid min-w-0 grid-cols-[7fr_1fr] items-stretch overflow-hidden rounded-lg border border-shelf-paperDark/30 bg-shelf-paper shadow-[0_4px_9px_rgba(38,24,15,0.2)] transition-all hover:-translate-y-0.5 hover:border-shelf-brass hover:shadow-[0_8px_14px_rgba(38,24,15,0.28)] ${
           isDragging ? "scale-[0.98] opacity-40" : ""
         }`}
       >
         <div className="flex min-w-0 flex-1 flex-col p-3">
           <button
-            ref={detailsTriggerRef}
+          ref={detailsTriggerRef}
             type="button"
             onClick={() => setIsDetailsOpen(true)}
             className="min-w-0 text-left"
@@ -90,15 +92,15 @@ export default function GameCard({
         </div>
         <button
           type="button"
-          draggable
-          onDragStart={handleDragStart}
-          onDragEnd={onDragEnd}
+          draggable={isEditable}
+          onDragStart={isEditable ? handleDragStart : undefined}
+          onDragEnd={isEditable ? onDragEnd : undefined}
           onKeyDown={handleDragZoneKeyDown}
-          aria-grabbed={isDragging}
-          aria-keyshortcuts="ArrowUp ArrowDown"
-          aria-label={`Drag ${game.name} to another tier, or use the arrow keys to move it`}
-          title="Drag this area to another tier · Arrow keys to move"
-          className="flex min-h-[5.5rem] min-w-0 cursor-grab items-center justify-center border-l border-shelf-paperDark/45 px-2 py-3 font-mono text-lg leading-none text-shelf-ink/60 transition-colors hover:bg-shelf-paperDark/25 hover:text-shelf-brass focus-visible:bg-shelf-paperDark/35 focus-visible:text-shelf-brass active:cursor-grabbing"
+          aria-grabbed={isEditable ? isDragging : undefined}
+          aria-keyshortcuts={isEditable ? "ArrowUp ArrowDown" : undefined}
+          aria-label={isEditable ? `Drag ${game.name} to another tier, or use the arrow keys to move it` : `Developer controls are locked for ${game.name}`}
+          title={isEditable ? "Drag this area to another tier · Arrow keys to move" : "Unlock developer controls to move this game"}
+          className={`flex min-h-[5.5rem] min-w-0 items-center justify-center border-l border-shelf-paperDark/45 px-2 py-3 font-mono text-lg leading-none text-shelf-ink/60 transition-colors focus-visible:bg-shelf-paperDark/35 focus-visible:text-shelf-brass ${isEditable ? "cursor-grab hover:bg-shelf-paperDark/25 hover:text-shelf-brass active:cursor-grabbing" : "cursor-not-allowed opacity-45"}`}
         >
           <span aria-hidden>⋮⋮</span>
         </button>
@@ -107,6 +109,7 @@ export default function GameCard({
         <GameDetailsPopup
           game={game}
           onClose={closeDetails}
+          canEdit={isEditable}
           onSave={async (updates) => {
             await onSave(updates);
             closeDetails();

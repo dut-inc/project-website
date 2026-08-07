@@ -32,6 +32,16 @@ npm run dev
 
 Then open http://localhost:3000.
 
+### Board-game developer controls
+
+The board-game tier list is publicly viewable, while add, edit, delete, and tier movement controls are hidden behind a developer passcode. Set the passcode in the server environment before starting Next.js:
+
+```bash
+BOARD_GAMES_PASSCODE=choose-a-local-dev-passcode npm run dev
+```
+
+For a local `.env.local` file, use `BOARD_GAMES_PASSCODE=...` without a `NEXT_PUBLIC_` prefix. The passcode is checked by `app/api/board-games/access/route.ts` and is not sent to the client as an environment variable. This is a UI/convenience gate; because the current Supabase CRUD client is public and its RLS policies permit anonymous writes, it is not a database security boundary. Use authenticated Supabase policies and server-side write routes if the table needs real access control.
+
 ## Structure
 
 ```

@@ -15,16 +15,24 @@ import type { BoardGameEntry, GameTier } from "@/lib/boardGames";
 import AddGameForm from "./AddGameForm";
 import GroupNotes from "./GroupNotes";
 import TierList from "./TierList";
+import DeveloperAccess from "./DeveloperAccess";
 
 export default function BoardGameTierList() {
   const [games, setGames] = useState<BoardGameEntry[]>([]);
   const [notes, setNotes] = useState("");
+  const [isEditable, setIsEditable] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [isWorking, setIsWorking] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [draggingId, setDraggingId] = useState<string | null>(null);
   const [dragOverTier, setDragOverTier] = useState<GameTier | null>(null);
   const loadPromiseRef = useRef<Promise<void> | null>(null);
+  const handleUnlocked = useCallback(() => setIsEditable(true), []);
+  const handleLocked = useCallback(() => {
+    setIsEditable(false);
+    setDraggingId(null);
+    setDragOverTier(null);
+  }, []);
 
   const loadGames = useCallback(() => {
     if (loadPromiseRef.current) return loadPromiseRef.current;
@@ -117,6 +125,7 @@ export default function BoardGameTierList() {
   }, [notes]);
 
   async function updateGame(id: string, updates: Partial<BoardGameEntry>) {
+    if (!isEditable) return;
     setIsWorking(true);
     setError(null);
 
@@ -140,6 +149,7 @@ export default function BoardGameTierList() {
   }
 
   async function addGame(game: Omit<BoardGameEntry, "id">) {
+    if (!isEditable) return;
     setIsWorking(true);
     setError(null);
 
@@ -160,6 +170,8 @@ export default function BoardGameTierList() {
   }
 
   async function moveGameToTier(id: string, tier: GameTier) {
+    if (!isEditable) return;
+
     try {
       if (games.find((game) => game.id === id)?.tier === tier) return;
       await updateGame(id, { tier });
@@ -170,12 +182,14 @@ export default function BoardGameTierList() {
   }
 
   function handleDragStart(event: DragEvent<HTMLElement>, game: BoardGameEntry) {
+    if (!isEditable) return;
     event.dataTransfer.effectAllowed = "move";
     event.dataTransfer.setData("text/plain", game.id);
     setDraggingId(game.id);
   }
 
   function handleDragOver(event: DragEvent<HTMLDivElement>, tier: GameTier) {
+    if (!isEditable) return;
     event.preventDefault();
     event.dataTransfer.dropEffect = "move";
     setDragOverTier(tier);
@@ -188,6 +202,7 @@ export default function BoardGameTierList() {
   }
 
   function handleDrop(event: DragEvent<HTMLDivElement>, tier: GameTier) {
+    if (!isEditable) return;
     event.preventDefault();
     const id = event.dataTransfer.getData("text/plain");
     if (id) void moveGameToTier(id, tier).catch(() => undefined);
@@ -198,6 +213,7 @@ export default function BoardGameTierList() {
   }
 
   async function removeGame(id: string): Promise<void> {
+    if (!isEditable) return;
     setIsWorking(true);
     setError(null);
 
@@ -223,6 +239,12 @@ export default function BoardGameTierList() {
 
   return (
     <div className="mx-auto mt-10 max-w-6xl space-y-6">
+      <DeveloperAccess
+        isUnlocked={isEditable}
+        onUnlocked={handleUnlocked}
+        onLocked={handleLocked}
+      />
+
       {error && (
         <div role="alert" className="rounded-xl border border-shelf-burgundy/70 bg-shelf-burgundy/20 px-4 py-3 text-sm text-shelf-paper">
           <p>{error}</p>
@@ -241,6 +263,7 @@ export default function BoardGameTierList() {
           <div className={isWorking ? "opacity-75 transition-opacity" : ""}>
             <TierList
               games={games}
+              isEditable={isEditable}
               draggingId={draggingId}
               dragOverTier={dragOverTier}
               onDragOver={handleDragOver}
@@ -258,7 +281,7 @@ export default function BoardGameTierList() {
           </div>
 
           <aside className="space-y-5">
-            <AddGameForm onAdd={addGame} />
+            <AddGameForm onAdd={addGame} disabled={!isEditable} />
             <GroupNotes notes={notes} onChange={setNotes} />
           </aside>
         </div>

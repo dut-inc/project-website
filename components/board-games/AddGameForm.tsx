@@ -7,9 +7,10 @@ type NewGame = Omit<BoardGameEntry, "id">;
 
 type AddGameFormProps = {
   onAdd: (game: NewGame) => Promise<void> | void;
+  disabled?: boolean;
 };
 
-export default function AddGameForm({ onAdd }: AddGameFormProps) {
+export default function AddGameForm({ onAdd, disabled = false }: AddGameFormProps) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [isAdding, setIsAdding] = useState(false);
@@ -17,7 +18,7 @@ export default function AddGameForm({ onAdd }: AddGameFormProps) {
   async function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const trimmedName = name.trim();
-    if (!trimmedName || isAdding) return;
+    if (!trimmedName || isAdding || disabled) return;
 
     setIsAdding(true);
     try {
@@ -49,7 +50,8 @@ export default function AddGameForm({ onAdd }: AddGameFormProps) {
           value={name}
           onChange={(event) => setName(event.target.value)}
           placeholder="e.g. Cascadia"
-          className="w-full rounded-lg border border-shelf-paperDark/60 bg-white/35 px-3 py-2.5 text-sm text-shelf-ink placeholder:text-shelf-ink/70"
+          disabled={disabled}
+          className="w-full rounded-lg border border-shelf-paperDark/60 bg-white/35 px-3 py-2.5 text-sm text-shelf-ink placeholder:text-shelf-ink/70 disabled:cursor-not-allowed disabled:opacity-60"
         />
         <label className="block font-mono text-[10px] uppercase tracking-wider text-shelf-ink/75" htmlFor="new-game-description">
           One-line take <span className="normal-case tracking-normal opacity-60">(optional)</span>
@@ -60,10 +62,11 @@ export default function AddGameForm({ onAdd }: AddGameFormProps) {
           onChange={(event) => setDescription(event.target.value)}
           rows={3}
           placeholder="Why does it belong here?"
-          className="w-full resize-y rounded-lg border border-shelf-paperDark/60 bg-white/35 px-3 py-2.5 text-sm text-shelf-ink placeholder:text-shelf-ink/70"
+          disabled={disabled}
+          className="w-full resize-y rounded-lg border border-shelf-paperDark/60 bg-white/35 px-3 py-2.5 text-sm text-shelf-ink placeholder:text-shelf-ink/70 disabled:cursor-not-allowed disabled:opacity-60"
         />
-        <button type="submit" disabled={isAdding} className="min-h-11 w-full rounded-full bg-shelf-walnut px-4 font-mono text-[11px] uppercase tracking-widest text-shelf-paper transition-transform hover:-translate-y-0.5 hover:bg-shelf-wood disabled:cursor-wait disabled:opacity-60">
-          {isAdding ? "Adding…" : "Add unranked game"}
+        <button type="submit" disabled={disabled || isAdding} className="min-h-11 w-full rounded-full bg-shelf-walnut px-4 font-mono text-[11px] uppercase tracking-widest text-shelf-paper transition-transform hover:-translate-y-0.5 hover:bg-shelf-wood disabled:cursor-not-allowed disabled:opacity-60">
+          {disabled ? "Unlock to add games" : isAdding ? "Adding…" : "Add unranked game"}
         </button>
       </form>
     </section>

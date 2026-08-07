@@ -7,6 +7,7 @@ import GameCard from "./GameCard";
 type TierRowProps = {
   tier: GameTier;
   games: BoardGameEntry[];
+  isEditable: boolean;
   draggingId: string | null;
   dragOverTier: GameTier | null;
   onDragOver: (event: DragEvent<HTMLDivElement>, tier: GameTier) => void;
@@ -22,6 +23,7 @@ type TierRowProps = {
 export default function TierRow({
   tier,
   games,
+  isEditable,
   draggingId,
   dragOverTier,
   onDragOver,
@@ -37,9 +39,9 @@ export default function TierRow({
 
   return (
     <div
-      onDragOver={(event) => onDragOver(event, tier)}
-      onDragLeave={onDragLeave}
-      onDrop={(event) => onDrop(event, tier)}
+      onDragOver={isEditable ? (event) => onDragOver(event, tier) : undefined}
+      onDragLeave={isEditable ? onDragLeave : undefined}
+      onDrop={isEditable ? (event) => onDrop(event, tier) : undefined}
       className={`overflow-hidden rounded-xl border border-shelf-walnut/70 bg-shelf-wood shadow-[inset_0_-10px_20px_rgba(38,24,15,0.32),0_4px_10px_rgba(38,24,15,0.18)] transition-colors ${
         dragOverTier === tier ? "bg-shelf-brass/20 ring-2 ring-inset ring-shelf-brass/70" : ""
       }`}
@@ -57,6 +59,7 @@ export default function TierRow({
             <GameCard
               key={game.id}
               game={game}
+              isEditable={isEditable}
               isDragging={draggingId === game.id}
               onSave={(updates) => onSave(game.id, updates)}
               onDelete={() => onRemove(game.id)}

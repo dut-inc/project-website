@@ -6,6 +6,7 @@ import type { BoardGameEntry, GameDetailsUpdate } from "@/lib/boardGames";
 type GameDetailsPopupProps = {
   game: BoardGameEntry;
   onClose: () => void;
+  canEdit: boolean;
   onSave: (updates: GameDetailsUpdate) => Promise<void> | void;
   onDelete: () => Promise<void> | void;
 };
@@ -34,6 +35,7 @@ const detailFields = [
 export default function GameDetailsPopup({
   game,
   onClose,
+  canEdit,
   onSave,
   onDelete,
 }: GameDetailsPopupProps) {
@@ -140,7 +142,7 @@ export default function GameDetailsPopup({
           </button>
         </div>
 
-        {isEditing ? (
+        {isEditing && canEdit ? (
           <div className="mt-6 space-y-5">
             <div>
               <label className="font-mono text-[10px] uppercase tracking-wider text-shelf-ink/80" htmlFor={`popup-name-${game.id}`}>
@@ -216,14 +218,20 @@ export default function GameDetailsPopup({
                 </section>
               ))}
             </div>
-            <div className="mt-7 flex flex-wrap items-center justify-between gap-3">
-              <button type="button" onClick={() => setIsEditing(true)} className="min-h-11 rounded-full bg-shelf-walnut px-5 font-mono text-[11px] uppercase tracking-widest text-shelf-paper transition-colors hover:bg-shelf-wood">
-                Edit game
-              </button>
-              <button type="button" onClick={() => void remove()} disabled={isSaving} className="min-h-11 rounded-full px-3 font-mono text-[11px] uppercase tracking-widest text-shelf-burgundy transition-colors hover:bg-shelf-burgundy/10 disabled:opacity-60">
-                {isSaving ? "Working…" : "Delete game"}
-              </button>
-            </div>
+            {canEdit ? (
+              <div className="mt-7 flex flex-wrap items-center justify-between gap-3">
+                <button type="button" onClick={() => setIsEditing(true)} className="min-h-11 rounded-full bg-shelf-walnut px-5 font-mono text-[11px] uppercase tracking-widest text-shelf-paper transition-colors hover:bg-shelf-wood">
+                  Edit game
+                </button>
+                <button type="button" onClick={() => void remove()} disabled={isSaving} className="min-h-11 rounded-full px-3 font-mono text-[11px] uppercase tracking-widest text-shelf-burgundy transition-colors hover:bg-shelf-burgundy/10 disabled:opacity-60">
+                  {isSaving ? "Working…" : "Delete game"}
+                </button>
+              </div>
+            ) : (
+              <p className="mt-7 rounded-lg border border-shelf-paperDark/45 bg-shelf-paperDark/15 px-4 py-3 font-mono text-[10px] uppercase tracking-wider text-shelf-ink/70">
+                Developer controls are locked. Unlock above to edit or delete this game.
+              </p>
+            )}
           </>
         )}
       </section>
