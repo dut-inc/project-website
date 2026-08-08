@@ -9,6 +9,28 @@ import { LiveDot } from "./icons";
 
 const ORDER_KEY = "seattle-sports-dashboard-order";
 
+/** Red neon letters with a thin white core — each letter is layered twice
+ *  with the SAME bold glyph, so the white core traces the red outline
+ *  exactly. The base is solid red; on top sits a white copy of the same
+ *  glyph whose edges are eaten back by a thick red stroke. What remains of
+ *  the white is a hairline running through the middle of every stroke,
+ *  terminating with the letter's own terminals instead of ending short
+ *  of them. */
+function inlineLetters(word: string) {
+  return word.split("").map((ch, i) => (
+    <span key={i} className="relative inline-block">
+      {ch}
+      <span
+        aria-hidden
+        className="absolute inset-0 flex items-center justify-center font-bold text-white"
+        style={{ WebkitTextStroke: "0.08em #ff4638" }}
+      >
+        {ch}
+      </span>
+    </span>
+  ));
+}
+
 /**
  * Seattle Sports Dashboard.
  *
@@ -61,18 +83,16 @@ export default function SportsDashboard() {
 
   return (
     <div className="mt-8">
-      {/* Neon market sign — SEATTLE / SPORTS / CENTER stacked like the
-          Public Market Center sign. SEATTLE and CENTER share the same
-          indent so their left edges line up, SPORTS sits flush left, and
-          the letters breathe with extra vertical spacing. */}
+      {/* The stacked neon title — thick red letters with a thin white
+          core, mimicking the Pike Place Market sign. SEATTLE and CENTER
+          share the same left indent; SPORTS sits centered between them.
+          All three words are the same size. */}
       <header className="text-center">
-        <h2 className="neon-sign animate-neon-breathe mx-auto w-fit text-left font-sign text-4xl uppercase leading-none tracking-[0.06em] sm:text-5xl md:text-6xl">
-          {/* Generous letter- and line-spacing so the red neon tubes read
-              as separate characters, not one merged glow. */}
-          <span className="block pl-[1.05em]">Seattle</span>
-          <span className="block py-3 sm:py-4">Sports</span>
-          <span className="block pl-[1.05em]">Center</span>
-        </h2>
+        <h1 className="neon-title animate-neon-breathe mx-auto w-fit text-left font-sign text-4xl font-bold uppercase leading-none tracking-[0.05em] sm:text-5xl md:text-6xl">
+          <span className="block pl-6 sm:pl-9">{inlineLetters("SEATTLE")}</span>
+          <span className="block py-1.5 text-center sm:py-2">{inlineLetters("SPORTS")}</span>
+          <span className="block pl-6 sm:pl-9">{inlineLetters("CENTER")}</span>
+        </h1>
       </header>
 
       {/* Data-source badge row + hint */}

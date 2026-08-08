@@ -136,43 +136,41 @@ input {
    red neon sign, and the red/cream/green striped awnings.
    --------------------------------------------------------------------------- */
 
-/* Neon tube lettering like the Public Market Center sign: each character
-   is a bold red neon tube with a bright white-hot core. The thick red
-   tube edge is drawn with the text stroke; the white fill shines through
-   as the tube's hot interior, and the red halo bleeds into the
-   iron-dark storefront. */
-.neon-sign {
-  color: #fff;
-  /* A medium red tube edge: thick enough that the white-hot core stays
-     a slim line down each letter stroke (like the real Public Market
-     sign), but not so thick that it swallows the white entirely. */
-  -webkit-text-stroke: 0.11em rgba(255, 70, 56, 0.98);
-  text-shadow:
-    0 0 1px rgba(255, 255, 255, 0.9),
-    0 0 6px rgba(255, 70, 56, 0.9),
-    0 0 12px rgba(255, 70, 56, 0.6),
-    0 0 24px rgba(255, 70, 56, 0.4);
-}
-
 /* Dimmer neon accent for small meta text. */
 .neon-soft {
   color: #ff9c8a;
   text-shadow: 0 0 5px rgba(255, 70, 56, 0.35);
 }
 
+/* The Seattle Sports Center title — thick neon-red letters with a thin
+   white core (layered per letter) and a red glow, echoing the Pike Place
+   Market sign. */
+.neon-title {
+  color: #ff4638;
+  text-shadow:
+    0 0 0.06em rgba(255, 70, 56, 0.9),
+    0 0 0.18em rgba(255, 70, 56, 0.55),
+    0 0 0.45em rgba(255, 70, 56, 0.35);
+}
 
 @keyframes neon-breathe {
   0%,
   100% {
-    opacity: 1;
+    text-shadow:
+      0 0 0.06em rgba(255, 70, 56, 0.9),
+      0 0 0.18em rgba(255, 70, 56, 0.55),
+      0 0 0.45em rgba(255, 70, 56, 0.35);
   }
   50% {
-    opacity: 0.86;
+    text-shadow:
+      0 0 0.04em rgba(255, 70, 56, 0.72),
+      0 0 0.12em rgba(255, 70, 56, 0.38),
+      0 0 0.28em rgba(255, 70, 56, 0.2);
   }
 }
 
 .animate-neon-breathe {
-  animation: neon-breathe 3.4s ease-in-out infinite;
+  animation: neon-breathe 4.5s ease-in-out infinite;
 }
 
 /* The board widgets sit on — the Market's painted moss-green wall. */

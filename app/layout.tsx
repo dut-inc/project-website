@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Bungee, Fraunces, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
+import { Barlow_Condensed, Fraunces, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 
@@ -22,11 +22,11 @@ const mono = IBM_Plex_Mono({
   variable: "--font-mono",
 });
 
-// Bungee renders solid, chunky block caps — the bold neon lettering of
-// the Public Market Center sign. Caps-only.
-const sign = Bungee({
+// The Seattle Sports Center title — a condensed grotesque that matches the
+// letterforms of the real Pike Place Market sign.
+const sign = Barlow_Condensed({
   subsets: ["latin"],
-  weight: "400",
+  weight: ["700"],
   variable: "--font-sign",
 });
 

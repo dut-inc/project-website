@@ -1,0 +1,125 @@
+{
+ "teamLeaders": [
+  {
+   "leaderCategory": "homeRuns",
+   "leaders": [
+    {
+     "person": {
+      "fullName": "Dominic Canzone"
+     },
+     "value": "18"
+    }
+   ]
+  },
+  {
+   "leaderCategory": "homeRuns",
+   "leaders": [
+    {
+     "person": {
+      "fullName": "Logan Gilbert"
+     },
+     "value": "19"
+    }
+   ]
+  },
+  {
+   "leaderCategory": "homeRuns",
+   "leaders": [
+    {
+     "person": {
+      "fullName": "Cal Raleigh"
+     },
+     "value": "71"
+    }
+   ]
+  },
+  {
+   "leaderCategory": "runsBattedIn",
+   "leaders": [
+    {
+     "person": {
+      "fullName": "Julio Rodr\u00edguez"
+     },
+     "value": "51"
+    }
+   ]
+  },
+  {
+   "leaderCategory": "earnedRunAverage",
+   "leaders": [
+    {
+     "person": {
+      "fullName": "Logan Gilbert"
+     },
+     "value": "3.42"
+    }
+   ]
+  },
+  {
+   "leaderCategory": "earnedRunAverage",
+   "leaders": [
+    {
+     "person": {
+      "fullName": "Cal Raleigh"
+     },
+     "value": "3.75"
+    }
+   ]
+  },
+  {
+   "leaderCategory": "wins",
+   "leaders": [
+    {
+     "person": {
+      "fullName": "Logan Gilbert"
+     },
+     "value": "8"
+    }
+   ]
+  },
+  {
+   "leaderCategory": "stolenBases",
+   "leaders": [
+    {
+     "person": {
+      "fullName": "Josh Naylor"
+     },
+     "value": "22"
+    }
+   ]
+  },
+  {
+   "leaderCategory": "stolenBases",
+   "leaders": [
+    {
+     "person": {
+      "fullName": "George Kirby"
+     },
+     "value": "14"
+    }
+   ]
+  },
+  {
+   "leaderCategory": "stolenBases",
+   "leaders": [
+    {
+     "person": {
+      "fullName": "Cal Raleigh"
+     },
+     "value": "35"
+    }
+   ]
+  },
+  {
+   "leaderCategory": "stolenBases",
+   "leaders": [
+    {
+     "person": {
+      "fullName": "Cal Raleigh"
+     },
+     "value": "35"
+    }
+   ]
+  }
+ ]
+}

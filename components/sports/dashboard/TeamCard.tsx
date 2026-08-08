@@ -53,7 +53,7 @@ export default function TeamCard({
         <GripIcon className="h-3.5 w-3.5" />
         <span className="hidden sm:inline">Reorder</span>
       </button>
-      <span className="flex items-center gap-1 rounded-none border border-transparent px-2 py-1 font-mono text-[10px] uppercase tracking-widest text-ink2/70 transition-colors group-hover:border-market-red/70 group-hover:bg-market-red group-hover:text-white group-hover:shadow-[0_0_12px_rgba(255,70,56,0.35)]">
+      <span className="flex items-center gap-1 rounded-none border border-transparent px-2 py-1 font-mono text-[10px] uppercase tracking-widest text-ink2/70 transition-colors group-hover:border-market-olive group-hover:bg-market-olive group-hover:text-white group-hover:shadow-[0_0_12px_rgba(78,90,56,0.35)]">
         Details
         <ChevronDownIcon className="h-3 w-3 transition-transform duration-200 group-hover:translate-y-0.5" />
       </span>
@@ -62,6 +62,10 @@ export default function TeamCard({
 
   const body = inactive ? (
     <p className="font-display text-lg font-semibold tracking-tight text-ink">bring em back!</p>
+  ) : team.error ? (
+    <p className="font-display text-[13px] font-medium leading-snug text-[#8A3B28]">
+      ⚠ {team.error}
+    </p>
   ) : (
     <div className="flex flex-col gap-2">
       {team.previousGame && <GameSummary game={team.previousGame} />}
@@ -81,19 +85,10 @@ export default function TeamCard({
           onExpand(team);
         }
       }}
-      className={`group relative w-full cursor-pointer border border-ink/15 bg-market-card shadow-[0_4px_14px_-10px_rgba(0,0,0,0.45)] outline-none transition-all duration-300 hover:-translate-y-1 hover:border-market-red/70 hover:bg-market-cardHover hover:shadow-[0_18px_44px_-18px_rgba(0,0,0,0.55),0_0_0_1px_rgba(255,70,56,0.15)] focus-visible:ring-2 focus-visible:ring-market-red/70 ${
+      className={`group relative w-full cursor-pointer border border-ink/15 bg-market-card shadow-[0_4px_14px_-10px_rgba(0,0,0,0.45)] outline-none transition-[background-color,border-color,box-shadow] duration-300 hover:border-ink/30 hover:bg-market-cardHover hover:shadow-[0_18px_44px_-18px_rgba(0,0,0,0.55)] focus-visible:ring-2 focus-visible:ring-market-red/70 ${
         dragging ? "ring-1 ring-ink/25" : ""
       }`}
     >
-      {/* Hover affordance — a neon tag drops in above the card so it's
-          obvious the widget is clickable. */}
-      <div className="pointer-events-none absolute -top-2.5 left-1/2 z-10 -translate-x-1/2 opacity-0 transition-all duration-200 group-hover:-translate-y-0.5 group-hover:opacity-100">
-        <span className="flex items-center gap-1.5 whitespace-nowrap border border-market-red bg-[#171410] px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-market-red shadow-[0_0_14px_rgba(255,70,56,0.4)]">
-          View details
-          <ChevronDownIcon className="h-3 w-3" />
-        </span>
-      </div>
-
       {isLive ? (
         /* Live card — the score lands in the true middle of the box. The
            centered grid only kicks in at lg+ (below that the identity, score

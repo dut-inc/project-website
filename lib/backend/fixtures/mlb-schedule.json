@@ -1,0 +1,9265 @@
+{
+ "dates": [
+  {
+   "games": [
+    {
+     "gamePk": 831764,
+     "gameDate": "2026-02-20T20:10:00Z",
+     "officialDate": "2026-02-20",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "S",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 135,
+        "name": "San Diego Padres"
+       },
+       "score": 4,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 0,
+        "losses": 1,
+        "ties": 0,
+        "pct": ".000"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 7,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 1,
+        "losses": 0,
+        "ties": 0,
+        "pct": "1.000"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 831750,
+     "gameDate": "2026-02-21T20:10:00Z",
+     "officialDate": "2026-02-21",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "S",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 137,
+        "name": "San Francisco Giants"
+       },
+       "score": 10,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 1,
+        "losses": 0,
+        "ties": 0,
+        "pct": "1.000"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 5,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 1,
+        "losses": 1,
+        "ties": 0,
+        "pct": ".500"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 831744,
+     "gameDate": "2026-02-22T20:05:00Z",
+     "officialDate": "2026-02-22",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "S",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 14,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 2,
+        "losses": 1,
+        "ties": 0,
+        "pct": ".667"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 113,
+        "name": "Cincinnati Reds"
+       },
+       "score": 8,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 0,
+        "losses": 2,
+        "ties": 0,
+        "pct": ".000"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 831745,
+     "gameDate": "2026-02-23T20:05:00Z",
+     "officialDate": "2026-02-23",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "S",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 0,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 2,
+        "losses": 2,
+        "ties": 0,
+        "pct": ".500"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 119,
+        "name": "Los Angeles Dodgers"
+       },
+       "score": 3,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 3,
+        "losses": 0,
+        "ties": 0,
+        "pct": "1.000"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 831906,
+     "gameDate": "2026-02-24T20:10:00Z",
+     "officialDate": "2026-02-24",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "S",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 145,
+        "name": "Chicago White Sox"
+       },
+       "score": 12,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 4,
+        "losses": 1,
+        "ties": 0,
+        "pct": ".800"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 10,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 2,
+        "losses": 3,
+        "ties": 0,
+        "pct": ".400"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 831741,
+     "gameDate": "2026-02-25T20:05:00Z",
+     "officialDate": "2026-02-25",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "FT",
+      "startTimeTBD": false,
+      "reason": "Tied",
+      "abstractGameCode": "F"
+     },
+     "gameType": "S",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 8,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 2,
+        "losses": 3,
+        "ties": 1,
+        "pct": ".400"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 118,
+        "name": "Kansas City Royals"
+       },
+       "score": 8,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 2,
+        "losses": 3,
+        "ties": 1,
+        "pct": ".400"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 831875,
+     "gameDate": "2026-02-26T20:10:00Z",
+     "officialDate": "2026-02-26",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "S",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 114,
+        "name": "Cleveland Guardians"
+       },
+       "score": 7,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 4,
+        "losses": 3,
+        "ties": 0,
+        "pct": ".571"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 8,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 3,
+        "losses": 3,
+        "ties": 1,
+        "pct": ".500"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 831952,
+     "gameDate": "2026-02-28T01:10:00Z",
+     "officialDate": "2026-02-27",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "S",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 109,
+        "name": "Arizona Diamondbacks"
+       },
+       "score": 3,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 4,
+        "losses": 4,
+        "ties": 0,
+        "pct": ".500"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 1,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 3,
+        "losses": 4,
+        "ties": 1,
+        "pct": ".429"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 831738,
+     "gameDate": "2026-02-28T20:10:00Z",
+     "officialDate": "2026-02-28",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "S",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 1,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 3,
+        "losses": 5,
+        "ties": 1,
+        "pct": ".375"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 135,
+        "name": "San Diego Padres"
+       },
+       "score": 7,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 4,
+        "losses": 5,
+        "ties": 0,
+        "pct": ".444"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 831721,
+     "gameDate": "2026-03-01T20:10:00Z",
+     "officialDate": "2026-03-01",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "S",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 140,
+        "name": "Texas Rangers"
+       },
+       "score": 9,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 6,
+        "losses": 5,
+        "ties": 0,
+        "pct": ".545"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 4,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 3,
+        "losses": 6,
+        "ties": 1,
+        "pct": ".333"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 831817,
+     "gameDate": "2026-03-03T20:10:00Z",
+     "officialDate": "2026-03-03",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "S",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 108,
+        "name": "Los Angeles Angels"
+       },
+       "score": 7,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 5,
+        "losses": 7,
+        "ties": 0,
+        "pct": ".417"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 6,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 3,
+        "losses": 7,
+        "ties": 1,
+        "pct": ".300"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 831739,
+     "gameDate": "2026-03-05T02:05:00Z",
+     "officialDate": "2026-03-04",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "S",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 4,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 3,
+        "losses": 8,
+        "ties": 1,
+        "pct": ".273"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 137,
+        "name": "San Francisco Giants"
+       },
+       "score": 9,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 9,
+        "losses": 2,
+        "ties": 0,
+        "pct": ".818"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 831765,
+     "gameDate": "2026-03-05T20:10:00Z",
+     "officialDate": "2026-03-05",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "S",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 135,
+        "name": "San Diego Padres"
+       },
+       "score": 27,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 6,
+        "losses": 7,
+        "ties": 0,
+        "pct": ".462"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 6,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 3,
+        "losses": 9,
+        "ties": 1,
+        "pct": ".250"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 831737,
+     "gameDate": "2026-03-06T20:05:00Z",
+     "officialDate": "2026-03-06",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "S",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 5,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 4,
+        "losses": 9,
+        "ties": 1,
+        "pct": ".308"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 140,
+        "name": "Texas Rangers"
+       },
+       "score": 1,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 8,
+        "losses": 6,
+        "ties": 0,
+        "pct": ".571"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 831904,
+     "gameDate": "2026-03-07T20:10:00Z",
+     "officialDate": "2026-03-07",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "S",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 145,
+        "name": "Chicago White Sox"
+       },
+       "score": 5,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 9,
+        "losses": 7,
+        "ties": 0,
+        "pct": ".563"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 1,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 4,
+        "losses": 10,
+        "ties": 1,
+        "pct": ".286"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 831740,
+     "gameDate": "2026-03-08T20:10:00Z",
+     "officialDate": "2026-03-08",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "S",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 3,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 4,
+        "losses": 11,
+        "ties": 1,
+        "pct": ".267"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 158,
+        "name": "Milwaukee Brewers"
+       },
+       "score": 6,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 8,
+        "losses": 7,
+        "ties": 0,
+        "pct": ".533"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 831748,
+     "gameDate": "2026-03-09T20:10:00Z",
+     "officialDate": "2026-03-09",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "S",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 1,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 4,
+        "losses": 12,
+        "ties": 1,
+        "pct": ".250"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 109,
+        "name": "Arizona Diamondbacks"
+       },
+       "score": 2,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 8,
+        "losses": 9,
+        "ties": 0,
+        "pct": ".471"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 831836,
+     "gameDate": "2026-03-10T20:10:00Z",
+     "officialDate": "2026-03-10",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "S",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 118,
+        "name": "Kansas City Royals"
+       },
+       "score": 3,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 6,
+        "losses": 10,
+        "ties": 1,
+        "pct": ".375"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 4,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 5,
+        "losses": 12,
+        "ties": 1,
+        "pct": ".294"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 831861,
+     "gameDate": "2026-03-11T20:10:00Z",
+     "officialDate": "2026-03-11",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "S",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 115,
+        "name": "Colorado Rockies"
+       },
+       "score": 11,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 9,
+        "losses": 8,
+        "ties": 1,
+        "pct": ".529"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 7,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 5,
+        "losses": 13,
+        "ties": 1,
+        "pct": ".278"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 831754,
+     "gameDate": "2026-03-12T20:05:00Z",
+     "officialDate": "2026-03-12",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "S",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 4,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 5,
+        "losses": 14,
+        "ties": 1,
+        "pct": ".263"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 112,
+        "name": "Chicago Cubs"
+       },
+       "score": 7,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 9,
+        "losses": 10,
+        "ties": 0,
+        "pct": ".474"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 831801,
+     "gameDate": "2026-03-14T01:10:00Z",
+     "officialDate": "2026-03-13",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "S",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 119,
+        "name": "Los Angeles Dodgers"
+       },
+       "score": 10,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 14,
+        "losses": 6,
+        "ties": 0,
+        "pct": ".700"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 7,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 5,
+        "losses": 15,
+        "ties": 1,
+        "pct": ".250"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 831747,
+     "gameDate": "2026-03-14T20:10:00Z",
+     "officialDate": "2026-03-14",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "S",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 2,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 5,
+        "losses": 16,
+        "ties": 1,
+        "pct": ".238"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 108,
+        "name": "Los Angeles Angels"
+       },
+       "score": 6,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 11,
+        "losses": 12,
+        "ties": 0,
+        "pct": ".478"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 831890,
+     "gameDate": "2026-03-15T20:10:00Z",
+     "officialDate": "2026-03-15",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "S",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 113,
+        "name": "Cincinnati Reds"
+       },
+       "score": 3,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 12,
+        "losses": 10,
+        "ties": 0,
+        "pct": ".545"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 6,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 6,
+        "losses": 16,
+        "ties": 1,
+        "pct": ".273"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 831742,
+     "gameDate": "2026-03-17T20:10:00Z",
+     "officialDate": "2026-03-17",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "S",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 10,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 7,
+        "losses": 17,
+        "ties": 1,
+        "pct": ".292"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 115,
+        "name": "Colorado Rockies"
+       },
+       "score": 6,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 11,
+        "losses": 12,
+        "ties": 1,
+        "pct": ".478"
+       }
+      }
+     }
+    },
+    {
+     "gamePk": 831769,
+     "gameDate": "2026-03-17T20:10:00Z",
+     "officialDate": "2026-03-17",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "S",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 135,
+        "name": "San Diego Padres"
+       },
+       "score": 9,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 13,
+        "losses": 11,
+        "ties": 1,
+        "pct": ".542"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 6,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 7,
+        "losses": 17,
+        "ties": 1,
+        "pct": ".292"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 831784,
+     "gameDate": "2026-03-18T20:10:00Z",
+     "officialDate": "2026-03-18",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "S",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 158,
+        "name": "Milwaukee Brewers"
+       },
+       "score": 3,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 10,
+        "losses": 14,
+        "ties": 0,
+        "pct": ".417"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 7,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 8,
+        "losses": 17,
+        "ties": 1,
+        "pct": ".320"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 831755,
+     "gameDate": "2026-03-20T01:10:00Z",
+     "officialDate": "2026-03-19",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "S",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 6,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 9,
+        "losses": 17,
+        "ties": 1,
+        "pct": ".346"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 133,
+        "name": "Athletics"
+       },
+       "score": 4,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 12,
+        "losses": 15,
+        "ties": 0,
+        "pct": ".444"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 831743,
+     "gameDate": "2026-03-21T01:05:00Z",
+     "officialDate": "2026-03-20",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "S",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 20,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 10,
+        "losses": 17,
+        "ties": 1,
+        "pct": ".370"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 114,
+        "name": "Cleveland Guardians"
+       },
+       "score": 8,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 13,
+        "losses": 13,
+        "ties": 1,
+        "pct": ".500"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 831923,
+     "gameDate": "2026-03-22T01:10:00Z",
+     "officialDate": "2026-03-21",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "S",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 112,
+        "name": "Chicago Cubs"
+       },
+       "score": 7,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 12,
+        "losses": 16,
+        "ties": 0,
+        "pct": ".429"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 1,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 10,
+        "losses": 18,
+        "ties": 1,
+        "pct": ".357"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 831746,
+     "gameDate": "2026-03-23T01:05:00Z",
+     "officialDate": "2026-03-22",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "S",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 4,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 11,
+        "losses": 18,
+        "ties": 1,
+        "pct": ".379"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 145,
+        "name": "Chicago White Sox"
+       },
+       "score": 2,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 15,
+        "losses": 15,
+        "ties": 1,
+        "pct": ".500"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 831735,
+     "gameDate": "2026-03-23T19:10:00Z",
+     "officialDate": "2026-03-23",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "S",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 3,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 11,
+        "losses": 19,
+        "ties": 1,
+        "pct": ".367"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 135,
+        "name": "San Diego Padres"
+       },
+       "score": 10,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 15,
+        "losses": 15,
+        "ties": 1,
+        "pct": ".500"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823163,
+     "gameDate": "2026-03-27T02:10:00Z",
+     "officialDate": "2026-03-26",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 114,
+        "name": "Cleveland Guardians"
+       },
+       "score": 6,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 1,
+        "losses": 0,
+        "ties": 0,
+        "pct": "1.000"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 4,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 0,
+        "losses": 1,
+        "ties": 0,
+        "pct": ".000"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823162,
+     "gameDate": "2026-03-28T01:45:00Z",
+     "officialDate": "2026-03-27",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 114,
+        "name": "Cleveland Guardians"
+       },
+       "score": 1,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 1,
+        "losses": 1,
+        "ties": 0,
+        "pct": ".500"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 5,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 1,
+        "losses": 1,
+        "ties": 0,
+        "pct": ".500"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823161,
+     "gameDate": "2026-03-29T01:40:00Z",
+     "officialDate": "2026-03-28",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 114,
+        "name": "Cleveland Guardians"
+       },
+       "score": 6,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 2,
+        "losses": 1,
+        "ties": 0,
+        "pct": ".667"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 5,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 1,
+        "losses": 2,
+        "ties": 0,
+        "pct": ".333"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823160,
+     "gameDate": "2026-03-29T23:20:00Z",
+     "officialDate": "2026-03-29",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 114,
+        "name": "Cleveland Guardians"
+       },
+       "score": 0,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 2,
+        "losses": 2,
+        "ties": 0,
+        "pct": ".500"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 8,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 2,
+        "losses": 2,
+        "ties": 0,
+        "pct": ".500"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823159,
+     "gameDate": "2026-03-31T01:40:00Z",
+     "officialDate": "2026-03-30",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 147,
+        "name": "New York Yankees"
+       },
+       "score": 1,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 3,
+        "losses": 1,
+        "ties": 0,
+        "pct": ".750"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 2,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 3,
+        "losses": 2,
+        "ties": 0,
+        "pct": ".600"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823158,
+     "gameDate": "2026-04-01T01:40:00Z",
+     "officialDate": "2026-03-31",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 147,
+        "name": "New York Yankees"
+       },
+       "score": 5,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 4,
+        "losses": 1,
+        "ties": 0,
+        "pct": ".800"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 0,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 3,
+        "losses": 3,
+        "ties": 0,
+        "pct": ".500"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823157,
+     "gameDate": "2026-04-01T20:10:00Z",
+     "officialDate": "2026-04-01",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 147,
+        "name": "New York Yankees"
+       },
+       "score": 5,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 5,
+        "losses": 1,
+        "ties": 0,
+        "pct": ".833"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 3,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 3,
+        "losses": 4,
+        "ties": 0,
+        "pct": ".429"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 824056,
+     "gameDate": "2026-04-04T01:38:00Z",
+     "officialDate": "2026-04-03",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 3,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 4,
+        "losses": 4,
+        "ties": 0,
+        "pct": ".500"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 108,
+        "name": "Los Angeles Angels"
+       },
+       "score": 1,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 3,
+        "losses": 5,
+        "ties": 0,
+        "pct": ".375"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 824054,
+     "gameDate": "2026-04-05T01:38:00Z",
+     "officialDate": "2026-04-04",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 0,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 4,
+        "losses": 5,
+        "ties": 0,
+        "pct": ".444"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 108,
+        "name": "Los Angeles Angels"
+       },
+       "score": 1,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 4,
+        "losses": 5,
+        "ties": 0,
+        "pct": ".444"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 824053,
+     "gameDate": "2026-04-05T20:07:00Z",
+     "officialDate": "2026-04-05",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 7,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 4,
+        "losses": 6,
+        "ties": 0,
+        "pct": ".400"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 108,
+        "name": "Los Angeles Angels"
+       },
+       "score": 8,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 5,
+        "losses": 5,
+        "ties": 0,
+        "pct": ".500"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 822918,
+     "gameDate": "2026-04-07T00:05:00Z",
+     "officialDate": "2026-04-06",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 1,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 4,
+        "losses": 7,
+        "ties": 0,
+        "pct": ".364"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 140,
+        "name": "Texas Rangers"
+       },
+       "score": 2,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 5,
+        "losses": 5,
+        "ties": 0,
+        "pct": ".500"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 822916,
+     "gameDate": "2026-04-08T00:05:00Z",
+     "officialDate": "2026-04-07",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 2,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 4,
+        "losses": 8,
+        "ties": 0,
+        "pct": ".333"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 140,
+        "name": "Texas Rangers"
+       },
+       "score": 3,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 6,
+        "losses": 5,
+        "ties": 0,
+        "pct": ".545"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 822915,
+     "gameDate": "2026-04-08T18:35:00Z",
+     "officialDate": "2026-04-08",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 0,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 4,
+        "losses": 9,
+        "ties": 0,
+        "pct": ".308"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 140,
+        "name": "Texas Rangers"
+       },
+       "score": 3,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 7,
+        "losses": 5,
+        "ties": 0,
+        "pct": ".583"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823156,
+     "gameDate": "2026-04-11T01:40:00Z",
+     "officialDate": "2026-04-10",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 117,
+        "name": "Houston Astros"
+       },
+       "score": 6,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 6,
+        "losses": 8,
+        "ties": 0,
+        "pct": ".429"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 9,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 5,
+        "losses": 9,
+        "ties": 0,
+        "pct": ".357"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823155,
+     "gameDate": "2026-04-12T01:40:00Z",
+     "officialDate": "2026-04-11",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 117,
+        "name": "Houston Astros"
+       },
+       "score": 7,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 6,
+        "losses": 9,
+        "ties": 0,
+        "pct": ".400"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 8,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 6,
+        "losses": 9,
+        "ties": 0,
+        "pct": ".400"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823154,
+     "gameDate": "2026-04-12T20:10:00Z",
+     "officialDate": "2026-04-12",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 117,
+        "name": "Houston Astros"
+       },
+       "score": 1,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 6,
+        "losses": 10,
+        "ties": 0,
+        "pct": ".375"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 6,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 7,
+        "losses": 9,
+        "ties": 0,
+        "pct": ".438"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823153,
+     "gameDate": "2026-04-13T20:10:00Z",
+     "officialDate": "2026-04-13",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 117,
+        "name": "Houston Astros"
+       },
+       "score": 2,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 6,
+        "losses": 11,
+        "ties": 0,
+        "pct": ".353"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 6,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 8,
+        "losses": 9,
+        "ties": 0,
+        "pct": ".471"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823315,
+     "gameDate": "2026-04-15T01:40:00Z",
+     "officialDate": "2026-04-14",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 1,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 8,
+        "losses": 10,
+        "ties": 0,
+        "pct": ".444"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 135,
+        "name": "San Diego Padres"
+       },
+       "score": 4,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 11,
+        "losses": 6,
+        "ties": 0,
+        "pct": ".647"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823314,
+     "gameDate": "2026-04-16T01:40:00Z",
+     "officialDate": "2026-04-15",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 6,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 8,
+        "losses": 11,
+        "ties": 0,
+        "pct": ".421"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 135,
+        "name": "San Diego Padres"
+       },
+       "score": 7,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 12,
+        "losses": 6,
+        "ties": 0,
+        "pct": ".667"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823313,
+     "gameDate": "2026-04-17T00:40:00Z",
+     "officialDate": "2026-04-16",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 2,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 8,
+        "losses": 12,
+        "ties": 0,
+        "pct": ".400"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 135,
+        "name": "San Diego Padres"
+       },
+       "score": 5,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 13,
+        "losses": 6,
+        "ties": 0,
+        "pct": ".684"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823152,
+     "gameDate": "2026-04-18T01:40:00Z",
+     "officialDate": "2026-04-17",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 140,
+        "name": "Texas Rangers"
+       },
+       "score": 5,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 11,
+        "losses": 9,
+        "ties": 0,
+        "pct": ".550"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 0,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 8,
+        "losses": 13,
+        "ties": 0,
+        "pct": ".381"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823151,
+     "gameDate": "2026-04-18T23:15:00Z",
+     "officialDate": "2026-04-18",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 140,
+        "name": "Texas Rangers"
+       },
+       "score": 3,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 11,
+        "losses": 10,
+        "ties": 0,
+        "pct": ".524"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 7,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 9,
+        "losses": 13,
+        "ties": 0,
+        "pct": ".409"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823150,
+     "gameDate": "2026-04-19T20:10:00Z",
+     "officialDate": "2026-04-19",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 140,
+        "name": "Texas Rangers"
+       },
+       "score": 2,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 11,
+        "losses": 11,
+        "ties": 0,
+        "pct": ".500"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 5,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 10,
+        "losses": 13,
+        "ties": 0,
+        "pct": ".435"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823149,
+     "gameDate": "2026-04-21T01:40:00Z",
+     "officialDate": "2026-04-20",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 133,
+        "name": "Athletics"
+       },
+       "score": 6,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 12,
+        "losses": 11,
+        "ties": 0,
+        "pct": ".522"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 4,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 10,
+        "losses": 14,
+        "ties": 0,
+        "pct": ".417"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823148,
+     "gameDate": "2026-04-22T01:40:00Z",
+     "officialDate": "2026-04-21",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 133,
+        "name": "Athletics"
+       },
+       "score": 5,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 13,
+        "losses": 11,
+        "ties": 0,
+        "pct": ".542"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 2,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 10,
+        "losses": 15,
+        "ties": 0,
+        "pct": ".400"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823147,
+     "gameDate": "2026-04-22T20:10:00Z",
+     "officialDate": "2026-04-22",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 133,
+        "name": "Athletics"
+       },
+       "score": 4,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 13,
+        "losses": 12,
+        "ties": 0,
+        "pct": ".520"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 5,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 11,
+        "losses": 15,
+        "ties": 0,
+        "pct": ".423"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823069,
+     "gameDate": "2026-04-25T00:15:00Z",
+     "officialDate": "2026-04-24",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 3,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 12,
+        "losses": 15,
+        "ties": 0,
+        "pct": ".444"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 138,
+        "name": "St. Louis Cardinals"
+       },
+       "score": 2,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 14,
+        "losses": 11,
+        "ties": 0,
+        "pct": ".560"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823070,
+     "gameDate": "2026-04-25T18:15:00Z",
+     "officialDate": "2026-04-25",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 11,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 13,
+        "losses": 15,
+        "ties": 0,
+        "pct": ".464"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 138,
+        "name": "St. Louis Cardinals"
+       },
+       "score": 9,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 14,
+        "losses": 12,
+        "ties": 0,
+        "pct": ".538"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823068,
+     "gameDate": "2026-04-26T18:15:00Z",
+     "officialDate": "2026-04-26",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 3,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 14,
+        "losses": 15,
+        "ties": 0,
+        "pct": ".483"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 138,
+        "name": "St. Louis Cardinals"
+       },
+       "score": 2,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 14,
+        "losses": 13,
+        "ties": 0,
+        "pct": ".519"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823719,
+     "gameDate": "2026-04-27T23:40:00Z",
+     "officialDate": "2026-04-27",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 4,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 14,
+        "losses": 16,
+        "ties": 0,
+        "pct": ".467"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 142,
+        "name": "Minnesota Twins"
+       },
+       "score": 11,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 13,
+        "losses": 16,
+        "ties": 0,
+        "pct": ".448"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823716,
+     "gameDate": "2026-04-28T23:40:00Z",
+     "officialDate": "2026-04-28",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 7,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 15,
+        "losses": 16,
+        "ties": 0,
+        "pct": ".484"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 142,
+        "name": "Minnesota Twins"
+       },
+       "score": 1,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 13,
+        "losses": 17,
+        "ties": 0,
+        "pct": ".433"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823717,
+     "gameDate": "2026-04-29T17:40:00Z",
+     "officialDate": "2026-04-29",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 5,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 16,
+        "losses": 16,
+        "ties": 0,
+        "pct": ".500"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 142,
+        "name": "Minnesota Twins"
+       },
+       "score": 3,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 13,
+        "losses": 18,
+        "ties": 0,
+        "pct": ".419"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823146,
+     "gameDate": "2026-05-02T01:45:00Z",
+     "officialDate": "2026-05-01",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 118,
+        "name": "Kansas City Royals"
+       },
+       "score": 7,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 13,
+        "losses": 19,
+        "ties": 0,
+        "pct": ".406"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 6,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 16,
+        "losses": 17,
+        "ties": 0,
+        "pct": ".485"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823144,
+     "gameDate": "2026-05-03T01:40:00Z",
+     "officialDate": "2026-05-02",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 118,
+        "name": "Kansas City Royals"
+       },
+       "score": 3,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 14,
+        "losses": 19,
+        "ties": 0,
+        "pct": ".424"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 2,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 16,
+        "losses": 18,
+        "ties": 0,
+        "pct": ".471"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823145,
+     "gameDate": "2026-05-03T20:10:00Z",
+     "officialDate": "2026-05-03",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 118,
+        "name": "Kansas City Royals"
+       },
+       "score": 4,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 15,
+        "losses": 19,
+        "ties": 0,
+        "pct": ".441"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 1,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 16,
+        "losses": 19,
+        "ties": 0,
+        "pct": ".457"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823143,
+     "gameDate": "2026-05-05T01:40:00Z",
+     "officialDate": "2026-05-04",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 144,
+        "name": "Atlanta Braves"
+       },
+       "score": 4,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 25,
+        "losses": 11,
+        "ties": 0,
+        "pct": ".694"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 5,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 17,
+        "losses": 19,
+        "ties": 0,
+        "pct": ".472"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823142,
+     "gameDate": "2026-05-06T01:40:00Z",
+     "officialDate": "2026-05-05",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 144,
+        "name": "Atlanta Braves"
+       },
+       "score": 3,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 26,
+        "losses": 11,
+        "ties": 0,
+        "pct": ".703"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 2,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 17,
+        "losses": 20,
+        "ties": 0,
+        "pct": ".459"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823141,
+     "gameDate": "2026-05-06T20:10:00Z",
+     "officialDate": "2026-05-06",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 144,
+        "name": "Atlanta Braves"
+       },
+       "score": 1,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 26,
+        "losses": 12,
+        "ties": 0,
+        "pct": ".684"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 3,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 18,
+        "losses": 20,
+        "ties": 0,
+        "pct": ".474"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 824607,
+     "gameDate": "2026-05-08T23:40:00Z",
+     "officialDate": "2026-05-08",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 12,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 19,
+        "losses": 20,
+        "ties": 0,
+        "pct": ".487"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 145,
+        "name": "Chicago White Sox"
+       },
+       "score": 8,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 17,
+        "losses": 21,
+        "ties": 0,
+        "pct": ".447"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 824606,
+     "gameDate": "2026-05-09T23:10:00Z",
+     "officialDate": "2026-05-09",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 1,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 19,
+        "losses": 21,
+        "ties": 0,
+        "pct": ".475"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 145,
+        "name": "Chicago White Sox"
+       },
+       "score": 6,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 18,
+        "losses": 21,
+        "ties": 0,
+        "pct": ".462"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 824605,
+     "gameDate": "2026-05-10T18:10:00Z",
+     "officialDate": "2026-05-10",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 1,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 19,
+        "losses": 22,
+        "ties": 0,
+        "pct": ".463"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 145,
+        "name": "Chicago White Sox"
+       },
+       "score": 2,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 19,
+        "losses": 21,
+        "ties": 0,
+        "pct": ".475"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 824199,
+     "gameDate": "2026-05-12T00:10:00Z",
+     "officialDate": "2026-05-11",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 3,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 20,
+        "losses": 22,
+        "ties": 0,
+        "pct": ".476"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 117,
+        "name": "Houston Astros"
+       },
+       "score": 1,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 16,
+        "losses": 26,
+        "ties": 0,
+        "pct": ".381"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 824197,
+     "gameDate": "2026-05-13T00:10:00Z",
+     "officialDate": "2026-05-12",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 10,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 21,
+        "losses": 22,
+        "ties": 0,
+        "pct": ".488"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 117,
+        "name": "Houston Astros"
+       },
+       "score": 2,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 16,
+        "losses": 27,
+        "ties": 0,
+        "pct": ".372"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 824195,
+     "gameDate": "2026-05-14T00:10:00Z",
+     "officialDate": "2026-05-13",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 3,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 21,
+        "losses": 23,
+        "ties": 0,
+        "pct": ".477"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 117,
+        "name": "Houston Astros"
+       },
+       "score": 4,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 17,
+        "losses": 27,
+        "ties": 0,
+        "pct": ".386"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 824196,
+     "gameDate": "2026-05-14T18:10:00Z",
+     "officialDate": "2026-05-14",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 8,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 22,
+        "losses": 23,
+        "ties": 0,
+        "pct": ".489"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 117,
+        "name": "Houston Astros"
+       },
+       "score": 3,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 17,
+        "losses": 28,
+        "ties": 0,
+        "pct": ".378"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823140,
+     "gameDate": "2026-05-16T01:40:00Z",
+     "officialDate": "2026-05-15",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 135,
+        "name": "San Diego Padres"
+       },
+       "score": 2,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 26,
+        "losses": 18,
+        "ties": 0,
+        "pct": ".591"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 0,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 22,
+        "losses": 24,
+        "ties": 0,
+        "pct": ".478"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823139,
+     "gameDate": "2026-05-16T23:15:00Z",
+     "officialDate": "2026-05-16",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 135,
+        "name": "San Diego Padres"
+       },
+       "score": 7,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 27,
+        "losses": 18,
+        "ties": 0,
+        "pct": ".600"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 4,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 22,
+        "losses": 25,
+        "ties": 0,
+        "pct": ".468"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823138,
+     "gameDate": "2026-05-17T23:20:00Z",
+     "officialDate": "2026-05-17",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 135,
+        "name": "San Diego Padres"
+       },
+       "score": 8,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 28,
+        "losses": 18,
+        "ties": 0,
+        "pct": ".609"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 3,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 22,
+        "losses": 26,
+        "ties": 0,
+        "pct": ".458"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823137,
+     "gameDate": "2026-05-19T01:40:00Z",
+     "officialDate": "2026-05-18",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 145,
+        "name": "Chicago White Sox"
+       },
+       "score": 1,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 24,
+        "losses": 23,
+        "ties": 0,
+        "pct": ".511"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 6,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 23,
+        "losses": 26,
+        "ties": 0,
+        "pct": ".469"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823136,
+     "gameDate": "2026-05-20T01:40:00Z",
+     "officialDate": "2026-05-19",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 145,
+        "name": "Chicago White Sox"
+       },
+       "score": 2,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 25,
+        "losses": 23,
+        "ties": 0,
+        "pct": ".521"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 1,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 23,
+        "losses": 27,
+        "ties": 0,
+        "pct": ".460"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823134,
+     "gameDate": "2026-05-20T20:10:00Z",
+     "officialDate": "2026-05-20",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 145,
+        "name": "Chicago White Sox"
+       },
+       "score": 4,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 25,
+        "losses": 24,
+        "ties": 0,
+        "pct": ".510"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 5,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 24,
+        "losses": 27,
+        "ties": 0,
+        "pct": ".471"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 824110,
+     "gameDate": "2026-05-22T23:40:00Z",
+     "officialDate": "2026-05-22",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 2,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 25,
+        "losses": 27,
+        "ties": 0,
+        "pct": ".481"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 118,
+        "name": "Kansas City Royals"
+       },
+       "score": 0,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 20,
+        "losses": 31,
+        "ties": 0,
+        "pct": ".392"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 824109,
+     "gameDate": "2026-05-23T20:10:00Z",
+     "officialDate": "2026-05-23",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 0,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 25,
+        "losses": 28,
+        "ties": 0,
+        "pct": ".472"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 118,
+        "name": "Kansas City Royals"
+       },
+       "score": 5,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 21,
+        "losses": 31,
+        "ties": 0,
+        "pct": ".404"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 824108,
+     "gameDate": "2026-05-24T18:10:00Z",
+     "officialDate": "2026-05-24",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 6,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 25,
+        "losses": 29,
+        "ties": 0,
+        "pct": ".463"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 118,
+        "name": "Kansas City Royals"
+       },
+       "score": 8,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 22,
+        "losses": 31,
+        "ties": 0,
+        "pct": ".415"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 825005,
+     "gameDate": "2026-05-26T01:40:00Z",
+     "officialDate": "2026-05-25",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 9,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 26,
+        "losses": 29,
+        "ties": 0,
+        "pct": ".473"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 133,
+        "name": "Athletics"
+       },
+       "score": 2,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 27,
+        "losses": 27,
+        "ties": 0,
+        "pct": ".500"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 825004,
+     "gameDate": "2026-05-27T01:40:00Z",
+     "officialDate": "2026-05-26",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 4,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 27,
+        "losses": 29,
+        "ties": 0,
+        "pct": ".482"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 133,
+        "name": "Athletics"
+       },
+       "score": 1,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 27,
+        "losses": 28,
+        "ties": 0,
+        "pct": ".491"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 825003,
+     "gameDate": "2026-05-27T19:05:00Z",
+     "officialDate": "2026-05-27",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 9,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 28,
+        "losses": 29,
+        "ties": 0,
+        "pct": ".491"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 133,
+        "name": "Athletics"
+       },
+       "score": 1,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 27,
+        "losses": 29,
+        "ties": 0,
+        "pct": ".482"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823135,
+     "gameDate": "2026-05-30T02:10:00Z",
+     "officialDate": "2026-05-29",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 109,
+        "name": "Arizona Diamondbacks"
+       },
+       "score": 6,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 31,
+        "losses": 25,
+        "ties": 0,
+        "pct": ".554"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 7,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 29,
+        "losses": 29,
+        "ties": 0,
+        "pct": ".500"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823132,
+     "gameDate": "2026-05-31T02:10:00Z",
+     "officialDate": "2026-05-30",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 109,
+        "name": "Arizona Diamondbacks"
+       },
+       "score": 1,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 31,
+        "losses": 26,
+        "ties": 0,
+        "pct": ".544"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 5,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 30,
+        "losses": 29,
+        "ties": 0,
+        "pct": ".508"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823133,
+     "gameDate": "2026-05-31T20:10:00Z",
+     "officialDate": "2026-05-31",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 109,
+        "name": "Arizona Diamondbacks"
+       },
+       "score": 2,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 31,
+        "losses": 27,
+        "ties": 0,
+        "pct": ".534"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 3,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 31,
+        "losses": 29,
+        "ties": 0,
+        "pct": ".517"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823131,
+     "gameDate": "2026-06-02T01:40:00Z",
+     "officialDate": "2026-06-01",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 121,
+        "name": "New York Mets"
+       },
+       "score": 2,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 26,
+        "losses": 34,
+        "ties": 0,
+        "pct": ".433"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 3,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 32,
+        "losses": 29,
+        "ties": 0,
+        "pct": ".525"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823129,
+     "gameDate": "2026-06-03T01:40:00Z",
+     "officialDate": "2026-06-02",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 121,
+        "name": "New York Mets"
+       },
+       "score": 3,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 26,
+        "losses": 35,
+        "ties": 0,
+        "pct": ".426"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 8,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 33,
+        "losses": 29,
+        "ties": 0,
+        "pct": ".532"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823130,
+     "gameDate": "2026-06-03T19:40:00Z",
+     "officialDate": "2026-06-03",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 121,
+        "name": "New York Mets"
+       },
+       "score": 7,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 27,
+        "losses": 35,
+        "ties": 0,
+        "pct": ".435"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 1,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 33,
+        "losses": 30,
+        "ties": 0,
+        "pct": ".524"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 824271,
+     "gameDate": "2026-06-05T22:40:00Z",
+     "officialDate": "2026-06-05",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 3,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 33,
+        "losses": 31,
+        "ties": 0,
+        "pct": ".516"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 116,
+        "name": "Detroit Tigers"
+       },
+       "score": 7,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 26,
+        "losses": 38,
+        "ties": 0,
+        "pct": ".406"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 824269,
+     "gameDate": "2026-06-06T17:10:00Z",
+     "officialDate": "2026-06-06",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 4,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 34,
+        "losses": 31,
+        "ties": 0,
+        "pct": ".523"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 116,
+        "name": "Detroit Tigers"
+       },
+       "score": 0,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 26,
+        "losses": 39,
+        "ties": 0,
+        "pct": ".400"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 824268,
+     "gameDate": "2026-06-07T17:40:00Z",
+     "officialDate": "2026-06-07",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 4,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 34,
+        "losses": 32,
+        "ties": 0,
+        "pct": ".515"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 116,
+        "name": "Detroit Tigers"
+       },
+       "score": 5,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 27,
+        "losses": 39,
+        "ties": 0,
+        "pct": ".409"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 824829,
+     "gameDate": "2026-06-08T22:35:00Z",
+     "officialDate": "2026-06-08",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 6,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 35,
+        "losses": 32,
+        "ties": 0,
+        "pct": ".522"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 110,
+        "name": "Baltimore Orioles"
+       },
+       "score": 3,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 31,
+        "losses": 36,
+        "ties": 0,
+        "pct": ".463"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 824830,
+     "gameDate": "2026-06-09T22:35:00Z",
+     "officialDate": "2026-06-09",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 6,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 36,
+        "losses": 32,
+        "ties": 0,
+        "pct": ".529"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 110,
+        "name": "Baltimore Orioles"
+       },
+       "score": 5,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 31,
+        "losses": 37,
+        "ties": 0,
+        "pct": ".456"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 824831,
+     "gameDate": "2026-06-10T22:35:00Z",
+     "officialDate": "2026-06-10",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 2,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 36,
+        "losses": 33,
+        "ties": 0,
+        "pct": ".522"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 110,
+        "name": "Baltimore Orioles"
+       },
+       "score": 7,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 32,
+        "losses": 37,
+        "ties": 0,
+        "pct": ".464"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 824827,
+     "gameDate": "2026-06-11T23:05:00Z",
+     "officialDate": "2026-06-11",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 5,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 36,
+        "losses": 34,
+        "ties": 0,
+        "pct": ".514"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 110,
+        "name": "Baltimore Orioles"
+       },
+       "score": 7,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 33,
+        "losses": 37,
+        "ties": 0,
+        "pct": ".471"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 822726,
+     "gameDate": "2026-06-12T22:45:00Z",
+     "officialDate": "2026-06-12",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 10,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 37,
+        "losses": 34,
+        "ties": 0,
+        "pct": ".521"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 120,
+        "name": "Washington Nationals"
+       },
+       "score": 2,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 35,
+        "losses": 35,
+        "ties": 0,
+        "pct": ".500"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 822725,
+     "gameDate": "2026-06-13T20:05:00Z",
+     "officialDate": "2026-06-13",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 3,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 37,
+        "losses": 35,
+        "ties": 0,
+        "pct": ".514"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 120,
+        "name": "Washington Nationals"
+       },
+       "score": 8,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 36,
+        "losses": 35,
+        "ties": 0,
+        "pct": ".507"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 822722,
+     "gameDate": "2026-06-14T17:35:00Z",
+     "officialDate": "2026-06-14",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 1,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 37,
+        "losses": 36,
+        "ties": 0,
+        "pct": ".507"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 120,
+        "name": "Washington Nationals"
+       },
+       "score": 10,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 37,
+        "losses": 35,
+        "ties": 0,
+        "pct": ".514"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823128,
+     "gameDate": "2026-06-17T01:40:00Z",
+     "officialDate": "2026-06-16",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 110,
+        "name": "Baltimore Orioles"
+       },
+       "score": 1,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 34,
+        "losses": 40,
+        "ties": 0,
+        "pct": ".459"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 3,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 38,
+        "losses": 36,
+        "ties": 0,
+        "pct": ".514"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823127,
+     "gameDate": "2026-06-18T01:40:00Z",
+     "officialDate": "2026-06-17",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 110,
+        "name": "Baltimore Orioles"
+       },
+       "score": 5,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 35,
+        "losses": 40,
+        "ties": 0,
+        "pct": ".467"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 3,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 38,
+        "losses": 37,
+        "ties": 0,
+        "pct": ".507"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823125,
+     "gameDate": "2026-06-18T20:10:00Z",
+     "officialDate": "2026-06-18",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 110,
+        "name": "Baltimore Orioles"
+       },
+       "score": 0,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 35,
+        "losses": 41,
+        "ties": 0,
+        "pct": ".461"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 3,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 39,
+        "losses": 37,
+        "ties": 0,
+        "pct": ".513"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823124,
+     "gameDate": "2026-06-20T02:10:00Z",
+     "officialDate": "2026-06-19",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 111,
+        "name": "Boston Red Sox"
+       },
+       "score": 6,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 30,
+        "losses": 43,
+        "ties": 0,
+        "pct": ".411"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 2,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 39,
+        "losses": 38,
+        "ties": 0,
+        "pct": ".506"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823126,
+     "gameDate": "2026-06-21T02:10:00Z",
+     "officialDate": "2026-06-20",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 111,
+        "name": "Boston Red Sox"
+       },
+       "score": 5,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 31,
+        "losses": 43,
+        "ties": 0,
+        "pct": ".419"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 1,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 39,
+        "losses": 39,
+        "ties": 0,
+        "pct": ".500"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823123,
+     "gameDate": "2026-06-21T20:10:00Z",
+     "officialDate": "2026-06-21",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 111,
+        "name": "Boston Red Sox"
+       },
+       "score": 1,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 31,
+        "losses": 44,
+        "ties": 0,
+        "pct": ".413"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 3,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 40,
+        "losses": 39,
+        "ties": 0,
+        "pct": ".506"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823365,
+     "gameDate": "2026-06-23T22:40:00Z",
+     "officialDate": "2026-06-23",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 3,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 41,
+        "losses": 39,
+        "ties": 0,
+        "pct": ".513"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 134,
+        "name": "Pittsburgh Pirates"
+       },
+       "score": 2,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 39,
+        "losses": 40,
+        "ties": 0,
+        "pct": ".494"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823367,
+     "gameDate": "2026-06-24T22:40:00Z",
+     "officialDate": "2026-06-24",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 1,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 41,
+        "losses": 40,
+        "ties": 0,
+        "pct": ".506"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 134,
+        "name": "Pittsburgh Pirates"
+       },
+       "score": 11,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 40,
+        "losses": 40,
+        "ties": 0,
+        "pct": ".500"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823366,
+     "gameDate": "2026-06-25T16:35:00Z",
+     "officialDate": "2026-06-25",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 1,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 41,
+        "losses": 41,
+        "ties": 0,
+        "pct": ".500"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 134,
+        "name": "Pittsburgh Pirates"
+       },
+       "score": 5,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 41,
+        "losses": 40,
+        "ties": 0,
+        "pct": ".506"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 824423,
+     "gameDate": "2026-06-26T23:10:00Z",
+     "officialDate": "2026-06-26",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 3,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 42,
+        "losses": 41,
+        "ties": 0,
+        "pct": ".506"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 114,
+        "name": "Cleveland Guardians"
+       },
+       "score": 1,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 42,
+        "losses": 40,
+        "ties": 0,
+        "pct": ".512"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 824421,
+     "gameDate": "2026-06-27T23:10:00Z",
+     "officialDate": "2026-06-27",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 3,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 42,
+        "losses": 42,
+        "ties": 0,
+        "pct": ".500"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 114,
+        "name": "Cleveland Guardians"
+       },
+       "score": 4,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 43,
+        "losses": 40,
+        "ties": 0,
+        "pct": ".518"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 824422,
+     "gameDate": "2026-06-28T17:40:00Z",
+     "officialDate": "2026-06-28",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 5,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 42,
+        "losses": 43,
+        "ties": 0,
+        "pct": ".494"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 114,
+        "name": "Cleveland Guardians"
+       },
+       "score": 6,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 44,
+        "losses": 40,
+        "ties": 0,
+        "pct": ".524"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823121,
+     "gameDate": "2026-06-30T01:40:00Z",
+     "officialDate": "2026-06-29",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 108,
+        "name": "Los Angeles Angels"
+       },
+       "score": 2,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 36,
+        "losses": 50,
+        "ties": 0,
+        "pct": ".419"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 6,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 43,
+        "losses": 43,
+        "ties": 0,
+        "pct": ".500"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823122,
+     "gameDate": "2026-07-01T01:40:00Z",
+     "officialDate": "2026-06-30",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 108,
+        "name": "Los Angeles Angels"
+       },
+       "score": 3,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 36,
+        "losses": 51,
+        "ties": 0,
+        "pct": ".414"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 8,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 44,
+        "losses": 43,
+        "ties": 0,
+        "pct": ".506"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823119,
+     "gameDate": "2026-07-03T01:40:00Z",
+     "officialDate": "2026-07-02",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 108,
+        "name": "Los Angeles Angels"
+       },
+       "score": 0,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 36,
+        "losses": 52,
+        "ties": 0,
+        "pct": ".409"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 1,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 45,
+        "losses": 43,
+        "ties": 0,
+        "pct": ".511"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823120,
+     "gameDate": "2026-07-04T02:10:00Z",
+     "officialDate": "2026-07-03",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 141,
+        "name": "Toronto Blue Jays"
+       },
+       "score": 2,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 42,
+        "losses": 46,
+        "ties": 0,
+        "pct": ".477"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 0,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 45,
+        "losses": 44,
+        "ties": 0,
+        "pct": ".506"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823118,
+     "gameDate": "2026-07-04T20:10:00Z",
+     "officialDate": "2026-07-04",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 141,
+        "name": "Toronto Blue Jays"
+       },
+       "score": 0,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 42,
+        "losses": 47,
+        "ties": 0,
+        "pct": ".472"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 11,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 46,
+        "losses": 44,
+        "ties": 0,
+        "pct": ".511"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823117,
+     "gameDate": "2026-07-05T21:00:00Z",
+     "officialDate": "2026-07-05",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 141,
+        "name": "Toronto Blue Jays"
+       },
+       "score": 0,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 42,
+        "losses": 48,
+        "ties": 0,
+        "pct": ".467"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 4,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 47,
+        "losses": 44,
+        "ties": 0,
+        "pct": ".516"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823847,
+     "gameDate": "2026-07-07T22:40:00Z",
+     "officialDate": "2026-07-07",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 5,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 47,
+        "losses": 45,
+        "ties": 0,
+        "pct": ".511"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 146,
+        "name": "Miami Marlins"
+       },
+       "score": 6,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 50,
+        "losses": 42,
+        "ties": 0,
+        "pct": ".543"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823848,
+     "gameDate": "2026-07-08T22:40:00Z",
+     "officialDate": "2026-07-08",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 0,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 47,
+        "losses": 46,
+        "ties": 0,
+        "pct": ".505"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 146,
+        "name": "Miami Marlins"
+       },
+       "score": 2,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 51,
+        "losses": 42,
+        "ties": 0,
+        "pct": ".548"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823846,
+     "gameDate": "2026-07-09T22:40:00Z",
+     "officialDate": "2026-07-09",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 4,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 47,
+        "losses": 47,
+        "ties": 0,
+        "pct": ".500"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 146,
+        "name": "Miami Marlins"
+       },
+       "score": 8,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 52,
+        "losses": 42,
+        "ties": 0,
+        "pct": ".553"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 822955,
+     "gameDate": "2026-07-10T23:10:00Z",
+     "officialDate": "2026-07-10",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 2,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 47,
+        "losses": 48,
+        "ties": 0,
+        "pct": ".495"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 139,
+        "name": "Tampa Bay Rays"
+       },
+       "score": 7,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 55,
+        "losses": 37,
+        "ties": 0,
+        "pct": ".598"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 822953,
+     "gameDate": "2026-07-11T20:10:00Z",
+     "officialDate": "2026-07-11",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 1,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 47,
+        "losses": 49,
+        "ties": 0,
+        "pct": ".490"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 139,
+        "name": "Tampa Bay Rays"
+       },
+       "score": 6,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 37,
+        "ties": 0,
+        "pct": ".602"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 822951,
+     "gameDate": "2026-07-12T17:40:00Z",
+     "officialDate": "2026-07-12",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 8,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 48,
+        "losses": 49,
+        "ties": 0,
+        "pct": ".495"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 139,
+        "name": "Tampa Bay Rays"
+       },
+       "score": 2,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 38,
+        "ties": 0,
+        "pct": ".596"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823115,
+     "gameDate": "2026-07-18T02:10:00Z",
+     "officialDate": "2026-07-17",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 137,
+        "name": "San Francisco Giants"
+       },
+       "score": 7,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 42,
+        "losses": 55,
+        "ties": 0,
+        "pct": ".433"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 0,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 48,
+        "losses": 50,
+        "ties": 0,
+        "pct": ".490"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823116,
+     "gameDate": "2026-07-19T00:08:00Z",
+     "officialDate": "2026-07-18",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 137,
+        "name": "San Francisco Giants"
+       },
+       "score": 3,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 42,
+        "losses": 56,
+        "ties": 0,
+        "pct": ".429"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 4,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 49,
+        "losses": 50,
+        "ties": 0,
+        "pct": ".495"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823113,
+     "gameDate": "2026-07-19T20:10:00Z",
+     "officialDate": "2026-07-19",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 137,
+        "name": "San Francisco Giants"
+       },
+       "score": 3,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 42,
+        "losses": 57,
+        "ties": 0,
+        "pct": ".424"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 6,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 50,
+        "losses": 50,
+        "ties": 0,
+        "pct": ".500"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823112,
+     "gameDate": "2026-07-21T01:40:00Z",
+     "officialDate": "2026-07-20",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 113,
+        "name": "Cincinnati Reds"
+       },
+       "score": 0,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 45,
+        "losses": 54,
+        "ties": 0,
+        "pct": ".455"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 8,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 51,
+        "losses": 50,
+        "ties": 0,
+        "pct": ".505"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823114,
+     "gameDate": "2026-07-22T01:40:00Z",
+     "officialDate": "2026-07-21",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 113,
+        "name": "Cincinnati Reds"
+       },
+       "score": 4,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 46,
+        "losses": 54,
+        "ties": 0,
+        "pct": ".460"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 2,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 51,
+        "losses": 51,
+        "ties": 0,
+        "pct": ".500"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823110,
+     "gameDate": "2026-07-22T19:40:00Z",
+     "officialDate": "2026-07-22",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 113,
+        "name": "Cincinnati Reds"
+       },
+       "score": 5,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 47,
+        "losses": 54,
+        "ties": 0,
+        "pct": ".465"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 3,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 51,
+        "losses": 52,
+        "ties": 0,
+        "pct": ".495"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 822872,
+     "gameDate": "2026-07-25T00:05:00Z",
+     "officialDate": "2026-07-24",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 4,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 51,
+        "losses": 53,
+        "ties": 0,
+        "pct": ".490"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 140,
+        "name": "Texas Rangers"
+       },
+       "score": 5,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 52,
+        "losses": 51,
+        "ties": 0,
+        "pct": ".505"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 822869,
+     "gameDate": "2026-07-25T23:15:00Z",
+     "officialDate": "2026-07-25",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 1,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 51,
+        "losses": 54,
+        "ties": 0,
+        "pct": ".486"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 140,
+        "name": "Texas Rangers"
+       },
+       "score": 7,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 53,
+        "losses": 51,
+        "ties": 0,
+        "pct": ".510"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 822870,
+     "gameDate": "2026-07-26T18:35:00Z",
+     "officialDate": "2026-07-26",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 6,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 52,
+        "losses": 54,
+        "ties": 0,
+        "pct": ".491"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 140,
+        "name": "Texas Rangers"
+       },
+       "score": 4,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 53,
+        "losses": 52,
+        "ties": 0,
+        "pct": ".505"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 822868,
+     "gameDate": "2026-07-27T18:35:00Z",
+     "officialDate": "2026-07-27",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 3,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 52,
+        "losses": 55,
+        "ties": 0,
+        "pct": ".486"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 140,
+        "name": "Texas Rangers"
+       },
+       "score": 7,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 54,
+        "losses": 52,
+        "ties": 0,
+        "pct": ".509"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823923,
+     "gameDate": "2026-07-29T02:10:00Z",
+     "officialDate": "2026-07-28",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 7,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 53,
+        "losses": 55,
+        "ties": 0,
+        "pct": ".491"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 119,
+        "name": "Los Angeles Dodgers"
+       },
+       "score": 6,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 67,
+        "losses": 40,
+        "ties": 0,
+        "pct": ".626"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823924,
+     "gameDate": "2026-07-30T02:10:00Z",
+     "officialDate": "2026-07-29",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 2,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 53,
+        "losses": 56,
+        "ties": 0,
+        "pct": ".486"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 119,
+        "name": "Los Angeles Dodgers"
+       },
+       "score": 4,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 68,
+        "losses": 40,
+        "ties": 0,
+        "pct": ".630"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823921,
+     "gameDate": "2026-07-31T02:10:00Z",
+     "officialDate": "2026-07-30",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 2,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 53,
+        "losses": 57,
+        "ties": 0,
+        "pct": ".482"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 119,
+        "name": "Los Angeles Dodgers"
+       },
+       "score": 6,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 69,
+        "losses": 40,
+        "ties": 0,
+        "pct": ".633"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823111,
+     "gameDate": "2026-08-01T02:10:00Z",
+     "officialDate": "2026-07-31",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 142,
+        "name": "Minnesota Twins"
+       },
+       "score": 5,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 55,
+        "ties": 0,
+        "pct": ".505"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 3,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 53,
+        "losses": 58,
+        "ties": 0,
+        "pct": ".477"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823109,
+     "gameDate": "2026-08-01T20:10:00Z",
+     "officialDate": "2026-08-01",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 142,
+        "name": "Minnesota Twins"
+       },
+       "score": 3,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 56,
+        "ties": 0,
+        "pct": ".500"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 4,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 54,
+        "losses": 58,
+        "ties": 0,
+        "pct": ".482"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823107,
+     "gameDate": "2026-08-02T20:10:00Z",
+     "officialDate": "2026-08-02",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 142,
+        "name": "Minnesota Twins"
+       },
+       "score": 6,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 57,
+        "ties": 0,
+        "pct": ".496"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 7,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 55,
+        "losses": 58,
+        "ties": 0,
+        "pct": ".487"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823108,
+     "gameDate": "2026-08-05T01:40:00Z",
+     "officialDate": "2026-08-04",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 116,
+        "name": "Detroit Tigers"
+       },
+       "score": 8,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 55,
+        "losses": 58,
+        "ties": 0,
+        "pct": ".487"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 0,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 55,
+        "losses": 59,
+        "ties": 0,
+        "pct": ".482"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823106,
+     "gameDate": "2026-08-06T01:40:00Z",
+     "officialDate": "2026-08-05",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 116,
+        "name": "Detroit Tigers"
+       },
+       "score": 2,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 55,
+        "losses": 59,
+        "ties": 0,
+        "pct": ".482"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 4,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 59,
+        "ties": 0,
+        "pct": ".487"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823105,
+     "gameDate": "2026-08-06T20:10:00Z",
+     "officialDate": "2026-08-06",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 116,
+        "name": "Detroit Tigers"
+       },
+       "score": 11,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 59,
+        "ties": 0,
+        "pct": ".487"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 0,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 60,
+        "ties": 0,
+        "pct": ".483"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823103,
+     "gameDate": "2026-08-08T01:45:00Z",
+     "officialDate": "2026-08-07",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 139,
+        "name": "Tampa Bay Rays"
+       },
+       "score": 2,
+       "isWinner": true,
+       "leagueRecord": {
+        "wins": 69,
+        "losses": 46,
+        "ties": 0,
+        "pct": ".600"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": 1,
+       "isWinner": false,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 61,
+        "ties": 0,
+        "pct": ".479"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823102,
+     "gameDate": "2026-08-09T01:50:00Z",
+     "officialDate": "2026-08-08",
+     "status": {
+      "abstractGameState": "Preview",
+      "codedGameState": "P",
+      "detailedState": "Pre-Game",
+      "statusCode": "P",
+      "startTimeTBD": false,
+      "abstractGameCode": "P"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 139,
+        "name": "Tampa Bay Rays"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 69,
+        "losses": 46,
+        "ties": 0,
+        "pct": ".600"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 61,
+        "ties": 0,
+        "pct": ".479"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823104,
+     "gameDate": "2026-08-09T20:10:00Z",
+     "officialDate": "2026-08-09",
+     "status": {
+      "abstractGameState": "Preview",
+      "codedGameState": "S",
+      "detailedState": "Scheduled",
+      "statusCode": "S",
+      "startTimeTBD": false,
+      "abstractGameCode": "P"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 139,
+        "name": "Tampa Bay Rays"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 69,
+        "losses": 46,
+        "ties": 0,
+        "pct": ".600"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 61,
+        "ties": 0,
+        "pct": ".479"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823512,
+     "gameDate": "2026-08-11T23:05:00Z",
+     "officialDate": "2026-08-11",
+     "status": {
+      "abstractGameState": "Preview",
+      "codedGameState": "S",
+      "detailedState": "Scheduled",
+      "statusCode": "S",
+      "startTimeTBD": false,
+      "abstractGameCode": "P"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 61,
+        "ties": 0,
+        "pct": ".479"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 147,
+        "name": "New York Yankees"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 66,
+        "losses": 51,
+        "ties": 0,
+        "pct": ".564"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823511,
+     "gameDate": "2026-08-12T23:05:00Z",
+     "officialDate": "2026-08-12",
+     "status": {
+      "abstractGameState": "Preview",
+      "codedGameState": "S",
+      "detailedState": "Scheduled",
+      "statusCode": "S",
+      "startTimeTBD": false,
+      "abstractGameCode": "P"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 61,
+        "ties": 0,
+        "pct": ".479"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 147,
+        "name": "New York Yankees"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 66,
+        "losses": 51,
+        "ties": 0,
+        "pct": ".564"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823508,
+     "gameDate": "2026-08-13T17:35:00Z",
+     "officialDate": "2026-08-13",
+     "status": {
+      "abstractGameState": "Preview",
+      "codedGameState": "S",
+      "detailedState": "Scheduled",
+      "statusCode": "S",
+      "startTimeTBD": false,
+      "abstractGameCode": "P"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 61,
+        "ties": 0,
+        "pct": ".479"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 147,
+        "name": "New York Yankees"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 66,
+        "losses": 51,
+        "ties": 0,
+        "pct": ".564"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 824159,
+     "gameDate": "2026-08-15T00:10:00Z",
+     "officialDate": "2026-08-14",
+     "status": {
+      "abstractGameState": "Preview",
+      "codedGameState": "S",
+      "detailedState": "Scheduled",
+      "statusCode": "S",
+      "startTimeTBD": false,
+      "abstractGameCode": "P"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 61,
+        "ties": 0,
+        "pct": ".479"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 117,
+        "name": "Houston Astros"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 60,
+        "losses": 57,
+        "ties": 0,
+        "pct": ".513"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 824157,
+     "gameDate": "2026-08-15T23:10:00Z",
+     "officialDate": "2026-08-15",
+     "status": {
+      "abstractGameState": "Preview",
+      "codedGameState": "S",
+      "detailedState": "Scheduled",
+      "statusCode": "S",
+      "startTimeTBD": false,
+      "abstractGameCode": "P"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 61,
+        "ties": 0,
+        "pct": ".479"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 117,
+        "name": "Houston Astros"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 60,
+        "losses": 57,
+        "ties": 0,
+        "pct": ".513"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 824156,
+     "gameDate": "2026-08-16T23:20:00Z",
+     "officialDate": "2026-08-16",
+     "status": {
+      "abstractGameState": "Preview",
+      "codedGameState": "S",
+      "detailedState": "Scheduled",
+      "statusCode": "S",
+      "startTimeTBD": false,
+      "abstractGameCode": "P"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 61,
+        "ties": 0,
+        "pct": ".479"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 117,
+        "name": "Houston Astros"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 60,
+        "losses": 57,
+        "ties": 0,
+        "pct": ".513"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823749,
+     "gameDate": "2026-08-18T23:40:00Z",
+     "officialDate": "2026-08-18",
+     "status": {
+      "abstractGameState": "Preview",
+      "codedGameState": "S",
+      "detailedState": "Scheduled",
+      "statusCode": "S",
+      "startTimeTBD": false,
+      "abstractGameCode": "P"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 61,
+        "ties": 0,
+        "pct": ".479"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 158,
+        "name": "Milwaukee Brewers"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 72,
+        "losses": 44,
+        "ties": 0,
+        "pct": ".621"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823748,
+     "gameDate": "2026-08-19T23:40:00Z",
+     "officialDate": "2026-08-19",
+     "status": {
+      "abstractGameState": "Preview",
+      "codedGameState": "S",
+      "detailedState": "Scheduled",
+      "statusCode": "S",
+      "startTimeTBD": false,
+      "abstractGameCode": "P"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 61,
+        "ties": 0,
+        "pct": ".479"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 158,
+        "name": "Milwaukee Brewers"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 72,
+        "losses": 44,
+        "ties": 0,
+        "pct": ".621"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823747,
+     "gameDate": "2026-08-20T18:10:00Z",
+     "officialDate": "2026-08-20",
+     "status": {
+      "abstractGameState": "Preview",
+      "codedGameState": "S",
+      "detailedState": "Scheduled",
+      "statusCode": "S",
+      "startTimeTBD": false,
+      "abstractGameCode": "P"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 61,
+        "ties": 0,
+        "pct": ".479"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 158,
+        "name": "Milwaukee Brewers"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 72,
+        "losses": 44,
+        "ties": 0,
+        "pct": ".621"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823101,
+     "gameDate": "2026-08-22T02:10:00Z",
+     "officialDate": "2026-08-21",
+     "status": {
+      "abstractGameState": "Preview",
+      "codedGameState": "S",
+      "detailedState": "Scheduled",
+      "statusCode": "S",
+      "startTimeTBD": false,
+      "abstractGameCode": "P"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 112,
+        "name": "Chicago Cubs"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 68,
+        "losses": 49,
+        "ties": 0,
+        "pct": ".581"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 61,
+        "ties": 0,
+        "pct": ".479"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823100,
+     "gameDate": "2026-08-22T23:15:00Z",
+     "officialDate": "2026-08-22",
+     "status": {
+      "abstractGameState": "Preview",
+      "codedGameState": "S",
+      "detailedState": "Scheduled",
+      "statusCode": "S",
+      "startTimeTBD": false,
+      "abstractGameCode": "P"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 112,
+        "name": "Chicago Cubs"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 68,
+        "losses": 49,
+        "ties": 0,
+        "pct": ".581"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 61,
+        "ties": 0,
+        "pct": ".479"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823099,
+     "gameDate": "2026-08-23T20:10:00Z",
+     "officialDate": "2026-08-23",
+     "status": {
+      "abstractGameState": "Preview",
+      "codedGameState": "S",
+      "detailedState": "Scheduled",
+      "statusCode": "S",
+      "startTimeTBD": false,
+      "abstractGameCode": "P"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 112,
+        "name": "Chicago Cubs"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 68,
+        "losses": 49,
+        "ties": 0,
+        "pct": ".581"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 61,
+        "ties": 0,
+        "pct": ".479"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823097,
+     "gameDate": "2026-08-25T01:40:00Z",
+     "officialDate": "2026-08-24",
+     "status": {
+      "abstractGameState": "Preview",
+      "codedGameState": "S",
+      "detailedState": "Scheduled",
+      "statusCode": "S",
+      "startTimeTBD": false,
+      "abstractGameCode": "P"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 143,
+        "name": "Philadelphia Phillies"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 62,
+        "losses": 55,
+        "ties": 0,
+        "pct": ".530"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 61,
+        "ties": 0,
+        "pct": ".479"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823098,
+     "gameDate": "2026-08-26T01:40:00Z",
+     "officialDate": "2026-08-25",
+     "status": {
+      "abstractGameState": "Preview",
+      "codedGameState": "S",
+      "detailedState": "Scheduled",
+      "statusCode": "S",
+      "startTimeTBD": false,
+      "abstractGameCode": "P"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 143,
+        "name": "Philadelphia Phillies"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 62,
+        "losses": 55,
+        "ties": 0,
+        "pct": ".530"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 61,
+        "ties": 0,
+        "pct": ".479"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823096,
+     "gameDate": "2026-08-26T20:10:00Z",
+     "officialDate": "2026-08-26",
+     "status": {
+      "abstractGameState": "Preview",
+      "codedGameState": "S",
+      "detailedState": "Scheduled",
+      "statusCode": "S",
+      "startTimeTBD": false,
+      "abstractGameCode": "P"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 143,
+        "name": "Philadelphia Phillies"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 62,
+        "losses": 55,
+        "ties": 0,
+        "pct": ".530"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 61,
+        "ties": 0,
+        "pct": ".479"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 822769,
+     "gameDate": "2026-08-28T23:15:00Z",
+     "officialDate": "2026-08-28",
+     "status": {
+      "abstractGameState": "Preview",
+      "codedGameState": "S",
+      "detailedState": "Scheduled",
+      "statusCode": "S",
+      "startTimeTBD": false,
+      "abstractGameCode": "P"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 61,
+        "ties": 0,
+        "pct": ".479"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 141,
+        "name": "Toronto Blue Jays"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 55,
+        "losses": 62,
+        "ties": 0,
+        "pct": ".470"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 822770,
+     "gameDate": "2026-08-29T19:07:00Z",
+     "officialDate": "2026-08-29",
+     "status": {
+      "abstractGameState": "Preview",
+      "codedGameState": "S",
+      "detailedState": "Scheduled",
+      "statusCode": "S",
+      "startTimeTBD": false,
+      "abstractGameCode": "P"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 61,
+        "ties": 0,
+        "pct": ".479"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 141,
+        "name": "Toronto Blue Jays"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 55,
+        "losses": 62,
+        "ties": 0,
+        "pct": ".470"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 822766,
+     "gameDate": "2026-08-30T17:37:00Z",
+     "officialDate": "2026-08-30",
+     "status": {
+      "abstractGameState": "Preview",
+      "codedGameState": "S",
+      "detailedState": "Scheduled",
+      "statusCode": "S",
+      "startTimeTBD": false,
+      "abstractGameCode": "P"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 61,
+        "ties": 0,
+        "pct": ".479"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 141,
+        "name": "Toronto Blue Jays"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 55,
+        "losses": 62,
+        "ties": 0,
+        "pct": ".470"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 824719,
+     "gameDate": "2026-08-31T22:45:00Z",
+     "officialDate": "2026-08-31",
+     "status": {
+      "abstractGameState": "Preview",
+      "codedGameState": "S",
+      "detailedState": "Scheduled",
+      "statusCode": "S",
+      "startTimeTBD": false,
+      "abstractGameCode": "P"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 61,
+        "ties": 0,
+        "pct": ".479"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 111,
+        "name": "Boston Red Sox"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 64,
+        "losses": 51,
+        "ties": 0,
+        "pct": ".557"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 824716,
+     "gameDate": "2026-09-01T22:45:00Z",
+     "officialDate": "2026-09-01",
+     "status": {
+      "abstractGameState": "Preview",
+      "codedGameState": "S",
+      "detailedState": "Scheduled",
+      "statusCode": "S",
+      "startTimeTBD": false,
+      "abstractGameCode": "P"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 61,
+        "ties": 0,
+        "pct": ".479"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 111,
+        "name": "Boston Red Sox"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 64,
+        "losses": 51,
+        "ties": 0,
+        "pct": ".557"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 824717,
+     "gameDate": "2026-09-02T20:10:00Z",
+     "officialDate": "2026-09-02",
+     "status": {
+      "abstractGameState": "Preview",
+      "codedGameState": "S",
+      "detailedState": "Scheduled",
+      "statusCode": "S",
+      "startTimeTBD": false,
+      "abstractGameCode": "P"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 61,
+        "ties": 0,
+        "pct": ".479"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 111,
+        "name": "Boston Red Sox"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 64,
+        "losses": 51,
+        "ties": 0,
+        "pct": ".557"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823095,
+     "gameDate": "2026-09-04T01:40:00Z",
+     "officialDate": "2026-09-03",
+     "status": {
+      "abstractGameState": "Preview",
+      "codedGameState": "S",
+      "detailedState": "Scheduled",
+      "statusCode": "S",
+      "startTimeTBD": false,
+      "abstractGameCode": "P"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 133,
+        "name": "Athletics"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 45,
+        "losses": 71,
+        "ties": 0,
+        "pct": ".388"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 61,
+        "ties": 0,
+        "pct": ".479"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823093,
+     "gameDate": "2026-09-05T02:10:00Z",
+     "officialDate": "2026-09-04",
+     "status": {
+      "abstractGameState": "Preview",
+      "codedGameState": "S",
+      "detailedState": "Scheduled",
+      "statusCode": "S",
+      "startTimeTBD": false,
+      "abstractGameCode": "P"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 133,
+        "name": "Athletics"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 45,
+        "losses": 71,
+        "ties": 0,
+        "pct": ".388"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 61,
+        "ties": 0,
+        "pct": ".479"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823094,
+     "gameDate": "2026-09-06T01:40:00Z",
+     "officialDate": "2026-09-05",
+     "status": {
+      "abstractGameState": "Preview",
+      "codedGameState": "S",
+      "detailedState": "Scheduled",
+      "statusCode": "S",
+      "startTimeTBD": false,
+      "abstractGameCode": "P"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 133,
+        "name": "Athletics"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 45,
+        "losses": 71,
+        "ties": 0,
+        "pct": ".388"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 61,
+        "ties": 0,
+        "pct": ".479"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823091,
+     "gameDate": "2026-09-06T20:10:00Z",
+     "officialDate": "2026-09-06",
+     "status": {
+      "abstractGameState": "Preview",
+      "codedGameState": "S",
+      "detailedState": "Scheduled",
+      "statusCode": "S",
+      "startTimeTBD": false,
+      "abstractGameCode": "P"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 133,
+        "name": "Athletics"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 45,
+        "losses": 71,
+        "ties": 0,
+        "pct": ".388"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 61,
+        "ties": 0,
+        "pct": ".479"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823092,
+     "gameDate": "2026-09-09T01:40:00Z",
+     "officialDate": "2026-09-08",
+     "status": {
+      "abstractGameState": "Preview",
+      "codedGameState": "S",
+      "detailedState": "Scheduled",
+      "statusCode": "S",
+      "startTimeTBD": false,
+      "abstractGameCode": "P"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 140,
+        "name": "Texas Rangers"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 58,
+        "losses": 58,
+        "ties": 0,
+        "pct": ".500"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 61,
+        "ties": 0,
+        "pct": ".479"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823090,
+     "gameDate": "2026-09-09T20:10:00Z",
+     "officialDate": "2026-09-09",
+     "status": {
+      "abstractGameState": "Preview",
+      "codedGameState": "S",
+      "detailedState": "Scheduled",
+      "statusCode": "S",
+      "startTimeTBD": false,
+      "abstractGameCode": "P"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 140,
+        "name": "Texas Rangers"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 58,
+        "losses": 58,
+        "ties": 0,
+        "pct": ".500"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 61,
+        "ties": 0,
+        "pct": ".479"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823088,
+     "gameDate": "2026-09-10T20:10:00Z",
+     "officialDate": "2026-09-10",
+     "status": {
+      "abstractGameState": "Preview",
+      "codedGameState": "S",
+      "detailedState": "Scheduled",
+      "statusCode": "S",
+      "startTimeTBD": false,
+      "abstractGameCode": "P"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 140,
+        "name": "Texas Rangers"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 58,
+        "losses": 58,
+        "ties": 0,
+        "pct": ".500"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 61,
+        "ties": 0,
+        "pct": ".479"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 824954,
+     "gameDate": "2026-09-12T01:40:00Z",
+     "officialDate": "2026-09-11",
+     "status": {
+      "abstractGameState": "Preview",
+      "codedGameState": "S",
+      "detailedState": "Scheduled",
+      "statusCode": "S",
+      "startTimeTBD": false,
+      "abstractGameCode": "P"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 61,
+        "ties": 0,
+        "pct": ".479"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 133,
+        "name": "Athletics"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 45,
+        "losses": 71,
+        "ties": 0,
+        "pct": ".388"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 824955,
+     "gameDate": "2026-09-13T01:40:00Z",
+     "officialDate": "2026-09-12",
+     "status": {
+      "abstractGameState": "Preview",
+      "codedGameState": "S",
+      "detailedState": "Scheduled",
+      "statusCode": "S",
+      "startTimeTBD": false,
+      "abstractGameCode": "P"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 61,
+        "ties": 0,
+        "pct": ".479"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 133,
+        "name": "Athletics"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 45,
+        "losses": 71,
+        "ties": 0,
+        "pct": ".388"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 824952,
+     "gameDate": "2026-09-13T20:05:00Z",
+     "officialDate": "2026-09-13",
+     "status": {
+      "abstractGameState": "Preview",
+      "codedGameState": "S",
+      "detailedState": "Scheduled",
+      "statusCode": "S",
+      "startTimeTBD": false,
+      "abstractGameCode": "P"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 61,
+        "ties": 0,
+        "pct": ".479"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 133,
+        "name": "Athletics"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 45,
+        "losses": 71,
+        "ties": 0,
+        "pct": ".388"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823981,
+     "gameDate": "2026-09-15T01:38:00Z",
+     "officialDate": "2026-09-14",
+     "status": {
+      "abstractGameState": "Preview",
+      "codedGameState": "S",
+      "detailedState": "Scheduled",
+      "statusCode": "S",
+      "startTimeTBD": false,
+      "abstractGameCode": "P"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 61,
+        "ties": 0,
+        "pct": ".479"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 108,
+        "name": "Los Angeles Angels"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 45,
+        "losses": 71,
+        "ties": 0,
+        "pct": ".388"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823980,
+     "gameDate": "2026-09-16T01:38:00Z",
+     "officialDate": "2026-09-15",
+     "status": {
+      "abstractGameState": "Preview",
+      "codedGameState": "S",
+      "detailedState": "Scheduled",
+      "statusCode": "S",
+      "startTimeTBD": false,
+      "abstractGameCode": "P"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 61,
+        "ties": 0,
+        "pct": ".479"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 108,
+        "name": "Los Angeles Angels"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 45,
+        "losses": 71,
+        "ties": 0,
+        "pct": ".388"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823979,
+     "gameDate": "2026-09-17T01:38:00Z",
+     "officialDate": "2026-09-16",
+     "status": {
+      "abstractGameState": "Preview",
+      "codedGameState": "S",
+      "detailedState": "Scheduled",
+      "statusCode": "S",
+      "startTimeTBD": false,
+      "abstractGameCode": "P"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 61,
+        "ties": 0,
+        "pct": ".479"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 108,
+        "name": "Los Angeles Angels"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 45,
+        "losses": 71,
+        "ties": 0,
+        "pct": ".388"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 824303,
+     "gameDate": "2026-09-19T00:10:00Z",
+     "officialDate": "2026-09-18",
+     "status": {
+      "abstractGameState": "Preview",
+      "codedGameState": "S",
+      "detailedState": "Scheduled",
+      "statusCode": "S",
+      "startTimeTBD": false,
+      "abstractGameCode": "P"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 61,
+        "ties": 0,
+        "pct": ".479"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 115,
+        "name": "Colorado Rockies"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 45,
+        "losses": 71,
+        "ties": 0,
+        "pct": ".388"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 824304,
+     "gameDate": "2026-09-20T00:10:00Z",
+     "officialDate": "2026-09-19",
+     "status": {
+      "abstractGameState": "Preview",
+      "codedGameState": "S",
+      "detailedState": "Scheduled",
+      "statusCode": "S",
+      "startTimeTBD": false,
+      "abstractGameCode": "P"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 61,
+        "ties": 0,
+        "pct": ".479"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 115,
+        "name": "Colorado Rockies"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 45,
+        "losses": 71,
+        "ties": 0,
+        "pct": ".388"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 824300,
+     "gameDate": "2026-09-20T19:10:00Z",
+     "officialDate": "2026-09-20",
+     "status": {
+      "abstractGameState": "Preview",
+      "codedGameState": "S",
+      "detailedState": "Scheduled",
+      "statusCode": "S",
+      "startTimeTBD": false,
+      "abstractGameCode": "P"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 61,
+        "ties": 0,
+        "pct": ".479"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 115,
+        "name": "Colorado Rockies"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 45,
+        "losses": 71,
+        "ties": 0,
+        "pct": ".388"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823089,
+     "gameDate": "2026-09-23T01:40:00Z",
+     "officialDate": "2026-09-22",
+     "status": {
+      "abstractGameState": "Preview",
+      "codedGameState": "S",
+      "detailedState": "Scheduled",
+      "statusCode": "S",
+      "startTimeTBD": false,
+      "abstractGameCode": "P"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 117,
+        "name": "Houston Astros"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 60,
+        "losses": 57,
+        "ties": 0,
+        "pct": ".513"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 61,
+        "ties": 0,
+        "pct": ".479"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823086,
+     "gameDate": "2026-09-24T02:10:00Z",
+     "officialDate": "2026-09-23",
+     "status": {
+      "abstractGameState": "Preview",
+      "codedGameState": "S",
+      "detailedState": "Scheduled",
+      "statusCode": "S",
+      "startTimeTBD": false,
+      "abstractGameCode": "P"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 117,
+        "name": "Houston Astros"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 60,
+        "losses": 57,
+        "ties": 0,
+        "pct": ".513"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 61,
+        "ties": 0,
+        "pct": ".479"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823087,
+     "gameDate": "2026-09-25T01:40:00Z",
+     "officialDate": "2026-09-24",
+     "status": {
+      "abstractGameState": "Preview",
+      "codedGameState": "S",
+      "detailedState": "Scheduled",
+      "statusCode": "S",
+      "startTimeTBD": false,
+      "abstractGameCode": "P"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 108,
+        "name": "Los Angeles Angels"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 45,
+        "losses": 71,
+        "ties": 0,
+        "pct": ".388"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 61,
+        "ties": 0,
+        "pct": ".479"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823085,
+     "gameDate": "2026-09-26T02:10:00Z",
+     "officialDate": "2026-09-25",
+     "status": {
+      "abstractGameState": "Preview",
+      "codedGameState": "S",
+      "detailedState": "Scheduled",
+      "statusCode": "S",
+      "startTimeTBD": false,
+      "abstractGameCode": "P"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 108,
+        "name": "Los Angeles Angels"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 45,
+        "losses": 71,
+        "ties": 0,
+        "pct": ".388"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 61,
+        "ties": 0,
+        "pct": ".479"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823083,
+     "gameDate": "2026-09-27T01:40:00Z",
+     "officialDate": "2026-09-26",
+     "status": {
+      "abstractGameState": "Preview",
+      "codedGameState": "S",
+      "detailedState": "Scheduled",
+      "statusCode": "S",
+      "startTimeTBD": false,
+      "abstractGameCode": "P"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 108,
+        "name": "Los Angeles Angels"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 45,
+        "losses": 71,
+        "ties": 0,
+        "pct": ".388"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 61,
+        "ties": 0,
+        "pct": ".479"
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "games": [
+    {
+     "gamePk": 823084,
+     "gameDate": "2026-09-27T19:10:00Z",
+     "officialDate": "2026-09-27",
+     "status": {
+      "abstractGameState": "Preview",
+      "codedGameState": "S",
+      "detailedState": "Scheduled",
+      "statusCode": "S",
+      "startTimeTBD": false,
+      "abstractGameCode": "P"
+     },
+     "gameType": "R",
+     "teams": {
+      "away": {
+       "team": {
+        "id": 108,
+        "name": "Los Angeles Angels"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 45,
+        "losses": 71,
+        "ties": 0,
+        "pct": ".388"
+       }
+      },
+      "home": {
+       "team": {
+        "id": 136,
+        "name": "Seattle Mariners"
+       },
+       "score": null,
+       "isWinner": null,
+       "leagueRecord": {
+        "wins": 56,
+        "losses": 61,
+        "ties": 0,
+        "pct": ".479"
+       }
+      }
+     }
+    }
+   ]
+  }
+ ]
+}

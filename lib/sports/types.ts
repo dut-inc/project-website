@@ -191,4 +191,10 @@ export interface Team {
   nextGames: ScheduledGame[];
   seasonStats?: SeasonStats;
   gameStats?: GameStats;
+  /**
+   * Backend/provider error message. Set when this team's data source is
+   * unavailable (e.g. one league's API is down) — the rest of the
+   * dashboard keeps loading, and the card explains why this one is empty.
+   */
+  error?: string;
 }

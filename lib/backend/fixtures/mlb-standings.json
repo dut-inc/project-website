@@ -1,0 +1,178 @@
+{
+ "records": [
+  {
+   "division": {
+    "id": 201,
+    "link": "/api/v1/divisions/201"
+   },
+   "teamRecords": [
+    {
+     "team": {
+      "id": 139,
+      "name": "Rays"
+     },
+     "wins": 69,
+     "losses": 46,
+     "gamesBack": "-",
+     "divisionRank": "1"
+    },
+    {
+     "team": {
+      "id": 147,
+      "name": "Yankees"
+     },
+     "wins": 66,
+     "losses": 51,
+     "gamesBack": "4.0",
+     "divisionRank": "2"
+    },
+    {
+     "team": {
+      "id": 111,
+      "name": "Red Sox"
+     },
+     "wins": 64,
+     "losses": 51,
+     "gamesBack": "5.0",
+     "divisionRank": "3"
+    },
+    {
+     "team": {
+      "id": 110,
+      "name": "Orioles"
+     },
+     "wins": 56,
+     "losses": 60,
+     "gamesBack": "13.5",
+     "divisionRank": "4"
+    },
+    {
+     "team": {
+      "id": 141,
+      "name": "Blue Jays"
+     },
+     "wins": 55,
+     "losses": 62,
+     "gamesBack": "15.0",
+     "divisionRank": "5"
+    }
+   ]
+  },
+  {
+   "division": {
+    "id": 202,
+    "link": "/api/v1/divisions/202"
+   },
+   "teamRecords": [
+    {
+     "team": {
+      "id": 145,
+      "name": "White Sox"
+     },
+     "wins": 59,
+     "losses": 56,
+     "gamesBack": "-",
+     "divisionRank": "1"
+    },
+    {
+     "team": {
+      "id": 142,
+      "name": "Twins"
+     },
+     "wins": 58,
+     "losses": 59,
+     "gamesBack": "2.0",
+     "divisionRank": "2"
+    },
+    {
+     "team": {
+      "id": 114,
+      "name": "Guardians"
+     },
+     "wins": 58,
+     "losses": 59,
+     "gamesBack": "2.0",
+     "divisionRank": "3"
+    },
+    {
+     "team": {
+      "id": 116,
+      "name": "Tigers"
+     },
+     "wins": 56,
+     "losses": 60,
+     "gamesBack": "3.5",
+     "divisionRank": "4"
+    },
+    {
+     "team": {
+      "id": 118,
+      "name": "Royals"
+     },
+     "wins": 48,
+     "losses": 69,
+     "gamesBack": "12.0",
+     "divisionRank": "5"
+    }
+   ]
+  },
+  {
+   "division": {
+    "id": 200,
+    "link": "/api/v1/divisions/200"
+   },
+   "teamRecords": [
+    {
+     "team": {
+      "id": 117,
+      "name": "Astros"
+     },
+     "wins": 60,
+     "losses": 57,
+     "gamesBack": "-",
+     "divisionRank": "1"
+    },
+    {
+     "team": {
+      "id": 140,
+      "name": "Rangers"
+     },
+     "wins": 58,
+     "losses": 58,
+     "gamesBack": "1.5",
+     "divisionRank": "2"
+    },
+    {
+     "team": {
+      "id": 136,
+      "name": "Mariners"
+     },
+     "wins": 56,
+     "losses": 61,
+     "gamesBack": "4.0",
+     "divisionRank": "3"
+    },
+    {
+     "team": {
+      "id": 133,
+      "name": "Athletics"
+     },
+     "wins": 45,
+     "losses": 71,
+     "gamesBack": "14.5",
+     "divisionRank": "4"
+    },
+    {
+     "team": {
+      "id": 108,
+      "name": "Angels"
+     },
+     "wins": 45,
+     "losses": 71,
+     "gamesBack": "14.5",
+     "divisionRank": "5"
+    }
+   ]
+  }
+ ]
+}

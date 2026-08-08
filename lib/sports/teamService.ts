@@ -2,14 +2,15 @@
 //
 // Data-access boundary for the Seattle Sports Dashboard.
 //
-//   React components  →  TeamService  →  Mock data (for now)
-//                     →  TeamService  →  Supabase / backend (later)
+//   React components  →  TeamService  →  Mock data
+//                     →  TeamService  →  GET /api/teams  →  providers (now)
 //
-// The UI only ever talks to `TeamService`. Today `mockTeamService` returns
-// static data; when the Supabase/backend layer is ready, swap the default
-// below for a `SupabaseTeamService` implementing the same interface and no
-// component needs to change. The service contract is intentionally async
-// from day one so a real network round-trip drops in without refactoring.
+// The UI only ever talks to `TeamService`. Today `httpTeamService` fetches
+// the backend endpoint `GET /api/teams` (server-side provider layer in
+// lib/backend/). If the backend is unreachable, it degrades gracefully to
+// `mockTeamService` so the page still works. The service contract is async,
+// so the eventual Supabase-backed service drops in with zero component
+// changes.
 
 import { useEffect, useState } from "react";
 import type { Team } from "./types";
@@ -46,8 +47,59 @@ export const mockTeamService: TeamService = {
   },
 };
 
-/** Swap this default for the real implementation once the backend exists. */
-export const defaultTeamService: TeamService = mockTeamService;
+/**
+ * Live backend service: GET /api/teams → the server-side provider layer.
+ * All external sports APIs are called server-side; the browser only ever
+ * talks to this one endpoint.
+ */
+export const httpTeamService: TeamService = {
+  async getTeams() {
+    const res = await fetch("/api/teams", { cache: "no-store" });
+    if (!res.ok) throw new Error(`Dashboard API responded ${res.status}`);
+    const data: { teams?: Team[]; metadata?: DashboardMetadata } = await res.json();
+    if (!Array.isArray(data.teams)) throw new Error("Dashboard API returned no teams");
+    return data.teams;
+  },
+  async getTeam(id) {
+    const teams = await this.getTeams();
+    return teams.find((t) => t.id === id);
+  },
+  async getMetadata() {
+    const res = await fetch("/api/teams", { cache: "no-store" });
+    if (!res.ok) throw new Error(`Dashboard API responded ${res.status}`);
+    const data: { metadata?: DashboardMetadata } = await res.json();
+    if (!data.metadata) throw new Error("Dashboard API returned no metadata");
+    return data.metadata;
+  },
+};
+
+/**
+ * Resilient default: use live backend data, fall back to the mock snapshot
+ * if the API is unavailable (offline dev, backend not deployed yet).
+ */
+export const defaultTeamService: TeamService = {
+  async getTeams() {
+    try {
+      return await httpTeamService.getTeams();
+    } catch {
+      return mockTeamService.getTeams();
+    }
+  },
+  async getTeam(id) {
+    try {
+      return await httpTeamService.getTeam(id);
+    } catch {
+      return mockTeamService.getTeam(id);
+    }
+  },
+  async getMetadata() {
+    try {
+      return await httpTeamService.getMetadata();
+    } catch {
+      return mockTeamService.getMetadata();
+    }
+  },
+};
 
 export function useTeams(service: TeamService = defaultTeamService) {
   const [teams, setTeams] = useState<Team[]>([]);
