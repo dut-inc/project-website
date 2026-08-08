@@ -131,12 +131,14 @@ input {
 }
 
 /* ---------------------------------------------------------------------------
-   Pike Place Market theme — deep Seattle green + neon red signage
+   Pike Place Market theme — the Main Arcade building, straight from the
+   reference photo: silver-gray painted stucco, dark iron storefronts, a
+   red neon sign, and the red/cream/green striped awnings.
    --------------------------------------------------------------------------- */
 
 /* Neon tube lettering like the Public Market Center sign: each character
    is a red neon tube with a bright white-hot core — white fill, red tube
-   edge, and a red halo that bleeds into the dark green of the sign. */
+   edge, and a red halo that bleeds into the iron-dark storefront. */
 .neon-sign {
   color: #fff;
   -webkit-text-stroke: 0.04em rgba(255, 70, 56, 0.95);
@@ -168,15 +170,44 @@ input {
   animation: neon-breathe 3.4s ease-in-out infinite;
 }
 
-/* Flat Fir-Green board the cards sit on — the same deep green as the
-   Public Market Center sign housing (no gradients). */
+/* The board widgets sit on — the Market's painted moss-green wall. */
 .market-board {
-  background-color: #1d2d20;
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  position: relative;
+  overflow: hidden;
+  background-color: #5d6b46;
+  background-image:
+    radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.12), transparent 60%),
+    repeating-linear-gradient(
+      118deg,
+      rgba(255, 255, 255, 0.02) 0px,
+      rgba(255, 255, 255, 0.02) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+  border: 1px solid rgba(0, 0, 0, 0.28);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    inset 0 0 60px rgba(0, 0, 0, 0.28),
-    0 24px 48px -24px rgba(0, 0, 0, 0.75);
+    inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    inset 0 0 60px rgba(0, 0, 0, 0.14),
+    0 24px 48px -24px rgba(0, 0, 0, 0.6);
+}
+
+/* The white trim line dotted with green medallions that runs along the
+   top of the building — a repeating white band with green dots. */
+.market-board::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 14px;
+  background-color: #f2efe3;
+  background-image: radial-gradient(circle at 50% 50%, #5d6b46 4px, transparent 4.5px);
+  background-size: 34px 14px;
+  background-position: 0 0;
+  border-radius: inherit;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  pointer-events: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -17,12 +17,12 @@ export interface DragHandleProps {
 }
 
 /**
- * One reorderable team card — a wide, flat box that stacks full-width on
- * the board. Left is the team identity (with a solid team-color accent
- * bar), middle carries the live game / last game + next games, and the
- * right rail holds the drag grip. For live teams the score sits in the
- * exact middle of the box (1fr | auto | 1fr). The whole box is clickable
- * to expand; hovering brightens the border without scaling it.
+ * One reorderable team widget — a square, flat white storefront card that
+ * stacks full-width on the green board. Left is the team identity (big
+ * logo, no accent bar), middle carries the live game / last game + next
+ * games, and the right rail holds the drag grip. For live teams the score
+ * sits in the exact middle of the box (1fr | auto | 1fr). The whole box is
+ * clickable to expand; hovering brightens it without scaling it.
  */
 export default function TeamCard({
   team,
@@ -38,7 +38,6 @@ export default function TeamCard({
 }) {
   const isLive = Boolean(team.currentGame);
   const inactive = team.status === "inactive";
-  const accent = team.colors.primary;
 
   const rail = (
     <div className="flex shrink-0 items-center justify-between gap-3 pt-1 md:flex-col md:items-end md:justify-center md:gap-1.5 md:pt-0">
@@ -48,13 +47,13 @@ export default function TeamCard({
         onClick={(e) => e.stopPropagation()}
         aria-label={`Drag to reorder ${team.shortName}`}
         title="Drag to reorder"
-        className="flex cursor-grab items-center gap-1.5 rounded-md px-2 py-1 font-mono text-[10px] uppercase tracking-widest text-cream/40 transition-colors hover:bg-white/5 hover:text-cream/80 active:cursor-grabbing"
+        className="flex cursor-grab items-center gap-1.5 rounded-md px-2 py-1 font-mono text-[10px] uppercase tracking-widest text-ink2 transition-colors hover:bg-ink/5 hover:text-ink active:cursor-grabbing"
         style={{ touchAction: "none" }}
       >
         <GripIcon className="h-3.5 w-3.5" />
         <span className="hidden sm:inline">Reorder</span>
       </button>
-      <span className="flex items-center gap-1 font-mono text-[10px] uppercase tracking-widest text-cream/35 transition-colors group-hover:text-cream/75">
+      <span className="flex items-center gap-1 font-mono text-[10px] uppercase tracking-widest text-ink2/70 transition-colors group-hover:text-ink">
         Details
         <ChevronDownIcon className="h-3 w-3" />
       </span>
@@ -62,7 +61,7 @@ export default function TeamCard({
   );
 
   const body = inactive ? (
-    <p className="font-display text-lg font-semibold tracking-tight text-cream/90">bring em back!</p>
+    <p className="font-display text-lg font-semibold tracking-tight text-ink">bring em back!</p>
   ) : (
     <div className="flex flex-col gap-2">
       {team.previousGame && <GameSummary game={team.previousGame} />}
@@ -82,13 +81,10 @@ export default function TeamCard({
           onExpand(team);
         }
       }}
-      className={`group relative w-full cursor-pointer overflow-hidden rounded-2xl border border-white/10 bg-market-card shadow-[0_6px_18px_-12px_rgba(0,0,0,0.7)] outline-none transition-all duration-300 hover:border-white/25 hover:bg-market-cardHover hover:shadow-[0_14px_30px_-14px_rgba(0,0,0,0.8)] focus-visible:ring-2 focus-visible:ring-market-red/60 ${
-        dragging ? "ring-1 ring-white/20" : ""
+      className={`group relative w-full cursor-pointer border border-ink/15 bg-market-card shadow-[0_4px_14px_-10px_rgba(0,0,0,0.45)] outline-none transition-all duration-300 hover:border-ink/30 hover:bg-market-cardHover hover:shadow-[0_12px_28px_-14px_rgba(0,0,0,0.5)] focus-visible:ring-2 focus-visible:ring-market-red/70 ${
+        dragging ? "ring-1 ring-ink/25" : ""
       }`}
     >
-      {/* Solid team-color accent bar (flat — no gradients). */}
-      <span aria-hidden className="absolute inset-y-0 left-0 w-1.5" style={{ background: accent }} />
-
       {isLive ? (
         /* Live card — the score lands in the true middle of the box. The
            centered grid only kicks in at lg+ (below that the identity, score
@@ -106,15 +102,15 @@ export default function TeamCard({
         </div>
       ) : (
         <div className="flex flex-col gap-3 px-5 py-4 md:flex-row md:items-center md:gap-0 md:py-5">
-          <div className="md:w-[280px] md:shrink-0 md:pr-5">
+          <div className="md:w-[300px] md:shrink-0 md:pr-5">
             <TeamCardHeader team={team} />
           </div>
 
-          <div className="flex-1 py-1 md:min-w-0 md:border-l md:border-white/5 md:px-5 md:py-0">
+          <div className="flex-1 py-1 md:min-w-0 md:border-l md:border-ink/10 md:px-5 md:py-0">
             {body}
           </div>
 
-          <div className="md:border-l md:border-white/5 md:pl-4">{rail}</div>
+          <div className="md:border-l md:border-ink/10 md:pl-4">{rail}</div>
         </div>
       )}
     </div>

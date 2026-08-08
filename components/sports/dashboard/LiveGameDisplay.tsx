@@ -16,11 +16,11 @@ export default function LiveGameDisplay({ team }: { team: Team }) {
           middle of the box. Includes the period/clock and sport-specific
           situational text like a basketball run (game.detail). */}
       <div className="flex flex-wrap items-center justify-center gap-x-2.5 gap-y-0.5">
-        <span className="neon-soft flex items-center gap-1.5 font-mono text-[10px] font-semibold uppercase tracking-widest">
+        <span className="flex items-center gap-1.5 font-display text-[10px] font-semibold uppercase tracking-[0.22em] text-market-red">
           <LiveDot className="h-1.5 w-1.5" />
           Live
         </span>
-        <span className="font-mono text-[11px] uppercase tracking-wider text-cream/55">
+        <span className="font-mono text-[11px] uppercase tracking-wider text-ink2">
           {liveStatusLine(team)}
         </span>
       </div>

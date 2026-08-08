@@ -267,7 +267,7 @@ export default function TeamCardGrid({
           ) : (
             <div key="drag-placeholder" className="animate-fade-in">
               <div
-                className="rounded-xl border-2 border-dashed border-white/10 bg-white/[0.02]"
+                className="border-2 border-dashed border-white/40 bg-white/15"
                 style={{ height: drag?.height }}
               />
             </div>

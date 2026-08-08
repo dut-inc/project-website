@@ -40,14 +40,20 @@ const config: Config = {
           accent: "#FF9552",
         },
         market: {
-          // Fir Green — the official heritage green of the Public Market
-          // Center sign housing (per Pike Place Market PDA standards).
-          green: "#1D2D20",
-          deep: "#151E18",
-          card: "#2A4534",
-          cardHover: "#335A40",
-          red: "#FF4638",
+          // Pike Place Market Main Arcade, straight from the reference
+          // photo (public/images/pike-place.jpg): the building's painted
+          // moss-green wall, a white trim line dotted with green
+          // medallions, the red neon sign on its dark iron scaffold, and
+          // white storefronts below. The board green itself lives in
+          // app/globals.css (.market-board).
+          card: "#F7F5EC", // widgets — white storefronts
+          cardHover: "#FCFBF4",
+          red: "#FF4638", // neon sign
           redSoft: "rgba(255,70,56,0.12)",
+          olive: "#4E5A38", // moss — W chips / BSO balls on white
+          oliveLight: "#DCE3C7",
+          brick: "#8A5A40", // brick — note chips on white
+          brickLight: "#EAD9CB",
         },
       },
       fontFamily: {

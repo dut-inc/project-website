@@ -5,17 +5,18 @@ import type { Team } from "@/lib/sports/types";
 import TeamLogo from "./TeamLogo";
 
 const streakStyles: Record<string, string> = {
-  W: "bg-emerald-400/15 text-emerald-300",
-  L: "bg-red-400/15 text-red-300",
-  T: "bg-white/10 text-white/60",
-  D: "bg-white/10 text-white/60",
+  W: "bg-market-oliveLight text-market-olive",
+  L: "bg-[#F3DAD2] text-[#8A3B28]",
+  T: "bg-ink/5 text-ink2",
+  D: "bg-ink/5 text-ink2",
 };
 
 /**
- * Identity block for a team strip: logo + team name + league/record meta.
- * Names render without the "Seattle" prefix (this is the Seattle board —
- * the sign above already says it). Inactive teams (e.g. the SuperSonics
- * placeholder) carry no real data, so only the identity shows.
+ * Identity block for a team strip: big logo + team name + league/record
+ * meta, styled for the white storefront widgets (ink text). Names render
+ * without the "Seattle" prefix (this is the Seattle board — the sign above
+ * already says it). Inactive teams (e.g. the SuperSonics placeholder)
+ * carry no real data, so only the identity shows.
  */
 export default function TeamCardHeader({ team }: { team: Team }) {
   const cfg = LEAGUES[team.league];
@@ -23,21 +24,21 @@ export default function TeamCardHeader({ team }: { team: Team }) {
   const inactive = team.status === "inactive";
 
   return (
-    <div className="flex items-center gap-3">
-      <TeamLogo colors={team.colors} shortName={team.shortName} logoUrl={team.logoUrl} size={46} />
+    <div className="flex items-center gap-3.5">
+      <TeamLogo colors={team.colors} shortName={team.shortName} logoUrl={team.logoUrl} size={60} />
 
       <div className="min-w-0 flex-1">
-        <h3 className="truncate font-display text-xl font-semibold leading-tight text-white">
+        <h3 className="truncate font-display text-2xl font-semibold leading-tight text-ink">
           {team.shortName}
         </h3>
         {!inactive && (
-          <p className="mt-0.5 truncate font-mono text-[10px] uppercase tracking-widest text-cream/50">
+          <p className="mt-0.5 truncate font-mono text-[10px] uppercase tracking-widest text-ink2">
             {cfg.shortName}
-            <span className="mx-1.5 text-cream/25">·</span>
+            <span className="mx-1.5 text-ink/30">·</span>
             {formatRecord(team)}
             {team.record.label && (
               <>
-                <span className="mx-1.5 text-cream/25">·</span>
+                <span className="mx-1.5 text-ink/30">·</span>
                 {team.record.label}
               </>
             )}

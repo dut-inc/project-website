@@ -16,8 +16,9 @@ const ORDER_KEY = "seattle-sports-dashboard-order";
  * reorderable card board. The user's preferred card order is saved to
  * local storage and restored on revisit — only the presentation order
  * changes, never the team data itself. Clicking a card opens the expanded
- * view. The visual language is Pike Place Market: Fir-Green sign housing
- * with red neon-tube signage.
+ * view. The visual language is Pike Place Market: the Main Arcade's
+ * moss-green painted wall with its white-dotted trim, the red neon sign
+ * on its iron scaffold, and white storefront widgets below.
  */
 export default function SportsDashboard() {
   const { teams, metadata, loading } = useTeams();
@@ -60,18 +61,34 @@ export default function SportsDashboard() {
 
   return (
     <div className="mt-8">
-      {/* Neon market sign — SEATTLE SPORTS CENTER, stacked vertically like
-          the Public Market Center sign, with SEATTLE and CENTER indented. */}
+      {/* Neon market sign on its iron scaffold — SEATTLE / SPORTS / CENTER,
+          stacked like the Public Market Center sign. SEATTLE and CENTER
+          share the same indent (PUBLIC and CENTER do the same), SPORTS
+          sits centered between them, and the letters breathe with extra
+          vertical spacing. */}
       <header className="text-center">
-        <h2 className="neon-sign animate-neon-breathe mx-auto w-fit text-left font-sign text-4xl uppercase leading-none tracking-[0.02em] sm:text-5xl md:text-6xl">
-          <span className="block pl-5 sm:pl-7">Seattle</span>
-          <span className="block">Sports</span>
-          <span className="block pl-5 sm:pl-7">Center</span>
-        </h2>
-        <div className="mx-auto mt-6 flex max-w-xs items-center justify-center gap-3">
-          <span className="h-px flex-1 bg-pinGold/50" />
-          <span className="text-cream/40">✦</span>
-          <span className="h-px flex-1 bg-pinGold/50" />
+        <div className="relative mx-auto w-fit">
+          {/* Iron backing frame + corner rivets (the sign housing). */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -inset-x-7 -inset-y-5 rounded-sm border-[5px] border-[#322e26] bg-[#201d18]/25"
+          />
+          <span aria-hidden className="pointer-events-none absolute -left-3.5 -top-3.5 h-2.5 w-2.5 rounded-full bg-[#4a453a]" />
+          <span aria-hidden className="pointer-events-none absolute -right-3.5 -top-3.5 h-2.5 w-2.5 rounded-full bg-[#4a453a]" />
+          <span aria-hidden className="pointer-events-none absolute -bottom-3.5 -left-3.5 h-2.5 w-2.5 rounded-full bg-[#4a453a]" />
+          <span aria-hidden className="pointer-events-none absolute -bottom-3.5 -right-3.5 h-2.5 w-2.5 rounded-full bg-[#4a453a]" />
+
+          {/* Support legs + feet — short enough to clear the badge row below. */}
+          <div aria-hidden className="pointer-events-none absolute left-10 top-full h-7 w-[5px] bg-[#322e26]" />
+          <div aria-hidden className="pointer-events-none absolute right-10 top-full h-7 w-[5px] bg-[#322e26]" />
+          <div aria-hidden className="pointer-events-none absolute left-6 top-full mt-6 h-[5px] w-14 bg-[#322e26]" />
+          <div aria-hidden className="pointer-events-none absolute right-6 top-full mt-6 h-[5px] w-14 bg-[#322e26]" />
+
+          <h2 className="neon-sign animate-neon-breathe relative text-left font-sign text-4xl uppercase leading-none tracking-[0.03em] sm:text-5xl md:text-6xl">
+            <span className="block pl-6 sm:pl-9">Seattle</span>
+            <span className="block py-1.5 sm:py-2">Sports</span>
+            <span className="block pl-6 sm:pl-9">Center</span>
+          </h2>
         </div>
       </header>
 
@@ -88,11 +105,6 @@ export default function SportsDashboard() {
           )}
         </div>
       </div>
-
-      <p className="mt-3 font-mono text-[11px] text-cream/35">
-        <span className="text-cream/50">drag</span> cards to reorder — saved to this browser ·{" "}
-        <span className="text-cream/50">click</span> a card for the full game &amp; season view
-      </p>
 
       {/* Live-now ticker */}
       {liveTeams.length > 0 && (
@@ -117,7 +129,7 @@ export default function SportsDashboard() {
         {loading ? (
           <div className="flex flex-col gap-3">
             {Array.from({ length: 6 }).map((_, i) => (
-              <div key={i} className="h-28 animate-pulse rounded-xl border border-white/5 bg-white/[0.04]" />
+              <div key={i} className="h-28 animate-pulse border border-white/20 bg-white/15" />
             ))}
           </div>
         ) : (
