@@ -137,17 +137,21 @@ input {
    --------------------------------------------------------------------------- */
 
 /* Neon tube lettering like the Public Market Center sign: each character
-   is a red neon tube with a bright white-hot core — white fill, red tube
-   edge, and a red halo that bleeds into the iron-dark storefront. */
+   is a bold red neon tube with a bright white-hot core. The thick red
+   tube edge is drawn with the text stroke; the white fill shines through
+   as the tube's hot interior, and the red halo bleeds into the
+   iron-dark storefront. */
 .neon-sign {
   color: #fff;
-  -webkit-text-stroke: 0.04em rgba(255, 70, 56, 0.95);
+  /* A medium red tube edge: thick enough that the white-hot core stays
+     a slim line down each letter stroke (like the real Public Market
+     sign), but not so thick that it swallows the white entirely. */
+  -webkit-text-stroke: 0.11em rgba(255, 70, 56, 0.98);
   text-shadow:
-    0 0 2px rgba(255, 255, 255, 0.9),
-    0 0 6px rgba(255, 70, 56, 0.85),
-    0 0 14px rgba(255, 70, 56, 0.65),
-    0 0 30px rgba(255, 70, 56, 0.45),
-    0 0 60px rgba(255, 70, 56, 0.3);
+    0 0 1px rgba(255, 255, 255, 0.9),
+    0 0 6px rgba(255, 70, 56, 0.9),
+    0 0 12px rgba(255, 70, 56, 0.6),
+    0 0 24px rgba(255, 70, 56, 0.4);
 }
 
 /* Dimmer neon accent for small meta text. */
@@ -155,6 +159,7 @@ input {
   color: #ff9c8a;
   text-shadow: 0 0 5px rgba(255, 70, 56, 0.35);
 }
+
 
 @keyframes neon-breathe {
   0%,
@@ -199,10 +204,10 @@ input {
   top: 0;
   left: 0;
   right: 0;
-  height: 14px;
+  height: 22px;
   background-color: #f2efe3;
-  background-image: radial-gradient(circle at 50% 50%, #5d6b46 4px, transparent 4.5px);
-  background-size: 34px 14px;
+  background-image: radial-gradient(circle at 50% 50%, #5d6b46 6px, transparent 6.5px);
+  background-size: 44px 22px;
   background-position: 0 0;
   border-radius: inherit;
   border-bottom-left-radius: 0;

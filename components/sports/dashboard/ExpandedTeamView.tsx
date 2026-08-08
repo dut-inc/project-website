@@ -18,17 +18,24 @@ export default function ExpandedTeamView({ team, onClose }: { team: Team; onClos
   const isLive = Boolean(team.currentGame);
   const [tab, setTab] = useState<ExpandedTab>(isLive ? "game" : "season");
 
-  // Escape to close + lock body scroll while open.
+  // Escape to close + lock body scroll while open. The scrollbar width is
+  // compensated with matching padding so hiding it doesn't widen the
+  // viewport and shove the card board sideways (and trip its FLIP
+  // animation) on open or close.
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
       if (e.key === "Escape") onClose();
     }
     window.addEventListener("keydown", onKey);
     const previousOverflow = document.body.style.overflow;
+    const previousPadding = document.body.style.paddingRight;
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
     document.body.style.overflow = "hidden";
+    if (scrollbarWidth > 0) document.body.style.paddingRight = `${scrollbarWidth}px`;
     return () => {
       window.removeEventListener("keydown", onKey);
       document.body.style.overflow = previousOverflow;
+      document.body.style.paddingRight = previousPadding;
     };
   }, [onClose]);
 

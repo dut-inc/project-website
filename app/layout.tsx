@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Bungee_Shade, Fraunces, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
+import { Bungee, Fraunces, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 
@@ -22,9 +22,9 @@ const mono = IBM_Plex_Mono({
   variable: "--font-mono",
 });
 
-// Bungee Shade draws each letter from widely-spaced parallel strokes — the
-// lined, multi-tube lettering of the Public Market sign. Caps-only.
-const sign = Bungee_Shade({
+// Bungee renders solid, chunky block caps — the bold neon lettering of
+// the Public Market Center sign. Caps-only.
+const sign = Bungee({
   subsets: ["latin"],
   weight: "400",
   variable: "--font-sign",

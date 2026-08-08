@@ -17,8 +17,8 @@ const ORDER_KEY = "seattle-sports-dashboard-order";
  * local storage and restored on revisit — only the presentation order
  * changes, never the team data itself. Clicking a card opens the expanded
  * view. The visual language is Pike Place Market: the Main Arcade's
- * moss-green painted wall with its white-dotted trim, the red neon sign
- * on its iron scaffold, and white storefront widgets below.
+ * moss-green painted wall with its white-dotted trim, the red neon sign,
+ * and white storefront widgets below.
  */
 export default function SportsDashboard() {
   const { teams, metadata, loading } = useTeams();
@@ -61,35 +61,18 @@ export default function SportsDashboard() {
 
   return (
     <div className="mt-8">
-      {/* Neon market sign on its iron scaffold — SEATTLE / SPORTS / CENTER,
-          stacked like the Public Market Center sign. SEATTLE and CENTER
-          share the same indent (PUBLIC and CENTER do the same), SPORTS
-          sits centered between them, and the letters breathe with extra
-          vertical spacing. */}
+      {/* Neon market sign — SEATTLE / SPORTS / CENTER stacked like the
+          Public Market Center sign. SEATTLE and CENTER share the same
+          indent so their left edges line up, SPORTS sits flush left, and
+          the letters breathe with extra vertical spacing. */}
       <header className="text-center">
-        <div className="relative mx-auto w-fit">
-          {/* Iron backing frame + corner rivets (the sign housing). */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute -inset-x-7 -inset-y-5 rounded-sm border-[5px] border-[#322e26] bg-[#201d18]/25"
-          />
-          <span aria-hidden className="pointer-events-none absolute -left-3.5 -top-3.5 h-2.5 w-2.5 rounded-full bg-[#4a453a]" />
-          <span aria-hidden className="pointer-events-none absolute -right-3.5 -top-3.5 h-2.5 w-2.5 rounded-full bg-[#4a453a]" />
-          <span aria-hidden className="pointer-events-none absolute -bottom-3.5 -left-3.5 h-2.5 w-2.5 rounded-full bg-[#4a453a]" />
-          <span aria-hidden className="pointer-events-none absolute -bottom-3.5 -right-3.5 h-2.5 w-2.5 rounded-full bg-[#4a453a]" />
-
-          {/* Support legs + feet — short enough to clear the badge row below. */}
-          <div aria-hidden className="pointer-events-none absolute left-10 top-full h-7 w-[5px] bg-[#322e26]" />
-          <div aria-hidden className="pointer-events-none absolute right-10 top-full h-7 w-[5px] bg-[#322e26]" />
-          <div aria-hidden className="pointer-events-none absolute left-6 top-full mt-6 h-[5px] w-14 bg-[#322e26]" />
-          <div aria-hidden className="pointer-events-none absolute right-6 top-full mt-6 h-[5px] w-14 bg-[#322e26]" />
-
-          <h2 className="neon-sign animate-neon-breathe relative text-left font-sign text-4xl uppercase leading-none tracking-[0.03em] sm:text-5xl md:text-6xl">
-            <span className="block pl-6 sm:pl-9">Seattle</span>
-            <span className="block py-1.5 sm:py-2">Sports</span>
-            <span className="block pl-6 sm:pl-9">Center</span>
-          </h2>
-        </div>
+        <h2 className="neon-sign animate-neon-breathe mx-auto w-fit text-left font-sign text-4xl uppercase leading-none tracking-[0.06em] sm:text-5xl md:text-6xl">
+          {/* Generous letter- and line-spacing so the red neon tubes read
+              as separate characters, not one merged glow. */}
+          <span className="block pl-[1.05em]">Seattle</span>
+          <span className="block py-3 sm:py-4">Sports</span>
+          <span className="block pl-[1.05em]">Center</span>
+        </h2>
       </header>
 
       {/* Data-source badge row + hint */}
@@ -108,7 +91,7 @@ export default function SportsDashboard() {
 
       {/* Live-now ticker */}
       {liveTeams.length > 0 && (
-        <div className="mt-5 flex flex-wrap items-center gap-2 rounded-xl border border-market-red/25 bg-market-redSoft px-3.5 py-2.5">
+        <div className="mt-6 flex flex-wrap items-center gap-2 rounded-none border border-market-red/25 bg-market-redSoft px-3.5 py-2.5">
           <span className="neon-soft flex items-center gap-1.5 font-mono text-[10px] font-semibold uppercase tracking-widest">
             <LiveDot className="h-1.5 w-1.5" /> Live now
           </span>
@@ -125,7 +108,9 @@ export default function SportsDashboard() {
       )}
 
       {/* Pike Place board */}
-      <div className="market-board mt-6 rounded-3xl p-4 sm:p-6">
+      {/* pt-6/pt-8 keep the first widget row clear of the white trim
+          line with the green medallions — p-4/p-6 alone was too tight. */}
+      <div className="market-board mt-8 rounded-none p-4 pt-6 sm:p-6 sm:pt-8">
         {loading ? (
           <div className="flex flex-col gap-3">
             {Array.from({ length: 6 }).map((_, i) => (
