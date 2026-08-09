@@ -20,9 +20,11 @@ export interface DragHandleProps {
  * One reorderable team widget — a square, flat white storefront card that
  * stacks full-width on the green board. Left is the team identity (big
  * logo, no accent bar), middle carries the live game / last game + next
- * games, and the right rail holds the drag grip. For live teams the score
- * sits in the exact middle of the box (1fr | auto | 1fr). The whole box is
- * clickable to expand; hovering brightens it without scaling it.
+ * games, and the right rail holds the drag grip. The live layout mirrors
+ * the non-live one (same 300px identity column, same divider rails) so the
+ * win streak and the lines beside it stay put when a game goes live. The
+ * whole box is clickable to expand; hovering brightens it without scaling
+ * it.
  */
 export default function TeamCard({
   team,
@@ -90,19 +92,28 @@ export default function TeamCard({
       }`}
     >
       {isLive ? (
-        /* Live card — the score lands in the true middle of the box. The
-           centered grid only kicks in at lg+ (below that the identity, score
-           and rail stack so the team name never gets squeezed). */
-        <div className="flex flex-col gap-3 px-5 py-4 lg:grid lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] lg:items-center lg:gap-0 lg:py-5">
-          <div className="min-w-0 lg:pr-6">
+        /* Live card — the identity column and divider rails mirror the
+           non-live layout exactly (300px header, same border positions), so
+           the win streak pill and the line on its right never shift when a
+           game goes live — only the middle content swaps to the score. Both
+           cards switch to their row layout at md+ (below that the identity,
+           score and rail stack so the team name never gets squeezed). */
+        <div className="flex flex-col gap-3 px-5 py-4 md:grid md:grid-cols-[300px_minmax(0,1fr)_auto] md:items-center md:gap-0 md:py-5">
+          <div className="min-w-0 md:pr-5">
             <TeamCardHeader team={team} />
           </div>
 
-          <div className="flex justify-center py-1 lg:py-0">
+          {/* self-stretch pins both divider rails to the full row height so
+              the left and right bars always match — when the live widget
+              (e.g. the MLB B-S-O columns) grows taller, both bars grow with
+              it; items-center keeps the content vertically centered. */}
+          <div className="flex justify-center py-1 md:min-w-0 md:self-stretch md:items-center md:border-l md:border-ink/10 md:px-5 md:py-0">
             <LiveGameDisplay team={team} />
           </div>
 
-          <div className="lg:justify-self-end lg:pl-6">{rail}</div>
+          <div className="md:flex md:items-center md:self-stretch md:border-l md:border-ink/10 md:pl-4">
+            {rail}
+          </div>
         </div>
       ) : (
         <div className="flex flex-col gap-3 px-5 py-4 md:flex-row md:items-center md:gap-0 md:py-5">

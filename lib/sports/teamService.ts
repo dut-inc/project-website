@@ -101,6 +101,13 @@ export const defaultTeamService: TeamService = {
   },
 };
 
+/** How often the dashboard re-polls the backend while mounted. Matches the
+ *  server cache TTL during a live game (~15s, see lib/backend/cache.ts), so
+ *  scores, BSO counts, and periods stay current without hammering the
+ *  providers. When nothing is live the backend serves its cached payload,
+ *  so a poll is a cheap no-op fetch. */
+const LIVE_POLL_MS = 15_000;
+
 export function useTeams(service: TeamService = defaultTeamService) {
   const [teams, setTeams] = useState<Team[]>([]);
   const [metadata, setMetadata] = useState<DashboardMetadata | null>(null);
@@ -108,15 +115,35 @@ export function useTeams(service: TeamService = defaultTeamService) {
 
   useEffect(() => {
     let cancelled = false;
-    setLoading(true);
-    Promise.all([service.getTeams(), service.getMetadata()]).then(([teamData, meta]) => {
-      if (cancelled) return;
-      setTeams(teamData);
-      setMetadata(meta);
-      setLoading(false);
-    });
+    let inFlight = false;
+
+    const load = async () => {
+      // Skip a tick rather than stack polls — a slow response must never
+      // resolve out of order and regress a fresher snapshot.
+      if (inFlight) return;
+      inFlight = true;
+      try {
+        const [teamData, meta] = await Promise.all([service.getTeams(), service.getMetadata()]);
+        if (cancelled) return;
+        setTeams(teamData);
+        setMetadata(meta);
+        setLoading(false);
+      } catch {
+        // A failed poll leaves the last good snapshot on screen; only clear
+        // the loading state so a broken backend never shows skeletons forever.
+        if (!cancelled) setLoading(false);
+      } finally {
+        inFlight = false;
+      }
+    };
+
+    // `loading` starts true; only the async load clears it, so no
+    // synchronous setState in the effect body.
+    load();
+    const timer = setInterval(load, LIVE_POLL_MS);
     return () => {
       cancelled = true;
+      clearInterval(timer);
     };
   }, [service]);
 

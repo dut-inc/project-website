@@ -133,6 +133,28 @@ export function parseMlbSchedule(
 // Live feed (balls / strikes / outs / inning + box stats)
 // ---------------------------------------------------------------------------
 
+interface MlbBoxTeam {
+  teamStats?: {
+    batting?: Record<string, number | string>;
+    pitching?: Record<string, number | string>;
+    fielding?: Record<string, number | string>;
+  };
+  /** Per-player stat map, keyed by `ID{personId}`. The live feed's box
+   *  `batters`/`pitchers` arrays hold bare ids, so the current batter's day
+   *  stats (hits / at-bats) and the current pitcher's pitch count come from
+   *  here. */
+  players?: Record<
+    string,
+    {
+      person?: { id?: number; fullName?: string };
+      stats?: {
+        batting?: { atBats?: number; hits?: number; summary?: string };
+        pitching?: { numberOfPitches?: number; summary?: string };
+      };
+    }
+  >;
+}
+
 interface MlbLiveFeed {
   liveData?: {
     linescore?: {
@@ -149,11 +171,22 @@ interface MlbLiveFeed {
         away?: { runs?: number };
       }>;
       teams?: { home?: { runs?: number }; away?: { runs?: number } };
+      /** Who's at the plate this half-inning. NOTE: the offense object's own
+       *  `pitcher` field is the BATTING team's pitcher (e.g. the one who
+       *  pitched the previous half-inning), so the current pitcher always
+       *  comes from `defense`. */
+      offense?: {
+        batter?: { id?: number; fullName?: string };
+      };
+      /** Who's on the mound this half-inning (the defending team). */
+      defense?: {
+        pitcher?: { id?: number; fullName?: string };
+      };
     };
     boxscore?: {
       teams?: {
-        home?: { teamStats?: { batting?: Record<string, number | string>; pitching?: Record<string, number | string>; fielding?: Record<string, number | string> } };
-        away?: { teamStats?: { batting?: Record<string, number | string>; pitching?: Record<string, number | string>; fielding?: Record<string, number | string> } };
+        home?: MlbBoxTeam;
+        away?: MlbBoxTeam;
       };
     };
   };
@@ -171,14 +204,32 @@ export function parseMlbLiveFeed(
   const balls = ls?.balls ?? 0;
   const strikes = ls?.strikes ?? 0;
 
-  const runnerCount = (ls?.runnersOnBase ?? []).length;
   const baseNames = ["1st", "2nd", "3rd"];
   const runnerDetail = (ls?.runnersOnBase ?? [])
     .map((r) => baseNames[(r as { base?: string }).base === "1B" ? 0 : (r as { base?: string }).base === "2B" ? 1 : 2])
     .filter(Boolean);
+  // Outs are already rendered as the B-S-O circles on the live widget, so
+  // the status line only carries runner detail ("runners on 1st & 2nd").
   const detailParts: string[] = [];
-  if (outs > 0) detailParts.push(`${outs} out${outs > 1 ? "s" : ""}`);
   if (runnerDetail.length > 0) detailParts.push(`runners on ${runnerDetail.join(" & ")}`);
+
+  // Current batter / pitcher. The batting side's batter and the defending
+  // side's pitcher come from the linescore; their day stats (batter
+  // hits/at-bats, pitcher pitch count) are matched by id against the box
+  // `players` map, keyed "ID{personId}".
+  const box = feed.liveData?.boxscore?.teams;
+  const battingSide: "away" | "home" = top ? "away" : "home";
+  const battingBox = battingSide === "away" ? box?.away : box?.home;
+  const pitchingBox = battingSide === "away" ? box?.home : box?.away;
+  const batter = ls?.offense?.batter;
+  // `linescore.offense.pitcher` is the BATTING team's pitcher (e.g. the one
+  // who pitched the previous half-inning) — the actual current pitcher is
+  // on the defense side of the linescore.
+  const pitcher = ls?.defense?.pitcher;
+  const batterStats =
+    batter?.id !== undefined ? battingBox?.players?.[`ID${batter.id}`]?.stats?.batting : undefined;
+  const pitcherStats =
+    pitcher?.id !== undefined ? pitchingBox?.players?.[`ID${pitcher.id}`]?.stats?.pitching : undefined;
 
   const homeRuns = ls?.teams?.home?.runs;
   const awayRuns = ls?.teams?.away?.runs;
@@ -192,11 +243,23 @@ export function parseMlbLiveFeed(
     opponentScore,
     period: `${top ? "Top" : "Bottom"} ${ordinal(inning)}`,
     detail: detailParts.length > 0 ? detailParts.join(" · ") : undefined,
-    sportSpecific: { Balls: balls, Strikes: strikes, Outs: outs },
+    sportSpecific: {
+      Balls: balls,
+      Strikes: strikes,
+      Outs: outs,
+      Batting: battingSide,
+      ...(batter?.fullName ? { Batter: batter.fullName } : {}),
+      ...(batterStats?.hits !== undefined && batterStats?.atBats !== undefined
+        ? { "Batter H": batterStats.hits, "Batter AB": batterStats.atBats }
+        : {}),
+      ...(pitcher?.fullName ? { Pitcher: pitcher.fullName } : {}),
+      ...(pitcherStats?.numberOfPitches !== undefined
+        ? { Pitches: pitcherStats.numberOfPitches }
+        : {}),
+    },
   };
 
   // Team stat lines from the boxscore ("9 – 6" style, ours first).
-  const box = feed.liveData?.boxscore?.teams;
   const oursBox = game.at === "home" ? box?.home : box?.away;
   const theirsBox = game.at === "home" ? box?.away : box?.home;
   const statOf = (rec: Record<string, string | number> | undefined, key: string): string | number | undefined => rec?.[key];
@@ -352,12 +415,19 @@ interface MlbLeadersResponse {
 /** Team leaders from the team-leaders endpoint (best-effort). */
 export function parseMlbTeamLeaders(json: MlbLeadersResponse): PlayerLeader[] {
   const leaders: PlayerLeader[] = [];
+  const seen = new Set<string>();
   for (const cat of json.teamLeaders ?? []) {
     const top = cat.leaders?.[0];
     if (!top?.person?.fullName || top.value === undefined) continue;
     const label = (cat.leaderCategory ?? "")
       .replace(/([a-z])([A-Z])/g, "$1 $2")
       .replace(/^./, (c) => c.toUpperCase());
+    // The team-leaders endpoint can repeat a category (e.g. stolenBases
+    // under both hitting and pitching), which previously produced duplicate
+    // React list keys. Keep one row per category + player.
+    const key = `${label}|${top.person.fullName}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
     leaders.push({ label, player: top.person.fullName, value: String(top.value) });
   }
   return leaders;

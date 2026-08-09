@@ -176,6 +176,18 @@ test("mlb team leaders parse", () => {
   assert.ok(parsed.some((l) => l.label === "Home Runs" && l.value === "18" && l.player === "Dominic Canzone"));
 });
 
+test("mlb team leaders dedupe repeated categories", () => {
+  const parsed = parseMlbTeamLeaders({
+    teamLeaders: [
+      { leaderCategory: "stolenBases", leaders: [{ person: { fullName: "Cal Raleigh" }, value: 5 }] },
+      { leaderCategory: "stolenBases", leaders: [{ person: { fullName: "Cal Raleigh" }, value: 5 }] },
+      { leaderCategory: "homeRuns", leaders: [{ person: { fullName: "Cal Raleigh" }, value: 24 }] },
+    ],
+  });
+  assert.equal(parsed.length, 2);
+  assert.equal(parsed.filter((l) => l.label === "Stolen Bases").length, 1);
+});
+
 test("mlb live feed: inning/outs/balls/strikes + box stats + scoring", () => {
   const feed = {
     liveData: {
@@ -194,11 +206,32 @@ test("mlb live feed: inning/outs/balls/strikes + box stats + scoring", () => {
           { num: 4, home: { runs: 0 }, away: { runs: 0 } },
           { num: 5, home: { runs: 2 }, away: { runs: 1 } },
         ],
+        // Top of the 7th → away (Astros) batting: away batter + home pitcher.
+        offense: {
+          batter: { id: 1, fullName: "Jose Altuve" },
+          // Red herring: offense.pitcher is the BATTING team's pitcher (e.g.
+          // the previous half-inning) — the parser must ignore it and take
+          // the current pitcher from defense.pitcher.
+          pitcher: { id: 999, fullName: "Tyler Wells" },
+        },
+        defense: {
+          pitcher: { id: 2, fullName: "Logan Gilbert" },
+        },
       },
       boxscore: {
         teams: {
-          home: { teamStats: { batting: { hits: 6, homeRuns: 1, leftOnBase: 4 }, fielding: { errors: 0 } } },
-          away: { teamStats: { batting: { hits: 9, homeRuns: 2, leftOnBase: 6 }, fielding: { errors: 2 } } },
+          home: {
+            teamStats: { batting: { hits: 6, homeRuns: 1, leftOnBase: 4 }, fielding: { errors: 0 } },
+            players: {
+              ID2: { person: { id: 2, fullName: "Logan Gilbert" }, stats: { pitching: { numberOfPitches: 84 } } },
+            },
+          },
+          away: {
+            teamStats: { batting: { hits: 9, homeRuns: 2, leftOnBase: 6 }, fielding: { errors: 2 } },
+            players: {
+              ID1: { person: { id: 1, fullName: "Jose Altuve" }, stats: { batting: { atBats: 4, hits: 2 } } },
+            },
+          },
         },
       },
     },
@@ -220,7 +253,15 @@ test("mlb live feed: inning/outs/balls/strikes + box stats + scoring", () => {
   assert.equal(currentGame.sportSpecific?.Balls, 1);
   assert.equal(currentGame.sportSpecific?.Strikes, 2);
   assert.equal(currentGame.sportSpecific?.Outs, 2);
-  assert.equal(currentGame.detail, "2 outs · runners on 1st & 2nd");
+  // Outs are dropped from the status line (the B-S-O circles show them);
+  // runner detail stays, and the batting side + batter/pitcher arrive.
+  assert.equal(currentGame.detail, "runners on 1st & 2nd");
+  assert.equal(currentGame.sportSpecific?.Batting, "away");
+  assert.equal(currentGame.sportSpecific?.Batter, "Jose Altuve");
+  assert.equal(currentGame.sportSpecific?.["Batter H"], 2);
+  assert.equal(currentGame.sportSpecific?.["Batter AB"], 4);
+  assert.equal(currentGame.sportSpecific?.Pitcher, "Logan Gilbert");
+  assert.equal(currentGame.sportSpecific?.Pitches, 84);
   assert.equal(currentGame.teamScore, 3);
   assert.equal(currentGame.opponentScore, 4);
   assert.ok(gameStats?.teamStats && gameStats.teamStats.some((s) => s.label === "Hits" && s.value === "6 – 9"));

@@ -49,17 +49,24 @@ export default function SportsDashboard() {
 
   // Restore the saved card order once, client-side only.
   useEffect(() => {
+    let rafId: number | undefined;
     try {
       const raw = window.localStorage.getItem(ORDER_KEY);
       if (raw) {
         const parsed: unknown = JSON.parse(raw);
         if (Array.isArray(parsed) && parsed.every((x) => typeof x === "string")) {
-          setOrderIds(parsed);
+          // Deferred so the write isn't synchronous inside the effect
+          // (react-hooks/set-state-in-effect): the board renders in default
+          // order first, then the saved order swaps in.
+          rafId = window.requestAnimationFrame(() => setOrderIds(parsed));
         }
       }
     } catch {
       // Ignore corrupted or unavailable storage.
     }
+    return () => {
+      if (rafId !== undefined) window.cancelAnimationFrame(rafId);
+    };
   }, []);
 
   const orderedTeams = useMemo(() => {
@@ -69,6 +76,14 @@ export default function SportsDashboard() {
     const saved = orderIds.map((id) => byId.get(id)).filter((t): t is Team => Boolean(t));
     return [...saved, ...teams.filter((t) => !seen.has(t.id))];
   }, [teams, orderIds]);
+
+  // Re-resolve the selected team against the freshest snapshot so the
+  // expanded panel (live score, B-S-O, scoring) stays current while the
+  // board polls — `selected` itself only holds the object captured at
+  // click time, which polling replaces.
+  const selectedTeam = selected
+    ? orderedTeams.find((t) => t.id === selected.id) ?? selected
+    : null;
 
   const handleReorder = useCallback((ids: string[]) => {
     setOrderIds(ids);
@@ -95,18 +110,14 @@ export default function SportsDashboard() {
         </h1>
       </header>
 
-      {/* Data-source badge row + hint */}
+      {/* Data snapshot badge (the source badge — "live data" — was removed
+          per product feedback; only the "as of" timestamp stays). */}
       <div className="mt-8 flex flex-wrap items-center justify-end gap-x-6 gap-y-3">
-        <div className="flex items-center gap-2">
-          <span className="rounded-full border border-market-red/30 bg-market-redSoft px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-widest text-market-red">
-            {metadata?.source ?? "mock"} data
+        {metadata?.asOf && (
+          <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-cream/50">
+            as of {metadata.asOf}
           </span>
-          {metadata?.asOf && (
-            <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-cream/50">
-              as of {metadata.asOf}
-            </span>
-          )}
-        </div>
+        )}
       </div>
 
       {/* Live-now ticker */}
@@ -143,7 +154,9 @@ export default function SportsDashboard() {
       </div>
 
       {/* Expanded team view */}
-      {selected && <ExpandedTeamView team={selected} onClose={() => setSelected(null)} />}
+      {selected && selectedTeam && (
+        <ExpandedTeamView team={selectedTeam} onClose={() => setSelected(null)} />
+      )}
     </div>
   );
 }

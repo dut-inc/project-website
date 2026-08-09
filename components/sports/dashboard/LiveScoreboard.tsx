@@ -51,6 +51,34 @@ export default function LiveScoreboard({
   const runnersOn = typeof sp?.["Runners on"] === "string" ? sp["Runners on"] : undefined;
   const chips = !bso && sp ? Object.entries(sp) : [];
 
+  // MLB batter / pitcher — the batting side's batter (with their day's
+  // hits/at-bats) and the defending side's pitcher (with pitch count),
+  // rendered on the same row as the B-S-O count circles: batter under the
+  // away team, pitcher under the home team.
+  const battingSide = typeof sp?.Batting === "string" ? sp.Batting : undefined;
+  const awayBats = battingSide === "away";
+  const homeBats = battingSide === "home";
+  const batterName = typeof sp?.Batter === "string" ? sp.Batter : undefined;
+  const batterH = typeof sp?.["Batter H"] === "number" ? sp["Batter H"] : undefined;
+  const batterAB = typeof sp?.["Batter AB"] === "number" ? sp["Batter AB"] : undefined;
+  const pitcherName = typeof sp?.Pitcher === "string" ? sp.Pitcher : undefined;
+  const pitches = typeof sp?.Pitches === "number" ? sp.Pitches : undefined;
+
+  const playerLine = (side: "away" | "home"): string | null => {
+    const isBatter = (side === "away" && awayBats) || (side === "home" && homeBats);
+    if (isBatter) {
+      if (!batterName) return null;
+      // Name-only fallback when the day's H/AB isn't in the box roster yet.
+      if (batterH === undefined || batterAB === undefined) return shortPlayerName(batterName);
+      return `${shortPlayerName(batterName)} · ${batterH}/${batterAB}`;
+    }
+    if (!pitcherName) return null;
+    if (pitches === undefined) return shortPlayerName(pitcherName);
+    return `${shortPlayerName(pitcherName)} · ${pitches} ${pitches === 1 ? "pitch" : "pitches"}`;
+  };
+  const awayLine = playerLine("away");
+  const homeLine = playerLine("home");
+
   const score = (
     <div
       className={`whitespace-nowrap font-display font-semibold leading-none text-ink tabular-nums ${
@@ -92,7 +120,7 @@ export default function LiveScoreboard({
           {/* Away (left) */}
           <div className="flex min-w-0 flex-1 items-center justify-end gap-2 sm:gap-2.5">
             <div className="min-w-0 text-right">
-              <p className="truncate font-mono text-[11px] font-semibold uppercase tracking-wider text-ink/80">
+              <p className="font-mono text-[11px] font-semibold uppercase tracking-wider text-ink/80">
                 {away.shortName}
               </p>
               <div className="mt-1 flex justify-end">
@@ -110,7 +138,7 @@ export default function LiveScoreboard({
           <div className="flex min-w-0 flex-1 items-center justify-start gap-2 sm:gap-2.5">
             <TeamLogo colors={home.colors} shortName={home.shortName} logoUrl={home.logoUrl} size={44} />
             <div className="min-w-0">
-              <p className="truncate font-mono text-[11px] font-semibold uppercase tracking-wider text-ink/80">
+              <p className="font-mono text-[11px] font-semibold uppercase tracking-wider text-ink/80">
                 {home.shortName}
               </p>
               <div className="mt-1">
@@ -119,7 +147,28 @@ export default function LiveScoreboard({
             </div>
           </div>
         </div>
-        {widget && <div className="flex justify-center">{widget}</div>}
+
+        {/* Second row: away batter | B-S-O | home pitcher — the player
+            names sit on the same level as the count circles. */}
+        {(widget || awayLine || homeLine) && (
+          <div className="flex w-full items-center justify-center gap-3 sm:gap-5">
+            <div className="flex min-w-0 flex-1 justify-end">
+              {awayLine && (
+                <p className="font-mono text-[10px] font-semibold leading-tight tabular-nums text-ink2">
+                  {awayLine}
+                </p>
+              )}
+            </div>
+            <div className="flex shrink-0 justify-center">{widget}</div>
+            <div className="flex min-w-0 flex-1 justify-start">
+              {homeLine && (
+                <p className="font-mono text-[10px] font-semibold leading-tight tabular-nums text-ink2">
+                  {homeLine}
+                </p>
+              )}
+            </div>
+          </div>
+        )}
       </div>
     );
   }
@@ -129,29 +178,54 @@ export default function LiveScoreboard({
       {/* Away (left) */}
       <div className="flex min-w-0 flex-col items-center gap-1.5">
         <TeamLogo colors={away.colors} shortName={away.shortName} logoUrl={away.logoUrl} size={large ? 60 : 52} />
-        <span className="w-full truncate text-center font-mono text-[11px] uppercase tracking-wider text-ink/80">
+        <span className="w-full text-center font-mono text-[11px] uppercase tracking-wider text-ink/80">
           {away.shortName}
         </span>
         <StatusDots status={game.awayStatus} />
       </div>
 
-      {/* Score + sport-specific widget (centered) */}
+      {/* Score (centered) */}
       <div className="flex min-w-0 flex-col items-center gap-2 px-1">{score}</div>
 
       {/* Home (right) */}
       <div className="flex min-w-0 flex-col items-center gap-1.5">
         <TeamLogo colors={home.colors} shortName={home.shortName} logoUrl={home.logoUrl} size={large ? 60 : 52} />
-        <span className="w-full truncate text-center font-mono text-[11px] uppercase tracking-wider text-ink/80">
+        <span className="w-full text-center font-mono text-[11px] uppercase tracking-wider text-ink/80">
           {home.shortName}
         </span>
         <StatusDots status={game.homeStatus} />
       </div>
 
-      {widget && (
-        <div className="col-span-3 flex justify-center">{widget}</div>
+      {/* Second row: away batter | B-S-O | home pitcher — the player names
+          sit on the same level as the count circles. */}
+      {(widget || awayLine || homeLine) && (
+        <>
+          <div className="flex items-center justify-center">
+            {awayLine && (
+              <p className="font-mono text-[10px] font-semibold leading-tight tabular-nums text-ink2">
+                {awayLine}
+              </p>
+            )}
+          </div>
+          <div className="flex justify-center">{widget}</div>
+          <div className="flex items-center justify-center">
+            {homeLine && (
+              <p className="font-mono text-[10px] font-semibold leading-tight tabular-nums text-ink2">
+                {homeLine}
+              </p>
+            )}
+          </div>
+        </>
       )}
     </div>
   );
+}
+
+/** "Cal Raleigh" → "C. Raleigh" — compact scorebug style for the card. */
+function shortPlayerName(fullName: string): string {
+  const parts = fullName.trim().split(/\s+/).filter(Boolean);
+  if (parts.length < 2) return fullName;
+  return `${parts[0][0]}. ${parts.slice(1).join(" ")}`;
 }
 
 /** Small dots under a team logo: filled = remaining timeouts/challenges. */
@@ -175,8 +249,9 @@ function StatusDots({ status }: { status?: LiveTeamStatus }) {
   );
 }
 
-/** Classic baseball scorebug: balls, strikes, outs as bare circles in a
- *  row (ball → strike → out), no labels, no box. */
+/** Classic baseball scorebug: balls, strikes, outs as bare circles stacked
+ *  in vertical columns — 3 balls, 2 strikes, 2 outs (the real max count
+ *  for each) — bottom-aligned so each column fills upward. No labels. */
 function BaseballBso({
   balls,
   strikes,
@@ -190,10 +265,10 @@ function BaseballBso({
 }) {
   return (
     <div className="flex flex-col items-center gap-1.5">
-      <div className="flex items-center gap-2.5">
-        <DotRow count={3} filled={balls} filledClass="bg-market-olive" />
-        <DotRow count={3} filled={strikes} filledClass="bg-[#C0392B]" />
-        <DotRow count={3} filled={outs} filledClass="bg-ink/70" />
+      <div className="flex items-end gap-2.5">
+        <DotColumn count={3} filled={balls} filledClass="bg-market-olive" />
+        <DotColumn count={2} filled={strikes} filledClass="bg-[#C0392B]" />
+        <DotColumn count={2} filled={outs} filledClass="bg-ink/70" />
       </div>
       {runnersOn && (
         <span className="font-mono text-[10px] uppercase tracking-wider text-ink2/80">{runnersOn}</span>
@@ -202,7 +277,7 @@ function BaseballBso({
   );
 }
 
-function DotRow({
+function DotColumn({
   count,
   filled,
   filledClass,
@@ -212,7 +287,7 @@ function DotRow({
   filledClass: string;
 }) {
   return (
-    <div className="flex items-center gap-[5px]">
+    <div className="flex flex-col items-center gap-[5px]">
       {Array.from({ length: count }).map((_, i) => (
         <span key={i} className={`h-[7px] w-[7px] rounded-full ${i < filled ? filledClass : "bg-ink/15"}`} />
       ))}
