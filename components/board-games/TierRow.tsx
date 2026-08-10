@@ -69,7 +69,7 @@ export default function TierRow({
           : ""
       }`}
     >
-      <div className="relative grid min-h-[13rem] grid-cols-[8rem_minmax(0,1fr)] items-stretch bg-[linear-gradient(90deg,rgba(0,0,0,0.32),transparent_18%,transparent_88%,rgba(0,0,0,0.28))] sm:min-h-[15rem] sm:grid-cols-[10rem_minmax(0,1fr)]">
+      <div aria-label={detail.label} className="relative grid min-h-[14rem] grid-cols-[8rem_minmax(0,1fr)] items-stretch bg-[linear-gradient(90deg,rgba(0,0,0,0.32),transparent_18%,transparent_88%,rgba(0,0,0,0.28))] sm:min-h-[16rem] sm:grid-cols-[10rem_minmax(0,1fr)]">
         <div className="relative z-10 m-2 aspect-[3/4] self-center overflow-hidden rounded-xl border-2 border-shelf-paper/35 bg-shelf-paper shadow-[0_7px_14px_rgba(0,0,0,0.46),inset_0_0_0_1px_rgba(255,255,255,0.3)] sm:m-3">
           <Image
             src={detail.image}
@@ -80,40 +80,23 @@ export default function TierRow({
             aria-hidden
           />
           <div
-            className="absolute inset-0"
+            className="absolute inset-0 flex flex-col justify-end p-2.5 text-shelf-paper sm:p-3"
             style={{
-              background: `linear-gradient(145deg, ${detail.color}d9 0%, rgba(30,20,20,0.36) 48%, rgba(15,12,14,0.88) 100%)`,
+              background: `linear-gradient(145deg, ${detail.color}b8 0%, rgba(30,20,20,0.2) 42%, rgba(15,12,14,0.9) 100%)`,
             }}
-            aria-hidden
-          />
-          <div className="relative flex h-full flex-col justify-between p-2 text-shelf-paper sm:p-3">
-            <div className="flex items-start justify-between gap-1">
-              <span className="font-mono text-[8px] uppercase tracking-[0.16em] text-shelf-paper/75">
-                tier
-              </span>
-              <span className="font-serif text-xl leading-none text-shelf-paper/80" aria-hidden>
-                {tier === "Unranked" ? "🃏" : tier === "S" ? "♠" : tier === "A" ? "♥" : tier === "B" ? "♦" : "♣"}
-              </span>
-            </div>
-            <div>
-              <span className="block font-display text-4xl italic leading-none drop-shadow-[0_2px_2px_rgba(0,0,0,0.55)] sm:text-5xl">
-                {detail.label}
-              </span>
-              <span className="mt-1 block font-mono text-[7px] uppercase leading-tight tracking-[0.12em] text-shelf-paper/75 sm:text-[8px]">
-                {detail.hint}
-              </span>
-            </div>
+          >
+            <span className="font-display text-lg italic leading-none drop-shadow-[0_2px_2px_rgba(0,0,0,0.55)] sm:text-xl">
+              {detail.label}
+            </span>
+            <span className="mt-1 font-mono text-[7px] uppercase leading-tight tracking-[0.1em] text-shelf-paper/75 sm:text-[8px]">
+              {detail.hint}
+            </span>
           </div>
-          <span
-            className="pointer-events-none absolute inset-y-2 left-1 w-1 rounded-full opacity-80"
-            style={{ backgroundColor: detail.color }}
-            aria-hidden
-          />
         </div>
 
-        <div className="relative -ml-1 flex min-w-0 items-center border-l border-black/35 px-2 py-3 sm:px-3 sm:py-4">
+        <div className="relative flex h-full min-w-0 items-center border-l border-black/35 pl-2 sm:pl-3">
           <div
-            className="grid min-w-0 flex-1 content-end gap-x-2 gap-y-0 rounded-xl border bg-black/25 px-2 pt-3 pb-3 shadow-[inset_0_12px_22px_rgba(0,0,0,0.38),inset_0_-8px_16px_rgba(0,0,0,0.32)] grid-cols-2 sm:grid-cols-3 xl:grid-cols-4"
+            className="relative -translate-y-[3px] self-center grid h-[calc(100%_-_0.5rem)] min-w-0 flex-1 content-end gap-x-2 gap-y-0 rounded-xl border bg-black/25 px-2 pt-2 sm:pt-2.5 shadow-[inset_0_12px_22px_rgba(0,0,0,0.38),inset_0_-8px_16px_rgba(0,0,0,0.32)] grid-cols-2 sm:grid-cols-3 xl:grid-cols-5"
             style={{
               backgroundColor: `${detail.color}18`,
               borderColor: `${detail.color}70`,
@@ -135,7 +118,7 @@ export default function TierRow({
                 />
                 {index < games.length - 1 && (index + 1) % 2 === 0 && renderProtrudingShelf("sm:hidden")}
                 {index < games.length - 1 && (index + 1) % 3 === 0 && renderProtrudingShelf("hidden sm:block xl:hidden")}
-                {index < games.length - 1 && (index + 1) % 4 === 0 && renderProtrudingShelf("hidden xl:block")}
+                {index < games.length - 1 && (index + 1) % 5 === 0 && renderProtrudingShelf("hidden xl:block")}
               </Fragment>
             ))}
             {games.length === 0 && (
@@ -146,7 +129,7 @@ export default function TierRow({
           </div>
         </div>
       </div>
-      <div className="pointer-events-none absolute inset-x-0 bottom-[-7px] z-20 h-3 rounded-b-sm border-t border-shelf-woodLight/70 bg-[linear-gradient(180deg,#8a6243,#62442e_45%,#3a271c)] shadow-[0_5px_8px_rgba(0,0,0,0.48)]" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-[-10px] z-20 h-4 rounded-b-sm border-t border-shelf-woodLight/70 bg-[linear-gradient(180deg,#8a6243,#62442e_45%,#3a271c)] shadow-[0_5px_8px_rgba(0,0,0,0.48)]" />
     </div>
   );
 }

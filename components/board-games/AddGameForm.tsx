@@ -67,7 +67,7 @@ export default function AddGameForm({ onAdd, disabled = false }: AddGameFormProp
           className="w-full resize-y rounded-md border border-shelf-paperDark/70 bg-white/35 px-3 py-2.5 text-sm text-shelf-ink placeholder:text-shelf-ink/70 disabled:cursor-not-allowed disabled:opacity-60"
         />
         <button type="submit" disabled={disabled || isAdding} className="min-h-11 w-full rounded-full bg-shelf-walnut px-4 font-mono text-[11px] uppercase tracking-widest text-shelf-paper transition-transform hover:-translate-y-0.5 hover:bg-shelf-wood disabled:cursor-not-allowed disabled:opacity-60">
-          {disabled ? "Unlock to add games" : isAdding ? "Adding…" : "Add unranked game"}
+          {disabled ? "Unlock to add games" : isAdding ? "Adding…" : "Add Joker game"}
         </button>
       </form>
     </section>

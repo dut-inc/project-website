@@ -205,7 +205,7 @@ export default function GameDetailsPopup({
               </div>
               <div className="rounded-lg border border-shelf-paperDark/45 bg-shelf-paperDark/15 p-3">
                 <dt className="font-mono text-[10px] uppercase tracking-wider text-shelf-ink/80">Status</dt>
-                <dd className="mt-1 font-display text-xl italic text-shelf-ink">{game.tier === "Unranked" ? "Deciding" : "Ranked"}</dd>
+                <dd className="mt-1 font-display text-xl italic text-shelf-ink">{game.tier === "Unranked" ? "Joker" : "Ranked"}</dd>
               </div>
             </dl>
             <div className="mt-6 space-y-3">

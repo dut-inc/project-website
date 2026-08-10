@@ -58,8 +58,8 @@ export const TIER_DETAILS: Record<
   Unranked: {
     label: "Joker",
     color: "#8B7762",
-    hint: "still deciding",
-    image: "/images/tierlist/8BitDeck48.png",
+    hint: "wild card",
+    image: "/images/tierlist/joker.png",
   },
 };
 
