@@ -2,6 +2,10 @@ export const GAME_TIERS = ["S", "A", "B", "C", "D", "Unranked"] as const;
 
 export type GameTier = (typeof GAME_TIERS)[number];
 
+export type CardSuit = "diamond" | "club" | "heart" | "spade";
+
+export const CARD_SUITS: CardSuit[] = ["diamond", "club", "heart", "spade"];
+
 export type BoardGameEntry = {
   id: string;
   name: string;
@@ -19,14 +23,44 @@ export type GameDetailsUpdate = Pick<
 
 export const TIER_DETAILS: Record<
   GameTier,
-  { label: string; color: string; hint: string }
+  { label: string; color: string; hint: string; image: string }
 > = {
-  S: { label: "S tier", color: "#7B302E", hint: "clear the table" },
-  A: { label: "A tier", color: "#A8793F", hint: "almost perfect" },
-  B: { label: "B tier", color: "#4D674D", hint: "would play again" },
-  C: { label: "C tier", color: "#536579", hint: "has its moments" },
-  D: { label: "D tier", color: "#554D48", hint: "probably not" },
-  Unranked: { label: "Unranked", color: "#8B7762", hint: "still deciding" },
+  S: {
+    label: "Ace",
+    color: "#7B302E",
+    hint: "clear the table",
+    image: "/images/tierlist/8BitDeck52.png",
+  },
+  A: {
+    label: "King",
+    color: "#A8793F",
+    hint: "almost perfect",
+    image: "/images/tierlist/8BitDeck51.png",
+  },
+  B: {
+    label: "Queen",
+    color: "#4D674D",
+    hint: "would play again",
+    image: "/images/tierlist/8BitDeck50.png",
+  },
+  C: {
+    label: "Jack",
+    color: "#536579",
+    hint: "has its moments",
+    image: "/images/tierlist/8BitDeck49.png",
+  },
+  D: {
+    label: "10",
+    color: "#554D48",
+    hint: "probably not",
+    image: "/images/tierlist/8BitDeck48.png",
+  },
+  Unranked: {
+    label: "Joker",
+    color: "#8B7762",
+    hint: "still deciding",
+    image: "/images/tierlist/8BitDeck48.png",
+  },
 };
 
 export const STARTER_GAMES: BoardGameEntry[] = [

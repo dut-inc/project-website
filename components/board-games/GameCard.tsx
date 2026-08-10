@@ -1,12 +1,13 @@
 "use client";
 
 import { useRef, useState, type DragEvent } from "react";
-import { GAME_TIERS, type BoardGameEntry, type GameDetailsUpdate, type GameTier } from "@/lib/boardGames";
+import { GAME_TIERS, type BoardGameEntry, type CardSuit, type GameDetailsUpdate, type GameTier } from "@/lib/boardGames";
 import GameDetailsPopup from "./GameDetailsPopup";
 
 export type GameCardProps = {
   game: BoardGameEntry;
   tierColor: string;
+  suit: CardSuit;
   isDragging: boolean;
   isEditable: boolean;
   onSave: (updates: GameDetailsUpdate) => Promise<void> | void;
@@ -16,9 +17,26 @@ export type GameCardProps = {
   onDragEnd: () => void;
 };
 
+const suitGlyph: Record<CardSuit, string> = {
+  diamond: "♦",
+  club: "♣",
+  heart: "♥",
+  spade: "♠",
+};
+
+const suitLabel: Record<CardSuit, string> = {
+  diamond: "diamond",
+  club: "club",
+  heart: "heart",
+  spade: "spade",
+};
+
+const redSuits = new Set<CardSuit>(["diamond", "heart"]);
+
 export default function GameCard({
   game,
   tierColor,
+  suit,
   isDragging,
   isEditable,
   onSave,
@@ -29,6 +47,8 @@ export default function GameCard({
 }: GameCardProps) {
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
   const detailsTriggerRef = useRef<HTMLButtonElement>(null);
+  const glyph = suitGlyph[suit];
+  const suitColor = redSuits.has(suit) ? "#9f302f" : "#29201c";
 
   function closeDetails() {
     setIsDetailsOpen(false);
@@ -72,30 +92,34 @@ export default function GameCard({
   return (
     <>
       <article
-        aria-label={`${game.name}. ${isEditable ? "Use the right side to move it between tiers." : "View details; developer controls are locked."}`}
-        className={`group relative grid min-w-0 grid-cols-[minmax(0,1fr)_1.5rem] items-stretch overflow-hidden rounded-sm border border-shelf-paperDark/80 bg-shelf-paper shadow-[0_4px_0_-3px_rgba(38,24,15,0.9),0_7px_10px_rgba(0,0,0,0.38),inset_0_1px_rgba(255,255,255,0.32)] transition-all hover:border-shelf-brass hover:shadow-[0_4px_0_-3px_rgba(38,24,15,0.9),0_10px_14px_rgba(0,0,0,0.46),inset_0_1px_rgba(255,255,255,0.38)] ${
+        aria-label={`${game.name}. ${suitLabel[suit]} playing card. ${isEditable ? "Use the right side to move it between tiers." : "View details; developer controls are locked."}`}
+        className={`group relative aspect-[5/7] min-w-0 self-start grid grid-cols-[minmax(0,1fr)_1.6rem] overflow-hidden rounded-[0.8rem] border-2 bg-[#f4ead6] text-[#29201c] shadow-[0_5px_0_-2px_rgba(38,24,15,0.85),0_9px_14px_rgba(0,0,0,0.4),inset_0_0_0_1px_rgba(255,255,255,0.72)] transition-all hover:-translate-y-0.5 hover:shadow-[0_6px_0_-2px_rgba(38,24,15,0.85),0_13px_18px_rgba(0,0,0,0.48),inset_0_0_0_1px_rgba(255,255,255,0.82)] ${
           isDragging ? "scale-[0.98] opacity-40" : ""
         }`}
+        style={{ borderColor: `${tierColor}b8` }}
       >
-        <div
-          className="relative min-w-0 border-l-4 border-shelf-ochre px-2 py-1 before:absolute before:inset-y-0 before:left-0 before:w-px before:bg-shelf-paper/45"
-          style={{ borderLeftColor: tierColor }}
-        >
-          <span className="pointer-events-none absolute inset-x-2 bottom-0 h-px bg-shelf-paperDark/80" aria-hidden />
+        <div className="relative min-w-0 px-2 py-2 sm:px-2.5">
+          <span className="pointer-events-none absolute inset-x-2 bottom-1 h-px bg-[#8d765a]/50" aria-hidden />
+          <span className="absolute left-1.5 top-1 font-serif text-base leading-none" style={{ color: suitColor }} aria-hidden>
+            {glyph}
+          </span>
           <button
             ref={detailsTriggerRef}
             type="button"
             onClick={() => setIsDetailsOpen(true)}
-            className="block min-w-0 text-left"
+            className="block min-w-0 px-3 pt-2 text-left"
             aria-label={`View details for ${game.name}`}
           >
-            <span className="block truncate font-body text-sm font-semibold leading-tight text-shelf-ink" title={game.name}>
+            <span className="block truncate font-display text-[1.05rem] italic font-semibold leading-tight text-[#29201c] sm:text-lg" title={game.name}>
               {game.name}
             </span>
-            <span className="mt-1 block min-h-[4rem] overflow-hidden text-[11px] leading-tight text-shelf-ink/70 [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:1]">
+            <span className="mt-1 block min-h-[3.25rem] overflow-hidden text-[11px] leading-tight text-[#5f5142] [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2]">
               {game.description || "No description yet."}
             </span>
           </button>
+          <span className="absolute bottom-1 right-1.5 rotate-180 font-serif text-base leading-none" style={{ color: suitColor }} aria-hidden>
+            {glyph}
+          </span>
         </div>
         <button
           type="button"
@@ -107,7 +131,7 @@ export default function GameCard({
           aria-keyshortcuts={isEditable ? "ArrowUp ArrowDown" : undefined}
           aria-label={isEditable ? `Drag ${game.name} to another tier, or use the arrow keys to move it` : `Developer controls are locked for ${game.name}`}
           title={isEditable ? "Drag this area to another tier · Arrow keys to move" : "Unlock developer controls to move this game"}
-          className={`flex min-h-[5.5rem] min-w-0 items-center justify-center border-l border-shelf-paperDark/65 bg-shelf-paperDark/25 px-0.5 font-mono text-sm leading-none text-shelf-ink/55 transition-colors focus-visible:bg-shelf-brass/25 focus-visible:text-shelf-walnut ${isEditable ? "cursor-grab hover:bg-shelf-brass/20 active:cursor-grabbing" : "cursor-not-allowed opacity-45"}`}
+          className={`flex min-w-0 items-center justify-center border-l border-[#8d765a]/55 bg-[#d9c7a8]/35 px-0.5 font-mono text-xs leading-none text-[#5f5142] transition-colors focus-visible:bg-[#c9a227]/25 focus-visible:text-[#29201c] ${isEditable ? "cursor-grab hover:bg-[#c9a227]/20 active:cursor-grabbing" : "cursor-not-allowed opacity-45"}`}
         >
           <span aria-hidden className="tracking-[-0.2em]">⋮⋮</span>
         </button>

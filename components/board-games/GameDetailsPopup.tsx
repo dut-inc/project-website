@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type KeyboardEvent } from "react";
-import type { BoardGameEntry, GameDetailsUpdate } from "@/lib/boardGames";
+import { TIER_DETAILS, type BoardGameEntry, type GameDetailsUpdate } from "@/lib/boardGames";
 
 type GameDetailsPopupProps = {
   game: BoardGameEntry;
@@ -125,7 +125,7 @@ export default function GameDetailsPopup({
         <div className="flex items-start justify-between gap-5">
           <div>
             <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-shelf-ink/80">
-              game file / {game.tier}
+              game file / {TIER_DETAILS[game.tier].label}
             </p>
             <h2 id={`game-details-title-${game.id}`} className="mt-2 font-display text-3xl italic">
               {isEditing ? "Edit game" : game.name}
@@ -201,7 +201,7 @@ export default function GameDetailsPopup({
             <dl className="mt-5 grid grid-cols-2 gap-3">
               <div className="rounded-lg border border-shelf-paperDark/45 bg-shelf-paperDark/15 p-3">
                 <dt className="font-mono text-[10px] uppercase tracking-wider text-shelf-ink/80">Current tier</dt>
-                <dd className="mt-1 font-display text-xl italic text-shelf-ink">{game.tier}</dd>
+                <dd className="mt-1 font-display text-xl italic text-shelf-ink">{TIER_DETAILS[game.tier].label}</dd>
               </div>
               <div className="rounded-lg border border-shelf-paperDark/45 bg-shelf-paperDark/15 p-3">
                 <dt className="font-mono text-[10px] uppercase tracking-wider text-shelf-ink/80">Status</dt>

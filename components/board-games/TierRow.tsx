@@ -1,7 +1,14 @@
 "use client";
 
+import Image from "next/image";
 import { Fragment, type DragEvent } from "react";
-import { TIER_DETAILS, type BoardGameEntry, type GameDetailsUpdate, type GameTier } from "@/lib/boardGames";
+import {
+  CARD_SUITS,
+  TIER_DETAILS,
+  type BoardGameEntry,
+  type GameDetailsUpdate,
+  type GameTier,
+} from "@/lib/boardGames";
 import GameCard from "./GameCard";
 
 type TierRowProps = {
@@ -37,8 +44,8 @@ export default function TierRow({
 }: TierRowProps) {
   const detail = TIER_DETAILS[tier];
   const ledgeStyle = {
-    background: `linear-gradient(180deg, ${detail.color}80 0%, #8a6243 34%, #62442e 64%, #3a271c 100%)`,
-    borderColor: `${detail.color}a8`,
+    background: `linear-gradient(180deg, ${detail.color}99 0%, #b38a5b 32%, #6f4b32 68%, #38251b 100%)`,
+    borderColor: `${detail.color}b8`,
   };
 
   function renderProtrudingShelf(visibility: string) {
@@ -56,31 +63,57 @@ export default function TierRow({
       onDragOver={isEditable ? (event) => onDragOver(event, tier) : undefined}
       onDragLeave={isEditable ? onDragLeave : undefined}
       onDrop={isEditable ? (event) => onDrop(event, tier) : undefined}
-      className={`group/row relative border-b-[10px] border-black/70 bg-[#302018] shadow-[inset_0_10px_18px_rgba(0,0,0,0.48),inset_0_-2px_0_rgba(138,98,67,0.18)] transition-colors last:border-b-0 ${
-        dragOverTier === tier ? "bg-shelf-brass/20 shadow-[inset_0_0_0_2px_rgba(169,121,63,0.75),inset_0_10px_18px_rgba(0,0,0,0.48)]" : ""
+      className={`group/row relative border-b-[10px] border-black/75 bg-[#21191a] shadow-[inset_0_12px_22px_rgba(0,0,0,0.62),inset_0_-2px_0_rgba(179,138,91,0.22)] transition-colors last:border-b-0 ${
+        dragOverTier === tier
+          ? "bg-shelf-brass/20 shadow-[inset_0_0_0_2px_rgba(169,121,63,0.8),inset_0_12px_22px_rgba(0,0,0,0.62)]"
+          : ""
       }`}
     >
-      <div className="relative grid min-h-[6.5rem] grid-cols-[3.35rem_minmax(0,1fr)] items-stretch bg-[linear-gradient(90deg,rgba(0,0,0,0.2),transparent_12%,transparent_88%,rgba(0,0,0,0.22))] sm:min-h-[6.75rem] sm:grid-cols-[4.25rem_minmax(0,1fr)]">
-        <div className="relative z-10 flex flex-col justify-center overflow-hidden border-r border-black/45 bg-black/10 px-1.5 py-1.5 text-center sm:px-2">
+      <div className="relative grid min-h-[13rem] grid-cols-[8rem_minmax(0,1fr)] items-stretch bg-[linear-gradient(90deg,rgba(0,0,0,0.32),transparent_18%,transparent_88%,rgba(0,0,0,0.28))] sm:min-h-[15rem] sm:grid-cols-[10rem_minmax(0,1fr)]">
+        <div className="relative z-10 m-2 aspect-[3/4] self-center overflow-hidden rounded-xl border-2 border-shelf-paper/35 bg-shelf-paper shadow-[0_7px_14px_rgba(0,0,0,0.46),inset_0_0_0_1px_rgba(255,255,255,0.3)] sm:m-3">
+          <Image
+            src={detail.image}
+            alt=""
+            fill
+            sizes="(min-width: 640px) 10rem, 8rem"
+            className="object-contain opacity-75 saturate-[0.7]"
+            aria-hidden
+          />
+          <div
+            className="absolute inset-0"
+            style={{
+              background: `linear-gradient(145deg, ${detail.color}d9 0%, rgba(30,20,20,0.36) 48%, rgba(15,12,14,0.88) 100%)`,
+            }}
+            aria-hidden
+          />
+          <div className="relative flex h-full flex-col justify-between p-2 text-shelf-paper sm:p-3">
+            <div className="flex items-start justify-between gap-1">
+              <span className="font-mono text-[8px] uppercase tracking-[0.16em] text-shelf-paper/75">
+                tier
+              </span>
+              <span className="font-serif text-xl leading-none text-shelf-paper/80" aria-hidden>
+                {tier === "Unranked" ? "🃏" : tier === "S" ? "♠" : tier === "A" ? "♥" : tier === "B" ? "♦" : "♣"}
+              </span>
+            </div>
+            <div>
+              <span className="block font-display text-4xl italic leading-none drop-shadow-[0_2px_2px_rgba(0,0,0,0.55)] sm:text-5xl">
+                {detail.label}
+              </span>
+              <span className="mt-1 block font-mono text-[7px] uppercase leading-tight tracking-[0.12em] text-shelf-paper/75 sm:text-[8px]">
+                {detail.hint}
+              </span>
+            </div>
+          </div>
           <span
-            className="absolute inset-y-2 left-0 w-0.5 rounded-r-full opacity-80"
+            className="pointer-events-none absolute inset-y-2 left-1 w-1 rounded-full opacity-80"
             style={{ backgroundColor: detail.color }}
             aria-hidden
           />
-          <span className="font-mono text-[8px] uppercase tracking-[0.15em] text-shelf-paper/40">
-            tier
-          </span>
-          <span className="mt-0.5 font-display text-2xl italic leading-none text-shelf-paper/90 sm:text-3xl">
-            {tier === "Unranked" ? "—" : tier}
-          </span>
-          <span className="mt-1 font-mono text-[8px] uppercase leading-tight tracking-wide text-shelf-paper/40">
-            {detail.hint}
-          </span>
         </div>
 
-        <div className="relative -ml-1 flex min-w-0 items-center border-l border-black/30 bg-[linear-gradient(180deg,rgba(138,98,67,0.12),rgba(0,0,0,0.22))] px-2 py-2 shadow-[inset_0_12px_20px_rgba(0,0,0,0.28),inset_0_-8px_18px_rgba(0,0,0,0.25)] sm:px-3">
+        <div className="relative -ml-1 flex min-w-0 items-center border-l border-black/35 px-2 py-3 sm:px-3 sm:py-4">
           <div
-            className="grid min-w-0 flex-1 content-end gap-x-2 gap-y-0 rounded-sm border border-black/45 bg-[linear-gradient(180deg,rgba(20,12,8,0.08),rgba(20,12,8,0.28))] px-1 pt-2 pb-2 shadow-[inset_0_7px_10px_rgba(0,0,0,0.12),inset_0_-7px_11px_rgba(0,0,0,0.28)] sm:px-1.5 sm:pt-2.5 sm:grid-cols-3 xl:grid-cols-4"
+            className="grid min-w-0 flex-1 content-end gap-x-2 gap-y-0 rounded-xl border bg-black/25 px-2 pt-3 pb-3 shadow-[inset_0_12px_22px_rgba(0,0,0,0.38),inset_0_-8px_16px_rgba(0,0,0,0.32)] grid-cols-2 sm:grid-cols-3 xl:grid-cols-4"
             style={{
               backgroundColor: `${detail.color}18`,
               borderColor: `${detail.color}70`,
@@ -91,6 +124,7 @@ export default function TierRow({
                 <GameCard
                   game={game}
                   tierColor={detail.color}
+                  suit={CARD_SUITS[index % CARD_SUITS.length]}
                   isEditable={isEditable}
                   isDragging={draggingId === game.id}
                   onSave={(updates) => onSave(game.id, updates)}
@@ -99,13 +133,13 @@ export default function TierRow({
                   onDragStart={(event) => onDragStart(event, game)}
                   onDragEnd={onDragEnd}
                 />
-                {index < games.length - 1 && renderProtrudingShelf("sm:hidden")}
+                {index < games.length - 1 && (index + 1) % 2 === 0 && renderProtrudingShelf("sm:hidden")}
                 {index < games.length - 1 && (index + 1) % 3 === 0 && renderProtrudingShelf("hidden sm:block xl:hidden")}
                 {index < games.length - 1 && (index + 1) % 4 === 0 && renderProtrudingShelf("hidden xl:block")}
               </Fragment>
             ))}
             {games.length === 0 && (
-              <p className="col-span-full flex min-h-[4rem] items-center px-3 text-xs italic text-shelf-paper/45">
+              <p className="col-span-full flex min-h-[5rem] items-center justify-center px-3 text-center font-mono text-[10px] uppercase tracking-wider text-shelf-paper/45">
                 Empty bay — move a game in.
               </p>
             )}
