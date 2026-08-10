@@ -6,6 +6,7 @@ import GameDetailsPopup from "./GameDetailsPopup";
 
 export type GameCardProps = {
   game: BoardGameEntry;
+  tierColor: string;
   isDragging: boolean;
   isEditable: boolean;
   onSave: (updates: GameDetailsUpdate) => Promise<void> | void;
@@ -17,6 +18,7 @@ export type GameCardProps = {
 
 export default function GameCard({
   game,
+  tierColor,
   isDragging,
   isEditable,
   onSave,
@@ -71,11 +73,14 @@ export default function GameCard({
     <>
       <article
         aria-label={`${game.name}. ${isEditable ? "Use the right side to move it between tiers." : "View details; developer controls are locked."}`}
-        className={`group relative mb-2 grid min-w-0 grid-cols-[minmax(0,1fr)_1.5rem] items-stretch overflow-hidden rounded-sm border border-shelf-paperDark/80 bg-shelf-paper shadow-[0_4px_0_-3px_rgba(38,24,15,0.9),0_7px_10px_rgba(0,0,0,0.38),inset_0_1px_rgba(255,255,255,0.32)] transition-all hover:border-shelf-brass hover:shadow-[0_4px_0_-3px_rgba(38,24,15,0.9),0_10px_14px_rgba(0,0,0,0.46),inset_0_1px_rgba(255,255,255,0.38)] ${
+        className={`group relative grid min-w-0 grid-cols-[minmax(0,1fr)_1.5rem] items-stretch overflow-hidden rounded-sm border border-shelf-paperDark/80 bg-shelf-paper shadow-[0_4px_0_-3px_rgba(38,24,15,0.9),0_7px_10px_rgba(0,0,0,0.38),inset_0_1px_rgba(255,255,255,0.32)] transition-all hover:border-shelf-brass hover:shadow-[0_4px_0_-3px_rgba(38,24,15,0.9),0_10px_14px_rgba(0,0,0,0.46),inset_0_1px_rgba(255,255,255,0.38)] ${
           isDragging ? "scale-[0.98] opacity-40" : ""
         }`}
       >
-        <div className="relative min-w-0 border-l-4 border-shelf-ochre px-2 py-1 before:absolute before:inset-y-0 before:left-0 before:w-px before:bg-shelf-paper/45">
+        <div
+          className="relative min-w-0 border-l-4 border-shelf-ochre px-2 py-1 before:absolute before:inset-y-0 before:left-0 before:w-px before:bg-shelf-paper/45"
+          style={{ borderLeftColor: tierColor }}
+        >
           <span className="pointer-events-none absolute inset-x-2 bottom-0 h-px bg-shelf-paperDark/80" aria-hidden />
           <button
             ref={detailsTriggerRef}

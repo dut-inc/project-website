@@ -1,6 +1,6 @@
 "use client";
 
-import type { DragEvent } from "react";
+import { Fragment, type DragEvent } from "react";
 import { TIER_DETAILS, type BoardGameEntry, type GameDetailsUpdate, type GameTier } from "@/lib/boardGames";
 import GameCard from "./GameCard";
 
@@ -36,6 +36,20 @@ export default function TierRow({
   onDragEnd,
 }: TierRowProps) {
   const detail = TIER_DETAILS[tier];
+  const ledgeStyle = {
+    background: `linear-gradient(180deg, ${detail.color}80 0%, #8a6243 34%, #62442e 64%, #3a271c 100%)`,
+    borderColor: `${detail.color}a8`,
+  };
+
+  function renderProtrudingShelf(visibility: string) {
+    return (
+      <div
+        aria-hidden
+        className={`pointer-events-none relative z-10 col-span-full -mx-2 mb-2 h-1 rounded-sm border-y shadow-[0_3px_6px_rgba(0,0,0,0.5)] sm:mb-2.5 ${visibility}`}
+        style={ledgeStyle}
+      />
+    );
+  }
 
   return (
     <div
@@ -64,20 +78,31 @@ export default function TierRow({
           </span>
         </div>
 
-        <div className="relative -ml-1 flex min-w-0 items-end border-l border-black/30 bg-[linear-gradient(180deg,rgba(138,98,67,0.12),rgba(0,0,0,0.22))] px-2 pt-1 pb-0 shadow-[inset_0_12px_20px_rgba(0,0,0,0.28),inset_0_-8px_18px_rgba(0,0,0,0.25)] sm:px-3">
-          <div className="grid min-w-0 flex-1 content-end gap-2 sm:grid-cols-3 xl:grid-cols-4">
-            {games.map((game) => (
-              <GameCard
-                key={game.id}
-                game={game}
-                isEditable={isEditable}
-                isDragging={draggingId === game.id}
-                onSave={(updates) => onSave(game.id, updates)}
-                onDelete={() => onRemove(game.id)}
-                onMoveToTier={(nextTier) => onMoveToTier(game.id, nextTier)}
-                onDragStart={(event) => onDragStart(event, game)}
-                onDragEnd={onDragEnd}
-              />
+        <div className="relative -ml-1 flex min-w-0 items-center border-l border-black/30 bg-[linear-gradient(180deg,rgba(138,98,67,0.12),rgba(0,0,0,0.22))] px-2 py-2 shadow-[inset_0_12px_20px_rgba(0,0,0,0.28),inset_0_-8px_18px_rgba(0,0,0,0.25)] sm:px-3">
+          <div
+            className="grid min-w-0 flex-1 content-end gap-x-2 gap-y-0 rounded-sm border border-black/45 bg-[linear-gradient(180deg,rgba(20,12,8,0.08),rgba(20,12,8,0.28))] px-1 pt-2 pb-2 shadow-[inset_0_7px_10px_rgba(0,0,0,0.12),inset_0_-7px_11px_rgba(0,0,0,0.28)] sm:px-1.5 sm:pt-2.5 sm:grid-cols-3 xl:grid-cols-4"
+            style={{
+              backgroundColor: `${detail.color}18`,
+              borderColor: `${detail.color}70`,
+            }}
+          >
+            {games.map((game, index) => (
+              <Fragment key={game.id}>
+                <GameCard
+                  game={game}
+                  tierColor={detail.color}
+                  isEditable={isEditable}
+                  isDragging={draggingId === game.id}
+                  onSave={(updates) => onSave(game.id, updates)}
+                  onDelete={() => onRemove(game.id)}
+                  onMoveToTier={(nextTier) => onMoveToTier(game.id, nextTier)}
+                  onDragStart={(event) => onDragStart(event, game)}
+                  onDragEnd={onDragEnd}
+                />
+                {index < games.length - 1 && renderProtrudingShelf("sm:hidden")}
+                {index < games.length - 1 && (index + 1) % 3 === 0 && renderProtrudingShelf("hidden sm:block xl:hidden")}
+                {index < games.length - 1 && (index + 1) % 4 === 0 && renderProtrudingShelf("hidden xl:block")}
+              </Fragment>
             ))}
             {games.length === 0 && (
               <p className="col-span-full flex min-h-[4rem] items-center px-3 text-xs italic text-shelf-paper/45">
