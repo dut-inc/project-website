@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type KeyboardEvent } from "react";
+import { createPortal } from "react-dom";
 import { TIER_DETAILS, type BoardGameEntry, type GameDetailsUpdate } from "@/lib/boardGames";
 
 type GameDetailsPopupProps = {
@@ -40,6 +41,7 @@ export default function GameDetailsPopup({
   onDelete,
 }: GameDetailsPopupProps) {
   const [isEditing, setIsEditing] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const dialogRef = useRef<HTMLElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
@@ -52,8 +54,12 @@ export default function GameDetailsPopup({
   });
 
   useEffect(() => {
-    closeButtonRef.current?.focus();
+    setIsMounted(true);
   }, []);
+
+  useEffect(() => {
+    if (isMounted) closeButtonRef.current?.focus();
+  }, [isMounted]);
 
   function handleDialogKeyDown(event: KeyboardEvent<HTMLElement>) {
     if (event.key === "Escape") {
@@ -106,9 +112,9 @@ export default function GameDetailsPopup({
     }
   }
 
-  return (
+  const popupContent = (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-shelf-walnut/80 p-4 backdrop-blur-[2px]"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-shelf-walnut/65 p-4 backdrop-blur-md"
       role="presentation"
       onMouseDown={(event) => {
         if (event.target === event.currentTarget) onClose();
@@ -233,4 +239,7 @@ export default function GameDetailsPopup({
       </section>
     </div>
   );
+
+  if (!isMounted || typeof document === "undefined") return null;
+  return createPortal(popupContent, document.body);
 }

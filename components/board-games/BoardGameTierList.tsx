@@ -222,7 +222,7 @@ export default function BoardGameTierList({
   }
 
   return (
-    <div className="mx-auto mt-12 max-w-6xl space-y-7">
+    <div className="mx-auto mt-12 max-w-5xl space-y-7">
       {error && (
         <div role="alert" className="rounded-xl border border-shelf-burgundy/70 bg-shelf-burgundy/20 px-4 py-3 text-sm text-shelf-paper">
           <p>{error}</p>

@@ -51,7 +51,7 @@ export default function TierList({
             the game shelf / {rankedCount} ranked / {games.length} total
           </p>
           <h2 id="tier-list-heading" className="mt-1 font-display text-3xl italic text-shelf-paper sm:text-4xl">
-            Where it belongs
+            Rank the table
           </h2>
         </div>
         <p className="max-w-[15rem] text-right text-xs leading-relaxed text-shelf-paper/60">

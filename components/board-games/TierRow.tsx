@@ -43,6 +43,14 @@ export default function TierRow({
   onDragEnd,
 }: TierRowProps) {
   const detail = TIER_DETAILS[tier];
+  const oneRowPadding =
+    games.length > 0 && games.length <= 2
+      ? "pt-5"
+      : games.length === 3
+        ? "pt-2 sm:pt-5 xl:pt-5"
+        : games.length === 4
+          ? "pt-2 sm:pt-2.5 xl:pt-5"
+          : "pt-2 sm:pt-2.5";
   const ledgeStyle = {
     background: `linear-gradient(180deg, ${detail.color}99 0%, #b38a5b 32%, #6f4b32 68%, #38251b 100%)`,
     borderColor: `${detail.color}b8`,
@@ -69,7 +77,7 @@ export default function TierRow({
           : ""
       }`}
     >
-      <div aria-label={detail.label} className="relative grid min-h-[14rem] grid-cols-[8rem_minmax(0,1fr)] items-stretch bg-[linear-gradient(90deg,rgba(0,0,0,0.32),transparent_18%,transparent_88%,rgba(0,0,0,0.28))] sm:min-h-[16rem] sm:grid-cols-[10rem_minmax(0,1fr)]">
+      <div aria-label={detail.label} className="relative grid min-h-[12rem] grid-cols-[8rem_minmax(0,1fr)] items-stretch bg-[linear-gradient(90deg,rgba(0,0,0,0.32),transparent_18%,transparent_88%,rgba(0,0,0,0.28))] sm:min-h-[14rem] sm:grid-cols-[10rem_minmax(0,1fr)]">
         <div className="relative z-10 m-2 aspect-[3/4] self-center -translate-y-[3px] overflow-hidden rounded-xl border-2 border-shelf-paper/35 bg-shelf-paper shadow-[0_7px_14px_rgba(0,0,0,0.46),inset_0_0_0_1px_rgba(255,255,255,0.3)] sm:m-3">
           <Image
             src={detail.image}
@@ -96,7 +104,9 @@ export default function TierRow({
 
         <div className="relative flex h-full min-w-0 items-center border-l border-black/35 pl-2 sm:pl-3">
           <div
-            className="relative -translate-y-[3px] self-center grid h-[calc(100%_-_0.5rem)] min-w-0 flex-1 content-end gap-x-2 gap-y-0 rounded-xl border bg-black/25 px-2 pt-2 sm:pt-2.5 shadow-[inset_0_12px_22px_rgba(0,0,0,0.38),inset_0_-8px_16px_rgba(0,0,0,0.32)] grid-cols-2 sm:grid-cols-3 xl:grid-cols-5"
+            className={`relative self-stretch mb-[7px] grid min-w-0 flex-1 content-end gap-x-2 gap-y-0 rounded-xl border bg-black/25 px-2 shadow-[inset_0_12px_22px_rgba(0,0,0,0.38),inset_0_-8px_16px_rgba(0,0,0,0.32)] grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 ${
+              games.length === 0 ? "min-h-[5rem]" : ""
+            } ${oneRowPadding}`}
             style={{
               backgroundColor: `${detail.color}18`,
               borderColor: `${detail.color}70`,
@@ -118,7 +128,7 @@ export default function TierRow({
                 />
                 {index < games.length - 1 && (index + 1) % 2 === 0 && renderProtrudingShelf("sm:hidden")}
                 {index < games.length - 1 && (index + 1) % 3 === 0 && renderProtrudingShelf("hidden sm:block xl:hidden")}
-                {index < games.length - 1 && (index + 1) % 5 === 0 && renderProtrudingShelf("hidden xl:block")}
+                {index < games.length - 1 && (index + 1) % 4 === 0 && renderProtrudingShelf("hidden xl:block")}
               </Fragment>
             ))}
             {games.length === 0 && (
