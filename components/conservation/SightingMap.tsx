@@ -59,6 +59,21 @@ function popupHtml(sighting: Sighting): string {
     </div>`;
 }
 
+// fixed offset below center to keep the whole card visible
+// future tweak: clamp?
+const POPUP_OFFSET_PX = 125;
+
+function popupFittingTarget(
+  map: LeafletMap,
+  lat: number,
+  lng: number,
+  targetZoom: number,
+): [number, number] {
+  const point = map.project([lat, lng], targetZoom);
+  const target = map.unproject(point.subtract([0, POPUP_OFFSET_PX]), targetZoom);
+  return [target.lat, target.lng];
+}
+
 export default function SightingMap({
   sightings,
   filter,
@@ -229,7 +244,9 @@ export default function SightingMap({
     if (!didCatchUpRef.current) {
       didCatchUpRef.current = true;
       if (focusedId && focusedSighting && focusedMarker) {
-        map.flyTo([focusedSighting.lat, focusedSighting.lng], 11, { duration: 0.6 });
+        map.flyTo(popupFittingTarget(map, focusedSighting.lat, focusedSighting.lng, 11), 11, {
+          duration: 0.6,
+        });
         popupRef.current = openPopupFor(leaflet, map, focusedSighting);
       }
     }
@@ -280,7 +297,7 @@ export default function SightingMap({
     if (!marker || !sighting) return;
 
     marker.getElement()?.classList.add("sighting-marker--focused");
-    map.flyTo([sighting.lat, sighting.lng], 11, { duration: 0.6 });
+    map.flyTo(popupFittingTarget(map, sighting.lat, sighting.lng, 11), 11, { duration: 0.6 });
 
     map.closePopup();
     popupRef.current = openPopupFor(leaflet, map, sighting);
