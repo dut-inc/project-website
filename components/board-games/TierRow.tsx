@@ -70,7 +70,7 @@ export default function TierRow({
       }`}
     >
       <div aria-label={detail.label} className="relative grid min-h-[14rem] grid-cols-[8rem_minmax(0,1fr)] items-stretch bg-[linear-gradient(90deg,rgba(0,0,0,0.32),transparent_18%,transparent_88%,rgba(0,0,0,0.28))] sm:min-h-[16rem] sm:grid-cols-[10rem_minmax(0,1fr)]">
-        <div className="relative z-10 m-2 aspect-[3/4] self-center overflow-hidden rounded-xl border-2 border-shelf-paper/35 bg-shelf-paper shadow-[0_7px_14px_rgba(0,0,0,0.46),inset_0_0_0_1px_rgba(255,255,255,0.3)] sm:m-3">
+        <div className="relative z-10 m-2 aspect-[3/4] self-center -translate-y-[3px] overflow-hidden rounded-xl border-2 border-shelf-paper/35 bg-shelf-paper shadow-[0_7px_14px_rgba(0,0,0,0.46),inset_0_0_0_1px_rgba(255,255,255,0.3)] sm:m-3">
           <Image
             src={detail.image}
             alt=""
@@ -122,7 +122,7 @@ export default function TierRow({
               </Fragment>
             ))}
             {games.length === 0 && (
-              <p className="col-span-full flex min-h-[5rem] items-center justify-center px-3 text-center font-mono text-[10px] uppercase tracking-wider text-shelf-paper/45">
+              <p className="absolute inset-0 flex items-center justify-center px-3 text-center font-mono text-[10px] uppercase tracking-wider text-shelf-paper/45">
                 Empty bay — move a game in.
               </p>
             )}

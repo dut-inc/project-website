@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState, type DragEvent } from "react";
+import { useCallback, useEffect, useRef, useState, type DragEvent, type Ref } from "react";
 import { createClient } from "@/utils/supabase/client";
 import {
   BOARD_GAME_COLUMNS,
@@ -10,14 +10,20 @@ import {
   boardGameUpdatesToDatabase,
   getDatabaseErrorMessage,
 } from "@/lib/boardGamesDatabase";
-import { BOARD_GAMES_STORAGE_KEY, BOARD_GAME_NOTES_KEY, readSavedGames } from "@/lib/boardGameStorage";
+import { BOARD_GAMES_STORAGE_KEY, readSavedGames } from "@/lib/boardGameStorage";
 import type { BoardGameEntry, GameTier } from "@/lib/boardGames";
 import AddGameForm from "./AddGameForm";
-import GroupNotes from "./GroupNotes";
 import TierList from "./TierList";
-export default function BoardGameTierList({ isEditable }: { isEditable: boolean }) {
+export default function BoardGameTierList({
+  isEditable,
+  developerAccessTriggerRef,
+  onOpenDeveloperAccess,
+}: {
+  isEditable: boolean;
+  developerAccessTriggerRef: Ref<HTMLButtonElement>;
+  onOpenDeveloperAccess: () => void;
+}) {
   const [games, setGames] = useState<BoardGameEntry[]>([]);
-  const [notes, setNotes] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [isWorking, setIsWorking] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -101,26 +107,6 @@ export default function BoardGameTierList({ isEditable }: { isEditable: boolean 
     setDraggingId(null);
     setDragOverTier(null);
   }, [isEditable]);
-
-  useEffect(() => {
-    try {
-      const savedNotes = window.localStorage.getItem(BOARD_GAME_NOTES_KEY);
-      if (savedNotes) {
-        // eslint-disable-next-line react-hooks/set-state-in-effect
-        setNotes(savedNotes);
-      }
-    } catch {
-      // Notes remain empty if browser storage is unavailable.
-    }
-  }, []);
-
-  useEffect(() => {
-    try {
-      window.localStorage.setItem(BOARD_GAME_NOTES_KEY, notes);
-    } catch {
-      // Storage can be unavailable in private browsing or when full.
-    }
-  }, [notes]);
 
   async function updateGame(id: string, updates: Partial<BoardGameEntry>) {
     if (!isEditable) return;
@@ -269,12 +255,13 @@ export default function BoardGameTierList({ isEditable }: { isEditable: boolean 
                 setDraggingId(null);
                 setDragOverTier(null);
               }}
+              developerAccessTriggerRef={developerAccessTriggerRef}
+              onOpenDeveloperAccess={onOpenDeveloperAccess}
             />
           </div>
 
           <aside className="space-y-5 lg:pt-16">
             <AddGameForm onAdd={addGame} disabled={!isEditable} />
-            <GroupNotes notes={notes} onChange={setNotes} />
           </aside>
         </div>
       )}

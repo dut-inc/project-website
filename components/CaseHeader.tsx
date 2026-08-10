@@ -11,6 +11,7 @@ export default function CaseHeader({
   status,
   description,
   pin = "gold",
+  showPin = true,
   backHref = "/",
   backLabel = "Back to the board",
   caseNumberControl,
@@ -23,6 +24,7 @@ export default function CaseHeader({
   status: Status;
   description: string;
   pin?: PinColor;
+  showPin?: boolean;
   backHref?: string;
   backLabel?: string;
   caseNumberControl?: ReactNode;
@@ -53,7 +55,7 @@ export default function CaseHeader({
         tabIndex={onCaseStudyClick ? 0 : undefined}
         aria-label={onCaseStudyClick ? caseStudyLabel : undefined}
       >
-        <Pin color={pin} />
+        {showPin && <Pin color={pin} />}
         <div className="paper-torn bg-cream p-6 text-ink shadow-[0_14px_28px_-8px_rgba(0,0,0,0.55)] transition-shadow sm:p-7">
           <div className="mb-3 flex items-center justify-between font-mono text-[10px] uppercase tracking-widest text-ink2">
             <span>{caseNumberControl ?? <>Case №{caseNumber}</>}</span>

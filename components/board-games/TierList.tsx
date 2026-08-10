@@ -1,6 +1,6 @@
 "use client";
 
-import type { DragEvent } from "react";
+import type { DragEvent, Ref } from "react";
 import { GAME_TIERS, type BoardGameEntry, type GameDetailsUpdate, type GameTier } from "@/lib/boardGames";
 import TierRow from "./TierRow";
 
@@ -17,6 +17,8 @@ type TierListProps = {
   onMoveToTier: (id: string, tier: GameTier) => Promise<void> | void;
   onDragStart: (event: DragEvent<HTMLElement>, game: BoardGameEntry) => void;
   onDragEnd: () => void;
+  developerAccessTriggerRef: Ref<HTMLButtonElement>;
+  onOpenDeveloperAccess: () => void;
 };
 
 export default function TierList({
@@ -32,6 +34,8 @@ export default function TierList({
   onMoveToTier,
   onDragStart,
   onDragEnd,
+  developerAccessTriggerRef,
+  onOpenDeveloperAccess,
 }: TierListProps) {
   const rankedCount = games.filter((game) => game.tier !== "Unranked").length;
 
@@ -62,9 +66,21 @@ export default function TierList({
           <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-shelf-paper/55">
             shared collection
           </span>
-          <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-shelf-paper/45">
-            {isEditable ? "edit mode" : "read only"}
-          </span>
+          <div className="flex items-center gap-2">
+            <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-shelf-paper/45">
+              {isEditable ? "edit mode" : "read only"}
+            </span>
+            <button
+              ref={developerAccessTriggerRef}
+              type="button"
+              onClick={onOpenDeveloperAccess}
+              aria-label="Open developer controls"
+              title="Developer controls"
+              className="flex min-h-6 min-w-6 items-center justify-center rounded-full text-[10px] tracking-[0.2em] text-shelf-paper/20 transition-colors hover:text-shelf-brass focus-visible:text-shelf-brass focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-shelf-brass"
+            >
+              <span aria-hidden>•••</span>
+            </button>
+          </div>
         </div>
 
         <div className="relative overflow-visible rounded-lg border border-black/60 bg-[#2b1d17] shadow-[inset_0_16px_30px_rgba(0,0,0,0.58),inset_0_-8px_18px_rgba(0,0,0,0.45),0_0_0_1px_rgba(138,98,67,0.22)]">
