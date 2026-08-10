@@ -12,9 +12,47 @@ export type Sighting = {
   date: string;
   observer: string;
   note: string;
-  photo: string; // path under /images/sightings/
+  photo: string; // public URL of the compressed photo in Supabase Storage
 //   color?: string; // marker + card accent, from the site palette
 };
+
+// Legacy marker from before the Storage migration
+export const LOCAL_PHOTO_PREFIX = "local:";
+// Fallback shown when a sighting's local photo is missing
+export const PLACEHOLDER_PHOTO = "/images/sightings/coast.svg";
+
+export function isSightingCategory(value: unknown): value is SightingCategory {
+  return typeof value === "string" && value in CATEGORY_META;
+}
+
+export function makeSightingId() {
+  return `sighting-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`;
+}
+
+// Map a Supabase `sightings` row into the client-side Sighting shape.
+// Rows that fail validation (missing id/species or bad coords) are dropped.
+export function toSighting(row: Record<string, unknown>): Sighting | null {
+  const id = typeof row.id === "string" && row.id.trim() ? row.id : null;
+  const species = typeof row.species === "string" ? row.species.trim() : "";
+  const category = row.category;
+  const location = typeof row.location === "string" ? row.location.trim() : "";
+  const lat = typeof row.lat === "number" && Number.isFinite(row.lat) ? row.lat : null;
+  const lng = typeof row.lng === "number" && Number.isFinite(row.lng) ? row.lng : null;
+  const date = typeof row.date === "string" ? row.date : "";
+  const observer = typeof row.observer === "string" ? row.observer : "";
+  const note = typeof row.note === "string" ? row.note : "";
+  const rawPhoto = typeof row.photo === "string" && row.photo ? row.photo : "";
+  const photo = rawPhoto.startsWith(LOCAL_PHOTO_PREFIX)
+    ? PLACEHOLDER_PHOTO
+    : rawPhoto || PLACEHOLDER_PHOTO;
+
+  if (!id || !species || !isSightingCategory(category) || !location || lat === null || lng === null) {
+    return null;
+  }
+
+  return { id, species, category, location, lat, lng, date, observer, note, photo };
+}
+
 
 export const CATEGORY_META: Record<SightingCategory, { label: string; color: string }> = {
   mammal: { label: "Mammal", color: "#C1442D" },
@@ -24,6 +62,7 @@ export const CATEGORY_META: Record<SightingCategory, { label: string; color: str
   other: { label: "Other", color: "#C9A227" },
 };
 
+// example sightings
 export const SIGHTINGS: Sighting[] = [
   {
     id: "bald-eagle",

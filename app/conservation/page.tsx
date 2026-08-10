@@ -17,6 +17,7 @@ export default function ConservationPage() {
       <ConservationMap />
       <div className="mx-auto mt-10 max-w-xl space-y-3 font-mono text-sm text-cream/60">
         <p>&gt; shared sighting map: live (OpenStreetMap)</p>
+        <p>&gt; uploads: live</p>
         <p>&gt; species ID model: shared with Fish Quiz (case 001)</p>
         <p>&gt; weekly digest agent: not started</p>
       </div>
