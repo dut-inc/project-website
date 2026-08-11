@@ -32,6 +32,16 @@ npm run dev
 
 Then open http://localhost:3000.
 
+### Board-game developer controls
+
+The board-game tier list is publicly viewable, while add, edit, delete, and tier movement controls are hidden behind a developer passcode. Set the passcode in the server environment before starting Next.js:
+
+```bash
+BOARD_GAMES_PASSCODE=choose-a-local-dev-passcode npm run dev
+```
+
+For a local `.env.local` file, use `BOARD_GAMES_PASSCODE=...` without a `NEXT_PUBLIC_` prefix. The passcode is checked by `app/api/board-games/access/route.ts` and is not sent to the client as an environment variable. This is a UI/convenience gate; because the current Supabase CRUD client is public and its RLS policies permit anonymous writes, it is not a database security boundary. Use authenticated Supabase policies and server-side write routes if the table needs real access control.
+
 ## Structure
 
 ```
@@ -92,19 +102,3 @@ To use real data:
 
 Cluster naming is manual by design: K-Means only gives you numbers, and which
 number corresponds to "rim runner" isn't stable across reruns.
-
-## Suggested next steps
-
-- **Fish Quiz**: start with the personality-quiz version (a few questions →
-  a result mapped to a fish); the photo-based species ID model can slot in later
-  and double as the model for Field Watch.
-- **Sports Lab**: pick one narrow thing first — a win-probability chart for a
-  single game is enough to prove the data pipeline (`nba_api` / `pybaseball`)
-  works end to end.
-- **Field Watch**: once the species ID model exists, this is mostly a shared
-  map/log UI — could reuse Sports Lab's data-viz components.
-- **Auth**: none yet — this is meant for a small trusted group. If you want to
-  gate it, [NextAuth](https://authjs.dev) with a single shared password or
-  GitHub OAuth (just you + friends) is the least-fuss option.
-- **Deploy**: push to GitHub, import into [Vercel](https://vercel.com) — zero
-  config needed for a project this shape.

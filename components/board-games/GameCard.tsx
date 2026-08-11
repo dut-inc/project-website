@@ -1,12 +1,15 @@
 "use client";
 
-import { useRef, useState, type DragEvent } from "react";
-import { GAME_TIERS, type BoardGameEntry, type GameDetailsUpdate, type GameTier } from "@/lib/boardGames";
+import { useRef, useState, type DragEvent, type KeyboardEvent } from "react";
+import { GAME_TIERS, type BoardGameEntry, type CardSuit, type GameDetailsUpdate, type GameTier } from "@/lib/boardGames";
 import GameDetailsPopup from "./GameDetailsPopup";
 
 export type GameCardProps = {
   game: BoardGameEntry;
+  tierColor: string;
+  suit: CardSuit;
   isDragging: boolean;
+  isEditable: boolean;
   onSave: (updates: GameDetailsUpdate) => Promise<void> | void;
   onDelete: () => Promise<void> | void;
   onMoveToTier: (tier: GameTier) => void;
@@ -14,9 +17,28 @@ export type GameCardProps = {
   onDragEnd: () => void;
 };
 
+const suitGlyph: Record<CardSuit, string> = {
+  diamond: "♦",
+  club: "♣",
+  heart: "♥",
+  spade: "♠",
+};
+
+const suitLabel: Record<CardSuit, string> = {
+  diamond: "diamond",
+  club: "club",
+  heart: "heart",
+  spade: "spade",
+};
+
+const redSuits = new Set<CardSuit>(["diamond", "heart"]);
+
 export default function GameCard({
   game,
+  tierColor,
+  suit,
   isDragging,
+  isEditable,
   onSave,
   onDelete,
   onMoveToTier,
@@ -24,14 +46,33 @@ export default function GameCard({
   onDragEnd,
 }: GameCardProps) {
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
-  const detailsTriggerRef = useRef<HTMLButtonElement>(null);
+  const cardRef = useRef<HTMLElement>(null);
+  const glyph = suitGlyph[suit];
+  const suitColor = redSuits.has(suit) ? "#9f302f" : "#29201c";
 
   function closeDetails() {
     setIsDetailsOpen(false);
-    window.requestAnimationFrame(() => detailsTriggerRef.current?.focus());
+    window.requestAnimationFrame(() => cardRef.current?.focus());
   }
 
-  function handleDragStart(event: DragEvent<HTMLButtonElement>) {
+  function handleCardKeyDown(event: KeyboardEvent<HTMLElement>) {
+    if (event.target !== event.currentTarget) return;
+
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      setIsDetailsOpen(true);
+      return;
+    }
+
+    if (!isEditable || (event.key !== "ArrowUp" && event.key !== "ArrowDown")) return;
+    const currentIndex = GAME_TIERS.indexOf(game.tier);
+    const nextIndex = currentIndex + (event.key === "ArrowUp" ? -1 : 1);
+    if (nextIndex < 0 || nextIndex >= GAME_TIERS.length) return;
+    event.preventDefault();
+    void Promise.resolve(onMoveToTier(GAME_TIERS[nextIndex])).catch(() => undefined);
+  }
+
+  function handleDragStart(event: DragEvent<HTMLElement>) {
     const card = event.currentTarget.closest("article");
     if (card) {
       const rect = card.getBoundingClientRect();
@@ -56,57 +97,53 @@ export default function GameCard({
     onDragStart(event);
   }
 
-  function handleDragZoneKeyDown(event: React.KeyboardEvent<HTMLButtonElement>) {
-    if (event.key !== "ArrowUp" && event.key !== "ArrowDown") return;
-    const currentIndex = GAME_TIERS.indexOf(game.tier);
-    const nextIndex = currentIndex + (event.key === "ArrowUp" ? -1 : 1);
-    if (nextIndex < 0 || nextIndex >= GAME_TIERS.length) return;
-    event.preventDefault();
-    void Promise.resolve(onMoveToTier(GAME_TIERS[nextIndex])).catch(() => undefined);
-  }
-
   return (
     <>
       <article
-        aria-label={`${game.name}. Use the right side to move it between tiers.`}
-        className={`group relative grid min-w-0 grid-cols-[7fr_1fr] items-stretch overflow-hidden rounded-lg border border-shelf-paperDark/30 bg-shelf-paper shadow-[0_4px_9px_rgba(38,24,15,0.2)] transition-all hover:-translate-y-0.5 hover:border-shelf-brass hover:shadow-[0_8px_14px_rgba(38,24,15,0.28)] ${
+        ref={cardRef}
+        draggable={isEditable}
+        onDragStart={isEditable ? handleDragStart : undefined}
+        onDragEnd={isEditable ? onDragEnd : undefined}
+        onKeyDown={handleCardKeyDown}
+        tabIndex={0}
+        aria-grabbed={isEditable ? isDragging : undefined}
+        aria-keyshortcuts={isEditable ? "Enter Space ArrowUp ArrowDown" : "Enter Space"}
+        aria-label={`${game.name}. ${suitLabel[suit]} playing card. ${isEditable ? "Drag the whole card to move it between tiers, or use the arrow keys." : "View details; developer controls are locked."}`}
+        title={isEditable ? "Drag the whole card · Arrow keys to move" : "Unlock developer controls to move this game"}
+        className={`group relative block aspect-[5/7] min-w-0 self-end overflow-hidden rounded-[0.8rem] border-2 bg-[#f4ead6] text-[#29201c] shadow-[0_5px_0_-2px_rgba(38,24,15,0.85),0_9px_14px_rgba(0,0,0,0.4),inset_0_0_0_1px_rgba(255,255,255,0.72)] transition-all hover:-translate-y-0.5 hover:shadow-[0_6px_0_-2px_rgba(38,24,15,0.85),0_13px_18px_rgba(0,0,0,0.48),inset_0_0_0_1px_rgba(255,255,255,0.82)] ${
           isDragging ? "scale-[0.98] opacity-40" : ""
-        }`}
+        } ${isEditable ? "cursor-grab active:cursor-grabbing" : ""}`}
+        style={{ borderColor: `${tierColor}b8` }}
       >
-        <div className="flex min-w-0 flex-1 flex-col p-3">
+        <div className="relative h-full min-w-0 px-2 py-2 sm:px-2.5">
+          <span className="pointer-events-none absolute inset-x-2 bottom-0 h-px bg-[#8d765a]/50" aria-hidden />
+          <span className="absolute left-1.5 top-1 font-serif text-base leading-none" style={{ color: suitColor }} aria-hidden>
+            {glyph}
+          </span>
           <button
-            ref={detailsTriggerRef}
             type="button"
+            tabIndex={-1}
             onClick={() => setIsDetailsOpen(true)}
-            className="min-w-0 text-left"
+            className="block w-full min-w-0 px-2 pt-2 text-center"
             aria-label={`View details for ${game.name}`}
           >
-            <h3 className="truncate font-body text-sm font-semibold text-shelf-ink" title={game.name}>{game.name}</h3>
-            <p className="mt-1 min-h-10 text-xs leading-relaxed text-shelf-ink/70">{game.description}</p>
-            <span className="mt-2 inline-block font-mono text-[10px] uppercase tracking-wider text-shelf-ink/70 transition-colors group-hover:text-shelf-brass">
-              View details →
+            <span className="block break-words text-center font-display text-[0.95rem] italic font-semibold leading-tight text-[#29201c] sm:text-base" title={game.name}>
+              {game.name}
+            </span>
+            <span className="mt-1 block min-h-[6rem] break-words text-[11px] leading-tight text-[#5f5142]">
+              {game.description || "No description yet."}
             </span>
           </button>
+          <span className="absolute bottom-1 right-1.5 rotate-180 font-serif text-base leading-none" style={{ color: suitColor }} aria-hidden>
+            {glyph}
+          </span>
         </div>
-        <button
-          type="button"
-          draggable
-          onDragStart={handleDragStart}
-          onDragEnd={onDragEnd}
-          onKeyDown={handleDragZoneKeyDown}
-          aria-grabbed={isDragging}
-          aria-keyshortcuts="ArrowUp ArrowDown"
-          aria-label={`Drag ${game.name} to another tier, or use the arrow keys to move it`}
-          title="Drag this area to another tier · Arrow keys to move"
-          className="flex min-h-[5.5rem] min-w-0 cursor-grab items-center justify-center border-l border-shelf-paperDark/45 px-2 py-3 font-mono text-lg leading-none text-shelf-ink/60 transition-colors hover:bg-shelf-paperDark/25 hover:text-shelf-brass focus-visible:bg-shelf-paperDark/35 focus-visible:text-shelf-brass active:cursor-grabbing"
-        >
-          <span aria-hidden>⋮⋮</span>
-        </button>
       </article>
       {isDetailsOpen && (
         <GameDetailsPopup
           game={game}
           onClose={closeDetails}
+          canEdit={isEditable}
           onSave={async (updates) => {
             await onSave(updates);
             closeDetails();

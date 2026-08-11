@@ -1,7 +1,6 @@
 import { GAME_TIERS, type BoardGameEntry, type GameTier } from "@/lib/boardGames";
 
 export const BOARD_GAMES_STORAGE_KEY = "the-board:board-game-tiers";
-export const BOARD_GAME_NOTES_KEY = "the-board:board-game-notes";
 
 export function makeBoardGameId() {
   return `game-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;

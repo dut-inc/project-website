@@ -1,11 +1,14 @@
 "use client";
 
 import { useEffect, useRef, useState, type KeyboardEvent } from "react";
-import type { BoardGameEntry, GameDetailsUpdate } from "@/lib/boardGames";
+import { createPortal } from "react-dom";
+import { GAME_TIERS, TIER_DETAILS, type BoardGameEntry, type GameDetailsUpdate, type GameTier } from "@/lib/boardGames";
+import WinTracker from "./WinTracker";
 
 type GameDetailsPopupProps = {
   game: BoardGameEntry;
   onClose: () => void;
+  canEdit: boolean;
   onSave: (updates: GameDetailsUpdate) => Promise<void> | void;
   onDelete: () => Promise<void> | void;
 };
@@ -34,15 +37,18 @@ const detailFields = [
 export default function GameDetailsPopup({
   game,
   onClose,
+  canEdit,
   onSave,
   onDelete,
 }: GameDetailsPopupProps) {
   const [isEditing, setIsEditing] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const dialogRef = useRef<HTMLElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const [name, setName] = useState(game.name);
   const [description, setDescription] = useState(game.description);
+  const [tier, setTier] = useState<GameTier>(game.tier);
   const [details, setDetails] = useState({
     houseRules: game.houseRules,
     fullRules: game.fullRules,
@@ -50,8 +56,12 @@ export default function GameDetailsPopup({
   });
 
   useEffect(() => {
-    closeButtonRef.current?.focus();
+    setIsMounted(true);
   }, []);
+
+  useEffect(() => {
+    if (isMounted) closeButtonRef.current?.focus();
+  }, [isMounted]);
 
   function handleDialogKeyDown(event: KeyboardEvent<HTMLElement>) {
     if (event.key === "Escape") {
@@ -62,7 +72,7 @@ export default function GameDetailsPopup({
 
     if (event.key !== "Tab") return;
     const focusable = dialogRef.current?.querySelectorAll<HTMLElement>(
-      'button, input, textarea, [href], [tabindex]:not([tabindex="-1"])',
+      'button, input, textarea, select, [href], [tabindex]:not([tabindex="-1"])',
     );
     if (!focusable?.length) return;
 
@@ -87,6 +97,7 @@ export default function GameDetailsPopup({
       await onSave({
         name: name.trim() || game.name,
         description: description.trim() || game.description,
+        tier,
         ...details,
       });
       setIsEditing(false);
@@ -104,9 +115,9 @@ export default function GameDetailsPopup({
     }
   }
 
-  return (
+  const popupContent = (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-shelf-walnut/80 p-4 backdrop-blur-[2px]"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-shelf-walnut/65 p-4 backdrop-blur-md"
       role="presentation"
       onMouseDown={(event) => {
         if (event.target === event.currentTarget) onClose();
@@ -123,7 +134,7 @@ export default function GameDetailsPopup({
         <div className="flex items-start justify-between gap-5">
           <div>
             <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-shelf-ink/80">
-              game file / {game.tier}
+              game file / {TIER_DETAILS[game.tier].label}
             </p>
             <h2 id={`game-details-title-${game.id}`} className="mt-2 font-display text-3xl italic">
               {isEditing ? "Edit game" : game.name}
@@ -140,7 +151,7 @@ export default function GameDetailsPopup({
           </button>
         </div>
 
-        {isEditing ? (
+        {isEditing && canEdit ? (
           <div className="mt-6 space-y-5">
             <div>
               <label className="font-mono text-[10px] uppercase tracking-wider text-shelf-ink/80" htmlFor={`popup-name-${game.id}`}>
@@ -161,9 +172,26 @@ export default function GameDetailsPopup({
                 id={`popup-description-${game.id}`}
                 value={description}
                 onChange={(event) => setDescription(event.target.value)}
-                rows={3}
-                className="mt-2 w-full resize-y rounded-lg border border-shelf-paperDark/60 bg-white/35 px-3 py-2.5 text-sm leading-relaxed text-shelf-ink"
+                rows={6}
+                className="mt-2 min-h-40 w-full resize-y rounded-lg border border-shelf-paperDark/60 bg-white/35 px-3 py-2.5 text-sm leading-relaxed text-shelf-ink outline-none transition-shadow focus-visible:outline-2 focus-visible:outline-dashed focus-visible:outline-offset-0 focus-visible:outline-shelf-brass"
               />
+            </div>
+            <div>
+              <label className="font-mono text-[10px] uppercase tracking-wider text-shelf-ink/80" htmlFor={`popup-tier-${game.id}`}>
+                Tier
+              </label>
+              <select
+                id={`popup-tier-${game.id}`}
+                value={tier}
+                onChange={(event) => setTier(event.target.value as GameTier)}
+                className="mt-2 w-full rounded-lg border border-shelf-paperDark/60 bg-white/35 px-3 py-2.5 text-sm text-shelf-ink outline-none transition-shadow focus:border-shelf-brass focus:ring-2 focus:ring-shelf-brass/25"
+              >
+                {GAME_TIERS.map((option) => (
+                  <option key={option} value={option}>
+                    {TIER_DETAILS[option].label}
+                  </option>
+                ))}
+              </select>
             </div>
             {detailFields.map((field) => (
               <div key={field.key}>
@@ -199,11 +227,11 @@ export default function GameDetailsPopup({
             <dl className="mt-5 grid grid-cols-2 gap-3">
               <div className="rounded-lg border border-shelf-paperDark/45 bg-shelf-paperDark/15 p-3">
                 <dt className="font-mono text-[10px] uppercase tracking-wider text-shelf-ink/80">Current tier</dt>
-                <dd className="mt-1 font-display text-xl italic text-shelf-ink">{game.tier}</dd>
+                <dd className="mt-1 font-display text-xl italic text-shelf-ink">{TIER_DETAILS[game.tier].label}</dd>
               </div>
               <div className="rounded-lg border border-shelf-paperDark/45 bg-shelf-paperDark/15 p-3">
                 <dt className="font-mono text-[10px] uppercase tracking-wider text-shelf-ink/80">Status</dt>
-                <dd className="mt-1 font-display text-xl italic text-shelf-ink">{game.tier === "Unranked" ? "Deciding" : "Ranked"}</dd>
+                <dd className="mt-1 font-display text-xl italic text-shelf-ink">{game.tier === "Unranked" ? "Joker" : "Ranked"}</dd>
               </div>
             </dl>
             <div className="mt-6 space-y-3">
@@ -216,17 +244,24 @@ export default function GameDetailsPopup({
                 </section>
               ))}
             </div>
-            <div className="mt-7 flex flex-wrap items-center justify-between gap-3">
-              <button type="button" onClick={() => setIsEditing(true)} className="min-h-11 rounded-full bg-shelf-walnut px-5 font-mono text-[11px] uppercase tracking-widest text-shelf-paper transition-colors hover:bg-shelf-wood">
-                Edit game
-              </button>
-              <button type="button" onClick={() => void remove()} disabled={isSaving} className="min-h-11 rounded-full px-3 font-mono text-[11px] uppercase tracking-widest text-shelf-burgundy transition-colors hover:bg-shelf-burgundy/10 disabled:opacity-60">
-                {isSaving ? "Working…" : "Delete game"}
-              </button>
-            </div>
+            {canEdit ? (
+              <div className="mt-7 flex flex-wrap items-center justify-between gap-3">
+                <button type="button" onClick={() => setIsEditing(true)} className="min-h-11 rounded-full bg-shelf-walnut px-5 font-mono text-[11px] uppercase tracking-widest text-shelf-paper transition-colors hover:bg-shelf-wood">
+                  Edit game
+                </button>
+                <button type="button" onClick={() => void remove()} disabled={isSaving} className="min-h-11 rounded-full px-3 font-mono text-[11px] uppercase tracking-widest text-shelf-burgundy transition-colors hover:bg-shelf-burgundy/10 disabled:opacity-60">
+                  {isSaving ? "Working…" : "Delete game"}
+                </button>
+              </div>
+            ) : null}
           </>
         )}
+
+        <WinTracker gameId={game.id} gameName={game.name} isEditable={canEdit} />
       </section>
     </div>
   );
+
+  if (!isMounted || typeof document === "undefined") return null;
+  return createPortal(popupContent, document.body);
 }

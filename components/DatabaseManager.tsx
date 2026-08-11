@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
-import { GAME_TIERS, type BoardGameEntry, type GameTier } from "@/lib/boardGames";
+import { GAME_TIERS, TIER_DETAILS, type BoardGameEntry, type GameTier } from "@/lib/boardGames";
 
 type DatabaseGame = BoardGameEntry & {
   createdAt: string | null;
@@ -231,7 +231,7 @@ export default function DatabaseManager() {
                     <div className="flex flex-wrap items-center gap-2">
                       <h3 className="font-body text-lg font-semibold">{game.name}</h3>
                       <span className="rounded-full bg-shelf-walnut px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-shelf-paper">
-                        {game.tier}
+                        {TIER_DETAILS[game.tier].label}
                       </span>
                     </div>
                     <p className="mt-1 text-sm text-shelf-ink/75">{game.description || "No description yet."}</p>
@@ -273,7 +273,7 @@ export default function DatabaseManager() {
             <textarea id="db-game-description" value={form.description} onChange={(event) => updateField("description", event.target.value)} rows={2} className="w-full resize-y rounded-lg border border-shelf-paperDark/60 bg-white/35 px-3 py-2.5 text-sm" />
             <label className="block font-mono text-[10px] uppercase tracking-wider text-shelf-ink/75" htmlFor="db-game-tier">Tier</label>
             <select id="db-game-tier" value={form.tier} onChange={(event) => updateField("tier", event.target.value as GameTier)} className="w-full rounded-lg border border-shelf-paperDark/60 bg-white/35 px-3 py-2.5 text-sm">
-              {GAME_TIERS.map((tier) => <option key={tier} value={tier}>{tier}</option>)}
+              {GAME_TIERS.map((tier) => <option key={tier} value={tier}>{TIER_DETAILS[tier].label}</option>)}
             </select>
             {([
               ["houseRules", "House rules", "What does this group do differently?"],
