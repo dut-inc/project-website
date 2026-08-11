@@ -393,7 +393,7 @@ export default function SightingUploadForm({
               {isSaving ? "Logging…" : "Log sighting"}
             </button>
             <p className="font-mono text-[10px] text-ink/50">
-              photos are compressed &amp; shared via Supabase Storage
+              photos will be compressed
             </p>
           </div>
         </div>
