@@ -18,7 +18,7 @@ export type BoardGameEntry = {
 
 export type GameDetailsUpdate = Pick<
   BoardGameEntry,
-  "name" | "description" | "houseRules" | "fullRules" | "quickNotes"
+  "name" | "description" | "houseRules" | "fullRules" | "quickNotes" | "tier"
 >;
 
 export const TIER_DETAILS: Record<

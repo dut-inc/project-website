@@ -2,7 +2,8 @@
 
 import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 import { createPortal } from "react-dom";
-import { TIER_DETAILS, type BoardGameEntry, type GameDetailsUpdate } from "@/lib/boardGames";
+import { GAME_TIERS, TIER_DETAILS, type BoardGameEntry, type GameDetailsUpdate, type GameTier } from "@/lib/boardGames";
+import WinTracker from "./WinTracker";
 
 type GameDetailsPopupProps = {
   game: BoardGameEntry;
@@ -47,6 +48,7 @@ export default function GameDetailsPopup({
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const [name, setName] = useState(game.name);
   const [description, setDescription] = useState(game.description);
+  const [tier, setTier] = useState<GameTier>(game.tier);
   const [details, setDetails] = useState({
     houseRules: game.houseRules,
     fullRules: game.fullRules,
@@ -70,7 +72,7 @@ export default function GameDetailsPopup({
 
     if (event.key !== "Tab") return;
     const focusable = dialogRef.current?.querySelectorAll<HTMLElement>(
-      'button, input, textarea, [href], [tabindex]:not([tabindex="-1"])',
+      'button, input, textarea, select, [href], [tabindex]:not([tabindex="-1"])',
     );
     if (!focusable?.length) return;
 
@@ -95,6 +97,7 @@ export default function GameDetailsPopup({
       await onSave({
         name: name.trim() || game.name,
         description: description.trim() || game.description,
+        tier,
         ...details,
       });
       setIsEditing(false);
@@ -169,9 +172,26 @@ export default function GameDetailsPopup({
                 id={`popup-description-${game.id}`}
                 value={description}
                 onChange={(event) => setDescription(event.target.value)}
-                rows={3}
-                className="mt-2 w-full resize-y rounded-lg border border-shelf-paperDark/60 bg-white/35 px-3 py-2.5 text-sm leading-relaxed text-shelf-ink"
+                rows={6}
+                className="mt-2 min-h-40 w-full resize-y rounded-lg border border-shelf-paperDark/60 bg-white/35 px-3 py-2.5 text-sm leading-relaxed text-shelf-ink outline-none transition-shadow focus-visible:outline-2 focus-visible:outline-dashed focus-visible:outline-offset-0 focus-visible:outline-shelf-brass"
               />
+            </div>
+            <div>
+              <label className="font-mono text-[10px] uppercase tracking-wider text-shelf-ink/80" htmlFor={`popup-tier-${game.id}`}>
+                Tier
+              </label>
+              <select
+                id={`popup-tier-${game.id}`}
+                value={tier}
+                onChange={(event) => setTier(event.target.value as GameTier)}
+                className="mt-2 w-full rounded-lg border border-shelf-paperDark/60 bg-white/35 px-3 py-2.5 text-sm text-shelf-ink outline-none transition-shadow focus:border-shelf-brass focus:ring-2 focus:ring-shelf-brass/25"
+              >
+                {GAME_TIERS.map((option) => (
+                  <option key={option} value={option}>
+                    {TIER_DETAILS[option].label}
+                  </option>
+                ))}
+              </select>
             </div>
             {detailFields.map((field) => (
               <div key={field.key}>
@@ -236,6 +256,8 @@ export default function GameDetailsPopup({
             ) : null}
           </>
         )}
+
+        <WinTracker gameId={game.id} gameName={game.name} isEditable={canEdit} />
       </section>
     </div>
   );

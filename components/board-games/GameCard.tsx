@@ -46,13 +46,30 @@ export default function GameCard({
   onDragEnd,
 }: GameCardProps) {
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
-  const detailsTriggerRef = useRef<HTMLButtonElement>(null);
+  const cardRef = useRef<HTMLElement>(null);
   const glyph = suitGlyph[suit];
   const suitColor = redSuits.has(suit) ? "#9f302f" : "#29201c";
 
   function closeDetails() {
     setIsDetailsOpen(false);
-    window.requestAnimationFrame(() => detailsTriggerRef.current?.focus());
+    window.requestAnimationFrame(() => cardRef.current?.focus());
+  }
+
+  function handleCardKeyDown(event: KeyboardEvent<HTMLElement>) {
+    if (event.target !== event.currentTarget) return;
+
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      setIsDetailsOpen(true);
+      return;
+    }
+
+    if (!isEditable || (event.key !== "ArrowUp" && event.key !== "ArrowDown")) return;
+    const currentIndex = GAME_TIERS.indexOf(game.tier);
+    const nextIndex = currentIndex + (event.key === "ArrowUp" ? -1 : 1);
+    if (nextIndex < 0 || nextIndex >= GAME_TIERS.length) return;
+    event.preventDefault();
+    void Promise.resolve(onMoveToTier(GAME_TIERS[nextIndex])).catch(() => undefined);
   }
 
   function handleDragStart(event: DragEvent<HTMLElement>) {
@@ -80,25 +97,17 @@ export default function GameCard({
     onDragStart(event);
   }
 
-  function handleCardKeyDown(event: KeyboardEvent<HTMLElement>) {
-    if (event.target !== event.currentTarget || !isEditable || (event.key !== "ArrowUp" && event.key !== "ArrowDown")) return;
-    const currentIndex = GAME_TIERS.indexOf(game.tier);
-    const nextIndex = currentIndex + (event.key === "ArrowUp" ? -1 : 1);
-    if (nextIndex < 0 || nextIndex >= GAME_TIERS.length) return;
-    event.preventDefault();
-    void Promise.resolve(onMoveToTier(GAME_TIERS[nextIndex])).catch(() => undefined);
-  }
-
   return (
     <>
       <article
+        ref={cardRef}
         draggable={isEditable}
         onDragStart={isEditable ? handleDragStart : undefined}
         onDragEnd={isEditable ? onDragEnd : undefined}
         onKeyDown={handleCardKeyDown}
-        tabIndex={isEditable ? 0 : undefined}
+        tabIndex={0}
         aria-grabbed={isEditable ? isDragging : undefined}
-        aria-keyshortcuts={isEditable ? "ArrowUp ArrowDown" : undefined}
+        aria-keyshortcuts={isEditable ? "Enter Space ArrowUp ArrowDown" : "Enter Space"}
         aria-label={`${game.name}. ${suitLabel[suit]} playing card. ${isEditable ? "Drag the whole card to move it between tiers, or use the arrow keys." : "View details; developer controls are locked."}`}
         title={isEditable ? "Drag the whole card · Arrow keys to move" : "Unlock developer controls to move this game"}
         className={`group relative block aspect-[5/7] min-w-0 self-end overflow-hidden rounded-[0.8rem] border-2 bg-[#f4ead6] text-[#29201c] shadow-[0_5px_0_-2px_rgba(38,24,15,0.85),0_9px_14px_rgba(0,0,0,0.4),inset_0_0_0_1px_rgba(255,255,255,0.72)] transition-all hover:-translate-y-0.5 hover:shadow-[0_6px_0_-2px_rgba(38,24,15,0.85),0_13px_18px_rgba(0,0,0,0.48),inset_0_0_0_1px_rgba(255,255,255,0.82)] ${
@@ -112,16 +121,16 @@ export default function GameCard({
             {glyph}
           </span>
           <button
-            ref={detailsTriggerRef}
             type="button"
+            tabIndex={-1}
             onClick={() => setIsDetailsOpen(true)}
-            className="block min-w-0 px-2 pt-2 text-left"
+            className="block w-full min-w-0 px-2 pt-2 text-center"
             aria-label={`View details for ${game.name}`}
           >
-            <span className="block truncate text-center font-display text-[0.95rem] italic font-semibold leading-tight text-[#29201c] sm:text-base" title={game.name}>
+            <span className="block break-words text-center font-display text-[0.95rem] italic font-semibold leading-tight text-[#29201c] sm:text-base" title={game.name}>
               {game.name}
             </span>
-            <span className="mt-1 block min-h-[6rem] overflow-hidden text-[11px] leading-tight text-[#5f5142] [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2]">
+            <span className="mt-1 block min-h-[6rem] break-words text-[11px] leading-tight text-[#5f5142]">
               {game.description || "No description yet."}
             </span>
           </button>
