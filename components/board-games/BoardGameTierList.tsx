@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState, type DragEvent } from "react";
+import { useCallback, useEffect, useRef, useState, type DragEvent, type Ref } from "react";
 import { createClient } from "@/utils/supabase/client";
 import {
   BOARD_GAME_COLUMNS,
@@ -10,22 +10,26 @@ import {
   boardGameUpdatesToDatabase,
   getDatabaseErrorMessage,
 } from "@/lib/boardGamesDatabase";
-import { BOARD_GAMES_STORAGE_KEY, BOARD_GAME_NOTES_KEY, readSavedGames } from "@/lib/boardGameStorage";
+import { BOARD_GAMES_STORAGE_KEY, readSavedGames } from "@/lib/boardGameStorage";
 import type { BoardGameEntry, GameTier } from "@/lib/boardGames";
 import AddGameForm from "./AddGameForm";
-import GroupNotes from "./GroupNotes";
 import TierList from "./TierList";
-
-export default function BoardGameTierList() {
+export default function BoardGameTierList({
+  isEditable,
+  developerAccessTriggerRef,
+  onOpenDeveloperAccess,
+}: {
+  isEditable: boolean;
+  developerAccessTriggerRef: Ref<HTMLButtonElement>;
+  onOpenDeveloperAccess: () => void;
+}) {
   const [games, setGames] = useState<BoardGameEntry[]>([]);
-  const [notes, setNotes] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [isWorking, setIsWorking] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [draggingId, setDraggingId] = useState<string | null>(null);
   const [dragOverTier, setDragOverTier] = useState<GameTier | null>(null);
   const loadPromiseRef = useRef<Promise<void> | null>(null);
-
   const loadGames = useCallback(() => {
     if (loadPromiseRef.current) return loadPromiseRef.current;
 
@@ -97,26 +101,15 @@ export default function BoardGameTierList() {
   }, [loadGames]);
 
   useEffect(() => {
-    try {
-      const savedNotes = window.localStorage.getItem(BOARD_GAME_NOTES_KEY);
-      if (savedNotes) {
-        // eslint-disable-next-line react-hooks/set-state-in-effect
-        setNotes(savedNotes);
-      }
-    } catch {
-      // Notes remain empty if browser storage is unavailable.
-    }
-  }, []);
-
-  useEffect(() => {
-    try {
-      window.localStorage.setItem(BOARD_GAME_NOTES_KEY, notes);
-    } catch {
-      // Storage can be unavailable in private browsing or when full.
-    }
-  }, [notes]);
+    if (isEditable) return;
+    // Clear any visual drag state if the session is locked while dragging.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setDraggingId(null);
+    setDragOverTier(null);
+  }, [isEditable]);
 
   async function updateGame(id: string, updates: Partial<BoardGameEntry>) {
+    if (!isEditable) return;
     setIsWorking(true);
     setError(null);
 
@@ -140,6 +133,7 @@ export default function BoardGameTierList() {
   }
 
   async function addGame(game: Omit<BoardGameEntry, "id">) {
+    if (!isEditable) return;
     setIsWorking(true);
     setError(null);
 
@@ -160,6 +154,8 @@ export default function BoardGameTierList() {
   }
 
   async function moveGameToTier(id: string, tier: GameTier) {
+    if (!isEditable) return;
+
     try {
       if (games.find((game) => game.id === id)?.tier === tier) return;
       await updateGame(id, { tier });
@@ -170,12 +166,14 @@ export default function BoardGameTierList() {
   }
 
   function handleDragStart(event: DragEvent<HTMLElement>, game: BoardGameEntry) {
+    if (!isEditable) return;
     event.dataTransfer.effectAllowed = "move";
     event.dataTransfer.setData("text/plain", game.id);
     setDraggingId(game.id);
   }
 
   function handleDragOver(event: DragEvent<HTMLDivElement>, tier: GameTier) {
+    if (!isEditable) return;
     event.preventDefault();
     event.dataTransfer.dropEffect = "move";
     setDragOverTier(tier);
@@ -188,6 +186,7 @@ export default function BoardGameTierList() {
   }
 
   function handleDrop(event: DragEvent<HTMLDivElement>, tier: GameTier) {
+    if (!isEditable) return;
     event.preventDefault();
     const id = event.dataTransfer.getData("text/plain");
     if (id) void moveGameToTier(id, tier).catch(() => undefined);
@@ -198,6 +197,7 @@ export default function BoardGameTierList() {
   }
 
   async function removeGame(id: string): Promise<void> {
+    if (!isEditable) return;
     setIsWorking(true);
     setError(null);
 
@@ -222,7 +222,7 @@ export default function BoardGameTierList() {
   }
 
   return (
-    <div className="mx-auto mt-10 max-w-6xl space-y-6">
+    <div className="mx-auto mt-12 max-w-[68rem] space-y-7">
       {error && (
         <div role="alert" className="rounded-xl border border-shelf-burgundy/70 bg-shelf-burgundy/20 px-4 py-3 text-sm text-shelf-paper">
           <p>{error}</p>
@@ -233,7 +233,7 @@ export default function BoardGameTierList() {
       )}
 
       {isLoading ? (
-        <div className="rounded-xl border border-shelf-paper/20 bg-shelf-walnut/70 px-4 py-12 text-center text-sm text-shelf-paper/75">
+        <div className="rounded-lg border-4 border-shelf-wood bg-shelf-walnut px-4 py-12 text-center text-sm text-shelf-paper/75 shadow-[0_18px_35px_rgba(38,24,15,0.35),inset_0_0_0_1px_rgba(203,184,147,0.18)]">
           Reading the shelf from Supabase…
         </div>
       ) : (
@@ -241,6 +241,7 @@ export default function BoardGameTierList() {
           <div className={isWorking ? "opacity-75 transition-opacity" : ""}>
             <TierList
               games={games}
+              isEditable={isEditable}
               draggingId={draggingId}
               dragOverTier={dragOverTier}
               onDragOver={handleDragOver}
@@ -254,15 +255,17 @@ export default function BoardGameTierList() {
                 setDraggingId(null);
                 setDragOverTier(null);
               }}
+              developerAccessTriggerRef={developerAccessTriggerRef}
+              onOpenDeveloperAccess={onOpenDeveloperAccess}
             />
           </div>
 
-          <aside className="space-y-5">
-            <AddGameForm onAdd={addGame} />
-            <GroupNotes notes={notes} onChange={setNotes} />
+          <aside className="space-y-5 lg:pt-16">
+            <AddGameForm onAdd={addGame} disabled={!isEditable} />
           </aside>
         </div>
       )}
+
     </div>
   );
 }
