@@ -160,7 +160,6 @@ export default function WinTracker({ gameId, gameName, isEditable }: WinTrackerP
             p_player_id: Number(entry.id),
           });
       if (queryError) throw queryError;
-      setNotice(`${entry.name}: ${nextWins} ${nextWins === 1 ? "win" : "wins"}.`);
     } catch (caughtError) {
       setEntries((current) => current.map((currentEntry) => (currentEntry.id === entry.id ? entry : currentEntry)).sort(sortEntries));
       setError(
