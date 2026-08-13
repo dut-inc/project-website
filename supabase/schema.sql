@@ -417,6 +417,83 @@ create policy "prototype board games are insertable"
 create policy "prototype board games are editable"
   on public.boardgames for update to anon, authenticated using (true) with check (true);
 create policy "prototype board games are removable"
+  on public.boardgames for delete
+  to anon, authenticated
+  using (true);
+
+-- Sighting uploads used by /conservation (Field Watch).
+-- Run this in the Supabase SQL editor before using the upload feature.
+
+create table if not exists public.sightings (
+  id text primary key,
+  created_at timestamptz not null default now(),
+  species text not null default '',
+  category text not null default 'other',
+  location text not null default '',
+  lat double precision not null default 0,
+  lng double precision not null default 0,
+  date text not null default '',
+  observer text not null default '',
+  note text not null default '',
+  photo text not null default '' -- public URL of the compressed JPEG in the sightings-photos bucket
+);
+
+alter table public.sightings enable row level security;
+
+grant select, insert, update, delete on table public.sightings to anon, authenticated;
+
+-- Prototype-only policies, matching the boardgames table above.
+drop policy if exists "prototype sightings are readable" on public.sightings;
+drop policy if exists "prototype sightings are insertable" on public.sightings;
+drop policy if exists "prototype sightings are editable" on public.sightings;
+drop policy if exists "prototype sightings are removable" on public.sightings;
+
+create policy "prototype sightings are readable"
+  on public.sightings for select
+  to anon, authenticated
+  using (true);
+
+-- May be security risk maybe in the future consider removing insert for anon
+create policy "prototype sightings are insertable"
+  on public.sightings for insert
+  to anon, authenticated
+  with check (true);
+
+create policy "prototype sightings are editable"
+  on public.sightings for update
+  to authenticated
+  using (true)
+  with check (true);
+
+create policy "prototype sightings are removable"
+  on public.sightings for delete
+  to authenticated
+  using (true);
+
+-- Upload photos live in a public Storage bucket. The client compresses each
+-- photo to a <=512KB JPEG before uploading, so even thousands of sightings
+-- stay far below the free tier. Public bucket + random filenames is fine for
+-- the friends-only prototype; use a private bucket with signed URLs later.
+
+insert into storage.buckets (id, name, public)
+values ('sightings-photos', 'sightings-photos', true)
+on conflict (id) do nothing;
+
+-- Prototype-only policies, matching the sightings table above.
+drop policy if exists "prototype sighting photos are readable" on storage.objects;
+drop policy if exists "prototype sighting photos are uploadable" on storage.objects;
+
+grant insert, select, update, delete on table storage.objects to anon, authenticated;
+
+create policy "prototype sighting photos are readable"
+  on storage.objects for select
+  to anon, authenticated
+  using (bucket_id = 'sightings-photos');
+
+create policy "prototype sighting photos are uploadable"
+  on storage.objects for insert
+  to anon, authenticated
+  with check (bucket_id = 'sightings-photos');
   on public.boardgames for delete to anon, authenticated using (true);
 
 drop policy if exists "prototype players are readable" on public.players;

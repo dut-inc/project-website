@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" role="img" aria-label="Mossy forest scene placeholder">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#C9D8B4"/>
+      <stop offset="100%" stop-color="#8FAD7E"/>
+    </linearGradient>
+    <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5D7B54"/>
+      <stop offset="100%" stop-color="#3A5236"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#sky)"/>
+  <circle cx="480" cy="110" r="55" fill="#F7EBC0" opacity="0.9"/>
+  <rect y="255" width="600" height="145" fill="url(#floor)"/>
+  <g fill="#44603F">
+    <path d="M40 260 L90 150 L140 260 Z"/>
+    <path d="M150 260 L210 120 L270 260 Z"/>
+    <path d="M300 260 L360 140 L420 260 Z"/>
+    <path d="M440 260 L500 130 L560 260 Z"/>
+  </g>
+  <g fill="#2F4A2C">
+    <path d="M90 300 L140 210 L190 300 Z"/>
+    <path d="M240 300 L300 195 L360 300 Z"/>
+    <path d="M390 300 L450 200 L510 300 Z"/>
+  </g>
+  <path d="M0 300 q40 -18 90 0 t90 0 t90 0 t90 0 t90 0 t90 0 t60 0" stroke="#6E8A5F" stroke-width="14" fill="none" opacity="0.5"/>
+  <g fill="#27401F">
+    <path d="M20 355 L55 300 L90 355 Z"/>
+    <path d="M120 365 L155 305 L190 365 Z"/>
+    <path d="M250 350 L290 290 L330 350 Z"/>
+    <path d="M380 360 L420 300 L460 360 Z"/>
+    <path d="M500 355 L535 305 L570 355 Z"/>
+  </g>
+</svg>

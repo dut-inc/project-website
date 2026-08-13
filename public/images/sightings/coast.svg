@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" role="img" aria-label="Coastal scene placeholder">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#EFB88F"/>
+      <stop offset="60%" stop-color="#D98F7A"/>
+      <stop offset="100%" stop-color="#7F8FA6"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4E6E8E"/>
+      <stop offset="100%" stop-color="#2E4457"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#FBE3A2" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#FBE3A2" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#sky)"/>
+  <circle cx="430" cy="120" r="90" fill="url(#sun)"/>
+  <circle cx="430" cy="120" r="34" fill="#F7D98B"/>
+  <rect y="235" width="600" height="165" fill="url(#sea)"/>
+  <path d="M0 235 Q90 205 180 238 Q270 270 360 236 Q450 205 540 238 L600 250 L600 400 L0 400 Z" fill="#3E4A5C"/>
+  <path d="M0 275 Q120 250 240 282 Q360 314 480 280 Q540 268 600 280 L600 400 L0 400 Z" fill="#2C3848"/>
+  <path d="M300 285 q6 -14 12 0 q-6 3 -12 0" fill="#DCE6EE"/>
+  <path d="M330 295 q5 -11 10 0 q-5 2.5 -10 0" fill="#DCE6EE"/>
+  <path d="M150 140 q10 -24 20 0 q-10 5 -20 0" fill="#3E4A5C"/>
+  <path d="M170 128 q8 -18 16 0 q-8 4 -16 0" fill="#3E4A5C"/>
+</svg>
