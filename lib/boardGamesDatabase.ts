@@ -1,8 +1,8 @@
-import { GAME_TIERS, type BoardGameEntry, type GameTier } from "@/lib/boardGames";
+import { GAME_TIERS, GAME_TYPES, type BoardGameEntry, type GameTier, type GameType } from "@/lib/boardGames";
 
 export const BOARD_GAMES_TABLE = "boardgames";
 export const BOARD_GAME_COLUMNS =
-  "id, name, description, house_rules, full_rules, quick_notes, tier, created_at";
+  "id, name, description, house_rules, full_rules, quick_notes, tier, game_type, created_at";
 
 export type BoardGameDatabaseRow = {
   id: number | string;
@@ -13,6 +13,7 @@ export type BoardGameDatabaseRow = {
   house_rules: string | null;
   quick_notes: string | null;
   full_rules: string | null;
+  game_type: string | null;
 };
 
 export type NewBoardGame = Omit<BoardGameEntry, "id">;
@@ -30,6 +31,12 @@ function normalizeTier(value: unknown): GameTier {
     : "Unranked";
 }
 
+function normalizeGameType(value: unknown): GameType {
+  return typeof value === "string" && GAME_TYPES.includes(value as GameType)
+    ? (value as GameType)
+    : "FFA";
+}
+
 export function boardGameFromDatabase(row: unknown): BoardGameEntry | null {
   if (typeof row !== "object" || row === null) return null;
   const candidate = row as Partial<BoardGameDatabaseRow>;
@@ -43,6 +50,7 @@ export function boardGameFromDatabase(row: unknown): BoardGameEntry | null {
     fullRules: candidate.full_rules ?? "",
     quickNotes: candidate.quick_notes ?? "",
     tier: normalizeTier(candidate.tier),
+    gameType: normalizeGameType(candidate.game_type),
   };
 }
 
@@ -54,6 +62,7 @@ export function boardGameToDatabase(game: NewBoardGame) {
     full_rules: game.fullRules,
     quick_notes: game.quickNotes,
     tier: game.tier,
+    game_type: game.gameType,
   };
 }
 
@@ -66,6 +75,7 @@ export function boardGameUpdatesToDatabase(updates: Partial<BoardGameEntry>) {
   if (updates.fullRules !== undefined) databaseUpdates.full_rules = updates.fullRules;
   if (updates.quickNotes !== undefined) databaseUpdates.quick_notes = updates.quickNotes;
   if (updates.tier !== undefined) databaseUpdates.tier = updates.tier;
+  if (updates.gameType !== undefined) databaseUpdates.game_type = updates.gameType;
 
   return databaseUpdates;
 }

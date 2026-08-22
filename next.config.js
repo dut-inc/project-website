@@ -8,6 +8,12 @@ const nextConfig = {
         hostname: "cdn.nba.com",
         pathname: "/**",
       },
+      {
+        // Field Watch upload photos live in Supabase Storage.
+        protocol: "https",
+        hostname: "**.supabase.co",
+        pathname: "/storage/v1/object/public/**",
+      },
     ],
   },
 };
