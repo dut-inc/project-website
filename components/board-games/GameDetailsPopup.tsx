@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 import { createPortal } from "react-dom";
-import { GAME_TIERS, TIER_DETAILS, type BoardGameEntry, type GameDetailsUpdate, type GameTier } from "@/lib/boardGames";
+import { GAME_TIERS, GAME_TYPES, GAME_TYPE_SUITS, TIER_DETAILS, type BoardGameEntry, type CardSuit, type GameDetailsUpdate, type GameTier, type GameType } from "@/lib/boardGames";
 import WinTracker from "./WinTracker";
 
 type GameDetailsPopupProps = {
@@ -12,6 +12,15 @@ type GameDetailsPopupProps = {
   onSave: (updates: GameDetailsUpdate) => Promise<void> | void;
   onDelete: () => Promise<void> | void;
 };
+
+const suitGlyph: Record<CardSuit, string> = {
+  diamond: "♦",
+  club: "♣",
+  heart: "♥",
+  spade: "♠",
+};
+
+const redSuits = new Set<CardSuit>(["diamond", "heart"]);
 
 const detailFields = [
   {
@@ -49,13 +58,19 @@ export default function GameDetailsPopup({
   const [name, setName] = useState(game.name);
   const [description, setDescription] = useState(game.description);
   const [tier, setTier] = useState<GameTier>(game.tier);
+  const [gameType, setGameType] = useState<GameType>(game.gameType);
   const [details, setDetails] = useState({
     houseRules: game.houseRules,
     fullRules: game.fullRules,
     quickNotes: game.quickNotes,
   });
+  const cardSuit = GAME_TYPE_SUITS[game.gameType];
+  const cardGlyph = suitGlyph[cardSuit];
+  const cardSuitColor = redSuits.has(cardSuit) ? "#9f302f" : "#29201c";
 
   useEffect(() => {
+    // Portal content must wait until the browser document is available.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsMounted(true);
   }, []);
 
@@ -98,6 +113,7 @@ export default function GameDetailsPopup({
         name: name.trim() || game.name,
         description: description.trim() || game.description,
         tier,
+        gameType,
         ...details,
       });
       setIsEditing(false);
@@ -129,12 +145,15 @@ export default function GameDetailsPopup({
         aria-modal="true"
         aria-labelledby={`game-details-title-${game.id}`}
         onKeyDown={handleDialogKeyDown}
-        className="paper-torn max-h-[min(42rem,calc(100vh-2rem))] w-full max-w-2xl overflow-y-auto bg-shelf-paper p-6 text-shelf-ink shadow-[0_24px_70px_-18px_rgba(38,24,15,0.75)] sm:p-8"
+        className="relative max-h-[min(44rem,calc(100vh-2rem))] w-full max-w-2xl overflow-y-auto rounded-[1.15rem] border-2 border-[#8d765a]/75 bg-[#f4ead6] p-6 text-[#29201c] shadow-[0_24px_70px_-18px_rgba(38,24,15,0.75),inset_0_0_0_1px_rgba(255,255,255,0.78)] sm:p-8"
       >
-        <div className="flex items-start justify-between gap-5">
+        <span className="pointer-events-none absolute left-4 top-4 font-serif text-2xl leading-none" style={{ color: cardSuitColor }} aria-hidden>{cardGlyph}</span>
+        <span className="pointer-events-none absolute bottom-4 right-4 rotate-180 font-serif text-2xl leading-none" style={{ color: cardSuitColor }} aria-hidden>{cardGlyph}</span>
+        <span className="pointer-events-none absolute inset-x-6 top-5 h-px bg-[#8d765a]/45" aria-hidden />
+        <div className="relative z-10 flex items-start justify-between gap-5 pl-6">
           <div>
             <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-shelf-ink/80">
-              game file / {TIER_DETAILS[game.tier].label}
+              game card / {TIER_DETAILS[game.tier].label} · {game.gameType}
             </p>
             <h2 id={`game-details-title-${game.id}`} className="mt-2 font-display text-3xl italic">
               {isEditing ? "Edit game" : game.name}
@@ -145,14 +164,14 @@ export default function GameDetailsPopup({
             type="button"
             onClick={onClose}
             aria-label="Close game details"
-            className="min-h-10 min-w-10 rounded-full border border-shelf-paperDark/60 font-mono text-lg text-shelf-ink/80 transition-colors hover:border-shelf-brass hover:text-shelf-ink"
+            className="min-h-10 min-w-10 rounded-full border border-[#8d765a]/65 font-mono text-lg text-[#5f5142] transition-colors hover:border-[#c9a227] hover:bg-[#c9a227]/10 hover:text-[#29201c]"
           >
             ×
           </button>
         </div>
 
         {isEditing && canEdit ? (
-          <div className="mt-6 space-y-5">
+          <div className="relative z-10 mt-7 space-y-5">
             <div>
               <label className="font-mono text-[10px] uppercase tracking-wider text-shelf-ink/80" htmlFor={`popup-name-${game.id}`}>
                 Game name
@@ -161,7 +180,7 @@ export default function GameDetailsPopup({
                 id={`popup-name-${game.id}`}
                 value={name}
                 onChange={(event) => setName(event.target.value)}
-                className="mt-2 w-full rounded-lg border border-shelf-paperDark/60 bg-white/35 px-3 py-2.5 text-sm text-shelf-ink"
+                className="mt-2 w-full rounded-lg border border-[#8d765a]/60 bg-white/45 px-3 py-2.5 text-sm text-[#29201c] outline-none transition-shadow focus:border-[#c9a227] focus:ring-2 focus:ring-[#c9a227]/25"
               />
             </div>
             <div>
@@ -173,8 +192,23 @@ export default function GameDetailsPopup({
                 value={description}
                 onChange={(event) => setDescription(event.target.value)}
                 rows={6}
-                className="mt-2 min-h-40 w-full resize-y rounded-lg border border-shelf-paperDark/60 bg-white/35 px-3 py-2.5 text-sm leading-relaxed text-shelf-ink outline-none transition-shadow focus-visible:outline-2 focus-visible:outline-dashed focus-visible:outline-offset-0 focus-visible:outline-shelf-brass"
+                className="mt-2 min-h-40 w-full resize-y rounded-lg border border-[#8d765a]/60 bg-white/45 px-3 py-2.5 text-sm leading-relaxed text-[#29201c] outline-none transition-shadow focus-visible:outline-2 focus-visible:outline-dashed focus-visible:outline-offset-0 focus-visible:outline-[#c9a227]"
               />
+            </div>
+            <div>
+              <label className="font-mono text-[10px] uppercase tracking-wider text-shelf-ink/80" htmlFor={`popup-game-type-${game.id}`}>
+                Game type
+              </label>
+              <select
+                id={`popup-game-type-${game.id}`}
+                value={gameType}
+                onChange={(event) => setGameType(event.target.value as GameType)}
+                className="mt-2 w-full rounded-lg border border-[#8d765a]/60 bg-white/45 px-3 py-2.5 text-sm text-[#29201c] outline-none transition-shadow focus:border-[#c9a227] focus:ring-2 focus:ring-[#c9a227]/25"
+              >
+                {GAME_TYPES.map((option) => (
+                  <option key={option} value={option}>{option}</option>
+                ))}
+              </select>
             </div>
             <div>
               <label className="font-mono text-[10px] uppercase tracking-wider text-shelf-ink/80" htmlFor={`popup-tier-${game.id}`}>
@@ -184,7 +218,7 @@ export default function GameDetailsPopup({
                 id={`popup-tier-${game.id}`}
                 value={tier}
                 onChange={(event) => setTier(event.target.value as GameTier)}
-                className="mt-2 w-full rounded-lg border border-shelf-paperDark/60 bg-white/35 px-3 py-2.5 text-sm text-shelf-ink outline-none transition-shadow focus:border-shelf-brass focus:ring-2 focus:ring-shelf-brass/25"
+                className="mt-2 w-full rounded-lg border border-[#8d765a]/60 bg-white/45 px-3 py-2.5 text-sm text-[#29201c] outline-none transition-shadow focus:border-[#c9a227] focus:ring-2 focus:ring-[#c9a227]/25"
               >
                 {GAME_TIERS.map((option) => (
                   <option key={option} value={option}>
@@ -205,7 +239,7 @@ export default function GameDetailsPopup({
                   onChange={(event) => updateDetail(field.key, event.target.value)}
                   rows={field.key === "fullRules" ? 6 : 4}
                   placeholder={field.placeholder}
-                  className="mt-2 w-full resize-y rounded-lg border border-shelf-paperDark/60 bg-white/35 px-3 py-2.5 text-sm leading-relaxed text-shelf-ink placeholder:text-shelf-ink/70"
+                  className="mt-2 w-full resize-y rounded-lg border border-[#8d765a]/60 bg-white/45 px-3 py-2.5 text-sm leading-relaxed text-[#29201c] placeholder:text-[#5f5142]/70 outline-none transition-shadow focus:border-[#c9a227] focus:ring-2 focus:ring-[#c9a227]/25"
                 />
               </div>
             ))}
@@ -220,32 +254,33 @@ export default function GameDetailsPopup({
           </div>
         ) : (
           <>
-            <div className="mt-6 rounded-xl bg-shelf-paperDark/20 p-4">
-              <p className="font-mono text-[10px] uppercase tracking-wider text-shelf-ink/80">your take</p>
-              <p className="mt-2 text-base leading-relaxed text-shelf-ink/85">{game.description}</p>
+            <div className="relative z-10 mt-7 rounded-xl border border-[#8d765a]/55 bg-white/30 p-4 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.45)]"
+            >
+              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#5f5142]">your take</p>
+              <p className="mt-2 text-base leading-relaxed text-[#29201c]">{game.description || "No description yet."}</p>
             </div>
-            <dl className="mt-5 grid grid-cols-2 gap-3">
-              <div className="rounded-lg border border-shelf-paperDark/45 bg-shelf-paperDark/15 p-3">
-                <dt className="font-mono text-[10px] uppercase tracking-wider text-shelf-ink/80">Current tier</dt>
-                <dd className="mt-1 font-display text-xl italic text-shelf-ink">{TIER_DETAILS[game.tier].label}</dd>
+            <dl className="relative z-10 mt-4 grid grid-cols-2 gap-3">
+              <div className="rounded-lg border border-[#8d765a]/55 bg-[#d9c7a8]/25 p-3">
+                <dt className="font-mono text-[10px] uppercase tracking-wider text-[#5f5142]">Game type</dt>
+                <dd className="mt-1 font-display text-xl italic text-[#29201c]">{game.gameType}</dd>
               </div>
-              <div className="rounded-lg border border-shelf-paperDark/45 bg-shelf-paperDark/15 p-3">
-                <dt className="font-mono text-[10px] uppercase tracking-wider text-shelf-ink/80">Status</dt>
-                <dd className="mt-1 font-display text-xl italic text-shelf-ink">{game.tier === "Unranked" ? "Joker" : "Ranked"}</dd>
+              <div className="rounded-lg border border-[#8d765a]/55 bg-[#d9c7a8]/25 p-3">
+                <dt className="font-mono text-[10px] uppercase tracking-wider text-[#5f5142]">Tier</dt>
+                <dd className="mt-1 font-display text-xl italic text-[#29201c]">{TIER_DETAILS[game.tier].label}</dd>
               </div>
             </dl>
-            <div className="mt-6 space-y-3">
+            <div className="relative z-10 mt-6 space-y-3">
               {detailFields.map((field) => (
-                <section key={field.key} className="rounded-xl border border-shelf-paperDark/45 bg-shelf-paperDark/15 p-4">
-                  <h3 className="font-mono text-[10px] uppercase tracking-[0.15em] text-shelf-ink/80">{field.label}</h3>
-                  <p className="mt-2 whitespace-pre-wrap text-sm leading-relaxed text-shelf-ink/80">
+                <section key={field.key} className="rounded-xl border border-[#8d765a]/50 bg-white/25 p-4 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.35)]">
+                  <h3 className="font-mono text-[10px] uppercase tracking-[0.15em] text-[#5f5142]">{field.label}</h3>
+                  <p className="mt-2 whitespace-pre-wrap text-sm leading-relaxed text-[#5f5142]">
                     {game[field.key] || "Nothing added yet."}
                   </p>
                 </section>
               ))}
             </div>
             {canEdit ? (
-              <div className="mt-7 flex flex-wrap items-center justify-between gap-3">
+              <div className="relative z-10 mt-7 flex flex-wrap items-center justify-between gap-3 border-t border-[#8d765a]/45 pt-5">
                 <button type="button" onClick={() => setIsEditing(true)} className="min-h-11 rounded-full bg-shelf-walnut px-5 font-mono text-[11px] uppercase tracking-widest text-shelf-paper transition-colors hover:bg-shelf-wood">
                   Edit game
                 </button>

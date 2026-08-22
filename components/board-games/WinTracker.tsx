@@ -160,7 +160,6 @@ export default function WinTracker({ gameId, gameName, isEditable }: WinTrackerP
             p_player_id: Number(entry.id),
           });
       if (queryError) throw queryError;
-      setNotice(`${entry.name}: ${nextWins} ${nextWins === 1 ? "win" : "wins"}.`);
     } catch (caughtError) {
       setEntries((current) => current.map((currentEntry) => (currentEntry.id === entry.id ? entry : currentEntry)).sort(sortEntries));
       setError(
@@ -174,15 +173,15 @@ export default function WinTracker({ gameId, gameName, isEditable }: WinTrackerP
   }
 
   return (
-    <section className="mt-8 border-t border-shelf-paperDark/55 pt-6" aria-labelledby={`win-tracker-heading-${gameId}`}>
+    <section className="relative z-10 mt-8 border-t border-[#8d765a]/45 pt-6" aria-labelledby={`win-tracker-heading-${gameId}`}>
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-shelf-ink/70">scoreboard</p>
-          <h3 id={`win-tracker-heading-${gameId}`} className="mt-1 font-display text-2xl italic text-shelf-ink">
+          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#5f5142]">scoreboard</p>
+          <h3 id={`win-tracker-heading-${gameId}`} className="mt-1 font-display text-2xl italic text-[#29201c]">
             {gameName} leaderboard
           </h3>
         </div>
-        <span className="rounded-full border border-shelf-paperDark/70 px-3 py-1 font-mono text-[9px] uppercase tracking-widest text-shelf-ink/65">
+        <span className="rounded-full border border-[#8d765a]/65 px-3 py-1 font-mono text-[9px] uppercase tracking-widest text-[#5f5142]">
           {entries.length} {entries.length === 1 ? "player" : "players"}
         </span>
       </div>
@@ -192,53 +191,53 @@ export default function WinTracker({ gameId, gameName, isEditable }: WinTrackerP
           role={error ? "alert" : "status"}
           className={`mt-4 rounded-xl border px-3 py-2.5 text-sm ${
             error
-              ? "border-shelf-burgundy/70 bg-shelf-burgundy/10 text-shelf-burgundy"
-              : "border-shelf-forest/70 bg-shelf-forest/10 text-shelf-forest"
+              ? "border-[#9f302f]/60 bg-[#9f302f]/10 text-[#7d1f1f]"
+              : "border-[#4d674d]/60 bg-[#4d674d]/10 text-[#3d543d]"
           }`}
         >
           {error ?? notice}
         </div>
       )}
 
-      <div className="mt-4 overflow-hidden rounded-xl border border-shelf-paperDark/60 bg-shelf-paperDark/12">
-        <div className="grid grid-cols-[2.5rem_minmax(0,1fr)_5.5rem] items-center border-b border-shelf-paperDark/45 px-3 py-2 font-mono text-[9px] uppercase tracking-[0.16em] text-shelf-ink/60 sm:grid-cols-[3rem_minmax(0,1fr)_7rem]">
+      <div className="mt-4 overflow-hidden rounded-xl border border-[#8d765a]/60 bg-white/25 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.38)]">
+        <div className="grid grid-cols-[2.5rem_minmax(0,1fr)_5.5rem] items-center border-b border-[#8d765a]/45 px-3 py-2 font-mono text-[9px] uppercase tracking-[0.16em] text-[#5f5142]/75 sm:grid-cols-[3rem_minmax(0,1fr)_7rem]">
           <span>#</span>
           <span>Player</span>
           <span className="text-right">Wins</span>
         </div>
 
         {isLoading ? (
-          <p className="px-3 py-7 text-center text-sm text-shelf-ink/65">Reading the scorebook…</p>
+          <p className="px-3 py-7 text-center text-sm text-[#5f5142]/75">Reading the scorebook…</p>
         ) : entries.length === 0 ? (
-          <p className="px-3 py-7 text-center text-sm text-shelf-ink/65">No players on this leaderboard yet.</p>
+          <p className="px-3 py-7 text-center text-sm text-[#5f5142]/75">No players on this leaderboard yet.</p>
         ) : (
           <div>
             {entries.map((entry, index) => (
-              <div key={entry.id} className="group flex min-h-14 items-center border-b border-shelf-paperDark/35 px-3 py-2.5 last:border-b-0 hover:bg-shelf-paperDark/15">
-                <span className="w-10 shrink-0 font-display text-xl italic text-shelf-paperDark/90 sm:w-12">{index + 1}</span>
-                <p className="min-w-0 flex-1 truncate pr-2 font-display text-lg italic text-shelf-ink">{entry.name}</p>
+              <div key={entry.id} className="group flex min-h-14 items-center border-b border-[#8d765a]/35 px-3 py-2.5 last:border-b-0 hover:bg-[#d9c7a8]/20">
+                <span className="w-10 shrink-0 font-display text-xl italic text-[#8d765a] sm:w-12">{index + 1}</span>
+                <p className="min-w-0 flex-1 truncate pr-2 font-display text-lg italic text-[#29201c]">{entry.name}</p>
                 <div className="-translate-x-1 flex w-[5.5rem] items-center justify-end gap-1 sm:w-28">
                   {isEditable && (
-                    <span className="flex h-7 w-7 opacity-0 transition-opacity group-hover:opacity-100 group-focus-within:opacity-100">
+                    <span className="flex h-7 w-7 opacity-100 transition-opacity sm:opacity-0 sm:group-hover:opacity-100 sm:group-focus-within:opacity-100">
                       <button
                         type="button"
                         onClick={() => void adjustWins(entry, -1)}
                         disabled={savingId === entry.id || entry.wins === 0}
                         aria-label={`Subtract a win from ${entry.name}`}
-                        className="flex h-7 w-7 items-center justify-center rounded-full border border-shelf-paperDark/60 font-mono text-sm leading-none text-shelf-ink transition-colors hover:border-shelf-burgundy hover:bg-shelf-burgundy/10 disabled:cursor-not-allowed disabled:opacity-35"
+                        className="flex h-7 w-7 items-center justify-center rounded-full border border-[#8d765a]/60 font-mono text-sm leading-none text-[#29201c] transition-colors hover:border-[#9f302f] hover:bg-[#9f302f]/10 disabled:cursor-not-allowed disabled:opacity-35"
                       >
                         −
                       </button>
                     </span>
                   )}
-                  <span className="min-w-8 text-center font-display text-2xl italic tabular-nums text-shelf-ink">{entry.wins}</span>
+                  <span className="min-w-8 text-center font-display text-2xl italic tabular-nums text-[#29201c]">{entry.wins}</span>
                   {isEditable && (
                     <button
                       type="button"
                       onClick={() => void adjustWins(entry, 1)}
                       disabled={savingId === entry.id}
                       aria-label={`Add a win to ${entry.name}`}
-                      className="flex h-7 w-7 items-center justify-center rounded-full border border-shelf-paperDark/60 font-mono text-sm leading-none text-shelf-ink opacity-100 transition-colors hover:border-shelf-forest hover:bg-shelf-forest/10 disabled:cursor-wait disabled:opacity-50 sm:opacity-0 sm:group-hover:opacity-100 sm:group-focus-within:opacity-100"
+                      className="flex h-7 w-7 items-center justify-center rounded-full border border-[#8d765a]/60 font-mono text-sm leading-none text-[#29201c] opacity-100 transition-colors hover:border-[#4d674d] hover:bg-[#4d674d]/10 disabled:cursor-wait disabled:opacity-50 sm:opacity-0 sm:group-hover:opacity-100 sm:group-focus-within:opacity-100"
                     >
                       +
                     </button>
@@ -258,13 +257,13 @@ export default function WinTracker({ gameId, gameName, isEditable }: WinTrackerP
             value={newPlayerName}
             onChange={(event) => setNewPlayerName(event.target.value)}
             disabled={isAdding}
-            className="min-w-0 flex-1 rounded-lg border border-shelf-paperDark/60 bg-white/35 px-3 py-2.5 text-sm text-shelf-ink placeholder:text-shelf-ink/55"
+            className="min-w-0 flex-1 rounded-lg border border-[#8d765a]/60 bg-white/45 px-3 py-2.5 text-sm text-[#29201c] placeholder:text-[#5f5142]/65 outline-none transition-shadow focus:border-[#c9a227] focus:ring-2 focus:ring-[#c9a227]/25"
             placeholder="Add a player to every leaderboard"
           />
           <button
             type="submit"
             disabled={isAdding || !newPlayerName.trim()}
-            className="shrink-0 rounded-full bg-shelf-walnut px-4 font-mono text-[10px] uppercase tracking-widest text-shelf-paper transition-colors hover:bg-shelf-wood disabled:cursor-not-allowed disabled:opacity-50"
+            className="shrink-0 rounded-full bg-[#29201c] px-4 font-mono text-[10px] uppercase tracking-widest text-[#f4ead6] transition-colors hover:bg-[#5f5142] disabled:cursor-not-allowed disabled:opacity-50"
           >
             {isAdding ? "Adding…" : "Add player"}
           </button>

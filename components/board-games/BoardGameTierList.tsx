@@ -59,8 +59,8 @@ export default function BoardGameTierList({
         return;
       }
 
-      const migrationPayload = savedGames.map(({ name, description, houseRules, fullRules, quickNotes, tier }) =>
-        boardGameToDatabase({ name, description, houseRules, fullRules, quickNotes, tier }),
+      const migrationPayload = savedGames.map(({ name, description, houseRules, fullRules, quickNotes, tier, gameType }) =>
+        boardGameToDatabase({ name, description, houseRules, fullRules, quickNotes, tier, gameType }),
       );
       const { error: migrationError } = await supabase
         .from(BOARD_GAMES_TABLE)

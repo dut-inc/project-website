@@ -1,4 +1,4 @@
-import { GAME_TIERS, type BoardGameEntry, type GameTier } from "@/lib/boardGames";
+import { GAME_TIERS, GAME_TYPES, type BoardGameEntry, type GameTier, type GameType } from "@/lib/boardGames";
 
 export const BOARD_GAMES_STORAGE_KEY = "the-board:board-game-tiers";
 
@@ -8,6 +8,12 @@ export function makeBoardGameId() {
 
 function isGameTier(value: unknown): value is GameTier {
   return typeof value === "string" && GAME_TIERS.includes(value as GameTier);
+}
+
+function normalizeGameType(value: unknown): GameType {
+  return typeof value === "string" && GAME_TYPES.includes(value as GameType)
+    ? (value as GameType)
+    : "FFA";
 }
 
 export function readSavedGames(value: string | null): BoardGameEntry[] | null {
@@ -37,6 +43,7 @@ export function readSavedGames(value: string | null): BoardGameEntry[] | null {
         fullRules: typeof game.fullRules === "string" ? game.fullRules : "",
         quickNotes: typeof game.quickNotes === "string" ? game.quickNotes : "",
         tier: game.tier,
+        gameType: normalizeGameType(game.gameType),
       };
     });
 

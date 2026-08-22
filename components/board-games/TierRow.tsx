@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { Fragment, type DragEvent } from "react";
 import {
-  CARD_SUITS,
+  GAME_TYPE_SUITS,
   TIER_DETAILS,
   type BoardGameEntry,
   type GameDetailsUpdate,
@@ -117,7 +117,7 @@ export default function TierRow({
                 <GameCard
                   game={game}
                   tierColor={detail.color}
-                  suit={CARD_SUITS[index % CARD_SUITS.length]}
+                  suit={GAME_TYPE_SUITS[game.gameType]}
                   isEditable={isEditable}
                   isDragging={draggingId === game.id}
                   onSave={(updates) => onSave(game.id, updates)}

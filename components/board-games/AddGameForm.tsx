@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import type { BoardGameEntry } from "@/lib/boardGames";
+import { GAME_TYPES, type BoardGameEntry, type GameType } from "@/lib/boardGames";
 
 type NewGame = Omit<BoardGameEntry, "id">;
 
@@ -19,6 +19,7 @@ const deckCards = [
 export default function AddGameForm({ onAdd, disabled = false }: AddGameFormProps) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+  const [gameType, setGameType] = useState<GameType>("FFA");
   const [isAdding, setIsAdding] = useState(false);
 
   async function submit(event: React.FormEvent<HTMLFormElement>) {
@@ -35,9 +36,11 @@ export default function AddGameForm({ onAdd, disabled = false }: AddGameFormProp
         fullRules: "",
         quickNotes: "",
         tier: "Unranked",
+        gameType,
       });
       setName("");
       setDescription("");
+      setGameType("FFA");
     } finally {
       setIsAdding(false);
     }
@@ -115,6 +118,22 @@ export default function AddGameForm({ onAdd, disabled = false }: AddGameFormProp
               disabled={disabled}
               className="mt-1.5 w-full resize-y rounded-lg border border-[#8d765a]/60 bg-white/45 px-3 py-2.5 text-sm text-[#29201c] outline-none transition-shadow placeholder:text-[#5f5142]/70 focus:border-[#c9a227] focus:ring-2 focus:ring-[#c9a227]/25 disabled:cursor-not-allowed disabled:opacity-60"
             />
+          </div>
+          <div>
+            <label className="block font-mono text-[10px] uppercase tracking-wider text-[#5f5142]" htmlFor="new-game-type">
+              Game type
+            </label>
+            <select
+              id="new-game-type"
+              value={gameType}
+              onChange={(event) => setGameType(event.target.value as GameType)}
+              disabled={disabled}
+              className="mt-1.5 w-full rounded-lg border border-[#8d765a]/60 bg-white/45 px-3 py-2.5 text-sm text-[#29201c] outline-none transition-shadow focus:border-[#c9a227] focus:ring-2 focus:ring-[#c9a227]/25 disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              {GAME_TYPES.map((option) => (
+                <option key={option} value={option}>{option}</option>
+              ))}
+            </select>
           </div>
           <button
             type="submit"

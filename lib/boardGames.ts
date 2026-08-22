@@ -2,9 +2,18 @@ export const GAME_TIERS = ["S", "A", "B", "C", "D", "Unranked"] as const;
 
 export type GameTier = (typeof GAME_TIERS)[number];
 
+export const GAME_TYPES = ["FFA", "Team vs Team", "Coop", "PvPvE"] as const;
+
+export type GameType = (typeof GAME_TYPES)[number];
+
 export type CardSuit = "diamond" | "club" | "heart" | "spade";
 
-export const CARD_SUITS: CardSuit[] = ["diamond", "club", "heart", "spade"];
+export const GAME_TYPE_SUITS: Record<GameType, CardSuit> = {
+  FFA: "diamond",
+  "Team vs Team": "club",
+  Coop: "heart",
+  PvPvE: "spade",
+};
 
 export type BoardGameEntry = {
   id: string;
@@ -14,11 +23,12 @@ export type BoardGameEntry = {
   fullRules: string;
   quickNotes: string;
   tier: GameTier;
+  gameType: GameType;
 };
 
 export type GameDetailsUpdate = Pick<
   BoardGameEntry,
-  "name" | "description" | "houseRules" | "fullRules" | "quickNotes" | "tier"
+  "name" | "description" | "houseRules" | "fullRules" | "quickNotes" | "tier" | "gameType"
 >;
 
 export const TIER_DETAILS: Record<
@@ -72,6 +82,7 @@ export const STARTER_GAMES: BoardGameEntry[] = [
     fullRules: "Use the official rulebook for setup, habitat actions, end-of-round goals, and end-game scoring.",
     quickNotes: "Draft food early. Eggs are a reliable late-game pivot.",
     tier: "A",
+    gameType: "PvPvE",
   },
   {
     id: "catan",
@@ -81,6 +92,7 @@ export const STARTER_GAMES: BoardGameEntry[] = [
     fullRules: "Use the official rulebook for setup, production, trading, building, development cards, and victory points.",
     quickNotes: "Watch the number tokens. Do not forget ports exist.",
     tier: "B",
+    gameType: "PvPvE",
   },
   {
     id: "azul",
@@ -90,6 +102,7 @@ export const STARTER_GAMES: BoardGameEntry[] = [
     fullRules: "Use the official rulebook for factory display drafting, wall tiling, scoring, and penalties.",
     quickNotes: "The floor line is a resource too. Plan around the next player.",
     tier: "A",
+    gameType: "FFA",
   },
   {
     id: "root",
@@ -99,6 +112,7 @@ export const STARTER_GAMES: BoardGameEntry[] = [
     fullRules: "Use the official rulebook and faction boards for setup, crafting, actions, dominance, and victory conditions.",
     quickNotes: "Read your faction board out loud. Everyone has a different game.",
     tier: "S",
+    gameType: "FFA",
   },
   {
     id: "gloomhaven",
@@ -108,5 +122,6 @@ export const STARTER_GAMES: BoardGameEntry[] = [
     fullRules: "Use the scenario book, rulebook, and character sheets for campaign setup, actions, monsters, loot, and retirement.",
     quickNotes: "Check the scenario goal before spending every card.",
     tier: "Unranked",
+    gameType: "Coop",
   },
 ];
