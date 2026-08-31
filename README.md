@@ -52,6 +52,7 @@ app/
   sports/page.tsx
   conservation/page.tsx
   board/page.tsx
+  dle/page.tsx        daily character guessing game catalog
 components/
   Nav.tsx
   ProjectCard.tsx    card used on the home grid
@@ -60,6 +61,12 @@ components/
 lib/
   projects.ts        single source of truth for what shows on the home page
 ```
+
+## Daily character games
+
+The DLE hub lives at `/dle`. Its game catalog is defined in `lib/dleGames.ts`, and every entry automatically gets a route at `/dle/<slug>` using the shared shell in `components/dle/DleGameShell.tsx`. Add a future universe or game format by adding a definition to `DLE_GAMES`; the catalog and static routes will pick it up without another page component.
+
+The retired `/db-management` route redirects to `/dle` so old bookmarks still land in the new section.
 
 ## Adding a new project page
 

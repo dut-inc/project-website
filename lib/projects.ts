@@ -21,7 +21,7 @@ export type ProjectId =
   | "conservation"
   | "board"
   | "board-games"
-  | "db-management";
+  | "dle";
 
 export const statusColor: Record<Status, string> = {
   ACTIVE: "text-pinTeal",
@@ -105,14 +105,14 @@ export const projects: Map<ProjectId, Project> = new Map([
     },
   ],
   [
-    "db-management",
+    "dle",
     {
       case: "006",
-      title: "DB Management",
-      href: "/db-management",
-      status: "OPEN",
-      updated: "2026-08-05",
-      summary: "prototype Supabase controls for the shared board-game database",
+      title: "DLE",
+      href: "/dle",
+      status: "PLANNING",
+      updated: "2026-08-31",
+      summary: "daily character guessing games for Teyvat, Solaris-3, and whatever world comes next",
       rotation: 1.5,
       paper: "kraft",
       pin: "gold",

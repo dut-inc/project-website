@@ -1,4 +1,4 @@
--- Board-game tables used by /board-games and /db-management.
+-- Board-game tables used by /board-games. Daily character games live under /dle.
 -- Run this in the Supabase SQL editor before using the prototype pages.
 
 create table if not exists public.boardgames (
