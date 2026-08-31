@@ -9,7 +9,8 @@ import {
 } from "@/lib/dleGenshin";
 
 const MAX_GUESSES = 6;
-const CELL_CLASS = "flex h-16 w-full items-center justify-center rounded border px-2 text-center";
+const CELL_CLASS = "flex h-20 w-full items-center justify-center rounded border px-2 text-center";
+const CLUE_CELL_CLASS = "flex h-20 w-full items-center justify-center rounded border px-2 text-center";
 
 type GuessResult = "correct" | "partial" | "wrong";
 type VersionDirection = "higher" | "lower" | "same";
@@ -31,6 +32,18 @@ const fields = [
 function matchResult(value: string | number | null, answer: string | number | null): GuessResult {
   if (value === answer) return "correct";
   return "wrong";
+}
+
+function versionMajor(version: string) {
+  const numericVersion = /^(\d+)/.exec(version.trim());
+  if (numericVersion) return numericVersion[1];
+  if (/^Luna\s+/i.test(version.trim())) return "Luna";
+  return version.trim();
+}
+
+function versionMatchResult(guess: string, answer: string): GuessResult {
+  if (guess === answer) return "correct";
+  return versionMajor(guess) === versionMajor(answer) ? "partial" : "wrong";
 }
 
 function resultClass(result: GuessResult) {
@@ -68,7 +81,7 @@ function compareVersions(guess: string, answer: string): VersionDirection {
   return guessRank > answerRank ? "higher" : "lower";
 }
 
-function Icon({ src, alt, size = 56 }: { src: string | null; alt: string; size?: number }) {
+function Icon({ src, alt, size = 76 }: { src: string | null; alt: string; size?: number }) {
   const [hasError, setHasError] = useState(false);
 
   if (!src || hasError) return <span className="text-cream/30">—</span>;
@@ -130,7 +143,7 @@ export default function GenshinDle() {
       element: matchResult(character.element, answer.element),
       weapon: matchResult(character.weapon, answer.weapon),
       region: matchResult(character.region, answer.region),
-      version: matchResult(character.version, answer.version),
+      version: versionMatchResult(character.version, answer.version),
     };
     const nextGuesses = [
       ...guesses,
@@ -191,7 +204,7 @@ export default function GenshinDle() {
                   onClick={() => submitGuess(character)}
                   className="flex min-h-12 w-full items-center gap-3 border-b border-cream/10 px-4 text-left text-sm text-cream last:border-0 hover:bg-wall2"
                 >
-                  <Icon src={character.icon} alt="" size={52} />
+                  <Icon src={character.icon} alt="" size={64} />
                   <span>{character.name}</span>
                 </button>
               ))}
@@ -207,28 +220,28 @@ export default function GenshinDle() {
         )}
 
         <div className="mt-7 overflow-x-auto">
-          <div className="min-w-[900px]">
-            <div className="grid grid-cols-[minmax(175px,1.4fr)_96px_repeat(5,minmax(118px,1fr))] gap-2 border-b border-cream/10 px-2 pb-3 font-mono text-[9px] uppercase tracking-widest text-cream/45">
+          <div className="min-w-[1060px]">
+            <div className="grid grid-cols-[minmax(210px,1.4fr)_144px_repeat(5,minmax(116px,1fr))] gap-2 border-b border-cream/10 px-2 pb-3 font-mono text-[9px] uppercase tracking-widest text-cream/45">
               <span>Name</span>
               <span>Icon</span>
               {fields.map((field) => <span key={field.key}>{field.label}</span>)}
             </div>
             <div className="space-y-2 pt-2">
               {[...guesses].reverse().map((guess) => (
-                <div key={guess.character.name} className="grid grid-cols-[minmax(175px,1.4fr)_96px_repeat(5,minmax(118px,1fr))] items-center gap-2 px-2 text-sm">
+                <div key={guess.character.name} className="grid grid-cols-[minmax(210px,1.4fr)_144px_repeat(5,minmax(116px,1fr))] items-center gap-2 px-2 text-sm">
                   <span className={`${CELL_CLASS} justify-start border-cream/10 bg-wall/20 font-medium text-cream`}>{guess.character.name}</span>
-                  <span className={`${CELL_CLASS} border-cream/10 bg-wall/20`}><Icon src={guess.character.icon} alt={`${guess.character.name} icon`} size={56} /></span>
-                  <span className={`${CELL_CLASS} text-xs ${resultClass(guess.matches.quality)}`}>{guess.character.quality ?? "—"}★</span>
-                  <span className={`${CELL_CLASS} ${resultClass(guess.matches.element)}`} title={guess.character.element}>
+                  <span className={`${CELL_CLASS} border-cream/10 bg-wall/20`}><Icon src={guess.character.icon} alt={`${guess.character.name} icon`} size={76} /></span>
+                  <span className={`${CLUE_CELL_CLASS} text-sm ${resultClass(guess.matches.quality)}`}>{guess.character.quality ?? "—"}★</span>
+                  <span className={`${CLUE_CELL_CLASS} ${resultClass(guess.matches.element)}`} title={guess.character.element}>
                     <AttributeIcon value={guess.character.element} icon={guess.character.element_icon} label="element" />
                   </span>
-                  <span className={`${CELL_CLASS} ${resultClass(guess.matches.weapon)}`} title={guess.character.weapon}>
+                  <span className={`${CLUE_CELL_CLASS} ${resultClass(guess.matches.weapon)}`} title={guess.character.weapon}>
                     <AttributeIcon value={guess.character.weapon} icon={guess.character.weapon_icon} label="weapon" />
                   </span>
-                  <span className={`${CELL_CLASS} ${resultClass(guess.matches.region)}`} title={guess.character.region}>
+                  <span className={`${CLUE_CELL_CLASS} ${resultClass(guess.matches.region)}`} title={guess.character.region}>
                     <AttributeIcon value={guess.character.region} icon={guess.character.region_icon} label="region" />
                   </span>
-                  <span className={`${CELL_CLASS} min-h-16 flex-col text-xs ${resultClass(guess.matches.version)}`} title={guess.versionDirection === "same" ? "Exact version match" : `The answer is ${guess.versionDirection === "higher" ? "lower" : "higher"} than this guess`}>
+                  <span className={`${CLUE_CELL_CLASS} flex-col text-xs ${resultClass(guess.matches.version)}`} title={guess.versionDirection === "same" ? "Exact version match" : `The answer is ${guess.versionDirection === "higher" ? "lower" : "higher"} than this guess`}>
                     <span>{guess.character.version}</span>
                     {guess.versionDirection !== "same" && (
                       <span className="mt-1 font-mono text-[9px] uppercase tracking-wider text-pinGold">
