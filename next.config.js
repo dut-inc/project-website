@@ -9,6 +9,11 @@ const nextConfig = {
         pathname: "/**",
       },
       {
+        protocol: "https",
+        hostname: "static.wikia.nocookie.net",
+        pathname: "/**",
+      },
+      {
         // Field Watch upload photos live in Supabase Storage.
         protocol: "https",
         hostname: "**.supabase.co",
