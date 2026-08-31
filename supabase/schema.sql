@@ -65,6 +65,10 @@ create policy "prototype board games are removable"
 
 -- Sighting uploads used by /conservation (Field Watch).
 -- Run this in the Supabase SQL editor before using the upload feature.
+--
+-- Ownership model: the map stays publicly readable, but only a signed-in user
+-- (the authenticated role) may log sightings or upload photos, and every row /
+-- photo is owned by the user who created it. The sign-in UI is a later step.
 
 create table if not exists public.sightings (
   id text primary key,
@@ -77,62 +81,109 @@ create table if not exists public.sightings (
   date text not null default '',
   observer text not null default '',
   note text not null default '',
-  photo text not null default '' -- public URL of the compressed JPEG in the sightings-photos bucket
+  photo text not null default '', -- public URL of the compressed JPEG in the sightings-photos bucket
+  owner_id uuid default auth.uid() -- the signed-in user who logged this sighting; NULL for seed rows
 );
+
+-- Add the column to databases created before this file gained ownership.
+alter table public.sightings add column if not exists owner_id uuid default auth.uid();
 
 alter table public.sightings enable row level security;
 
+-- The public browser client uses the anon role when no user is signed in.
+-- Authenticated sessions use the authenticated role. These grants are needed
+-- in addition to RLS policies for PostgREST table access.
 grant select, insert, update, delete on table public.sightings to anon, authenticated;
+-- Anonymous visitors may read the shared map but never write to it.
+revoke insert, update, delete on table public.sightings from anon;
 
--- Prototype-only policies, matching the boardgames table above.
+-- Idempotent: drop the old prototype names and the current ones before creating.
 drop policy if exists "prototype sightings are readable" on public.sightings;
 drop policy if exists "prototype sightings are insertable" on public.sightings;
 drop policy if exists "prototype sightings are editable" on public.sightings;
 drop policy if exists "prototype sightings are removable" on public.sightings;
+drop policy if exists "sightings are publicly readable" on public.sightings;
+drop policy if exists "signed-in users may log sightings" on public.sightings;
+drop policy if exists "owners may edit their sightings" on public.sightings;
+drop policy if exists "owners may delete their sightings" on public.sightings;
 
-create policy "prototype sightings are readable"
+-- Anyone, signed in or not, can view the shared map.
+create policy "sightings are publicly readable"
   on public.sightings for select
   to anon, authenticated
   using (true);
 
--- May be security risk maybe in the future consider removing insert for anon
-create policy "prototype sightings are insertable"
+-- Only a signed-in user may log a sighting, and always as themselves.
+create policy "signed-in users may log sightings"
   on public.sightings for insert
-  to anon, authenticated
-  with check (true);
+  to authenticated
+  with check (auth.uid() = owner_id);
 
-create policy "prototype sightings are editable"
+-- Only the owner may edit or delete their own sightings.
+create policy "owners may edit their sightings"
   on public.sightings for update
   to authenticated
-  using (true)
-  with check (true);
+  using (auth.uid() = owner_id)
+  with check (auth.uid() = owner_id);
 
-create policy "prototype sightings are removable"
+create policy "owners may delete their sightings"
   on public.sightings for delete
   to authenticated
-  using (true);
+  using (auth.uid() = owner_id);
 
 -- Upload photos live in a public Storage bucket. The client compresses each
 -- photo to a <=512KB JPEG before uploading, so even thousands of sightings
--- stay far below the free tier. Public bucket + random filenames is fine for
--- the friends-only prototype; use a private bucket with signed URLs later.
+-- stay far below the free tier. Paths are sightings/<owner_id>/<id>.jpg so
+-- each signed-in user can only write inside their own folder.
 
 insert into storage.buckets (id, name, public)
 values ('sightings-photos', 'sightings-photos', true)
 on conflict (id) do nothing;
 
--- Prototype-only policies, matching the sightings table above.
+-- Idempotent: drop the old prototype names and the current ones before creating.
 drop policy if exists "prototype sighting photos are readable" on storage.objects;
 drop policy if exists "prototype sighting photos are uploadable" on storage.objects;
+drop policy if exists "sighting photos are publicly readable" on storage.objects;
+drop policy if exists "signed-in users may upload photos into their own folder" on storage.objects;
+drop policy if exists "owners may overwrite photos in their own folder" on storage.objects;
+drop policy if exists "owners may delete photos in their own folder" on storage.objects;
 
 grant insert, select, update, delete on table storage.objects to anon, authenticated;
+-- Anonymous visitors may read photo URLs but never write to the bucket.
+revoke insert, update, delete on table storage.objects from anon;
 
-create policy "prototype sighting photos are readable"
+-- Photos are public: their URLs render in cards and popups without auth.
+create policy "sighting photos are publicly readable"
   on storage.objects for select
   to anon, authenticated
   using (bucket_id = 'sightings-photos');
 
-create policy "prototype sighting photos are uploadable"
+-- Only a signed-in user can upload, and only into their own folder.
+-- starts_with() avoids the foldername()[n] index pitfall from the sightings/ prefix.
+create policy "signed-in users may upload photos into their own folder"
   on storage.objects for insert
-  to anon, authenticated
-  with check (bucket_id = 'sightings-photos');
+  to authenticated
+  with check (
+    bucket_id = 'sightings-photos'
+    and starts_with(name, 'sightings/' || auth.uid()::text || '/')
+  );
+
+create policy "owners may overwrite photos in their own folder"
+  on storage.objects for update
+  to authenticated
+  using (
+    bucket_id = 'sightings-photos'
+    and starts_with(name, 'sightings/' || auth.uid()::text || '/')
+  )
+  with check (
+    bucket_id = 'sightings-photos'
+    and starts_with(name, 'sightings/' || auth.uid()::text || '/')
+  );
+
+create policy "owners may delete photos in their own folder"
+  on storage.objects for delete
+  to authenticated
+  using (
+    bucket_id = 'sightings-photos'
+    and starts_with(name, 'sightings/' || auth.uid()::text || '/')
+  );

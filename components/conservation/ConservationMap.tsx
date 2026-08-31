@@ -5,7 +5,9 @@ import Pin from "@/components/Pin";
 import SightingMap, { type PickedPoint } from "./SightingMap";
 import SightingCard from "./SightingCard";
 import SightingUploadForm from "./SightingUploadForm";
+import AuthCard from "./AuthCard";
 import { createClient } from "@/utils/supabase/client";
+import { useSession } from "@/lib/useSession";
 import {
   CATEGORY_META,
   SIGHTINGS,
@@ -30,6 +32,7 @@ function getErrorMessage(error: { message?: string; details?: string } | null) {
 }
 
 export default function ConservationMap() {
+  const { user } = useSession();
   const [sightings, setSightings] = useState<Sighting[]>(SIGHTINGS);
   const [filter, setFilter] = useState<SightingCategory | "all">("all");
   const [focusId, setFocusId] = useState<string | null>(null);
@@ -100,6 +103,7 @@ export default function ConservationMap() {
       {uploadOpen && (
         <div className="mb-8">
           <SightingUploadForm
+            user={user}
             pickMode={pickMode}
             onStartPick={() => setPickMode(true)}
             onStopPick={() => setPickMode(false)}
@@ -133,18 +137,22 @@ export default function ConservationMap() {
         </div>
 
         <aside className="space-y-3">
-          <button
-            type="button"
-            onClick={() => setUploadOpen((open) => !open)}
-            className={`w-full rounded-full px-3 py-2 font-mono text-[10px] uppercase tracking-widest transition-colors ${
-              uploadOpen
-                ? "bg-[#C1442D] text-cream hover:bg-[#C1442D]/85"
-                : "bg-pinNavy text-cream hover:bg-pinNavy/85"
-            }`}
-            aria-expanded={uploadOpen}
-          >
-            {uploadOpen ? "close the log form" : "＋ log a sighting"}
-          </button>
+          <AuthCard />
+
+          {user && (
+            <button
+              type="button"
+              onClick={() => setUploadOpen((open) => !open)}
+              className={`w-full rounded-full px-3 py-2 font-mono text-[10px] uppercase tracking-widest transition-colors ${
+                uploadOpen
+                  ? "bg-[#C1442D] text-cream hover:bg-[#C1442D]/85"
+                  : "bg-pinNavy text-cream hover:bg-pinNavy/85"
+              }`}
+              aria-expanded={uploadOpen}
+            >
+              {uploadOpen ? "close the log form" : "＋ log a sighting"}
+            </button>
+          )}
 
           {loadError && (
             <div

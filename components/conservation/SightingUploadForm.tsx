@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import type { User } from "@supabase/supabase-js";
 import { createClient } from "@/utils/supabase/client";
 import { compressForUploadBlob, sightingPhotoUrl, uploadSightingPhoto } from "@/lib/localPhotos";
 import { CATEGORY_META, makeSightingId, type SightingCategory } from "@/lib/sightings";
@@ -30,6 +31,7 @@ function needsSchemaHint(message: string) {
 }
 
 type Props = {
+  user: User | null;
   pickMode: boolean;
   onStartPick: () => void;
   onStopPick: () => void;
@@ -39,6 +41,7 @@ type Props = {
 };
 
 export default function SightingUploadForm({
+  user,
   pickMode,
   onStartPick,
   onStopPick,
@@ -156,10 +159,14 @@ export default function SightingUploadForm({
 
     setIsSaving(true);
     try {
+      if (!user) throw new Error("Sign in to log a sighting.");
+
       const id = makeSightingId();
       const supabase = createClient();
       const blob = await compressForUploadBlob(photo);
-      const path = `sightings/${id}.jpg`;
+      // Folder-per-user layout matches the storage RLS policies in schema.sql:
+      // users can only write inside sightings/<owner_id>/.
+      const path = `sightings/${user.id}/${id}.jpg`;
       await uploadSightingPhoto(supabase, path, blob);
       const photoUrl = sightingPhotoUrl(supabase, path);
 
@@ -174,6 +181,7 @@ export default function SightingUploadForm({
         observer: observer.trim() || "anonymous",
         note: note.trim(),
         photo: photoUrl,
+        owner_id: user.id,
       });
       if (queryError) throw queryError;
 
@@ -189,6 +197,24 @@ export default function SightingUploadForm({
 
   const inputClass =
     "w-full rounded-lg border border-ink/20 bg-cream/70 px-3 py-2.5 text-sm text-ink placeholder:text-ink/40 focus:border-pinNavy";
+
+  if (!user) {
+    return (
+      <div className="paper-torn bg-kraft p-5 shadow-[0_14px_28px_-8px_rgba(0,0,0,0.55)]">
+        <p className="font-mono text-[10px] uppercase tracking-widest text-ink2">
+          field report · members only
+        </p>
+        <h3 className="mt-0.5 font-display text-2xl italic text-ink">
+          Sign in to log a sighting
+        </h3>
+        <p className="mt-2 text-sm leading-relaxed text-ink/70">
+          The map stays open to everyone, but logging sightings is for signed-in
+          members. Use the members-only card to sign in or create an account with
+          an invite code.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <form
