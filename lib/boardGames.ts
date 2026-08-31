@@ -69,7 +69,7 @@ export const TIER_DETAILS: Record<
     label: "Joker",
     color: "#8B7762",
     hint: "wild card",
-    image: "/images/tierlist/joker.png",
+    image: "/images/tierlist/Joker.png",
   },
 };
 
