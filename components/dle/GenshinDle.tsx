@@ -148,6 +148,7 @@ export default function GenshinDle() {
   }, [activeCharacterName, activeDate, randomCharacterName]);
   const [guesses, setGuesses] = useState<Guess[]>([]);
   const [query, setQuery] = useState("");
+  const [highlightedIndex, setHighlightedIndex] = useState(0);
   const [notice, setNotice] = useState<string | null>(null);
   const [result, setResult] = useState<"won" | "lost" | null>(null);
   const [isComplete, setIsComplete] = useState(false);
@@ -261,23 +262,43 @@ export default function GenshinDle() {
           <input
             id="genshin-character-guess"
             value={query}
-            onChange={(event) => setQuery(event.target.value)}
+            onChange={(event) => {
+              setQuery(event.target.value);
+              setHighlightedIndex(0);
+            }}
             disabled={isComplete}
             autoComplete="off"
             placeholder="Start typing a character…"
+            onKeyDown={(event) => {
+              if (suggestions.length === 0) return;
+              if (event.key === "Enter") {
+                event.preventDefault();
+                submitGuess(suggestions[highlightedIndex] ?? suggestions[0]);
+              } else if (event.key === "ArrowDown") {
+                event.preventDefault();
+                setHighlightedIndex((index) => Math.min(index + 1, suggestions.length - 1));
+              } else if (event.key === "ArrowUp") {
+                event.preventDefault();
+                setHighlightedIndex((index) => Math.max(index - 1, 0));
+              }
+            }}
             className="mt-2 min-h-12 w-full rounded-md border border-cream/20 bg-wall/70 px-4 text-sm text-cream placeholder:text-cream/35 disabled:opacity-50"
           />
           {suggestions.length > 0 && (
             <div className="absolute inset-x-0 top-full z-10 mt-2 overflow-hidden rounded-md border border-cream/15 bg-wall shadow-xl">
-              {suggestions.map((character) => (
+              {suggestions.map((character, index) => (
                 <button
                   key={character.name}
                   type="button"
                   onClick={() => submitGuess(character)}
-                  className="flex min-h-12 w-full items-center gap-3 border-b border-cream/10 px-4 text-left text-sm text-cream last:border-0 hover:bg-wall2"
+                  onMouseEnter={() => setHighlightedIndex(index)}
+                  className={`flex min-h-12 w-full items-center gap-3 border-b border-cream/10 px-4 text-left text-sm text-cream last:border-0 ${index === highlightedIndex ? "bg-wall2" : ""}`}
                 >
                   <Icon src={character.icon} alt="" size={64} />
-                  <span>{character.name}</span>
+                  <span className="flex-1">{character.name}</span>
+                  {index === highlightedIndex && (
+                    <span className="font-mono text-[9px] uppercase tracking-widest text-pinGold">Enter ↵</span>
+                  )}
                 </button>
               ))}
             </div>
