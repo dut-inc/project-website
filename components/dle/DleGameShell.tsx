@@ -22,7 +22,7 @@ export default function DleGameShell({ game }: { game: DleGame }) {
           <div className="p-6 sm:p-9">
             <div className="flex flex-wrap items-start justify-between gap-4">
               <div>
-                <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-cream/45">{game.world} / daily character file</p>
+                <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-cream/45">{game.world} / daily character</p>
                 <h1 id="dle-game-heading" className="mt-2 font-display text-4xl italic text-cream sm:text-5xl">{game.title}</h1>
               </div>
               <span className={`font-mono text-[10px] uppercase tracking-widest ${statusColor[game.status]}`}>
@@ -71,11 +71,11 @@ export default function DleGameShell({ game }: { game: DleGame }) {
         <div className="mt-8 grid gap-5 sm:grid-cols-2">
           <div className="border-l-2 border-pinTeal/70 pl-4">
             <p className="font-mono text-[10px] uppercase tracking-widest text-pinTeal">Planned format</p>
-            <p className="mt-2 text-sm leading-relaxed text-cream/65">Progressive clues, one daily answer, and a shareable result grid.</p>
+            <p className="mt-2 text-sm leading-relaxed text-cream/65">let&apos;s do the dle.</p>
           </div>
           <div className="border-l-2 border-pinGold/70 pl-4">
-            <p className="font-mono text-[10px] uppercase tracking-widest text-pinGold">Built to grow</p>
-            <p className="mt-2 text-sm leading-relaxed text-cream/65">Each universe has its own catalog entry while the game mechanics stay shared.</p>
+            <p className="font-mono text-[10px] uppercase tracking-widest text-pinGold">Everyday</p>
+            <p className="mt-2 text-sm leading-relaxed text-cream/65">play the dle everyday.</p>
           </div>
         </div>
       </section>

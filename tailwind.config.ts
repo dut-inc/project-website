@@ -20,6 +20,7 @@ const config: Config = {
         pinTeal: "#2F7A6B",
         pinGold: "#C9A227",
         pinNavy: "#274B6D",
+        pinGreen: "#5CE65C",
         shelf: {
           walnut: "#3A271C",
           wood: "#62442E",

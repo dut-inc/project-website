@@ -4,7 +4,7 @@ import { DLE_GAMES } from "@/lib/dleGames";
 const statusColor = {
   PLANNING: "text-pinGold",
   "IN DEVELOPMENT": "text-pinTeal",
-  LIVE: "text-pinRed",
+  LIVE: "text-pinGreen",
 } as const;
 
 export default function DleHub() {
@@ -12,16 +12,16 @@ export default function DleHub() {
     <section className="mx-auto mt-10 max-w-5xl" aria-labelledby="dle-games-heading">
       <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
         <div>
-          <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-pinGold">daily character files</p>
+          <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-pinGold">daily dle games</p>
           <h2 id="dle-games-heading" className="mt-1 font-display text-3xl italic text-cream sm:text-4xl">
-            Choose a world
+            Choose a dle
           </h2>
           <p className="mt-2 max-w-2xl text-sm leading-relaxed text-cream/70">
-            One mystery character per game, refreshed daily. Pick a universe below to open its case file.
+            themed dle games.
           </p>
         </div>
         <span className="border-b border-pinGold/60 pb-1 font-mono text-[10px] uppercase tracking-widest text-cream/55">
-          {DLE_GAMES.length} game files
+          {DLE_GAMES.length} dle games
         </span>
       </div>
 
@@ -57,8 +57,8 @@ export default function DleHub() {
       </div>
 
       <div className="mt-8 border-l-2 border-pinGold/60 pl-4 text-sm text-cream/60">
-        <p className="font-mono text-[10px] uppercase tracking-widest text-pinGold">Next files</p>
-        <p className="mt-1">The catalog is ready for more character games, variants, and daily formats.</p>
+        <p className="font-mono text-[10px] uppercase tracking-widest text-pinGold">let&apos;s do the genshindle</p>
+        <p className="mt-1">or the wuwadle.</p>
       </div>
     </section>
   );
