@@ -30,7 +30,7 @@ export default function DleHub() {
           <Link
             key={game.slug}
             href={`/dle/${game.slug}`}
-            className="group relative block overflow-hidden rounded-lg border border-cream/15 bg-wall2/80 p-6 shadow-[0_12px_24px_-12px_rgba(0,0,0,0.7)] transition-transform hover:-translate-y-1"
+            className="group relative flex flex-col overflow-hidden rounded-lg border border-cream/15 bg-wall2/80 p-6 shadow-[0_12px_24px_-12px_rgba(0,0,0,0.7)] transition-transform hover:-translate-y-1"
           >
             <span
               className={`absolute inset-y-0 left-0 w-1 ${game.accent === "teal" ? "bg-pinTeal" : "bg-pinGold"}`}
@@ -47,7 +47,7 @@ export default function DleHub() {
                 {game.status}
               </span>
             </div>
-            <p className="mt-5 max-w-md text-sm leading-relaxed text-cream/70">{game.description}</p>
+            <p className="mt-5 max-w-md flex-1 text-sm leading-relaxed text-cream/70">{game.description}</p>
             <div className="mt-7 flex items-center justify-between border-t border-cream/10 pt-4 font-mono text-[10px] uppercase tracking-widest text-cream/50">
               <span>{game.status === "LIVE" ? "Play today" : "Open case file"}</span>
               <span aria-hidden className="text-base text-pinGold transition-transform group-hover:translate-x-1">&rarr;</span>
