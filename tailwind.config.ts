@@ -45,6 +45,7 @@ const config: Config = {
         display: ["var(--font-display)"],
         body: ["var(--font-body)"],
         mono: ["var(--font-mono)"],
+        dle: ["var(--font-dle)"],
       },
       backgroundImage: {
         grain: "radial-gradient(circle at 1px 1px, rgba(231,227,211,0.05) 1px, transparent 0)",

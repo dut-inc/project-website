@@ -149,6 +149,7 @@ export default function GenshinDle() {
   const [guesses, setGuesses] = useState<Guess[]>([]);
   const [query, setQuery] = useState("");
   const [highlightedIndex, setHighlightedIndex] = useState(0);
+  const [inputFocused, setInputFocused] = useState(false);
   const [notice, setNotice] = useState<string | null>(null);
   const [result, setResult] = useState<"won" | "lost" | null>(null);
   const [isComplete, setIsComplete] = useState(false);
@@ -210,7 +211,7 @@ export default function GenshinDle() {
         <div className="flex flex-wrap items-end justify-between gap-4 border-b border-cream/10 pb-5">
           <div>
             <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-pinTeal">JENSHINDLE</p>
-            <h1 id="genshin-dle-heading" className="mt-2 font-display text-3xl italic text-cream sm:text-4xl">Who is today&apos;s character?</h1>
+            <h1 id="genshin-dle-heading" className="mt-2 font-dle text-3xl text-cream sm:text-4xl">Who is today&apos;s character?</h1>
             <p className="mt-2 text-sm text-cream/65">Guess the Genshin character.</p>
           </div>
           <div className="text-right font-mono text-[10px] uppercase tracking-widest text-cream/50">
@@ -257,7 +258,15 @@ export default function GenshinDle() {
           <p className="px-4 pb-3 font-mono text-[9px] uppercase tracking-wider text-cream/45">Applying a target clears the current guesses. Controls are local to this browser session.</p>
         </details>
 
-        <div className="relative mt-6">
+        <div
+          className="relative mt-6"
+          onFocus={() => setInputFocused(true)}
+          onBlur={(event) => {
+            if (!event.currentTarget.contains(event.relatedTarget)) {
+              setInputFocused(false);
+            }
+          }}
+        >
           <label htmlFor="genshin-character-guess" className="font-mono text-[10px] uppercase tracking-widest text-cream/60">Character name</label>
           <input
             id="genshin-character-guess"
@@ -284,7 +293,7 @@ export default function GenshinDle() {
             }}
             className="mt-2 min-h-12 w-full rounded-md border border-cream/20 bg-wall/70 px-4 text-sm text-cream placeholder:text-cream/35 disabled:opacity-50"
           />
-          {suggestions.length > 0 && (
+          {inputFocused && suggestions.length > 0 && (
             <div className="absolute inset-x-0 top-full z-10 mt-2 overflow-hidden rounded-md border border-cream/15 bg-wall shadow-xl">
               {suggestions.map((character, index) => (
                 <button
