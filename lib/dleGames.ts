@@ -15,7 +15,7 @@ export const DLE_GAMES: DleGame[] = [
     slug: "genshin-impact",
     title: "Genshin Impact",
     world: "Teyvat",
-    description: "Identify the character from a daily trail of clues, from region to constellation.",
+    description: "lets do the genshindle.",
     status: "LIVE",
     accent: "teal",
   },

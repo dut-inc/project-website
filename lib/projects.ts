@@ -112,7 +112,7 @@ export const projects: Map<ProjectId, Project> = new Map([
       href: "/dle",
       status: "PLANNING",
       updated: "2026-08-31",
-      summary: "daily character guessing games for Teyvat, Solaris-3, and whatever world comes next",
+      summary: "daily dle games",
       rotation: 1.5,
       paper: "kraft",
       pin: "gold",

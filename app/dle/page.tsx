@@ -12,7 +12,7 @@ export default function DlePage() {
         title={project.title}
         status={project.status}
         pin={project.pin}
-        description="Daily character guessing games for the worlds we keep coming back to."
+        description="Daily dle games."
       />
       <DleHub />
     </div>

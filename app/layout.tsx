@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fraunces, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
+import { Fraunces, IBM_Plex_Sans, IBM_Plex_Mono, Playfair_Display, Oswald} from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 
@@ -22,6 +22,13 @@ const mono = IBM_Plex_Mono({
   variable: "--font-mono",
 });
 
+const dleHeading = Oswald({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  style: ["normal"],
+  variable: "--font-dle",
+});
+
 export const metadata: Metadata = {
   title: "The Board",
   description: "Our shared clubhouse — pinned projects and a little bit of Seattle.",
@@ -35,7 +42,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${display.variable} ${body.variable} ${mono.variable} font-body wall-bg text-cream min-h-screen`}
+        className={`${display.variable} ${body.variable} ${mono.variable} ${dleHeading.variable} font-body wall-bg text-cream min-h-screen`}
       >
         <Nav />
         <main className="relative mx-auto max-w-7xl px-4 pb-16 pt-6 sm:px-8">{children}</main>

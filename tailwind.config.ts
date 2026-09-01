@@ -20,6 +20,7 @@ const config: Config = {
         pinTeal: "#2F7A6B",
         pinGold: "#C9A227",
         pinNavy: "#274B6D",
+        pinGreen: "#5CE65C",
         shelf: {
           walnut: "#3A271C",
           wood: "#62442E",
@@ -44,6 +45,7 @@ const config: Config = {
         display: ["var(--font-display)"],
         body: ["var(--font-body)"],
         mono: ["var(--font-mono)"],
+        dle: ["var(--font-dle)"],
       },
       backgroundImage: {
         grain: "radial-gradient(circle at 1px 1px, rgba(231,227,211,0.05) 1px, transparent 0)",

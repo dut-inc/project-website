@@ -148,6 +148,8 @@ export default function GenshinDle() {
   }, [activeCharacterName, activeDate, randomCharacterName]);
   const [guesses, setGuesses] = useState<Guess[]>([]);
   const [query, setQuery] = useState("");
+  const [highlightedIndex, setHighlightedIndex] = useState(0);
+  const [inputFocused, setInputFocused] = useState(false);
   const [notice, setNotice] = useState<string | null>(null);
   const [result, setResult] = useState<"won" | "lost" | null>(null);
   const [isComplete, setIsComplete] = useState(false);
@@ -184,7 +186,7 @@ export default function GenshinDle() {
     if (isCorrect || nextGuesses.length >= MAX_GUESSES) {
       setIsComplete(true);
       setResult(isCorrect ? "won" : "lost");
-      setNotice(isCorrect ? `Case solved in ${nextGuesses.length} ${nextGuesses.length === 1 ? "guess" : "guesses"}.` : `The answer was ${answer.name}.`);
+      setNotice(isCorrect ? `Character guessed in ${nextGuesses.length} ${nextGuesses.length === 1 ? "guess" : "guesses"}.` : `The answer was ${answer.name}.`);
     }
   }
 
@@ -208,12 +210,12 @@ export default function GenshinDle() {
       <div className="rounded-lg border border-cream/15 bg-wall2/80 p-5 shadow-[0_18px_34px_-16px_rgba(0,0,0,0.75)] sm:p-8">
         <div className="flex flex-wrap items-end justify-between gap-4 border-b border-cream/10 pb-5">
           <div>
-            <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-pinTeal">Teyvat / daily character file</p>
-            <h1 id="genshin-dle-heading" className="mt-2 font-display text-3xl italic text-cream sm:text-4xl">Who is today&apos;s character?</h1>
-            <p className="mt-2 text-sm text-cream/65">Guess the character. Green means you found a match.</p>
+            <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-pinTeal">JENSHINDLE</p>
+            <h1 id="genshin-dle-heading" className="mt-2 font-dle text-3xl text-cream sm:text-4xl">Who is today&apos;s character?</h1>
+            <p className="mt-2 text-sm text-cream/65">Guess the Genshin character.</p>
           </div>
           <div className="text-right font-mono text-[10px] uppercase tracking-widest text-cream/50">
-            <p>Daily case</p>
+            <p>Daily character</p>
             <p className="mt-1 text-pinGold">{guesses.length} / {MAX_GUESSES} guesses</p>
           </div>
         </div>
@@ -256,28 +258,56 @@ export default function GenshinDle() {
           <p className="px-4 pb-3 font-mono text-[9px] uppercase tracking-wider text-cream/45">Applying a target clears the current guesses. Controls are local to this browser session.</p>
         </details>
 
-        <div className="relative mt-6">
+        <div
+          className="relative mt-6"
+          onFocus={() => setInputFocused(true)}
+          onBlur={(event) => {
+            if (!event.currentTarget.contains(event.relatedTarget)) {
+              setInputFocused(false);
+            }
+          }}
+        >
           <label htmlFor="genshin-character-guess" className="font-mono text-[10px] uppercase tracking-widest text-cream/60">Character name</label>
           <input
             id="genshin-character-guess"
             value={query}
-            onChange={(event) => setQuery(event.target.value)}
+            onChange={(event) => {
+              setQuery(event.target.value);
+              setHighlightedIndex(0);
+            }}
             disabled={isComplete}
             autoComplete="off"
             placeholder="Start typing a character…"
+            onKeyDown={(event) => {
+              if (suggestions.length === 0) return;
+              if (event.key === "Enter") {
+                event.preventDefault();
+                submitGuess(suggestions[highlightedIndex] ?? suggestions[0]);
+              } else if (event.key === "ArrowDown") {
+                event.preventDefault();
+                setHighlightedIndex((index) => Math.min(index + 1, suggestions.length - 1));
+              } else if (event.key === "ArrowUp") {
+                event.preventDefault();
+                setHighlightedIndex((index) => Math.max(index - 1, 0));
+              }
+            }}
             className="mt-2 min-h-12 w-full rounded-md border border-cream/20 bg-wall/70 px-4 text-sm text-cream placeholder:text-cream/35 disabled:opacity-50"
           />
-          {suggestions.length > 0 && (
+          {inputFocused && suggestions.length > 0 && (
             <div className="absolute inset-x-0 top-full z-10 mt-2 overflow-hidden rounded-md border border-cream/15 bg-wall shadow-xl">
-              {suggestions.map((character) => (
+              {suggestions.map((character, index) => (
                 <button
                   key={character.name}
                   type="button"
                   onClick={() => submitGuess(character)}
-                  className="flex min-h-12 w-full items-center gap-3 border-b border-cream/10 px-4 text-left text-sm text-cream last:border-0 hover:bg-wall2"
+                  onMouseEnter={() => setHighlightedIndex(index)}
+                  className={`flex min-h-12 w-full items-center gap-3 border-b border-cream/10 px-4 text-left text-sm text-cream last:border-0 ${index === highlightedIndex ? "bg-wall2" : ""}`}
                 >
                   <Icon src={character.icon} alt="" size={64} />
-                  <span>{character.name}</span>
+                  <span className="flex-1">{character.name}</span>
+                  {index === highlightedIndex && (
+                    <span className="font-mono text-[9px] uppercase tracking-widest text-pinGold">Enter ↵</span>
+                  )}
                 </button>
               ))}
             </div>
@@ -302,10 +332,10 @@ export default function GenshinDle() {
               <div className={`h-2 ${result === "won" ? "bg-pinTeal" : "bg-pinGold"}`} aria-hidden />
               <div className="p-6 text-center sm:p-8">
                 <p className={`font-mono text-[10px] uppercase tracking-[0.3em] ${result === "won" ? "text-pinTeal" : "text-pinGold"}`}>
-                  {result === "won" ? "Case solved" : "Case closed"}
+                  {result === "won" ? "Character guessed" : "Character not guessed"}
                 </p>
                 <h2 id="genshin-result-title" className="mt-2 font-display text-4xl italic text-cream">
-                  {result === "won" ? "Excellent work." : "The trail went cold."}
+                  {result === "won" ? "Lets do the jenshindle again." : "You lost the jenshindle."}
                 </h2>
                 <p className="mt-2 text-sm text-cream/65">
                   {result === "won" ? `You found the answer in ${guesses.length} ${guesses.length === 1 ? "guess" : "guesses"}.` : "The correct character was hiding in plain sight."}
@@ -376,7 +406,7 @@ export default function GenshinDle() {
         <div className="mt-7 grid gap-4 border-t border-cream/10 pt-5 text-xs text-cream/55 sm:grid-cols-3">
           <p><span className="mr-2 inline-block h-2.5 w-2.5 rounded-sm bg-pinTeal align-middle" />Exact match</p>
           <p><span className="mr-2 inline-block h-2.5 w-2.5 rounded-sm bg-pinGold align-middle" />Higher or lower version</p>
-          <p><span className="mr-2 inline-block h-2.5 w-2.5 rounded-sm bg-pinRed align-middle" />Different value</p>
+          <p><span className="mr-2 inline-block h-2.5 w-2.5 rounded-sm bg-pinRed align-middle" />Wrong value</p>
         </div>
       </div>
     </section>
