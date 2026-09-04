@@ -130,89 +130,6 @@ input {
   animation: modal-pop 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
 
-<<<<<<< HEAD
-/* ---------------------------------------------------------------------------
-   Pike Place Market theme — the Main Arcade building, straight from the
-   reference photo: silver-gray painted stucco, dark iron storefronts, a
-   red neon sign, and the red/cream/green striped awnings.
-   --------------------------------------------------------------------------- */
-
-/* Dimmer neon accent for small meta text. */
-.neon-soft {
-  color: #ff9c8a;
-  text-shadow: 0 0 5px rgba(255, 70, 56, 0.35);
-}
-
-/* The Seattle Sports Center title — thick neon-red letters with a thin
-   white core (layered per letter) and a red glow, echoing the Pike Place
-   Market sign. */
-.neon-title {
-  color: #ff4638;
-  text-shadow:
-    0 0 0.06em rgba(255, 70, 56, 0.9),
-    0 0 0.18em rgba(255, 70, 56, 0.55),
-    0 0 0.45em rgba(255, 70, 56, 0.35);
-}
-
-@keyframes neon-breathe {
-  0%,
-  100% {
-    text-shadow:
-      0 0 0.06em rgba(255, 70, 56, 0.9),
-      0 0 0.18em rgba(255, 70, 56, 0.55),
-      0 0 0.45em rgba(255, 70, 56, 0.35);
-  }
-  50% {
-    text-shadow:
-      0 0 0.04em rgba(255, 70, 56, 0.72),
-      0 0 0.12em rgba(255, 70, 56, 0.38),
-      0 0 0.28em rgba(255, 70, 56, 0.2);
-  }
-}
-
-.animate-neon-breathe {
-  animation: neon-breathe 4.5s ease-in-out infinite;
-}
-
-/* The board widgets sit on — the Market's painted moss-green wall. */
-.market-board {
-  position: relative;
-  overflow: hidden;
-  background-color: #5d6b46;
-  background-image:
-    radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.12), transparent 60%),
-    repeating-linear-gradient(
-      118deg,
-      rgba(255, 255, 255, 0.02) 0px,
-      rgba(255, 255, 255, 0.02) 1px,
-      transparent 1px,
-      transparent 3px
-    );
-  border: 1px solid rgba(0, 0, 0, 0.28);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.25),
-    inset 0 0 60px rgba(0, 0, 0, 0.14),
-    0 24px 48px -24px rgba(0, 0, 0, 0.6);
-}
-
-/* The white trim line dotted with green medallions that runs along the
-   top of the building — a repeating white band with green dots. */
-.market-board::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 22px;
-  background-color: #f2efe3;
-  background-image: radial-gradient(circle at 50% 50%, #5d6b46 6px, transparent 6.5px);
-  background-size: 44px 22px;
-  background-position: 0 0;
-  border-radius: inherit;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  pointer-events: none;
-=======
 /* ---- Field Watch map (case 003) ---- */
 
 .sighting-marker {
@@ -341,7 +258,6 @@ input {
 
 .sighting-popup-body {
   padding: 10px 12px 12px;
->>>>>>> 816efaa3c1176ec9ee0c5e3ae494e2be7d76ac68
 }
 
 @media (prefers-reduced-motion: reduce) {

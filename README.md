@@ -62,82 +62,11 @@ lib/
   projects.ts        single source of truth for what shows on the home page
 ```
 
-<<<<<<< HEAD
-## Seattle Sports Dashboard — data architecture
-
-`/sports/dashboard` renders nine Seattle teams. The frontend never talks to
-a sports API directly — it only calls its own `TeamService` (see
-`lib/sports/teamService.ts`), which fetches `GET /api/teams` and falls back
-to the mock snapshot (`lib/sports/mockTeams.ts`) if the backend is down.
-
-### Request flow
-
-```
-React components (dashboard)
-        ↓
-TeamService (lib/sports/teamService.ts)
-        ↓
-GET /api/teams  (app/api/teams/route.ts)
-        ↓
-service layer (lib/backend/service.ts) — runs every provider in parallel
-        ↓
-providers (lib/backend/providers/) — each league normalizes into the
-shared Team model (lib/sports/types.ts)
-        ↓
-public feeds: MLB Stats API · ESPN · PWHL HockeyTech
-```
-
-### Providers & their sources (as of Aug 2026)
-
-| Team | League | Source |
-| --- | --- | --- |
-| Mariners | MLB | Official MLB Stats API (`statsapi.mlb.com`) — keyless |
-| Seahawks | NFL | ESPN public API (`site.api.espn.com`) |
-| Kraken | NHL | ESPN public API |
-| Storm | WNBA | ESPN public API |
-| Sounders | MLS | ESPN public API (+ scoreboard for upcoming fixtures) |
-| Reign | NWSL | ESPN public API (+ scoreboard for upcoming fixtures) |
-| Seawolves | MLR | **No public feed** — graceful error state, see below |
-| Torrent | PWHL | HockeyTech feed behind `thepwhl.com` — keyless public client |
-| SuperSonics | NBA | Placeholder only — no provider, ever |
-
-### Caching
-
-All external calls are cached server-side in `lib/backend/cache.ts` (in
-memory, shared across users): ~30 minutes when nothing is live, ~15 seconds
-while a game is live. One league's provider failing never takes the rest of
-the dashboard down — that team's card shows an error note instead.
-
-### MLR (Seattle Seawolves)
-
-As of Aug 2026 there is no reliable free keyless feed for Major League
-Rugby (ESPN dropped rugby coverage; SofaScore blocks API access; the
-league's own site has no public API). The MLR provider therefore returns a
-documented graceful error state. When a real feed appears, implement it in
-`lib/backend/providers/mlr.ts` — nothing else changes.
-
-### Running the backend tests
-
-The normalization layer is tested offline against captured fixtures
-(`lib/backend/fixtures/`), so the suite never hammers the sports APIs:
-
-```bash
-npm test
-```
-
-### Supabase
-
-Existing Supabase setup (middleware, board prototype tables) is untouched.
-The dashboard currently uses the in-memory server cache; if it is deployed
-to serverless workers with no shared process, swap `lib/backend/cache.ts`
-for a Supabase-backed cache implementing the same interface.
-=======
 ## Daily character games
 
 The DLE hub lives at `/dle`. Its game catalog is defined in `lib/dleGames.ts`, and every entry automatically gets a route at `/dle/<slug>` using the shared shell in `components/dle/DleGameShell.tsx`. Add a future universe or game format by adding a definition to `DLE_GAMES`; the catalog and static routes will pick it up without another page component.
 
 The retired `/db-management` route redirects to `/dle` so old bookmarks still land in the new section.
->>>>>>> 816efaa3c1176ec9ee0c5e3ae494e2be7d76ac68
 
 ## Adding a new project page
 
