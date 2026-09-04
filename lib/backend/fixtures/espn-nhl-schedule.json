@@ -1,0 +1,334 @@
+{
+ "events": [
+  {
+   "id": "401891777",
+   "date": "2026-10-02T01:00Z",
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 0.0,
+      "displayClock": "0:00",
+      "period": 0,
+      "type": {
+       "id": "1",
+       "name": "STATUS_SCHEDULED",
+       "state": "pre",
+       "completed": false,
+       "description": "Scheduled",
+       "detail": "Thu, October 1st at 9:00 PM EDT",
+       "shortDetail": "10/1 - 9:00 PM EDT"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": null,
+       "winner": null,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "3",
+        "displayName": "Calgary Flames",
+        "shortDisplayName": "Flames",
+        "abbreviation": "CGY"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": null,
+       "winner": null,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "124292",
+        "displayName": "Seattle Kraken",
+        "shortDisplayName": "Kraken",
+        "abbreviation": "SEA"
+       }
+      }
+     ],
+     "broadcasts": null
+    }
+   ]
+  },
+  {
+   "id": "401892437",
+   "date": "2026-10-03T23:00Z",
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 0.0,
+      "displayClock": "0:00",
+      "period": 0,
+      "type": {
+       "id": "1",
+       "name": "STATUS_SCHEDULED",
+       "state": "pre",
+       "completed": false,
+       "description": "Scheduled",
+       "detail": "Sat, October 3rd at 7:00 PM EDT",
+       "shortDetail": "10/3 - 7:00 PM EDT"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": null,
+       "winner": null,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "6",
+        "displayName": "Edmonton Oilers",
+        "shortDisplayName": "Oilers",
+        "abbreviation": "EDM"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": null,
+       "winner": null,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "124292",
+        "displayName": "Seattle Kraken",
+        "shortDisplayName": "Kraken",
+        "abbreviation": "SEA"
+       }
+      }
+     ],
+     "broadcasts": null
+    }
+   ]
+  },
+  {
+   "id": "401891824",
+   "date": "2026-10-05T00:00Z",
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 0.0,
+      "displayClock": "0:00",
+      "period": 0,
+      "type": {
+       "id": "1",
+       "name": "STATUS_SCHEDULED",
+       "state": "pre",
+       "completed": false,
+       "description": "Scheduled",
+       "detail": "Sun, October 4th at 8:00 PM EDT",
+       "shortDetail": "10/4 - 8:00 PM EDT"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": null,
+       "winner": null,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "124292",
+        "displayName": "Seattle Kraken",
+        "shortDisplayName": "Kraken",
+        "abbreviation": "SEA"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": null,
+       "winner": null,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "3",
+        "displayName": "Calgary Flames",
+        "shortDisplayName": "Flames",
+        "abbreviation": "CGY"
+       }
+      }
+     ],
+     "broadcasts": null
+    }
+   ]
+  },
+  {
+   "id": "401892454",
+   "date": "2026-10-07T01:40Z",
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 0.0,
+      "displayClock": "0:00",
+      "period": 0,
+      "type": {
+       "id": "1",
+       "name": "STATUS_SCHEDULED",
+       "state": "pre",
+       "completed": false,
+       "description": "Scheduled",
+       "detail": "Tue, October 6th at 9:40 PM EDT",
+       "shortDetail": "10/6 - 9:40 PM EDT"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": null,
+       "winner": null,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "124292",
+        "displayName": "Seattle Kraken",
+        "shortDisplayName": "Kraken",
+        "abbreviation": "SEA"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": null,
+       "winner": null,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "37",
+        "displayName": "Vegas Golden Knights",
+        "shortDisplayName": "Golden Knights",
+        "abbreviation": "VGK"
+       }
+      }
+     ],
+     "broadcasts": null
+    }
+   ]
+  },
+  {
+   "id": "401892465",
+   "date": "2026-10-09T23:00Z",
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 0.0,
+      "displayClock": "0:00",
+      "period": 0,
+      "type": {
+       "id": "1",
+       "name": "STATUS_SCHEDULED",
+       "state": "pre",
+       "completed": false,
+       "description": "Scheduled",
+       "detail": "Fri, October 9th at 7:00 PM EDT",
+       "shortDetail": "10/9 - 7:00 PM EDT"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": null,
+       "winner": null,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "5",
+        "displayName": "Detroit Red Wings",
+        "shortDisplayName": "Red Wings",
+        "abbreviation": "DET"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": null,
+       "winner": null,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "124292",
+        "displayName": "Seattle Kraken",
+        "shortDisplayName": "Kraken",
+        "abbreviation": "SEA"
+       }
+      }
+     ],
+     "broadcasts": null
+    }
+   ]
+  },
+  {
+   "id": "401892482",
+   "date": "2026-10-11T21:00Z",
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 0.0,
+      "displayClock": "0:00",
+      "period": 0,
+      "type": {
+       "id": "1",
+       "name": "STATUS_SCHEDULED",
+       "state": "pre",
+       "completed": false,
+       "description": "Scheduled",
+       "detail": "Sun, October 11th at 5:00 PM EDT",
+       "shortDetail": "10/11 - 5:00 PM EDT"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": null,
+       "winner": null,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "23",
+        "displayName": "Washington Capitals",
+        "shortDisplayName": "Capitals",
+        "abbreviation": "WSH"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": null,
+       "winner": null,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "124292",
+        "displayName": "Seattle Kraken",
+        "shortDisplayName": "Kraken",
+        "abbreviation": "SEA"
+       }
+      }
+     ],
+     "broadcasts": null
+    }
+   ]
+  }
+ ]
+}

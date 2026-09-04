@@ -1,49 +1,43 @@
 "use client";
 
-import { formatGameDate, formatGameNote } from "@/lib/sports/leagues";
+import { formatGameDate, formatGameNote, shortTeamName } from "@/lib/sports/leagues";
 import type { GameSummary as GameSummaryData } from "@/lib/sports/types";
 
 const outcomeStyles: Record<string, string> = {
-  W: "bg-emerald-400/15 text-emerald-300",
-  L: "bg-red-400/15 text-red-300",
-  T: "bg-white/10 text-white/60",
-  D: "bg-white/10 text-white/60",
+  W: "bg-market-oliveLight text-market-olive",
+  L: "bg-[#F3DAD2] text-[#8A3B28]",
+  T: "bg-ink/5 text-ink2",
+  D: "bg-ink/5 text-ink2",
 };
 
-/** Most recent completed game — shown when the team is not playing. */
+/** Most recent completed game — one compact line for the team strip. */
 export default function GameSummary({ game }: { game: GameSummaryData }) {
   return (
-    <div className="rounded-xl border border-white/5 bg-white/[0.03] p-3.5">
-      <div className="flex items-center justify-between">
-        <span className="font-mono text-[10px] uppercase tracking-widest text-white/40">Last game</span>
-        <span className="font-mono text-[10px] uppercase tracking-wider text-white/35">
-          {formatGameDate(game.date)}
+    <div className="flex min-w-0 flex-wrap items-center gap-x-2.5 gap-y-1">
+      <span className="font-display text-[10px] font-medium uppercase tracking-[0.22em] text-ink2/80">
+        Last game
+      </span>
+      <span
+        className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[10px] font-bold ${
+          outcomeStyles[game.outcome] ?? outcomeStyles.T
+        }`}
+      >
+        {game.outcome}
+      </span>
+      <span className="truncate text-sm font-medium text-ink">
+        {game.at === "home" ? "vs" : "at"} {shortTeamName(game.opponent)}
+      </span>
+      {game.note && (
+        <span className="font-mono text-[10px] uppercase tracking-wide text-ink2/70">
+          {formatGameNote(game.note)}
         </span>
-      </div>
-      <div className="mt-2 flex items-center justify-between gap-3">
-        <div className="min-w-0">
-          <div className="flex items-center gap-2">
-            <span
-              className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[10px] font-bold ${
-                outcomeStyles[game.outcome] ?? outcomeStyles.T
-              }`}
-            >
-              {game.outcome}
-            </span>
-            <span className="truncate text-sm font-medium text-white/90">
-              {game.at === "home" ? "vs" : "at"} {game.opponent}
-            </span>
-          </div>
-          {game.note && (
-            <p className="mt-0.5 font-mono text-[11px] uppercase tracking-wide text-white/40">
-              {formatGameNote(game.note)}
-            </p>
-          )}
-        </div>
-        <span className="shrink-0 font-mono text-base font-semibold text-white tabular-nums">
-          {game.teamScore}–{game.opponentScore}
-        </span>
-      </div>
+      )}
+      <span className="font-mono text-sm font-semibold text-ink tabular-nums">
+        {game.teamScore}–{game.opponentScore}
+      </span>
+      <span className="ml-auto font-display text-[10px] font-medium uppercase tracking-[0.18em] text-ink2/70">
+        {formatGameDate(game.date)}
+      </span>
     </div>
   );
 }

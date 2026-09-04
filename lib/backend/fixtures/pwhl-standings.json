@@ -1,0 +1,94 @@
+{
+ "SiteKit": {
+  "Statviewtype": [
+   {
+    "team_id": "3",
+    "team_code": "MTL",
+    "name": "x - Montr\u00e9al Victoire",
+    "wins": "22",
+    "losses": "6",
+    "ot_losses": "2",
+    "points": "62",
+    "goals_for": "78",
+    "goals_against": "41"
+   },
+   {
+    "team_id": "1",
+    "team_code": "BOS",
+    "name": "x - Boston Fleet",
+    "wins": "21",
+    "losses": "5",
+    "ot_losses": "2",
+    "points": "62",
+    "goals_for": "74",
+    "goals_against": "45"
+   },
+   {
+    "team_id": "2",
+    "team_code": "MIN",
+    "name": "x - Minnesota Frost",
+    "wins": "16",
+    "losses": "9",
+    "ot_losses": "5",
+    "points": "50",
+    "goals_for": "91",
+    "goals_against": "73"
+   },
+   {
+    "team_id": "5",
+    "team_code": "OTT",
+    "name": "x - Ottawa Charge",
+    "wins": "17",
+    "losses": "12",
+    "ot_losses": "0",
+    "points": "44",
+    "goals_for": "71",
+    "goals_against": "73"
+   },
+   {
+    "team_id": "6",
+    "team_code": "TOR",
+    "name": "Toronto Sceptres",
+    "wins": "11",
+    "losses": "13",
+    "ot_losses": "3",
+    "points": "38",
+    "goals_for": "51",
+    "goals_against": "72"
+   },
+   {
+    "team_id": "9",
+    "team_code": "VAN",
+    "name": "Vancouver Goldeneyes",
+    "wins": "12",
+    "losses": "14",
+    "ot_losses": "4",
+    "points": "37",
+    "goals_for": "68",
+    "goals_against": "81"
+   },
+   {
+    "team_id": "4",
+    "team_code": "NY",
+    "name": "New York Sirens",
+    "wins": "12",
+    "losses": "15",
+    "ot_losses": "2",
+    "points": "36",
+    "goals_for": "63",
+    "goals_against": "83"
+   },
+   {
+    "team_id": "8",
+    "team_code": "SEA",
+    "name": "Seattle Torrent",
+    "wins": "9",
+    "losses": "16",
+    "ot_losses": "2",
+    "points": "31",
+    "goals_for": "64",
+    "goals_against": "92"
+   }
+  ]
+ }
+}

@@ -1,0 +1,1496 @@
+{
+ "children": [
+  {
+   "name": "Eastern Conference",
+   "standings": {
+    "entries": [
+     {
+      "team": {
+       "id": "5",
+       "displayName": "Indiana Fever",
+       "shortDisplayName": "Fever"
+      },
+      "overall": null,
+      "stats": [
+       {
+        "name": "avgPointsAgainst",
+        "displayValue": "90.4"
+       },
+       {
+        "name": "avgPointsFor",
+        "displayValue": "95.9"
+       },
+       {
+        "name": "differential",
+        "displayValue": "+5.5"
+       },
+       {
+        "name": "divisionWinPercent",
+        "displayValue": "0.000"
+       },
+       {
+        "name": "gamesBehind",
+        "displayValue": "-"
+       },
+       {
+        "name": "leagueWinPercent",
+        "displayValue": "0.667"
+       },
+       {
+        "name": "losses",
+        "displayValue": "12"
+       },
+       {
+        "name": "playoffSeed",
+        "displayValue": "1"
+       },
+       {
+        "name": "pointDifferential",
+        "displayValue": "+177"
+       },
+       {
+        "name": "points",
+        "displayValue": "4.0"
+       },
+       {
+        "name": "pointsAgainst",
+        "displayValue": "2892"
+       },
+       {
+        "name": "pointsFor",
+        "displayValue": "3069"
+       },
+       {
+        "name": "streak",
+        "displayValue": "W1"
+       },
+       {
+        "name": "winPercent",
+        "displayValue": ".625"
+       },
+       {
+        "name": "wins",
+        "displayValue": "20"
+       },
+       {
+        "name": "gamesAhead",
+        "displayValue": "-"
+       },
+       {
+        "name": "overall",
+        "displayValue": "20-12"
+       },
+       {
+        "name": "Home",
+        "displayValue": "11-6"
+       },
+       {
+        "name": "Road",
+        "displayValue": "9-6"
+       },
+       {
+        "name": "vs. Div.",
+        "displayValue": "0-0"
+       },
+       {
+        "name": "vs. Conf.",
+        "displayValue": "8-4"
+       },
+       {
+        "name": "Last Ten Games",
+        "displayValue": "7-3"
+       }
+      ]
+     },
+     {
+      "team": {
+       "id": "20",
+       "displayName": "Atlanta Dream",
+       "shortDisplayName": "Dream"
+      },
+      "overall": null,
+      "stats": [
+       {
+        "name": "avgPointsAgainst",
+        "displayValue": "85.7"
+       },
+       {
+        "name": "avgPointsFor",
+        "displayValue": "89.0"
+       },
+       {
+        "name": "differential",
+        "displayValue": "+3.3"
+       },
+       {
+        "name": "divisionWinPercent",
+        "displayValue": "0.000"
+       },
+       {
+        "name": "gamesBehind",
+        "displayValue": "0.5"
+       },
+       {
+        "name": "leagueWinPercent",
+        "displayValue": "0.692"
+       },
+       {
+        "name": "losses",
+        "displayValue": "12"
+       },
+       {
+        "name": "playoffSeed",
+        "displayValue": "2"
+       },
+       {
+        "name": "pointDifferential",
+        "displayValue": "+103"
+       },
+       {
+        "name": "points",
+        "displayValue": "3.5"
+       },
+       {
+        "name": "pointsAgainst",
+        "displayValue": "2657"
+       },
+       {
+        "name": "pointsFor",
+        "displayValue": "2760"
+       },
+       {
+        "name": "streak",
+        "displayValue": "L1"
+       },
+       {
+        "name": "winPercent",
+        "displayValue": ".613"
+       },
+       {
+        "name": "wins",
+        "displayValue": "19"
+       },
+       {
+        "name": "gamesAhead",
+        "displayValue": "-"
+       },
+       {
+        "name": "overall",
+        "displayValue": "19-12"
+       },
+       {
+        "name": "Home",
+        "displayValue": "11-5"
+       },
+       {
+        "name": "Road",
+        "displayValue": "8-7"
+       },
+       {
+        "name": "vs. Div.",
+        "displayValue": "0-0"
+       },
+       {
+        "name": "vs. Conf.",
+        "displayValue": "9-4"
+       },
+       {
+        "name": "Last Ten Games",
+        "displayValue": "7-3"
+       }
+      ]
+     },
+     {
+      "team": {
+       "id": "16",
+       "displayName": "Washington Mystics",
+       "shortDisplayName": "Mystics"
+      },
+      "overall": null,
+      "stats": [
+       {
+        "name": "avgPointsAgainst",
+        "displayValue": "82.9"
+       },
+       {
+        "name": "avgPointsFor",
+        "displayValue": "81.6"
+       },
+       {
+        "name": "differential",
+        "displayValue": "-1.3"
+       },
+       {
+        "name": "divisionWinPercent",
+        "displayValue": "0.000"
+       },
+       {
+        "name": "gamesBehind",
+        "displayValue": "1"
+       },
+       {
+        "name": "leagueWinPercent",
+        "displayValue": "0.667"
+       },
+       {
+        "name": "losses",
+        "displayValue": "12"
+       },
+       {
+        "name": "playoffSeed",
+        "displayValue": "3"
+       },
+       {
+        "name": "pointDifferential",
+        "displayValue": "-38"
+       },
+       {
+        "name": "points",
+        "displayValue": "3.0"
+       },
+       {
+        "name": "pointsAgainst",
+        "displayValue": "2486"
+       },
+       {
+        "name": "pointsFor",
+        "displayValue": "2448"
+       },
+       {
+        "name": "streak",
+        "displayValue": "W6"
+       },
+       {
+        "name": "winPercent",
+        "displayValue": ".600"
+       },
+       {
+        "name": "wins",
+        "displayValue": "18"
+       },
+       {
+        "name": "gamesAhead",
+        "displayValue": "-"
+       },
+       {
+        "name": "overall",
+        "displayValue": "18-12"
+       },
+       {
+        "name": "Home",
+        "displayValue": "10-6"
+       },
+       {
+        "name": "Road",
+        "displayValue": "8-6"
+       },
+       {
+        "name": "vs. Div.",
+        "displayValue": "0-0"
+       },
+       {
+        "name": "vs. Conf.",
+        "displayValue": "10-5"
+       },
+       {
+        "name": "Last Ten Games",
+        "displayValue": "8-2"
+       }
+      ]
+     },
+     {
+      "team": {
+       "id": "9",
+       "displayName": "New York Liberty",
+       "shortDisplayName": "Liberty"
+      },
+      "overall": null,
+      "stats": [
+       {
+        "name": "avgPointsAgainst",
+        "displayValue": "87.5"
+       },
+       {
+        "name": "avgPointsFor",
+        "displayValue": "90.1"
+       },
+       {
+        "name": "clincher",
+        "displayValue": "c"
+       },
+       {
+        "name": "differential",
+        "displayValue": "+2.6"
+       },
+       {
+        "name": "divisionWinPercent",
+        "displayValue": "0.000"
+       },
+       {
+        "name": "gamesBehind",
+        "displayValue": "1"
+       },
+       {
+        "name": "leagueWinPercent",
+        "displayValue": "0.750"
+       },
+       {
+        "name": "losses",
+        "displayValue": "13"
+       },
+       {
+        "name": "playoffSeed",
+        "displayValue": "4"
+       },
+       {
+        "name": "pointDifferential",
+        "displayValue": "+82"
+       },
+       {
+        "name": "points",
+        "displayValue": "3.0"
+       },
+       {
+        "name": "pointsAgainst",
+        "displayValue": "2801"
+       },
+       {
+        "name": "pointsFor",
+        "displayValue": "2883"
+       },
+       {
+        "name": "streak",
+        "displayValue": "W3"
+       },
+       {
+        "name": "winPercent",
+        "displayValue": ".594"
+       },
+       {
+        "name": "wins",
+        "displayValue": "19"
+       },
+       {
+        "name": "gamesAhead",
+        "displayValue": "-"
+       },
+       {
+        "name": "overall",
+        "displayValue": "19-13"
+       },
+       {
+        "name": "Home",
+        "displayValue": "10-5"
+       },
+       {
+        "name": "Road",
+        "displayValue": "9-8"
+       },
+       {
+        "name": "vs. Div.",
+        "displayValue": "0-0"
+       },
+       {
+        "name": "vs. Conf.",
+        "displayValue": "9-3"
+       },
+       {
+        "name": "Last Ten Games",
+        "displayValue": "6-4"
+       }
+      ]
+     },
+     {
+      "team": {
+       "id": "19",
+       "displayName": "Chicago Sky",
+       "shortDisplayName": "Sky"
+      },
+      "overall": null,
+      "stats": [
+       {
+        "name": "avgPointsAgainst",
+        "displayValue": "89.9"
+       },
+       {
+        "name": "avgPointsFor",
+        "displayValue": "88.2"
+       },
+       {
+        "name": "differential",
+        "displayValue": "-1.7"
+       },
+       {
+        "name": "divisionWinPercent",
+        "displayValue": "0.000"
+       },
+       {
+        "name": "gamesBehind",
+        "displayValue": "8"
+       },
+       {
+        "name": "leagueWinPercent",
+        "displayValue": "0.167"
+       },
+       {
+        "name": "losses",
+        "displayValue": "20"
+       },
+       {
+        "name": "playoffSeed",
+        "displayValue": "5"
+       },
+       {
+        "name": "pointDifferential",
+        "displayValue": "-55"
+       },
+       {
+        "name": "points",
+        "displayValue": "-4.0"
+       },
+       {
+        "name": "pointsAgainst",
+        "displayValue": "2878"
+       },
+       {
+        "name": "pointsFor",
+        "displayValue": "2823"
+       },
+       {
+        "name": "streak",
+        "displayValue": "L1"
+       },
+       {
+        "name": "winPercent",
+        "displayValue": ".375"
+       },
+       {
+        "name": "wins",
+        "displayValue": "12"
+       },
+       {
+        "name": "gamesAhead",
+        "displayValue": "-"
+       },
+       {
+        "name": "overall",
+        "displayValue": "12-20"
+       },
+       {
+        "name": "Home",
+        "displayValue": "8-9"
+       },
+       {
+        "name": "Road",
+        "displayValue": "4-11"
+       },
+       {
+        "name": "vs. Div.",
+        "displayValue": "0-0"
+       },
+       {
+        "name": "vs. Conf.",
+        "displayValue": "2-10"
+       },
+       {
+        "name": "Last Ten Games",
+        "displayValue": "5-5"
+       }
+      ]
+     },
+     {
+      "team": {
+       "id": "131935",
+       "displayName": "Toronto Tempo",
+       "shortDisplayName": "Tempo"
+      },
+      "overall": null,
+      "stats": [
+       {
+        "name": "avgPointsAgainst",
+        "displayValue": "93.7"
+       },
+       {
+        "name": "avgPointsFor",
+        "displayValue": "87.4"
+       },
+       {
+        "name": "differential",
+        "displayValue": "-6.3"
+       },
+       {
+        "name": "divisionWinPercent",
+        "displayValue": "0.000"
+       },
+       {
+        "name": "gamesBehind",
+        "displayValue": "9.5"
+       },
+       {
+        "name": "leagueWinPercent",
+        "displayValue": "0.385"
+       },
+       {
+        "name": "losses",
+        "displayValue": "21"
+       },
+       {
+        "name": "playoffSeed",
+        "displayValue": "6"
+       },
+       {
+        "name": "pointDifferential",
+        "displayValue": "-196"
+       },
+       {
+        "name": "points",
+        "displayValue": "-5.5"
+       },
+       {
+        "name": "pointsAgainst",
+        "displayValue": "2905"
+       },
+       {
+        "name": "pointsFor",
+        "displayValue": "2709"
+       },
+       {
+        "name": "streak",
+        "displayValue": "L8"
+       },
+       {
+        "name": "winPercent",
+        "displayValue": ".323"
+       },
+       {
+        "name": "wins",
+        "displayValue": "10"
+       },
+       {
+        "name": "gamesAhead",
+        "displayValue": "-"
+       },
+       {
+        "name": "overall",
+        "displayValue": "10-21"
+       },
+       {
+        "name": "Home",
+        "displayValue": "6-11"
+       },
+       {
+        "name": "Road",
+        "displayValue": "4-10"
+       },
+       {
+        "name": "vs. Div.",
+        "displayValue": "0-0"
+       },
+       {
+        "name": "vs. Conf.",
+        "displayValue": "5-8"
+       },
+       {
+        "name": "Last Ten Games",
+        "displayValue": "1-9"
+       }
+      ]
+     },
+     {
+      "team": {
+       "id": "18",
+       "displayName": "Connecticut Sun",
+       "shortDisplayName": "Sun"
+      },
+      "overall": null,
+      "stats": [
+       {
+        "name": "avgPointsAgainst",
+        "displayValue": "86.8"
+       },
+       {
+        "name": "avgPointsFor",
+        "displayValue": "79.7"
+       },
+       {
+        "name": "differential",
+        "displayValue": "-7.1"
+       },
+       {
+        "name": "divisionWinPercent",
+        "displayValue": "0.000"
+       },
+       {
+        "name": "gamesBehind",
+        "displayValue": "11.5"
+       },
+       {
+        "name": "leagueWinPercent",
+        "displayValue": "0.154"
+       },
+       {
+        "name": "losses",
+        "displayValue": "23"
+       },
+       {
+        "name": "playoffSeed",
+        "displayValue": "7"
+       },
+       {
+        "name": "pointDifferential",
+        "displayValue": "-222"
+       },
+       {
+        "name": "points",
+        "displayValue": "-7.5"
+       },
+       {
+        "name": "pointsAgainst",
+        "displayValue": "2692"
+       },
+       {
+        "name": "pointsFor",
+        "displayValue": "2470"
+       },
+       {
+        "name": "streak",
+        "displayValue": "W1"
+       },
+       {
+        "name": "winPercent",
+        "displayValue": ".258"
+       },
+       {
+        "name": "wins",
+        "displayValue": "8"
+       },
+       {
+        "name": "gamesAhead",
+        "displayValue": "-"
+       },
+       {
+        "name": "overall",
+        "displayValue": "8-23"
+       },
+       {
+        "name": "Home",
+        "displayValue": "5-10"
+       },
+       {
+        "name": "Road",
+        "displayValue": "3-13"
+       },
+       {
+        "name": "vs. Div.",
+        "displayValue": "0-0"
+       },
+       {
+        "name": "vs. Conf.",
+        "displayValue": "2-11"
+       },
+       {
+        "name": "Last Ten Games",
+        "displayValue": "3-7"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Western Conference",
+   "standings": {
+    "entries": [
+     {
+      "team": {
+       "id": "8",
+       "displayName": "Minnesota Lynx",
+       "shortDisplayName": "Lynx"
+      },
+      "overall": null,
+      "stats": [
+       {
+        "name": "avgPointsAgainst",
+        "displayValue": "83.6"
+       },
+       {
+        "name": "avgPointsFor",
+        "displayValue": "92.5"
+       },
+       {
+        "name": "differential",
+        "displayValue": "+8.9"
+       },
+       {
+        "name": "divisionWinPercent",
+        "displayValue": "0.000"
+       },
+       {
+        "name": "gamesBehind",
+        "displayValue": "-"
+       },
+       {
+        "name": "leagueWinPercent",
+        "displayValue": "0.889"
+       },
+       {
+        "name": "losses",
+        "displayValue": "7"
+       },
+       {
+        "name": "playoffSeed",
+        "displayValue": "1"
+       },
+       {
+        "name": "pointDifferential",
+        "displayValue": "+294"
+       },
+       {
+        "name": "points",
+        "displayValue": "9.5"
+       },
+       {
+        "name": "pointsAgainst",
+        "displayValue": "2760"
+       },
+       {
+        "name": "pointsFor",
+        "displayValue": "3054"
+       },
+       {
+        "name": "streak",
+        "displayValue": "W1"
+       },
+       {
+        "name": "winPercent",
+        "displayValue": ".788"
+       },
+       {
+        "name": "wins",
+        "displayValue": "26"
+       },
+       {
+        "name": "gamesAhead",
+        "displayValue": "-"
+       },
+       {
+        "name": "overall",
+        "displayValue": "26-7"
+       },
+       {
+        "name": "Home",
+        "displayValue": "13-5"
+       },
+       {
+        "name": "Road",
+        "displayValue": "13-2"
+       },
+       {
+        "name": "vs. Div.",
+        "displayValue": "0-0"
+       },
+       {
+        "name": "vs. Conf.",
+        "displayValue": "16-2"
+       },
+       {
+        "name": "Last Ten Games",
+        "displayValue": "9-1"
+       }
+      ]
+     },
+     {
+      "team": {
+       "id": "129689",
+       "displayName": "Golden State Valkyries",
+       "shortDisplayName": "Valkyries"
+      },
+      "overall": null,
+      "stats": [
+       {
+        "name": "avgPointsAgainst",
+        "displayValue": "77.1"
+       },
+       {
+        "name": "avgPointsFor",
+        "displayValue": "83.3"
+       },
+       {
+        "name": "differential",
+        "displayValue": "+6.2"
+       },
+       {
+        "name": "divisionWinPercent",
+        "displayValue": "0.000"
+       },
+       {
+        "name": "gamesBehind",
+        "displayValue": "3"
+       },
+       {
+        "name": "leagueWinPercent",
+        "displayValue": "0.571"
+       },
+       {
+        "name": "losses",
+        "displayValue": "9"
+       },
+       {
+        "name": "playoffSeed",
+        "displayValue": "2"
+       },
+       {
+        "name": "pointDifferential",
+        "displayValue": "+193"
+       },
+       {
+        "name": "points",
+        "displayValue": "6.5"
+       },
+       {
+        "name": "pointsAgainst",
+        "displayValue": "2389"
+       },
+       {
+        "name": "pointsFor",
+        "displayValue": "2582"
+       },
+       {
+        "name": "streak",
+        "displayValue": "W3"
+       },
+       {
+        "name": "winPercent",
+        "displayValue": ".710"
+       },
+       {
+        "name": "wins",
+        "displayValue": "22"
+       },
+       {
+        "name": "gamesAhead",
+        "displayValue": "-"
+       },
+       {
+        "name": "overall",
+        "displayValue": "22-9"
+       },
+       {
+        "name": "Home",
+        "displayValue": "13-4"
+       },
+       {
+        "name": "Road",
+        "displayValue": "9-5"
+       },
+       {
+        "name": "vs. Div.",
+        "displayValue": "0-0"
+       },
+       {
+        "name": "vs. Conf.",
+        "displayValue": "8-6"
+       },
+       {
+        "name": "Last Ten Games",
+        "displayValue": "8-2"
+       }
+      ]
+     },
+     {
+      "team": {
+       "id": "17",
+       "displayName": "Las Vegas Aces",
+       "shortDisplayName": "Aces"
+      },
+      "overall": null,
+      "stats": [
+       {
+        "name": "avgPointsAgainst",
+        "displayValue": "86.9"
+       },
+       {
+        "name": "avgPointsFor",
+        "displayValue": "91.7"
+       },
+       {
+        "name": "differential",
+        "displayValue": "+4.8"
+       },
+       {
+        "name": "divisionWinPercent",
+        "displayValue": "0.000"
+       },
+       {
+        "name": "gamesBehind",
+        "displayValue": "3.5"
+       },
+       {
+        "name": "leagueWinPercent",
+        "displayValue": "0.722"
+       },
+       {
+        "name": "losses",
+        "displayValue": "10"
+       },
+       {
+        "name": "playoffSeed",
+        "displayValue": "3"
+       },
+       {
+        "name": "pointDifferential",
+        "displayValue": "+153"
+       },
+       {
+        "name": "points",
+        "displayValue": "6.0"
+       },
+       {
+        "name": "pointsAgainst",
+        "displayValue": "2780"
+       },
+       {
+        "name": "pointsFor",
+        "displayValue": "2933"
+       },
+       {
+        "name": "streak",
+        "displayValue": "L1"
+       },
+       {
+        "name": "winPercent",
+        "displayValue": ".688"
+       },
+       {
+        "name": "wins",
+        "displayValue": "22"
+       },
+       {
+        "name": "gamesAhead",
+        "displayValue": "-"
+       },
+       {
+        "name": "overall",
+        "displayValue": "22-10"
+       },
+       {
+        "name": "Home",
+        "displayValue": "9-5"
+       },
+       {
+        "name": "Road",
+        "displayValue": "13-5"
+       },
+       {
+        "name": "vs. Div.",
+        "displayValue": "0-0"
+       },
+       {
+        "name": "vs. Conf.",
+        "displayValue": "13-5"
+       },
+       {
+        "name": "Last Ten Games",
+        "displayValue": "6-4"
+       }
+      ]
+     },
+     {
+      "team": {
+       "id": "3",
+       "displayName": "Dallas Wings",
+       "shortDisplayName": "Wings"
+      },
+      "overall": null,
+      "stats": [
+       {
+        "name": "avgPointsAgainst",
+        "displayValue": "85.7"
+       },
+       {
+        "name": "avgPointsFor",
+        "displayValue": "88.8"
+       },
+       {
+        "name": "differential",
+        "displayValue": "+3.1"
+       },
+       {
+        "name": "divisionWinPercent",
+        "displayValue": "0.000"
+       },
+       {
+        "name": "gamesBehind",
+        "displayValue": "6.5"
+       },
+       {
+        "name": "leagueWinPercent",
+        "displayValue": "0.533"
+       },
+       {
+        "name": "losses",
+        "displayValue": "13"
+       },
+       {
+        "name": "playoffSeed",
+        "displayValue": "4"
+       },
+       {
+        "name": "pointDifferential",
+        "displayValue": "+100"
+       },
+       {
+        "name": "points",
+        "displayValue": "3.0"
+       },
+       {
+        "name": "pointsAgainst",
+        "displayValue": "2743"
+       },
+       {
+        "name": "pointsFor",
+        "displayValue": "2843"
+       },
+       {
+        "name": "streak",
+        "displayValue": "L2"
+       },
+       {
+        "name": "winPercent",
+        "displayValue": ".594"
+       },
+       {
+        "name": "wins",
+        "displayValue": "19"
+       },
+       {
+        "name": "gamesAhead",
+        "displayValue": "-"
+       },
+       {
+        "name": "overall",
+        "displayValue": "19-13"
+       },
+       {
+        "name": "Home",
+        "displayValue": "9-6"
+       },
+       {
+        "name": "Road",
+        "displayValue": "10-7"
+       },
+       {
+        "name": "vs. Div.",
+        "displayValue": "0-0"
+       },
+       {
+        "name": "vs. Conf.",
+        "displayValue": "8-7"
+       },
+       {
+        "name": "Last Ten Games",
+        "displayValue": "5-5"
+       }
+      ]
+     },
+     {
+      "team": {
+       "id": "6",
+       "displayName": "Los Angeles Sparks",
+       "shortDisplayName": "Sparks"
+      },
+      "overall": null,
+      "stats": [
+       {
+        "name": "avgPointsAgainst",
+        "displayValue": "93.9"
+       },
+       {
+        "name": "avgPointsFor",
+        "displayValue": "89.6"
+       },
+       {
+        "name": "differential",
+        "displayValue": "-4.3"
+       },
+       {
+        "name": "divisionWinPercent",
+        "displayValue": "0.000"
+       },
+       {
+        "name": "gamesBehind",
+        "displayValue": "12.5"
+       },
+       {
+        "name": "leagueWinPercent",
+        "displayValue": "0.438"
+       },
+       {
+        "name": "losses",
+        "displayValue": "18"
+       },
+       {
+        "name": "playoffSeed",
+        "displayValue": "5"
+       },
+       {
+        "name": "pointDifferential",
+        "displayValue": "-131"
+       },
+       {
+        "name": "points",
+        "displayValue": "-3.0"
+       },
+       {
+        "name": "pointsAgainst",
+        "displayValue": "2818"
+       },
+       {
+        "name": "pointsFor",
+        "displayValue": "2687"
+       },
+       {
+        "name": "streak",
+        "displayValue": "W1"
+       },
+       {
+        "name": "winPercent",
+        "displayValue": ".400"
+       },
+       {
+        "name": "wins",
+        "displayValue": "12"
+       },
+       {
+        "name": "gamesAhead",
+        "displayValue": "-"
+       },
+       {
+        "name": "overall",
+        "displayValue": "12-18"
+       },
+       {
+        "name": "Home",
+        "displayValue": "5-9"
+       },
+       {
+        "name": "Road",
+        "displayValue": "7-9"
+       },
+       {
+        "name": "vs. Div.",
+        "displayValue": "0-0"
+       },
+       {
+        "name": "vs. Conf.",
+        "displayValue": "7-9"
+       },
+       {
+        "name": "Last Ten Games",
+        "displayValue": "3-7"
+       }
+      ]
+     },
+     {
+      "team": {
+       "id": "132052",
+       "displayName": "Portland Fire",
+       "shortDisplayName": "Fire"
+      },
+      "overall": null,
+      "stats": [
+       {
+        "name": "avgPointsAgainst",
+        "displayValue": "91.8"
+       },
+       {
+        "name": "avgPointsFor",
+        "displayValue": "86.5"
+       },
+       {
+        "name": "differential",
+        "displayValue": "-5.3"
+       },
+       {
+        "name": "divisionWinPercent",
+        "displayValue": "0.000"
+       },
+       {
+        "name": "gamesBehind",
+        "displayValue": "13"
+       },
+       {
+        "name": "leagueWinPercent",
+        "displayValue": "0.231"
+       },
+       {
+        "name": "losses",
+        "displayValue": "19"
+       },
+       {
+        "name": "playoffSeed",
+        "displayValue": "6"
+       },
+       {
+        "name": "pointDifferential",
+        "displayValue": "-162"
+       },
+       {
+        "name": "points",
+        "displayValue": "-3.5"
+       },
+       {
+        "name": "pointsAgainst",
+        "displayValue": "2845"
+       },
+       {
+        "name": "pointsFor",
+        "displayValue": "2683"
+       },
+       {
+        "name": "streak",
+        "displayValue": "W1"
+       },
+       {
+        "name": "winPercent",
+        "displayValue": ".387"
+       },
+       {
+        "name": "wins",
+        "displayValue": "12"
+       },
+       {
+        "name": "gamesAhead",
+        "displayValue": "-"
+       },
+       {
+        "name": "overall",
+        "displayValue": "12-19"
+       },
+       {
+        "name": "Home",
+        "displayValue": "7-9"
+       },
+       {
+        "name": "Road",
+        "displayValue": "5-10"
+       },
+       {
+        "name": "vs. Div.",
+        "displayValue": "0-0"
+       },
+       {
+        "name": "vs. Conf.",
+        "displayValue": "3-10"
+       },
+       {
+        "name": "Last Ten Games",
+        "displayValue": "3-7"
+       }
+      ]
+     },
+     {
+      "team": {
+       "id": "11",
+       "displayName": "Phoenix Mercury",
+       "shortDisplayName": "Mercury"
+      },
+      "overall": null,
+      "stats": [
+       {
+        "name": "avgPointsAgainst",
+        "displayValue": "87.2"
+       },
+       {
+        "name": "avgPointsFor",
+        "displayValue": "83.8"
+       },
+       {
+        "name": "differential",
+        "displayValue": "-3.4"
+       },
+       {
+        "name": "divisionWinPercent",
+        "displayValue": "0.000"
+       },
+       {
+        "name": "gamesBehind",
+        "displayValue": "14"
+       },
+       {
+        "name": "leagueWinPercent",
+        "displayValue": "0.412"
+       },
+       {
+        "name": "losses",
+        "displayValue": "21"
+       },
+       {
+        "name": "playoffSeed",
+        "displayValue": "7"
+       },
+       {
+        "name": "pointDifferential",
+        "displayValue": "-112"
+       },
+       {
+        "name": "points",
+        "displayValue": "-4.5"
+       },
+       {
+        "name": "pointsAgainst",
+        "displayValue": "2878"
+       },
+       {
+        "name": "pointsFor",
+        "displayValue": "2766"
+       },
+       {
+        "name": "streak",
+        "displayValue": "L2"
+       },
+       {
+        "name": "winPercent",
+        "displayValue": ".364"
+       },
+       {
+        "name": "wins",
+        "displayValue": "12"
+       },
+       {
+        "name": "gamesAhead",
+        "displayValue": "-"
+       },
+       {
+        "name": "overall",
+        "displayValue": "12-21"
+       },
+       {
+        "name": "Home",
+        "displayValue": "5-10"
+       },
+       {
+        "name": "Road",
+        "displayValue": "7-11"
+       },
+       {
+        "name": "vs. Div.",
+        "displayValue": "0-0"
+       },
+       {
+        "name": "vs. Conf.",
+        "displayValue": "7-10"
+       },
+       {
+        "name": "Last Ten Games",
+        "displayValue": "4-6"
+       }
+      ]
+     },
+     {
+      "team": {
+       "id": "14",
+       "displayName": "Seattle Storm",
+       "shortDisplayName": "Storm"
+      },
+      "overall": null,
+      "stats": [
+       {
+        "name": "avgPointsAgainst",
+        "displayValue": "88.3"
+       },
+       {
+        "name": "avgPointsFor",
+        "displayValue": "82.7"
+       },
+       {
+        "name": "clincher",
+        "displayValue": "e"
+       },
+       {
+        "name": "differential",
+        "displayValue": "-5.6"
+       },
+       {
+        "name": "divisionWinPercent",
+        "displayValue": "0.000"
+       },
+       {
+        "name": "gamesBehind",
+        "displayValue": "20"
+       },
+       {
+        "name": "leagueWinPercent",
+        "displayValue": "0.067"
+       },
+       {
+        "name": "losses",
+        "displayValue": "27"
+       },
+       {
+        "name": "playoffSeed",
+        "displayValue": "8"
+       },
+       {
+        "name": "pointDifferential",
+        "displayValue": "-186"
+       },
+       {
+        "name": "points",
+        "displayValue": "-10.5"
+       },
+       {
+        "name": "pointsAgainst",
+        "displayValue": "2914"
+       },
+       {
+        "name": "pointsFor",
+        "displayValue": "2728"
+       },
+       {
+        "name": "streak",
+        "displayValue": "L10"
+       },
+       {
+        "name": "winPercent",
+        "displayValue": ".182"
+       },
+       {
+        "name": "wins",
+        "displayValue": "6"
+       },
+       {
+        "name": "gamesAhead",
+        "displayValue": "-"
+       },
+       {
+        "name": "overall",
+        "displayValue": "6-27"
+       },
+       {
+        "name": "Home",
+        "displayValue": "4-11"
+       },
+       {
+        "name": "Road",
+        "displayValue": "2-16"
+       },
+       {
+        "name": "vs. Div.",
+        "displayValue": "0-0"
+       },
+       {
+        "name": "vs. Conf.",
+        "displayValue": "1-14"
+       },
+       {
+        "name": "Last Ten Games",
+        "displayValue": "0-10"
+       }
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

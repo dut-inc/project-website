@@ -17,6 +17,13 @@ const features = [
     blurb:
       "Basketball and baseball shot-archetype clustering — win probability, scouting recaps, and a fantasy assistant for the group.",
   },
+  {
+    href: "/sports/pitch-predictor",
+    tag: "Model",
+    title: "Behind the Plate",
+    blurb:
+      "An XGBoost next-pitch predictor — call an at-bat pitch by pitch and watch the model forecast the next pitch from the count, runners, and arsenal.",
+  },
 ];
 
 export default function SportsPage() {

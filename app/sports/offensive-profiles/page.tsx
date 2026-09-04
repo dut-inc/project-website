@@ -6,12 +6,22 @@ export default function OffensiveProfilesPage() {
   return (
     <div className="-mx-4 -mt-6 min-h-[80vh] bg-sports-bg px-4 pb-20 pt-10 sm:-mx-8 sm:px-8">
       <div className="mx-auto max-w-5xl">
-        <Link
-          href="/sports"
-          className="mb-8 inline-block font-mono text-xs uppercase tracking-widest text-white/40 hover:text-sports-accent"
-        >
-          &larr; Back to Sports Lab
-        </Link>
+        <div className="mb-8 flex items-center justify-between">
+          <Link
+            href="/sports"
+            className="inline-block font-mono text-xs uppercase tracking-widest text-white/40 hover:text-sports-accent"
+          >
+            &larr; Back to Sports Lab
+          </Link>
+          <a
+            href="https://github.com/l0stpanda/sports-analytics-portfolio"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-widest text-white/40 hover:text-sports-accent"
+          >
+            GitHub <span aria-hidden>↗</span>
+          </a>
+        </div>
 
         <div className="mb-10 text-center">
           <p className="font-mono text-xs uppercase tracking-[0.3em] text-sports-accent/80">
