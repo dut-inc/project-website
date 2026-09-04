@@ -4,4 +4,7 @@ node_modules
 .vercel
 .env.local
 .env
+.venv
+__pycache__
+*.pyc
 

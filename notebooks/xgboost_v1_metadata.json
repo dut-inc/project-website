@@ -1,0 +1,110 @@
+{
+  "model_version": "v1",
+  "phase": 2,
+  "accuracy": {
+    "test_pct": 43.653403913741485,
+    "baseline_pct": 30.127131513862977,
+    "improvement_vs_baseline_pct": 13.526272399878508,
+    "improvement_vs_phase1_pct": 0.0
+  },
+  "pitch_types": [
+    "CH",
+    "CU",
+    "EP",
+    "FC",
+    "FF",
+    "FO",
+    "FS",
+    "KC",
+    "KN",
+    "SI",
+    "SL",
+    "ST"
+  ],
+  "pitch_type_mapping": {
+    "CH": 0,
+    "CU": 1,
+    "EP": 2,
+    "FC": 3,
+    "FF": 4,
+    "FO": 5,
+    "FS": 6,
+    "KC": 7,
+    "KN": 8,
+    "SI": 9,
+    "SL": 10,
+    "ST": 11
+  },
+  "features": [
+    "balls",
+    "strikes",
+    "pitcher_hand",
+    "batter_hand",
+    "handedness_matchup",
+    "outs_when_up",
+    "inning",
+    "workload_bucket_encoded",
+    "batter_k_rate",
+    "runner_on_1b",
+    "runner_on_2b",
+    "runner_on_3b",
+    "bases_loaded",
+    "score_diff",
+    "CH_pct",
+    "CU_pct",
+    "EP_pct",
+    "FC_pct",
+    "FF_pct",
+    "FO_pct",
+    "FS_pct",
+    "KC_pct",
+    "KN_pct",
+    "SI_pct",
+    "SL_pct",
+    "ST_pct"
+  ],
+  "feature_count": 26,
+  "top_10_features": [
+    {
+      "feature": "EP_pct",
+      "importance_pct": 17.010486602783203
+    },
+    {
+      "feature": "KC_pct",
+      "importance_pct": 10.278691291809082
+    },
+    {
+      "feature": "FS_pct",
+      "importance_pct": 9.583767890930176
+    },
+    {
+      "feature": "ST_pct",
+      "importance_pct": 7.571086406707764
+    },
+    {
+      "feature": "FC_pct",
+      "importance_pct": 6.814269542694092
+    },
+    {
+      "feature": "FO_pct",
+      "importance_pct": 6.433584690093994
+    },
+    {
+      "feature": "SI_pct",
+      "importance_pct": 5.620151042938232
+    },
+    {
+      "feature": "SL_pct",
+      "importance_pct": 5.431983470916748
+    },
+    {
+      "feature": "CU_pct",
+      "importance_pct": 4.843169212341309
+    },
+    {
+      "feature": "handedness_matchup",
+      "importance_pct": 4.786773204803467
+    }
+  ],
+  "baseline_pitch": "FF"
+}
