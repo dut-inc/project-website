@@ -9,9 +9,7 @@ export default function Nav() {
           The Board
         </Link>
         <nav aria-label="Primary navigation" className="flex flex-wrap justify-end gap-x-5 gap-y-2 font-mono text-[11px] uppercase tracking-widest text-cream/60">
-          {[...projects.values()]
-            .filter((p) => p.href !== "/db-management")
-            .map((p) => (
+          {[...projects.values()].map((p) => (
               <Link key={p.href} href={p.href} className="transition-colors hover:text-cream">
                 {p.title}
               </Link>

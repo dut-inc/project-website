@@ -32,6 +32,16 @@ npm run dev
 
 Then open http://localhost:3000.
 
+### Board-game developer controls
+
+The board-game tier list is publicly viewable, while add, edit, delete, and tier movement controls are hidden behind a developer passcode. Set the passcode in the server environment before starting Next.js:
+
+```bash
+BOARD_GAMES_PASSCODE=choose-a-local-dev-passcode npm run dev
+```
+
+For a local `.env.local` file, use `BOARD_GAMES_PASSCODE=...` without a `NEXT_PUBLIC_` prefix. The passcode is checked by `app/api/board-games/access/route.ts` and is not sent to the client as an environment variable. This is a UI/convenience gate; because the current Supabase CRUD client is public and its RLS policies permit anonymous writes, it is not a database security boundary. Use authenticated Supabase policies and server-side write routes if the table needs real access control.
+
 ## Structure
 
 ```
@@ -42,6 +52,7 @@ app/
   sports/page.tsx
   conservation/page.tsx
   board/page.tsx
+  dle/page.tsx        daily character guessing game catalog
 components/
   Nav.tsx
   ProjectCard.tsx    card used on the home grid
@@ -51,6 +62,7 @@ lib/
   projects.ts        single source of truth for what shows on the home page
 ```
 
+<<<<<<< HEAD
 ## Seattle Sports Dashboard — data architecture
 
 `/sports/dashboard` renders nine Seattle teams. The frontend never talks to
@@ -119,6 +131,13 @@ Existing Supabase setup (middleware, board prototype tables) is untouched.
 The dashboard currently uses the in-memory server cache; if it is deployed
 to serverless workers with no shared process, swap `lib/backend/cache.ts`
 for a Supabase-backed cache implementing the same interface.
+=======
+## Daily character games
+
+The DLE hub lives at `/dle`. Its game catalog is defined in `lib/dleGames.ts`, and every entry automatically gets a route at `/dle/<slug>` using the shared shell in `components/dle/DleGameShell.tsx`. Add a future universe or game format by adding a definition to `DLE_GAMES`; the catalog and static routes will pick it up without another page component.
+
+The retired `/db-management` route redirects to `/dle` so old bookmarks still land in the new section.
+>>>>>>> 816efaa3c1176ec9ee0c5e3ae494e2be7d76ac68
 
 ## Adding a new project page
 

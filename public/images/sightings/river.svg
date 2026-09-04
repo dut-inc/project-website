@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" role="img" aria-label="River valley scene placeholder">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#A9C6DE"/>
+      <stop offset="100%" stop-color="#EAF2E8"/>
+    </linearGradient>
+    <linearGradient id="river" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7FB2CE"/>
+      <stop offset="100%" stop-color="#4A7B99"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#sky)"/>
+  <circle cx="110" cy="110" r="42" fill="#FBE9B8"/>
+  <path d="M0 200 L140 150 L260 210 L420 160 L600 210 L600 400 L0 400 Z" fill="#7A9384"/>
+  <path d="M0 240 L160 200 L300 250 L460 205 L600 245 L600 400 L0 400 Z" fill="#5C7A68"/>
+  <path d="M0 285 Q150 255 300 292 T600 292 L600 400 L0 400 Z" fill="#3E5B4C"/>
+  <path d="M0 290 L600 290 L600 400 L0 400 Z" fill="url(#river)"/>
+  <path d="M80 320 Q150 305 220 322 T380 318 T560 322" stroke="#C6DFE8" stroke-width="3" fill="none" opacity="0.7"/>
+  <path d="M140 355 Q220 340 300 357 T470 353" stroke="#C6DFE8" stroke-width="3" fill="none" opacity="0.5"/>
+  <g fill="#2E4A3B">
+    <path d="M40 300 l14 -46 l14 46 z"/>
+    <path d="M70 310 l12 -38 l12 38 z"/>
+    <path d="M520 300 l14 -46 l14 46 z"/>
+    <path d="M555 312 l11 -34 l11 34 z"/>
+  </g>
+</svg>

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" role="img" aria-label="Mountain scene placeholder">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8FB3D9"/>
+      <stop offset="100%" stop-color="#DCEBF2"/>
+    </linearGradient>
+    <linearGradient id="meadow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8FAB77"/>
+      <stop offset="100%" stop-color="#5F7F54"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#sky)"/>
+  <circle cx="150" cy="120" r="45" fill="#FDF1C4"/>
+  <g fill="#F4F8FB">
+    <ellipse cx="330" cy="105" rx="55" ry="12"/>
+    <ellipse cx="450" cy="90" rx="40" ry="10"/>
+    <ellipse cx="230" cy="80" rx="35" ry="9"/>
+  </g>
+  <path d="M0 230 L110 120 L220 240 L330 130 L470 250 L600 160 L600 400 L0 400 Z" fill="#6B8298"/>
+  <path d="M110 120 L220 240 L175 240 Z" fill="#EFF5F8"/>
+  <path d="M330 130 L470 250 L415 250 L395 175 L380 250 L330 245 Z" fill="#EFF5F8"/>
+  <path d="M0 275 Q150 240 300 280 T600 272 L600 400 L0 400 Z" fill="#7A9B6B"/>
+  <path d="M0 315 Q160 285 320 320 T600 312 L600 400 L0 400 Z" fill="url(#meadow)"/>
+  <g fill="#3E5B4C">
+    <path d="M40 360 L65 315 L90 360 Z"/>
+    <path d="M90 370 L112 328 L135 370 Z"/>
+    <path d="M470 355 L495 310 L520 355 Z"/>
+    <path d="M525 368 L548 326 L572 368 Z"/>
+  </g>
+</svg>

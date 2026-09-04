@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
-import { GAME_TIERS, type BoardGameEntry, type GameTier } from "@/lib/boardGames";
+import { GAME_TIERS, GAME_TYPES, TIER_DETAILS, type BoardGameEntry, type GameTier, type GameType } from "@/lib/boardGames";
 
 type DatabaseGame = BoardGameEntry & {
   createdAt: string | null;
@@ -17,6 +17,7 @@ const EMPTY_FORM: GameForm = {
   fullRules: "",
   quickNotes: "",
   tier: "Unranked",
+  gameType: "FFA",
 };
 
 function toDatabaseGame(row: Record<string, unknown>): DatabaseGame | null {
@@ -26,6 +27,9 @@ function toDatabaseGame(row: Record<string, unknown>): DatabaseGame | null {
   const tier = typeof row.tier === "string" && GAME_TIERS.includes(row.tier as GameTier)
     ? (row.tier as GameTier)
     : "Unranked";
+  const gameType = typeof row.game_type === "string" && GAME_TYPES.includes(row.game_type as GameType)
+    ? (row.game_type as GameType)
+    : "FFA";
 
   if (!hasValidId) return null;
 
@@ -37,6 +41,7 @@ function toDatabaseGame(row: Record<string, unknown>): DatabaseGame | null {
     fullRules: typeof row.full_rules === "string" ? row.full_rules : "",
     quickNotes: typeof row.quick_notes === "string" ? row.quick_notes : "",
     tier,
+    gameType,
     createdAt: typeof row.created_at === "string" ? row.created_at : null,
   };
 }
@@ -63,7 +68,7 @@ export default function DatabaseManager() {
       const supabase = createClient();
       const { data, error: queryError } = await supabase
         .from("boardgames")
-        .select("id, name, description, house_rules, full_rules, quick_notes, tier, created_at")
+        .select("id, name, description, house_rules, full_rules, quick_notes, tier, game_type, created_at")
         .order("created_at", { ascending: true });
 
       if (queryError) throw queryError;
@@ -99,6 +104,7 @@ export default function DatabaseManager() {
       fullRules: game.fullRules,
       quickNotes: game.quickNotes,
       tier: game.tier,
+      gameType: game.gameType,
     });
     setNotice(null);
     setError(null);
@@ -128,6 +134,7 @@ export default function DatabaseManager() {
       full_rules: form.fullRules.trim(),
       quick_notes: form.quickNotes.trim(),
       tier: form.tier,
+      game_type: form.gameType,
     };
 
     try {
@@ -230,8 +237,11 @@ export default function DatabaseManager() {
                   <div className="min-w-0">
                     <div className="flex flex-wrap items-center gap-2">
                       <h3 className="font-body text-lg font-semibold">{game.name}</h3>
+                      <span className="rounded-full border border-shelf-paperDark/50 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-shelf-ink/75">
+                        {game.gameType}
+                      </span>
                       <span className="rounded-full bg-shelf-walnut px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-shelf-paper">
-                        {game.tier}
+                        {TIER_DETAILS[game.tier].label}
                       </span>
                     </div>
                     <p className="mt-1 text-sm text-shelf-ink/75">{game.description || "No description yet."}</p>
@@ -271,9 +281,13 @@ export default function DatabaseManager() {
             <input id="db-game-name" value={form.name} onChange={(event) => updateField("name", event.target.value)} className="w-full rounded-lg border border-shelf-paperDark/60 bg-white/35 px-3 py-2.5 text-sm" placeholder="e.g. Cascadia" />
             <label className="block font-mono text-[10px] uppercase tracking-wider text-shelf-ink/75" htmlFor="db-game-description">Description</label>
             <textarea id="db-game-description" value={form.description} onChange={(event) => updateField("description", event.target.value)} rows={2} className="w-full resize-y rounded-lg border border-shelf-paperDark/60 bg-white/35 px-3 py-2.5 text-sm" />
+            <label className="block font-mono text-[10px] uppercase tracking-wider text-shelf-ink/75" htmlFor="db-game-type">Game type</label>
+            <select id="db-game-type" value={form.gameType} onChange={(event) => updateField("gameType", event.target.value as GameType)} className="w-full rounded-lg border border-shelf-paperDark/60 bg-white/35 px-3 py-2.5 text-sm">
+              {GAME_TYPES.map((type) => <option key={type} value={type}>{type}</option>)}
+            </select>
             <label className="block font-mono text-[10px] uppercase tracking-wider text-shelf-ink/75" htmlFor="db-game-tier">Tier</label>
             <select id="db-game-tier" value={form.tier} onChange={(event) => updateField("tier", event.target.value as GameTier)} className="w-full rounded-lg border border-shelf-paperDark/60 bg-white/35 px-3 py-2.5 text-sm">
-              {GAME_TIERS.map((tier) => <option key={tier} value={tier}>{tier}</option>)}
+              {GAME_TIERS.map((tier) => <option key={tier} value={tier}>{TIER_DETAILS[tier].label}</option>)}
             </select>
             {([
               ["houseRules", "House rules", "What does this group do differently?"],

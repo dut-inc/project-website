@@ -21,7 +21,7 @@ export type ProjectId =
   | "conservation"
   | "board"
   | "board-games"
-  | "db-management";
+  | "dle";
 
 export const statusColor: Record<Status, string> = {
   ACTIVE: "text-pinTeal",
@@ -66,10 +66,10 @@ export const projects: Map<ProjectId, Project> = new Map([
       case: "003",
       title: "Field Watch",
       href: "/conservation",
-      status: "PLANNING",
-      updated: "2026-08-01",
+      status: "ACTIVE",
+      updated: "2026-08-05",
       summary:
-        "citizen-science log, e.g. upload a photo on a hike, get a species ID, fill in the map",
+        "geotagged sighting map with photos, pin a spot from your next hike, species ID coming soon",
       rotation: -3,
       paper: "cream",
       pin: "navy",
@@ -105,14 +105,14 @@ export const projects: Map<ProjectId, Project> = new Map([
     },
   ],
   [
-    "db-management",
+    "dle",
     {
       case: "006",
-      title: "DB Management",
-      href: "/db-management",
-      status: "OPEN",
-      updated: "2026-08-05",
-      summary: "prototype Supabase controls for the shared board-game database",
+      title: "DLE",
+      href: "/dle",
+      status: "PLANNING",
+      updated: "2026-08-31",
+      summary: "daily dle games",
       rotation: 1.5,
       paper: "kraft",
       pin: "gold",

@@ -8,7 +8,7 @@
 }
 
 :focus-visible {
-  outline: 2px dashed #c9a227;
+  outline: 2px solid #c9a227;
   outline-offset: 4px;
 }
 
@@ -130,6 +130,7 @@ input {
   animation: modal-pop 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
 
+<<<<<<< HEAD
 /* ---------------------------------------------------------------------------
    Pike Place Market theme — the Main Arcade building, straight from the
    reference photo: silver-gray painted stucco, dark iron storefronts, a
@@ -211,6 +212,136 @@ input {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
   pointer-events: none;
+=======
+/* ---- Field Watch map (case 003) ---- */
+
+.sighting-marker {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  z-index: 0;
+}
+
+.sighting-marker-pin {
+  width: 100%;
+  height: 100%;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  border: 2px solid #efe7d2;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+  transition: transform 0.15s ease;
+}
+
+.sighting-marker:hover .sighting-marker-pin {
+  transform: rotate(-45deg) scale(1.2);
+}
+
+.sighting-marker--focused {
+  z-index: 10;
+}
+
+.sighting-marker--focused .sighting-marker-pin {
+  transform: rotate(-45deg) scale(1.35);
+  box-shadow: 0 0 0 4px rgba(201, 162, 39, 0.45), 0 2px 6px rgba(0, 0, 0, 0.45);
+}
+
+/* Upload pick marker: dashed target pin while choosing a spot on the map. */
+.sighting-marker--pick {
+  width: 24px;
+  height: 24px;
+  z-index: 30;
+}
+
+.sighting-marker--pick .sighting-pick-pin {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px dashed #c1442d;
+  background: rgba(193, 68, 45, 0.25);
+  box-shadow: 0 0 0 2px rgba(239, 231, 210, 0.9), 0 2px 6px rgba(0, 0, 0, 0.35);
+}
+
+/* Leaflet popups: our paper card replaces the default white box. */
+/* Keep the site font (IBM Plex) instead of Leaflet's default Helvetica.
+   Doubled class keeps specificity above leaflet.css's own .leaflet-container rule. */
+.leaflet-container.leaflet-container {
+  font-family: var(--font-body);
+}
+
+.leaflet-popup-content-wrapper {
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+  border-radius: 12px;
+}
+
+.leaflet-popup-content {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.leaflet-popup-tip {
+  background: #efe7d2;
+  box-shadow: none;
+}
+
+.leaflet-container a.leaflet-popup-close-button {
+  top: 6px;
+  right: 6px;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: rgba(42, 38, 32, 0.5);
+  color: #efe7d2;
+  font-size: 15px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.leaflet-container a.leaflet-popup-close-button:hover {
+  background: rgba(42, 38, 32, 0.75);
+}
+
+.sighting-popup-card {
+  width: 250px;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #efe7d2;
+  box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.5);
+}
+
+.sighting-popup-photo-wrap {
+  position: relative;
+  height: 120px;
+}
+
+.sighting-popup-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.sighting-popup-chip {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  color: #efe7d2;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.sighting-popup-body {
+  padding: 10px 12px 12px;
+>>>>>>> 816efaa3c1176ec9ee0c5e3ae494e2be7d76ac68
 }
 
 @media (prefers-reduced-motion: reduce) {
