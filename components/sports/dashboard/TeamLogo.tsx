@@ -28,7 +28,7 @@ export default function TeamLogo({
       style={{
         width: size,
         height: size,
-        background: `linear-gradient(135deg, ${colors.primary} 0%, ${colors.secondary} 100%)`,
+        background: colors.primary,
         boxShadow:
           "inset 0 1px 0 rgba(255,255,255,0.28), inset 0 -2px 6px rgba(0,0,0,0.35), 0 4px 12px -2px rgba(0,0,0,0.55)",
       }}

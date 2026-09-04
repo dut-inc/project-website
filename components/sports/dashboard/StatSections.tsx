@@ -17,21 +17,21 @@ export default function StatSections({ sections }: { sections: StatSection[] }) 
       {filtered.map((section, i) => (
         <div key={i}>
           {section.title && (
-            <h4 className="mb-2 font-mono text-[10px] uppercase tracking-widest text-white/40">
+            <h4 className="mb-2 font-display text-[10px] font-medium uppercase tracking-[0.22em] text-ink2">
               {section.title}
             </h4>
           )}
-          <div className="divide-y divide-white/5 rounded-xl border border-white/5 bg-white/[0.02]">
+          <div className="divide-y divide-ink/10 border border-ink/15 bg-white">
             {section.stats.map((stat) => (
               <div
                 key={stat.label}
                 className="flex items-baseline justify-between gap-3 px-3.5 py-2"
               >
-                <span className="min-w-0 truncate text-[13px] text-white/65">{stat.label}</span>
-                <span className="shrink-0 text-right font-mono text-sm font-semibold text-white tabular-nums">
+                <span className="min-w-0 truncate text-[13px] text-ink/80">{stat.label}</span>
+                <span className="shrink-0 text-right font-mono text-sm font-semibold text-ink tabular-nums">
                   {stat.value}
                   {stat.sublabel && (
-                    <span className="ml-1.5 text-[11px] font-normal text-white/40">{stat.sublabel}</span>
+                    <span className="ml-1.5 text-[11px] font-normal text-ink2/70">{stat.sublabel}</span>
                   )}
                 </span>
               </div>

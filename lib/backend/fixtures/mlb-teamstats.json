@@ -1,0 +1,38 @@
+{
+ "stats": [
+  {
+   "group": {
+    "displayName": "hitting"
+   },
+   "splits": [
+    {
+     "stat": {
+      "runs": 459,
+      "homeRuns": 135,
+      "strikeOuts": 1000,
+      "avg": ".229",
+      "ops": ".684"
+     }
+    }
+   ]
+  },
+  {
+   "group": {
+    "displayName": "pitching"
+   },
+   "splits": [
+    {
+     "stat": {
+      "runs": 474,
+      "homeRuns": 128,
+      "strikeOuts": 999,
+      "avg": ".243",
+      "ops": ".696",
+      "era": "3.81",
+      "whip": "1.20"
+     }
+    }
+   ]
+  }
+ ]
+}

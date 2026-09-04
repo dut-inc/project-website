@@ -1,0 +1,5367 @@
+{
+ "events": [
+  {
+   "id": "401866514",
+   "date": "2026-04-26T00:30Z",
+   "seasonType": {
+    "id": "1",
+    "type": 1,
+    "name": "Preseason",
+    "abbreviation": "pre"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 0.0,
+      "displayClock": "0.0",
+      "period": 4,
+      "type": {
+       "id": "3",
+       "name": "STATUS_FINAL",
+       "state": "post",
+       "completed": true,
+       "description": "Final",
+       "detail": "Final",
+       "shortDetail": "Final"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": {
+        "value": 78.0,
+        "displayValue": "78"
+       },
+       "winner": true,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "129689",
+        "displayName": "Golden State Valkyries",
+        "shortDisplayName": "Valkyries",
+        "abbreviation": "GS"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": {
+        "value": 76.0,
+        "displayValue": "76"
+       },
+       "winner": false,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "14",
+        "displayName": "Seattle Storm",
+        "shortDisplayName": "Storm",
+        "abbreviation": "SEA"
+       }
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "KPIX+"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "CW Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "401866516",
+   "date": "2026-04-30T02:00Z",
+   "seasonType": {
+    "id": "1",
+    "type": 1,
+    "name": "Preseason",
+    "abbreviation": "pre"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 0.0,
+      "displayClock": "0.0",
+      "period": 4,
+      "type": {
+       "id": "3",
+       "name": "STATUS_FINAL",
+       "state": "post",
+       "completed": true,
+       "description": "Final",
+       "detail": "Final",
+       "shortDetail": "Final"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": {
+        "value": 91.0,
+        "displayValue": "91"
+       },
+       "winner": true,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "14",
+        "displayName": "Seattle Storm",
+        "shortDisplayName": "Storm",
+        "abbreviation": "SEA"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": {
+        "value": 81.0,
+        "displayValue": "81"
+       },
+       "winner": false,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "132052",
+        "displayName": "Portland Fire",
+        "shortDisplayName": "Fire",
+        "abbreviation": "POR"
+       }
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "CW Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "Fox 12 Plus"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "401856892",
+   "date": "2026-05-09T02:00Z",
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 600.0,
+      "displayClock": "10:00",
+      "period": 4,
+      "type": {
+       "id": "3",
+       "name": "STATUS_FINAL",
+       "state": "post",
+       "completed": true,
+       "description": "Final",
+       "detail": "Final",
+       "shortDetail": "Final"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": {
+        "value": 80.0,
+        "displayValue": "80"
+       },
+       "winner": false,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "14",
+        "displayName": "Seattle Storm",
+        "shortDisplayName": "Storm",
+        "abbreviation": "SEA"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": {
+        "value": 91.0,
+        "displayValue": "91"
+       },
+       "winner": true,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "129689",
+        "displayName": "Golden State Valkyries",
+        "shortDisplayName": "Valkyries",
+        "abbreviation": "GS"
+       }
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "1",
+        "type": "National"
+       },
+       "media": {
+        "shortName": "ION"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "401856896",
+   "date": "2026-05-10T17:00Z",
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 600.0,
+      "displayClock": "10:00",
+      "period": 4,
+      "type": {
+       "id": "3",
+       "name": "STATUS_FINAL",
+       "state": "post",
+       "completed": true,
+       "description": "Final",
+       "detail": "Final",
+       "shortDetail": "Final"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": {
+        "value": 82.0,
+        "displayValue": "82"
+       },
+       "winner": false,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "18",
+        "displayName": "Connecticut Sun",
+        "shortDisplayName": "Sun",
+        "abbreviation": "CON"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": {
+        "value": 89.0,
+        "displayValue": "89"
+       },
+       "winner": true,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "14",
+        "displayName": "Seattle Storm",
+        "shortDisplayName": "Storm",
+        "abbreviation": "SEA"
+       }
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "NBC Sports BO"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "CW Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "Prime Video-Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "401856904",
+   "date": "2026-05-13T23:00Z",
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 600.0,
+      "displayClock": "10:00",
+      "period": 4,
+      "type": {
+       "id": "3",
+       "name": "STATUS_FINAL",
+       "state": "post",
+       "completed": true,
+       "description": "Final",
+       "detail": "Final",
+       "shortDetail": "Final"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": {
+        "value": 86.0,
+        "displayValue": "86"
+       },
+       "winner": true,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "131935",
+        "displayName": "Toronto Tempo",
+        "shortDisplayName": "Tempo",
+        "abbreviation": "TOR"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": {
+        "value": 73.0,
+        "displayValue": "73"
+       },
+       "winner": false,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "14",
+        "displayName": "Seattle Storm",
+        "shortDisplayName": "Storm",
+        "abbreviation": "SEA"
+       }
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "6",
+        "shortName": "Subscription Package"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "WNBA League Pass"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "TSN"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "CW Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "Prime Video-Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "401856916",
+   "date": "2026-05-17T22:00Z",
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 600.0,
+      "displayClock": "10:00",
+      "period": 4,
+      "type": {
+       "id": "3",
+       "name": "STATUS_FINAL",
+       "state": "post",
+       "completed": true,
+       "description": "Final",
+       "detail": "Final",
+       "shortDetail": "Final"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": {
+        "value": 89.0,
+        "displayValue": "89"
+       },
+       "winner": true,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "5",
+        "displayName": "Indiana Fever",
+        "shortDisplayName": "Fever",
+        "abbreviation": "IND"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": {
+        "value": 78.0,
+        "displayValue": "78"
+       },
+       "winner": false,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "14",
+        "displayName": "Seattle Storm",
+        "shortDisplayName": "Storm",
+        "abbreviation": "SEA"
+       }
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "1",
+        "type": "National"
+       },
+       "media": {
+        "shortName": "Peacock"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "1",
+        "type": "National"
+       },
+       "media": {
+        "shortName": "NBCSN"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "MeTV Indianapolis"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "KOMO-TV"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "Prime Video-Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "401856923",
+   "date": "2026-05-21T02:00Z",
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 600.0,
+      "displayClock": "10:00",
+      "period": 4,
+      "type": {
+       "id": "3",
+       "name": "STATUS_FINAL",
+       "state": "post",
+       "completed": true,
+       "description": "Final",
+       "detail": "Final",
+       "shortDetail": "Final"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": {
+        "value": 78.0,
+        "displayValue": "78"
+       },
+       "winner": false,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "14",
+        "displayName": "Seattle Storm",
+        "shortDisplayName": "Storm",
+        "abbreviation": "SEA"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": {
+        "value": 80.0,
+        "displayValue": "80"
+       },
+       "winner": true,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "18",
+        "displayName": "Connecticut Sun",
+        "shortDisplayName": "Sun",
+        "abbreviation": "CON"
+       }
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "6",
+        "shortName": "Subscription Package"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "WNBA League Pass"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "CW Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "NBC Sports BO"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "Prime Video-Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "401856929",
+   "date": "2026-05-23T02:00Z",
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 600.0,
+      "displayClock": "10:00",
+      "period": 4,
+      "type": {
+       "id": "3",
+       "name": "STATUS_FINAL",
+       "state": "post",
+       "completed": true,
+       "description": "Final",
+       "detail": "Final",
+       "shortDetail": "Final"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": {
+        "value": 77.0,
+        "displayValue": "77"
+       },
+       "winner": true,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "14",
+        "displayName": "Seattle Storm",
+        "shortDisplayName": "Storm",
+        "abbreviation": "SEA"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": {
+        "value": 59.0,
+        "displayValue": "59"
+       },
+       "winner": false,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "18",
+        "displayName": "Connecticut Sun",
+        "shortDisplayName": "Sun",
+        "abbreviation": "CON"
+       }
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "1",
+        "type": "National"
+       },
+       "media": {
+        "shortName": "ION"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "6",
+        "shortName": "Subscription Package"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "WNBA League Pass"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "401856935",
+   "date": "2026-05-24T22:00Z",
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 0.0,
+      "displayClock": "0.0",
+      "period": 4,
+      "type": {
+       "id": "3",
+       "name": "STATUS_FINAL",
+       "state": "post",
+       "completed": true,
+       "description": "Final",
+       "detail": "Final",
+       "shortDetail": "Final"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": {
+        "value": 97.0,
+        "displayValue": "97"
+       },
+       "winner": true,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "14",
+        "displayName": "Seattle Storm",
+        "shortDisplayName": "Storm",
+        "abbreviation": "SEA"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": {
+        "value": 85.0,
+        "displayValue": "85"
+       },
+       "winner": false,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "16",
+        "displayName": "Washington Mystics",
+        "shortDisplayName": "Mystics",
+        "abbreviation": "WSH"
+       }
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "6",
+        "shortName": "Subscription Package"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "WNBA League Pass"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "MNMT"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": true
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "KOMO-TV"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "Prime Video-Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "401856942",
+   "date": "2026-05-28T02:00Z",
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 0.0,
+      "displayClock": "0.0",
+      "period": 4,
+      "type": {
+       "id": "3",
+       "name": "STATUS_FINAL",
+       "state": "post",
+       "completed": true,
+       "description": "Final",
+       "detail": "Final",
+       "shortDetail": "Final"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": {
+        "value": 64.0,
+        "displayValue": "64"
+       },
+       "winner": false,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "14",
+        "displayName": "Seattle Storm",
+        "shortDisplayName": "Storm",
+        "abbreviation": "SEA"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": {
+        "value": 78.0,
+        "displayValue": "78"
+       },
+       "winner": true,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "16",
+        "displayName": "Washington Mystics",
+        "shortDisplayName": "Mystics",
+        "abbreviation": "WSH"
+       }
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "6",
+        "shortName": "Subscription Package"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "WNBA League Pass"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "MNMT"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": true
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "CW Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "Prime Video-Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "401856949",
+   "date": "2026-05-30T17:00Z",
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 600.0,
+      "displayClock": "10:00",
+      "period": 4,
+      "type": {
+       "id": "3",
+       "name": "STATUS_FINAL",
+       "state": "post",
+       "completed": true,
+       "description": "Final",
+       "detail": "Final",
+       "shortDetail": "Final"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": {
+        "value": 93.0,
+        "displayValue": "93"
+       },
+       "winner": true,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "131935",
+        "displayName": "Toronto Tempo",
+        "shortDisplayName": "Tempo",
+        "abbreviation": "TOR"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": {
+        "value": 72.0,
+        "displayValue": "72"
+       },
+       "winner": false,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "14",
+        "displayName": "Seattle Storm",
+        "shortDisplayName": "Storm",
+        "abbreviation": "SEA"
+       }
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "6",
+        "shortName": "Subscription Package"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "WNBA League Pass"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "TSN"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "KOMO-TV"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "Prime Video-Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "401856953",
+   "date": "2026-06-02T00:00Z",
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 0.0,
+      "displayClock": "0.0",
+      "period": 4,
+      "type": {
+       "id": "3",
+       "name": "STATUS_FINAL",
+       "state": "post",
+       "completed": true,
+       "description": "Final",
+       "detail": "Final",
+       "shortDetail": "Final"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": {
+        "value": 79.0,
+        "displayValue": "79"
+       },
+       "winner": true,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "3",
+        "displayName": "Dallas Wings",
+        "shortDisplayName": "Wings",
+        "abbreviation": "DAL"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": {
+        "value": 56.0,
+        "displayValue": "56"
+       },
+       "winner": false,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "14",
+        "displayName": "Seattle Storm",
+        "shortDisplayName": "Storm",
+        "abbreviation": "SEA"
+       }
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "1",
+        "type": "National"
+       },
+       "media": {
+        "shortName": "USA Net"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "KFAA-TV"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "CW Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "Prime Video-Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "401856960",
+   "date": "2026-06-04T02:00Z",
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 600.0,
+      "displayClock": "10:00",
+      "period": 4,
+      "type": {
+       "id": "3",
+       "name": "STATUS_FINAL",
+       "state": "post",
+       "completed": true,
+       "description": "Final",
+       "detail": "Final",
+       "shortDetail": "Final"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": {
+        "value": 68.0,
+        "displayValue": "68"
+       },
+       "winner": false,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "14",
+        "displayName": "Seattle Storm",
+        "shortDisplayName": "Storm",
+        "abbreviation": "SEA"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": {
+        "value": 72.0,
+        "displayValue": "72"
+       },
+       "winner": true,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "11",
+        "displayName": "Phoenix Mercury",
+        "shortDisplayName": "Mercury",
+        "abbreviation": "PHX"
+       }
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "1",
+        "type": "National"
+       },
+       "media": {
+        "shortName": "USA Net"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "CW Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "AZ Family Sports Net"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "Prime Video-Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "Merc+"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "401856966",
+   "date": "2026-06-06T17:00Z",
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 600.0,
+      "displayClock": "10:00",
+      "period": 4,
+      "type": {
+       "id": "3",
+       "name": "STATUS_FINAL",
+       "state": "post",
+       "completed": true,
+       "description": "Final",
+       "detail": "Final",
+       "shortDetail": "Final"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": {
+        "value": 88.0,
+        "displayValue": "88"
+       },
+       "winner": true,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "8",
+        "displayName": "Minnesota Lynx",
+        "shortDisplayName": "Lynx",
+        "abbreviation": "MIN"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": {
+        "value": 68.0,
+        "displayValue": "68"
+       },
+       "winner": false,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "14",
+        "displayName": "Seattle Storm",
+        "shortDisplayName": "Storm",
+        "abbreviation": "SEA"
+       }
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "1",
+        "type": "National"
+       },
+       "media": {
+        "shortName": "ABC"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "401856974",
+   "date": "2026-06-09T02:00Z",
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 600.0,
+      "displayClock": "10:00",
+      "period": 4,
+      "type": {
+       "id": "3",
+       "name": "STATUS_FINAL",
+       "state": "post",
+       "completed": true,
+       "description": "Final",
+       "detail": "Final",
+       "shortDetail": "Final"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": {
+        "value": 101.0,
+        "displayValue": "101"
+       },
+       "winner": true,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "17",
+        "displayName": "Las Vegas Aces",
+        "shortDisplayName": "Aces",
+        "abbreviation": "LV"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": {
+        "value": 91.0,
+        "displayValue": "91"
+       },
+       "winner": false,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "14",
+        "displayName": "Seattle Storm",
+        "shortDisplayName": "Storm",
+        "abbreviation": "SEA"
+       }
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "1",
+        "type": "National"
+       },
+       "media": {
+        "shortName": "USA Net"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "Vegas 34"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "CW Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "Prime Video-Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "401856979",
+   "date": "2026-06-11T02:00Z",
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 600.0,
+      "displayClock": "10:00",
+      "period": 4,
+      "type": {
+       "id": "3",
+       "name": "STATUS_FINAL",
+       "state": "post",
+       "completed": true,
+       "description": "Final",
+       "detail": "Final",
+       "shortDetail": "Final"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": {
+        "value": 83.0,
+        "displayValue": "83"
+       },
+       "winner": false,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "14",
+        "displayName": "Seattle Storm",
+        "shortDisplayName": "Storm",
+        "abbreviation": "SEA"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": {
+        "value": 88.0,
+        "displayValue": "88"
+       },
+       "winner": true,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "6",
+        "displayName": "Los Angeles Sparks",
+        "shortDisplayName": "Sparks",
+        "abbreviation": "LA"
+       }
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "1",
+        "type": "National"
+       },
+       "media": {
+        "shortName": "USA Net"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "CW Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "Spectrum Sports Net"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "Prime Video-Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "401856985",
+   "date": "2026-06-13T02:00Z",
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 0.0,
+      "displayClock": "0.0",
+      "period": 4,
+      "type": {
+       "id": "3",
+       "name": "STATUS_FINAL",
+       "state": "post",
+       "completed": true,
+       "description": "Final",
+       "detail": "Final",
+       "shortDetail": "Final"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": {
+        "value": 72.0,
+        "displayValue": "72"
+       },
+       "winner": false,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "14",
+        "displayName": "Seattle Storm",
+        "shortDisplayName": "Storm",
+        "abbreviation": "SEA"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": {
+        "value": 76.0,
+        "displayValue": "76"
+       },
+       "winner": true,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "129689",
+        "displayName": "Golden State Valkyries",
+        "shortDisplayName": "Valkyries",
+        "abbreviation": "GS"
+       }
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "1",
+        "type": "National"
+       },
+       "media": {
+        "shortName": "ION"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "6",
+        "shortName": "Subscription Package"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "WNBA League Pass"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "401857001",
+   "date": "2026-06-18T02:00Z",
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 0.0,
+      "displayClock": "0.0",
+      "period": 4,
+      "type": {
+       "id": "3",
+       "name": "STATUS_FINAL",
+       "state": "post",
+       "completed": true,
+       "description": "Final",
+       "detail": "Final",
+       "shortDetail": "Final"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": {
+        "value": 94.0,
+        "displayValue": "94"
+       },
+       "winner": true,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "132052",
+        "displayName": "Portland Fire",
+        "shortDisplayName": "Fire",
+        "abbreviation": "POR"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": {
+        "value": 89.0,
+        "displayValue": "89"
+       },
+       "winner": false,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "14",
+        "displayName": "Seattle Storm",
+        "shortDisplayName": "Storm",
+        "abbreviation": "SEA"
+       }
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "6",
+        "shortName": "Subscription Package"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "WNBA League Pass"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "Fox 12 Plus"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "CW Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "Prime Video-Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "401857007",
+   "date": "2026-06-20T19:07Z",
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 600.0,
+      "displayClock": "10:00",
+      "period": 4,
+      "type": {
+       "id": "3",
+       "name": "STATUS_FINAL",
+       "state": "post",
+       "completed": true,
+       "description": "Final",
+       "detail": "Final",
+       "shortDetail": "Final"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": {
+        "value": 93.0,
+        "displayValue": "93"
+       },
+       "winner": true,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "11",
+        "displayName": "Phoenix Mercury",
+        "shortDisplayName": "Mercury",
+        "abbreviation": "PHX"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": {
+        "value": 73.0,
+        "displayValue": "73"
+       },
+       "winner": false,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "14",
+        "displayName": "Seattle Storm",
+        "shortDisplayName": "Storm",
+        "abbreviation": "SEA"
+       }
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "1",
+        "type": "National"
+       },
+       "media": {
+        "shortName": "ABC"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "401857015",
+   "date": "2026-06-23T02:00Z",
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 0.0,
+      "displayClock": "0.0",
+      "period": 5,
+      "type": {
+       "id": "3",
+       "name": "STATUS_FINAL",
+       "state": "post",
+       "completed": true,
+       "description": "Final",
+       "detail": "Final/OT",
+       "shortDetail": "Final/OT",
+       "altDetail": "OT"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": {
+        "value": 110.0,
+        "displayValue": "110"
+       },
+       "winner": false,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "14",
+        "displayName": "Seattle Storm",
+        "shortDisplayName": "Storm",
+        "abbreviation": "SEA"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": {
+        "value": 112.0,
+        "displayValue": "112"
+       },
+       "winner": true,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "3",
+        "displayName": "Dallas Wings",
+        "shortDisplayName": "Wings",
+        "abbreviation": "DAL"
+       }
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "6",
+        "shortName": "Subscription Package"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "WNBA League Pass"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "CW Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "KFAA-TV"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "Prime Video-Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "401857023",
+   "date": "2026-06-26T02:00Z",
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 600.0,
+      "displayClock": "10:00",
+      "period": 4,
+      "type": {
+       "id": "3",
+       "name": "STATUS_FINAL",
+       "state": "post",
+       "completed": true,
+       "description": "Final",
+       "detail": "Final",
+       "shortDetail": "Final"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": {
+        "value": 99.0,
+        "displayValue": "99"
+       },
+       "winner": true,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "14",
+        "displayName": "Seattle Storm",
+        "shortDisplayName": "Storm",
+        "abbreviation": "SEA"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": {
+        "value": 88.0,
+        "displayValue": "88"
+       },
+       "winner": false,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "9",
+        "displayName": "New York Liberty",
+        "shortDisplayName": "Liberty",
+        "abbreviation": "NY"
+       }
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "6",
+        "shortName": "Subscription Package"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "WNBA League Pass"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "WWOR-TV"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "Liberty Live"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "CW Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "Prime Video-Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "401857029",
+   "date": "2026-06-28T01:00Z",
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 0.0,
+      "displayClock": "0.0",
+      "period": 4,
+      "type": {
+       "id": "3",
+       "name": "STATUS_FINAL",
+       "state": "post",
+       "completed": true,
+       "description": "Final",
+       "detail": "Final",
+       "shortDetail": "Final"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": {
+        "value": 105.0,
+        "displayValue": "105"
+       },
+       "winner": true,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "14",
+        "displayName": "Seattle Storm",
+        "shortDisplayName": "Storm",
+        "abbreviation": "SEA"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": {
+        "value": 90.0,
+        "displayValue": "90"
+       },
+       "winner": false,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "20",
+        "displayName": "Atlanta Dream",
+        "shortDisplayName": "Dream",
+        "abbreviation": "ATL"
+       }
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "6",
+        "shortName": "Subscription Package"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "WNBA League Pass"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "Atlanta News First"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "KOMO-TV"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "Victory+ ATL"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "Prime Video-Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "401857036",
+   "date": "2026-07-03T02:00Z",
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 0.0,
+      "displayClock": "0.0",
+      "period": 4,
+      "type": {
+       "id": "3",
+       "name": "STATUS_FINAL",
+       "state": "post",
+       "completed": true,
+       "description": "Final",
+       "detail": "Final",
+       "shortDetail": "Final"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": {
+        "value": 90.0,
+        "displayValue": "90"
+       },
+       "winner": true,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "11",
+        "displayName": "Phoenix Mercury",
+        "shortDisplayName": "Mercury",
+        "abbreviation": "PHX"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": {
+        "value": 67.0,
+        "displayValue": "67"
+       },
+       "winner": false,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "14",
+        "displayName": "Seattle Storm",
+        "shortDisplayName": "Storm",
+        "abbreviation": "SEA"
+       }
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "6",
+        "shortName": "Subscription Package"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "WNBA League Pass"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "AZ Family Sports Net"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "CW Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "Prime Video-Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "Merc+"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "401857040",
+   "date": "2026-07-05T01:00Z",
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 600.0,
+      "displayClock": "10:00",
+      "period": 4,
+      "type": {
+       "id": "3",
+       "name": "STATUS_FINAL",
+       "state": "post",
+       "completed": true,
+       "description": "Final",
+       "detail": "Final",
+       "shortDetail": "Final"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": {
+        "value": 72.0,
+        "displayValue": "72"
+       },
+       "winner": false,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "14",
+        "displayName": "Seattle Storm",
+        "shortDisplayName": "Storm",
+        "abbreviation": "SEA"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": {
+        "value": 77.0,
+        "displayValue": "77"
+       },
+       "winner": true,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "132052",
+        "displayName": "Portland Fire",
+        "shortDisplayName": "Fire",
+        "abbreviation": "POR"
+       }
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "6",
+        "shortName": "Subscription Package"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "WNBA League Pass"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "KOMO-TV"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "Fox 12 Plus"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "Prime Video-Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "401857045",
+   "date": "2026-07-07T02:00Z",
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 600.0,
+      "displayClock": "10:00",
+      "period": 4,
+      "type": {
+       "id": "3",
+       "name": "STATUS_FINAL",
+       "state": "post",
+       "completed": true,
+       "description": "Final",
+       "detail": "Final",
+       "shortDetail": "Final"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": {
+        "value": 64.0,
+        "displayValue": "64"
+       },
+       "winner": false,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "6",
+        "displayName": "Los Angeles Sparks",
+        "shortDisplayName": "Sparks",
+        "abbreviation": "LA"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": {
+        "value": 82.0,
+        "displayValue": "82"
+       },
+       "winner": true,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "14",
+        "displayName": "Seattle Storm",
+        "shortDisplayName": "Storm",
+        "abbreviation": "SEA"
+       }
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "1",
+        "type": "National"
+       },
+       "media": {
+        "shortName": "USA Net"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "Spectrum Sports Net"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "CW Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "Prime Video-Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "401857051",
+   "date": "2026-07-10T00:00Z",
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 600.0,
+      "displayClock": "10:00",
+      "period": 4,
+      "type": {
+       "id": "3",
+       "name": "STATUS_FINAL",
+       "state": "post",
+       "completed": true,
+       "description": "Final",
+       "detail": "Final",
+       "shortDetail": "Final"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": {
+        "value": 89.0,
+        "displayValue": "89"
+       },
+       "winner": true,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "20",
+        "displayName": "Atlanta Dream",
+        "shortDisplayName": "Dream",
+        "abbreviation": "ATL"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": {
+        "value": 78.0,
+        "displayValue": "78"
+       },
+       "winner": false,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "14",
+        "displayName": "Seattle Storm",
+        "shortDisplayName": "Storm",
+        "abbreviation": "SEA"
+       }
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "1",
+        "type": "National"
+       },
+       "media": {
+        "shortName": "Prime Video"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "401857061",
+   "date": "2026-07-12T19:00Z",
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 0.0,
+      "displayClock": "0.0",
+      "period": 4,
+      "type": {
+       "id": "3",
+       "name": "STATUS_FINAL",
+       "state": "post",
+       "completed": true,
+       "description": "Final",
+       "detail": "Final",
+       "shortDetail": "Final"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": {
+        "value": 84.0,
+        "displayValue": "84"
+       },
+       "winner": true,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "16",
+        "displayName": "Washington Mystics",
+        "shortDisplayName": "Mystics",
+        "abbreviation": "WSH"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": {
+        "value": 79.0,
+        "displayValue": "79"
+       },
+       "winner": false,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "14",
+        "displayName": "Seattle Storm",
+        "shortDisplayName": "Storm",
+        "abbreviation": "SEA"
+       }
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "6",
+        "shortName": "Subscription Package"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "WNBA League Pass"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "MNMT"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": true
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "KOMO-TV"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "Prime Video-Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "401857068",
+   "date": "2026-07-15T16:00Z",
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 0.0,
+      "displayClock": "0.0",
+      "period": 4,
+      "type": {
+       "id": "3",
+       "name": "STATUS_FINAL",
+       "state": "post",
+       "completed": true,
+       "description": "Final",
+       "detail": "Final",
+       "shortDetail": "Final"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": {
+        "value": 95.0,
+        "displayValue": "95"
+       },
+       "winner": true,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "19",
+        "displayName": "Chicago Sky",
+        "shortDisplayName": "Sky",
+        "abbreviation": "CHI"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": {
+        "value": 90.0,
+        "displayValue": "90"
+       },
+       "winner": false,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "14",
+        "displayName": "Seattle Storm",
+        "shortDisplayName": "Storm",
+        "abbreviation": "SEA"
+       }
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "6",
+        "shortName": "Subscription Package"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "WNBA League Pass"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "CW26"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "CW Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "Prime Video-Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "401857073",
+   "date": "2026-07-17T23:30Z",
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 600.0,
+      "displayClock": "10:00",
+      "period": 4,
+      "type": {
+       "id": "3",
+       "name": "STATUS_FINAL",
+       "state": "post",
+       "completed": true,
+       "description": "Final",
+       "detail": "Final",
+       "shortDetail": "Final"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": {
+        "value": 110.0,
+        "displayValue": "110"
+       },
+       "winner": true,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "5",
+        "displayName": "Indiana Fever",
+        "shortDisplayName": "Fever",
+        "abbreviation": "IND"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": {
+        "value": 107.0,
+        "displayValue": "107"
+       },
+       "winner": false,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "14",
+        "displayName": "Seattle Storm",
+        "shortDisplayName": "Storm",
+        "abbreviation": "SEA"
+       }
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "6",
+        "shortName": "Subscription Package"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "WNBA League Pass"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "1",
+        "type": "National"
+       },
+       "media": {
+        "shortName": "ION"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "401857085",
+   "date": "2026-07-21T02:00Z",
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 0.0,
+      "displayClock": "0.0",
+      "period": 4,
+      "type": {
+       "id": "3",
+       "name": "STATUS_FINAL",
+       "state": "post",
+       "completed": true,
+       "description": "Final",
+       "detail": "Final",
+       "shortDetail": "Final"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": {
+        "value": 102.0,
+        "displayValue": "102"
+       },
+       "winner": false,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "14",
+        "displayName": "Seattle Storm",
+        "shortDisplayName": "Storm",
+        "abbreviation": "SEA"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": {
+        "value": 105.0,
+        "displayValue": "105"
+       },
+       "winner": true,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "8",
+        "displayName": "Minnesota Lynx",
+        "shortDisplayName": "Lynx",
+        "abbreviation": "MIN"
+       }
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "1",
+        "type": "National"
+       },
+       "media": {
+        "shortName": "USA Net"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "CW Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "Victory+ MIN"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "Prime Video-Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "401857087",
+   "date": "2026-07-22T19:00Z",
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 600.0,
+      "displayClock": "10:00",
+      "period": 4,
+      "type": {
+       "id": "3",
+       "name": "STATUS_FINAL",
+       "state": "post",
+       "completed": true,
+       "description": "Final",
+       "detail": "Final",
+       "shortDetail": "Final"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": {
+        "value": 76.0,
+        "displayValue": "76"
+       },
+       "winner": false,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "14",
+        "displayName": "Seattle Storm",
+        "shortDisplayName": "Storm",
+        "abbreviation": "SEA"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": {
+        "value": 86.0,
+        "displayValue": "86"
+       },
+       "winner": true,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "8",
+        "displayName": "Minnesota Lynx",
+        "shortDisplayName": "Lynx",
+        "abbreviation": "MIN"
+       }
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "6",
+        "shortName": "Subscription Package"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "WNBA League Pass"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "CW Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "Victory+ MIN"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "Prime Video-Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "KARE 11"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "401857094",
+   "date": "2026-07-29T01:30Z",
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 600.0,
+      "displayClock": "10:00",
+      "period": 4,
+      "type": {
+       "id": "3",
+       "name": "STATUS_FINAL",
+       "state": "post",
+       "completed": true,
+       "description": "Final",
+       "detail": "Final",
+       "shortDetail": "Final"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": {
+        "value": 95.0,
+        "displayValue": "95"
+       },
+       "winner": false,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "14",
+        "displayName": "Seattle Storm",
+        "shortDisplayName": "Storm",
+        "abbreviation": "SEA"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": {
+        "value": 105.0,
+        "displayValue": "105"
+       },
+       "winner": true,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "5",
+        "displayName": "Indiana Fever",
+        "shortDisplayName": "Fever",
+        "abbreviation": "IND"
+       }
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "1",
+        "type": "National"
+       },
+       "media": {
+        "shortName": "ESPN"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "MeTV Indianapolis"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "401857102",
+   "date": "2026-07-31T23:30Z",
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 600.0,
+      "displayClock": "10:00",
+      "period": 4,
+      "type": {
+       "id": "3",
+       "name": "STATUS_FINAL",
+       "state": "post",
+       "completed": true,
+       "description": "Final",
+       "detail": "Final",
+       "shortDetail": "Final"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": {
+        "value": 98.0,
+        "displayValue": "98"
+       },
+       "winner": true,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "20",
+        "displayName": "Atlanta Dream",
+        "shortDisplayName": "Dream",
+        "abbreviation": "ATL"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": {
+        "value": 89.0,
+        "displayValue": "89"
+       },
+       "winner": false,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "14",
+        "displayName": "Seattle Storm",
+        "shortDisplayName": "Storm",
+        "abbreviation": "SEA"
+       }
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "1",
+        "type": "National"
+       },
+       "media": {
+        "shortName": "ION"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "6",
+        "shortName": "Subscription Package"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "WNBA League Pass"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "401857112",
+   "date": "2026-08-03T23:00Z",
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 0.0,
+      "displayClock": "0.0",
+      "period": 4,
+      "type": {
+       "id": "3",
+       "name": "STATUS_FINAL",
+       "state": "post",
+       "completed": true,
+       "description": "Final",
+       "detail": "Final",
+       "shortDetail": "Final"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": {
+        "value": 95.0,
+        "displayValue": "95"
+       },
+       "winner": true,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "9",
+        "displayName": "New York Liberty",
+        "shortDisplayName": "Liberty",
+        "abbreviation": "NY"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": {
+        "value": 83.0,
+        "displayValue": "83"
+       },
+       "winner": false,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "14",
+        "displayName": "Seattle Storm",
+        "shortDisplayName": "Storm",
+        "abbreviation": "SEA"
+       }
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "6",
+        "shortName": "Subscription Package"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "WNBA League Pass"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "WWOR-TV"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "Liberty Live"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "CW Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "Prime Video-Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "401857116",
+   "date": "2026-08-05T23:00Z",
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 600.0,
+      "displayClock": "10:00",
+      "period": 4,
+      "type": {
+       "id": "3",
+       "name": "STATUS_FINAL",
+       "state": "post",
+       "completed": true,
+       "description": "Final",
+       "detail": "Final",
+       "shortDetail": "Final"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": {
+        "value": 92.0,
+        "displayValue": "92"
+       },
+       "winner": true,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "9",
+        "displayName": "New York Liberty",
+        "shortDisplayName": "Liberty",
+        "abbreviation": "NY"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": {
+        "value": 86.0,
+        "displayValue": "86"
+       },
+       "winner": false,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "14",
+        "displayName": "Seattle Storm",
+        "shortDisplayName": "Storm",
+        "abbreviation": "SEA"
+       }
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "1",
+        "type": "National"
+       },
+       "media": {
+        "shortName": "USA Net"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "Fox 5 New York"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "Liberty Live"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "CW Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "Prime Video-Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "401857127",
+   "date": "2026-08-09T00:30Z",
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 0.0,
+      "displayClock": "0.0",
+      "period": 0,
+      "type": {
+       "id": "1",
+       "name": "STATUS_SCHEDULED",
+       "state": "pre",
+       "completed": false,
+       "description": "Scheduled",
+       "detail": "Sat, August 8th at 8:30 PM EDT",
+       "shortDetail": "8/8 - 8:30 PM EDT"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": null,
+       "winner": null,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "132052",
+        "displayName": "Portland Fire",
+        "shortDisplayName": "Fire",
+        "abbreviation": "POR"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": null,
+       "winner": null,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "14",
+        "displayName": "Seattle Storm",
+        "shortDisplayName": "Storm",
+        "abbreviation": "SEA"
+       }
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "1",
+        "type": "National"
+       },
+       "media": {
+        "shortName": "NBA TV"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "Fox 12 Plus"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "KOMO-TV"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "Prime Video-Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "401857133",
+   "date": "2026-08-11T02:00Z",
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 0.0,
+      "displayClock": "0.0",
+      "period": 0,
+      "type": {
+       "id": "1",
+       "name": "STATUS_SCHEDULED",
+       "state": "pre",
+       "completed": false,
+       "description": "Scheduled",
+       "detail": "Mon, August 10th at 10:00 PM EDT",
+       "shortDetail": "8/10 - 10:00 PM EDT"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": null,
+       "winner": null,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "14",
+        "displayName": "Seattle Storm",
+        "shortDisplayName": "Storm",
+        "abbreviation": "SEA"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": null,
+       "winner": null,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "19",
+        "displayName": "Chicago Sky",
+        "shortDisplayName": "Sky",
+        "abbreviation": "CHI"
+       }
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "1",
+        "type": "National"
+       },
+       "media": {
+        "shortName": "USA Net"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "CW Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "CW26"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "Prime Video-Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "401857144",
+   "date": "2026-08-15T02:00Z",
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 0.0,
+      "displayClock": "0.0",
+      "period": 0,
+      "type": {
+       "id": "1",
+       "name": "STATUS_SCHEDULED",
+       "state": "pre",
+       "completed": false,
+       "description": "Scheduled",
+       "detail": "Fri, August 14th at 10:00 PM EDT",
+       "shortDetail": "8/14 - 10:00 PM EDT"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": null,
+       "winner": null,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "14",
+        "displayName": "Seattle Storm",
+        "shortDisplayName": "Storm",
+        "abbreviation": "SEA"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": null,
+       "winner": null,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "132052",
+        "displayName": "Portland Fire",
+        "shortDisplayName": "Fire",
+        "abbreviation": "POR"
+       }
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "1",
+        "type": "National"
+       },
+       "media": {
+        "shortName": "ION"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "6",
+        "shortName": "Subscription Package"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "WNBA League Pass"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "401857148",
+   "date": "2026-08-16T21:00Z",
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 0.0,
+      "displayClock": "0.0",
+      "period": 0,
+      "type": {
+       "id": "1",
+       "name": "STATUS_SCHEDULED",
+       "state": "pre",
+       "completed": false,
+       "description": "Scheduled",
+       "detail": "Sun, August 16th at 5:00 PM EDT",
+       "shortDetail": "8/16 - 5:00 PM EDT"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": null,
+       "winner": null,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "14",
+        "displayName": "Seattle Storm",
+        "shortDisplayName": "Storm",
+        "abbreviation": "SEA"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": null,
+       "winner": null,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "19",
+        "displayName": "Chicago Sky",
+        "shortDisplayName": "Sky",
+        "abbreviation": "CHI"
+       }
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "6",
+        "shortName": "Subscription Package"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "WNBA League Pass"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "KOMO-TV"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "CW26"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "Prime Video-Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "401857167",
+   "date": "2026-08-23T20:00Z",
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 0.0,
+      "displayClock": "0.0",
+      "period": 0,
+      "type": {
+       "id": "1",
+       "name": "STATUS_SCHEDULED",
+       "state": "pre",
+       "completed": false,
+       "description": "Scheduled",
+       "detail": "Sun, August 23rd at 4:00 PM EDT",
+       "shortDetail": "8/23 - 4:00 PM EDT"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": null,
+       "winner": null,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "3",
+        "displayName": "Dallas Wings",
+        "shortDisplayName": "Wings",
+        "abbreviation": "DAL"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": null,
+       "winner": null,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "14",
+        "displayName": "Seattle Storm",
+        "shortDisplayName": "Storm",
+        "abbreviation": "SEA"
+       }
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "1",
+        "type": "National"
+       },
+       "media": {
+        "shortName": "NBA TV"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "KFAA-TV"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "KOMO-TV"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "Prime Video-Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "401857177",
+   "date": "2026-08-27T02:00Z",
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 0.0,
+      "displayClock": "0.0",
+      "period": 0,
+      "type": {
+       "id": "1",
+       "name": "STATUS_SCHEDULED",
+       "state": "pre",
+       "completed": false,
+       "description": "Scheduled",
+       "detail": "Wed, August 26th at 10:00 PM EDT",
+       "shortDetail": "8/26 - 10:00 PM EDT"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": null,
+       "winner": null,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "14",
+        "displayName": "Seattle Storm",
+        "shortDisplayName": "Storm",
+        "abbreviation": "SEA"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": null,
+       "winner": null,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "131935",
+        "displayName": "Toronto Tempo",
+        "shortDisplayName": "Tempo",
+        "abbreviation": "TOR"
+       }
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "1",
+        "type": "National"
+       },
+       "media": {
+        "shortName": "USA Net"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "CW Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "TSN"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "Prime Video-Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "401857187",
+   "date": "2026-08-30T21:00Z",
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 0.0,
+      "displayClock": "0.0",
+      "period": 0,
+      "type": {
+       "id": "1",
+       "name": "STATUS_SCHEDULED",
+       "state": "pre",
+       "completed": false,
+       "description": "Scheduled",
+       "detail": "Sun, August 30th at 5:00 PM EDT",
+       "shortDetail": "8/30 - 5:00 PM EDT"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": null,
+       "winner": null,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "14",
+        "displayName": "Seattle Storm",
+        "shortDisplayName": "Storm",
+        "abbreviation": "SEA"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": null,
+       "winner": null,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "6",
+        "displayName": "Los Angeles Sparks",
+        "shortDisplayName": "Sparks",
+        "abbreviation": "LA"
+       }
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "KOMO-TV"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "Spectrum Sports Net"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "Prime Video-Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "401857194",
+   "date": "2026-09-18T02:00Z",
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 0.0,
+      "displayClock": "0.0",
+      "period": 0,
+      "type": {
+       "id": "1",
+       "name": "STATUS_SCHEDULED",
+       "state": "pre",
+       "completed": false,
+       "description": "Scheduled",
+       "detail": "Thu, September 17th at 10:00 PM EDT",
+       "shortDetail": "9/17 - 10:00 PM EDT"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": null,
+       "winner": null,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "14",
+        "displayName": "Seattle Storm",
+        "shortDisplayName": "Storm",
+        "abbreviation": "SEA"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": null,
+       "winner": null,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "17",
+        "displayName": "Las Vegas Aces",
+        "shortDisplayName": "Aces",
+        "abbreviation": "LV"
+       }
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "1",
+        "type": "National"
+       },
+       "media": {
+        "shortName": "USA Net"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "1",
+        "type": "National"
+       },
+       "media": {
+        "shortName": "CNBC"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "CW Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "Vegas 34"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "Prime Video-Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "401857200",
+   "date": "2026-09-20T01:00Z",
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 0.0,
+      "displayClock": "0.0",
+      "period": 0,
+      "type": {
+       "id": "1",
+       "name": "STATUS_SCHEDULED",
+       "state": "pre",
+       "completed": false,
+       "description": "Scheduled",
+       "detail": "Sat, September 19th at 9:00 PM EDT",
+       "shortDetail": "9/19 - 9:00 PM EDT"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": null,
+       "winner": null,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "129689",
+        "displayName": "Golden State Valkyries",
+        "shortDisplayName": "Valkyries",
+        "abbreviation": "GS"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": null,
+       "winner": null,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "14",
+        "displayName": "Seattle Storm",
+        "shortDisplayName": "Storm",
+        "abbreviation": "SEA"
+       }
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "1",
+        "type": "National"
+       },
+       "media": {
+        "shortName": "Prime Video"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "401857205",
+   "date": "2026-09-21T01:00Z",
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 0.0,
+      "displayClock": "0.0",
+      "period": 0,
+      "type": {
+       "id": "1",
+       "name": "STATUS_SCHEDULED",
+       "state": "pre",
+       "completed": false,
+       "description": "Scheduled",
+       "detail": "Sun, September 20th at 9:00 PM EDT",
+       "shortDetail": "9/20 - 9:00 PM EDT"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": null,
+       "winner": null,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "17",
+        "displayName": "Las Vegas Aces",
+        "shortDisplayName": "Aces",
+        "abbreviation": "LV"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": null,
+       "winner": null,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "14",
+        "displayName": "Seattle Storm",
+        "shortDisplayName": "Storm",
+        "abbreviation": "SEA"
+       }
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "1",
+        "type": "National"
+       },
+       "media": {
+        "shortName": "USA Net"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "Vegas 34"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "CW Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "Prime Video-Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "401857214",
+   "date": "2026-09-24T02:00Z",
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "competitions": [
+    {
+     "status": {
+      "clock": 0.0,
+      "displayClock": "0.0",
+      "period": 0,
+      "type": {
+       "id": "1",
+       "name": "STATUS_SCHEDULED",
+       "state": "pre",
+       "completed": false,
+       "description": "Scheduled",
+       "detail": "Wed, September 23rd at 10:00 PM EDT",
+       "shortDetail": "9/23 - 10:00 PM EDT"
+      }
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": null,
+       "winner": null,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "14",
+        "displayName": "Seattle Storm",
+        "shortDisplayName": "Storm",
+        "abbreviation": "SEA"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": null,
+       "winner": null,
+       "timeoutsRemaining": null,
+       "team": {
+        "id": "3",
+        "displayName": "Dallas Wings",
+        "shortDisplayName": "Wings",
+        "abbreviation": "DAL"
+       }
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "1",
+        "type": "National"
+       },
+       "media": {
+        "shortName": "USA Net"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "1",
+        "type": "National"
+       },
+       "media": {
+        "shortName": "CNBC"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "CW Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "KFAA-TV"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "Prime Video-Seattle"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

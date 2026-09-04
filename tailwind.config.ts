@@ -40,12 +40,32 @@ const config: Config = {
           bg: "#0B0B0D",
           accent: "#FF9552",
         },
+        market: {
+          // Pike Place Market Main Arcade, straight from the reference
+          // photo (public/images/pike-place.jpg): the building's painted
+          // moss-green wall, a white trim line dotted with green
+          // medallions, the red neon sign on its dark iron scaffold, and
+          // white storefronts below. The board green itself lives in
+          // app/globals.css (.market-board).
+          card: "#F7F5EC", // widgets — white storefronts
+          cardHover: "#FCFBF4",
+          red: "#FF4638", // neon sign
+          redSoft: "rgba(255,70,56,0.12)",
+          olive: "#4E5A38", // moss — W chips / BSO balls on white
+          oliveLight: "#DCE3C7",
+          brick: "#8A5A40", // brick — note chips on white
+          brickLight: "#EAD9CB",
+        },
       },
       fontFamily: {
         display: ["var(--font-display)"],
         body: ["var(--font-body)"],
         mono: ["var(--font-mono)"],
+<<<<<<< HEAD
+        sign: ["var(--font-sign)"],
+=======
         dle: ["var(--font-dle)"],
+>>>>>>> 816efaa3c1176ec9ee0c5e3ae494e2be7d76ac68
       },
       backgroundImage: {
         grain: "radial-gradient(circle at 1px 1px, rgba(231,227,211,0.05) 1px, transparent 0)",

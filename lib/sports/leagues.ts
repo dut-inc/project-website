@@ -144,21 +144,21 @@ export function liveStatusLine(team: Team): string {
   return parts.join(" · ");
 }
 
-/** Short status line for the scoreboard: period + clock only (no detail). */
-export function liveScoreboardLine(team: Team): string {
-  const game = team.currentGame;
-  if (!game) return "In progress";
-  const cfg = LEAGUES[team.league];
-  const parts = [cfg.livePeriod(game)];
-  const clock = cfg.liveClock(game);
-  if (clock) parts.push(clock);
-  return parts.join(" · ");
-}
-
 /** Compact team name for scoreboards: "Las Vegas Aces" → "Aces". */
 export function shortTeamName(name: string): string {
   const parts = name.split(" ").filter(Boolean);
   return parts[parts.length - 1] ?? name;
+}
+
+/**
+ * Team name for display on this board. The board is Seattle-themed (the
+ * sign above says it), so the redundant "Seattle " prefix is dropped —
+ * "Seattle Mariners" → "Mariners". Applied wherever a raw team name
+ * renders (standings rows, etc.) so the backend can keep sending full
+ * names.
+ */
+export function displayName(name: string): string {
+  return name.replace(/^Seattle\s+/, "");
 }
 
 // ---------------------------------------------------------------------------
@@ -185,39 +185,6 @@ export function formatShortDate(iso: string): string {
   return `${MONTHS[dt.getMonth()]} ${dt.getDate()}`;
 }
 
-// ---------------------------------------------------------------------------
-// Tiny color helpers (used for hover-intensified gradient borders)
-// ---------------------------------------------------------------------------
 
-/** Lighten (amt > 0) or darken (amt < 0) a hex color toward white/black. */
-export function shade(hex: string, amt: number): string {
-  const clean = hex.replace("#", "");
-  const full = clean.length === 3 ? clean.split("").map((c) => c + c).join("") : clean;
-  const num = parseInt(full, 16);
-  let r = (num >> 16) & 0xff;
-  let g = (num >> 8) & 0xff;
-  let b = num & 0xff;
-  if (amt >= 0) {
-    r = r + (255 - r) * amt;
-    g = g + (255 - g) * amt;
-    b = b + (255 - b) * amt;
-  } else {
-    const f = 1 + amt;
-    r *= f;
-    g *= f;
-    b *= f;
-  }
-  return `rgb(${Math.round(r)},${Math.round(g)},${Math.round(b)})`;
-}
 
-/** Gradient used for a team's card border. */
-export function teamGradient(team: Team, hover = false): string {
-  const { primary, secondary } = team.colors;
-  if (hover) {
-    return `linear-gradient(135deg, ${shade(primary, 0.18)} 0%, ${primary} 40%, ${secondary} 70%, ${shade(
-      secondary,
-      0.22
-    )} 100%)`;
-  }
-  return `linear-gradient(135deg, ${primary} 0%, ${secondary} 100%)`;
-}
+

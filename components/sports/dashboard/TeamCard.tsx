@@ -1,8 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
 import type { PointerEvent as ReactPointerEvent } from "react";
-import { shade } from "@/lib/sports/leagues";
 import type { Team } from "@/lib/sports/types";
 import GameSummary from "./GameSummary";
 import LiveGameDisplay from "./LiveGameDisplay";
@@ -19,10 +17,14 @@ export interface DragHandleProps {
 }
 
 /**
- * One reorderable team card. The whole card is clickable to expand; the
- * grip in the footer starts drag-to-reorder (via pointer events wired up
- * by TeamCardGrid). Hover intensifies the team's colors — the card never
- * scales or resizes.
+ * One reorderable team widget — a square, flat white storefront card that
+ * stacks full-width on the green board. Left is the team identity (big
+ * logo, no accent bar), middle carries the live game / last game + next
+ * games, and the right rail holds the drag grip. The live layout mirrors
+ * the non-live one (same 300px identity column, same divider rails) so the
+ * win streak and the lines beside it stay put when a game goes live. The
+ * whole box is clickable to expand; hovering brightens it without scaling
+ * it.
  */
 export default function TeamCard({
   team,
@@ -37,25 +39,47 @@ export default function TeamCard({
   dragHandleProps?: DragHandleProps;
 }) {
   const isLive = Boolean(team.currentGame);
+  const inactive = team.status === "inactive";
 
-  const gradients = useMemo(() => {
-    const { primary, secondary } = team.colors;
-    return {
-      base: `linear-gradient(135deg, ${primary} 0%, ${secondary} 100%)`,
-      hover: `linear-gradient(135deg, ${shade(primary, 0.24)} 0%, ${primary} 40%, ${secondary} 65%, ${shade(
-        secondary,
-        0.28
-      )} 100%)`,
-      rest: "0 6px 24px -14px rgba(0,0,0,0.9)",
-      glow: `0 12px 36px -8px ${primary}66, 0 3px 14px -2px ${secondary}55`,
-    };
-  }, [team.colors]);
+  const rail = (
+    <div className="flex shrink-0 items-center justify-between gap-3 pt-1 md:flex-col md:items-end md:justify-center md:gap-1.5 md:pt-0">
+      <button
+        type="button"
+        {...dragHandleProps}
+        onClick={(e) => e.stopPropagation()}
+        aria-label={`Drag to reorder ${team.shortName}`}
+        title="Drag to reorder"
+        className="flex cursor-grab items-center gap-1.5 rounded-md px-2 py-1 font-mono text-[10px] uppercase tracking-widest text-ink2 transition-colors hover:bg-ink/5 hover:text-ink active:cursor-grabbing"
+        style={{ touchAction: "none" }}
+      >
+        <GripIcon className="h-3.5 w-3.5" />
+        <span className="hidden sm:inline">Reorder</span>
+      </button>
+      <span className="flex items-center gap-1 rounded-none border border-transparent px-2 py-1 font-mono text-[10px] uppercase tracking-widest text-ink2/70 transition-colors group-hover:border-market-olive group-hover:bg-market-olive group-hover:text-white group-hover:shadow-[0_0_12px_rgba(78,90,56,0.35)]">
+        Details
+        <ChevronDownIcon className="h-3 w-3 transition-transform duration-200 group-hover:translate-y-0.5" />
+      </span>
+    </div>
+  );
+
+  const body = inactive ? (
+    <p className="font-display text-lg font-semibold tracking-tight text-ink">bring em back!</p>
+  ) : team.error ? (
+    <p className="font-display text-[13px] font-medium leading-snug text-[#8A3B28]">
+      ⚠ {team.error}
+    </p>
+  ) : (
+    <div className="flex flex-col gap-2">
+      {team.previousGame && <GameSummary game={team.previousGame} />}
+      <ScheduleList games={team.nextGames} />
+    </div>
+  );
 
   return (
     <div
       role="button"
       tabIndex={0}
-      aria-label={`${team.name} — click for the full view`}
+      aria-label={`${team.shortName} — click for the full view`}
       onClick={() => onExpand(team)}
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === " ") {
@@ -63,68 +87,47 @@ export default function TeamCard({
           onExpand(team);
         }
       }}
-      className={`group relative h-full cursor-pointer rounded-2xl outline-none transition-shadow duration-300 focus-visible:ring-2 focus-visible:ring-white/40 ${
-        dragging ? "ring-2 ring-white/15" : ""
+      className={`group relative w-full cursor-pointer border border-ink/15 bg-market-card shadow-[0_4px_14px_-10px_rgba(0,0,0,0.45)] outline-none transition-[background-color,border-color,box-shadow] duration-300 hover:border-ink/30 hover:bg-market-cardHover hover:shadow-[0_18px_44px_-18px_rgba(0,0,0,0.55)] focus-visible:ring-2 focus-visible:ring-market-red/70 ${
+        dragging ? "ring-1 ring-ink/25" : ""
       }`}
     >
-      {/* Gradient border layers (rest + intensified on hover). */}
-      <div
-        aria-hidden
-        className="absolute inset-0 rounded-2xl opacity-100 transition-opacity duration-300"
-        style={{ background: gradients.base, boxShadow: gradients.rest }}
-      />
-      <div
-        aria-hidden
-        className="absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-        style={{ background: gradients.hover, boxShadow: gradients.glow }}
-      />
+      {isLive ? (
+        /* Live card — the identity column and divider rails mirror the
+           non-live layout exactly (300px header, same border positions), so
+           the win streak pill and the line on its right never shift when a
+           game goes live — only the middle content swaps to the score. Both
+           cards switch to their row layout at md+ (below that the identity,
+           score and rail stack so the team name never gets squeezed). */
+        <div className="flex flex-col gap-3 px-5 py-4 md:grid md:grid-cols-[300px_minmax(0,1fr)_auto] md:items-center md:gap-0 md:py-5">
+          <div className="min-w-0 md:pr-5">
+            <TeamCardHeader team={team} />
+          </div>
 
-      {/* Card sheet */}
-      <div className="relative m-[2px] flex h-[calc(100%-4px)] flex-col overflow-hidden rounded-[calc(1rem-2px)] bg-[#16171B] transition-colors duration-300 group-hover:bg-[#191B21]">
-        <div className="px-4 pt-4 pb-3">
-          <TeamCardHeader team={team} />
-        </div>
-
-        <div className="flex-1 space-y-3 px-4 pb-4">
-          {team.status === "inactive" ? (
-            <div className="flex min-h-28 items-center justify-center rounded-xl border border-dashed border-pinGold/25 bg-pinGold/[0.04] px-4 py-6">
-              <p className="text-center font-display text-xl font-semibold tracking-tight text-pinGold/90">
-                bring em back!
-              </p>
-            </div>
-          ) : isLive ? (
+          {/* self-stretch pins both divider rails to the full row height so
+              the left and right bars always match — when the live widget
+              (e.g. the MLB B-S-O columns) grows taller, both bars grow with
+              it; items-center keeps the content vertically centered. */}
+          <div className="flex justify-center py-1 md:min-w-0 md:self-stretch md:items-center md:border-l md:border-ink/10 md:px-5 md:py-0">
             <LiveGameDisplay team={team} />
-          ) : (
-            <>
-              {team.previousGame && <GameSummary game={team.previousGame} />}
-              <div>
-                <p className="mb-1.5 font-mono text-[10px] uppercase tracking-widest text-white/40">Upcoming</p>
-                <ScheduleList games={team.nextGames} />
-              </div>
-            </>
-          )}
-        </div>
+          </div>
 
-        {/* Footer: drag handle + expand hint */}
-        <div className="flex items-center justify-between border-t border-white/5 px-4 py-1.5">
-          <button
-            type="button"
-            {...dragHandleProps}
-            onClick={(e) => e.stopPropagation()}
-            aria-label={`Drag to reorder ${team.name}`}
-            title="Drag to reorder"
-            className="flex cursor-grab items-center gap-1.5 rounded-md px-2 py-1 font-mono text-[10px] uppercase tracking-widest text-white/35 transition-colors hover:bg-white/5 hover:text-white/70 active:cursor-grabbing"
-            style={{ touchAction: "none" }}
-          >
-            <GripIcon className="h-3.5 w-3.5" />
-            <span className="hidden sm:inline">Reorder</span>
-          </button>
-          <span className="flex items-center gap-1 font-mono text-[10px] uppercase tracking-widest text-white/35 transition-colors group-hover:text-white/75">
-            Details
-            <ChevronDownIcon className="h-3 w-3" />
-          </span>
+          <div className="md:flex md:items-center md:self-stretch md:border-l md:border-ink/10 md:pl-4">
+            {rail}
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className="flex flex-col gap-3 px-5 py-4 md:flex-row md:items-center md:gap-0 md:py-5">
+          <div className="md:w-[300px] md:shrink-0 md:pr-5">
+            <TeamCardHeader team={team} />
+          </div>
+
+          <div className="flex-1 py-1 md:min-w-0 md:border-l md:border-ink/10 md:px-5 md:py-0">
+            {body}
+          </div>
+
+          <div className="md:border-l md:border-ink/10 md:pl-4">{rail}</div>
+        </div>
+      )}
     </div>
   );
 }

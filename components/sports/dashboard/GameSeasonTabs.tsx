@@ -22,7 +22,7 @@ export default function GameSeasonTabs({
 
   return (
     <div
-      className="relative inline-flex rounded-full border border-white/10 bg-white/5 p-1"
+      className="relative inline-flex rounded-full border border-ink/15 bg-ink/5 p-1"
       role="tablist"
       aria-label="Team view"
     >
@@ -34,10 +34,10 @@ export default function GameSeasonTabs({
             role="tab"
             aria-selected={isActive}
             onClick={() => onChange(tab.id)}
-            className={`relative rounded-full px-4 py-1.5 font-mono text-[11px] font-semibold uppercase tracking-widest transition-colors duration-150 ${
+            className={`relative rounded-full px-4 py-1.5 font-display text-[11px] font-semibold uppercase tracking-[0.18em] transition-colors duration-150 ${
               isActive
-                ? "bg-white/15 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]"
-                : "text-white/45 hover:text-white/80"
+                ? "bg-market-red text-white shadow-[0_2px_8px_rgba(255,70,56,0.4)]"
+                : "text-ink2 hover:text-ink"
             }`}
           >
             {tab.label}
