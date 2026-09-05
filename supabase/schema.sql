@@ -11,13 +11,21 @@ create table if not exists public.boardgames (
   quick_notes text null,
   full_rules text null,
   game_type text null default 'FFA',
+  position integer null,
   constraint boardgames_pkey primary key (id),
   constraint boardgames_game_type_check check (game_type in ('FFA', 'Team vs Team', 'Coop', 'PvPvE'))
 );
 
--- Existing databases need the new metadata column added without losing rows.
+-- Existing databases need the new metadata columns added without losing rows.
 alter table public.boardgames
   add column if not exists game_type text null default 'FFA';
+alter table public.boardgames
+  add column if not exists position integer;
+
+-- In-tier drag-and-drop ordering reads position first, with nulls (games that
+-- have never been reordered) trailing in created_at order at the end of each tier.
+create index if not exists boardgames_position_idx
+  on public.boardgames (position);
 
 do $$
 begin

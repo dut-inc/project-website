@@ -3,7 +3,7 @@
 A shared hub site for the group's projects: Fish Quiz, Sports Lab, Field Watch
 (conservation), and The Board (general clubhouse). Built with Next.js 14 (App
 Router) + TypeScript + Tailwind so it's easy to split work across a few
-people — each project lives on its own route and can grow independently. test
+people — each project lives on its own route and can grow independently.
 
 ## Design concept
 
