@@ -1,10 +1,12 @@
 "use client";
 
+import Image from "next/image";
 import { useMemo, useState } from "react";
 import {
   GENSHIN_CHARACTERS,
   getDailyGenshinCharacter,
   normalizeCharacterName,
+  pacificDateString,
   type GenshinCharacter,
 } from "@/lib/dleGenshin";
 
@@ -96,12 +98,14 @@ function Icon({ src, alt, size = 76 }: { src: string | null; alt: string; size?:
 
   if (!src || hasError) return <span className="text-cream/30">—</span>;
   return (
-    <img
+    <Image
       src={src}
       alt={alt}
       width={size}
       height={size}
       referrerPolicy="no-referrer"
+      //direct browser
+      unoptimized
       className="object-contain"
       style={{ width: size, height: size }}
       onError={() => setHasError(true)}
@@ -131,7 +135,7 @@ function AttributeIcon({
 }
 
 export default function GenshinDle() {
-  const today = dateInputValue(new Date());
+  const today = pacificDateString();
   const [activeDate, setActiveDate] = useState(today);
   const [activeCharacterName, setActiveCharacterName] = useState<string | null>(null);
   const [randomCharacterName, setRandomCharacterName] = useState<string | null>(null);
@@ -139,12 +143,12 @@ export default function GenshinDle() {
   const [devCharacterName, setDevCharacterName] = useState("");
   const answer = useMemo(() => {
     if (randomCharacterName) {
-      return GENSHIN_CHARACTERS.find((character) => character.name === randomCharacterName) ?? getDailyGenshinCharacter(new Date(`${activeDate}T00:00:00Z`));
+      return GENSHIN_CHARACTERS.find((character) => character.name === randomCharacterName) ?? getDailyGenshinCharacter(activeDate);
     }
     if (activeCharacterName) {
-      return GENSHIN_CHARACTERS.find((character) => character.name === activeCharacterName) ?? getDailyGenshinCharacter(new Date(`${activeDate}T00:00:00Z`));
+      return GENSHIN_CHARACTERS.find((character) => character.name === activeCharacterName) ?? getDailyGenshinCharacter(activeDate);
     }
-    return getDailyGenshinCharacter(new Date(`${activeDate}T00:00:00Z`));
+    return getDailyGenshinCharacter(activeDate);
   }, [activeCharacterName, activeDate, randomCharacterName]);
   const [guesses, setGuesses] = useState<Guess[]>([]);
   const [query, setQuery] = useState("");
@@ -224,7 +228,7 @@ export default function GenshinDle() {
           <summary className="cursor-pointer px-4 py-3 font-mono text-[10px] uppercase tracking-widest text-pinGold">Developer tools</summary>
           <div className="grid gap-4 border-t border-pinGold/20 p-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto] sm:items-end">
             <div>
-              <label htmlFor="genshin-dev-date" className="font-mono text-[10px] uppercase tracking-widest text-cream/60">Daily date (UTC)</label>
+              <label htmlFor="genshin-dev-date" className="font-mono text-[10px] uppercase tracking-widest text-cream/60">Daily date (Pacific)</label>
               <div className="mt-2 flex gap-2">
                 <button type="button" onClick={() => setDevDate((current) => shiftDate(current, -1))} className="min-h-11 rounded border border-cream/20 px-3 font-mono text-sm text-cream/75 hover:border-pinGold hover:text-pinGold" aria-label="Previous day">&larr;</button>
                 <input id="genshin-dev-date" type="date" value={devDate} onChange={(event) => setDevDate(event.target.value)} className="min-h-11 min-w-0 flex-1 rounded border border-cream/20 bg-wall/70 px-3 text-sm text-cream" />
