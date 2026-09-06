@@ -23,8 +23,8 @@ export const DLE_GAMES: DleGame[] = [
     slug: "wuthering-waves",
     title: "Wuthering Waves",
     world: "Solaris-3",
-    description: "A daily Resonator mystery built around the details that make each kit distinct.",
-    status: "PLANNING",
+    description: "lets do the wuwaddle.",
+    status: "LIVE",
     accent: "gold",
   },
 ];
