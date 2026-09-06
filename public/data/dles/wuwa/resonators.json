@@ -1,0 +1,2117 @@
+[
+  {
+    "name": "Aalto",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/1/1c/Resonator_Aalto.png/revision/latest?cb=20240523015427",
+    "quality": 4,
+    "element": "Aero",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/67/Aero_Icon.png/revision/latest?cb=20250617044800",
+    "weapon": "Pistols",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/65/Pistols_Icon.png/revision/latest?cb=20240225014758",
+    "affiliation": "The Black Shores",
+    "faction": "Black Shores",
+    "class": "Congenital",
+    "version": "1.0",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Blake Bloom for Finale",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/3/39/Sequence_Node_Blake_Bloom_for_Finale.png/revision/latest?cb=20240610150759"
+      },
+      "forte_circuit": {
+        "name": "Misty Cover",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/d/df/Skill_Misty_Cover.png/revision/latest?cb=20240530225701"
+      },
+      "resonance_liberation": {
+        "name": "Flower in the Mist",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/1/11/Skill_Flower_in_the_Mist.png/revision/latest?cb=20240601125026"
+      },
+      "intro_skill": {
+        "name": "Feint Shot",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/9/93/Skill_Feint_Shot.png/revision/latest?cb=20240601125334"
+      },
+      "outro_skill": {
+        "name": "Dissolving Mist",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/7/77/Skill_Dissolving_Mist.png/revision/latest?cb=20240601125514"
+      }
+    }
+  },
+  {
+    "name": "Aemeath",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/e/e8/Resonator_Aemeath.png/revision/latest?cb=20260203014703",
+    "quality": 5,
+    "element": "Fusion",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/f/f9/Fusion_Icon.png/revision/latest?cb=20250617044759",
+    "weapon": "Sword",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/3/32/Sword_Icon.png/revision/latest?cb=20240306160610",
+    "affiliation": "Startorch Academy",
+    "faction": "Roya Tribe",
+    "class": "Natural",
+    "version": "3.1",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Shared Voyage",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/8/89/Skill_Shared_Voyage.png/revision/latest?cb=20260214184725"
+      },
+      "forte_circuit": {
+        "name": "To Sculpt the Silence",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/1/1f/Skill_To_Sculpt_the_Silence.png/revision/latest?cb=20260214184725"
+      },
+      "resonance_liberation": {
+        "name": "Towards the Daybreak",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/a/a3/Skill_Towards_the_Daybreak.png/revision/latest?cb=20260214184725"
+      },
+      "intro_skill": {
+        "name": "Overture of Departure",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/8/83/Skill_Overture_of_Departure.png/revision/latest?cb=20260214184725"
+      },
+      "outro_skill": {
+        "name": "Silent Protection",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/1/1f/Skill_Silent_Protection.png/revision/latest?cb=20260214184725"
+      }
+    }
+  },
+  {
+    "name": "Augusta",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/a/a5/Resonator_Augusta.png/revision/latest?cb=20250827031031",
+    "quality": 5,
+    "element": "Electro",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/c/c1/Electro_Icon.png/revision/latest?cb=20250617044801",
+    "weapon": "Broadblade",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/0/09/Broadblade_Icon.png/revision/latest?cb=20240225014720",
+    "affiliation": "Septimont, Rinascita",
+    "faction": "Ephor's Palace",
+    "class": "Congenital",
+    "version": "2.6",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Warrior's Blade",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/3/3c/Skill_Warrior%27s_Blade.png/revision/latest?cb=20250902220327"
+      },
+      "forte_circuit": {
+        "name": "Call Me By the Sun",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/0/04/Skill_Call_Me_By_the_Sun.png/revision/latest?cb=20250902222456"
+      },
+      "resonance_liberation": {
+        "name": "Sunward Conquest",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/f/fe/Skill_Sunward_Conquest.png/revision/latest?cb=20250902221601"
+      },
+      "intro_skill": {
+        "name": "Stride of Goldenflare",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/d/d9/Skill_Stride_of_Goldenflare.png/revision/latest?cb=20250902222444"
+      },
+      "outro_skill": {
+        "name": "Battlesong of the Unyielding",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/1/1c/Skill_Battlesong_of_the_Unyielding.png/revision/latest?cb=20250902222451"
+      }
+    }
+  },
+  {
+    "name": "Baizhi",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/2/2a/Resonator_Baizhi.png/revision/latest?cb=20240523015334",
+    "quality": 4,
+    "element": "Glacio",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/a/aa/Glacio_Icon.png/revision/latest?cb=20250617044756",
+    "weapon": "Rectifier",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/5/5e/Rectifier_Icon.png/revision/latest?cb=20240225014849",
+    "affiliation": "Jinzhou, Huanglong",
+    "faction": "Huaxu Academy",
+    "class": "Mutant",
+    "version": "1.0",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Seeker's Devotion",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/3/3e/Sequence_Node_Seeker%27s_Devotion.png/revision/latest?cb=20240614143857"
+      },
+      "forte_circuit": {
+        "name": "Cycle of Life",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/d/d1/Skill_Cycle_of_Life.png/revision/latest?cb=20240530052738"
+      },
+      "resonance_liberation": {
+        "name": "Momentary Union",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/4/4a/Skill_Momentary_Union.png/revision/latest?cb=20240530052716"
+      },
+      "intro_skill": {
+        "name": "Overflowing Frost",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/3/37/Skill_Overflowing_Frost.png/revision/latest?cb=20240530052917"
+      },
+      "outro_skill": {
+        "name": "Rejuvinating Flow",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/60/Skill_Rejuvinating_Flow.png/revision/latest?cb=20240530052950"
+      }
+    }
+  },
+  {
+    "name": "Brant",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/d/df/Resonator_Brant.png/revision/latest?cb=20250213184622",
+    "quality": 5,
+    "element": "Fusion",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/f/f9/Fusion_Icon.png/revision/latest?cb=20250617044759",
+    "weapon": "Sword",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/3/32/Sword_Icon.png/revision/latest?cb=20240306160610",
+    "affiliation": "Ragunna, Rinascita",
+    "faction": "Troupe of Fools",
+    "class": "Natural",
+    "version": "2.1",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Anchors Aweigh!",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/b/b1/Skill_Anchors_Aweigh%21.png/revision/latest?cb=20250324154608"
+      },
+      "forte_circuit": {
+        "name": "Ocean Odyssey",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/f/f0/Skill_Ocean_Odyssey.png/revision/latest?cb=20250324155236"
+      },
+      "resonance_liberation": {
+        "name": "To the Horizon",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/4/47/Skill_To_the_Horizon.png/revision/latest?cb=20250324154705"
+      },
+      "intro_skill": {
+        "name": "Applaud for Me!",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/4/40/Skill_Applaud_for_Me%21.png/revision/latest?cb=20250324155020"
+      },
+      "outro_skill": {
+        "name": "The Course is Set!",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/4/4d/Skill_The_Course_is_Set%21.png/revision/latest?cb=20250324155117"
+      }
+    }
+  },
+  {
+    "name": "Buling",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/7/70/Resonator_Buling.png/revision/latest?cb=20251018043729",
+    "quality": 4,
+    "element": "Electro",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/c/c1/Electro_Icon.png/revision/latest?cb=20250617044801",
+    "weapon": "Rectifier",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/5/5e/Rectifier_Icon.png/revision/latest?cb=20240225014849",
+    "affiliation": "The Black Shores",
+    "faction": "Mengzhou",
+    "class": "Natural",
+    "version": "2.8",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "In Shadow Thunder Stirs",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/2/24/Skill_In_Shadow_Thunder_Stirs.png/revision/latest?cb=20251212191520"
+      },
+      "forte_circuit": {
+        "name": "Thunder Begets Life",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/1/15/Skill_Thunder_Begets_Life.png/revision/latest?cb=20251212193435"
+      },
+      "resonance_liberation": {
+        "name": "Flashing Thunder Spell",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/f/ff/Skill_Flashing_Thunder_Spell.png/revision/latest?cb=20251212192120"
+      },
+      "intro_skill": {
+        "name": "Summon and Smite",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/3/38/Skill_Summon_and_Smite.png/revision/latest?cb=20251212193435"
+      },
+      "outro_skill": {
+        "name": "Exorcism Spell",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/1/17/Skill_Exorcism_Spell.png/revision/latest?cb=20251212193434"
+      }
+    }
+  },
+  {
+    "name": "Calcharo",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/1/16/Resonator_Calcharo.png/revision/latest?cb=20240523015359",
+    "quality": 5,
+    "element": "Electro",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/c/c1/Electro_Icon.png/revision/latest?cb=20250617044801",
+    "weapon": "Broadblade",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/0/09/Broadblade_Icon.png/revision/latest?cb=20240225014720",
+    "affiliation": "Ghost Hounds",
+    "faction": "Jinzhou",
+    "class": "Natural",
+    "version": "1.0",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Zero-Sum Game",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/5/56/Sequence_Node_Zero-Sum_Game.png/revision/latest?cb=20240613165145"
+      },
+      "forte_circuit": {
+        "name": "Hunting Mission",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/e/e5/Skill_Hunting_Mission.png/revision/latest?cb=20240530225615"
+      },
+      "resonance_liberation": {
+        "name": "Phantom Etching",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/3/35/Skill_Phantom_Etching.png/revision/latest?cb=20240606143417"
+      },
+      "intro_skill": {
+        "name": "Wanted Outlaw",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/9/99/Skill_Wanted_Outlaw.png/revision/latest?cb=20240610020852"
+      },
+      "outro_skill": {
+        "name": "Shadowy Raid",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/9/9d/Skill_Shadowy_Raid.png/revision/latest?cb=20240610021210"
+      }
+    }
+  },
+  {
+    "name": "Camellya",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/9/9f/Resonator_Camellya.png/revision/latest?cb=20241116001919",
+    "quality": 5,
+    "element": "Havoc",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/64/Havoc_Icon.png/revision/latest?cb=20250617044804",
+    "weapon": "Sword",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/3/32/Sword_Icon.png/revision/latest?cb=20240306160610",
+    "affiliation": "The Black Shores",
+    "faction": "Black Shores",
+    "class": "Artificial",
+    "version": "1.4",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Calling Upon the Silent Rose",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/d/dd/Sequence_Node_Calling_Upon_the_Silent_Rose.png/revision/latest?cb=20241213173521"
+      },
+      "forte_circuit": {
+        "name": "Vegetative Universe",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/62/Skill_Vegetative_Universe.png/revision/latest?cb=20241213164906"
+      },
+      "resonance_liberation": {
+        "name": "Fervor Efflorescent",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/0/0e/Skill_Fervor_Efflorescent.png/revision/latest?cb=20241213164503"
+      },
+      "intro_skill": {
+        "name": "Everblooming",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/8/88/Skill_Everblooming.png/revision/latest?cb=20241213164730"
+      },
+      "outro_skill": {
+        "name": "Twining",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/8/87/Skill_Twining.png/revision/latest?cb=20241213164824"
+      }
+    }
+  },
+  {
+    "name": "Cantarella",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/c/cd/Resonator_Cantarella.png/revision/latest?cb=20250327030321",
+    "quality": 5,
+    "element": "Havoc",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/64/Havoc_Icon.png/revision/latest?cb=20250617044804",
+    "weapon": "Rectifier",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/5/5e/Rectifier_Icon.png/revision/latest?cb=20240225014849",
+    "affiliation": "Fisalia Family",
+    "faction": "Ragunna",
+    "class": "Unclear",
+    "version": "2.2",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Embrace the Endless Waves",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/b/b2/Sequence_Node_Embrace_the_Endless_Waves.png/revision/latest?cb=20250513234503"
+      },
+      "forte_circuit": {
+        "name": "Between Illusion and Reality",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/4/4f/Skill_Between_Illusion_and_Reality.png/revision/latest?cb=20250516235027"
+      },
+      "resonance_liberation": {
+        "name": "Beneath the Sea",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/5/54/Skill_Beneath_the_Sea.png/revision/latest?cb=20250516184637"
+      },
+      "intro_skill": {
+        "name": "Cruise",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/d/da/Skill_Cruise.png/revision/latest?cb=20250517002035"
+      },
+      "outro_skill": {
+        "name": "Gentle Tentacles",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/4/46/Skill_Gentle_Tentacles.png/revision/latest?cb=20250517002438"
+      }
+    }
+  },
+  {
+    "name": "Carlotta",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/d/d6/Resonator_Carlotta.png/revision/latest?cb=20250102025428",
+    "quality": 5,
+    "element": "Glacio",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/a/aa/Glacio_Icon.png/revision/latest?cb=20250617044756",
+    "weapon": "Pistols",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/65/Pistols_Icon.png/revision/latest?cb=20240225014758",
+    "affiliation": "Ragunna, Rinascita",
+    "faction": "Montelli Family",
+    "class": "Mutant",
+    "version": "2.0",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Adelante, Cortado, Spinning in Grace",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/5/5b/Sequence_Node_Adelante%2C_Cortado%2C_Spinning_in_Grace.png/revision/latest?cb=20250109210915"
+      },
+      "forte_circuit": {
+        "name": "Lethal Repertoire",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/4/4d/Skill_Lethal_Repertoire.png/revision/latest?cb=20250324192255"
+      },
+      "resonance_liberation": {
+        "name": "Era of New Wave",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/f/f0/Skill_Era_of_New_Wave.png/revision/latest?cb=20250324192144"
+      },
+      "intro_skill": {
+        "name": "Wintertime Aria",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/8/81/Skill_Wintertime_Aria.png/revision/latest?cb=20250324192620"
+      },
+      "outro_skill": {
+        "name": "Closing Remark",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/d/d6/Skill_Closing_Remark.png/revision/latest?cb=20250109181921"
+      }
+    }
+  },
+  {
+    "name": "Cartethyia",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/d/d6/Resonator_Cartethyia.png/revision/latest?cb=20250610083508",
+    "quality": 5,
+    "element": "Aero",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/67/Aero_Icon.png/revision/latest?cb=20250617044800",
+    "weapon": "Sword",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/3/32/Sword_Icon.png/revision/latest?cb=20240306160610",
+    "affiliation": "Ragunna, Rinascita",
+    "faction": "Order of the Deep",
+    "class": "Congenital",
+    "version": "2.4",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Sword to Bear Their Names",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/8/8d/Skill_Sword_to_Bear_Their_Names.png/revision/latest?cb=20250613184607"
+      },
+      "forte_circuit": {
+        "name": "Tempest",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/3/39/Skill_Tempest.png/revision/latest?cb=20250613184638"
+      },
+      "resonance_liberation": {
+        "name": "A Knight's Heartfelt Prayers",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/f/f1/Skill_A_Knight%27s_Heartfelt_Prayers.png/revision/latest?cb=20250613184549"
+      },
+      "intro_skill": {
+        "name": "Sword to Mark Tide's Trace",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/d/d3/Skill_Sword_to_Mark_Tide%27s_Trace.png/revision/latest?cb=20250613184621"
+      },
+      "outro_skill": {
+        "name": "Wind's Divine Blessing",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/4/49/Skill_Wind%27s_Divine_Blessing.png/revision/latest?cb=20250613184654"
+      }
+    }
+  },
+  {
+    "name": "Changli",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/1/11/Resonator_Changli.png/revision/latest?cb=20240629210403",
+    "quality": 5,
+    "element": "Fusion",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/f/f9/Fusion_Icon.png/revision/latest?cb=20250617044759",
+    "weapon": "Sword",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/3/32/Sword_Icon.png/revision/latest?cb=20240306160610",
+    "affiliation": "Jinzhou, Huanglong",
+    "faction": "Jinzhou City Hall",
+    "class": "Natural",
+    "version": "1.1",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Tripartite Flames",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/7/75/Skill_Tripartite_Flames.png/revision/latest?cb=20240723102530"
+      },
+      "forte_circuit": {
+        "name": "Flaming Sacrifice",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/f/f8/Skill_Flaming_Sacrifice.png/revision/latest?cb=20240728010225"
+      },
+      "resonance_liberation": {
+        "name": "Radiance of Fealty",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/0/00/Skill_Radiance_of_Fealty.png/revision/latest?cb=20240728010414"
+      },
+      "intro_skill": {
+        "name": "Obedience of Rules",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/3/30/Skill_Obedience_of_Rules.png/revision/latest?cb=20240730090841"
+      },
+      "outro_skill": {
+        "name": "Strategy of Duality",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/4/41/Skill_Strategy_of_Duality.png/revision/latest?cb=20240729175839"
+      }
+    }
+  },
+  {
+    "name": "Chisa",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/d/d7/Resonator_Chisa.png/revision/latest?cb=20251018043830",
+    "quality": 5,
+    "element": "Havoc",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/64/Havoc_Icon.png/revision/latest?cb=20250617044804",
+    "weapon": "Broadblade",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/0/09/Broadblade_Icon.png/revision/latest?cb=20240225014720",
+    "affiliation": "Startorch Academy",
+    "faction": null,
+    "class": "Mutant",
+    "version": "2.8",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Fractured Composition",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/0/02/Skill_Fractured_Composition.png/revision/latest?cb=20251127132639"
+      },
+      "forte_circuit": {
+        "name": "Sight of Unraveling - Oblivion",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/d/d4/Skill_Sight_of_Unraveling_-_Oblivion.png/revision/latest?cb=20251127132830"
+      },
+      "resonance_liberation": {
+        "name": "Moment of Nihility",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/0/09/Skill_Moment_of_Nihility.png/revision/latest?cb=20251127132727"
+      },
+      "intro_skill": {
+        "name": "Reverberance - Return",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/2/28/Skill_Reverberance_-_Return.png/revision/latest?cb=20251127133305"
+      },
+      "outro_skill": {
+        "name": "Unraveling - Law Zero",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/7/7c/Skill_Unraveling_-_Law_Zero.png/revision/latest?cb=20251127133405"
+      }
+    }
+  },
+  {
+    "name": "Chixia",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/1/10/Resonator_Chixia.png/revision/latest?cb=20240523010958",
+    "quality": 4,
+    "element": "Fusion",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/f/f9/Fusion_Icon.png/revision/latest?cb=20250617044759",
+    "weapon": "Pistols",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/65/Pistols_Icon.png/revision/latest?cb=20240225014758",
+    "affiliation": "Jinzhou, Huanglong",
+    "faction": "Public Security Bureau",
+    "class": "Mutant",
+    "version": "1.0",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Easter Egg Performance",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/3/3e/Sequence_Node_Easter_Egg_Performance.png/revision/latest?cb=20240614171841"
+      },
+      "forte_circuit": {
+        "name": "Heroic Bullets",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/3/3d/Skill_Heroic_Bullets.png/revision/latest?cb=20240530225526"
+      },
+      "resonance_liberation": {
+        "name": "Blazing Flames",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/5/56/Skill_Blazing_Flames.png/revision/latest?cb=20240531060805"
+      },
+      "intro_skill": {
+        "name": "Grand Entrance",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/2/28/Skill_Grand_Entrance.png/revision/latest?cb=20240531060456"
+      },
+      "outro_skill": {
+        "name": "Leaping Flames",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/7/7d/Skill_Leaping_Flames.png/revision/latest?cb=20240531063822"
+      }
+    }
+  },
+  {
+    "name": "Ciaccona",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/2/24/Resonator_Ciaccona.png/revision/latest?cb=20250429222234",
+    "quality": 5,
+    "element": "Aero",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/67/Aero_Icon.png/revision/latest?cb=20250617044800",
+    "weapon": "Pistols",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/65/Pistols_Icon.png/revision/latest?cb=20240225014758",
+    "affiliation": "Ragunna, Rinascita",
+    "faction": null,
+    "class": "Unclear",
+    "version": "2.3",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Where Wind Sings",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/a/ab/Sequence_Node_Where_Wind_Sings.png/revision/latest?cb=20250728235505"
+      },
+      "forte_circuit": {
+        "name": "Symphony of Wind and Verse",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/c/cf/Skill_Symphony_of_Wind_and_Verse.png/revision/latest?cb=20250613181351"
+      },
+      "resonance_liberation": {
+        "name": "Singer's Triple Cadenza",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/d/d2/Skill_Singer%27s_Triple_Cadenza.png/revision/latest?cb=20250613181305"
+      },
+      "intro_skill": {
+        "name": "Roaming With The Wind",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/5/5e/Skill_Roaming_With_The_Wind.png/revision/latest?cb=20250613181125"
+      },
+      "outro_skill": {
+        "name": "Windcalling Tune",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/1/10/Skill_Windcalling_Tune.png/revision/latest?cb=20250613181445"
+      }
+    }
+  },
+  {
+    "name": "Danjin",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/1/1f/Resonator_Danjin.png/revision/latest?cb=20240523015142",
+    "quality": 4,
+    "element": "Havoc",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/64/Havoc_Icon.png/revision/latest?cb=20250617044804",
+    "weapon": "Sword",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/3/32/Sword_Icon.png/revision/latest?cb=20240306160610",
+    "affiliation": "Jinzhou, Huanglong",
+    "faction": "Midnight Rangers",
+    "class": "Mutant",
+    "version": "1.0",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Dusted Mirror",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/6d/Sequence_Node_Dusted_Mirror.png/revision/latest?cb=20240614172619"
+      },
+      "forte_circuit": {
+        "name": "Serene Vigil",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/5/5e/Skill_Serene_Vigil.png/revision/latest?cb=20240530225727"
+      },
+      "resonance_liberation": {
+        "name": "Crimson Bloom",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/3/3b/Skill_Crimson_Bloom.png/revision/latest?cb=20240603140009"
+      },
+      "intro_skill": {
+        "name": "Vindication",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/f/fe/Skill_Vindication.png/revision/latest?cb=20240609194241"
+      },
+      "outro_skill": {
+        "name": "Duality",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/68/Skill_Duality.png/revision/latest?cb=20240729174735"
+      }
+    }
+  },
+  {
+    "name": "Denia",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/c/cc/Resonator_Denia.png/revision/latest?cb=20260519215928",
+    "quality": 5,
+    "element": "Fusion",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/f/f9/Fusion_Icon.png/revision/latest?cb=20250617044759",
+    "weapon": "Rectifier",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/5/5e/Rectifier_Icon.png/revision/latest?cb=20240225014849",
+    "affiliation": "Fractsidus",
+    "faction": "Startorch Academy",
+    "class": "Congenital",
+    "version": "3.3",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Bubbles and Baits",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/0/0b/Skill_Bubbles_and_Baits.png/revision/latest?cb=20260527201309"
+      },
+      "forte_circuit": {
+        "name": "\"Flawless\"",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/7/78/Skill_%22Flawless%22.png/revision/latest?cb=20260527201310"
+      },
+      "resonance_liberation": {
+        "name": "Final Act",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/0/04/Skill_Final_Act.png/revision/latest?cb=20260527201310"
+      },
+      "intro_skill": {
+        "name": "Formal Greetings",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/f/f7/Skill_Formal_Greetings.png/revision/latest?cb=20260527201310"
+      },
+      "outro_skill": {
+        "name": "Unfinished Lies",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/d/d2/Skill_Unfinished_Lies.png/revision/latest?cb=20260527201310"
+      }
+    }
+  },
+  {
+    "name": "Encore",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/4/42/Resonator_Encore.png/revision/latest?cb=20240523015109",
+    "quality": 5,
+    "element": "Fusion",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/f/f9/Fusion_Icon.png/revision/latest?cb=20250617044759",
+    "weapon": "Rectifier",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/5/5e/Rectifier_Icon.png/revision/latest?cb=20240225014849",
+    "affiliation": "The Black Shores",
+    "faction": "Black Shores",
+    "class": "Congenital",
+    "version": "1.0",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Sheep-counting Lullaby",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/8/83/Sequence_Node_Sheep-counting_Lullaby.png/revision/latest?cb=20240529081139"
+      },
+      "forte_circuit": {
+        "name": "Black & White Woolies",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/e/ec/Skill_Black_%26_White_Woolies.png/revision/latest?cb=20240610031140"
+      },
+      "resonance_liberation": {
+        "name": "Cosmos Rave",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/1/19/Skill_Cosmos_Rave.png/revision/latest?cb=20240610030627"
+      },
+      "intro_skill": {
+        "name": "Woolies Can Help!",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/4/4d/Skill_Woolies_Can_Help%21.png/revision/latest?cb=20240610032243"
+      },
+      "outro_skill": {
+        "name": "Thermal Field",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/0/08/Skill_Thermal_Field.png/revision/latest?cb=20240610032935"
+      }
+    }
+  },
+  {
+    "name": "Galbrena",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/5/57/Resonator_Galbrena.png/revision/latest?cb=20251008035601",
+    "quality": 5,
+    "element": "Fusion",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/f/f9/Fusion_Icon.png/revision/latest?cb=20250617044759",
+    "weapon": "Pistols",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/65/Pistols_Icon.png/revision/latest?cb=20240225014758",
+    "affiliation": "The Black Shores",
+    "faction": "Septimont",
+    "class": "Congenital",
+    "version": "2.7",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Edge Transcended",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/3/38/Skill_Edge_Transcended.png/revision/latest?cb=20251012141111"
+      },
+      "forte_circuit": {
+        "name": "Beyond Threshold",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/4/4d/Skill_Beyond_Threshold.png/revision/latest?cb=20251014225352"
+      },
+      "resonance_liberation": {
+        "name": "Hellfire Absolution",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/7/7e/Skill_Hellfire_Absolution.png/revision/latest?cb=20251012141151"
+      },
+      "intro_skill": {
+        "name": "Hellflare Overload",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/f/f0/Skill_Hellflare_Overload.png/revision/latest?cb=20251014230159"
+      },
+      "outro_skill": {
+        "name": "Ashen Pursuit",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/4/43/Skill_Ashen_Pursuit.png/revision/latest?cb=20251014230327"
+      }
+    }
+  },
+  {
+    "name": "Hiyuki",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/8/8e/Resonator_Hiyuki.png/revision/latest?cb=20260501160450",
+    "quality": 5,
+    "element": "Glacio",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/a/aa/Glacio_Icon.png/revision/latest?cb=20250617044756",
+    "weapon": "Sword",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/3/32/Sword_Icon.png/revision/latest?cb=20240306160610",
+    "affiliation": "Miko of Flaming Sakura",
+    "faction": "Special Response Force",
+    "class": "Unclear",
+    "version": "3.3",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Frostblight",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/c/c1/Skill_Frostblight.png/revision/latest?cb=20260516221214"
+      },
+      "forte_circuit": {
+        "name": "Everfrost Dominion",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/60/Skill_Everfrost_Dominion.png/revision/latest?cb=20260516222544"
+      },
+      "resonance_liberation": {
+        "name": "Foreclaiming",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/a/a0/Skill_Foreclaiming.png/revision/latest?cb=20260516221350"
+      },
+      "intro_skill": {
+        "name": "Frostedge",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/7/71/Skill_Frostedge.png/revision/latest?cb=20260516222125"
+      },
+      "outro_skill": {
+        "name": "Snowlight Blessing",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/f/fb/Skill_Snowlight_Blessing.png/revision/latest?cb=20260516222235"
+      }
+    }
+  },
+  {
+    "name": "Iuno",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/8/8c/Resonator_Iuno.png/revision/latest?cb=20250827031142",
+    "quality": 5,
+    "element": "Aero",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/67/Aero_Icon.png/revision/latest?cb=20250617044800",
+    "weapon": "Gauntlets",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/8/85/Gauntlets_Icon.png/revision/latest?cb=20240225014634",
+    "affiliation": "Septimont, Rinascita",
+    "faction": "Tetragon Temple",
+    "class": "Congenital",
+    "version": "2.6",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Foresight Fugue",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/8/8d/Skill_Foresight_Fugue.png/revision/latest?cb=20250921002629"
+      },
+      "forte_circuit": {
+        "name": "Ebb and Flow",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/a/aa/Skill_Ebb_and_Flow.png/revision/latest?cb=20250921003109"
+      },
+      "resonance_liberation": {
+        "name": "Beneath Lunar Tides",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/c/cc/Skill_Beneath_Lunar_Tides.png/revision/latest?cb=20250921003110"
+      },
+      "intro_skill": {
+        "name": "Illuminated Manifestation",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/4/49/Skill_Illuminated_Manifestation.png/revision/latest?cb=20250921004027"
+      },
+      "outro_skill": {
+        "name": "From Gloom to Gleam",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/4/4e/Skill_From_Gloom_to_Gleam.png/revision/latest?cb=20250921005933"
+      }
+    }
+  },
+  {
+    "name": "Jianxin",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/0/00/Resonator_Jianxin.png/revision/latest?cb=20240523015413",
+    "quality": 5,
+    "element": "Aero",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/67/Aero_Icon.png/revision/latest?cb=20250617044800",
+    "weapon": "Gauntlets",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/8/85/Gauntlets_Icon.png/revision/latest?cb=20240225014634",
+    "affiliation": "Jinzhou, Huanglong",
+    "faction": null,
+    "class": "Natural",
+    "version": "1.0",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Truth from Within",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/b/bc/Sequence_Node_Truth_from_Within.png/revision/latest?cb=20240605185808"
+      },
+      "forte_circuit": {
+        "name": "Primordial Chi Spiral",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/2/22/Skill_Primordial_Chi_Spiral.png/revision/latest?cb=20240610033733"
+      },
+      "resonance_liberation": {
+        "name": "Purification Force Field",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/1/12/Skill_Purification_Force_Field.png/revision/latest?cb=20240527131914"
+      },
+      "intro_skill": {
+        "name": "Essence of Tao",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/c/ce/Skill_Essence_of_Tao.png/revision/latest?cb=20240610040515"
+      },
+      "outro_skill": {
+        "name": "Transcendence",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/8/8e/Skill_Transcendence.png/revision/latest?cb=20240610041045"
+      }
+    }
+  },
+  {
+    "name": "Jinhsi",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/f/f5/Resonator_Jinhsi.png/revision/latest?cb=20240628171752",
+    "quality": 5,
+    "element": "Spectro",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/6a/Spectro_Icon.png/revision/latest?cb=20250617044802",
+    "weapon": "Broadblade",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/0/09/Broadblade_Icon.png/revision/latest?cb=20240225014720",
+    "affiliation": "Jinzhou, Huanglong",
+    "faction": "Jinzhou City Hall",
+    "class": "Congenital",
+    "version": "1.1",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Thawing Triumph",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/8/8f/Sequence_Node_Thawing_Triumph.png/revision/latest?cb=20240723041801"
+      },
+      "forte_circuit": {
+        "name": "Luminal Synthesis",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/1/10/Skill_Luminal_Synthesis.png/revision/latest?cb=20240706073035"
+      },
+      "resonance_liberation": {
+        "name": "Purge of Light",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/0/07/Skill_Purge_of_Light.png/revision/latest?cb=20240730204510"
+      },
+      "intro_skill": {
+        "name": "Loong's Halo",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/1/10/Skill_Loong%27s_Halo.png/revision/latest?cb=20240730204806"
+      },
+      "outro_skill": {
+        "name": "Temporal Bender",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/4/45/Skill_Temporal_Bender.png/revision/latest?cb=20240729180041"
+      }
+    }
+  },
+  {
+    "name": "Jiyan",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/d/da/Resonator_Jiyan.png/revision/latest?cb=20240523015123",
+    "quality": 5,
+    "element": "Aero",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/67/Aero_Icon.png/revision/latest?cb=20250617044800",
+    "weapon": "Broadblade",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/0/09/Broadblade_Icon.png/revision/latest?cb=20240225014720",
+    "affiliation": "Jinzhou, Huanglong",
+    "faction": "Midnight Rangers",
+    "class": "Mutant",
+    "version": "1.0",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Spectation",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/0/08/Sequence_Node_Spectation.png/revision/latest?cb=20240614003756"
+      },
+      "forte_circuit": {
+        "name": "Qingloong at War",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/8/8e/Skill_Qingloong_at_War.png/revision/latest?cb=20240603215119"
+      },
+      "resonance_liberation": {
+        "name": "Emerald Storm: Prelude",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/1/17/Skill_Emerald_Storm_Prelude.png/revision/latest?cb=20240603214918"
+      },
+      "intro_skill": {
+        "name": "Tactical Strike",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/f/f5/Skill_Tactical_Strike.png/revision/latest?cb=20240603215423"
+      },
+      "outro_skill": {
+        "name": "Discipline",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/4/4f/Skill_Discipline.png/revision/latest?cb=20240603215614"
+      }
+    }
+  },
+  {
+    "name": "Lingyang",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/3/39/Resonator_Lingyang.png/revision/latest?cb=20240523015345",
+    "quality": 5,
+    "element": "Glacio",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/a/aa/Glacio_Icon.png/revision/latest?cb=20250617044756",
+    "weapon": "Gauntlets",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/8/85/Gauntlets_Icon.png/revision/latest?cb=20240225014634",
+    "affiliation": "Jinzhou, Huanglong",
+    "faction": "Liondance Troupe",
+    "class": "Natural",
+    "version": "1.0",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Demons Tremble, Divine Power Nigh",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/1/1e/Sequence_Node_Demons_Tremble%2C_Divine_Power_Nigh.png/revision/latest?cb=20240614010958"
+      },
+      "forte_circuit": {
+        "name": "Unification of Spirits",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/0/05/Skill_Unification_of_Spirits.png/revision/latest?cb=20241002185307"
+      },
+      "resonance_liberation": {
+        "name": "Strive: Lion's Vigor",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/c/c8/Skill_Strive_Lion%27s_Vigor.png/revision/latest?cb=20240822034425"
+      },
+      "intro_skill": {
+        "name": "Lion Awakens",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/6c/Skill_Lion_Awakens.png/revision/latest?cb=20241002181711"
+      },
+      "outro_skill": {
+        "name": "Frosty Marks",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/2/21/Skill_Frosty_Marks.png/revision/latest?cb=20240729174927"
+      }
+    }
+  },
+  {
+    "name": "Lucilla",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/a/a0/Resonator_Lucilla.png/revision/latest?cb=20260608172652",
+    "quality": 5,
+    "element": "Glacio",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/a/aa/Glacio_Icon.png/revision/latest?cb=20250617044756",
+    "weapon": "Rectifier",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/5/5e/Rectifier_Icon.png/revision/latest?cb=20240225014849",
+    "affiliation": "Startorch Academy",
+    "faction": "Spacetrek Collective",
+    "class": "Unclear",
+    "version": "3.4",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Phantom Frame",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/c/c6/Skill_Phantom_Frame.png/revision/latest?cb=20260704143712"
+      },
+      "forte_circuit": {
+        "name": "Memory Palace",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/7/71/Skill_Memory_Palace.png/revision/latest?cb=20260704144808"
+      },
+      "resonance_liberation": {
+        "name": "Clear as Day",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/0/08/Skill_Clear_as_Day.png/revision/latest?cb=20260704144439"
+      },
+      "intro_skill": {
+        "name": "Clip It",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/2/20/Skill_Clip_It.png/revision/latest?cb=20260704145708"
+      },
+      "outro_skill": {
+        "name": "Montage",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/e/e7/Skill_Montage.png/revision/latest?cb=20260704145945"
+      }
+    }
+  },
+  {
+    "name": "Lucy",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/5/57/Resonator_Lucy.png/revision/latest?cb=20260608172024",
+    "quality": 5,
+    "element": "Spectro",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/6a/Spectro_Icon.png/revision/latest?cb=20250617044802",
+    "weapon": "Pistols",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/65/Pistols_Icon.png/revision/latest?cb=20240225014758",
+    "affiliation": "Lahai-Roi",
+    "faction": "Arasaka",
+    "class": "Mutant",
+    "version": "3.4",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Protocol Breach",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/e/e4/Skill_Protocol_Breach.png/revision/latest?cb=20260704155207"
+      },
+      "forte_circuit": {
+        "name": "Depths of Blackwall",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/1/14/Skill_Depths_of_Blackwall.png/revision/latest?cb=20260704155348"
+      },
+      "resonance_liberation": {
+        "name": "Netrunner",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/c/c9/Skill_Netrunner.png/revision/latest?cb=20260704155255"
+      },
+      "intro_skill": {
+        "name": "Outdated Hallucination",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/8/80/Skill_Outdated_Hallucination.png/revision/latest?cb=20260704155626"
+      },
+      "outro_skill": {
+        "name": "Countermeasure Program",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/2/25/Skill_Countermeasure_Program.png/revision/latest?cb=20260704155753"
+      }
+    }
+  },
+  {
+    "name": "Lumi",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/f/f3/Resonator_Lumi.png/revision/latest?cb=20241116002925",
+    "quality": 4,
+    "element": "Electro",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/c/c1/Electro_Icon.png/revision/latest?cb=20250617044801",
+    "weapon": "Broadblade",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/0/09/Broadblade_Icon.png/revision/latest?cb=20240225014720",
+    "affiliation": "Yuezhou, Huanglong",
+    "faction": "Lollo Logistics",
+    "class": "Congenital",
+    "version": "1.4",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Lollo Logistics, Ready to Help",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/d/d5/Sequence_Node_Lollo_Logistics%2C_Ready_to_Help.png/revision/latest?cb=20241213172740"
+      },
+      "forte_circuit": {
+        "name": "Signal Light",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/4/4d/Skill_Signal_Light.png/revision/latest?cb=20241213170503"
+      },
+      "resonance_liberation": {
+        "name": "Squeakie Express",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/c/c1/Skill_Squeakie_Express.png/revision/latest?cb=20241213170041"
+      },
+      "intro_skill": {
+        "name": "Special Delivery",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/b/bc/Skill_Special_Delivery.png/revision/latest?cb=20241213170323"
+      },
+      "outro_skill": {
+        "name": "Escorting",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/9/94/Skill_Escorting.png/revision/latest?cb=20241213170409"
+      }
+    }
+  },
+  {
+    "name": "Lupa",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/d/d1/Resonator_Lupa.png/revision/latest?cb=20250610083417",
+    "quality": 5,
+    "element": "Fusion",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/f/f9/Fusion_Icon.png/revision/latest?cb=20250617044759",
+    "weapon": "Broadblade",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/0/09/Broadblade_Icon.png/revision/latest?cb=20240225014720",
+    "affiliation": "Septimont, Rinascita",
+    "faction": "House Silva",
+    "class": "Non-congenital",
+    "version": "2.4",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Shewolf's Hunt",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/d/d1/Skill_Shewolf%27s_Hunt.png/revision/latest?cb=20250811181500"
+      },
+      "forte_circuit": {
+        "name": "Ignis Lupa",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/7/77/Skill_Ignis_Lupa.png/revision/latest?cb=20250811184812"
+      },
+      "resonance_liberation": {
+        "name": "Fire-Kissed Glory",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/f/fe/Skill_Fire-Kissed_Glory.png/revision/latest?cb=20250811182551"
+      },
+      "intro_skill": {
+        "name": "Try Focusing, Eh?",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/8/8d/Skill_Try_Focusing%2C_Eh%3F.png/revision/latest?cb=20250811183326"
+      },
+      "outro_skill": {
+        "name": "Stand by Me, Warrior",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/0/03/Skill_Stand_by_Me%2C_Warrior.png/revision/latest?cb=20250811185057"
+      }
+    }
+  },
+  {
+    "name": "Luuk Herssen",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/e/eb/Resonator_Luuk_Herssen.png/revision/latest?cb=20260330181213",
+    "quality": 5,
+    "element": "Spectro",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/6a/Spectro_Icon.png/revision/latest?cb=20250617044802",
+    "weapon": "Gauntlets",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/8/85/Gauntlets_Icon.png/revision/latest?cb=20240225014634",
+    "affiliation": "Startorch Academy",
+    "faction": "Spacetrek Collective",
+    "class": "Unclear",
+    "version": "3.1",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Through the Stillness of Snowstorm",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/4/46/Sequence_Node_Through_the_Stillness_of_Snowstorm.png/revision/latest?cb=20260309220129"
+      },
+      "forte_circuit": {
+        "name": "Spark from the Frost",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/0/0e/Skill_Spark_from_the_Frost.png/revision/latest?cb=20260701024714"
+      },
+      "resonance_liberation": {
+        "name": "Rewritten in Winter's Margins",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/f/f1/Skill_Rewritten_in_Winter%27s_Margins.png/revision/latest?cb=20260309005229"
+      },
+      "intro_skill": {
+        "name": "Before Injection of Dawn",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/d/d0/Skill_Before_Injection_of_Dawn.png/revision/latest?cb=20260309005228"
+      },
+      "outro_skill": {
+        "name": "Bow to the Last Light",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/c/c4/Skill_Bow_to_the_Last_Light.png/revision/latest?cb=20260309005229"
+      }
+    }
+  },
+  {
+    "name": "Lynae",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/3/34/Resonator_Lynae.png/revision/latest?cb=20260101050739",
+    "quality": 5,
+    "element": "Spectro",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/6a/Spectro_Icon.png/revision/latest?cb=20250617044802",
+    "weapon": "Pistols",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/65/Pistols_Icon.png/revision/latest?cb=20240225014758",
+    "affiliation": "Startorch Academy",
+    "faction": "Lawless Zone",
+    "class": "Congenital",
+    "version": "3.0",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Lynae-Style Palettes",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/4/4b/Skill_Lynae-Style_Palettes.png/revision/latest?cb=20260114005243"
+      },
+      "forte_circuit": {
+        "name": "Chromaticity Modeling",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/d/d5/Skill_Chromaticity_Modeling.png/revision/latest?cb=20260114010632"
+      },
+      "resonance_liberation": {
+        "name": "Prismatic Overblast",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/a/a0/Skill_Prismatic_Overblast.png/revision/latest?cb=20260114010633"
+      },
+      "intro_skill": {
+        "name": "Time to Show Some Colors!",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/2/29/Skill_Time_to_Show_Some_Colors%21.png/revision/latest?cb=20260114010632"
+      },
+      "outro_skill": {
+        "name": "Let's Hit the Road!",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/a/a5/Skill_Let%27s_Hit_the_Road%21.png/revision/latest?cb=20260114010632"
+      }
+    }
+  },
+  {
+    "name": "Mornye",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/2/25/Resonator_Mornye.png/revision/latest?cb=20260101050827",
+    "quality": 5,
+    "element": "Fusion",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/f/f9/Fusion_Icon.png/revision/latest?cb=20250617044759",
+    "weapon": "Broadblade",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/0/09/Broadblade_Icon.png/revision/latest?cb=20240225014720",
+    "affiliation": "Spacetrek Collective",
+    "faction": "Startorch Academy",
+    "class": "Natural",
+    "version": "3.0",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Resolution",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/e/ec/Skill_Resolution_%28Mornye%29.png/revision/latest?cb=20260117183255"
+      },
+      "forte_circuit": {
+        "name": "Mass-Energy Equivalence",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/8/8a/Skill_Mass-Energy_Equivalence.png/revision/latest?cb=20260117190808"
+      },
+      "resonance_liberation": {
+        "name": "Critical Protocol",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/9/91/Skill_Critical_Protocol.png/revision/latest?cb=20260117185357"
+      },
+      "intro_skill": {
+        "name": "Convergence",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/e/e4/Skill_Convergence.png/revision/latest?cb=20260117190809"
+      },
+      "outro_skill": {
+        "name": "Recursion",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/8/8a/Skill_Recursion.png/revision/latest?cb=20260117194037"
+      }
+    }
+  },
+  {
+    "name": "Mortefi",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/4/4f/Resonator_Mortefi.png/revision/latest?cb=20240523015259",
+    "quality": 4,
+    "element": "Fusion",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/f/f9/Fusion_Icon.png/revision/latest?cb=20250617044759",
+    "weapon": "Pistols",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/65/Pistols_Icon.png/revision/latest?cb=20240225014758",
+    "affiliation": "Jinzhou, Huanglong",
+    "faction": "Huaxu Academy",
+    "class": "Mutant",
+    "version": "1.0",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Funerary Quartet",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/c/cc/Sequence_Node_Funerary_Quartet.png/revision/latest?cb=20240614015701"
+      },
+      "forte_circuit": {
+        "name": "Fury Fugue",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/a/ab/Skill_Fury_Fugue.png/revision/latest?cb=20240601151433"
+      },
+      "resonance_liberation": {
+        "name": "Violent Finale",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/a/a1/Skill_Violent_Finale.png/revision/latest?cb=20240601144503"
+      },
+      "intro_skill": {
+        "name": "Dissonance",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/d/d3/Skill_Dissonance.png/revision/latest?cb=20240601160013"
+      },
+      "outro_skill": {
+        "name": "Rage Transposition",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/c/c0/Skill_Rage_Transposition.png/revision/latest?cb=20240601160438"
+      }
+    }
+  },
+  {
+    "name": "Phoebe",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/b/b7/Resonator_Phoebe.png/revision/latest?cb=20250213184424",
+    "quality": 5,
+    "element": "Spectro",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/6a/Spectro_Icon.png/revision/latest?cb=20250617044802",
+    "weapon": "Rectifier",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/5/5e/Rectifier_Icon.png/revision/latest?cb=20240225014849",
+    "affiliation": "Ragunna, Rinascita",
+    "faction": "Order of the Deep",
+    "class": "Unclear",
+    "version": "2.1",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Whispering Chirps in Silence",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/7/7d/Sequence_Node_Whispering_Chirps_in_Silence.png/revision/latest?cb=20250514034115"
+      },
+      "forte_circuit": {
+        "name": "Radiant Invocation",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/d/dd/Skill_Radiant_Invocation.png/revision/latest?cb=20250330114334"
+      },
+      "resonance_liberation": {
+        "name": "Dawn of Enlightenment",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/e/e3/Skill_Dawn_of_Enlightenment.png/revision/latest?cb=20250330113925"
+      },
+      "intro_skill": {
+        "name": "Golden Grace",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/1/18/Skill_Golden_Grace.png/revision/latest?cb=20250330114100"
+      },
+      "outro_skill": {
+        "name": "Attentive Heart",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/d/d6/Skill_Attentive_Heart.png/revision/latest?cb=20250330113715"
+      }
+    }
+  },
+  {
+    "name": "Phrolova",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/a/a2/Resonator_Phrolova.png/revision/latest?cb=20250727105200",
+    "quality": 5,
+    "element": "Havoc",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/64/Havoc_Icon.png/revision/latest?cb=20250617044804",
+    "weapon": "Rectifier",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/5/5e/Rectifier_Icon.png/revision/latest?cb=20240225014849",
+    "affiliation": "Fractsidus",
+    "faction": null,
+    "class": "Mutant",
+    "version": "2.5",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Whispers in a Fleeting Dream",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/a/a3/Skill_Whispers_in_a_Fleeting_Dream.png/revision/latest?cb=20250811194808"
+      },
+      "forte_circuit": {
+        "name": "Rhapsody of a New World",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/0/0c/Skill_Rhapsody_of_a_New_World.png/revision/latest?cb=20250811194809"
+      },
+      "resonance_liberation": {
+        "name": "Waltz of Forsaken Depths",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/f/ff/Skill_Waltz_of_Forsaken_Depths.png/revision/latest?cb=20250811194809"
+      },
+      "intro_skill": {
+        "name": "Suite of Quietus",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/d/df/Skill_Suite_of_Quietus.png/revision/latest?cb=20250811194809"
+      },
+      "outro_skill": {
+        "name": "Unfinished Piece",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/9/95/Skill_Unfinished_Piece.png/revision/latest?cb=20250811194809"
+      }
+    }
+  },
+  {
+    "name": "Qingxiao",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/a/ac/Resonator_Qingxiao.png/revision/latest?cb=20260820164907",
+    "quality": 5,
+    "element": "Aero",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/67/Aero_Icon.png/revision/latest?cb=20250617044800",
+    "weapon": "Sword",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/3/32/Sword_Icon.png/revision/latest?cb=20240306160610",
+    "affiliation": "Ministry of War",
+    "faction": "Xuanfang Wardens",
+    "class": "Natural",
+    "version": "3.6",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Severing Note",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/2/23/Skill_Severing_Note.png/revision/latest?cb=20260821214314"
+      },
+      "forte_circuit": {
+        "name": "Formless Heart Sword",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/0/0f/Skill_Formless_Heart_Sword.png/revision/latest?cb=20260821214325"
+      },
+      "resonance_liberation": {
+        "name": "Billows Beneath Heaven",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/d/d1/Skill_Billows_Beneath_Heaven.png/revision/latest?cb=20260821214316"
+      },
+      "intro_skill": {
+        "name": "Tonality Shift",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/5/5b/Skill_Tonality_Shift.png/revision/latest?cb=20260821214323"
+      },
+      "outro_skill": {
+        "name": "Lingering Song",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/8/87/Skill_Lingering_Song.png/revision/latest?cb=20260821214327"
+      }
+    }
+  },
+  {
+    "name": "Qiuyuan",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/d/da/Resonator_Qiuyuan.png/revision/latest?cb=20251008035512",
+    "quality": 5,
+    "element": "Aero",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/67/Aero_Icon.png/revision/latest?cb=20250617044800",
+    "weapon": "Sword",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/3/32/Sword_Icon.png/revision/latest?cb=20240306160610",
+    "affiliation": "Mingting, Huanglong",
+    "faction": "Chongzhou",
+    "class": "Unclear",
+    "version": "2.7",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Through the Groves",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/3/3f/Skill_Through_the_Groves.png/revision/latest?cb=20251105202225"
+      },
+      "forte_circuit": {
+        "name": "Verdant Edge",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/b/b3/Skill_Verdant_Edge.png/revision/latest?cb=20251113230010"
+      },
+      "resonance_liberation": {
+        "name": "Sundering Strike",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/5/50/Skill_Sundering_Strike.png/revision/latest?cb=20251105202310"
+      },
+      "intro_skill": {
+        "name": "Attack the Must-Defend",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/0/05/Skill_Attack_the_Must-Defend.png/revision/latest?cb=20251113225823"
+      },
+      "outro_skill": {
+        "name": "Strike Before Ready",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/e/e7/Skill_Strike_Before_Ready.png/revision/latest?cb=20251113225909"
+      }
+    }
+  },
+  {
+    "name": "Rebecca",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/b/bd/Resonator_Rebecca.png/revision/latest?cb=20260608172211",
+    "quality": 5,
+    "element": "Electro",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/c/c1/Electro_Icon.png/revision/latest?cb=20250617044801",
+    "weapon": "Pistols",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/65/Pistols_Icon.png/revision/latest?cb=20240225014758",
+    "affiliation": "Unknown",
+    "faction": "Collaboration Resonators",
+    "class": "Mutant",
+    "version": "3.4",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Tactical Tweaks",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/9/97/Skill_Tactical_Tweaks.png/revision/latest?cb=20260613204018"
+      },
+      "forte_circuit": {
+        "name": "Gloves Are Comin' Off!",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/1/11/Skill_Gloves_Are_Comin%27_Off%21.png/revision/latest?cb=20260613204018"
+      },
+      "resonance_liberation": {
+        "name": "Party 'til Dawn!",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/e/e4/Skill_Party_%27til_Dawn%21.png/revision/latest?cb=20260613204018"
+      },
+      "intro_skill": {
+        "name": "My Turn!",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/6c/Skill_My_Turn%21.png/revision/latest?cb=20260613204018"
+      },
+      "outro_skill": {
+        "name": "Preem Choom",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/9/95/Skill_Preem_Choom.png/revision/latest?cb=20260613204018"
+      }
+    }
+  },
+  {
+    "name": "Roccia",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/1/1a/Resonator_Roccia.png/revision/latest?cb=20250102034114",
+    "quality": 5,
+    "element": "Havoc",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/64/Havoc_Icon.png/revision/latest?cb=20250617044804",
+    "weapon": "Gauntlets",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/8/85/Gauntlets_Icon.png/revision/latest?cb=20240225014634",
+    "affiliation": "Troupe of Fools",
+    "faction": "Ragunna",
+    "class": "Acquired",
+    "version": "2.0",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "When Wonders Gather in the Box",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/9/94/Sequence_Node_When_Wonders_Gather_in_the_Box.png/revision/latest?cb=20250515031609"
+      },
+      "forte_circuit": {
+        "name": "A Prop Master Prepares",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/4/45/Skill_A_Prop_Master_Prepares.png/revision/latest?cb=20250212183726"
+      },
+      "resonance_liberation": {
+        "name": "Commedia Improvviso!",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/b/b0/Skill_Commedia_Improvviso%21.png/revision/latest?cb=20250215120220"
+      },
+      "intro_skill": {
+        "name": "Pero, Help",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/8/89/Skill_Pero%2C_Help.png/revision/latest?cb=20250212184052"
+      },
+      "outro_skill": {
+        "name": "Applause, Please!",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/c/cb/Skill_Applause%2C_Please%21.png/revision/latest?cb=20250212183906"
+      }
+    }
+  },
+  {
+    "name": "Rover-Aero",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/4/47/Resonator_Rover.png/revision/latest?cb=20240523011434",
+    "quality": 5,
+    "element": "Aero",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/67/Aero_Icon.png/revision/latest?cb=20250617044800",
+    "weapon": "Sword",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/3/32/Sword_Icon.png/revision/latest?cb=20240306160610",
+    "affiliation": "Unknown",
+    "faction": "Black Shores",
+    "class": "Arbiters",
+    "version": "2.2",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Glimmers Fade into the Dark",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/c/c4/Sequence_Node_Glimmers_Fade_into_the_Dark.png/revision/latest?cb=20250515034521"
+      },
+      "forte_circuit": {
+        "name": "Cycle of Wind",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/d/d5/Skill_Cycle_of_Wind.png/revision/latest?cb=20250921191327"
+      },
+      "resonance_liberation": {
+        "name": "Omega Storm",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/c/c4/Skill_Omega_Storm.png/revision/latest?cb=20250921190307"
+      },
+      "intro_skill": {
+        "name": "Relentless Squall",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/2/23/Skill_Relentless_Squall.png/revision/latest?cb=20250921191328"
+      },
+      "outro_skill": {
+        "name": "Storm's Echo",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/a/a3/Skill_Storm%27s_Echo.png/revision/latest?cb=20250921191328"
+      }
+    }
+  },
+  {
+    "name": "Rover-Electro",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/4/47/Resonator_Rover.png/revision/latest?cb=20240523011434",
+    "quality": 5,
+    "element": "Electro",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/c/c1/Electro_Icon.png/revision/latest?cb=20250617044801",
+    "weapon": "Sword",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/3/32/Sword_Icon.png/revision/latest?cb=20240306160610",
+    "affiliation": "Unknown",
+    "faction": "Black Shores",
+    "class": "Arbiters",
+    "version": "3.5",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Thunderclap",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/d/d5/Skill_Thunderclap.png/revision/latest?cb=20260711221743"
+      },
+      "forte_circuit": {
+        "name": "Myriad Omens' Mandate",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/d/da/Skill_Myriad_Omens%27_Mandate.png/revision/latest?cb=20260711221745"
+      },
+      "resonance_liberation": {
+        "name": "Ultimate Tactics",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/0/05/Skill_Ultimate_Tactics.png/revision/latest?cb=20260711221748"
+      },
+      "intro_skill": {
+        "name": "Thunderous Fury",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/8/8a/Skill_Thunderous_Fury.png/revision/latest?cb=20260711221858"
+      },
+      "outro_skill": {
+        "name": "Rumbling Thunders",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/2/2c/Skill_Rumbling_Thunders.png/revision/latest?cb=20260711221744"
+      }
+    }
+  },
+  {
+    "name": "Rover-Havoc",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/4/47/Resonator_Rover.png/revision/latest?cb=20240523011434",
+    "quality": 5,
+    "element": "Havoc",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/64/Havoc_Icon.png/revision/latest?cb=20250617044804",
+    "weapon": "Sword",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/3/32/Sword_Icon.png/revision/latest?cb=20240306160610",
+    "affiliation": "Unknown",
+    "faction": "Black Shores",
+    "class": "Arbiters",
+    "version": "1.0",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Waning Crescent",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/d/df/Sequence_Node_Waning_Crescent.png/revision/latest?cb=20240605183445"
+      },
+      "forte_circuit": {
+        "name": "Umbra Eclipse",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/e/e5/Skill_Umbra_Eclipse.png/revision/latest?cb=20240530225754"
+      },
+      "resonance_liberation": {
+        "name": "Deadening Abyss",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/4/4e/Skill_Deadening_Abyss.png/revision/latest?cb=20240608131350"
+      },
+      "intro_skill": {
+        "name": "Instant of Annihilation",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/7/79/Skill_Instant_of_Annihilation.png/revision/latest?cb=20240608131731"
+      },
+      "outro_skill": {
+        "name": "Soundweaver",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/f/ff/Skill_Soundweaver.png/revision/latest?cb=20240608132038"
+      }
+    }
+  },
+  {
+    "name": "Rover-Spectro",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/4/47/Resonator_Rover.png/revision/latest?cb=20240523011434",
+    "quality": 5,
+    "element": "Spectro",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/6a/Spectro_Icon.png/revision/latest?cb=20250617044802",
+    "weapon": "Sword",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/3/32/Sword_Icon.png/revision/latest?cb=20240306160610",
+    "affiliation": "Unknown",
+    "faction": "Black Shores",
+    "class": "Arbiters",
+    "version": "1.0",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Echoes of Wanderlust",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/8/84/Sequence_Node_Echoes_of_Wanderlust.png/revision/latest?cb=20240605180135"
+      },
+      "forte_circuit": {
+        "name": "World in a Grain of Sand",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/c/c8/Skill_World_in_a_Grain_of_Sand.png/revision/latest?cb=20240603090213"
+      },
+      "resonance_liberation": {
+        "name": "Echoing Orchestra",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/c/c4/Skill_Echoing_Orchestra.png/revision/latest?cb=20240425165001"
+      },
+      "intro_skill": {
+        "name": "Waveshock",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/7/70/Skill_Waveshock.png/revision/latest?cb=20240603093225"
+      },
+      "outro_skill": {
+        "name": "Instant",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/4/44/Skill_Instant.png/revision/latest?cb=20240603093602"
+      }
+    }
+  },
+  {
+    "name": "Sanhua",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/d/d4/Resonator_Sanhua.png/revision/latest?cb=20240523015219",
+    "quality": 4,
+    "element": "Glacio",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/a/aa/Glacio_Icon.png/revision/latest?cb=20250617044756",
+    "weapon": "Sword",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/3/32/Sword_Icon.png/revision/latest?cb=20240306160610",
+    "affiliation": "Jinzhou, Huanglong",
+    "faction": "Jinzhou City Hall",
+    "class": "Mutant",
+    "version": "1.0",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Snowy Clarity",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/8/8d/Sequence_Node_Snowy_Clarity.png/revision/latest?cb=20240614174545"
+      },
+      "forte_circuit": {
+        "name": "Clarity of Mind",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/f/f6/Skill_Clarity_of_Mind.png/revision/latest?cb=20240709032031"
+      },
+      "resonance_liberation": {
+        "name": "Glacial Gaze",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/3/3c/Skill_Glacial_Gaze.png/revision/latest?cb=20240709031937"
+      },
+      "intro_skill": {
+        "name": "Freezing Thorns",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/a/ae/Skill_Freezing_Thorns.png/revision/latest?cb=20240822033254"
+      },
+      "outro_skill": {
+        "name": "Silversnow",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/4/44/Skill_Silversnow.png/revision/latest?cb=20240729175643"
+      }
+    }
+  },
+  {
+    "name": "Shorekeeper",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/d/da/Resonator_Shorekeeper.png/revision/latest?cb=20240929033648",
+    "quality": 5,
+    "element": "Spectro",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/6a/Spectro_Icon.png/revision/latest?cb=20250617044802",
+    "weapon": "Rectifier",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/5/5e/Rectifier_Icon.png/revision/latest?cb=20240225014849",
+    "affiliation": "The Black Shores",
+    "faction": "Black Shores",
+    "class": null,
+    "version": "1.3",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Overflowing Quietude",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/5/51/Sequence_Node_Overflowing_Quietude.png/revision/latest?cb=20241225151240"
+      },
+      "forte_circuit": {
+        "name": "Astral Chord",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/4/41/Skill_Astral_Chord.png/revision/latest?cb=20241001055201"
+      },
+      "resonance_liberation": {
+        "name": "End Loop",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/1/1f/Skill_End_Loop.png/revision/latest?cb=20241001055031"
+      },
+      "intro_skill": {
+        "name": "Proof of Existence",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/2/2f/Skill_Proof_of_Existence.png/revision/latest?cb=20241001055448"
+      },
+      "outro_skill": {
+        "name": "Binary Butterfly",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/c/c3/Skill_Binary_Butterfly.png/revision/latest?cb=20241001055518"
+      }
+    }
+  },
+  {
+    "name": "Sigrika",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/67/Resonator_Sigrika.png/revision/latest?cb=20260319201628",
+    "quality": 5,
+    "element": "Aero",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/67/Aero_Icon.png/revision/latest?cb=20250617044800",
+    "weapon": "Gauntlets",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/8/85/Gauntlets_Icon.png/revision/latest?cb=20240225014634",
+    "affiliation": "Roya Tribe",
+    "faction": "Startorch Academy",
+    "class": "Congenital",
+    "version": "3.2",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Royan Close Quarters Combat",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/3/38/Skill_Royan_Close_Quarters_Combat.png/revision/latest?cb=20260517170921"
+      },
+      "forte_circuit": {
+        "name": "Within Infinity's Embrace",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/f/f2/Skill_Within_Infinity%27s_Embrace.png/revision/latest?cb=20260517170633"
+      },
+      "resonance_liberation": {
+        "name": "Where Trust Leads Me!",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/0/02/Skill_Where_Trust_Leads_Me%21.png/revision/latest?cb=20260517170901"
+      },
+      "intro_skill": {
+        "name": "Solsworn Etymology",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/1/1d/Skill_Solsworn_Etymology.png/revision/latest?cb=20260517170843"
+      },
+      "outro_skill": {
+        "name": "In This Very Moment",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/1/1b/Skill_In_This_Very_Moment.png/revision/latest?cb=20260517170937"
+      }
+    }
+  },
+  {
+    "name": "Suisui",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/7/78/Resonator_Suisui.png/revision/latest?cb=20260710163042",
+    "quality": 5,
+    "element": "Glacio",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/a/aa/Glacio_Icon.png/revision/latest?cb=20250617044756",
+    "weapon": "Rectifier",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/5/5e/Rectifier_Icon.png/revision/latest?cb=20240225014849",
+    "affiliation": "Zhaoming Commerce Guild",
+    "faction": "Mingting",
+    "class": "Natural",
+    "version": "3.5",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Vernal Screen",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/a/a5/Skill_Vernal_Screen.png/revision/latest?cb=20260806170552"
+      },
+      "forte_circuit": {
+        "name": "Lambent Gold",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/3/3c/Skill_Lambent_Gold.png/revision/latest?cb=20260806170933"
+      },
+      "resonance_liberation": {
+        "name": "Song of Thoroughfare",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/3/3e/Skill_Song_of_Thoroughfare.png/revision/latest?cb=20260806170555"
+      },
+      "intro_skill": {
+        "name": "Tinkling Jade",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/4/44/Skill_Tinkling_Jade.png/revision/latest?cb=20260806171548"
+      },
+      "outro_skill": {
+        "name": "Rippling Water",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/c/c8/Skill_Rippling_Water.png/revision/latest?cb=20260806171550"
+      }
+    }
+  },
+  {
+    "name": "Taoqi",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/66/Resonator_Taoqi.png/revision/latest?cb=20240523015200",
+    "quality": 4,
+    "element": "Havoc",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/64/Havoc_Icon.png/revision/latest?cb=20250617044804",
+    "weapon": "Broadblade",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/0/09/Broadblade_Icon.png/revision/latest?cb=20240225014720",
+    "affiliation": "Jinzhou, Huanglong",
+    "faction": "Ministry of Development",
+    "class": "Natural",
+    "version": "1.0",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Defender of Peace",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/7/78/Sequence_Node_Defender_of_Peace.png/revision/latest?cb=20240614233406"
+      },
+      "forte_circuit": {
+        "name": "Power Shift",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/3/33/Skill_Power_Shift.png/revision/latest?cb=20240611145617"
+      },
+      "resonance_liberation": {
+        "name": "Unmovable",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/0/00/Skill_Unmovable.png/revision/latest?cb=20240611144251"
+      },
+      "intro_skill": {
+        "name": "Defense Formation",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/f/f1/Skill_Defense_Formation.png/revision/latest?cb=20240611152324"
+      },
+      "outro_skill": {
+        "name": "Iron Will",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/f/fd/Skill_Iron_Will.png/revision/latest?cb=20240611152834"
+      }
+    }
+  },
+  {
+    "name": "Verina",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/4/4d/Resonator_Verina.png/revision/latest?cb=20240523015325",
+    "quality": 5,
+    "element": "Spectro",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/6a/Spectro_Icon.png/revision/latest?cb=20250617044802",
+    "weapon": "Rectifier",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/5/5e/Rectifier_Icon.png/revision/latest?cb=20240225014849",
+    "affiliation": "Jinzhou, Huanglong",
+    "faction": "Pioneer Association",
+    "class": "Congenital",
+    "version": "1.0",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Sprouting Reflections",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/e/e0/Sequence_Node_Sprouting_Reflections.png/revision/latest?cb=20240619005823"
+      },
+      "forte_circuit": {
+        "name": "Starflower Blooms",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/7/77/Skill_Starflower_Blooms.png/revision/latest?cb=20240614024129"
+      },
+      "resonance_liberation": {
+        "name": "Arboreal Flourish",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/7/7e/Skill_Arboreal_Flourish.png/revision/latest?cb=20240614023139"
+      },
+      "intro_skill": {
+        "name": "Verdant Growth",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/9/99/Skill_Verdant_Growth.png/revision/latest?cb=20240614030534"
+      },
+      "outro_skill": {
+        "name": "Blossom",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/9/94/Skill_Blossom.png/revision/latest?cb=20240614031050"
+      }
+    }
+  },
+  {
+    "name": "Xiangli Yao",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/1/16/Resonator_Xiangli_Yao.png/revision/latest?cb=20260330182959",
+    "quality": 5,
+    "element": "Electro",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/c/c1/Electro_Icon.png/revision/latest?cb=20250617044801",
+    "weapon": "Gauntlets",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/8/85/Gauntlets_Icon.png/revision/latest?cb=20240225014634",
+    "affiliation": "Jinzhou, Huanglong",
+    "faction": "Huaxu Academy",
+    "class": "Mutant",
+    "version": "1.2",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Prodigy of Protégés",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/c/c8/Sequence_Node_Prodigy_of_Prot%C3%A9g%C3%A9s.png/revision/latest?cb=20241122163012"
+      },
+      "forte_circuit": {
+        "name": "Forever Seeking",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/66/Skill_Forever_Seeking.png/revision/latest?cb=20241122161527"
+      },
+      "resonance_liberation": {
+        "name": "Cogitation Model",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/2/22/Skill_Cogitation_Model.png/revision/latest?cb=20240907175832"
+      },
+      "intro_skill": {
+        "name": "Principle",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/f/fb/Skill_Principle.png/revision/latest?cb=20241122162014"
+      },
+      "outro_skill": {
+        "name": "Chain Rule",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/1/16/Skill_Chain_Rule.png/revision/latest?cb=20241122162116"
+      }
+    }
+  },
+  {
+    "name": "Yangyang",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/c/cf/Resonator_Yangyang.png/revision/latest?cb=20240523011247",
+    "quality": 4,
+    "element": "Aero",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/67/Aero_Icon.png/revision/latest?cb=20250617044800",
+    "weapon": "Sword",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/3/32/Sword_Icon.png/revision/latest?cb=20240306160610",
+    "affiliation": "Jinzhou, Huanglong",
+    "faction": "Midnight Rangers",
+    "class": "Natural",
+    "version": "1.0",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Nature Sings in Symphony",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/1/1c/Sequence_Node_Nature_Sings_in_Symphony.png/revision/latest?cb=20240527213901"
+      },
+      "forte_circuit": {
+        "name": "Echoing Feathers",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/b/b5/Skill_Echoing_Feathers.png/revision/latest?cb=20240529230145"
+      },
+      "resonance_liberation": {
+        "name": "Wind Spirals",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/7/7a/Skill_Wind_Spirals.png/revision/latest?cb=20240529134013"
+      },
+      "intro_skill": {
+        "name": "Cerulean Song",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/9/9f/Skill_Cerulean_Song.png/revision/latest?cb=20240529230303"
+      },
+      "outro_skill": {
+        "name": "Whispering Breeze",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/a/a8/Skill_Whispering_Breeze.png/revision/latest?cb=20240529230110"
+      }
+    }
+  },
+  {
+    "name": "Yangyang: Xuanling",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/0/0b/Resonator_Yangyang_Xuanling.png/revision/latest?cb=20260710080633",
+    "quality": 5,
+    "element": "Havoc",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/64/Havoc_Icon.png/revision/latest?cb=20250617044804",
+    "weapon": "Sword",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/3/32/Sword_Icon.png/revision/latest?cb=20240306160610",
+    "affiliation": "Ministry of War",
+    "faction": "Xuanfang Wardens",
+    "class": "Natural",
+    "version": "3.5",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Feather's Edge",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/8/87/Skill_Feather%27s_Edge.png/revision/latest?cb=20260711214701"
+      },
+      "forte_circuit": {
+        "name": "The Way of Ten Thousand Voices",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/9/9c/Skill_The_Way_of_Ten_Thousand_Voices.png/revision/latest?cb=20260711214712"
+      },
+      "resonance_liberation": {
+        "name": "Hush of a Thousand Voices",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/3/3f/Skill_Hush_of_a_Thousand_Voices.png/revision/latest?cb=20260711214702"
+      },
+      "intro_skill": {
+        "name": "Skybound Feather",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/2/2f/Skill_Skybound_Feather.png/revision/latest?cb=20260711214704"
+      },
+      "outro_skill": {
+        "name": "As the Wind Wills",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/4/46/Skill_As_the_Wind_Wills.png/revision/latest?cb=20260711214713"
+      }
+    }
+  },
+  {
+    "name": "Yinlin",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/4/41/Resonator_Yinlin.png/revision/latest?cb=20240523015514",
+    "quality": 5,
+    "element": "Electro",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/c/c1/Electro_Icon.png/revision/latest?cb=20250617044801",
+    "weapon": "Rectifier",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/5/5e/Rectifier_Icon.png/revision/latest?cb=20240225014849",
+    "affiliation": "Jinzhou, Huanglong",
+    "faction": "Public Security Bureau",
+    "class": "Congenital",
+    "version": "1.0",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Pursuit of Justice",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/a/ac/Sequence_Node_Pursuit_of_Justice.png/revision/latest?cb=20240613160944"
+      },
+      "forte_circuit": {
+        "name": "Chameleon Cipher",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/7/70/Skill_Chameleon_Cipher.png/revision/latest?cb=20240608184100"
+      },
+      "resonance_liberation": {
+        "name": "Thundering Wrath",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/3/3a/Skill_Thundering_Wrath.png/revision/latest?cb=20240608180649"
+      },
+      "intro_skill": {
+        "name": "Raging Storm",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/3/30/Skill_Raging_Storm.png/revision/latest?cb=20240608175532"
+      },
+      "outro_skill": {
+        "name": "Strategist",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/8/84/Skill_Strategist.png/revision/latest?cb=20240608175605"
+      }
+    }
+  },
+  {
+    "name": "Youhu",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/9/93/Resonator_Youhu.png/revision/latest?cb=20240929033850",
+    "quality": 4,
+    "element": "Glacio",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/a/aa/Glacio_Icon.png/revision/latest?cb=20250617044756",
+    "weapon": "Gauntlets",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/8/85/Gauntlets_Icon.png/revision/latest?cb=20240225014634",
+    "affiliation": "Chongzhou, Huanglong",
+    "faction": null,
+    "class": "Mutant",
+    "version": "1.3",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Waterside Respite",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/b/be/Sequence_Node_Waterside_Respite.png/revision/latest?cb=20241213174113"
+      },
+      "forte_circuit": {
+        "name": "Poetic Essence",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/9/9a/Skill_Poetic_Essence.png/revision/latest?cb=20241213163126"
+      },
+      "resonance_liberation": {
+        "name": "Fortune's Favor",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/b/bc/Skill_Fortune%27s_Favor.png/revision/latest?cb=20241213162945"
+      },
+      "intro_skill": {
+        "name": "Scroll of Wonders",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/61/Skill_Scroll_of_Wonders.png/revision/latest?cb=20241213163638"
+      },
+      "outro_skill": {
+        "name": "Timeless Classics",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/61/Skill_Timeless_Classics.png/revision/latest?cb=20241213163738"
+      }
+    }
+  },
+  {
+    "name": "Yuanwu",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/d/d6/Resonator_Yuanwu.png/revision/latest?cb=20240523015241",
+    "quality": 4,
+    "element": "Electro",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/c/c1/Electro_Icon.png/revision/latest?cb=20250617044801",
+    "weapon": "Gauntlets",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/8/85/Gauntlets_Icon.png/revision/latest?cb=20240225014634",
+    "affiliation": "Jinzhou, Huanglong",
+    "faction": "Yuanwu Boxing Gym",
+    "class": "Natural",
+    "version": "1.0",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Defender of All Realms",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/67/Sequence_Node_Defender_of_All_Realms.png/revision/latest?cb=20240613163709"
+      },
+      "forte_circuit": {
+        "name": "Unassuming Blade",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/1/1f/Skill_Unassuming_Blade.png/revision/latest?cb=20240813123530"
+      },
+      "resonance_liberation": {
+        "name": "Blazing Might",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/a/ab/Skill_Blazing_Might.png/revision/latest?cb=20240813122724"
+      },
+      "intro_skill": {
+        "name": "Thunder Bombardment",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/2/27/Skill_Thunder_Bombardment.png/revision/latest?cb=20240813123444"
+      },
+      "outro_skill": {
+        "name": "Lightning Manipulation",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/e/e4/Skill_Lightning_Manipulation.png/revision/latest?cb=20240729175125"
+      }
+    }
+  },
+  {
+    "name": "Zani",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/1/12/Resonator_Zani.png/revision/latest?cb=20250429222139",
+    "quality": 5,
+    "element": "Spectro",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/6a/Spectro_Icon.png/revision/latest?cb=20250617044802",
+    "weapon": "Gauntlets",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/8/85/Gauntlets_Icon.png/revision/latest?cb=20240225014634",
+    "affiliation": "Ragunna, Rinascita",
+    "faction": "Montelli Family",
+    "class": "Mutant",
+    "version": "2.3",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "When the Alarm Clock Rings",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/7/76/Sequence_Node_When_the_Alarm_Clock_Rings.png/revision/latest?cb=20250515181110"
+      },
+      "forte_circuit": {
+        "name": "There Will Be A Light",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/d/dd/Skill_There_Will_Be_A_Light.png/revision/latest?cb=20250921184236"
+      },
+      "resonance_liberation": {
+        "name": "Between Dawn and Dusk",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/f/f8/Skill_Between_Dawn_and_Dusk.png/revision/latest?cb=20250920201023"
+      },
+      "intro_skill": {
+        "name": "Immediate Execution",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/f/f1/Skill_Immediate_Execution.png/revision/latest?cb=20250921182712"
+      },
+      "outro_skill": {
+        "name": "Beacon For the Future",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/1/1a/Skill_Beacon_For_the_Future.png/revision/latest?cb=20250921184520"
+      }
+    }
+  },
+  {
+    "name": "Zhezhi",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/a/a0/Resonator_Zhezhi.png/revision/latest?cb=20240812052258",
+    "quality": 5,
+    "element": "Glacio",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/a/aa/Glacio_Icon.png/revision/latest?cb=20250617044756",
+    "weapon": "Rectifier",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/5/5e/Rectifier_Icon.png/revision/latest?cb=20240225014849",
+    "affiliation": "Jinzhou, Huanglong",
+    "faction": null,
+    "class": "Congenital",
+    "version": "1.2",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Brushwork's Finish",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/b/bb/Sequence_Node_Brushwork%27s_Finish.png/revision/latest?cb=20240815090440"
+      },
+      "forte_circuit": {
+        "name": "Ink and Wash",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/6/65/Skill_Ink_and_Wash.png/revision/latest?cb=20240821105737"
+      },
+      "resonance_liberation": {
+        "name": "Living Canvas",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/5/5a/Skill_Living_Canvas.png/revision/latest?cb=20240821183516"
+      },
+      "intro_skill": {
+        "name": "Radiant Ruin",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/8/87/Skill_Radiant_Ruin.png/revision/latest?cb=20240817181250"
+      },
+      "outro_skill": {
+        "name": "Carve and Draw",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/9/90/Skill_Carve_and_Draw.png/revision/latest?cb=20240816132658"
+      }
+    }
+  },
+  {
+    "name": "Hsin",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/a/a7/Resonator_Hsin.png/revision/latest?cb=20260615174305",
+    "quality": 5,
+    "element": "Electro",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/c/c1/Electro_Icon.png/revision/latest?cb=20250617044801",
+    "weapon": "Rectifier",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/5/5e/Rectifier_Icon.png/revision/latest?cb=20240225014849",
+    "affiliation": "Sentinels",
+    "faction": "Mengzhou",
+    "class": null,
+    "version": "3.7",
+    "status": "upcoming",
+    "forte": {
+      "resonance_skill": null,
+      "forte_circuit": null,
+      "resonance_liberation": null,
+      "intro_skill": null,
+      "outro_skill": null
+    }
+  },
+  {
+    "name": "Jingran",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/d/d0/Resonator_Jingran.png/revision/latest?cb=20260820165054",
+    "quality": 5,
+    "element": "Fusion",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/f/f9/Fusion_Icon.png/revision/latest?cb=20250617044759",
+    "weapon": "Broadblade",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/0/09/Broadblade_Icon.png/revision/latest?cb=20240225014720",
+    "affiliation": "Mengzhou",
+    "faction": null,
+    "class": null,
+    "version": "3.6",
+    "status": "upcoming",
+    "forte": {
+      "resonance_skill": null,
+      "forte_circuit": null,
+      "resonance_liberation": null,
+      "intro_skill": null,
+      "outro_skill": null
+    }
+  },
+  {
+    "name": "Suoming",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/b/bb/Resonator_Suoming.png/revision/latest?cb=20260615172949",
+    "quality": 5,
+    "element": "Electro",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/c/c1/Electro_Icon.png/revision/latest?cb=20250617044801",
+    "weapon": "Sword",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/3/32/Sword_Icon.png/revision/latest?cb=20240306160610",
+    "affiliation": "Mengzhou",
+    "faction": null,
+    "class": null,
+    "version": "3.7",
+    "status": "upcoming",
+    "forte": {
+      "resonance_skill": null,
+      "forte_circuit": null,
+      "resonance_liberation": null,
+      "intro_skill": null,
+      "outro_skill": null
+    }
+  }
+]
