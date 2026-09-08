@@ -21,6 +21,7 @@ export const GENSHIN_CHARACTERS: GenshinCharacter[] = Array.from(
   new Map(rawCharacters.map((character) => [character.name, character])).values(),
 ).filter((character) => character.name && character.icon);
 
+// The daily puzzle flips at midnight Pacific time (PDT in summer, PST in
 // America/Los_Angeles.
 const PACIFIC_TIME_ZONE = "America/Los_Angeles";
 
@@ -35,9 +36,11 @@ export function pacificDateString(date = new Date()) {
   return `${part("year")}-${part("month")}-${part("day")}`;
 }
 
-export function getDailyGenshinCharacter(date = new Date()) {
-  const utcDay = Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate());
-  const dayNumber = Math.floor(utcDay / 86_400_000);
+// dateString is a calendar day in Pacific time, e.g. "2026-09-04". The same
+// day number feeds the rotation, so the puzzle changes at Pacific midnight.
+export function getDailyGenshinCharacter(dateString: string) {
+  const [year, month, day] = dateString.split("-").map(Number);
+  const dayNumber = Math.floor(Date.UTC(year, month - 1, day) / 86_400_000);
   return GENSHIN_CHARACTERS[((dayNumber % GENSHIN_CHARACTERS.length) + GENSHIN_CHARACTERS.length) % GENSHIN_CHARACTERS.length];
 }
 
