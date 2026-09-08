@@ -15,6 +15,7 @@ export type GameCardProps = {
   onMoveToTier: (tier: GameTier) => void;
   onDragStart: (event: DragEvent<HTMLElement>) => void;
   onDragEnd: () => void;
+  onDropOnGame: (event: DragEvent<HTMLElement>) => void;
 };
 
 const suitGlyph: Record<CardSuit, string> = {
@@ -44,6 +45,7 @@ export default function GameCard({
   onMoveToTier,
   onDragStart,
   onDragEnd,
+  onDropOnGame,
 }: GameCardProps) {
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
   const cardRef = useRef<HTMLElement>(null);
@@ -70,6 +72,20 @@ export default function GameCard({
     if (nextIndex < 0 || nextIndex >= GAME_TIERS.length) return;
     event.preventDefault();
     void Promise.resolve(onMoveToTier(GAME_TIERS[nextIndex])).catch(() => undefined);
+  }
+
+  function handleDragOverCard(event: DragEvent<HTMLElement>) {
+    // Without preventing the default here the card is not a valid drop
+    // target, so in-tier drops would fall through to the tier row.
+    event.preventDefault();
+    event.stopPropagation();
+    event.dataTransfer.dropEffect = "move";
+  }
+
+  function handleDropOnCard(event: DragEvent<HTMLElement>) {
+    event.preventDefault();
+    event.stopPropagation();
+    onDropOnGame(event);
   }
 
   function handleDragStart(event: DragEvent<HTMLElement>) {
@@ -104,6 +120,8 @@ export default function GameCard({
         draggable={isEditable}
         onDragStart={isEditable ? handleDragStart : undefined}
         onDragEnd={isEditable ? onDragEnd : undefined}
+        onDragOver={isEditable ? handleDragOverCard : undefined}
+        onDrop={isEditable ? handleDropOnCard : undefined}
         onKeyDown={handleCardKeyDown}
         tabIndex={0}
         aria-grabbed={isEditable ? isDragging : undefined}

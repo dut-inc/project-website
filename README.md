@@ -48,7 +48,7 @@ For a local `.env.local` file, use `BOARD_GAMES_PASSCODE=...` without a `NEXT_PU
 app/
   layout.tsx        shared shell: fonts, nav, page container
   page.tsx           home — the case-file grid
-  fish-quiz/page.tsx
+  fish-stuff/page.tsx
   sports/page.tsx
   conservation/page.tsx
   board/page.tsx

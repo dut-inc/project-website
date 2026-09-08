@@ -11,6 +11,8 @@ export default function CaseHeader({
   status,
   description,
   pin = "gold",
+  paper = "cream",
+  rotation = -1,
   showPin = true,
   backHref = "/",
   backLabel = "Back to the board",
@@ -24,6 +26,8 @@ export default function CaseHeader({
   status: Status;
   description: string;
   pin?: PinColor;
+  paper?: "cream" | "kraft";
+  rotation?: number;
   showPin?: boolean;
   backHref?: string;
   backLabel?: string;
@@ -32,6 +36,7 @@ export default function CaseHeader({
   onCaseStudyClick?: () => void;
   caseStudyLabel?: string;
 }) {
+  const paperClass = paper === "kraft" ? "bg-kraft" : "bg-cream";
   function handleCaseStudyKeyDown(event: KeyboardEvent<HTMLDivElement>) {
     if (!onCaseStudyClick || (event.key !== "Enter" && event.key !== " ")) return;
     event.preventDefault();
@@ -48,7 +53,8 @@ export default function CaseHeader({
       </Link>
       <div
         ref={caseStudyRef}
-        className={`relative mx-auto max-w-xl -rotate-1 ${onCaseStudyClick ? "cursor-pointer" : ""}`}
+        className={`relative mx-auto max-w-xl ${onCaseStudyClick ? "cursor-pointer" : ""}`}
+        style={{ transform: `rotate(${rotation}deg)` }}
         onClick={onCaseStudyClick}
         onKeyDown={handleCaseStudyKeyDown}
         role={onCaseStudyClick ? "button" : undefined}
@@ -56,7 +62,7 @@ export default function CaseHeader({
         aria-label={onCaseStudyClick ? caseStudyLabel : undefined}
       >
         {showPin && <Pin color={pin} />}
-        <div className="paper-torn bg-cream p-6 text-ink shadow-[0_14px_28px_-8px_rgba(0,0,0,0.55)] transition-shadow sm:p-7">
+        <div className={`paper-torn ${paperClass} p-6 text-ink shadow-[0_14px_28px_-8px_rgba(0,0,0,0.55)] transition-shadow sm:p-7`}>
           <div className="mb-3 flex items-center justify-between font-mono text-[10px] uppercase tracking-widest text-ink2">
             <span>{caseNumberControl ?? <>Case №{caseNumber}</>}</span>
             <span className={statusColor[status]}>{status}</span>

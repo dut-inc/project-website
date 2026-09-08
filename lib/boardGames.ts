@@ -38,7 +38,7 @@ export const TIER_DETAILS: Record<
   S: {
     label: "Ace",
     color: "#7B302E",
-    hint: "clear the table",
+    hint: "Perfect",
     image: "/images/tierlist/8BitDeck52.png",
   },
   A: {

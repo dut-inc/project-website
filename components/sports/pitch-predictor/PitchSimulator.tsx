@@ -457,7 +457,7 @@ export default function PitchSimulator({
                 <button
                   type="button"
                   onClick={() => resetAtBat()}
-                  className="rounded-full bg-sports-accent px-4 py-1.5 font-mono text-[11px] font-medium uppercase tracking-widest text-black transition-colors hover:bg-white"
+                  className="min-h-11 rounded-full bg-sports-accent px-6 py-3 font-mono text-xs font-medium uppercase tracking-widest text-black transition-colors hover:bg-white"
                 >
                   New at-bat
                 </button>
@@ -548,7 +548,7 @@ export default function PitchSimulator({
             <button
               type="button"
               onClick={resetGame}
-              className="rounded-full border border-white/15 bg-black/40 px-4 py-2 font-mono text-[11px] uppercase tracking-widest text-white/50 transition-colors hover:border-white/30 hover:text-white"
+              className="min-h-11 rounded-full border border-white/15 bg-black/40 px-6 py-3 font-mono text-xs uppercase tracking-widest text-white/50 transition-colors hover:border-white/30 hover:text-white"
             >
               Reset
             </button>
@@ -556,7 +556,7 @@ export default function PitchSimulator({
               type="button"
               onClick={autoRunning ? stopAuto : startAuto}
               disabled={!model || !pitcher || !batter || (!!state.result && !autoRunning)}
-              className="rounded-full border border-white/20 bg-white/5 px-4 py-2 font-mono text-[11px] uppercase tracking-widest text-white/70 transition-colors hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-40"
+              className="min-h-11 rounded-full border border-white/20 bg-white/5 px-6 py-3 font-mono text-xs uppercase tracking-widest text-white/70 transition-colors hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-40"
             >
               {autoRunning ? "Stop auto" : "Auto at-bat"}
             </button>

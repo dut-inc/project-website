@@ -1,6 +1,6 @@
 import FishCard from "./FishCard";
 import FishIcon from "./FishIcon";
-import type { QuizResult, Scores } from "@/lib/fishQuiz";
+import type { QuizResult, Scores } from "@/lib/fishStuff";
 
 export default function FishResult({
   result,
@@ -19,7 +19,7 @@ export default function FishResult({
 
   return (
     <FishCard ariaLive="polite">
-      <p className="font-mono text-[10px] uppercase tracking-widest text-ink2">
+      <p className="font-mono text-[10px] uppercase tracking-widest text-cream/60">
         Your result
       </p>
 
@@ -34,10 +34,10 @@ export default function FishResult({
           >
             {result.fish.tagline}
           </span>
-          <h2 className="mt-2 font-display text-3xl italic text-ink sm:text-4xl">
+          <h2 className="mt-2 font-display text-3xl italic text-cream sm:text-4xl">
             {result.fish.name}
           </h2>
-          <p className="mt-3 text-sm leading-relaxed text-ink/80">
+          <p className="mt-3 text-sm leading-relaxed text-cream/75">
             {result.fish.description}
           </p>
         </div>
@@ -45,22 +45,22 @@ export default function FishResult({
 
       <ul className="mt-6 space-y-2">
         {result.fish.traits.map((t) => (
-          <li key={t} className="flex items-center gap-3 text-sm text-ink/90">
+          <li key={t} className="flex items-center gap-3 text-sm text-cream/85">
             <span className="text-pinTeal">&#10003;</span>
             {t}
           </li>
         ))}
       </ul>
 
-      <p className="mt-5 rounded-lg bg-ink/5 px-4 py-3 font-mono text-xs leading-relaxed text-ink2">
-        <span className="uppercase tracking-widest text-ink/60">
+      <p className="mt-5 rounded-lg bg-white/5 px-4 py-3 font-mono text-xs leading-relaxed text-cream/70">
+        <span className="uppercase tracking-widest text-cream/50">
           Did you know &middot;{" "}
         </span>
         {result.fish.fact}
       </p>
 
       <div className="mt-6">
-        <p className="mb-3 font-mono text-[10px] uppercase tracking-widest text-ink2">
+        <p className="mb-3 font-mono text-[10px] uppercase tracking-widest text-cream/60">
           How you scored
         </p>
         <div className="space-y-2.5">
@@ -78,13 +78,13 @@ export default function FishResult({
                 />
                 <span
                   className={`w-36 shrink-0 truncate font-mono text-[11px] uppercase tracking-wider ${
-                    isWinner ? "font-medium text-ink" : "text-ink2"
+                    isWinner ? "font-medium text-cream" : "text-cream/60"
                   }`}
                 >
                   {f.tagline}
                 </span>
                 <div
-                  className="h-2 flex-1 overflow-hidden rounded-full bg-ink/10"
+                  className="h-2 flex-1 overflow-hidden rounded-full bg-white/10"
                   role="progressbar"
                   aria-label={`${f.name} score`}
                   aria-valuemin={0}
@@ -99,7 +99,7 @@ export default function FishResult({
                     }}
                   />
                 </div>
-                <span className="w-6 shrink-0 text-right font-mono text-[11px] text-ink2">
+                <span className="w-6 shrink-0 text-right font-mono text-[11px] text-cream/60">
                   {score}
                 </span>
               </div>
@@ -109,9 +109,8 @@ export default function FishResult({
       </div>
 
       {result.ranked[1] && scores[result.ranked[1].id] > 0 && (
-        <p className="mt-5 text-sm text-ink/70">
-          A little{" "}
-          <span className="font-medium text-ink">
+        <p className="mt-5 text-sm text-cream/70">
+          A little{" "}            <span className="font-medium text-cream">
             {result.ranked[1].shortName}
           </span>{" "}
           in you, too.
@@ -127,7 +126,7 @@ export default function FishResult({
         </button>
         <button
           onClick={onCopy}
-          className="min-h-11 rounded-full border border-ink/20 px-6 py-3 font-mono text-xs uppercase tracking-widest text-ink transition-all hover:-translate-y-0.5 hover:border-pinTeal hover:text-pinTeal"
+          className="min-h-11 rounded-full border border-white/20 px-6 py-3 font-mono text-xs uppercase tracking-widest text-cream transition-all hover:-translate-y-0.5 hover:border-pinTeal hover:text-pinTeal"
         >
           {copied ? "Copied!" : "Copy result"}
         </button>

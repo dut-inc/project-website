@@ -148,14 +148,9 @@ export default function GameDetailsPopup({
         className="relative max-h-[min(44rem,calc(100vh-2rem))] w-full max-w-2xl overflow-y-auto rounded-[1.15rem] border-2 border-[#8d765a]/75 bg-[#f4ead6] p-6 text-[#29201c] shadow-[0_24px_70px_-18px_rgba(38,24,15,0.75),inset_0_0_0_1px_rgba(255,255,255,0.78)] sm:p-8"
       >
         <span className="pointer-events-none absolute left-4 top-4 font-serif text-2xl leading-none" style={{ color: cardSuitColor }} aria-hidden>{cardGlyph}</span>
-        <span className="pointer-events-none absolute bottom-4 right-4 rotate-180 font-serif text-2xl leading-none" style={{ color: cardSuitColor }} aria-hidden>{cardGlyph}</span>
-        <span className="pointer-events-none absolute inset-x-6 top-5 h-px bg-[#8d765a]/45" aria-hidden />
-        <div className="relative z-10 flex items-start justify-between gap-5 pl-6">
+        <div className="relative z-10 flex items-center justify-between gap-5">
           <div>
-            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-shelf-ink/80">
-              game card / {TIER_DETAILS[game.tier].label} · {game.gameType}
-            </p>
-            <h2 id={`game-details-title-${game.id}`} className="mt-2 font-display text-3xl italic">
+            <h2 id={`game-details-title-${game.id}`} className="pt-4 font-display text-3xl italic">
               {isEditing ? "Edit game" : game.name}
             </h2>
           </div>
@@ -244,19 +239,19 @@ export default function GameDetailsPopup({
               </div>
             ))}
             <div className="flex flex-wrap gap-3">
-              <button type="button" onClick={() => void save()} disabled={isSaving} className="min-h-11 rounded-full bg-shelf-walnut px-5 font-mono text-[11px] uppercase tracking-widest text-shelf-paper transition-colors hover:bg-shelf-wood disabled:cursor-wait disabled:opacity-60">
+              <button type="button" onClick={() => void save()} disabled={isSaving} className="min-h-11 rounded-full bg-shelf-walnut px-6 py-3 font-mono text-xs uppercase tracking-widest text-shelf-paper transition-colors hover:bg-shelf-wood disabled:cursor-wait disabled:opacity-60">
                 {isSaving ? "Saving…" : "Save changes"}
               </button>
-              <button type="button" onClick={() => setIsEditing(false)} disabled={isSaving} className="min-h-11 rounded-full border border-shelf-paperDark/60 px-5 font-mono text-[11px] uppercase tracking-widest text-shelf-ink/80 transition-colors hover:border-shelf-brass hover:text-shelf-ink disabled:opacity-60">
+              <button type="button" onClick={() => setIsEditing(false)} disabled={isSaving} className="min-h-11 rounded-full border border-shelf-paperDark/60 px-6 py-3 font-mono text-xs uppercase tracking-widest text-shelf-ink/80 transition-colors hover:border-shelf-brass hover:text-shelf-ink disabled:opacity-60">
                 Cancel
               </button>
             </div>
           </div>
         ) : (
           <>
-            <div className="relative z-10 mt-7 rounded-xl border border-[#8d765a]/55 bg-white/30 p-4 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.45)]"
+            <div className="relative z-10 mt-5 rounded-xl border border-[#8d765a]/55 bg-white/30 p-4 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.45)]"
             >
-              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#5f5142]">your take</p>
+              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#5f5142]">our take</p>
               <p className="mt-2 text-base leading-relaxed text-[#29201c]">{game.description || "No description yet."}</p>
             </div>
             <dl className="relative z-10 mt-4 grid grid-cols-2 gap-3">
@@ -281,10 +276,10 @@ export default function GameDetailsPopup({
             </div>
             {canEdit ? (
               <div className="relative z-10 mt-7 flex flex-wrap items-center justify-between gap-3 border-t border-[#8d765a]/45 pt-5">
-                <button type="button" onClick={() => setIsEditing(true)} className="min-h-11 rounded-full bg-shelf-walnut px-5 font-mono text-[11px] uppercase tracking-widest text-shelf-paper transition-colors hover:bg-shelf-wood">
+                <button type="button" onClick={() => setIsEditing(true)} className="min-h-11 rounded-full bg-shelf-walnut px-6 py-3 font-mono text-xs uppercase tracking-widest text-shelf-paper transition-colors hover:bg-shelf-wood">
                   Edit game
                 </button>
-                <button type="button" onClick={() => void remove()} disabled={isSaving} className="min-h-11 rounded-full px-3 font-mono text-[11px] uppercase tracking-widest text-shelf-burgundy transition-colors hover:bg-shelf-burgundy/10 disabled:opacity-60">
+                <button type="button" onClick={() => void remove()} disabled={isSaving} className="min-h-11 rounded-full px-6 py-3 font-mono text-xs uppercase tracking-widest text-shelf-burgundy transition-colors hover:bg-shelf-burgundy/10 disabled:opacity-60">
                   {isSaving ? "Working…" : "Delete game"}
                 </button>
               </div>
@@ -293,6 +288,9 @@ export default function GameDetailsPopup({
         )}
 
         <WinTracker gameId={game.id} gameName={game.name} isEditable={canEdit} />
+        <div className="pointer-events-none -mr-2 -mb-2 mt-2 flex justify-end font-serif text-2xl leading-none" style={{ color: cardSuitColor }} aria-hidden>
+          <span className="rotate-180">{cardGlyph}</span>
+        </div>
       </section>
     </div>
   );
