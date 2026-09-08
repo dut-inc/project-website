@@ -21,6 +21,20 @@ export const GENSHIN_CHARACTERS: GenshinCharacter[] = Array.from(
   new Map(rawCharacters.map((character) => [character.name, character])).values(),
 ).filter((character) => character.name && character.icon);
 
+// America/Los_Angeles.
+const PACIFIC_TIME_ZONE = "America/Los_Angeles";
+
+export function pacificDateString(date = new Date()) {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: PACIFIC_TIME_ZONE,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(date);
+  const part = (type: string) => parts.find((item) => item.type === type)?.value ?? "";
+  return `${part("year")}-${part("month")}-${part("day")}`;
+}
+
 export function getDailyGenshinCharacter(date = new Date()) {
   const utcDay = Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate());
   const dayNumber = Math.floor(utcDay / 86_400_000);

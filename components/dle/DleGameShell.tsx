@@ -60,7 +60,7 @@ export default function DleGameShell({ game }: { game: DleGame }) {
               <button
                 type="button"
                 disabled={!isLive}
-                className="mt-6 min-h-11 rounded-full border border-pinGold/60 px-5 font-mono text-[10px] uppercase tracking-widest text-pinGold transition-colors hover:bg-pinGold/10 disabled:cursor-not-allowed disabled:opacity-45"
+                className="mt-6 min-h-11 rounded-full border border-pinGold/60 px-6 py-3 font-mono text-xs uppercase tracking-widest text-pinGold transition-colors hover:bg-pinGold/10 disabled:cursor-not-allowed disabled:opacity-45"
               >
                 {isLive ? "Start today" : "Game not live yet"}
               </button>

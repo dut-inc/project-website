@@ -20,7 +20,7 @@ export default function PinnedNote({ project }: { project: Project }) {
         />
       )}
       <div
-        className={`paper-torn ${paperClass} p-5 shadow-[0_10px_20px_-6px_rgba(0,0,0,0.5)]`}
+        className={`paper-torn ${paperClass} px-5 pt-5 pb-4 shadow-[0_10px_20px_-6px_rgba(0,0,0,0.5)]`}
       >
         <div className="mb-3 flex items-center justify-between font-mono text-[10px] uppercase tracking-widest text-ink2">
           <span>Case №{project.case}</span>
@@ -30,9 +30,6 @@ export default function PinnedNote({ project }: { project: Project }) {
           {project.title}
         </h3>
         <p className="mt-2 text-sm leading-relaxed text-ink/80">{project.summary}</p>
-        <div className="mt-4 font-mono text-[10px] uppercase tracking-widest text-ink2">
-          Updated {project.updated}
-        </div>
       </div>
     </Link>
   );

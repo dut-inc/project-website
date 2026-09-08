@@ -97,19 +97,6 @@ export default function ConservationMap() {
 
   return (
     <div className="mx-auto mt-10 max-w-6xl">
-      {uploadOpen && (
-        <div className="mb-8">
-          <SightingUploadForm
-            pickMode={pickMode}
-            onStartPick={() => setPickMode(true)}
-            onStopPick={() => setPickMode(false)}
-            pickedPoint={pickedPoint}
-            onPickedConsumed={handlePickedConsumed}
-            onCreated={handleCreated}
-          />
-        </div>
-      )}
-
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_19rem] lg:items-start">
         <div className="relative rotate-1">
           <Pin color="navy" />
@@ -135,15 +122,10 @@ export default function ConservationMap() {
         <aside className="space-y-3">
           <button
             type="button"
-            onClick={() => setUploadOpen((open) => !open)}
-            className={`w-full rounded-full px-3 py-2 font-mono text-[10px] uppercase tracking-widest transition-colors ${
-              uploadOpen
-                ? "bg-[#C1442D] text-cream hover:bg-[#C1442D]/85"
-                : "bg-pinNavy text-cream hover:bg-pinNavy/85"
-            }`}
-            aria-expanded={uploadOpen}
+            onClick={() => setUploadOpen(true)}
+            className="min-h-11 w-full rounded-full bg-pinNavy px-6 py-3 font-mono text-xs uppercase tracking-widest text-cream transition-colors hover:bg-pinNavy/85"
           >
-            {uploadOpen ? "close the log form" : "＋ log a sighting"}
+            ＋ log a sighting
           </button>
 
           {loadError && (
@@ -191,6 +173,22 @@ export default function ConservationMap() {
           </div>
         </aside>
       </div>
+
+      {uploadOpen && (
+        <SightingUploadForm
+          pickMode={pickMode}
+          onStartPick={() => setPickMode(true)}
+          onStopPick={() => setPickMode(false)}
+          pickedPoint={pickedPoint}
+          onPickedConsumed={handlePickedConsumed}
+          onCreated={handleCreated}
+          onClose={() => {
+            setUploadOpen(false);
+            setPickMode(false);
+            setPickedPoint(null);
+          }}
+        />
+      )}
     </div>
   );
 }

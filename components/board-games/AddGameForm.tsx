@@ -131,7 +131,7 @@ export default function AddGameForm({ onAdd, disabled = false }: AddGameFormProp
           <button
             type="submit"
             disabled={disabled || isAdding}
-            className="mt-3 min-h-11 w-full rounded-full bg-[#29201c] px-4 font-mono text-[10px] uppercase tracking-[0.16em] text-[#f4ead6] transition-all hover:-translate-y-0.5 hover:bg-[#5f5142] hover:shadow-[0_5px_10px_rgba(38,24,15,0.25)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c9a227] disabled:cursor-not-allowed disabled:opacity-60"
+            className="mt-3 min-h-11 w-full rounded-full bg-[#29201c] px-6 py-3 font-mono text-xs uppercase tracking-widest text-[#f4ead6] transition-all hover:-translate-y-0.5 hover:bg-[#5f5142] hover:shadow-[0_5px_10px_rgba(38,24,15,0.25)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c9a227] disabled:cursor-not-allowed disabled:opacity-60"
           >
             {disabled ? "Unlock to add games" : isAdding ? "Dealing…" : "Deal Joker game"}
           </button>

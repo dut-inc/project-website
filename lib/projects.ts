@@ -16,7 +16,7 @@ export type Project = {
 
 // Map keys are the URL slugs — the single source of truth for project data.
 export type ProjectId =
-  | "fish-quiz"
+  | "fish-stuff"
   | "sports"
   | "conservation"
   | "board"
@@ -31,11 +31,11 @@ export const statusColor: Record<Status, string> = {
 
 export const projects: Map<ProjectId, Project> = new Map([
   [
-    "fish-quiz",
+    "fish-stuff",
     {
       case: "001",
-      title: "Fish Quiz",
-      href: "/fish-quiz",
+      title: "Fish Stuff",
+      href: "/fish-stuff",
       status: "ACTIVE",
       updated: "2026-08-01",
       summary:
@@ -64,7 +64,7 @@ export const projects: Map<ProjectId, Project> = new Map([
     "conservation",
     {
       case: "003",
-      title: "Field Watch",
+      title: "Nature and Conservation",
       href: "/conservation",
       status: "ACTIVE",
       updated: "2026-08-05",
@@ -87,14 +87,13 @@ export const projects: Map<ProjectId, Project> = new Map([
       rotation: 1.5,
       paper: "kraft",
       pin: "red",
-      taped: true,
     },
   ],
   [
     "board-games",
     {
       case: "005",
-      title: "Game Tiers",
+      title: "Board Games",
       href: "/board-games",
       status: "ACTIVE",
       updated: "2026-08-04",
@@ -110,7 +109,7 @@ export const projects: Map<ProjectId, Project> = new Map([
       case: "006",
       title: "DLE",
       href: "/dle",
-      status: "PLANNING",
+      status: "ACTIVE",
       updated: "2026-08-31",
       summary: "daily dle games",
       rotation: 1.5,

@@ -4,24 +4,29 @@ import { getProject } from "@/lib/projects";
 
 const features = [
   {
-    href: "/board-games/tierlist",
+    href: "/fish-stuff/personality",
     tag: "Live",
-    title: "Board Games Tier List",
+    title: "Which Pacific Northwest Fish Are You?",
     blurb:
-      "our group's personal rankings of board games we've played",
+      "find out what fish you are!1!1!1!!!!",
   },
 ];
 
 const comingSoon = [
   {
-    title: "Root Lawbook Search",
+    title: "Identify the fish quiz",
     blurb:
-      "a tool for searching the lawbook rules of Root",
+      "name that fish!",
+  },
+  {
+    title: "Species ID Model",
+    blurb:
+      "image classification model to identify fish species",
   },
 ];
 
-export default function BoardGamesPage() {
-  const project = getProject("board-games");
+export default function FishStuffPage() {
+  const project = getProject("fish-stuff");
 
   return (
     <div>

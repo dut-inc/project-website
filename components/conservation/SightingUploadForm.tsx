@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type KeyboardEvent } from "react";
+import { createPortal } from "react-dom";
 import { createClient } from "@/utils/supabase/client";
 import { compressForUploadBlob, sightingPhotoUrl, uploadSightingPhoto } from "@/lib/localPhotos";
 import { CATEGORY_META, makeSightingId, type SightingCategory } from "@/lib/sightings";
@@ -36,6 +37,7 @@ type Props = {
   pickedPoint: PickedPoint | null;
   onPickedConsumed: () => void;
   onCreated: (id: string) => void;
+  onClose: () => void;
 };
 
 export default function SightingUploadForm({
@@ -45,7 +47,11 @@ export default function SightingUploadForm({
   pickedPoint,
   onPickedConsumed,
   onCreated,
+  onClose,
 }: Props) {
+  const [isMounted, setIsMounted] = useState(false);
+  const dialogRef = useRef<HTMLFormElement | null>(null);
+  const closeButtonRef = useRef<HTMLButtonElement | null>(null);
   const [photo, setPhoto] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [species, setSpecies] = useState("");
@@ -68,6 +74,28 @@ export default function SightingUploadForm({
   const lat = pickedPoint ? pickedPoint.lat.toFixed(5) : latText;
   const lng = pickedPoint ? pickedPoint.lng.toFixed(5) : lngText;
 
+  // Portal content must wait until the browser document is available.
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (isMounted) closeButtonRef.current?.focus();
+  }, [isMounted]);
+
+  // Escape cancels an in-progress map pick first, then closes the popup.
+  useEffect(() => {
+    function handleKeyDown(event: globalThis.KeyboardEvent) {
+      if (event.key !== "Escape") return;
+      event.preventDefault();
+      if (pickMode) onStopPick();
+      else onClose();
+    }
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [pickMode, onClose, onStopPick]);
+
   // Free the object URL when the component unmounts.
   useEffect(
     () => () => {
@@ -75,6 +103,24 @@ export default function SightingUploadForm({
     },
     [],
   );
+
+  function handleDialogKeyDown(event: KeyboardEvent<HTMLFormElement>) {
+    if (event.key !== "Tab") return;
+    const focusable = dialogRef.current?.querySelectorAll<HTMLElement>(
+      'button, input, textarea, select, [href], [tabindex]:not([tabindex="-1"])',
+    );
+    if (!focusable?.length) return;
+
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  }
 
   function handlePhotoChange(event: React.ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0] ?? null;
@@ -178,7 +224,7 @@ export default function SightingUploadForm({
       if (queryError) throw queryError;
 
       resetForm();
-      setNotice("Sighting logged — pinned on the map below.");
+      setNotice("Sighting logged — pinned to the map.");
       onCreated(id);
     } catch (caughtError) {
       setError(getErrorMessage(caughtError as { message?: string; details?: string }));
@@ -190,214 +236,246 @@ export default function SightingUploadForm({
   const inputClass =
     "w-full rounded-lg border border-ink/20 bg-cream/70 px-3 py-2.5 text-sm text-ink placeholder:text-ink/40 focus:border-pinNavy";
 
-  return (
-    <form
-      onSubmit={handleSubmit}
-      className="paper-torn bg-kraft p-5 shadow-[0_14px_28px_-8px_rgba(0,0,0,0.55)]"
+  if (!isMounted || typeof document === "undefined") return null;
+
+  return createPortal(
+    <div
+      className={`fixed inset-0 z-50 flex items-center justify-center p-4 transition-colors duration-200 ${
+        pickMode ? "pointer-events-none bg-transparent" : "bg-ink/60 backdrop-blur-md"
+      }`}
+      role="presentation"
+      onMouseDown={(event) => {
+        // In pick mode the backdrop is click-through so the map stays reachable.
+        if (event.target === event.currentTarget && !pickMode) onClose();
+      }}
     >
-      <div className="flex flex-wrap items-end justify-between gap-3">
-        <div>
-          <p className="font-mono text-[10px] uppercase tracking-widest text-ink2">
-            field report · new sighting
-          </p>
-          <h3 className="mt-0.5 font-display text-2xl italic text-ink">
-            Log a sighting
-          </h3>
-        </div>
-        <button
-          type="button"
-          onClick={resetForm}
-          className="rounded-full border border-ink/25 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-ink/70 transition-colors hover:border-ink/50 hover:text-ink"
-        >
-          Clear
-        </button>
-      </div>
-
-      {(error || notice) && (
-        <div
-          role={error ? "alert" : "status"}
-          className={`mt-4 rounded-xl border px-4 py-3 text-sm ${
-            error
-              ? "border-[#C1442D]/70 bg-[#C1442D]/15 text-ink"
-              : "border-[#2F7A6B]/70 bg-[#2F7A6B]/15 text-ink"
-          }`}
-        >
-          {error ?? notice}
-          {error && needsSchemaHint(error) && (
-            <p className="mt-2 font-mono text-[10px] uppercase tracking-wider text-ink/60">
-              Run the latest supabase/schema.sql in the Supabase SQL editor, then refresh. It
-              grants the anon/authenticated roles and applies the matching RLS policies.
+      <form
+        ref={dialogRef}
+        onSubmit={handleSubmit}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="sighting-log-title"
+        onKeyDown={handleDialogKeyDown}
+        className={`paper-torn max-h-[calc(100vh-2rem)] w-full max-w-3xl overflow-y-auto bg-kraft p-5 shadow-[0_14px_28px_-8px_rgba(0,0,0,0.55)] sm:p-6 ${
+          pickMode ? "invisible" : "visible"
+        }`}
+      >
+        <div className="flex flex-wrap items-end justify-between gap-3">
+          <div>
+            <p className="font-mono text-[10px] uppercase tracking-widest text-ink2">
+              field report · new sighting
             </p>
-          )}
-        </div>
-      )}
-
-      <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-[14rem_minmax(0,1fr)]">
-        {/* Photo picker */}
-        <div>
-          <label className="block font-mono text-[10px] uppercase tracking-wider text-ink2" htmlFor="sighting-photo">
-            Photo
-          </label>
-          <label
-            htmlFor="sighting-photo"
-            className={`mt-1.5 flex h-40 cursor-pointer items-center justify-center overflow-hidden rounded-xl border-2 border-dashed text-center transition-colors ${
-              previewUrl
-                ? "border-transparent"
-                : "border-ink/30 bg-cream/40 hover:border-ink/60"
-            }`}
-          >
-            {previewUrl ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                src={previewUrl}
-                alt="Preview of the chosen photo"
-                className="h-full w-full object-cover"
-              />
-            ) : (
-              <span className="px-4 font-mono text-[10px] uppercase tracking-wider text-ink/60">
-                choose a photo…
-              </span>
-            )}
-          </label>
-          <input
-            ref={fileInputRef}
-            id="sighting-photo"
-            type="file"
-            accept="image/*"
-            className="sr-only"
-            onChange={handlePhotoChange}
-          />
-        </div>
-
-        {/* Fields */}
-        <div className="grid gap-3 sm:grid-cols-2">
-          <label className="block">
-            <span className="font-mono text-[10px] uppercase tracking-wider text-ink2">Species</span>
-            <input
-              value={species}
-              onChange={(event) => setSpecies(event.target.value)}
-              placeholder="e.g. Black-tailed Deer"
-              className={`mt-1.5 ${inputClass}`}
-            />
-          </label>
-
-          <label className="block">
-            <span className="font-mono text-[10px] uppercase tracking-wider text-ink2">Category</span>
-            <select
-              value={category}
-              onChange={(event) => setCategory(event.target.value as SightingCategory)}
-              className={`mt-1.5 ${inputClass}`}
-            >
-              {CATEGORY_IDS.map((id) => (
-                <option key={id} value={id}>
-                  {CATEGORY_META[id].label}
-                </option>
-              ))}
-            </select>
-          </label>
-
-          <label className="block sm:col-span-2">
-            <span className="font-mono text-[10px] uppercase tracking-wider text-ink2">Place name</span>
-            <input
-              value={location}
-              onChange={(event) => setLocation(event.target.value)}
-              placeholder="e.g. Nisqually Wildlife Refuge"
-              className={`mt-1.5 ${inputClass}`}
-            />
-          </label>
-
-          <label className="block">
-            <span className="font-mono text-[10px] uppercase tracking-wider text-ink2">Latitude</span>
-            <input
-              value={lat}
-              onChange={(event) => {
-                setLatText(event.target.value);
-                clearPickedPointIfAny();
-              }}
-              placeholder="47.6607"
-              inputMode="decimal"
-              className={`mt-1.5 ${inputClass}`}
-            />
-          </label>
-
-          <label className="block">
-            <span className="font-mono text-[10px] uppercase tracking-wider text-ink2">Longitude</span>
-            <input
-              value={lng}
-              onChange={(event) => {
-                setLngText(event.target.value);
-                clearPickedPointIfAny();
-              }}
-              placeholder="-122.4234"
-              inputMode="decimal"
-              className={`mt-1.5 ${inputClass}`}
-            />
-          </label>
-
-          <div className="sm:col-span-2">
+            <h3 id="sighting-log-title" className="mt-0.5 font-display text-2xl italic text-ink">
+              Log a sighting
+            </h3>
+          </div>
+          <div className="flex items-center gap-2">
             <button
               type="button"
-              onClick={pickMode ? onStopPick : onStartPick}
-              className={`rounded-full border px-4 py-2 font-mono text-[10px] uppercase tracking-widest transition-colors ${
-                pickMode
-                  ? "border-[#C1442D] bg-[#C1442D]/15 text-[#C1442D]"
-                  : "border-pinNavy/60 text-pinNavy hover:bg-pinNavy/10"
-              }`}
+              onClick={resetForm}
+              className="rounded-full border border-ink/25 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-ink/70 transition-colors hover:border-ink/50 hover:text-ink"
             >
-              {pickMode ? "picking… click the map" : "pick on the map"}
+              Clear
             </button>
-            {pickMode && (
-              <p className="mt-1.5 font-mono text-[10px] text-ink/60">
-                the map cursor is crosshair — click to drop the pin
+            <button
+              ref={closeButtonRef}
+              type="button"
+              onClick={onClose}
+              aria-label="Close log sighting form"
+              className="min-h-10 min-w-10 rounded-full border border-ink/25 font-mono text-lg leading-none text-ink/70 transition-colors hover:border-ink/50 hover:text-ink"
+            >
+              ×
+            </button>
+          </div>
+        </div>
+
+        {(error || notice) && (
+          <div
+            role={error ? "alert" : "status"}
+            className={`mt-4 rounded-xl border px-4 py-3 text-sm ${
+              error
+                ? "border-[#C1442D]/70 bg-[#C1442D]/15 text-ink"
+                : "border-[#2F7A6B]/70 bg-[#2F7A6B]/15 text-ink"
+            }`}
+          >
+            {error ?? notice}
+            {error && needsSchemaHint(error) && (
+              <p className="mt-2 font-mono text-[10px] uppercase tracking-wider text-ink/60">
+                Run the latest supabase/schema.sql in the Supabase SQL editor, then refresh. It
+                grants the anon/authenticated roles and applies the matching RLS policies.
               </p>
             )}
           </div>
+        )}
 
-          <label className="block">
-            <span className="font-mono text-[10px] uppercase tracking-wider text-ink2">Date</span>
-            <input
-              type="date"
-              value={date}
-              onChange={(event) => setDate(event.target.value)}
-              className={`mt-1.5 ${inputClass}`}
-            />
-          </label>
-
-          <label className="block">
-            <span className="font-mono text-[10px] uppercase tracking-wider text-ink2">Observer</span>
-            <input
-              value={observer}
-              onChange={(event) => setObserver(event.target.value)}
-              placeholder="anonymous"
-              className={`mt-1.5 ${inputClass}`}
-            />
-          </label>
-
-          <label className="block sm:col-span-2">
-            <span className="font-mono text-[10px] uppercase tracking-wider text-ink2">Note</span>
-            <textarea
-              value={note}
-              onChange={(event) => setNote(event.target.value)}
-              rows={2}
-              placeholder="What were they doing?"
-              className={`mt-1.5 resize-y ${inputClass}`}
-            />
-          </label>
-
-          <div className="flex items-center gap-3 sm:col-span-2">
-            <button
-              type="submit"
-              disabled={isSaving}
-              className="min-h-11 rounded-full bg-pinNavy px-5 font-mono text-[10px] uppercase tracking-widest text-cream transition-colors hover:bg-pinNavy/85 disabled:cursor-wait disabled:opacity-60"
+        <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-[14rem_minmax(0,1fr)]">
+          {/* Photo picker */}
+          <div>
+            <label className="block font-mono text-[10px] uppercase tracking-wider text-ink2" htmlFor="sighting-photo">
+              Photo
+            </label>
+            <label
+              htmlFor="sighting-photo"
+              className={`mt-1.5 flex h-40 cursor-pointer items-center justify-center overflow-hidden rounded-xl border-2 border-dashed text-center transition-colors ${
+                previewUrl
+                  ? "border-transparent"
+                  : "border-ink/30 bg-cream/40 hover:border-ink/60"
+              }`}
             >
-              {isSaving ? "Logging…" : "Log sighting"}
-            </button>
-            <p className="font-mono text-[10px] text-ink/50">
-              photos will be compressed
-            </p>
+              {previewUrl ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={previewUrl}
+                  alt="Preview of the chosen photo"
+                  className="h-full w-full object-cover"
+                />
+              ) : (
+                <span className="px-4 font-mono text-[10px] uppercase tracking-wider text-ink/60">
+                  choose a photo…
+                </span>
+              )}
+            </label>
+            <input
+              ref={fileInputRef}
+              id="sighting-photo"
+              type="file"
+              accept="image/*"
+              className="sr-only"
+              onChange={handlePhotoChange}
+            />
+          </div>
+
+          {/* Fields */}
+          <div className="grid gap-3 sm:grid-cols-2">
+            <label className="block">
+              <span className="font-mono text-[10px] uppercase tracking-wider text-ink2">Species</span>
+              <input
+                value={species}
+                onChange={(event) => setSpecies(event.target.value)}
+                placeholder="e.g. Black-tailed Deer"
+                className={`mt-1.5 ${inputClass}`}
+              />
+            </label>
+
+            <label className="block">
+              <span className="font-mono text-[10px] uppercase tracking-wider text-ink2">Category</span>
+              <select
+                value={category}
+                onChange={(event) => setCategory(event.target.value as SightingCategory)}
+                className={`mt-1.5 ${inputClass}`}
+              >
+                {CATEGORY_IDS.map((id) => (
+                  <option key={id} value={id}>
+                    {CATEGORY_META[id].label}
+                  </option>
+                ))}
+              </select>
+            </label>
+
+            <label className="block sm:col-span-2">
+              <span className="font-mono text-[10px] uppercase tracking-wider text-ink2">Place name</span>
+              <input
+                value={location}
+                onChange={(event) => setLocation(event.target.value)}
+                placeholder="e.g. Nisqually Wildlife Refuge"
+                className={`mt-1.5 ${inputClass}`}
+              />
+            </label>
+
+            <label className="block">
+              <span className="font-mono text-[10px] uppercase tracking-wider text-ink2">Latitude</span>
+              <input
+                value={lat}
+                onChange={(event) => {
+                  setLatText(event.target.value);
+                  clearPickedPointIfAny();
+                }}
+                placeholder="47.6607"
+                inputMode="decimal"
+                className={`mt-1.5 ${inputClass}`}
+              />
+            </label>
+
+            <label className="block">
+              <span className="font-mono text-[10px] uppercase tracking-wider text-ink2">Longitude</span>
+              <input
+                value={lng}
+                onChange={(event) => {
+                  setLngText(event.target.value);
+                  clearPickedPointIfAny();
+                }}
+                placeholder="-122.4234"
+                inputMode="decimal"
+                className={`mt-1.5 ${inputClass}`}
+              />
+            </label>
+
+            <div className="sm:col-span-2">
+              <button
+                type="button"
+                onClick={pickMode ? onStopPick : onStartPick}
+                className={`rounded-full border px-4 py-2 font-mono text-[10px] uppercase tracking-widest transition-colors ${
+                  pickMode
+                    ? "border-[#C1442D] bg-[#C1442D]/15 text-[#C1442D]"
+                    : "border-pinNavy/60 text-pinNavy hover:bg-pinNavy/10"
+                }`}
+              >
+                {pickMode ? "picking… click the map" : "pick on the map"}
+              </button>
+              {pickMode && (
+                <p className="mt-1.5 font-mono text-[10px] text-ink/60">
+                  the map cursor is crosshair — click to drop the pin
+                </p>
+              )}
+            </div>
+
+            <label className="block">
+              <span className="font-mono text-[10px] uppercase tracking-wider text-ink2">Date</span>
+              <input
+                type="date"
+                value={date}
+                onChange={(event) => setDate(event.target.value)}
+                className={`mt-1.5 ${inputClass}`}
+              />
+            </label>
+
+            <label className="block">
+              <span className="font-mono text-[10px] uppercase tracking-wider text-ink2">Observer</span>
+              <input
+                value={observer}
+                onChange={(event) => setObserver(event.target.value)}
+                placeholder="anonymous"
+                className={`mt-1.5 ${inputClass}`}
+              />
+            </label>
+
+            <label className="block sm:col-span-2">
+              <span className="font-mono text-[10px] uppercase tracking-wider text-ink2">Note</span>
+              <textarea
+                value={note}
+                onChange={(event) => setNote(event.target.value)}
+                rows={2}
+                placeholder="What were they doing?"
+                className={`mt-1.5 resize-y ${inputClass}`}
+              />
+            </label>
+
+            <div className="flex items-center gap-3 sm:col-span-2">
+              <button
+                type="submit"
+                disabled={isSaving}
+                className="min-h-11 rounded-full bg-pinNavy px-6 py-3 font-mono text-xs uppercase tracking-widest text-cream transition-colors hover:bg-pinNavy/85 disabled:cursor-wait disabled:opacity-60"
+              >
+                {isSaving ? "Logging…" : "Log sighting"}
+              </button>
+              <p className="font-mono text-[10px] text-ink/50">
+                photos will be compressed
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>,
+    document.body,
   );
 }

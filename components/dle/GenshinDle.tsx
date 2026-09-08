@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useState } from "react";
 import {
   GENSHIN_CHARACTERS,
@@ -206,7 +207,14 @@ export default function GenshinDle() {
   }
 
   return (
-    <section className="mx-auto mt-8 max-w-6xl" aria-labelledby="genshin-dle-heading">
+    <>
+      <Link
+        href="/dle"
+        className="mb-6 inline-block font-mono text-xs uppercase tracking-widest text-cream/50 hover:text-pinGold"
+      >
+        &larr; All DLE games
+      </Link>
+      <section className="mx-auto mt-8 max-w-6xl" aria-labelledby="genshin-dle-heading">
       <div className="rounded-lg border border-cream/15 bg-wall2/80 p-5 shadow-[0_18px_34px_-16px_rgba(0,0,0,0.75)] sm:p-8">
         <div className="flex flex-wrap items-end justify-between gap-4 border-b border-cream/10 pb-5">
           <div>
@@ -226,9 +234,9 @@ export default function GenshinDle() {
             <div>
               <label htmlFor="genshin-dev-date" className="font-mono text-[10px] uppercase tracking-widest text-cream/60">Daily date (UTC)</label>
               <div className="mt-2 flex gap-2">
-                <button type="button" onClick={() => setDevDate((current) => shiftDate(current, -1))} className="min-h-11 rounded border border-cream/20 px-3 font-mono text-sm text-cream/75 hover:border-pinGold hover:text-pinGold" aria-label="Previous day">&larr;</button>
+                <button type="button" onClick={() => setDevDate((current) => shiftDate(current, -1))} className="min-h-11 rounded border border-cream/20 px-3 font-mono text-sm text-cream/75 hover:border-pinGreen hover:text-pinGreen" aria-label="Previous day">&larr;</button>
                 <input id="genshin-dev-date" type="date" value={devDate} onChange={(event) => setDevDate(event.target.value)} className="min-h-11 min-w-0 flex-1 rounded border border-cream/20 bg-wall/70 px-3 text-sm text-cream" />
-                <button type="button" onClick={() => setDevDate((current) => shiftDate(current, 1))} className="min-h-11 rounded border border-cream/20 px-3 font-mono text-sm text-cream/75 hover:border-pinGold hover:text-pinGold" aria-label="Next day">&rarr;</button>
+                <button type="button" onClick={() => setDevDate((current) => shiftDate(current, 1))} className="min-h-11 rounded border border-cream/20 px-3 font-mono text-sm text-cream/75 hover:border-pinGreen hover:text-pinGreen" aria-label="Next day">&rarr;</button>
               </div>
             </div>
             <div>
@@ -250,7 +258,7 @@ export default function GenshinDle() {
                 setResult(null);
                 setNotice(devCharacterName ? `Custom target set to ${devCharacterName}.` : `Daily target set to ${devDate}.`);
               }}
-              className="min-h-11 rounded-full bg-pinGold px-4 font-mono text-[10px] uppercase tracking-widest text-wall hover:bg-cream"
+              className="min-h-11 rounded-full bg-pinGold px-6 py-3 font-mono text-xs uppercase tracking-widest text-wall hover:bg-cream"
             >
               Apply target
             </button>
@@ -354,10 +362,10 @@ export default function GenshinDle() {
                 </div>
 
                 <div className="mt-6 flex justify-center gap-3">
-                  <button type="button" onClick={() => setResult(null)} className="min-h-11 rounded-full border border-cream/25 px-5 font-mono text-[10px] uppercase tracking-widest text-cream/75 hover:border-pinGold hover:text-pinGold">
+                  <button type="button" onClick={() => setResult(null)} className="min-h-11 rounded-full border border-cream/25 px-6 py-3 font-mono text-xs uppercase tracking-widest text-cream/75 hover:border-pinGreen hover:text-pinGreen">
                     Review guesses
                   </button>
-                  <button type="button" onClick={() => resetGame(true)} className="min-h-11 rounded-full bg-pinGold px-5 font-mono text-[10px] uppercase tracking-widest text-wall hover:bg-cream">
+                  <button type="button" onClick={() => resetGame(true)} className="min-h-11 rounded-full bg-pinGold px-6 py-3 font-mono text-xs uppercase tracking-widest text-wall hover:bg-cream">
                     Play again
                   </button>
                 </div>
@@ -409,6 +417,7 @@ export default function GenshinDle() {
           <p><span className="mr-2 inline-block h-2.5 w-2.5 rounded-sm bg-pinRed align-middle" />Wrong value</p>
         </div>
       </div>
-    </section>
+      </section>
+    </>
   );
 }

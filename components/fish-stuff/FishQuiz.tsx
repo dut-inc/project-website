@@ -10,7 +10,7 @@ import {
   emptyScores,
   scoreToResult,
   type Scores,
-} from "@/lib/fishQuiz";
+} from "@/lib/fishStuff";
 
 type Step = "intro" | "quiz" | "result";
 
@@ -62,7 +62,7 @@ export default function FishQuiz() {
 
   async function copyResult() {
     if (!result) return;
-    const text = `I'm a ${result.fish.name} — "${result.fish.tagline}" 🐟\nTake the quiz at The Board: https://ibisboard.vercel.app/fish-quiz`;
+    const text = `I'm a ${result.fish.name} — "${result.fish.tagline}" 🐟\nTake the quiz at The Board: https://ibisboard.vercel.app/fish-stuff`;
     try {
       await navigator.clipboard.writeText(text);
       setCopied(true);

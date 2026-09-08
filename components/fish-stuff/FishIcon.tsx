@@ -1,4 +1,4 @@
-import { FISH_BY_ID, type FishId } from "@/lib/fishQuiz";
+import { FISH_BY_ID, type FishId } from "@/lib/fishStuff";
 
 // Stylized geometric fish silhouettes — original art, one distinct shape per
 // species (salmon bodies, a flat halibut, a spiky lingcod, a long sturgeon).

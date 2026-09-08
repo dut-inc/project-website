@@ -190,7 +190,7 @@ export default function DatabaseManager() {
           type="button"
           onClick={() => void loadGames()}
           disabled={isLoading}
-          className="min-h-11 rounded-full border border-shelf-brass/60 px-4 font-mono text-[10px] uppercase tracking-widest text-shelf-brass transition-colors hover:bg-shelf-brass/10 disabled:cursor-wait disabled:opacity-50"
+          className="min-h-11 rounded-full border border-shelf-brass/60 px-6 py-3 font-mono text-xs uppercase tracking-widest text-shelf-brass transition-colors hover:bg-shelf-brass/10 disabled:cursor-wait disabled:opacity-50"
         >
           {isLoading ? "Refreshing…" : "Refresh rows"}
         </button>
@@ -248,10 +248,10 @@ export default function DatabaseManager() {
                     <p className="mt-2 font-mono text-[10px] text-shelf-ink/55">ID: {game.id}</p>
                   </div>
                   <div className="flex shrink-0 gap-2">
-                    <button type="button" onClick={() => startEdit(game)} className="min-h-9 rounded-full border border-shelf-paperDark px-3 font-mono text-[10px] uppercase tracking-wider text-shelf-ink transition-colors hover:border-shelf-brass hover:text-shelf-wood">
+                    <button type="button" onClick={() => startEdit(game)} className="min-h-11 rounded-full border border-shelf-paperDark px-6 py-3 font-mono text-xs uppercase tracking-widest text-shelf-ink transition-colors hover:border-shelf-brass hover:text-shelf-wood">
                       Edit
                     </button>
-                    <button type="button" onClick={() => void deleteGame(game)} className="min-h-9 rounded-full border border-shelf-burgundy/50 px-3 font-mono text-[10px] uppercase tracking-wider text-shelf-burgundy transition-colors hover:bg-shelf-burgundy/10">
+                    <button type="button" onClick={() => void deleteGame(game)} className="min-h-11 rounded-full border border-shelf-burgundy/50 px-6 py-3 font-mono text-xs uppercase tracking-widest text-shelf-burgundy transition-colors hover:bg-shelf-burgundy/10">
                       Delete
                     </button>
                   </div>
@@ -300,10 +300,10 @@ export default function DatabaseManager() {
               </label>
             ))}
             <div className="flex gap-2 pt-1">
-              <button type="submit" disabled={isSaving} className="min-h-11 flex-1 rounded-full bg-shelf-walnut px-4 font-mono text-[10px] uppercase tracking-widest text-shelf-paper transition-colors hover:bg-shelf-wood disabled:cursor-wait disabled:opacity-50">
+              <button type="submit" disabled={isSaving} className="min-h-11 flex-1 rounded-full bg-shelf-walnut px-6 py-3 font-mono text-xs uppercase tracking-widest text-shelf-paper transition-colors hover:bg-shelf-wood disabled:cursor-wait disabled:opacity-50">
                 {isSaving ? "Saving…" : editingId ? "Save changes" : "Insert row"}
               </button>
-              {editingId && <button type="button" onClick={resetForm} className="min-h-11 rounded-full border border-shelf-paperDark px-4 font-mono text-[10px] uppercase tracking-wider text-shelf-ink">Cancel</button>}
+              {editingId && <button type="button" onClick={resetForm} className="min-h-11 rounded-full border border-shelf-paperDark px-6 py-3 font-mono text-xs uppercase tracking-widest text-shelf-ink">Cancel</button>}
             </div>
           </div>
         </form>
