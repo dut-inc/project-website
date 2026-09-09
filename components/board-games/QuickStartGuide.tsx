@@ -22,7 +22,7 @@ export default function QuickStartGuide() {
           type="button"
           onClick={() => setShowGuide((open) => !open)}
           aria-expanded={showGuide}
-          className="min-h-11 shrink-0 rounded-full border border-shelf-brass/60 px-4 font-mono text-[11px] uppercase tracking-widest text-shelf-paper transition-colors hover:bg-shelf-brass/20"
+          className="min-h-11 shrink-0 rounded-full border border-shelf-brass/60 px-6 py-3 font-mono text-xs uppercase tracking-widest text-shelf-paper transition-colors hover:bg-shelf-brass/20"
         >
           {showGuide ? "Hide guide" : "Show guide"}
         </button>

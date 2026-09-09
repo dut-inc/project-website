@@ -11,13 +11,21 @@ create table if not exists public.boardgames (
   quick_notes text null,
   full_rules text null,
   game_type text null default 'FFA',
+  position integer null,
   constraint boardgames_pkey primary key (id),
   constraint boardgames_game_type_check check (game_type in ('FFA', 'Team vs Team', 'Coop', 'PvPvE'))
 );
 
--- Existing databases need the new metadata column added without losing rows.
+-- Existing databases need the new metadata columns added without losing rows.
 alter table public.boardgames
   add column if not exists game_type text null default 'FFA';
+alter table public.boardgames
+  add column if not exists position integer;
+
+-- In-tier drag-and-drop ordering reads position first, with nulls (games that
+-- have never been reordered) trailing in created_at order at the end of each tier.
+create index if not exists boardgames_position_idx
+  on public.boardgames (position);
 
 do $$
 begin
@@ -136,19 +144,27 @@ end
 $$;
 
 -- Import names from the old leaderboard table into the shared player list.
-insert into public.players (name)
-select legacy.name
-from (
-  select distinct on (lower(btrim(name))) btrim(name) as name
-  from public.game_leaderboard
-  where name is not null and btrim(name) <> ''
-  order by lower(btrim(name)), wins desc, id asc
-) as legacy
-where not exists (
-  select 1
-  from public.players
-  where lower(btrim(players.name)) = lower(legacy.name)
-);
+do $$
+begin
+  -- The compatibility table may be absent when this file is rerun after a
+  -- partial migration. In that case there is nothing to import.
+  if to_regclass('public.game_leaderboard') is not null then
+    insert into public.players (name)
+    select legacy.name
+    from (
+      select distinct on (lower(btrim(name))) btrim(name) as name
+      from public.game_leaderboard
+      where name is not null and btrim(name) <> ''
+      order by lower(btrim(name)), wins desc, id asc
+    ) as legacy
+    where not exists (
+      select 1
+      from public.players
+      where lower(btrim(players.name)) = lower(legacy.name)
+    );
+  end if;
+end
+$$;
 
 -- Merge case/spacing duplicate players without losing participant history.
 with ranked_players as (
@@ -234,9 +250,10 @@ declare
   new_session_id bigint;
   counter integer;
 begin
-  if not exists (
-    select 1 from public.scorebook_migrations where key = 'leaderboard-to-sessions'
-  ) then
+  if to_regclass('public.game_leaderboard') is not null
+    and not exists (
+      select 1 from public.scorebook_migrations where key = 'leaderboard-to-sessions'
+    ) then
     for legacy_entry in
       select
         legacy_scores.board_game_id,
@@ -287,11 +304,17 @@ end;
 $$;
 
 -- Remove old policies/table after its migration has completed.
-drop policy if exists "prototype leaderboard is readable" on public.game_leaderboard;
-drop policy if exists "prototype leaderboard is insertable" on public.game_leaderboard;
-drop policy if exists "prototype leaderboard is editable" on public.game_leaderboard;
-drop policy if exists "prototype leaderboard is removable" on public.game_leaderboard;
-drop table if exists public.game_leaderboard;
+do $$
+begin
+  if to_regclass('public.game_leaderboard') is not null then
+    drop policy if exists "prototype leaderboard is readable" on public.game_leaderboard;
+    drop policy if exists "prototype leaderboard is insertable" on public.game_leaderboard;
+    drop policy if exists "prototype leaderboard is editable" on public.game_leaderboard;
+    drop policy if exists "prototype leaderboard is removable" on public.game_leaderboard;
+    drop table public.game_leaderboard;
+  end if;
+end
+$$;
 
 -- Every shared player appears for every game, including players with zero wins.
 drop view if exists public.game_leaderboard_view;
@@ -519,7 +542,6 @@ create policy "prototype sighting photos are uploadable"
   on storage.objects for insert
   to anon, authenticated
   with check (bucket_id = 'sightings-photos');
-  on public.boardgames for delete to anon, authenticated using (true);
 
 drop policy if exists "prototype players are readable" on public.players;
 drop policy if exists "prototype players are insertable" on public.players;

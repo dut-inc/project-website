@@ -176,14 +176,10 @@ export default function WinTracker({ gameId, gameName, isEditable }: WinTrackerP
     <section className="relative z-10 mt-8 border-t border-[#8d765a]/45 pt-6" aria-labelledby={`win-tracker-heading-${gameId}`}>
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#5f5142]">scoreboard</p>
-          <h3 id={`win-tracker-heading-${gameId}`} className="mt-1 font-display text-2xl italic text-[#29201c]">
+          <h3 id={`win-tracker-heading-${gameId}`} className="font-display text-2xl italic text-[#29201c]">
             {gameName} leaderboard
           </h3>
         </div>
-        <span className="rounded-full border border-[#8d765a]/65 px-3 py-1 font-mono text-[9px] uppercase tracking-widest text-[#5f5142]">
-          {entries.length} {entries.length === 1 ? "player" : "players"}
-        </span>
       </div>
 
       {(error || notice) && (
@@ -263,7 +259,7 @@ export default function WinTracker({ gameId, gameName, isEditable }: WinTrackerP
           <button
             type="submit"
             disabled={isAdding || !newPlayerName.trim()}
-            className="shrink-0 rounded-full bg-[#29201c] px-4 font-mono text-[10px] uppercase tracking-widest text-[#f4ead6] transition-colors hover:bg-[#5f5142] disabled:cursor-not-allowed disabled:opacity-50"
+            className="min-h-11 shrink-0 rounded-full bg-[#29201c] px-6 py-3 font-mono text-xs uppercase tracking-widest text-[#f4ead6] transition-colors hover:bg-[#5f5142] disabled:cursor-not-allowed disabled:opacity-50"
           >
             {isAdding ? "Adding…" : "Add player"}
           </button>

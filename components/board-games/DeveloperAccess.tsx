@@ -224,7 +224,7 @@ export default function DeveloperAccess({
               <button
                 type="submit"
                 disabled={isSubmitting || !passcode.trim()}
-                className="min-h-11 w-full rounded-full bg-shelf-walnut px-5 font-mono text-[10px] uppercase tracking-widest text-shelf-paper transition-transform hover:-translate-y-0.5 hover:bg-shelf-wood disabled:cursor-not-allowed disabled:opacity-50"
+                className="min-h-11 w-full rounded-full bg-shelf-walnut px-6 py-3 font-mono text-xs uppercase tracking-widest text-shelf-paper transition-transform hover:-translate-y-0.5 hover:bg-shelf-wood disabled:cursor-not-allowed disabled:opacity-50"
               >
                 {isSubmitting ? "Checking…" : "Unlock controls"}
               </button>
@@ -240,7 +240,7 @@ export default function DeveloperAccess({
             <button
               type="button"
               onClick={() => void lock()}
-              className="min-h-11 w-full rounded-full border border-shelf-paperDark/70 px-4 font-mono text-[10px] uppercase tracking-widest text-shelf-ink/80 transition-colors hover:border-shelf-brass hover:text-shelf-ink"
+              className="min-h-11 w-full rounded-full border border-shelf-paperDark/70 px-6 py-3 font-mono text-xs uppercase tracking-widest text-shelf-ink/80 transition-colors hover:border-shelf-brass hover:text-shelf-ink"
             >
               Lock controls
             </button>

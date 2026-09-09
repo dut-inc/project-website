@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useMemo, useState } from "react";
 import {
   getDailyWuwaForteResonator,
@@ -240,11 +241,18 @@ export default function WuwaDle() {
   }
 
   return (
-    <section className="mx-auto mt-8 max-w-[90rem]" aria-labelledby="wuwa-dle-heading">
+    <>
+      <Link
+        href="/dle"
+        className="mb-6 inline-block font-mono text-xs uppercase tracking-widest text-cream/50 hover:text-pinGold"
+      >
+        &larr; All DLE games
+      </Link>
+      <section className="mx-auto mt-8 max-w-[90rem]" aria-labelledby="wuwa-dle-heading">
       <div className="rounded-lg border border-cream/15 bg-wall2/80 p-5 shadow-[0_18px_34px_-16px_rgba(0,0,0,0.75)] sm:p-8">
         <div className="flex flex-wrap items-end justify-between gap-4 border-b border-cream/10 pb-5">
           <div>
-            <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-pinGold">WUWADLE / GAME MODES</p>
+            <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-pinTeal">WUWADLE</p>
             <h1 id="wuwa-dle-heading" className="mt-2 font-dle text-3xl text-cream sm:text-4xl">
               {mode === "resonator" ? "Who is today's Resonator?" : "Which Resonator owns this ability?"}
             </h1>
@@ -262,7 +270,7 @@ export default function WuwaDle() {
           <button
             type="button"
             onClick={() => switchMode("resonator")}
-            className={`min-h-11 rounded-full border px-4 font-mono text-[10px] uppercase tracking-widest transition-colors ${mode === "resonator" ? "border-pinGold bg-pinGold text-wall" : "border-cream/20 text-cream/65 hover:border-pinGold hover:text-pinGold"}`}
+            className={`min-h-11 rounded-full border px-6 py-3 font-mono text-xs uppercase tracking-widest transition-colors ${mode === "resonator" ? "border-pinGold bg-pinGold text-wall" : "border-cream/20 text-cream/65 hover:border-pinGold hover:text-pinGold"}`}
             aria-pressed={mode === "resonator"}
           >
             Resonator
@@ -271,7 +279,7 @@ export default function WuwaDle() {
           <button
             type="button"
             onClick={() => switchMode("forte")}
-            className={`min-h-11 rounded-full border px-4 font-mono text-[10px] uppercase tracking-widest transition-colors ${mode === "forte" ? "border-pinGold bg-pinGold text-wall" : "border-cream/20 text-cream/65 hover:border-pinGold hover:text-pinGold"}`}
+            className={`min-h-11 rounded-full border px-6 py-3 font-mono text-xs uppercase tracking-widest transition-colors ${mode === "forte" ? "border-pinGold bg-pinGold text-wall" : "border-cream/20 text-cream/65 hover:border-pinGold hover:text-pinGold"}`}
             aria-pressed={mode === "forte"}
           >
             Forte Circuit
@@ -297,7 +305,7 @@ export default function WuwaDle() {
                 {WUWA_RESONATORS.map((resonator) => <option key={resonator.name} value={resonator.name}>{resonator.name}</option>)}
               </select>
             </div>
-            <button type="button" onClick={applyTarget} className="min-h-11 rounded-full bg-pinGold px-4 font-mono text-[10px] uppercase tracking-widest text-wall hover:bg-cream">Apply target</button>
+            <button type="button" onClick={applyTarget} className="min-h-11 rounded-full bg-pinGold px-6 py-3 font-mono text-xs uppercase tracking-widest text-wall hover:bg-cream">Apply target</button>
           </div>
           <p className="px-4 pb-3 font-mono text-[9px] uppercase tracking-wider text-cream/45">Applying a target clears both game modes. Controls are local to this browser session.</p>
         </details>
@@ -400,11 +408,11 @@ export default function WuwaDle() {
                 </div>
 
                 <div className="mt-6 flex justify-center gap-3">
-                  <button type="button" onClick={() => setResult(null)} className="min-h-11 rounded-full border border-cream/25 px-5 font-mono text-[10px] uppercase tracking-widest text-cream/75 hover:border-pinGold hover:text-pinGold">Review guesses</button>
+                  <button type="button" onClick={() => setResult(null)} className="min-h-11 rounded-full border border-cream/25 px-6 py-3 font-mono text-xs uppercase tracking-widest text-cream/75 hover:border-pinGold hover:text-pinGold">Review guesses</button>
                   {mode === "resonator" ? (
-                    <button type="button" onClick={continueToForteMode} className="min-h-11 rounded-full bg-pinGold px-5 font-mono text-[10px] uppercase tracking-widest text-wall hover:bg-cream">Continue to Forte</button>
+                    <button type="button" onClick={continueToForteMode} className="min-h-11 rounded-full bg-pinGold px-6 py-3 font-mono text-xs uppercase tracking-widest text-wall hover:bg-cream">Continue to Forte</button>
                   ) : (
-                    <button type="button" onClick={() => resetGame(true)} className="min-h-11 rounded-full bg-pinGold px-5 font-mono text-[10px] uppercase tracking-widest text-wall hover:bg-cream">Play again</button>
+                    <button type="button" onClick={() => resetGame(true)} className="min-h-11 rounded-full bg-pinGold px-6 py-3 font-mono text-xs uppercase tracking-widest text-wall hover:bg-cream">Play again</button>
                   )}
                 </div>
               </div>
@@ -443,6 +451,7 @@ export default function WuwaDle() {
           <p><span className="mr-2 inline-block h-2.5 w-2.5 rounded-sm bg-pinRed align-middle" />Wrong value</p>
         </div>
       </div>
-    </section>
+      </section>
+    </>
   );
 }

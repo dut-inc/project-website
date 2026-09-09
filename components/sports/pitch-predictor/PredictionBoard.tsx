@@ -27,7 +27,7 @@ function ModelError({ onRetry }: { onRetry: () => void }) {
       <button
         type="button"
         onClick={onRetry}
-        className="rounded-full border border-sports-accent/40 bg-sports-accent/10 px-4 py-1.5 font-mono text-[11px] uppercase tracking-widest text-sports-accent transition-colors hover:bg-sports-accent/20"
+        className="min-h-11 rounded-full border border-sports-accent/40 bg-sports-accent/10 px-6 py-3 font-mono text-xs uppercase tracking-widest text-sports-accent transition-colors hover:bg-sports-accent/20"
       >
         Retry
       </button>

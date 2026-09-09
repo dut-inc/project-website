@@ -1,5 +1,5 @@
 import FishCard from "./FishCard";
-import type { QuizQuestion } from "@/lib/fishQuiz";
+import type { QuizQuestion } from "@/lib/fishStuff";
 
 function optionLetter(i: number) {
   return String.fromCharCode(65 + i);
@@ -24,14 +24,14 @@ export default function FishQuestion({
 }) {
   return (
     <FishCard>
-      <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-widest text-ink2">
+      <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-widest text-cream/60">
         <span>
           Question {qIndex + 1} of {total}
         </span>
         <span>{Math.round(((qIndex + 1) / total) * 100)}% through</span>
       </div>
       <div
-        className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-ink/10"
+        className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-white/10"
         role="progressbar"
         aria-label="Quiz progress"
         aria-valuemin={1}
@@ -46,7 +46,7 @@ export default function FishQuestion({
 
       <h2
         key={qIndex}
-        className="animate-fade-up mt-6 font-display text-2xl italic text-ink sm:text-3xl"
+        className="animate-fade-up mt-6 font-display text-2xl italic text-cream sm:text-3xl"
       >
         {question.prompt}
       </h2>
@@ -61,8 +61,8 @@ export default function FishQuestion({
               aria-pressed={isSelected}
               className={`animate-fade-up group flex w-full items-start gap-3 rounded-xl border px-4 py-3.5 text-left transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_16px_-6px_rgba(0,0,0,0.35)] ${
                 isSelected
-                  ? "border-pinTeal/70 bg-kraft/70 ring-1 ring-pinTeal/40"
-                  : "border-ink/10 bg-kraft/40 hover:border-pinTeal/60 hover:bg-kraft/70"
+                  ? "border-pinTeal/70 bg-pinTeal/10 ring-1 ring-pinTeal/40"
+                  : "border-white/10 bg-white/[0.03] hover:border-pinTeal/60 hover:bg-white/[0.06]"
               }`}
               style={{ animationDelay: `${i * 70}ms` }}
             >
@@ -70,12 +70,12 @@ export default function FishQuestion({
                 className={`mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border font-mono text-[10px] transition-colors ${
                   isSelected
                     ? "border-pinTeal bg-pinTeal text-cream"
-                    : "border-ink/25 text-ink2 group-hover:border-pinTeal group-hover:text-pinTeal"
+                    : "border-white/25 text-cream/70 group-hover:border-pinTeal group-hover:text-pinTeal"
                 }`}
               >
                 {optionLetter(i)}
               </span>
-              <span className="text-sm leading-relaxed text-ink/90">
+              <span className="text-sm leading-relaxed text-cream/85">
                 {opt.label}
               </span>
             </button>
@@ -87,13 +87,13 @@ export default function FishQuestion({
         <button
           onClick={onBack}
           disabled={qIndex === 0}
-          className="min-h-11 rounded-sm font-mono text-[11px] uppercase tracking-widest text-ink2 transition-colors hover:text-pinTeal disabled:cursor-not-allowed disabled:opacity-40"
+          className="min-h-11 rounded-sm font-mono text-[11px] uppercase tracking-widest text-cream/60 transition-colors hover:text-pinTeal disabled:cursor-not-allowed disabled:opacity-40"
         >
           &larr; Back
         </button>
         <button
           onClick={onRestart}
-          className="min-h-11 rounded-sm px-2 font-mono text-[11px] uppercase tracking-widest text-ink2 transition-colors hover:text-pinTeal"
+          className="min-h-11 rounded-sm px-2 font-mono text-[11px] uppercase tracking-widest text-cream/60 transition-colors hover:text-pinTeal"
         >
           Restart
         </button>

@@ -25,6 +25,7 @@ type TierRowProps = {
   onMoveToTier: (id: string, tier: GameTier) => Promise<void> | void;
   onDragStart: (event: DragEvent<HTMLElement>, game: BoardGameEntry) => void;
   onDragEnd: () => void;
+  onDropOnGame: (event: DragEvent<HTMLElement>, game: BoardGameEntry) => void;
 };
 
 export default function TierRow({
@@ -41,15 +42,16 @@ export default function TierRow({
   onMoveToTier,
   onDragStart,
   onDragEnd,
+  onDropOnGame,
 }: TierRowProps) {
   const detail = TIER_DETAILS[tier];
   const oneRowPadding =
     games.length > 0 && games.length <= 2
-      ? "pt-5"
+      ? "pt-3.5"
       : games.length === 3
-        ? "pt-2 sm:pt-5 xl:pt-5"
+        ? "pt-2 sm:pt-3.5 xl:pt-3.5"
         : games.length === 4
-          ? "pt-2 sm:pt-2.5 xl:pt-5"
+          ? "pt-2 sm:pt-2.5 xl:pt-3.5"
           : "pt-2 sm:pt-2.5";
   const ledgeStyle = {
     background: `linear-gradient(180deg, ${detail.color}99 0%, #b38a5b 32%, #6f4b32 68%, #38251b 100%)`,
@@ -60,7 +62,7 @@ export default function TierRow({
     return (
       <div
         aria-hidden
-        className={`pointer-events-none relative z-10 col-span-full -mx-2 mb-2 h-1 rounded-sm border-y shadow-[0_3px_6px_rgba(0,0,0,0.5)] sm:mb-2.5 ${visibility}`}
+        className={`pointer-events-none relative z-10 col-span-full -mx-2 mt-1 mb-2 h-1 rounded-sm border-y shadow-[0_3px_6px_rgba(0,0,0,0.5)] sm:mb-2.5 ${visibility}`}
         style={ledgeStyle}
       />
     );
@@ -125,6 +127,7 @@ export default function TierRow({
                   onMoveToTier={(nextTier) => onMoveToTier(game.id, nextTier)}
                   onDragStart={(event) => onDragStart(event, game)}
                   onDragEnd={onDragEnd}
+                  onDropOnGame={(event) => onDropOnGame(event, game)}
                 />
                 {index < games.length - 1 && (index + 1) % 2 === 0 && renderProtrudingShelf("sm:hidden")}
                 {index < games.length - 1 && (index + 1) % 3 === 0 && renderProtrudingShelf("hidden sm:block xl:hidden")}
