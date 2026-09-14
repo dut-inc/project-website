@@ -7,4 +7,5 @@ node_modules
 .venv
 __pycache__
 *.pyc
+root_law2025.pdf
 
