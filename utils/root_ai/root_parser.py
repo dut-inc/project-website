@@ -2,7 +2,7 @@ from pypdf import PdfReader
 import re, json
 
 PDF_PATH = "data/root_law2025.pdf"
-OUTPUT_PATH = "root_law.json"
+OUTPUT_PATH = "data/root_law.json"
 
 reader = PdfReader(PDF_PATH)
 
