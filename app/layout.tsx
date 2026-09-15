@@ -30,8 +30,8 @@ const dleHeading = Oswald({
 });
 
 export const metadata: Metadata = {
-  title: "The Board",
-  description: "Our shared clubhouse — pinned projects and a little bit of Seattle.",
+  title: "Ibis Board",
+  description: "Our projects!",
 };
 
 export default function RootLayout({
