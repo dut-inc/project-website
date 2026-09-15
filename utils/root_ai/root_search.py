@@ -1,5 +1,7 @@
 import json, re
+import numpy as np
 from sentence_transformers import SentenceTransformer
+from sklearn.metrics.pairwise import cosine_similarity
 
 with open("root_law.json", "r", encoding="utf-8") as f:
     rules = json.load(f)
@@ -9,9 +11,22 @@ texts = [
     f'{rule["rule_number"]} {rule["rule_text"]}'
     for rule in rules
 ]
-def get_embeddings(texts):
-    embeddings = model.encode(texts, convert_to_tensor=True)
+rule_embeddings = np.load("data/rule_embeddings.npy")
+
+def get_embeddings(text_list = texts):
+    embeddings = model.encode(texts, convert_to_numpy=True)
     return embeddings
+
+def semantic_search(query, limit=10):
+    query_embedding = model.encode([query], convert_to_numpy=True)
+    similarities = cosine_similarity(query_embedding, rule_embeddings)[0]
+    top_indices = similarities.argsort()[::-1][:limit]
+    results = []
+    for idx in top_indices:
+        rule = rules[idx]
+        rule["score"] = similarities[idx]
+        results.append(rule)
+    return results
 
 def search_rules(query, limit=10):
     query_lower = query.lower()
