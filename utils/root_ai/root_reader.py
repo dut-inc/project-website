@@ -1,6 +1,6 @@
 import json
 
-with open("root_law.json", "r", encoding="utf-8") as f:
+with open("data/root_law.json", "r", encoding="utf-8") as f:
     rules = json.load(f)
 
 for rule in rules:

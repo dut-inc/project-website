@@ -29,6 +29,7 @@ if FIRST_TIME:
 results = semantic_search(
     questions[QUESTION_NUM]
 )
+print(questions[QUESTION_NUM])
 
 for result in results:
     print(

@@ -3,7 +3,7 @@ import numpy as np
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 
-with open("root_law.json", "r", encoding="utf-8") as f:
+with open("data/rules.json", "r", encoding="utf-8") as f:
     rules = json.load(f)
 
 model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")

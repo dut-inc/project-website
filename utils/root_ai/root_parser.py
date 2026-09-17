@@ -9,7 +9,7 @@ reader = PdfReader(PDF_PATH)
 rules = []
 # RULE_PATTERN =  re.compile(r"^(\d+(?:\.\d+){1,3})\s+(.+)$")
 # RULE_PATTERN =  re.compile(r"^((?:\d+(?:\.\d+)*|[A-HJ-V](?:\.\d*)*))\s+(.+)$")
-RULE_PATTERN = re.compile(r"^(\d+(?:\.\d+)*|[A-HJ-V]\.\d*(?:\.\d+)*)\s+(.+)$")
+RULE_PATTERN = re.compile(r"^([1-9](?!\s+[A-Z],)|\d+\.\d+(?:\.\d+)*|[A-HJ-V]\.\d*(?:\.\d+)*|\d+\.)\s+(.+)$")
 # ARTIFACT_PATTERN = r"(?:([A-HJ-Z][A-HJ-Z]))+\b"
 ARTIFACT_PATTERN = r"\b(?:([A-HJ-Z])\1)+\b"
 # page_number = 4
@@ -23,7 +23,8 @@ def clean_rule_text(rule_text, line=""): # string
     # line = re.sub(r"(?<=\w)\s*-\s*(?=\w)", "", line)
     return rule_text[:-1].strip() + line.strip()
 
-# 5.1.5 has images, might need to manually add this one in.     
+# 5.1.5 has images, might need to manually add this one in.  
+# I also realize the rule number "18" currently has Appendix attached to the end of it.   
 current_rule = None
 for pn, page in enumerate(reader.pages):
     if pn > LAST_RULE_PAGE:
@@ -40,7 +41,7 @@ for pn, page in enumerate(reader.pages):
                     current_rule["rule_text"] = clean_rule_text(current_rule["rule_text"], line)
                 rules.append(current_rule)
             current_rule = {
-                "rule_number": match.group(1),
+                "rule_number": match.group(1).rstrip("."),
                 "rule_text": match.group(2).strip(),
                 "page_number": pn + 1,
             }

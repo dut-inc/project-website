@@ -250,13 +250,18 @@
         "page_number": 3
     },
     {
-        "rule_number": "3.3.1",
-        "rule_text": "Activating. During your Daylight, if you have at least 10 victory points, you may activate a dominance card in your hand by placing it in your play area. Remove your score marker from the score track. You can no longer score victory points.  I     Mouse, Rabbit, or Fox Dominance. You win the game immediately if you rule three clearings of the suit matching the activated dominance card at the start of your Birdsong. II     Bird Dominance. You win the game immediately if you rule two clearings in opposite corners at the start of your Birdsong. removed simultaneously and that would trigger effects, remove all pieces before triggering effects.",
+        "rule_number": "3.3.1.I",
+        "rule_text": "Mouse, Rabbit, or Fox Dominance. You win the game immediately if you rule three clearings of the suit matching the activated dominance card at the start of your Birdsong.",
         "page_number": 3
     },
     {
-        "rule_number": "1.5.5",
-        "rule_text": "Use of Force. Some effects let you force a player or their pieces to act. Resolve this exactly as if that player were choosing to do this, as limited by the effect. (For example, if you force the Eyrie to move warriors, they benefit from Lords of the Forest.) I     Battle. When a player is forced to battle, they make all decisions within the battle itself.",
+        "rule_number": "3.3.1.II",
+        "rule_text": "Bird Dominance. You win the game immediately if you rule two clearings in opposite corners at the start of your Birdsong. removed simultaneously and that would trigger effects, remove all pieces before triggering effects.",
+        "page_number": 3
+    },
+    {
+        "rule_number": "1.5.5.I",
+        "rule_text": "Battle. When a player is forced to battle, they make all decisions within the battle itself.",
         "page_number": 3
     },
     {
@@ -270,8 +275,13 @@
         "page_number": 3
     },
     {
-        "rule_number": "2.1.1",
-        "rule_text": "Birds Are Wild. You can treat any bird card as a card of another suit, even if you must spend, take, or give multiple cards of the same suit. LLbb I     Forced Effects. If you are prompted to discard or give cards of non-bird suits, you must treat your bird cards as a prompted suit. II     Reverse Substitution. If you are prompted to spend, discard, take, or give a bird card, you cannot substitute a card of another suit.",
+        "rule_number": "2.1.1.I",
+        "rule_text": "Forced Effects. If you are prompted to discard or give cards of non-bird suits, you must treat your bird cards as a prompted suit.",
+        "page_number": 3
+    },
+    {
+        "rule_number": "2.1.1.II",
+        "rule_text": "Reverse Substitution. If you are prompted to spend, discard, take, or give a bird card, you cannot substitute a card of another suit.",
         "page_number": 3
     },
     {
@@ -315,8 +325,13 @@
         "page_number": 3
     },
     {
-        "rule_number": "4.3.1",
-        "rule_text": "Step 1: Defender May Ambush.  The defender may play one ambush card matching the clearing of battle. If so, resolve 4.3.1.I–II in order. I     Foil Ambush. The attacker may also play an ambush card matching the clearing of the battle. If they do, the defender discards their ambush card and skips 4.3.1.II. II     Resolve Ambush. The defender deals two hits immediately (4.3.6). Then, the defender discards the ambush card. If no attacking warriors or pawns remain, end the battle immediately.",
+        "rule_number": "4.3.1.I",
+        "rule_text": "Foil Ambush. The attacker may also play an ambush card matching the clearing of the battle. If they do, the defender discards their ambush card and skips 4.3.1.II.",
+        "page_number": 4
+    },
+    {
+        "rule_number": "4.3.1.II",
+        "rule_text": "Resolve Ambush. The defender deals two hits immediately (4.3.6). Then, the defender discards the ambush card. If no attacking warriors or pawns remain, end the battle immediately.",
         "page_number": 4
     },
     {
@@ -325,8 +340,8 @@
         "page_number": 4
     },
     {
-        "rule_number": "4.3.3",
-        "rule_text": "Step 3: Roll Dice.  Roll both battle dice. The attacker will deal hits equal to the higher roll, and the defender will deal hits equal to the lower roll. If the rolls are equal, attacker and defender will deal the same number of hits. (The use of “will” here reflects that hits are counted and dealt later .)  I     Maximum Rolled Hits. The maximum hits you can deal from rolling equals the number of your warriors in the clearing of battle, whether you are the attacker or defender. ",
+        "rule_number": "4.3.3.I",
+        "rule_text": "Maximum Rolled Hits. The maximum hits you can deal from rolling equals the number of your warriors in the clearing of battle, whether you are the attacker or defender.",
         "page_number": 4
     },
     {
@@ -335,8 +350,18 @@
         "page_number": 4
     },
     {
-        "rule_number": "4.3.5",
-        "rule_text": "Step 5: Count Hits.  The attacker and defender count up the hits they each deal from their rolled hits (4.3.3) and battle effects (4.3.2, 4.3.4). I     Extra Hits. Some effects deal extra hits, which are not limited by the number of warriors in the clearing of battle. II     Defenseless. If the defender has no warriors in the clearing of battle, the attacker deals an extra hit.  III     Ignored Hits. Some effects ignore hits, which subtracts them from the total count.",
+        "rule_number": "4.3.5.I",
+        "rule_text": "Extra Hits. Some effects deal extra hits, which are not limited by the number of warriors in the clearing of battle.",
+        "page_number": 4
+    },
+    {
+        "rule_number": "4.3.5.II",
+        "rule_text": "Defenseless. If the defender has no warriors in the clearing of battle, the attacker deals an extra hit.",
+        "page_number": 4
+    },
+    {
+        "rule_number": "4.3.5.III",
+        "rule_text": "Ignored Hits. Some effects ignore hits, which subtracts them from the total count.",
         "page_number": 4
     },
     {
@@ -630,8 +655,18 @@
         "page_number": 6
     },
     {
-        "rule_number": "6.5.4",
-        "rule_text": "Build. Place a building. I     Choose Clearing and Building.  Choose a clearing you rule. Choose whether you want to place a sawmill, workshop, or recruiter. You will place the leftmost building of its type from your faction board. You must be able to pay its cost (6.5.4.II) and place it (6.5.4.III). II     Pay Cost. Find the chosen building’s cost at the top of its column. Remove wood tokens equal in number to the cost from the chosen clearing, any adjacent clearings you rule, or any clearings connected to the chosen clearing you rule through any number of clearings you rule. III     Place Building and Score.  Place the chosen building in the chosen clearing, and score the victory points listed on the space uncovered on your faction board.",
+        "rule_number": "6.5.4.I",
+        "rule_text": "Choose Clearing and Building.  Choose a clearing you rule. Choose whether you want to place a sawmill, workshop, or recruiter. You will place the leftmost building of its type from your faction board. You must be able to pay its cost (6.5.4.II) and place it (6.5.4.III).",
+        "page_number": 6
+    },
+    {
+        "rule_number": "6.5.4.II",
+        "rule_text": "Pay Cost. Find the chosen building’s cost at the top of its column. Remove wood tokens equal in number to the cost from the chosen clearing, any adjacent clearings you rule, or any clearings connected to the chosen clearing you rule through any number of clearings you rule.",
+        "page_number": 6
+    },
+    {
+        "rule_number": "6.5.4.III",
+        "rule_text": "Place Building and Score.  Place the chosen building in the chosen clearing, and score the victory points listed on the space uncovered on your faction board.",
         "page_number": 6
     },
     {
@@ -680,8 +715,8 @@
         "page_number": 7
     },
     {
-        "rule_number": "8.2.3",
-        "rule_text": "The Supporters Stack.  To take various actions, the Alliance spends supporters, which are cards on their Supporters stack. Supporters can only be spent for their suit and do not count against the Alliance’s hand size. Supporters are face down, but the Alliance may inspect them at any time. I     Capacity. If the Alliance has no bases on the map, the Supporters stack can only hold up to five cards. If the Alliance would gain a supporter but the stack cannot hold it, that card is discarded. If any bases are on the map, the Supporters stack can hold unlimited cards.",
+        "rule_number": "8.2.3.I",
+        "rule_text": "Capacity. If the Alliance has no bases on the map, the Supporters stack can only hold up to five cards. If the Alliance would gain a supporter but the stack cannot hold it, that card is discarded. If any bases are on the map, the Supporters stack can hold unlimited cards.",
         "page_number": 7
     },
     {
@@ -690,13 +725,33 @@
         "page_number": 7
     },
     {
-        "rule_number": "8.2.5",
-        "rule_text": "Sympathy Tokens. The Alliance has 10 sympathy tokens. I     Placement Limits. A clearing can hold only one sympathy token. II     Terms. A sympathetic clearing is one with a sympathy token. An unsympathetic clearing is one without a sympathy token.",
+        "rule_number": "8.2.5.I",
+        "rule_text": "Placement Limits. A clearing can hold only one sympathy token.",
         "page_number": 7
     },
     {
-        "rule_number": "8.2.6",
-        "rule_text": "Outrage. Whenever another player removes a sympathy token or moves any warriors into a sympathetic clearing, they must add one card matching the affected clearing from their hand to the Supporters stack. If they have no matching cards (including no birds), they must show their hand to the Alliance, and then the Alliance draws a card from the deck and adds it to the Supporters stack. I     Recruit. Place a warrior in any clearing with a roost whose suit matches the card suit. II     Move. Move from any clearing whose suit matches the card suit. (You must move at least one warrior .) III     Battle. Initiate a battle in any clearing whose suit matches the card suit. IV     Build. Place a roost in any clearing you rule whose suit matches the card suit and which has no roost.",
+        "rule_number": "8.2.5.II",
+        "rule_text": "Terms. A sympathetic clearing is one with a sympathy token. An unsympathetic clearing is one without a sympathy token.",
+        "page_number": 7
+    },
+    {
+        "rule_number": "8.2.6.I",
+        "rule_text": "Recruit. Place a warrior in any clearing with a roost whose suit matches the card suit.",
+        "page_number": 7
+    },
+    {
+        "rule_number": "8.2.6.II",
+        "rule_text": "Move. Move from any clearing whose suit matches the card suit. (You must move at least one warrior .)",
+        "page_number": 7
+    },
+    {
+        "rule_number": "8.2.6.III",
+        "rule_text": "Battle. Initiate a battle in any clearing whose suit matches the card suit.",
+        "page_number": 7
+    },
+    {
+        "rule_number": "8.2.6.IV",
+        "rule_text": "Build. Place a roost in any clearing you rule whose suit matches the card suit and which has no roost.",
         "page_number": 7
     },
     {
@@ -730,8 +785,8 @@
         "page_number": 7
     },
     {
-        "rule_number": "7.7.3",
-        "rule_text": "Step 3: Depose. Flip your current leader face down and set it aside, choose a new leader from those face up, and place on your faction board. Tuck your Loyal Viziers into the Decree spaces listed on your new leader. I     A New Clutch. If you must choose a new leader but none are face up, flip them all face up.",
+        "rule_number": "7.7.3.I",
+        "rule_text": "A New Clutch. If you must choose a new leader but none are face up, flip them all face up.",
         "page_number": 7
     },
     {
@@ -775,8 +830,23 @@
         "page_number": 8
     },
     {
-        "rule_number": "8.6.1",
-        "rule_text": "Military Operations. You may take actions, as follows, up to your number of officers, in any order and number. I     Move. Take one move. II     Battle. Initiate a battle. III     Recruit. Place a warrior in any clearing with a base. IV     Organize. Remove one Alliance warrior from an unsympathetic clearing to place a sympathy token there, then score the victory points listed on the space uncovered on your faction board.",
+        "rule_number": "8.6.1.I",
+        "rule_text": "Move. Take one move.",
+        "page_number": 8
+    },
+    {
+        "rule_number": "8.6.1.II",
+        "rule_text": "Battle. Initiate a battle.",
+        "page_number": 8
+    },
+    {
+        "rule_number": "8.6.1.III",
+        "rule_text": "Recruit. Place a warrior in any clearing with a base.",
+        "page_number": 8
+    },
+    {
+        "rule_number": "8.6.1.IV",
+        "rule_text": "Organize. Remove one Alliance warrior from an unsympathetic clearing to place a sympathy token there, then score the victory points listed on the space uncovered on your faction board.",
         "page_number": 8
     },
     {
@@ -825,13 +895,33 @@
         "page_number": 8
     },
     {
-        "rule_number": "8.4.1",
-        "rule_text": "Revolt. Any number of times, you may take the Revolt action, as follows. I     Step 1: Choose Clearing.  Choose a sympathetic clearing without a base that matches a base on your faction board. II     Step 2: Spend Supporters. Spend two supporters matching the suit of the chosen clearing. III     Step 3: Resolve Effect. Remove all enemy pieces from the chosen clearing. Then, place the matching base there, and place warriors there equal to the number of sympathetic clearings matching the base’s printed suit. Finally, place one warrior in the Officers box. This warrior is now an officer. (Remember to score one victory point per token and building removed.)",
+        "rule_number": "8.4.1.I",
+        "rule_text": "Step 1: Choose Clearing.  Choose a sympathetic clearing without a base that matches a base on your faction board.",
         "page_number": 8
     },
     {
-        "rule_number": "8.4.2",
-        "rule_text": "Spread Sympathy. Any number of times, you may take the Spread Sympathy action, as follows. I     Step 1: Choose Clearing. Choose an unsympathetic clearing adjacent to a sympathetic clearing. If there are no sympathetic clearings, you may choose any clearing. II     Step 2: Spend Supporters.  Spend supporters matching the suit of the chosen clearing. The number of supporters that must be spent is listed above the sympathy token. a     Martial Law. You must spend another matching supporter if the target clearing has at least 3 warriors of another player, including warriors they are treating as their own for rule (Mercenaries, hirelings, etc.). III     Step 3: Place and Score.  Place a sympathy token in the chosen clearing. Score the victory points on the space uncovered on your faction board.",
+        "rule_number": "8.4.1.II",
+        "rule_text": "Step 2: Spend Supporters. Spend two supporters matching the suit of the chosen clearing.",
+        "page_number": 8
+    },
+    {
+        "rule_number": "8.4.1.III",
+        "rule_text": "Step 3: Resolve Effect. Remove all enemy pieces from the chosen clearing. Then, place the matching base there, and place warriors there equal to the number of sympathetic clearings matching the base’s printed suit. Finally, place one warrior in the Officers box. This warrior is now an officer. (Remember to score one victory point per token and building removed.)",
+        "page_number": 8
+    },
+    {
+        "rule_number": "8.4.2.I",
+        "rule_text": "Step 1: Choose Clearing. Choose an unsympathetic clearing adjacent to a sympathetic clearing. If there are no sympathetic clearings, you may choose any clearing.",
+        "page_number": 8
+    },
+    {
+        "rule_number": "8.4.2.II",
+        "rule_text": "Step 2: Spend Supporters.  Spend supporters matching the suit of the chosen clearing. The number of supporters that must be spent is listed above the sympathy token. a     Martial Law. You must spend another matching supporter if the target clearing has at least 3 warriors of another player, including warriors they are treating as their own for rule (Mercenaries, hirelings, etc.).",
+        "page_number": 8
+    },
+    {
+        "rule_number": "8.4.2.III",
+        "rule_text": "Step 3: Place and Score.  Place a sympathy token in the chosen clearing. Score the victory points on the space uncovered on your faction board.",
         "page_number": 8
     },
     {
@@ -845,8 +935,18 @@
         "page_number": 8
     },
     {
-        "rule_number": "8.5.2",
-        "rule_text": "Mobilize. Add a card from your hand to the Supporters stack. I     Improving Relationships. You can improve a relationship with a non-Hostile faction by taking the Aid action. a     Cost. Aid a non-Hostile faction the number of times listed between their current Allied space and their next Allied space during the same turn. (A given Aid action counts toward only one improvement in relationship.) b     Effect. Advance that faction’s relationship marker one space right on the track. Score the victory points listed in the new space. II     Allied Status. If a relationship marker reaches the final space on the Allied track, you are now Allied with the faction shown by that relationship marker. (Their warriors trust you!) a     Aiding Ally. Each time you Aid an Allied faction, score two victory points. b     Moving with Ally. When you move, you may force warriors of one Allied faction to move along with your Vagabond pawn to your destination clearing. (When you move alone, such as with the Harrier’s ability, you cannot move Allied warriors.) c     Attacking with Ally. At the start of battle as the attacker, you may treat the warriors of one Allied faction in the clearing of battle as your own. The maximum hits you can roll equals the number of their warriors there plus your total undamaged S. You cannot treat Allied warriors as your own when attacking the same Allied faction. d     Taking Hits with Ally. In a battle where you treat Allied warriors as your own, you can take hits by removing them. However, if you take more hits by removing Allied warriors than by damaging items during the same battle, that Allied faction becomes Hostile (9.2.9.III) at the end of the battle. This rule overrides the condition for becoming Hostile in 9.2.9.III. III     Hostile Status. If you remove a warrior of a non-Hostile faction, move their relationship marker to the Hostile box. This faction is now Hostile. Then, if this happened in battle during your turn, check for Infamy scoring (9.2.9.IIIa).  a     Infamy. Score one extra victory point for each piece of a Hostile faction you remove in battle during your turn, except the warrior that made the faction Hostile. (Add this to points scored for enemy buildings and tokens.) b     Moving into Hostile Clearings. You must exhaust an extra M to move (even if forced) into a clearing with any warriors of any Hostile faction.",
+        "rule_number": "8.5.2.I",
+        "rule_text": "Improving Relationships. You can improve a relationship with a non-Hostile faction by taking the Aid action. a     Cost. Aid a non-Hostile faction the number of times listed between their current Allied space and their next Allied space during the same turn. (A given Aid action counts toward only one improvement in relationship.) b     Effect. Advance that faction’s relationship marker one space right on the track. Score the victory points listed in the new space.",
+        "page_number": 8
+    },
+    {
+        "rule_number": "8.5.2.II",
+        "rule_text": "Allied Status. If a relationship marker reaches the final space on the Allied track, you are now Allied with the faction shown by that relationship marker. (Their warriors trust you!) a     Aiding Ally. Each time you Aid an Allied faction, score two victory points. b     Moving with Ally. When you move, you may force warriors of one Allied faction to move along with your Vagabond pawn to your destination clearing. (When you move alone, such as with the Harrier’s ability, you cannot move Allied warriors.) c     Attacking with Ally. At the start of battle as the attacker, you may treat the warriors of one Allied faction in the clearing of battle as your own. The maximum hits you can roll equals the number of their warriors there plus your total undamaged S. You cannot treat Allied warriors as your own when attacking the same Allied faction. d     Taking Hits with Ally. In a battle where you treat Allied warriors as your own, you can take hits by removing them. However, if you take more hits by removing Allied warriors than by damaging items during the same battle, that Allied faction becomes Hostile (9.2.9.III) at the end of the battle. This rule overrides the condition for becoming Hostile in 9.2.9.III.",
+        "page_number": 8
+    },
+    {
+        "rule_number": "8.5.2.III",
+        "rule_text": "Hostile Status. If you remove a warrior of a non-Hostile faction, move their relationship marker to the Hostile box. This faction is now Hostile. Then, if this happened in battle during your turn, check for Infamy scoring (9.2.9.IIIa).  a     Infamy. Score one extra victory point for each piece of a Hostile faction you remove in battle during your turn, except the warrior that made the faction Hostile. (Add this to points scored for enemy buildings and tokens.) b     Moving into Hostile Clearings. You must exhaust an extra M to move (even if forced) into a clearing with any warriors of any Hostile faction.",
         "page_number": 8
     },
     {
@@ -860,8 +960,8 @@
         "page_number": 9
     },
     {
-        "rule_number": "9.2.2",
-        "rule_text": "Lone Wanderer. The Vagabond pawn is not a warrior (so he cannot rule a clearing or stop another player from ruling one). The Vagabond pawn cannot be removed from the map. I     Full Removal. Whenever an enemy player uses an effect that says it removes all enemy pieces from a clearing (such as Alliance revolts, Favor of the Mice cards, Conspiracy bombs) with the Vagabond, the Vagabond damages three items.",
+        "rule_number": "9.2.2.I",
+        "rule_text": "Full Removal. Whenever an enemy player uses an effect that says it removes all enemy pieces from a clearing (such as Alliance revolts, Favor of the Mice cards, Conspiracy bombs) with the Vagabond, the Vagabond damages three items.",
         "page_number": 9
     },
     {
@@ -875,8 +975,13 @@
         "page_number": 9
     },
     {
-        "rule_number": "9.2.5",
-        "rule_text": "Items. The Vagabond’s capabilities depend on the items he acquires. Instead of a Crafted Items box, he has a Satchel and various item tracks. Items on the Vagabond’s faction board can be face up or face down. The Vagabond exhausts face-up undamaged items, flipping them face down, to take many actions. I     Item Tracks. Whenever a T, X, or B is face up in your Satchel, place it in an empty matching track space if able. If a T, X, or B on a track is flipped face down, place it in your Satchel. Each track can only hold 3 items of its type. II     The Satchel. When gained, M, S, C, F, and H are placed face up in the Vagabond’s Satchel.",
+        "rule_number": "9.2.5.I",
+        "rule_text": "Item Tracks. Whenever a T, X, or B is face up in your Satchel, place it in an empty matching track space if able. If a T, X, or B on a track is flipped face down, place it in your Satchel. Each track can only hold 3 items of its type.",
+        "page_number": 9
+    },
+    {
+        "rule_number": "9.2.5.II",
+        "rule_text": "The Satchel. When gained, M, S, C, F, and H are placed face up in the Vagabond’s Satchel.",
         "page_number": 9
     },
     {
@@ -1090,8 +1195,18 @@
         "page_number": 11
     },
     {
-        "rule_number": "10.4.3",
-        "rule_text": "Perform Conspiracies. You can spend acolytes, returning them to your supply, to perform conspiracies in clearings matching the Outcast, in any order and number, as follows. If the Outcast is Hated, the conspiracy costs one fewer acolyte. I     Crusade. Spend two acolytes to initiate a battle in an Outcast clearing or to move (at least one warrior) from an Outcast clearing and then, if you wish, initiate a battle in the destination clearing. II     Convert. Spend two acolytes to replace an enemy warrior from an Outcast clearing with a Cult warrior. (To replace a piece, you must be able to remove the old piece and place the new piece.) III     Sanctify. Spend three acolytes to replace an enemy building from an Outcast clearing with a garden of the Outcast suit.",
+        "rule_number": "10.4.3.I",
+        "rule_text": "Crusade. Spend two acolytes to initiate a battle in an Outcast clearing or to move (at least one warrior) from an Outcast clearing and then, if you wish, initiate a battle in the destination clearing.",
+        "page_number": 11
+    },
+    {
+        "rule_number": "10.4.3.II",
+        "rule_text": "Convert. Spend two acolytes to replace an enemy warrior from an Outcast clearing with a Cult warrior. (To replace a piece, you must be able to remove the old piece and place the new piece.)",
+        "page_number": 11
+    },
+    {
+        "rule_number": "10.4.3.III",
+        "rule_text": "Sanctify. Spend three acolytes to replace an enemy building from an Outcast clearing with a garden of the Outcast suit.",
         "page_number": 11
     },
     {
@@ -1230,18 +1345,38 @@
         "page_number": 12
     },
     {
-        "rule_number": "11.2.5",
-        "rule_text": "Trade Posts. The Riverfolk score victory points when they place trade posts. I     Trade Disruption. Whenever a trade post is removed, the Riverfolk remove half of their funds, rounded up, and remove the trade post from the game permanently.",
+        "rule_number": "11.2.5.I",
+        "rule_text": "Trade Disruption. Whenever a trade post is removed, the Riverfolk remove half of their funds, rounded up, and remove the trade post from the game permanently.",
         "page_number": 12
     },
     {
-        "rule_number": "11.2.6",
-        "rule_text": "Buying Services. At the start of another player’s Birdsong, that player may buy Riverfolk services. I     Cost. The buyer must place warriors from their supply into the Riverfolk’s Payments box equal in number to the cost of that service listed on the Riverfolk’s Services track. II     Number of Services. Each turn, a player may buy one service plus one per clearing with a trade post and their faction pieces. III     Vagabond Funds. The Vagabond pays for services by exhausting items—for each item he exhausts to do so, the Riverfolk place one Riverfolk warrior in the Payments box.",
+        "rule_number": "11.2.6.I",
+        "rule_text": "Cost. The buyer must place warriors from their supply into the Riverfolk’s Payments box equal in number to the cost of that service listed on the Riverfolk’s Services track.",
         "page_number": 12
     },
     {
-        "rule_number": "11.2.7",
-        "rule_text": "Riverfolk Services. The Riverfolk offer three services, as follows. I     Hand Card. The buyer takes any card from the Riverfolk’s hand and adds it to their hand. (The buyer may buy this service multiple times as long as they have access to enough trade posts.) II     Riverboats. The buyer treats rivers as paths until the end of their turn. III     Mercenaries. During Daylight and Evening of this turn, except when battling the Riverfolk, the buyer treats Riverfolk warriors as their own for rule and for battle. (The buyer cannot move them, count them toward dominance, or remove them except by taking hits. They are no longer enemy pieces, but they are still Riverfolk faction pieces, so they cannot be affected by abilities such as the Marquise’s Field Hospitals or used in actions such as the Duchy’s Sway Ministers.) a     Taking Hits. The buyer must split hits, taking odd hits by removing owned (not Riverfolk) warriors, if any, or owned buildings or tokens only if they have no warriors (including Riverfolk) in the clearing of battle. b     Vagabond & Mercenaries. The Vagabond cannot buy Riverfolk Mercenaries. If Riverfolk Mercenaries are removed in a battle against the Vagabond, the Vagabond does not become Hostile with the Riverfolk.",
+        "rule_number": "11.2.6.II",
+        "rule_text": "Number of Services. Each turn, a player may buy one service plus one per clearing with a trade post and their faction pieces.",
+        "page_number": 12
+    },
+    {
+        "rule_number": "11.2.6.III",
+        "rule_text": "Vagabond Funds. The Vagabond pays for services by exhausting items—for each item he exhausts to do so, the Riverfolk place one Riverfolk warrior in the Payments box.",
+        "page_number": 12
+    },
+    {
+        "rule_number": "11.2.7.I",
+        "rule_text": "Hand Card. The buyer takes any card from the Riverfolk’s hand and adds it to their hand. (The buyer may buy this service multiple times as long as they have access to enough trade posts.)",
+        "page_number": 12
+    },
+    {
+        "rule_number": "11.2.7.II",
+        "rule_text": "Riverboats. The buyer treats rivers as paths until the end of their turn.",
+        "page_number": 12
+    },
+    {
+        "rule_number": "11.2.7.III",
+        "rule_text": "Mercenaries. During Daylight and Evening of this turn, except when battling the Riverfolk, the buyer treats Riverfolk warriors as their own for rule and for battle. (The buyer cannot move them, count them toward dominance, or remove them except by taking hits. They are no longer enemy pieces, but they are still Riverfolk faction pieces, so they cannot be affected by abilities such as the Marquise’s Field Hospitals or used in actions such as the Duchy’s Sway Ministers.) a     Taking Hits. The buyer must split hits, taking odd hits by removing owned (not Riverfolk) warriors, if any, or owned buildings or tokens only if they have no warriors (including Riverfolk) in the clearing of battle. b     Vagabond & Mercenaries. The Vagabond cannot buy Riverfolk Mercenaries. If Riverfolk Mercenaries are removed in a battle against the Vagabond, the Vagabond does not become Hostile with the Riverfolk.",
         "page_number": 12
     },
     {
@@ -1285,8 +1420,18 @@
         "page_number": 13
     },
     {
-        "rule_number": "11.5.6",
-        "rule_text": "Establish Trade Post with Garrison. Spend two funds to place a trade post and a warrior. I     Choose Clearing. Choose any clearing without a trade post that is ruled by any player. II     Spend Funds. Spend two funds of the player who rules the chosen clearing. III     Place and Score. Place the matching trade post and one warrior in the chosen clearing. Score the victory points listed on the space uncovered on your faction board.",
+        "rule_number": "11.5.6.I",
+        "rule_text": "Choose Clearing. Choose any clearing without a trade post that is ruled by any player.",
+        "page_number": 13
+    },
+    {
+        "rule_number": "11.5.6.II",
+        "rule_text": "Spend Funds. Spend two funds of the player who rules the chosen clearing.",
+        "page_number": 13
+    },
+    {
+        "rule_number": "11.5.6.III",
+        "rule_text": "Place and Score. Place the matching trade post and one warrior in the chosen clearing. Score the victory points listed on the space uncovered on your faction board.",
         "page_number": 13
     },
     {
@@ -1375,8 +1520,8 @@
         "page_number": 13
     },
     {
-        "rule_number": "11.5.3",
-        "rule_text": "Craft. Commit funds to craft a card from your hand. Instead of moving these warriors to the Committed box, you must place them on empty spaces of the Trade Posts tracks matching the suits listed on the crafting cost. I     Export. You may ignore the listed benefit of crafting a card, discarding it, to place one Riverfolk warrior in the Payments box.",
+        "rule_number": "11.5.3.I",
+        "rule_text": "Export. You may ignore the listed benefit of crafting a card, discarding it, to place one Riverfolk warrior in the Payments box.",
         "page_number": 13
     },
     {
@@ -1430,18 +1575,73 @@
         "page_number": 14
     },
     {
-        "rule_number": "12.5.1",
-        "rule_text": "Assembly. You may take up to two actions in any order and number, as follows. I     Build. Reveal one card to place a citadel or market in a matching clearing you rule. II     Recruit. Place one warrior in the Burrow. III     Move. Take a move. IV     Battle. Initiate a battle. V     Dig. Spend one card to place a tunnel token in a matching clearing without a tunnel token. Then, move up to four warriors (at least one) from the Burrow to that clearing. (If all three tunnels are on the map, you may remove a tunnel first.)",
+        "rule_number": "12.5.1.I",
+        "rule_text": "Build. Reveal one card to place a citadel or market in a matching clearing you rule.",
         "page_number": 14
     },
     {
-        "rule_number": "12.5.2",
-        "rule_text": "Parliament. You may take the action of each swayed minister once in any order. I     Foremole. Reveal any card to place a citadel or market in any clearing (matching or not) you rule. II     Captain. Initiate a battle. III     Marshal. Take a move. IV     Brigadier. Take up to two moves or initiate up to two battles. V     Banker. Spend any number of cards (even one) of the same suit to score victory points in equal number. VI     Mayor. Take the action of any swayed noble or squire. VII     Duchess of Mud. Score two victory points if all three tunnels are on the map. VIII     Baron of Dirt. Score one victory point per market on the map. IX     Earl of Stone. Score one victory point per citadel on the map.",
+        "rule_number": "12.5.1.II",
+        "rule_text": "Recruit. Place one warrior in the Burrow.",
         "page_number": 14
     },
     {
-        "rule_number": "12.5.3",
-        "rule_text": "Sway. You may sway one minister, as follows. I     Choose Minister. Choose a minister card in your Unswayed Ministers pile. You must have a crown on your faction board matching the rank (squire, noble, lord) of that minister. II     Reveal Cards. Reveal the number of cards listed on the chosen minister. For each card you wish to reveal, you must have at least one Duchy piece in a clearing matching the suit of that card. Each such clearing allows you to reveal one matching card. III     Sway Minister and Score.  Take the chosen minister card and place it above your faction board. Take a crown of that minister’s rank from your faction board and place it on the minister card. Score the victory points listed on the space uncovered on your faction board.",
+        "rule_number": "12.5.1.III",
+        "rule_text": "Move. Take a move.",
+        "page_number": 14
+    },
+    {
+        "rule_number": "12.5.1.IV",
+        "rule_text": "Battle. Initiate a battle.",
+        "page_number": 14
+    },
+    {
+        "rule_number": "12.5.1.V",
+        "rule_text": "Dig. Spend one card to place a tunnel token in a matching clearing without a tunnel token. Then, move up to four warriors (at least one) from the Burrow to that clearing. (If all three tunnels are on the map, you may remove a tunnel first.)",
+        "page_number": 14
+    },
+    {
+        "rule_number": "12.5.2.I",
+        "rule_text": "Foremole. Reveal any card to place a citadel or market in any clearing (matching or not) you rule.",
+        "page_number": 14
+    },
+    {
+        "rule_number": "12.5.2.II",
+        "rule_text": "Captain. Initiate a battle.",
+        "page_number": 14
+    },
+    {
+        "rule_number": "12.5.2.III",
+        "rule_text": "Marshal. Take a move.",
+        "page_number": 14
+    },
+    {
+        "rule_number": "12.5.2.IV",
+        "rule_text": "Brigadier. Take up to two moves or initiate up to two battles.",
+        "page_number": 14
+    },
+    {
+        "rule_number": "12.5.2.V",
+        "rule_text": "Banker. Spend any number of cards (even one) of the same suit to score victory points in equal number.",
+        "page_number": 14
+    },
+    {
+        "rule_number": "12.5.2.VI",
+        "rule_text": "Mayor. Take the action of any swayed noble or squire. VII     Duchess of Mud. Score two victory points if all three tunnels are on the map. VIII     Baron of Dirt. Score one victory point per market on the map. IX     Earl of Stone. Score one victory point per citadel on the map.",
+        "page_number": 14
+    },
+    {
+        "rule_number": "12.5.3.I",
+        "rule_text": "Choose Minister. Choose a minister card in your Unswayed Ministers pile. You must have a crown on your faction board matching the rank (squire, noble, lord) of that minister.",
+        "page_number": 14
+    },
+    {
+        "rule_number": "12.5.3.II",
+        "rule_text": "Reveal Cards. Reveal the number of cards listed on the chosen minister. For each card you wish to reveal, you must have at least one Duchy piece in a clearing matching the suit of that card. Each such clearing allows you to reveal one matching card.",
+        "page_number": 14
+    },
+    {
+        "rule_number": "12.5.3.III",
+        "rule_text": "Sway Minister and Score.  Take the chosen minister card and place it above your faction board. Take a crown of that minister’s rank from your faction board and place it on the minister card. Score the victory points listed on the space uncovered on your faction board.",
         "page_number": 14
     },
     {
@@ -1485,8 +1685,13 @@
         "page_number": 14
     },
     {
-        "rule_number": "13.2.2",
-        "rule_text": "Plot Tokens. The Corvids have eight plot tokens, two of each type. I     Token Facing. While in the Corvids’ supply, plot tokens are face down (feather). While on the map, a plot token can be face up (unique icon) or face down. The Corvids can inspect any facedown plot token at any time. II     Placement Limits. Each clearing can hold only one plot token.",
+        "rule_number": "13.2.2.I",
+        "rule_text": "Token Facing. While in the Corvids’ supply, plot tokens are face down (feather). While on the map, a plot token can be face up (unique icon) or face down. The Corvids can inspect any facedown plot token at any time.",
+        "page_number": 14
+    },
+    {
+        "rule_number": "13.2.2.II",
+        "rule_text": "Placement Limits. Each clearing can hold only one plot token.",
         "page_number": 14
     },
     {
@@ -1655,8 +1860,18 @@
         "page_number": 16
     },
     {
-        "rule_number": "14.5.2",
-        "rule_text": "Command the Hundreds. You may take the following actions, in any order, a number of times up to your Command. I     Move. Take a move. II     Battle. Initiate a battle. III     Build. Spend a card to place a stronghold in a matching clearing that you rule.",
+        "rule_number": "14.5.2.I",
+        "rule_text": "Move. Take a move.",
+        "page_number": 16
+    },
+    {
+        "rule_number": "14.5.2.II",
+        "rule_text": "Battle. Initiate a battle.",
+        "page_number": 16
+    },
+    {
+        "rule_number": "14.5.2.III",
+        "rule_text": "Build. Spend a card to place a stronghold in a matching clearing that you rule.",
         "page_number": 16
     },
     {
@@ -1705,8 +1920,13 @@
         "page_number": 16
     },
     {
-        "rule_number": "14.7.4",
-        "rule_text": "Lavish (No Item).  At the end of your Birdsong, you may remove any number of items from your Hoard permanently. For each item you remove, I     Gaining Items. When the Hundreds gain an item, they put it in the leftmost empty Command or Prowess space based on the item type; if there is no such empty space, they must permanently remove the gained item or any item on that track, and they score one victory point. II     Command and Prowess. The number of items on the Command and Prowess tracks determine their Command and Prowess, which affect various parts of their rules. With no items, they have 1 Command or Prowess; with one or two items, they have 2; with three items, they have 3; with four items, they have 4.",
+        "rule_number": "14.7.4.I",
+        "rule_text": "Gaining Items. When the Hundreds gain an item, they put it in the leftmost empty Command or Prowess space based on the item type; if there is no such empty space, they must permanently remove the gained item or any item on that track, and they score one victory point.",
+        "page_number": 16
+    },
+    {
+        "rule_number": "14.7.4.II",
+        "rule_text": "Command and Prowess. The number of items on the Command and Prowess tracks determine their Command and Prowess, which affect various parts of their rules. With no items, they have 1 Command or Prowess; with one or two items, they have 2; with three items, they have 3; with four items, they have 4.",
         "page_number": 16
     },
     {
@@ -1890,8 +2110,13 @@
         "page_number": 18
     },
     {
-        "rule_number": "16.2.1",
-        "rule_text": "Enclaves. The Diaspora has 12 enclave tokens, which are double-sided: one side is Peaceful and the other side is Militant. Each clearing can hold only one enclave. I     Clearing Suit. While Peaceful, an enclave adds the frog suit to its clearing, making it dual-suited. While Militant, an enclave replaces its clearing suit with the frog suit. (A crafting piece at a Peaceful enclave can be used for a frog icon or the printed clearing icon. A crafting piece at a Militant enclave can be used only for a frog icon. The frog icon can be used as a wild icon.) II     Matching. Various effects target a clearing matching the suit of something else, such as a card. A clearing with a Militant enclave can be matched with the frog suit. A clearing with a Peaceful enclave can be matched with either the frog suit or the printed clearing suit. (For example, the Lizard Cult could Build with a frog card to place a fox garden in a fox clearing with a Peaceful enclave, since it also has the frog suit. The Woodland Alliance could spend a fox and a frog card to revolt in a fox clearing with a Peaceful enclave.)",
+        "rule_number": "16.2.1.I",
+        "rule_text": "Clearing Suit. While Peaceful, an enclave adds the frog suit to its clearing, making it dual-suited. While Militant, an enclave replaces its clearing suit with the frog suit. (A crafting piece at a Peaceful enclave can be used for a frog icon or the printed clearing icon. A crafting piece at a Militant enclave can be used only for a frog icon. The frog icon can be used as a wild icon.)",
+        "page_number": 18
+    },
+    {
+        "rule_number": "16.2.1.II",
+        "rule_text": "Matching. Various effects target a clearing matching the suit of something else, such as a card. A clearing with a Militant enclave can be matched with the frog suit. A clearing with a Peaceful enclave can be matched with either the frog suit or the printed clearing suit. (For example, the Lizard Cult could Build with a frog card to place a fox garden in a fox clearing with a Peaceful enclave, since it also has the frog suit. The Woodland Alliance could spend a fox and a frog card to revolt in a fox clearing with a Peaceful enclave.)",
         "page_number": 18
     },
     {
@@ -1915,8 +2140,18 @@
         "page_number": 18
     },
     {
-        "rule_number": "15.5.2",
-        "rule_text": "Act with Retinue. Starting with the leftmost column of your Retinue and moving to the right, you may take the column’s action, as follows, for each card in the column in any order. I     Move. Take a move from a clearing whose suit matches the card suit. II     Battle then Delve.  Choose a clearing whose suit matches the card suit. You must initiate a battle there if any enemy pieces that you can battle are there. Then, if you rule the clearing and it has at least one Keeper warrior, you may delve there as follows (even if you did not battle). a     Step 1: Flip and Move Relic.  Flip a relic in an adjacent forest so its value is showing if it is not, then move it into the chosen clearing. b     Step 2: Check for Discard. Count the number of clearings you rule adjacent to the forest from which you delved the relic. If you rule fewer of these clearings than the relic’s value, then you must discard the Retinue card used to take this action. III     Move or Recover. Choose a clearing whose suit matches the card suit. Take a move from it, or recover relics from it as follows. a     Step 1: Take Relic.  Remove a relic there of the same type as a waystation there, and place it in your leftmost empty Relics space of that relic type. b     Step 2: Score Points. Score victory points equal to the relic’s value, and score two victory points if you filled a Relics column. c     Step 3: Check for Discard. Count the number of clearings you rule whose suit matches the clearing from which you are recovering the relic. If you rule fewer of these clearings than the relic’s value, then you must end this Recover action and discard the Retinue card used to take this action. Otherwise, you may return to the Take Relic step or end this Recover action.",
+        "rule_number": "15.5.2.I",
+        "rule_text": "Move. Take a move from a clearing whose suit matches the card suit.",
+        "page_number": 18
+    },
+    {
+        "rule_number": "15.5.2.II",
+        "rule_text": "Battle then Delve.  Choose a clearing whose suit matches the card suit. You must initiate a battle there if any enemy pieces that you can battle are there. Then, if you rule the clearing and it has at least one Keeper warrior, you may delve there as follows (even if you did not battle). a     Step 1: Flip and Move Relic.  Flip a relic in an adjacent forest so its value is showing if it is not, then move it into the chosen clearing. b     Step 2: Check for Discard. Count the number of clearings you rule adjacent to the forest from which you delved the relic. If you rule fewer of these clearings than the relic’s value, then you must discard the Retinue card used to take this action.",
+        "page_number": 18
+    },
+    {
+        "rule_number": "15.5.2.III",
+        "rule_text": "Move or Recover. Choose a clearing whose suit matches the card suit. Take a move from it, or recover relics from it as follows. a     Step 1: Take Relic.  Remove a relic there of the same type as a waystation there, and place it in your leftmost empty Relics space of that relic type. b     Step 2: Score Points. Score victory points equal to the relic’s value, and score two victory points if you filled a Relics column. c     Step 3: Check for Discard. Count the number of clearings you rule whose suit matches the clearing from which you are recovering the relic. If you rule fewer of these clearings than the relic’s value, then you must end this Recover action and discard the Retinue card used to take this action. Otherwise, you may return to the Take Relic step or end this Recover action.",
         "page_number": 18
     },
     {
@@ -1955,8 +2190,13 @@
         "page_number": 19
     },
     {
-        "rule_number": "16.4.2",
-        "rule_text": "Rally or Reconcile.  You must either Rally or Reconcile. I     Rally. Place 1 warrior at each Militant enclave. II     Reconcile. Flip any number of Militant enclaves to Peaceful. Each time, if a player rules it, they draw 1 card (which can be from the Pond).",
+        "rule_number": "16.4.2.I",
+        "rule_text": "Rally. Place 1 warrior at each Militant enclave.",
+        "page_number": 19
+    },
+    {
+        "rule_number": "16.4.2.II",
+        "rule_text": "Reconcile. Flip any number of Militant enclaves to Peaceful. Each time, if a player rules it, they draw 1 card (which can be from the Pond).",
         "page_number": 19
     },
     {
@@ -1995,13 +2235,18 @@
         "page_number": 19
     },
     {
-        "rule_number": "16.2.2",
-        "rule_text": "Frog Cards. During setup, 14 frog cards are shuffled into the shared deck. These cards have the frog suit. Some of them have frog crafting icons. Many of their crafted effects force the Diaspora to take actions; the Diaspora can craft these to act themselves. I     Frog Dominance. If a player has activated the Frog Dominance card, they win the game at the start of their Birdsong if they rule at least two enclaves on the river, and they now follow the Enclave Defense rule (16.2.2.Ia). a     Enclave Defense. When the Diaspora is defending in battle, if an enclave is in the battle clearing, the player with Frog Dominance adds their faction warriors there as defending warriors, taking hits after the Diaspora’s, unless the player with Frog Dominance is attacking. b     Peacekeepers. If both Peacekeepers (17.2.5) and Enclave Defense (16.2.2.Ia) affect a battle, the Diaspora chooses the combination of Council warriors and Enclave Defense warriors to take hits after their own.",
+        "rule_number": "16.2.2.I",
+        "rule_text": "Frog Dominance. If a player has activated the Frog Dominance card, they win the game at the start of their Birdsong if they rule at least two enclaves on the river, and they now follow the Enclave Defense rule (16.2.2.Ia). a     Enclave Defense. When the Diaspora is defending in battle, if an enclave is in the battle clearing, the player with Frog Dominance adds their faction warriors there as defending warriors, taking hits after the Diaspora’s, unless the player with Frog Dominance is attacking. b     Peacekeepers. If both Peacekeepers (17.2.5) and Enclave Defense (16.2.2.Ia) affect a battle, the Diaspora chooses the combination of Council warriors and Enclave Defense warriors to take hits after their own.",
         "page_number": 19
     },
     {
-        "rule_number": "16.2.3",
-        "rule_text": "The Pond. When a frog card is discarded, it goes face up on top of the Pond pile, on the Pond placard, instead of the discard pile. (With the Lizard Cult, discard frog cards to the Pond, not the Lost Souls.) I     Drawing. When a player draws any number of cards, they may draw the first card from the top of the Pond instead of the shared deck. II     Reshuffling. When the shared deck is reshuffled, all cards from the Pond are also shuffled into it.",
+        "rule_number": "16.2.3.I",
+        "rule_text": "Drawing. When a player draws any number of cards, they may draw the first card from the top of the Pond instead of the shared deck.",
+        "page_number": 19
+    },
+    {
+        "rule_number": "16.2.3.II",
+        "rule_text": "Reshuffling. When the shared deck is reshuffled, all cards from the Pond are also shuffled into it.",
         "page_number": 19
     },
     {
@@ -2080,8 +2325,8 @@
         "page_number": 20
     },
     {
-        "rule_number": "17.6.1",
-        "rule_text": "Convene Woodfolk. One by one, return each card that you revealed in Birdsong to your hand. For each card returned, you may take one of the following actions. I     Banish. If you returned a non-bird card, initiate a battle in a clearing with a matching assembly. Defending warriors are not removed when hit; instead, force them to move to a",
+        "rule_number": "17.6.1.I",
+        "rule_text": "Banish. If you returned a non-bird card, initiate a battle in a clearing with a matching assembly. Defending warriors are not removed when hit; instead, force them to move to a",
         "page_number": 20
     },
     {
@@ -2120,8 +2365,8 @@
         "page_number": 20
     },
     {
-        "rule_number": "17.2.5",
-        "rule_text": "Peacekeepers. When an enemy chooses another enemy as defender at an assembly, the Council adds Council warriors as defending warriors, but Council warriors only take hits once the defender’s warriors have been removed. Ignore Peacekeepers if the Vagabond is defending. (The Council cannot ambush, use battle effects, etc.) I     Vagabond Allies. If the Vagabond attacks another enemy in battle while Allied (9.2.9.II) to the Twilight Council, Council warriors are attacking warriors.",
+        "rule_number": "17.2.5.I",
+        "rule_text": "Vagabond Allies. If the Vagabond attacks another enemy in battle while Allied (9.2.9.II) to the Twilight Council, Council warriors are attacking warriors.",
         "page_number": 20
     },
     {
@@ -2215,8 +2460,13 @@
         "page_number": 21
     },
     {
-        "rule_number": "2",
-        "rule_text": "acclaim tokens. single destination you choose, ignoring rule. Treat this as a single move for triggering other effects. You cannot hit buildings or tokens, and you ignore rolled hits you take (not ambush or extra hits). a     The Warlord. The warlord cannot take hits from banish because it cannot be moved outside the Lord of the Hundred’s turn. (Their other warriors still take hits.) b     The Vagabond. The Vagabond cannot take hits from banish because it is not a warrior. c     Hirelings. Hirelings cannot take hits from banish because they cannot be forced to move (H.3.4). II     Agitate. If you returned a non-bird card, spend it and choose a matching assembly. Place 1 warrior in your Loyalists, then flip the assembly to Governing if it is Closed. (You cannot gain the Loyalist if you don’t have a matching assembly.) III     Empower. If you returned a bird card, choose an assembly. Roll one battle die and remove Council warriors from it equal to the rolled number. You may either place these warriors in your Loyalists, or you may score 1 victory point if you rule the assembly.",
+        "rule_number": "2.II",
+        "rule_text": "Agitate. If you returned a non-bird card, spend it and choose a matching assembly. Place 1 warrior in your Loyalists, then flip the assembly to Governing if it is Closed. (You cannot gain the Loyalist if you don’t have a matching assembly.)",
+        "page_number": 21
+    },
+    {
+        "rule_number": "2.III",
+        "rule_text": "Empower. If you returned a bird card, choose an assembly. Roll one battle die and remove Council warriors from it equal to the rolled number. You may either place these warriors in your Loyalists, or you may score 1 victory point if you rule the assembly.",
         "page_number": 21
     },
     {
@@ -2325,18 +2575,58 @@
         "page_number": 22
     },
     {
-        "rule_number": "18.5.1",
-        "rule_text": "Captain Acts. In any order and combination, you may take up to four actions as follows with the Acting Captain, shown in your Acting Captain slot. (If the Acting Captain was placed in a forest with Ready in Birdsong this turn, you take up to three actions instead.) I     Move. Take a move with the Acting Captain. (You may move Skunks along with it.) II     Battle. Initiate a battle in the Acting Captain’s clearing. III     Filch. Once per turn, either craft a card by activating the Acting Captain, or take 1 item from the Crafted Items box of an enemy faction in the Acting Captain’s clearing. If you craft an item with Filch, do not score its listed victory points. IV     Item Action. Flip a face-up item in your Stash face down to take its action. a     Dash (M). Move the Acting Captain up to twice, ignoring rule. b     Assault (S). Initiate a battle in the Acting Captain’s clearing. Take all warriors you hit as a Prisoner (18.2.6), moving each to a separate forest with no Prisoners. c     Skirmish (C). Move the Acting Captain from a forest. Then, initiate a battle in the Acting Captain’s destination clearing, ignoring the first hit you take. d     Nab (B). Initiate a battle in the Acting Captain’s clearing. If the Acting Captain is hit, it is not removed—move it to an adjacent forest instead; if it cannot be moved, it is removed as normal. If the Acting Captain was not hit, you may move it after the battle (after placing acclaim). e     Revel (T). Place 1 acclaim and 1 Skunk at the Acting Captain. (If it’s in a forest, just place the Skunk.)  If acclaim is already in the Acting Captain’s clearing, place 2 Skunks there instead. f     Gift (X). Place 1 acclaim in the Acting Captain’s clearing and draw 1 card. (If it’s in a forest, just draw 1 card.)  If acclaim is already in the Acting Captain’s clearing, draw 2 cards instead. not include both the Vagabond and the Knaves of the Deepwood. If you include the Vagabond, choose whether to include one or both Vagabond setup cards. (We recommend one card except for adventurous groups.)",
+        "rule_number": "18.5.1.I",
+        "rule_text": "Move. Take a move with the Acting Captain. (You may move Skunks along with it.)",
         "page_number": 22
     },
     {
-        "rule_number": "A.8.2",
-        "rule_text": "Step 2: Deal Setup Cards. Shuffle all of the militant faction setup cards (red name with sword) and deal out one card to a pool in the center of the table. Shuffle the remaining militant faction setup cards together with all of the insurgent faction setup cards (grey name with no sword), and deal out one faction setup card per player. (There will be one more faction setup card than the number of players.) I     Two Players. If you’re playing with two players, remove all of the insurgent faction setup cards before dealing out any. (You may keep them if you’re playing with hirelings and feeling adventurous.) II     Lock Last Insurgent. If the last faction setup card dealt out is an insurgent, turn it sideways to show that it is locked. It cannot be chosen unless at least one militant faction has been chosen. III     Vagabond. Whenever a Vagabond faction setup card is dealt out, also deal out one random character card next to it face up. If a player chooses this Vagabond as their faction, they must use this character card. IV     Knaves. Whenever the Knaves of the Deepwood faction setup card is dealt out, also deal out four random Captain cards next to it face up. (In their setup, they will choose three.)",
+        "rule_number": "18.5.1.II",
+        "rule_text": "Battle. Initiate a battle in the Acting Captain’s clearing.",
+        "page_number": 22
+    },
+    {
+        "rule_number": "18.5.1.III",
+        "rule_text": "Filch. Once per turn, either craft a card by activating the Acting Captain, or take 1 item from the Crafted Items box of an enemy faction in the Acting Captain’s clearing. If you craft an item with Filch, do not score its listed victory points.",
+        "page_number": 22
+    },
+    {
+        "rule_number": "18.5.1.IV",
+        "rule_text": "Item Action. Flip a face-up item in your Stash face down to take its action. a     Dash (M). Move the Acting Captain up to twice, ignoring rule. b     Assault (S). Initiate a battle in the Acting Captain’s clearing. Take all warriors you hit as a Prisoner (18.2.6), moving each to a separate forest with no Prisoners. c     Skirmish (C). Move the Acting Captain from a forest. Then, initiate a battle in the Acting Captain’s destination clearing, ignoring the first hit you take. d     Nab (B). Initiate a battle in the Acting Captain’s clearing. If the Acting Captain is hit, it is not removed—move it to an adjacent forest instead; if it cannot be moved, it is removed as normal. If the Acting Captain was not hit, you may move it after the battle (after placing acclaim). e     Revel (T). Place 1 acclaim and 1 Skunk at the Acting Captain. (If it’s in a forest, just place the Skunk.)  If acclaim is already in the Acting Captain’s clearing, place 2 Skunks there instead. f     Gift (X). Place 1 acclaim in the Acting Captain’s clearing and draw 1 card. (If it’s in a forest, just draw 1 card.)  If acclaim is already in the Acting Captain’s clearing, draw 2 cards instead. not include both the Vagabond and the Knaves of the Deepwood. If you include the Vagabond, choose whether to include one or both Vagabond setup cards. (We recommend one card except for adventurous groups.)",
+        "page_number": 22
+    },
+    {
+        "rule_number": "A.8.2.I",
+        "rule_text": "Two Players. If you’re playing with two players, remove all of the insurgent faction setup cards before dealing out any. (You may keep them if you’re playing with hirelings and feeling adventurous.)",
         "page_number": 23
     },
     {
-        "rule_number": "A.8.3",
-        "rule_text": "Step 3: Choose Factions.  Starting with the last player in turn order and going counterclockwise, each player chooses one faction setup card from the pool and sets up the faction immediately as it describes (before another player chooses). I     Homelands. When setting up, players might choose one or more homeland clearings. Players cannot choose homelands that enemies have chosen as their homelands or where they cannot place all the pieces listed in setup. II     Enemy Homeland Adjacency. Some factions require you to choose a homeland that is not adjacent to enemy homelands; if you cannot do this, choose a homeland adjacent to an enemy homeland. If you must choose a homeland that has two or more clearings between it and enemy homelands but you cannot, choose a homeland that is not adjacent to enemy homelands. (Basically, try to set up as far away as able.) III     Multiple Homeland Adjacency.  If your faction has multiple homelands and you cannot fulfill all of their enemy adjacency requirements (A.8.3.II), choose and set them up one at a time, fulfilling each requirement as best you can.",
+        "rule_number": "A.8.2.II",
+        "rule_text": "Lock Last Insurgent. If the last faction setup card dealt out is an insurgent, turn it sideways to show that it is locked. It cannot be chosen unless at least one militant faction has been chosen.",
+        "page_number": 23
+    },
+    {
+        "rule_number": "A.8.2.III",
+        "rule_text": "Vagabond. Whenever a Vagabond faction setup card is dealt out, also deal out one random character card next to it face up. If a player chooses this Vagabond as their faction, they must use this character card.",
+        "page_number": 23
+    },
+    {
+        "rule_number": "A.8.2.IV",
+        "rule_text": "Knaves. Whenever the Knaves of the Deepwood faction setup card is dealt out, also deal out four random Captain cards next to it face up. (In their setup, they will choose three.)",
+        "page_number": 23
+    },
+    {
+        "rule_number": "A.8.3.I",
+        "rule_text": "Homelands. When setting up, players might choose one or more homeland clearings. Players cannot choose homelands that enemies have chosen as their homelands or where they cannot place all the pieces listed in setup.",
+        "page_number": 23
+    },
+    {
+        "rule_number": "A.8.3.II",
+        "rule_text": "Enemy Homeland Adjacency. Some factions require you to choose a homeland that is not adjacent to enemy homelands; if you cannot do this, choose a homeland adjacent to an enemy homeland. If you must choose a homeland that has two or more clearings between it and enemy homelands but you cannot, choose a homeland that is not adjacent to enemy homelands. (Basically, try to set up as far away as able.)",
+        "page_number": 23
+    },
+    {
+        "rule_number": "A.8.3.III",
+        "rule_text": "Multiple Homeland Adjacency.  If your faction has multiple homelands and you cannot fulfill all of their enemy adjacency requirements (A.8.3.II), choose and set them up one at a time, fulfilling each requirement as best you can.",
         "page_number": 23
     },
     {
@@ -3430,13 +3720,23 @@
         "page_number": 28
     },
     {
-        "rule_number": "M.5.1",
-        "rule_text": "Setup Modification. Follow the subsection based on your player count. Then, place 2 ruins in the “R” slots with no numbers and 2 ruins in the “R” slots with the lowest showing numbers. I     1–4 Players. Cover a total of 3 flooding clearings with flood markers—one light green, one dark green, and one brown. Align the flood markers’ paths so that they match up with paths touching the marker. II     5+ Players. Place the Mousehold, Foxburrow, and Rabbittown landmarks in the three unsuited clearings. (You can still place other landmarks as normal.)",
+        "rule_number": "M.5.1.I",
+        "rule_text": "1–4 Players. Cover a total of 3 flooding clearings with flood markers—one light green, one dark green, and one brown. Align the flood markers’ paths so that they match up with paths touching the marker.",
         "page_number": 28
     },
     {
-        "rule_number": "M.5.2",
-        "rule_text": "Flooded Clearings. A flooded clearing is no longer a clearing. Instead it only contains one or more paths, and may include flooded paths. Clearings linked by any number of non-flooded paths in these clearings are adjacent. I     Flooded Paths. Flooded paths are not linked to the other paths, but they enclose and divide forests as if they were paths (so the Vagabond can slip across it). II     Placing on Paths. Pieces that can be placed on paths (such as Highway Bandits) can be placed on any non-flooded path in the clearing, but not the point where its paths link.",
+        "rule_number": "M.5.1.II",
+        "rule_text": "5+ Players. Place the Mousehold, Foxburrow, and Rabbittown landmarks in the three unsuited clearings. (You can still place other landmarks as normal.)",
+        "page_number": 28
+    },
+    {
+        "rule_number": "M.5.2.I",
+        "rule_text": "Flooded Paths. Flooded paths are not linked to the other paths, but they enclose and divide forests as if they were paths (so the Vagabond can slip across it).",
+        "page_number": 28
+    },
+    {
+        "rule_number": "M.5.2.II",
+        "rule_text": "Placing on Paths. Pieces that can be placed on paths (such as Highway Bandits) can be placed on any non-flooded path in the clearing, but not the point where its paths link.",
         "page_number": 28
     },
     {
