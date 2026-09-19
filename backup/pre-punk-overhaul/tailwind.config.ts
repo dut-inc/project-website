@@ -61,7 +61,6 @@ const config: Config = {
         body: ["var(--font-body)"],
         mono: ["var(--font-mono)"],
         dle: ["var(--font-dle)"],
-        sign: ["var(--font-sign)"],
       },
     },
   },
