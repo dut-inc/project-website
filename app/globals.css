@@ -304,10 +304,7 @@ input {
       radial-gradient(circle at 86% 56%, rgba(42, 38, 32, 0.05) 0, transparent 1.5px),
       radial-gradient(circle at 52% 34%, rgba(255, 252, 240, 0.55) 0, transparent 16px),
       radial-gradient(circle at 8% 94%, rgba(122, 101, 61, 0.1) 0, transparent 20px);
-    box-shadow:
-      7px 9px 0 rgba(0, 0, 0, 0.38),
-      inset 0 0 28px rgba(42, 38, 32, 0.09),
-      inset 0 0 0 1px rgba(42, 38, 32, 0.06);
+    box-shadow: 2px 3px 0 rgba(0, 0, 0, 0.16);
   }
 
   /* Grid-paper scrap for handwritten notes. */
@@ -318,23 +315,6 @@ input {
       linear-gradient(rgba(42, 38, 32, 0.12) 1px, transparent 1px),
       linear-gradient(90deg, rgba(42, 38, 32, 0.12) 1px, transparent 1px);
     background-size: 13px 13px;
-  }
-
-  /* Strip of translucent tape. Light tape sits on dark surfaces; the dark
-     variant reads on light paper. Position/rotate it with utilities. */
-  .tape {
-    position: absolute;
-    z-index: 10;
-    height: 22px;
-    width: 88px;
-    background: rgba(233, 226, 203, 0.26);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-    clip-path: polygon(3% 8%, 97% 0%, 100% 88%, 0% 100%);
-    pointer-events: none;
-  }
-
-  .tape--dark {
-    background: rgba(58, 50, 38, 0.16);
   }
 
   /* Rubber-stamp label (SAVED / CHALK). Color comes from utility classes. */
@@ -356,6 +336,144 @@ input {
     display: inline-block;
     padding: 0.25rem 0.75rem;
     box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.45);
+  }
+
+  /* ---- Scissor cuts -----------------------------------------------------
+     Paper edges here are cut with scissors, not rounded with a corner
+     tool: every edge is a straight but SLANTED line, so no two sides of a
+     sheet are parallel. Corners stay sharp — no border-radius.
+     Keep the slants shallow (≈0.5–1.5%): enough to read as hand-cut at a
+     glance, small enough that wide sheets never lean like a parallelogram.
+     The clip shapes are deliberately NOT vertically symmetric — real cuts
+     wander. Text always sits inside the cut, never on it. */
+
+  /* Full sheet: the default cut for a standalone piece of paper. */
+  .cut {
+    clip-path: polygon(
+      0% 0.7%, 100% 0%, /* top drifts down toward the left */
+      99.4% 100%, 0% 99.2% /* right edge leans in, left edge leans out */
+    );
+  }
+  /* Cut variants so two sheets side by side never share a silhouette. */
+  .cut-b {
+    clip-path: polygon(
+      0% 0%, 100% 0.8%,
+      100% 99.3%, 0.5% 100%
+    );
+  }
+
+  .cut-c {
+    clip-path: polygon(
+      0.4% 0%, 100% 0.5%,
+      99.5% 99.4%, 0% 100%
+    );
+  }
+
+  .cut-d {
+    clip-path: polygon(
+      0% 0.5%, 100% 0%,
+      100% 100%, 0.6% 99.3%
+    );
+  }
+
+  .cut-lg {
+    clip-path: polygon(
+      0 0.4%, 100% 0,
+      99.65% 100%, 0.15% 99.55%
+    );
+  }
+
+  /* A strip torn off a longer sheet: only the top and bottom edges are cut
+     (horizontal slants), the left/right ends stay open so rows can stack
+     inside one silhouette. Not for standalone pieces. */
+  .cut-row {
+    clip-path: polygon(0% 14%, 100% 0%, 100% 86%, 0% 100%);
+  }
+
+  .cut-row-b {
+    clip-path: polygon(0% 0%, 100% 12%, 100% 100%, 0% 88%);
+  }
+
+  /* ---- Paper cutouts: words & phrases ON scissor-cut scraps -------------
+     Two-piece pattern, because clip-path is applied AFTER filters — a
+     drop-shadow on the clipped piece itself would be amputated:
+
+       wrapper  .cutout / .cutout-b + .scrap
+                 carries filter: drop-shadow() so the shadow follows the
+                 cut silhouette. Rotation, hover lifts, layout roles.
+       inner    .scrap-cut* — the actual cut paper: clip-path with PX-BASED
+                 slants (a 20px chip and a 600px sheet read the same),
+                 background + the text, with padding generous enough that
+                 glyphs never touch a slanted edge.
+
+     Cutouts carry NO borders — the shadow defines the edge; a border on a
+     clipped element gets thinned wherever the cut crosses it. */
+
+  /* Shadow carriers. .cutout is layout-neutral (for elements that are
+     already flex/grid/absolutely positioned); .scrap adds the shrink-wrap
+     inline-block a label needs to hug its text. */
+  .cutout {
+    filter: drop-shadow(3px 4px 0 rgba(0, 0, 0, 0.42));
+  }
+  .cutout-b {
+    filter: drop-shadow(2px 3px 0 rgba(0, 0, 0, 0.4));
+  }
+  .scrap {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+  }
+  /* Block-level scrap for full-width pieces (forms, notes, banners). */
+  .scrap-block {
+    display: block;
+  }
+
+  /* The cuts. Slants are 2–2.5px per edge — unmistakably scissor-cut at
+     any size — and alternate so neighbouring scraps never share a
+     silhouette. */
+  .scrap-cut {
+    clip-path: polygon(0 2.5px, 100% 0, calc(100% - 2px) 100%, 1px calc(100% - 2px));
+  }
+  .scrap-cut-b {
+    clip-path: polygon(0 0, 100% 2.5px, calc(100% - 2.5px) 100%, 2px calc(100% - 1.5px));
+  }
+  .scrap-cut-c {
+    clip-path: polygon(1.5px 0, 100% 2px, calc(100% - 1px) calc(100% - 2.5px), 0 100%);
+  }
+  /* Sheet-size pieces: bigger drift so wide sheets still read hand-cut. */
+  .scrap-cut-lg {
+    clip-path: polygon(0 5px, 100% 0, calc(100% - 4px) 100%, 2px calc(100% - 6px));
+  }
+  .scrap-cut-lg-b {
+    clip-path: polygon(0 0, 100% 5px, calc(100% - 6px) calc(100% - 3px), 4px 100%);
+  }
+  /* Rank-chip-size cuts — more angles so neighbouring ranks differ. */
+  .scrap-cut-d {
+    clip-path: polygon(2.5px 0, calc(100% - 1px) 2px, 100% calc(100% - 1.5px), 0 100%);
+  }
+  .scrap-cut-e {
+    clip-path: polygon(0 1.5px, calc(100% - 2px) 0, 100% 100%, 1.5px calc(100% - 2.5px));
+  }
+
+  /* Leaderboard rows: solid ink rules between rows, inset to the row's own
+     padding so the line spans exactly the width the hover tint covers. */
+  .lb-rows {
+    --lb-inset: 20px;
+  }
+  .lb-rows > li + li {
+    border-top: 1.5px solid rgba(29, 26, 22, 0.35);
+  }
+  .lb-rows > li + li::before {
+    content: "";
+    display: block;
+    height: 0;
+    margin-inline: var(--lb-inset);
+    border-top: inherit;
+  }
+  @media (min-width: 640px) {
+    .lb-rows {
+      --lb-inset: 24px;
+    }
   }
 
   /* Hollow display text — the photocopied-only-pass look. */

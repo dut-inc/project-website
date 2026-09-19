@@ -4,7 +4,7 @@
 //
 // The NBA standings prediction pool.
 // Visual language: punk rock show flyer / DIY zine. The dark `wall-bg` is the
-// wall; every panel is a sheet of paper taped or pinned to it. Cream paper,
+// wall; every panel is a sheet of paper pinned to it. Cream paper,
 // black ink, basketball-leather orange + electric red marker accents, marker
 // scrawl for annotations. Deliberately imperfect geometry, ruthlessly
 // readable data.
@@ -25,7 +25,6 @@ import {
 } from "@/lib/sports/nbaStandingsPicks";
 import { TEAMS_BY_ID, type NbaTeam } from "@/lib/sports/nbaTeams";
 import type { NbaStandingRow } from "@/lib/backend/providers/nbaStandings";
-
 // ---------------------------------------------------------------------------
 // Types
 // ---------------------------------------------------------------------------
@@ -63,6 +62,39 @@ function BasketballIcon({ className = "" }: { className?: string }) {
       />
     </svg>
   );
+}/**
+ * One headline word/phrase as a single scissor-cut scrap. The cut lives on
+ * the inner span (clip-path would amputate the wrapper's drop shadow), the
+ * tilt lives on the outer wrapper so hover transforms could compose there
+ * later. Words are the cut unit — not letters — per the pool's design.
+ */
+function CutWord({
+  word,
+  tone,
+  tilt,
+  cut,
+}: {
+  word: string;
+  tone: "cream" | "orange" | "ink";
+  tilt: string;
+  cut: string;
+}) {
+  const tones = {
+    cream: "bg-cream text-ink",
+    orange: "bg-pool-orange text-black",
+    ink: "bg-ink text-cream",
+  } as const;
+  return (
+    <span className={`scrap cutout-b ${tilt}`}>
+      <span
+        className={`block px-5 pb-4 pt-5 font-dle text-4xl font-semibold uppercase leading-none tracking-tight sm:px-7 sm:pb-5 sm:pt-6 sm:text-6xl ${
+          cut
+        } ${tones[tone]}`}
+      >
+        {word}
+      </span>
+    </span>
+  );
 }
 
 /** Team logo chip: a colored disc with the abbreviation. No protected imagery. */
@@ -87,17 +119,19 @@ function TeamChip({ team, size = "md" }: { team: NbaTeam; size?: "sm" | "md" }) 
 function LiveStandingsList({ conf, rows }: { conf: Conference; rows: NbaStandingRow[] }) {
   return (
     <div className="space-y-2">
-      <div className="px-1 font-mono text-[9px] uppercase tracking-[0.25em] text-ink/50">
-        Live standings
+      <div className="scrap cutout-b mb-2">
+        <span className="scrap-cut-b block bg-ink px-3.5 py-1.5 font-mono text-[9px] uppercase tracking-[0.25em] text-cream">
+          Live standings
+        </span>
       </div>
-      <ol className="space-y-1 rounded-sm border border-ink/60 bg-black/5 p-1">
+      <ol className="space-y-1 border border-ink/60 bg-black/5 p-1 px-1.5">
         {rows.map((row, index) => {
           const team = TEAMS_BY_ID.get(row.teamId);
           if (!team) return null;
           return (
             <li
               key={row.teamId}
-              className="flex items-center gap-2 rounded-[3px] border border-transparent px-2 py-1.5 transition-colors hover:bg-ink/[0.06]"
+              className="cut-row-b flex items-center gap-2 border border-transparent px-2.5 py-1.5 transition-colors hover:bg-ink/[0.06]"
             >
               <span className="w-5 shrink-0 text-center font-mono text-[10px] text-ink/45 tabular-nums">
                 {index + 1}
@@ -121,13 +155,17 @@ function LiveStandingsList({ conf, rows }: { conf: Conference; rows: NbaStanding
 function ConferencePlaque({ conference }: { conference: Conference }) {
   return (
     <div
-      className={`inline-block -rotate-[0.6deg] rounded-[4px_2px_6px_3px] border-2 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.28em] ${
-        conference === "West"
-          ? "border-pool-orange bg-pool-orange/15 text-pool-ink shadow-[2px_2px_0_rgba(42,38,32,0.35)]"
-          : "border-ink bg-cream text-ink shadow-[2px_2px_0_rgba(42,38,32,0.35)]"
-      }`}
+      className="scrap cutout -rotate-[0.6deg]"
     >
-      {conference}ern Conference
+      <span
+        className={`block px-4 py-1.5 font-mono text-[10px] uppercase tracking-[0.28em] ${
+          conference === "West"
+            ? "scrap-cut bg-pool-orange text-black"
+            : "scrap-cut-b bg-cream text-ink"
+        }`}
+      >
+        {conference}ern Conference
+      </span>
     </div>
   );
 }
@@ -138,6 +176,7 @@ function ConferencePlaque({ conference }: { conference: Conference }) {
 
 function ParticipantBoard({
   name,
+  rank,
   picks,
   saved,
   updatedAt,
@@ -155,6 +194,7 @@ function ParticipantBoard({
   seasonStarted,
 }: {
   name: string;
+  rank?: number;
   picks: PredictionPicks;
   saved: boolean;
   updatedAt: string | null;
@@ -164,7 +204,7 @@ function ParticipantBoard({
   onDragStart: (name: string, teamId: string) => void;
   onDragOver: (name: string, conf: Conference, index: number) => void;
   onDragLeave: () => void;
-  onDrop: (name: string, conf: Conference, index: number) => void;
+  onDrop: (name: string, conf: Conference, index: number, mode: "tile" | "gap") => void;
   onEditClick: (name: string) => void;
   draggingTeamId: string | null;
   dropSlot: { board: string; conf: Conference; index: number } | null;
@@ -174,21 +214,19 @@ function ParticipantBoard({
   const isActive = activeName === name;
   const canDrag = isDraggingEnabled && isActive;
 
-  // Insert index in the conference list *as seen while dragging* (dragged tile
-  // removed). Computed from the cursor's Y against tile midpoints, so gaps
-  // between tiles, list padding, and both list ends all resolve correctly —
-  // none of which plain drop targets handle.
+  // Gap index in the list AS LAID OUT (dragged tile still present), computed
+  // from the cursor's Y against tile midpoints. Gap i means "insert before
+  // tile i" — which is also the tile a drop swaps with.
   const insertionIndexFor = (clientY: number, conf: Conference) => {
-    const visible = picks[conf].filter((t) => t !== draggingTeamId);
-    for (let i = 0; i < visible.length; i++) {
+    for (let i = 0; i < picks[conf].length; i++) {
       const el = document.querySelector(
-        `[data-board="${name}"][data-conf="${conf}"][data-team="${visible[i]}"]`,
+        `[data-board="${name}"][data-conf="${conf}"][data-team="${picks[conf][i]}"]`,
       );
       if (!el) continue;
       const rect = el.getBoundingClientRect();
       if (clientY < rect.top + rect.height / 2) return i;
     }
-    return visible.length;
+    return picks[conf].length;
   };
 
   const renderTeam = (teamId: string, index: number, conf: Conference) => {
@@ -197,10 +235,10 @@ function ParticipantBoard({
     const liveRank = liveRanks.get(teamId);
     const isDragging = draggingTeamId === teamId;
     const rank = index + 1; // stable label, even while other tiles move
-    // Position in the list with the dragged tile hidden — matches dropSlot.
-    const visibleIndex = picks[conf].slice(0, index).filter((t) => t !== draggingTeamId).length;
+    // Drop highlight: gap index in present-list numbering — "insert before
+    // this tile" — which is exactly the tile a drop here would swap with.
     const isDropTarget =
-      dropSlot?.board === name && dropSlot.conf === conf && dropSlot.index === visibleIndex;
+      dropSlot?.board === name && dropSlot.conf === conf && dropSlot.index === index;
     // Accuracy vs the live standings: exact = green, within 1 spot = gold.
     // Dormant until the season tips off — preseason 0-0 “standings” would
     // paint every board green for nothing.
@@ -233,11 +271,12 @@ function ParticipantBoard({
           if (!canDrag) return;
           e.preventDefault();
           e.stopPropagation();
-          const rect = e.currentTarget.getBoundingClientRect();
-          const after = e.clientY > rect.top + rect.height / 2;
-          onDrop(name, conf, visibleIndex + (after ? 1 : 0));
+          // Dropping ON a tile takes that tile's slot — swap-in place.
+          onDrop(name, conf, index, "tile");
         }}
-        className={`group flex items-center gap-2 rounded-[4px_2px_5px_3px] border px-2 py-1.5 transition-all ${
+        className={`group flex items-center gap-2 border px-2.5 py-1.5 transition-all ${
+          index % 2 ? "skew-y-[0.5deg]" : "skew-y-[-0.5deg]"
+        } ${
           isDragging
             ? "z-10 rotate-[1.2deg] border-pool-orange bg-pool-orange/30 opacity-60 shadow-[3px_4px_0_rgba(0,0,0,0.3)]"
             : isDropTarget
@@ -278,46 +317,49 @@ function ParticipantBoard({
   const columns: Conference[] = ["West", "East"];
 
   return (
-    <section
-      className={`paper-sheet overflow-hidden rounded-[10px_6px_12px_7px] transition-transform ${
-        isActive ? "-rotate-[0.45deg] ring-2 ring-pool-orange" : ""
-      }`}
-    >
-      <header className="flex items-center justify-between gap-3 border-b-2 border-ink/60 bg-[#e2d5b2] px-4 py-3">
-        <div className="flex min-w-0 items-center gap-2.5">
-          <h3 className="truncate font-sign text-2xl font-bold uppercase tracking-wide text-ink">
-            {name}
-          </h3>
+    <section className="cut-shadow relative">
+      <span aria-hidden className="cut-shadow-piece" />
+      <div
+        className={`paper-sheet cut-b overflow-hidden ${
+          isActive ? "ring-2 ring-pool-orange" : ""
+        }`}
+      >
+      <header className="flex items-center justify-between gap-3 border-b-2 border-ink/60 bg-[#e2d5b2] px-5 py-4">
+        <div className="flex min-w-0 items-center gap-4">
+          <NameScrap name={name} rank={rank ?? 0} big />
           {saved ? (
-            <span className="stamp -rotate-2 shrink-0 border-pinGreen bg-pinGreen/15 text-pinTeal">
-              saved
+            <span className="scrap cutout-b ml-1.5 shrink-0">
+              <span className="scrap-cut-b block bg-cream px-3 py-1 font-mono text-[9px] uppercase tracking-[0.18em] text-pinTeal">
+                saved
+              </span>
             </span>
           ) : (
-            <span className="stamp rotate-1 shrink-0 border-ink/60 bg-transparent text-ink/60">
-              chalk
+            <span className="scrap cutout-b ml-1.5 shrink-0">
+              <span className="scrap-cut-c block bg-cream/80 px-3 py-1 font-mono text-[9px] uppercase tracking-[0.18em] text-ink/60">
+                chalk
+              </span>
             </span>
           )}
         </div>
-        <div className="flex shrink-0 items-center gap-2">
-          {updatedAt && (
-            <time className="hidden font-mono text-[9px] uppercase tracking-wider text-ink/45 sm:inline">
-              {new Date(updatedAt).toLocaleDateString(undefined, { month: "short", day: "numeric" })}
-            </time>
-          )}
+        <div className="flex shrink-0 items-center gap-2.5">
           <button
             type="button"
             onClick={() => onEditClick(name)}
-            className={`rounded-[3px] border-2 px-3 py-1.5 font-mono text-[10px] uppercase tracking-widest shadow-[2px_2px_0_rgba(42,38,32,0.35)] transition-all hover:-translate-y-px hover:shadow-[3px_3px_0_rgba(42,38,32,0.35)] ${
-              isActive && isUnlocked
-                ? "border-pinTeal bg-pinGreen/25 text-pinTeal"
-                : "border-pool-ink bg-pool-orange text-pool-ink"
-            }`}
+            className="scrap transition-transform hover:-translate-y-px"
           >
-            {isActive && isUnlocked ? "editing" : isUnlocked ? "edit" : "Unlock edit"}
+            <span
+              className={`block px-3.5 py-2 font-mono text-[10px] uppercase tracking-widest ${
+                isActive && isUnlocked
+                  ? "scrap-cut-b bg-[#DCE9D4] text-pinTeal"
+                  : "scrap-cut bg-pool-orange text-black"
+              }`}
+            >
+              {isActive && isUnlocked ? "editing" : isUnlocked ? "edit" : "Unlock edit"}
+            </span>
           </button>
         </div>
       </header>
-      <div className="grid gap-4 p-4 sm:grid-cols-2">
+        <div className="grid gap-4 p-4 sm:grid-cols-2">
         {columns.map((conf) => {
           const isTarget = dropSlot?.board === name && dropSlot.conf === conf;
           return (
@@ -333,9 +375,10 @@ function ParticipantBoard({
                 onDrop={(e) => {
                   if (!canDrag) return;
                   e.preventDefault();
-                  onDrop(name, conf, insertionIndexFor(e.clientY, conf));
+                  // Landed between tiles: classic insertion at that gap.
+                  onDrop(name, conf, insertionIndexFor(e.clientY, conf), "gap");
                 }}
-                className={`space-y-1.5 rounded-sm p-1 transition-colors ${
+                className={`space-y-1.5 px-1.5 py-1 transition-colors ${
                   isTarget ? "bg-pool-orange/15 outline-2 outline-dashed outline-pool-orange/60" : ""
                 }`}
               >
@@ -344,8 +387,42 @@ function ParticipantBoard({
             </div>
           );
         })}
+        </div>
       </div>
     </section>
+  );
+}
+
+/**
+ * A participant name as a scissor-cut scrap, colored by leaderboard rank:
+ * 1 = pinRed, 2 = orange, 3 = ink, everyone else = soft warm paper. Shared by
+ * the leaderboard rows and the board popup header so both read identically.
+ */
+function NameScrap({
+  name,
+  rank,
+  big,
+}: {
+  name: string;
+  rank: number;
+  big?: boolean;
+}) {
+  const style =
+    rank === 1
+      ? "scrap-cut bg-pinRed text-cream"
+      : rank === 2
+        ? "scrap-cut-d bg-pool-orange text-black"
+        : rank === 3
+          ? "scrap-cut-e bg-ink text-cream"
+          : `${rank % 2 ? "scrap-cut" : "scrap-cut-b"} bg-[#F4EDDA] text-ink`;
+  return (
+    <span
+      className={`block w-fit max-w-full truncate font-sign font-bold ${
+        big ? "px-4 py-1 text-2xl uppercase tracking-wide" : "px-4 py-1 text-sm"
+      } ${style}`}
+    >
+      {name}
+    </span>
   );
 }
 
@@ -358,54 +435,78 @@ function Leaderboard({
   onOpen,
 }: {
   rows: Array<{ name: string; points: number; max: number; perConf: Array<{ conf: Conference; points: number; max: number }> }>;
-  onOpen: (name: string) => void;
+  onOpen: (name: string, rank: number) => void;
 }) {
   const ranked = [...rows].sort((a, b) => b.points - a.points);
 
   return (
-    <div className="relative">
-      <span aria-hidden className="tape -top-3 right-6 z-10 rotate-[4deg] bg-pinRed/40" />
-      <div className="paper-sheet overflow-hidden rounded-[10px_5px_12px_6px]">
-        <div className="flex flex-wrap items-baseline justify-between gap-2 border-b-2 border-ink/60 bg-[#e2d5b2] px-4 py-3 sm:px-5">
-          <span className="font-sign text-xl font-bold uppercase tracking-[0.08em] text-ink">
+    <div className="paper-sheet cut-lg overflow-hidden">
+      <div className="flex flex-wrap items-center justify-between gap-3 border-b-2 border-ink/60 bg-[#e2d5b2] px-5 py-3.5 sm:px-6">
+        <span className="scrap cutout-b">
+          <span className="scrap-cut-b block bg-ink px-4 py-1.5 font-sign text-xl font-bold uppercase tracking-[0.08em] text-cream">
             Leaderboard
           </span>
-          <span className="font-mono text-[9px] uppercase tracking-widest text-ink/55">
+        </span>
+        <span className="scrap cutout-b">
+          <span className="scrap-cut block bg-cream px-3 py-1 font-mono text-[9px] uppercase tracking-widest text-ink/55">
             click a row to view/edit picks
           </span>
-        </div>
-        <ol className="divide-y divide-ink/25">
+        </span>
+      </div>
+      <ol className="lb-rows">
           {ranked.map((row, i) => (
             <li key={row.name}>
               <button
                 type="button"
-                onClick={() => onOpen(row.name)}
+                onClick={() => onOpen(row.name, i + 1)}
                 aria-label={`View ${row.name}'s predictions`}
-                className={`group flex w-full items-center gap-3 px-4 py-3 text-left transition-colors hover:bg-ink/[0.07] sm:px-5 ${
-                  i % 2 === 1 ? "bg-ink/[0.035]" : ""
-                }`}
+                className="group flex w-full items-center gap-3 px-5 py-3.5 text-left transition-colors hover:bg-ink/[0.07] sm:px-6"
               >
                 <span
-                  className={`w-6 shrink-0 text-center font-sign text-xl font-bold ${
-                    i === 0 ? "text-pinRed" : "text-ink/40"
-                  }`}
+                  className={`shrink-0 px-2.5 py-1 text-center font-sign text-xl font-bold ${
+                      i === 0
+                        ? "scrap-cut bg-pinRed text-cream"
+                        : i === 1
+                          ? "scrap-cut-d bg-pool-orange text-black"
+                          : i === 2
+                            ? "scrap-cut-e bg-ink text-cream"
+                            : `${i % 2 ? "scrap-cut-b" : "scrap-cut-c"} bg-[#F4EDDA] text-ink/60`
+                    }`}
                 >
                   {i + 1}
                 </span>
-                <span className="min-w-0 flex-1 truncate text-sm font-bold text-ink">
-                  {row.name}
+                <span className="min-w-0 flex-1">
+                  <span
+                    className={`block w-fit max-w-full truncate bg-[#F4EDDA] px-4 py-1 text-sm font-bold text-ink ${
+                      i % 2 ? "scrap-cut" : "scrap-cut-b"
+                    }`}
+                  >
+                    {row.name}
+                  </span>
                 </span>
                 <span
-                  className={`w-20 shrink-0 rounded-[3px] border-2 px-2 py-1 text-center font-sign text-lg font-bold tabular-nums shadow-[2px_2px_0_rgba(42,38,32,0.3)] ${
-                    i === 0 && row.points > 0
-                      ? "border-pool-ink bg-pool-orange text-black"
-                      : "border-ink/60 bg-cream text-ink"
-                  }`}
+                  className={`shrink-0 w-20 px-2 py-1.5 text-center font-mono text-base font-bold tabular-nums ${
+                      i === 0 && row.points > 0
+                        ? "scrap-cut bg-pool-orange text-black"
+                        : i === 1 && row.points > 0
+                          ? "scrap-cut-d bg-pinRed/85 text-cream"
+                          : i === 2 && row.points > 0
+                            ? "scrap-cut-e bg-ink text-cream"
+                            : `${i % 2 ? "scrap-cut-c" : "scrap-cut-b"} bg-[#F4EDDA] text-ink`
+                    }`}
                 >
-                  {row.points}
-                  <span className={`ml-0.5 font-mono text-[9px] ${i === 0 && row.points > 0 ? "text-black/55" : "text-ink/45"}`}>
-                    /{row.max}
-                  </span>
+                    {row.points}
+                    <span
+                      className={`ml-0.5 font-mono text-[10px] ${
+                        i === 0 && row.points > 0
+                          ? "text-black/55"
+                          : i === 2 && row.points > 0
+                            ? "text-cream/55"
+                            : "text-ink/45"
+                      }`}
+                    >
+                      /{row.max}
+                    </span>
                 </span>
                 <span
                   aria-hidden
@@ -418,7 +519,6 @@ function Leaderboard({
           ))}
         </ol>
       </div>
-    </div>
   );
 }
 
@@ -429,6 +529,7 @@ function Leaderboard({
 function BoardDialog({
   isOpen,
   participant,
+  rank,
   picks,
   isUnlocked,
   locked,
@@ -447,10 +548,10 @@ function BoardDialog({
   onDrop,
   onEditClick,
   onSave,
-  onDone,
 }: {
   isOpen: boolean;
   participant: ApiParticipant | null;
+  rank: number | null;
   picks: PredictionPicks | null;
   isUnlocked: boolean;
   locked: boolean;
@@ -466,10 +567,9 @@ function BoardDialog({
   onDragStart: (name: string, teamId: string) => void;
   onDragOver: (name: string, conf: Conference, index: number) => void;
   onDragLeave: () => void;
-  onDrop: (name: string, conf: Conference, index: number) => void;
+  onDrop: (name: string, conf: Conference, index: number, mode: "tile" | "gap") => void;
   onEditClick: (name: string) => void;
   onSave: () => void;
-  onDone: () => void;
 }) {
   useEffect(() => {
     if (!isOpen) return;
@@ -494,11 +594,11 @@ function BoardDialog({
     >
       <div className="my-8 w-full max-w-6xl animate-modal-pop">
         <div className="flex items-stretch justify-center gap-4">
-          {/* West live standings rail — a narrower clipping taped beside the board */}
+          {/* West live standings rail — a narrower clipping pinned beside the board */}
           <aside className="hidden w-56 shrink-0 xl:block">
-            <div className="relative">
-              <span aria-hidden className="tape -top-2.5 left-1/2 z-10 -translate-x-1/2 -rotate-3" />
-              <div className="paper-sheet rotate-[0.35deg] rounded-[8px_5px_10px_6px] p-2.5">
+            <div className="cut-shadow relative">
+              <span aria-hidden className="cut-shadow-piece" />
+              <div className="paper-sheet cut-c rotate-[0.35deg] p-2.5">
                 <LiveStandingsList conf="West" rows={liveRanksData.West} />
               </div>
             </div>
@@ -506,6 +606,7 @@ function BoardDialog({
           <div className="w-full max-w-2xl">
             <ParticipantBoard
               name={participant.name}
+              rank={rank ?? undefined}
               picks={picks}
               saved={participant.saved}
               updatedAt={participant.updatedAt}
@@ -525,33 +626,33 @@ function BoardDialog({
             {editable && (
               <div className="mt-2 flex items-center justify-end gap-2">
                 {saveError && (
-                  <p role="alert" className="mr-auto font-mono text-xs text-pinRed">
-                    {saveError}
+                  <p
+                    role="alert"
+                    className="scrap cutout-b mr-auto -rotate-[0.5deg]"
+                  >
+                    <span className="scrap-cut-b block bg-cream px-3.5 py-2 font-mono text-xs text-pinRed">
+                      {saveError}
+                    </span>
                   </p>
                 )}
                 <button
                   type="button"
-                  onClick={onDone}
-                  className="rounded-[3px] border-2 border-ink/50 bg-cream/95 px-4 py-2 font-mono text-[10px] uppercase tracking-widest text-ink/70 shadow-[2px_2px_0_rgba(0,0,0,0.3)] transition-all hover:-translate-y-px hover:text-ink"
-                >
-                  Done
-                </button>
-                <button
-                  type="button"
                   onClick={onSave}
                   disabled={saving}
-                  className="rotate-[0.6deg] rounded-[3px] border-2 border-ink/60 bg-pool-orange px-5 py-2 font-mono text-[10px] uppercase tracking-widest text-black shadow-[2px_2px_0_rgba(0,0,0,0.4)] transition-all hover:-translate-y-px hover:bg-pool-ink hover:text-cream disabled:opacity-50"
+                  className="scrap cutout-b rotate-[0.6deg] transition-transform hover:-translate-y-px"
                 >
-                  {saving ? "Saving…" : "Save board"}
+                  <span className="scrap-cut-b block bg-pool-orange px-5 py-2 font-mono text-[10px] uppercase tracking-widest text-black">
+                    {saving ? "Saving…" : "Save board"}
+                  </span>
                 </button>
               </div>
             )}
           </div>
           {/* East live standings rail — same sheet, same padding as the West one */}
           <aside className="hidden w-56 shrink-0 xl:block">
-            <div className="relative">
-              <span aria-hidden className="tape -top-2.5 left-1/2 z-10 -translate-x-1/2 rotate-2" />
-              <div className="paper-sheet -rotate-[0.3deg] rounded-[6px_8px_5px_10px] p-2.5">
+            <div className="cut-shadow relative">
+              <span aria-hidden className="cut-shadow-piece" />
+              <div className="paper-sheet cut-d -rotate-[0.3deg] p-2.5">
                 <LiveStandingsList conf="East" rows={liveRanksData.East} />
               </div>
             </div>
@@ -634,18 +735,21 @@ function UnlockDialog({
         role="dialog"
         aria-modal="true"
         aria-labelledby="pool-unlock-title"
-        className="paper-sheet relative w-full max-w-sm -rotate-[0.5deg] rounded-[10px_5px_12px_6px] p-6 animate-modal-pop"
+        className="cut-shadow cut-shadow--tight relative w-full max-w-sm -rotate-[0.5deg] animate-modal-pop"
       >
-        <span aria-hidden className="tape tape--dark -top-3 left-1/2 -translate-x-1/2 rotate-2" />
+        <span aria-hidden className="cut-shadow-piece" />
+        <div className="paper-sheet cut-b relative p-6">
         <div className="flex items-center justify-between">
           <BasketballIcon className="size-9 -rotate-6 animate-ball-bounce" />
           <button
             type="button"
             onClick={onClose}
             aria-label="Close"
-            className="flex size-8 items-center justify-center rounded-[3px] border-2 border-ink/50 font-mono text-base text-ink/70 transition-colors hover:border-ink hover:text-ink"
+            className="scrap cutout-b flex size-9 items-center justify-center transition-colors hover:text-ink"
           >
-            ×
+            <span className="scrap-cut-c block size-full bg-cream px-1.5 pt-0.5 text-center font-mono text-base leading-[1.6] text-ink/70">
+              ×
+            </span>
           </button>
         </div>
         <h2 id="pool-unlock-title" className="mt-4 font-sign text-3xl font-bold uppercase tracking-wide text-ink">
@@ -664,17 +768,22 @@ function UnlockDialog({
           className="mt-4 min-h-11 w-full border-b-2 border-ink/60 bg-transparent px-1 font-mono text-sm text-ink placeholder:text-ink/40 focus:border-pool-orange focus:outline-none"
         />
         {error && (
-          <p role="alert" className="mt-2 font-mono text-xs text-pinRed">
-            {error}
+          <p role="alert" className="scrap cutout-b mt-2">
+            <span className="scrap-cut block bg-cream px-3 py-1.5 font-mono text-xs text-pinRed">
+              {error}
+            </span>
           </p>
         )}
         <button
           type="submit"
           disabled={submitting || !passcode.trim()}
-          className="mt-4 min-h-11 w-full rounded-[3px] border-2 border-ink/70 bg-pool-orange py-2.5 font-sign text-xl font-bold uppercase tracking-[0.2em] text-black shadow-[3px_3px_0_rgba(42,38,32,0.45)] transition-all hover:-translate-y-px hover:bg-pool-ink hover:text-cream disabled:cursor-not-allowed disabled:opacity-40"
+          className="scrap cutout scrap-block mt-5 block w-full transition-transform hover:-translate-y-px disabled:cursor-not-allowed disabled:opacity-40"
         >
-          {submitting ? "Checking…" : "Tip off"}
+          <span className="scrap-cut-b block bg-pool-orange px-6 py-3 font-sign text-xl font-bold uppercase tracking-[0.2em] text-black">
+            {submitting ? "Checking…" : "Tip off"}
+          </span>
         </button>
+        </div>
       </form>
     </div>,
     document.body,
@@ -695,6 +804,7 @@ export default function StandingsPool() {
   const [activeName, setActiveName] = useState<string | null>(null);
   const [unlockOpen, setUnlockOpen] = useState(false);
   const [openName, setOpenName] = useState<string | null>(null);
+  const [openRank, setOpenRank] = useState<number | null>(null);
   const [saving, setSaving] = useState(false);
   const [saveError, setSaveError] = useState<string | null>(null);
 
@@ -785,7 +895,13 @@ export default function StandingsPool() {
   // --- drag handlers -------------------------------------------------------
 
   const moveTeam = useCallback(
-    (boardName: string, teamId: string, conf: Conference, dropIndex: number) => {
+    (
+      boardName: string,
+      teamId: string,
+      conf: Conference,
+      dropIndex: number,
+      mode: "tile" | "gap",
+    ) => {
       if (locked || !isUnlocked) return;
       setBoards((current) => {
         const board = current[boardName];
@@ -799,12 +915,21 @@ export default function StandingsPool() {
         const sourceConf = found.conf;
         const sourceIndex = found.index;
 
-        // Clamp the drop index against the list minus the dragged tile —
-        // dropIndex is computed in the dragging view where the tile is hidden.
-        const visible = board[conf].filter((t) => t !== teamId);
-        const insertAt = Math.max(0, Math.min(dropIndex, visible.length));
-
         const next: PredictionPicks = { West: [...board.West], East: [...board.East] };
+
+        if (mode === "tile" && conf === sourceConf) {
+          // Dropped ON a tile in the same column: take that tile's slot —
+          // a true swap, exactly what the drop position shows.
+          if (dropIndex === sourceIndex) return current;
+          const list = next[conf];
+          [list[sourceIndex], list[dropIndex]] = [list[dropIndex], list[sourceIndex]];
+          return { ...current, [boardName]: next };
+        }
+
+        // Everything else is an insertion at a gap between tiles. Clamped
+        // because a cross-conference drop can land past the end of a shorter
+        // list.
+        const insertAt = Math.max(0, Math.min(dropIndex, board[conf].length));
         next[sourceConf].splice(sourceIndex, 1);
         next[conf].splice(insertAt, 0, teamId);
         return { ...current, [boardName]: next };
@@ -831,12 +956,12 @@ export default function StandingsPool() {
   }, []);
 
   const handleDrop = useCallback(
-    (name: string, conf: Conference, index: number) => {
+    (name: string, conf: Conference, index: number, mode: "tile" | "gap") => {
       const teamId = draggingTeamId;
       setDraggingTeamId(null);
       setDropSlot(null);
       if (!teamId) return;
-      moveTeam(name, teamId, conf, index);
+      moveTeam(name, teamId, conf, index, mode);
     },
     [draggingTeamId, moveTeam],
   );
@@ -901,12 +1026,15 @@ export default function StandingsPool() {
 
   if (loading) {
     return (
-      <div className="paper-sheet flex min-h-[50vh] -rotate-[0.3deg] items-center justify-center rounded-[10px_6px_12px_7px]">
+      <div className="cut-shadow relative min-h-[50vh] -rotate-[0.3deg]">
+        <span aria-hidden className="cut-shadow-piece" />
+        <div className="paper-sheet cut-c flex min-h-[50vh] items-center justify-center px-6">
         <div className="flex flex-col items-center gap-3">
           <BasketballIcon className="size-12 animate-ball-bounce" />
           <span className="font-mono text-xs uppercase tracking-[0.3em] text-ink/60">
             Bouncing the ball out…
           </span>
+        </div>
         </div>
       </div>
     );
@@ -914,7 +1042,9 @@ export default function StandingsPool() {
 
   if (loadError || !data) {
     return (
-      <div className="paper-sheet -rotate-[0.4deg] rounded-[10px_6px_12px_7px] p-8 text-center">
+      <div className="cut-shadow relative -rotate-[0.4deg]">
+        <span aria-hidden className="cut-shadow-piece" />
+        <div className="paper-sheet cut-d p-8 text-center">
         <p className="font-sign text-4xl font-bold uppercase text-ink">Airball.</p>
         <p className="mt-2 font-mono text-xs text-ink/60">{loadError ?? "No data"}</p>
         <button
@@ -924,10 +1054,13 @@ export default function StandingsPool() {
             setLoading(true);
             void load();
           }}
-          className="mt-5 rounded-[3px] border-2 border-ink/70 bg-pool-orange px-6 py-2.5 font-mono text-xs uppercase tracking-widest text-black shadow-[3px_3px_0_rgba(42,38,32,0.45)] transition-all hover:-translate-y-px hover:bg-pool-ink hover:text-cream"
+          className="scrap cutout mt-6 inline-block transition-transform hover:-translate-y-px"
         >
-          Run it back
+          <span className="scrap-cut block bg-pool-orange px-6 py-3 font-mono text-xs uppercase tracking-widest text-black">
+            Run it back
+          </span>
         </button>
+        </div>
       </div>
     );
   }
@@ -941,53 +1074,82 @@ export default function StandingsPool() {
 
   return (
     <div className="space-y-6">
-      {/* Title card — cut-and-paste headline on a big pinned-up sheet. */}
-      <header className="paper-sheet relative rounded-[12px_6px_14px_8px] px-6 py-10 text-center sm:px-10">
-        <span aria-hidden className="tape -top-3 left-8 z-10 -rotate-6 bg-pinRed/40" />
-        <span aria-hidden className="tape -top-2.5 right-10 z-10 rotate-[5deg]" />
-        <h1 className="flex flex-wrap items-baseline justify-center gap-x-3 gap-y-2">
-          <span className="punk-scrap -rotate-2 border-2 border-ink bg-cream font-dle text-4xl font-semibold uppercase leading-none tracking-tight text-ink sm:text-6xl">
-            Gradey&nbsp;Dick
-          </span>
-          <span className="punk-scrap rotate-[1.3deg] border-2 border-ink bg-pool-orange font-dle text-4xl font-semibold uppercase leading-none tracking-tight text-black sm:text-6xl">
-            Fan&nbsp;Club
-          </span>
-          <span className="punk-scrap -rotate-[1.1deg] border-2 border-ink bg-ink font-dle text-4xl font-semibold uppercase leading-none tracking-tight text-cream sm:text-6xl">
-            Predictions
-          </span>
-        </h1>
-        <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.25em] text-ink/65">
-          {data.season.key} season · standings as of {standingsTime}
-          {locked ? " · picks frozen" : ""}
-        </p>
-      </header>
+      {/* One big hand-cut sheet holding the title card and the leaderboard. */}
+      <div className="paper-sheet cut-lg overflow-hidden">
+        {/* Title card — cut-and-paste headline, no sheet behind it anymore. */}
+        <header className="px-6 pb-6 pt-9 text-center sm:px-10">
+        <h1 className="sr-only">Gradey Dick Fan Club Predictions</h1>
+        <div
+          aria-hidden
+          className="flex flex-wrap items-end justify-center gap-x-3 gap-y-4 sm:gap-x-5"
+        >
+          <CutWord word="Gradey Dick" tone="cream" tilt="-rotate-[0.8deg]" cut="scrap-cut-lg" />
+          <CutWord
+            word="Fan Club"
+            tone="orange"
+            tilt="rotate-[0.9deg] translate-y-[2px]"
+            cut="scrap-cut-lg-b"
+          />
+          <CutWord word="Predictions" tone="ink" tilt="-rotate-[0.5deg]" cut="scrap-cut-lg" />
+        </div>
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
+            <p className="scrap cutout-b -rotate-[0.5deg]">
+            <span className="scrap-cut block bg-cream px-4 py-2 font-mono text-[11px] uppercase tracking-[0.25em] text-ink/65">
+              {data.season.key} season{locked ? " · picks frozen" : ""}
+            </span>
+          </p>
+          <p className="scrap cutout-b rotate-[0.5deg]">
+            <span className="scrap-cut-b block bg-cream px-4 py-2 font-mono text-[11px] uppercase tracking-[0.25em] text-ink/65">
+              standings as of {standingsTime}
+            </span>
+          </p>
+          </div>
+        </header>
+
+        {/* Leaderboard — a cutout panel pinned on the big sheet. Filter lives
+            on the wrapper: clip-path on the panel itself would amputate any
+            shadow painted by the panel. Zero-offset drop-shadow = an even
+            hairline outline that follows the cut, no directional band. */}
+        <div className="px-3 pb-6 sm:px-4 [filter:drop-shadow(0_0_1px_rgba(0,0,0,0.28))]">
+          <Leaderboard
+          rows={leaderboardRows}
+          onOpen={(name, rank) => {
+            setOpenName(name);
+            setOpenRank(rank);
+          }}
+        />
+        </div>
+      </div>
 
       {data.dbError && (
         <div
           role="alert"
-          className="graph-paper relative mx-auto max-w-xl rotate-[1.4deg] border border-ink/50 p-4 text-[13px] text-ink/85 shadow-[3px_4px_0_rgba(0,0,0,0.35)]"
+          className="scrap cutout scrap-block relative mx-auto max-w-xl rotate-[1.4deg]"
         >
-          <span aria-hidden className="tape tape--dark -top-2.5 left-1/2 -translate-x-1/2 -rotate-2" />
+          <div className="graph-paper scrap-cut-lg px-6 py-5 text-[13px] text-ink/85">
           <p>{data.dbError}</p>
           <p className="mt-1.5 font-mono text-[9px] uppercase tracking-wider text-ink/55">
             Run supabase/nba-standings-schema.sql in the Supabase SQL editor, then refresh. Boards fall back to chalk order until then.
           </p>
+          </div>
         </div>
       )}
 
-      {/* Leaderboard */}
-      <Leaderboard rows={leaderboardRows} onOpen={(name) => setOpenName(name)} />
-
       {/* Lock banner when the season has started */}
       {locked && (
-        <div className="-rotate-[0.35deg] border border-ink/40 bg-black/25 px-4 py-2.5 text-center font-mono text-[10px] uppercase tracking-[0.2em] text-cream/65">
-          The ball went up on Oct 20 — boards are read-only until next season.
+        <div className="relative flex justify-center">
+          <p className="scrap cutout relative -rotate-[0.6deg]">
+            <span className="scrap-cut-b block bg-cream px-6 py-2.5 text-center font-mono text-[10px] uppercase tracking-[0.2em] text-ink/80">
+              The ball went up on Oct 20 — boards are read-only until next season.
+            </span>
+          </p>
         </div>
       )}
 
       <BoardDialog
         isOpen={openName !== null}
         participant={openRecord}
+        rank={openRank}
         picks={openName ? boards[openName] ?? openRecord?.picks ?? null : null}
         isUnlocked={isUnlocked}
         locked={locked}
@@ -1008,7 +1170,6 @@ export default function StandingsPool() {
         onSave={() => {
           if (openName) void saveBoard(openName);
         }}
-        onDone={() => setActiveName(null)}
       />
 
       <UnlockDialog
