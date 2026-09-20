@@ -12,9 +12,17 @@ export function isParticipant(value: unknown): value is Participant {
   return typeof value === "string" && (PARTICIPANTS as readonly string[]).includes(value);
 }
 
+export type AwardKey = "MVP" | "ROY" | "MIP" | "DPOY" | "6MOY" | "CPOY" | "COY" | "FMVP";
+
+export type PredictionExtras = {
+  awards: Partial<Record<AwardKey, string>>;
+  champion?: string;
+};
+
 export type PredictionPicks = {
   West: string[];
   East: string[];
+  extras?: PredictionExtras;
 };
 
 export type PredictionRecord = {
@@ -89,6 +97,13 @@ function validTeamIds(): Set<string> {
   return new Set(NBA_TEAMS.map((t) => t.id));
 }
 
+export function normalizeChampionCode(value: unknown): string | null | undefined {
+  if (value === undefined || value === null || value === "") return undefined;
+  if (typeof value !== "string") return null;
+  const code = value.trim().toUpperCase();
+  return code.length === 3 && validTeamIds().has(code) ? code : null;
+}
+
 /**
  * Parse an arbitrary JSON-shaped value into PredictionPicks. Returns null
  * unless both conferences hold exactly the right 15 teams with no dupes.
@@ -114,7 +129,19 @@ export function parsePicks(value: unknown): PredictionPicks | null {
   const west = parseSide(candidates.West, "West");
   const east = parseSide(candidates.East, "East");
   if (!west || !east) return null;
-  return { West: west, East: east };
+  const rawExtras = candidates.extras;
+  const extras = typeof rawExtras === "object" && rawExtras !== null ? rawExtras as Record<string, unknown> : undefined;
+  const awards = extras?.awards;
+  const parsedAwards: Partial<Record<AwardKey, string>> = {};
+  if (typeof awards === "object" && awards !== null) {
+    for (const key of ["MVP", "ROY", "MIP", "DPOY", "6MOY", "CPOY", "COY", "FMVP"] as AwardKey[]) {
+      if (typeof (awards as Record<string, unknown>)[key] === "string") parsedAwards[key] = (awards as Record<string, string>)[key];
+    }
+  }
+  const champion = normalizeChampionCode(extras?.champion);
+  if (champion === null) return null;
+  const parsedExtras = extras ? { awards: parsedAwards, ...(champion ? { champion } : {}) } : undefined;
+  return { West: west, East: east, ...(parsedExtras ? { extras: parsedExtras } : {}) };
 }
 
 /**

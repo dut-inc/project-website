@@ -12,6 +12,7 @@ import {
   isSeasonLocked,
   isParticipant,
   parsePicks,
+  normalizeChampionCode,
 } from "@/lib/sports/nbaStandingsPicks";
 
 // GET /api/nba-standings/predictions
@@ -101,7 +102,14 @@ export async function PUT(request: NextRequest) {
     return NextResponse.json({ error: "Unknown participant." }, { status: 400 });
   }
 
-  const picks = parsePicks(asRecord.picks);
+  const rawPicks = asRecord.picks;
+  const rawExtras = typeof rawPicks === "object" && rawPicks !== null ? (rawPicks as Record<string, unknown>).extras : undefined;
+  const rawChampion = typeof rawExtras === "object" && rawExtras !== null ? (rawExtras as Record<string, unknown>).champion : undefined;
+  if (normalizeChampionCode(rawChampion) === null) {
+    return NextResponse.json({ error: "Champion must be a valid three-letter NBA team code, such as DEN." }, { status: 400 });
+  }
+
+  const picks = parsePicks(rawPicks);
   if (!picks) {
     return NextResponse.json(
       { error: "Each conference list needs exactly its 15 teams, once each." },

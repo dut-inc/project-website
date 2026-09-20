@@ -418,7 +418,13 @@ input {
   .cutout-b {
     filter: drop-shadow(2px 3px 0 rgba(0, 0, 0, 0.4));
   }
+  /* Tiny ink halo for leaderboard name/rank scraps. Unlike the larger paper
+     shadows, this follows the cutout silhouette without shifting it. */
+  .cutout-outline {
+    filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.78));
+  }
   .scrap {
+
     position: relative;
     display: inline-block;
     max-width: 100%;
