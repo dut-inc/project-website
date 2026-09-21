@@ -42,6 +42,20 @@ BOARD_GAMES_PASSCODE=choose-a-local-dev-passcode npm run dev
 
 For a local `.env.local` file, use `BOARD_GAMES_PASSCODE=...` without a `NEXT_PUBLIC_` prefix. The passcode is checked by `app/api/board-games/access/route.ts` and is not sent to the client as an environment variable. This is a UI/convenience gate; because the current Supabase CRUD client is public and its RLS policies permit anonymous writes, it is not a database security boundary. Use authenticated Supabase policies and server-side write routes if the table needs real access control.
 
+### NBA standings passcode
+
+The NBA standings edit controls use the same server-only signed-cookie pattern. Add `NBA_STANDINGS_PASSCODE` to the deployment environment before unlocking the boards:
+
+```bash
+NBA_STANDINGS_PASSCODE=choose-a-passcode
+```
+
+On Vercel, add it under **Project Settings → Environment Variables** for every environment that should support editing (for example, Production), then redeploy. Do not use a `NEXT_PUBLIC_` prefix: this value must remain server-only. If it is missing, `/api/nba-standings/access` intentionally returns the “Set NBA_STANDINGS_PASSCODE…” configuration message.
+
+### Supabase view security
+
+If the database was created before the leaderboard view was updated, run `supabase/game-leaderboard-security-invoker.sql` in the Supabase SQL editor once. New installs can use the `security_invoker` view definition in `supabase/schema.sql`; the view will then evaluate underlying-table RLS using the querying user rather than the view creator.
+
 ## Structure
 
 ```

@@ -318,7 +318,9 @@ $$;
 
 -- Every shared player appears for every game, including players with zero wins.
 drop view if exists public.game_leaderboard_view;
-create view public.game_leaderboard_view as
+create view public.game_leaderboard_view
+with (security_invoker = true)
+as
 select
   games.id as board_game_id,
   players.id as player_id,
