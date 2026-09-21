@@ -18,6 +18,13 @@ const features = [
       "clustering and visualizing NBA players' offensive profiles",
   },
   {
+    href: "/sports/nba-standings",
+    tag: "Live",
+    title: "NBA Standings Pool",
+    blurb:
+      "seven friends predict both conference standings, scored live against the real table",
+  },
+  {
     href: "/sports/pitch-predictor",
     tag: "Live",
     title: "Behind the Plate",
