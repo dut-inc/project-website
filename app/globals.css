@@ -260,13 +260,215 @@ input {
   padding: 10px 12px 12px;
 }
 
+/* ---- NBA Standings Pool (lives under Sports Lab) ---- */
+
+@keyframes ball-bounce {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-6px) rotate(12deg);
+  }
+}
+
+.animate-ball-bounce {
+  animation: ball-bounce 1.6s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-fade-up,
   .animate-floaty,
   .animate-fade-in,
   .animate-backdrop-in,
   .animate-modal-pop,
-  .animate-neon-breathe {
+  .animate-ball-bounce {
     animation: none;
+  }
+}
+
+/* ---- Punk collage kit (cut-and-paste zine pages) ----
+   Lives in @layer components so Tailwind utilities can still override
+   individual pieces (colors, borders) at the call site. */
+
+@layer components {
+  /* Aged paper scrap: warm cream, faint grain, slight edge burn, and the one
+     hard "sitting on the wall" shadow used across the collage. */
+  .paper-sheet {
+    color: #2a2620;
+    background-color: #e9dfc6;
+    background-image:
+      radial-gradient(circle at 12% 18%, rgba(42, 38, 32, 0.07) 0, transparent 2px),
+      radial-gradient(circle at 68% 8%, rgba(42, 38, 32, 0.05) 0, transparent 1.5px),
+      radial-gradient(circle at 34% 74%, rgba(42, 38, 32, 0.06) 0, transparent 2px),
+      radial-gradient(circle at 86% 56%, rgba(42, 38, 32, 0.05) 0, transparent 1.5px),
+      radial-gradient(circle at 8% 94%, rgba(122, 101, 61, 0.1) 0, transparent 20px);
+    box-shadow: 2px 3px 0 rgba(0, 0, 0, 0.16);
+  }
+
+  /* Grid-paper scrap for handwritten notes. */
+  .graph-paper {
+    color: #2a2620;
+    background-color: #e7ddc2;
+    background-image:
+      linear-gradient(rgba(42, 38, 32, 0.12) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(42, 38, 32, 0.12) 1px, transparent 1px);
+    background-size: 13px 13px;
+  }
+
+  /* ---- Scissor cuts -----------------------------------------------------
+     Paper edges here are cut with scissors, not rounded with a corner
+     tool: every edge is a straight but SLANTED line, so no two sides of a
+     sheet are parallel. Corners stay sharp — no border-radius.
+     Keep the slants shallow (≈0.5–1.5%): enough to read as hand-cut at a
+     glance, small enough that wide sheets never lean like a parallelogram.
+     The clip shapes are deliberately NOT vertically symmetric — real cuts
+     wander. Text always sits inside the cut, never on it. */
+
+  /* Full sheet: the default cut for a standalone piece of paper. */
+  .cut {
+    clip-path: polygon(
+      0% 0.7%, 100% 0%, /* top drifts down toward the left */
+      99.4% 100%, 0% 99.2% /* right edge leans in, left edge leans out */
+    );
+  }
+  /* Cut variants so two sheets side by side never share a silhouette. */
+  .cut-b {
+    clip-path: polygon(
+      0% 0%, 100% 0.8%,
+      100% 99.3%, 0.5% 100%
+    );
+  }
+
+  .cut-c {
+    clip-path: polygon(
+      0.4% 0%, 100% 0.5%,
+      99.5% 99.4%, 0% 100%
+    );
+  }
+
+  .cut-d {
+    clip-path: polygon(
+      0% 0.5%, 100% 0%,
+      100% 100%, 0.6% 99.3%
+    );
+  }
+
+  .cut-lg {
+    clip-path: polygon(
+      0 0.4%, 100% 0,
+      99.65% 100%, 0.15% 99.55%
+    );
+  }
+
+  /* A strip torn off a longer sheet: only the top and bottom edges are cut
+     (horizontal slants), the left/right ends stay open so rows can stack
+     inside one silhouette. Not for standalone pieces. */
+  .cut-row {
+    clip-path: polygon(0% 14%, 100% 0%, 100% 86%, 0% 100%);
+  }
+
+  .cut-row-b {
+    clip-path: polygon(0% 0%, 100% 12%, 100% 100%, 0% 88%);
+  }
+
+  /* ---- Paper cutouts: words & phrases ON scissor-cut scraps -------------
+     Two-piece pattern, because clip-path is applied AFTER filters — a
+     drop-shadow on the clipped piece itself would be amputated:
+
+       wrapper  .cutout / .cutout-b + .scrap
+                 carries filter: drop-shadow() so the shadow follows the
+                 cut silhouette. Rotation, hover lifts, layout roles.
+       inner    .scrap-cut* — the actual cut paper: clip-path with PX-BASED
+                 slants (a 20px chip and a 600px sheet read the same),
+                 background + the text, with padding generous enough that
+                 glyphs never touch a slanted edge.
+
+     Cutouts carry NO borders — the shadow defines the edge; a border on a
+     clipped element gets thinned wherever the cut crosses it. */
+
+  /* Shadow carriers. .cutout is layout-neutral (for elements that are
+     already flex/grid/absolutely positioned); .scrap adds the shrink-wrap
+     inline-block a label needs to hug its text. */
+  .cutout {
+    filter: drop-shadow(3px 4px 0 rgba(0, 0, 0, 0.42));
+  }
+  .cutout-b {
+    filter: drop-shadow(2px 3px 0 rgba(0, 0, 0, 0.4));
+  }
+  /* Tiny ink halo for leaderboard name/rank scraps. Unlike the larger paper
+     shadows, this follows the cutout silhouette without shifting it. */
+  .cutout-outline {
+    filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.78));
+  }
+  .scrap {
+
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+  }
+  /* Block-level scrap for full-width pieces (forms, notes, banners). */
+  .scrap-block {
+    display: block;
+  }
+
+  /* The cuts. Slants are 2–2.5px per edge — unmistakably scissor-cut at
+     any size — and alternate so neighbouring scraps never share a
+     silhouette. */
+  .scrap-cut {
+    clip-path: polygon(0 2.5px, 100% 0, calc(100% - 2px) 100%, 1px calc(100% - 2px));
+  }
+  .scrap-cut-b {
+    clip-path: polygon(0 0, 100% 2.5px, calc(100% - 2.5px) 100%, 2px calc(100% - 1.5px));
+  }
+  .scrap-cut-c {
+    clip-path: polygon(1.5px 0, 100% 2px, calc(100% - 1px) calc(100% - 2.5px), 0 100%);
+  }
+  /* Sheet-size pieces: bigger drift so wide sheets still read hand-cut. */
+  .scrap-cut-lg {
+    clip-path: polygon(0 5px, 100% 0, calc(100% - 4px) 100%, 2px calc(100% - 6px));
+  }
+  .scrap-cut-lg-b {
+    clip-path: polygon(0 0, 100% 5px, calc(100% - 6px) calc(100% - 3px), 4px 100%);
+  }
+  /* Rank-chip-size cuts — more angles so neighbouring ranks differ. */
+  .scrap-cut-d {
+    clip-path: polygon(2.5px 0, calc(100% - 1px) 2px, 100% calc(100% - 1.5px), 0 100%);
+  }
+  .scrap-cut-e {
+    clip-path: polygon(0 1.5px, calc(100% - 2px) 0, 100% 100%, 1.5px calc(100% - 2.5px));
+  }
+
+  /* Leaderboard rows: solid ink rules between rows, inset to the row's own
+     padding so the line spans exactly the width the hover tint covers. */
+  .lb-rows {
+    --lb-inset: 20px;
+  }
+  .lb-rows > li + li {
+    border-top: 1.5px solid rgba(29, 26, 22, 0.35);
+  }
+  .lb-rows > li + li::before {
+    content: "";
+    display: block;
+    height: 0;
+    margin-inline: var(--lb-inset);
+    border-top: inherit;
+  }
+  @media (min-width: 640px) {
+    .lb-rows {
+      --lb-inset: 24px;
+    }
+  }
+
+  /* Hollow display text — the photocopied-only-pass look. */
+  .text-outline {
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(239, 231, 210, 0.9);
+  }
+
+  @media (max-width: 640px) {
+    .text-outline {
+      -webkit-text-stroke-width: 1.3px;
+    }
   }
 }
