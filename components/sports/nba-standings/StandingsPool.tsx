@@ -16,6 +16,7 @@
 //     <UnlockDialog>  — pool password entry
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import Image from "next/image";
 import { createPortal } from "react-dom";
 import {
   PARTICIPANTS,
@@ -73,18 +74,22 @@ const actualRows = (ids: string[], records?: Record<string, [number, number]>): 
     return { teamId, wins, losses, winPct: wins + losses ? wins / (wins + losses) : 0, streak: "" };
   });
 
+// One-time snapshot verified against ESPN's final standings endpoint:
+// site.web.api.espn.com/apis/v2/sports/basketball/nba/standings?season={2024|2025|2026}
+// Keep this archive static so historical scores do not change when ESPN updates
+// its current standings response.
 const HISTORICAL_STANDINGS: Record<string, { West: NbaStandingRow[]; East: NbaStandingRow[] }> = {
   "2025-2026": {
     West: actualRows(["OKC", "SAS", "DEN", "LAL", "HOU", "MIN", "PHX", "POR", "LAC", "GSW", "NOP", "DAL", "MEM", "SAC", "UTA"], { OKC: [64, 18], SAS: [62, 20], DEN: [54, 28], LAL: [53, 29], HOU: [52, 30], MIN: [49, 33], PHX: [45, 37], POR: [42, 40], LAC: [42, 40], GSW: [37, 45], NOP: [26, 56], DAL: [26, 56], MEM: [25, 57], SAC: [22, 60], UTA: [22, 60] }),
     East: actualRows(["DET", "BOS", "NYK", "CLE", "TOR", "ATL", "PHI", "ORL", "CHA", "MIA", "MIL", "CHI", "BKN", "IND", "WAS"], { DET: [60, 22], BOS: [56, 26], NYK: [53, 29], CLE: [52, 30], TOR: [46, 36], ATL: [46, 36], PHI: [45, 37], ORL: [45, 37], CHA: [44, 38], MIA: [43, 39], MIL: [32, 50], CHI: [31, 51], BKN: [20, 62], IND: [19, 63], WAS: [17, 65] }),
   },
   "2023-2024": {
-    West: actualRows(["OKC", "DEN", "MIN", "LAC", "DAL", "PHX", "NOP", "LAL", "SAC", "GSW", "HOU", "UTA", "MEM", "SAS", "POR"]),
-    East: actualRows(["BOS", "NYK", "MIL", "CLE", "ORL", "IND", "PHI", "MIA", "CHI", "ATL", "BKN", "TOR", "CHA", "DET", "WAS"]),
+    West: actualRows(["OKC", "DEN", "MIN", "LAC", "DAL", "PHX", "NOP", "LAL", "SAC", "GSW", "HOU", "UTA", "MEM", "SAS", "POR"], { OKC: [57, 25], DEN: [57, 25], MIN: [56, 26], LAC: [51, 31], DAL: [50, 32], PHX: [49, 33], NOP: [49, 33], LAL: [47, 35], SAC: [46, 36], GSW: [46, 36], HOU: [41, 41], UTA: [31, 51], MEM: [27, 55], SAS: [22, 60], POR: [21, 61] }),
+    East: actualRows(["BOS", "NYK", "MIL", "CLE", "ORL", "IND", "PHI", "MIA", "CHI", "ATL", "BKN", "TOR", "CHA", "WAS", "DET"], { BOS: [64, 18], NYK: [50, 32], MIL: [49, 33], CLE: [48, 34], ORL: [47, 35], IND: [47, 35], PHI: [47, 35], MIA: [46, 36], CHI: [39, 43], ATL: [36, 46], BKN: [32, 50], TOR: [25, 57], CHA: [21, 61], WAS: [15, 67], DET: [14, 68] }),
   },
   "2024-2025": {
-    West: actualRows(["OKC", "HOU", "LAL", "DEN", "LAC", "MIN", "GSW", "MEM", "SAC", "PHX", "DAL", "POR", "SAS", "NOP", "UTA"]),
-    East: actualRows(["CLE", "BOS", "NYK", "IND", "MIL", "DET", "ORL", "ATL", "MIA", "CHI", "TOR", "BKN", "PHI", "CHA", "WAS"]),
+    West: actualRows(["OKC", "HOU", "LAL", "DEN", "LAC", "MIN", "GSW", "MEM", "SAC", "DAL", "PHX", "POR", "SAS", "NOP", "UTA"], { OKC: [68, 14], HOU: [52, 30], LAL: [50, 32], DEN: [50, 32], LAC: [50, 32], MIN: [49, 33], GSW: [48, 34], MEM: [48, 34], SAC: [40, 42], DAL: [39, 43], PHX: [36, 46], POR: [36, 46], SAS: [34, 48], NOP: [21, 61], UTA: [17, 65] }),
+    East: actualRows(["CLE", "BOS", "NYK", "IND", "MIL", "DET", "ORL", "ATL", "CHI", "MIA", "TOR", "BKN", "PHI", "CHA", "WAS"], { CLE: [64, 18], BOS: [61, 21], NYK: [51, 31], IND: [50, 32], MIL: [48, 34], DET: [44, 38], ORL: [41, 41], ATL: [40, 42], CHI: [39, 43], MIA: [37, 45], BKN: [26, 56], TOR: [30, 52], PHI: [24, 58], CHA: [19, 63], WAS: [18, 64] }),
   },
 };
 
@@ -215,17 +220,20 @@ function CutWord({
   );
 }
 
-/** Team logo chip: a colored disc with the abbreviation. No protected imagery. */
+/** Team logo chip, using the matching canonical-abbreviation asset from public/images/NBA. */
 function TeamChip({ team, size = "md" }: { team: NbaTeam; size?: "sm" | "md" }) {
-  const box = size === "sm" ? "size-6 text-[9px]" : "size-8 text-[11px]";
+  const box = size === "sm" ? "size-6" : "size-8";
   return (
     <span
-      className={`inline-flex ${box} shrink-0 items-center justify-center rounded-full font-mono font-bold uppercase leading-none text-white ring-1 ring-black/40`}
-      style={{
-        background: `linear-gradient(135deg, ${team.primary} 0%, ${team.secondary} 130%)`,
-      }}
+      className={`inline-flex ${box} shrink-0 items-center justify-center`}
     >
-      {team.id}
+      <Image
+        src={`/images/NBA/${team.id === "DET" ? "DET-2" : team.id === "MIA" ? "MIA-2" : team.id}.png`}
+        alt={`${team.city} ${team.name} logo`}
+        width={size === "sm" ? 24 : 32}
+        height={size === "sm" ? 24 : 32}
+        className="size-full object-contain"
+      />
     </span>
   );
 }
@@ -297,8 +305,6 @@ function ParticipantBoard({
   name,
   rank,
   picks,
-  saved,
-  updatedAt,
   isUnlocked,
   activeName,
   isDraggingEnabled,
@@ -312,14 +318,11 @@ function ParticipantBoard({
   liveRanks,
   seasonStarted,
   showEditButton = true,
-  showSavedStatus = true,
   predictedChampion,
 }: {
   name: string;
   rank?: number;
   picks: PredictionPicks;
-  saved: boolean;
-  updatedAt: string | null;
   isUnlocked: boolean;
   activeName: string | null;
   isDraggingEnabled: boolean;
@@ -333,7 +336,6 @@ function ParticipantBoard({
   liveRanks: Map<string, number>;
   seasonStarted: boolean;
   showEditButton?: boolean;
-  showSavedStatus?: boolean;
   predictedChampion?: string;
 }) {
   const isActive = activeName === name;
@@ -375,9 +377,9 @@ function ParticipantBoard({
         : rankDiff === 1
           ? "border-pinGold/80 bg-pinGold/20"
           : null;
-    // The colored border already says “close”; only spell out the number when
-    // the miss is 2+ spots.
-    const showLive = seasonStarted && rankDiff !== null && rankDiff >= 2;
+    // Keep exact predictions clean; show the actual placement for near misses
+    // and larger misses so a within-one prediction can be compared directly.
+    const showLive = seasonStarted && rankDiff !== null && rankDiff >= 1;
 
     return (
       <li
@@ -452,19 +454,7 @@ function ParticipantBoard({
       <header className="flex items-center justify-between gap-3 border-b-2 border-ink/60 bg-[#e2d5b2] px-5 py-4">
         <div className="flex min-w-0 items-center gap-4">
           <NameScrap name={name} rank={rank ?? 0} big />
-          {showSavedStatus && (saved ? (
-            <span className="scrap cutout-b ml-1.5 shrink-0">
-              <span className="scrap-cut-b block bg-cream px-3 py-1 font-mono text-[9px] uppercase tracking-[0.18em] text-pinTeal">
-                saved
-              </span>
-            </span>
-          ) : (
-            <span className="scrap cutout-b ml-1.5 shrink-0">
-              <span className="scrap-cut-c block bg-cream/80 px-3 py-1 font-mono text-[9px] uppercase tracking-[0.18em] text-ink/60">
-                chalk
-              </span>
-            </span>
-          ))}
+
         </div>
         <div className="flex shrink-0 items-center gap-2.5">
           {showEditButton && <button
@@ -742,14 +732,31 @@ function Leaderboard({
 const AWARD_LABELS = ["MVP", "ROY", "MIP", "DPOY", "6MOY", "CPOY", "COY", "FMVP"] as const;
 type AwardLabel = (typeof AWARD_LABELS)[number];
 
+// Varied rotations keep each award scrap visibly hand-placed without making
+// the two-column grid look unstable. The edge itself matches team rows: a
+// quiet ink border rather than a large drop shadow.
+const AWARD_TILTS = [
+  "-rotate-[0.85deg]",
+  "rotate-[0.62deg]",
+  "-rotate-[0.48deg]",
+  "rotate-[0.95deg]",
+  "-rotate-[0.72deg]",
+  "rotate-[0.38deg]",
+  "-rotate-[1deg]",
+  "rotate-[0.78deg]",
+  "-rotate-[0.32deg]",
+] as const;
+
 function PredictionExtrasCard({
   extras,
   actualChampion,
+  actualAwards,
   editable = false,
   onChange,
 }: {
   extras: PredictionExtras;
   actualChampion?: string;
+  actualAwards?: PredictionExtras;
   editable?: boolean;
   onChange?: (extras: PredictionExtras) => void;
 }) {
@@ -771,24 +778,27 @@ function PredictionExtrasCard({
     } else onChange({ ...extras, awards: { ...extras.awards, [key]: value || undefined } });
   };
   return (
-    <section className="mt-3 paper-sheet cut-c p-4">
+    <section className="mt-4 paper-sheet cut-b p-5">
       <div className="flex flex-wrap items-center justify-between gap-2">
-        <span className="scrap cutout-b"><span className="scrap-cut block bg-ink px-3 py-1 font-sign text-xl font-bold uppercase tracking-wide text-cream">Awards + title</span></span>
+        <span className="scrap cutout-b"><span className="scrap-cut block bg-ink px-3.5 py-1.5 font-sign text-xl font-bold uppercase tracking-wide text-cream">Awards + title</span></span>
       </div>
-      <div className="mt-3 grid gap-1.5 sm:grid-cols-2">
-        {[...AWARD_LABELS, "Champion"].map((label) => {
+      <div className="mt-4 grid gap-2.5 sm:grid-cols-2">
+        {[...AWARD_LABELS, "Champion"].map((label, index) => {
           const awardKey = label as AwardLabel;
           const value = label === "Champion" ? extras.champion ?? "" : extras.awards[awardKey] ?? "";
-          const correct = label === "Champion" && actualChampion && value === actualChampion;
+          const actualValue = label === "Champion"
+            ? actualAwards?.champion ?? actualChampion
+            : actualAwards?.awards[awardKey];
+          const correct = Boolean(actualValue && value && value === actualValue);
           return (
-            <label key={label} className={`scrap cutout-b flex items-center justify-between gap-3 px-2 py-1.5 font-mono text-[10px] ${correct ? "bg-pinGreen/25 text-pinTeal" : "bg-cream"}`}>
-              <span className="font-bold uppercase text-ink/55">{label}</span>
+            <label key={label} className={`${AWARD_TILTS[index]} flex min-w-0 items-center justify-between gap-3 border px-3 py-2 font-mono text-[10px] ${correct ? "border-pinGreen/80 bg-pinGreen/15" : "border-ink/60 bg-cream"}`}>
+              <span className="shrink-0 font-bold uppercase text-ink/55">{label}</span>
               {editable ? (
-                <span className="flex min-w-0 flex-col items-end">
-                  <input value={value} onChange={(event) => update(label, event.target.value)} maxLength={label === "Champion" ? 3 : undefined} placeholder={label === "Champion" ? "DEN" : "Your pick"} className={`min-w-0 w-32 border-b bg-transparent px-1 text-right uppercase text-ink outline-none ${label === "Champion" && championError ? "border-pinRed text-pinRed" : "border-ink/30 focus:border-pool-orange"}`} />
-                  {label === "Champion" && championError && <span role="alert" className="mt-1 max-w-32 text-right font-mono text-[9px] leading-tight text-pinRed">{championError}</span>}
+                <span className="flex min-w-0 flex-1 flex-col items-end">
+                  <input value={value} onChange={(event) => update(label, event.target.value)} maxLength={label === "Champion" ? 3 : undefined} placeholder={label === "Champion" ? "DEN" : "Your pick"} className={`min-w-0 w-full border-b bg-transparent px-1 text-right uppercase text-ink outline-none ${label === "Champion" && championError ? "border-pinRed text-pinRed" : "border-ink/30 focus:border-pool-orange"}`} />
+                  {label === "Champion" && championError && <span role="alert" className="mt-1 max-w-full text-right font-mono text-[9px] leading-tight text-pinRed">{championError}</span>}
                 </span>
-              ) :              <span className="scrap-cut-b block text-right text-ink">{value || "—"}{correct && " 👑"}</span>}
+              ) : <span className="block min-w-0 flex-1 whitespace-normal break-words pl-1 pr-2 text-right leading-tight text-ink">{value || "—"}{correct && " 👑"}</span>}
             </label>
           );
         })}
@@ -799,13 +809,13 @@ function PredictionExtrasCard({
 
 function ActualAwardsCard({ awards }: { awards: PredictionExtras }) {
   return (
-    <section className="mt-3 paper-sheet cut-c p-4">
-      <span className="scrap cutout-b"><span className="scrap-cut block bg-pool-orange px-3 py-1 font-sign text-xl font-bold uppercase tracking-wide text-black">Actual awards</span></span>
-      <div className="mt-3 grid gap-1.5 sm:grid-cols-2">
-        {[...AWARD_LABELS, "Champion"].map((label) => {
+    <section className="mt-4 paper-sheet cut-d p-5">
+      <span className="scrap cutout-b"><span className="scrap-cut block bg-pool-orange px-3.5 py-1.5 font-sign text-xl font-bold uppercase tracking-wide text-black">Actual awards</span></span>
+      <div className="mt-4 grid gap-2.5 sm:grid-cols-2">
+        {[...AWARD_LABELS, "Champion"].map((label, index) => {
           const key = label as AwardLabel;
           const value = label === "Champion" ? awards.champion : awards.awards[key];
-          return <div key={label} className="scrap cutout-b flex items-center justify-between gap-2 bg-cream px-2 py-1.5 font-mono text-[10px]"><span className="font-bold uppercase text-ink/55">{label}</span><span className="scrap-cut-b block max-w-[9rem] truncate text-right text-ink">{value ?? "—"}</span></div>;
+          return <div key={label} className={`${AWARD_TILTS[index]} flex min-w-0 items-center justify-between gap-3 border border-ink/60 bg-cream px-3 py-2 font-mono text-[10px]`}><span className="shrink-0 font-bold uppercase text-ink/55">{label}</span><span className="min-w-0 flex-1 whitespace-normal break-words pl-1 pr-2 text-right leading-tight text-ink">{value ?? "—"}</span></div>;
         })}
       </div>
     </section>
@@ -829,6 +839,7 @@ function BoardDialog({
   actualChampion,
   actualAwards,
   extras,
+  isSaved,
   readOnly = false,
   onExtrasChange,
   saving,
@@ -857,6 +868,7 @@ function BoardDialog({
   actualChampion?: string;
   actualAwards?: PredictionExtras;
   extras?: PredictionExtras;
+  isSaved: boolean;
   readOnly?: boolean;
   onExtrasChange?: (extras: PredictionExtras) => void;
   saving: boolean;
@@ -871,11 +883,16 @@ function BoardDialog({
 }) {
   useEffect(() => {
     if (!isOpen) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
     function onKey(e: KeyboardEvent) {
       if (e.key === "Escape") onClose();
     }
     document.addEventListener("keydown", onKey);
-    return () => document.removeEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", onKey);
+    };
   }, [isOpen, onClose]);
 
   if (!isOpen || !participant || !picks || typeof document === "undefined") return null;
@@ -890,11 +907,11 @@ function BoardDialog({
         if (e.target === e.currentTarget) onClose();
       }}
     >
-      <div className="my-8 w-full max-w-6xl animate-modal-pop">
-        <div className="flex items-stretch justify-center gap-4">
+      <div className="pointer-events-none my-8 w-full max-w-6xl animate-modal-pop">
+        <div className="pointer-events-none flex items-stretch justify-center gap-4">
           {/* West live standings rail — a narrower clipping pinned beside the board */}
           {showLiveRails && (
-            <aside className="hidden w-56 shrink-0 xl:block">
+            <aside className="pointer-events-auto hidden w-56 shrink-0 self-start xl:block">
               <div className="cut-shadow relative">
                 <span aria-hidden className="cut-shadow-piece" />
                 <div className="paper-sheet cut-c rotate-[0.35deg] p-2.5">
@@ -903,13 +920,11 @@ function BoardDialog({
               </div>
             </aside>
           )}
-          <div className="w-full max-w-2xl">
+          <div className="pointer-events-auto w-full max-w-2xl">
             <ParticipantBoard
               name={participant.name}
               rank={rank ?? undefined}
               picks={picks}
-              saved={participant.saved}
-              updatedAt={participant.updatedAt}
               isUnlocked={isUnlocked && !locked}
               activeName={activeName}
               isDraggingEnabled={!locked && isUnlocked && activeName === participant.name}
@@ -923,10 +938,9 @@ function BoardDialog({
               liveRanks={liveRanks}
               seasonStarted={seasonStarted}
               showEditButton={!readOnly}
-              showSavedStatus={!readOnly}
               predictedChampion={extras?.champion}
             />
-            {extras && <PredictionExtrasCard extras={extras} actualChampion={actualChampion} editable={!readOnly && editable} onChange={onExtrasChange} />}
+            {extras && <PredictionExtrasCard extras={extras} actualChampion={actualChampion} actualAwards={actualAwards} editable={!readOnly && editable} onChange={onExtrasChange} />}
             {editable && (
               <div className="mt-2 flex items-center justify-end gap-2">
                 {saveError && (
@@ -942,11 +956,12 @@ function BoardDialog({
                 <button
                   type="button"
                   onClick={onSave}
-                  disabled={saving}
-                  className="scrap cutout-b rotate-[0.6deg] transition-transform hover:-translate-y-px"
+                  disabled={saving || isSaved}
+                  aria-disabled={saving || isSaved}
+                  className={`scrap cutout-b rotate-[0.6deg] transition-transform ${isSaved ? "cursor-not-allowed opacity-100" : "hover:-translate-y-px"}`}
                 >
-                  <span className="scrap-cut-b block bg-pool-orange px-5 py-2 font-mono text-[10px] uppercase tracking-widest text-black">
-                    {saving ? "Saving…" : "Save board"}
+                  <span className={`scrap-cut-b block px-5 py-2 font-mono text-[10px] uppercase tracking-widest ${isSaved ? "bg-pinGreen text-ink" : "bg-pool-orange text-black"}`}>
+                    {saving ? "Saving…" : isSaved ? "Saved" : "Save list"}
                   </span>
                 </button>
               </div>
@@ -954,13 +969,13 @@ function BoardDialog({
           </div>
           {/* East live standings rail — same sheet, same padding as the West one */}
           {showLiveRails && (
-            <aside className="hidden w-56 shrink-0 xl:block">
+            <aside className="pointer-events-auto hidden w-56 shrink-0 self-start xl:block">
               <div className="cut-shadow relative">
                 <span aria-hidden className="cut-shadow-piece" />
                 <div className="paper-sheet cut-d -rotate-[0.3deg] p-2.5">
                   <LiveStandingsList conf="East" rows={liveRanksData.East} champion={actualChampion} standingsLabel={readOnly ? "Actual standings" : undefined} />
                 </div>
-                {actualAwards && <div className="cut-shadow relative -ml-8 mt-4 w-72">
+                {actualAwards && <div className="cut-shadow relative mt-10 w-80 max-w-[calc(100vw-2rem)]">
                   <span aria-hidden className="cut-shadow-piece" />
                   <ActualAwardsCard awards={actualAwards} />
                 </div>}
@@ -1107,6 +1122,7 @@ function UnlockDialog({
 export default function StandingsPool() {
   const [data, setData] = useState<ApiPayload | null>(null);
   const [boards, setBoards] = useState<Record<string, PredictionPicks>>({});
+  const [dirtyBoards, setDirtyBoards] = useState<Record<string, boolean>>({});
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState<string | null>(null);
 
@@ -1139,6 +1155,7 @@ export default function StandingsPool() {
       const payload = (await res.json()) as ApiPayload;
       setData(payload);
       setBoards(Object.fromEntries(payload.participants.map((p) => [p.name, p.picks])));
+      setDirtyBoards({});
       setLoadError(null);
     } catch (err) {
       setLoadError(err instanceof Error ? err.message : "Failed to load");
@@ -1226,6 +1243,7 @@ export default function StandingsPool() {
 
   const updateLiveExtras = useCallback((extras: PredictionExtras) => {
     if (!openName) return;
+    setDirtyBoards((current) => ({ ...current, [openName]: true }));
     setBoards((current) => ({
       ...current,
       [openName]: { ...(current[openName] ?? { West: chalkOrder("West"), East: chalkOrder("East") }), extras },
@@ -1302,9 +1320,14 @@ export default function StandingsPool() {
       setDraggingTeamId(null);
       setDropSlot(null);
       if (!teamId) return;
+      const board = boards[name];
+      const sourceConf = board ? (["West", "East"] as Conference[]).find((candidate) => board[candidate].includes(teamId)) : undefined;
+      const sourceIndex = sourceConf ? board?.[sourceConf].indexOf(teamId) : -1;
+      const changed = sourceConf !== undefined && (mode === "gap" || sourceConf !== conf || sourceIndex !== index);
+      if (changed) setDirtyBoards((current) => ({ ...current, [name]: true }));
       moveTeam(name, teamId, conf, index, mode);
     },
-    [draggingTeamId, moveTeam],
+    [boards, draggingTeamId, moveTeam],
   );
 
   // --- persistence ---------------------------------------------------------
@@ -1336,6 +1359,7 @@ export default function StandingsPool() {
             }
           : prev,
       );
+      setDirtyBoards((current) => ({ ...current, [name]: false }));
     } catch {
       setSaveError("Could not reach the server.");
     } finally {
@@ -1570,6 +1594,7 @@ export default function StandingsPool() {
         actualChampion={historicalOpen ? PAST_SEASONS.find((season) => season.key === historicalOpen.seasonKey)?.actualChampion : undefined}
         actualAwards={historicalOpen ? PAST_SEASONS.find((season) => season.key === historicalOpen.seasonKey)?.actualAwards : { awards: {} }}
         extras={historicalOpen ? (PAST_SEASONS.find((season) => season.key === historicalOpen.seasonKey)?.rows.find((row) => row.name === historicalOpen.participant.name)?.extras) : (openName ? boards[openName]?.extras ?? { awards: {} } : undefined)}
+        isSaved={historicalOpen ? true : Boolean(openName && openRecord?.saved && !dirtyBoards[openName])}
         readOnly={historicalOpen !== null}
         onExtrasChange={updateLiveExtras}
         showLiveRails

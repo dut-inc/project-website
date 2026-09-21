@@ -302,7 +302,6 @@ input {
       radial-gradient(circle at 68% 8%, rgba(42, 38, 32, 0.05) 0, transparent 1.5px),
       radial-gradient(circle at 34% 74%, rgba(42, 38, 32, 0.06) 0, transparent 2px),
       radial-gradient(circle at 86% 56%, rgba(42, 38, 32, 0.05) 0, transparent 1.5px),
-      radial-gradient(circle at 52% 34%, rgba(255, 252, 240, 0.55) 0, transparent 16px),
       radial-gradient(circle at 8% 94%, rgba(122, 101, 61, 0.1) 0, transparent 20px);
     box-shadow: 2px 3px 0 rgba(0, 0, 0, 0.16);
   }
@@ -315,27 +314,6 @@ input {
       linear-gradient(rgba(42, 38, 32, 0.12) 1px, transparent 1px),
       linear-gradient(90deg, rgba(42, 38, 32, 0.12) 1px, transparent 1px);
     background-size: 13px 13px;
-  }
-
-  /* Rubber-stamp label (SAVED / CHALK). Color comes from utility classes. */
-  .stamp {
-    display: inline-block;
-    border-width: 2px;
-    border-style: solid;
-    border-radius: 3px;
-    padding: 2px 8px;
-    font-family: var(--font-mono);
-    font-size: 9px;
-    line-height: 1.6;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-  }
-
-  /* Headline words cut from different paper scraps. */
-  .punk-scrap {
-    display: inline-block;
-    padding: 0.25rem 0.75rem;
-    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.45);
   }
 
   /* ---- Scissor cuts -----------------------------------------------------
