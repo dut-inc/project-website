@@ -3,7 +3,7 @@ import StandingsPool from "@/components/sports/nba-standings/StandingsPool";
 
 export const metadata = {
   title: "Gradey Dick Fan Club Predictions",
-  description: "Seven friends predict the NBA standings, scored live against the real table.",
+  description: "See our predictions!!",
 };
 
 export default function NbaStandingsPage() {

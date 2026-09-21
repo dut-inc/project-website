@@ -22,7 +22,7 @@ const features = [
     tag: "Live",
     title: "NBA Standings Pool",
     blurb:
-      "seven friends predict both conference standings, scored live against the real table",
+      "see our nba standings predictions",
   },
   {
     href: "/sports/pitch-predictor",
