@@ -1086,10 +1086,14 @@ function UnlockDialog({
         <input
           ref={inputRef}
           type="password"
+          name="nba-standings-passcode"
           value={passcode}
           onChange={(e) => setPasscode(e.target.value)}
           placeholder="Pool password"
-          autoComplete="current-password"
+          autoComplete="new-password"
+          autoCapitalize="none"
+          autoCorrect="off"
+          spellCheck={false}
           className="mt-4 min-h-11 w-full border-b-2 border-ink/60 bg-transparent px-1 font-mono text-sm text-ink placeholder:text-ink/40 focus:border-pool-orange focus:outline-none"
         />
         {error && (

@@ -7,9 +7,18 @@ import { NextRequest, NextResponse } from "next/server";
 const ACCESS_COOKIE = "nba_standings_access";
 const ACCESS_TTL_SECONDS = 60 * 60 * 8;
 
+function normalizePasscode(value: string) {
+  // Vercel's dashboard and mobile keyboards can introduce surrounding
+  // whitespace or composed Unicode variants. Keep case and internal spaces
+  // significant while making those copy/paste differences harmless.
+  return value.normalize("NFKC").trim();
+}
+
 function configuredPasscode() {
   const passcode = process.env.NBA_STANDINGS_PASSCODE;
-  return passcode && passcode.length > 0 ? passcode : null;
+  if (!passcode) return null;
+  const normalized = normalizePasscode(passcode);
+  return normalized.length > 0 ? normalized : null;
 }
 
 function signaturesMatch(left: string, right: string) {
@@ -87,7 +96,7 @@ export async function POST(request: NextRequest) {
       ? body.passcode
       : null;
 
-  if (!enteredPasscode || !signaturesMatch(enteredPasscode, passcode)) {
+  if (!enteredPasscode || !signaturesMatch(normalizePasscode(enteredPasscode), passcode)) {
     return NextResponse.json({ error: "That password does not match." }, { status: 401 });
   }
 
