@@ -78,12 +78,12 @@ export const MAX_TOTAL_POINTS = 60; // 30 teams * 2 conferences * 2 points
 // ---------------------------------------------------------------------------
 
 /**
- * Picks lock at tip-off of the new season: October 20th, 2026. After the lock
+ * Picks lock at 12:00 PM Pacific Daylight Time on October 20th, 2026. After the lock
  * the boards freeze — anyone can browse, nobody can edit. `now` is injectable
  * for tests; the server route passes its own clock so a stale client can't
  * unlock anything by lying about the date.
  */
-export const SEASON_TIP_OFF_ISO = "2026-10-20T00:00:00-04:00";
+export const SEASON_TIP_OFF_ISO = "2026-10-20T12:00:00-07:00";
 
 export function isSeasonLocked(now: Date = new Date()): boolean {
   return now.getTime() >= new Date(SEASON_TIP_OFF_ISO).getTime();

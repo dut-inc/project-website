@@ -89,9 +89,10 @@ test("hydratePicks falls back to chalk on garbage", () => {
   assert.equal(hydratePicks(null).West.length, 15);
 });
 
-test("season lock: before, during, and after tip-off", () => {
-  assert.equal(isSeasonLocked(new Date("2026-10-19T23:59:59-04:00")), false);
-  assert.equal(isSeasonLocked(new Date("2026-10-20T00:00:00-04:00")), true);
+test("season lock: before, at, and after noon Pacific Daylight Time on October 20", () => {
+  assert.equal(isSeasonLocked(new Date("2026-10-20T11:59:59-07:00")), false);
+  assert.equal(isSeasonLocked(new Date("2026-10-20T12:00:00-07:00")), true);
+  assert.equal(isSeasonLocked(new Date("2026-10-20T12:00:01-07:00")), true);
   assert.equal(isSeasonLocked(new Date("2027-02-01T00:00:00Z")), true);
   assert.equal(isSeasonLocked(new Date("2026-09-01T00:00:00Z")), false);
 });

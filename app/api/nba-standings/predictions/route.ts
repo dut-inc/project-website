@@ -64,7 +64,7 @@ export async function GET() {
     season: {
       key: standings.seasonLabel,
       locked: isSeasonLocked(),
-      tipOff: "2026-10-20T00:00:00-04:00",
+      tipOff: "2026-10-20T12:00:00-07:00",
       isPreseason: standings.isPreseason,
     },
     standings: {

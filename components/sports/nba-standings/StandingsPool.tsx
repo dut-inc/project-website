@@ -20,6 +20,7 @@ import Image from "next/image";
 import { createPortal } from "react-dom";
 import {
   PARTICIPANTS,
+  SEASON_TIP_OFF_ISO,
   isSeasonLocked,
   scoreConference,
   type PredictionPicks,
@@ -306,6 +307,7 @@ function ParticipantBoard({
   rank,
   picks,
   isUnlocked,
+  locked,
   activeName,
   isDraggingEnabled,
   onDragStart,
@@ -324,6 +326,7 @@ function ParticipantBoard({
   rank?: number;
   picks: PredictionPicks;
   isUnlocked: boolean;
+  locked: boolean;
   activeName: string | null;
   isDraggingEnabled: boolean;
   onDragStart: (name: string, teamId: string) => void;
@@ -460,16 +463,21 @@ function ParticipantBoard({
           {showEditButton && <button
             type="button"
             onClick={() => onEditClick(name)}
-            className="scrap transition-transform hover:-translate-y-px"
+            disabled={locked}
+            aria-label={locked ? "Standings locked; editing unavailable" : undefined}
+            title={locked ? "Standings are locked" : undefined}
+            className={locked ? "scrap cursor-not-allowed opacity-55" : "scrap transition-transform hover:-translate-y-px"}
           >
             <span
               className={`block px-3.5 py-2 font-mono text-[10px] uppercase tracking-widest ${
-                isActive && isUnlocked
-                  ? "scrap-cut-b bg-[#DCE9D4] text-pinTeal"
-                  : "scrap-cut bg-pool-orange text-black"
+                locked
+                  ? "scrap-cut bg-ink/15 text-ink/50"
+                  : isActive && isUnlocked
+                    ? "scrap-cut-b bg-[#DCE9D4] text-pinTeal"
+                    : "scrap-cut bg-pool-orange text-black"
               }`}
             >
-              {isActive && isUnlocked ? "editing" : isUnlocked ? "edit" : "Unlock edit"}
+              {locked ? "Locked" : isActive && isUnlocked ? "editing" : isUnlocked ? "edit" : "Unlock edit"}
             </span>
           </button>}
         </div>
@@ -926,6 +934,7 @@ function BoardDialog({
               rank={rank ?? undefined}
               picks={picks}
               isUnlocked={isUnlocked && !locked}
+              locked={locked}
               activeName={activeName}
               isDraggingEnabled={!locked && isUnlocked && activeName === participant.name}
               onDragStart={onDragStart}
@@ -1144,13 +1153,17 @@ export default function StandingsPool() {
   const [saveError, setSaveError] = useState<string | null>(null);
   const [showPastYears, setShowPastYears] = useState(false);
   const [progression, setProgression] = useState<ProgressionSnapshot[]>([]);
+  const [deadlineReached, setDeadlineReached] = useState(false);
 
   const pendingUnlockRef = useRef<string | null>(null);
 
   const [draggingTeamId, setDraggingTeamId] = useState<string | null>(null);
   const [dropSlot, setDropSlot] = useState<{ board: string; conf: Conference; index: number } | null>(null);
 
-  const locked = useMemo(() => (data ? data.season.locked || isSeasonLocked() : false), [data]);
+  const locked = useMemo(
+    () => (data ? data.season.locked || deadlineReached || isSeasonLocked() : false),
+    [data, deadlineReached],
+  );
 
   const load = useCallback(async () => {
     try {
@@ -1188,6 +1201,12 @@ export default function StandingsPool() {
     return () => {
       cancelled = true;
     };
+  }, []);
+
+  useEffect(() => {
+    const msUntilLock = Math.max(0, new Date(SEASON_TIP_OFF_ISO).getTime() - Date.now());
+    const timeoutId = window.setTimeout(() => setDeadlineReached(true), msUntilLock);
+    return () => window.clearTimeout(timeoutId);
   }, []);
 
   // Live ranks: teamId -> 1-based position in the live conference order.
