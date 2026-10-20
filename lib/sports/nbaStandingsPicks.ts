@@ -5,8 +5,12 @@
 
 import { chalkOrder, NBA_TEAMS, TEAMS_BY_ID, type Conference, type NbaTeam } from "./nbaTeams.ts";
 
-export const PARTICIPANTS = ["Owen", "Jacob", "Ben", "Eli", "Oliver", "Ronan", "Alejandro"] as const;
+export const PARTICIPANTS = ["Owen", "Jacob", "Ben", "Eli", "Oliver", "Ronan", "Alejandro", "Dennis"] as const;
 export type Participant = (typeof PARTICIPANTS)[number];
+
+// The progression endpoint reconstructs last season's leaderboard. Keep new
+// participants out of that historical season unless they actually competed.
+export const PROGRESSION_PARTICIPANTS = ["Owen", "Jacob", "Ben", "Eli", "Oliver", "Ronan", "Alejandro"] as const;
 
 export function isParticipant(value: unknown): value is Participant {
   return typeof value === "string" && (PARTICIPANTS as readonly string[]).includes(value);
@@ -23,6 +27,26 @@ export type PredictionPicks = {
   West: string[];
   East: string[];
   extras?: PredictionExtras;
+};
+
+// Current-season opening picks for a late-joining participant. This seed is
+// scoped to the 2026-27 board and is intentionally absent from past archives.
+export const DENNIS_2026_27_PICKS: PredictionPicks = {
+  West: ["SAS", "OKC", "MIN", "HOU", "LAL", "DEN", "POR", "UTA", "PHX", "DAL", "GSW", "MEM", "SAC", "NOP", "LAC"],
+  East: ["DET", "BOS", "NYK", "CLE", "IND", "TOR", "PHI", "MIA", "ATL", "ORL", "WAS", "CHI", "CHA", "BKN", "MIL"],
+  extras: {
+    awards: {
+      MVP: "Anthony Edwards",
+      MIP: "Stephon Castle",
+      "6MOY": "Dylan Harper",
+      COY: "Mitch Johnson",
+      ROY: "Caleb Wilson",
+      DPOY: "Victor Wembanyama",
+      CPOY: "Shai Gilgeous-Alexander",
+      FMVP: "Anthony Edwards",
+    },
+    champion: "MIN",
+  },
 };
 
 export type PredictionRecord = {

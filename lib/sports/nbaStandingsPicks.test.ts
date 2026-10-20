@@ -3,6 +3,8 @@ import { test } from "node:test";
 
 import {
   PARTICIPANTS,
+  PROGRESSION_PARTICIPANTS,
+  DENNIS_2026_27_PICKS,
   hydratePicks,
   isSeasonLocked,
   parsePicks,
@@ -97,8 +99,12 @@ test("season lock: before, at, and after noon Pacific Daylight Time on October 2
   assert.equal(isSeasonLocked(new Date("2026-09-01T00:00:00Z")), false);
 });
 
-test("participants list matches the pool roster", () => {
-  assert.equal(PARTICIPANTS.length, 7);
-  assert.ok(PARTICIPANTS.includes("Owen") && PARTICIPANTS.includes("Alejandro"));
+test("Dennis has valid current-season picks without joining historical progression", () => {
+  assert.equal(PARTICIPANTS.length, 8);
+  assert.ok(PARTICIPANTS.includes("Owen") && PARTICIPANTS.includes("Alejandro") && PARTICIPANTS.includes("Dennis"));
+  assert.equal(PROGRESSION_PARTICIPANTS.length, 7);
+  assert.ok(!(PROGRESSION_PARTICIPANTS as readonly string[]).includes("Dennis"));
+  assert.deepEqual(parsePicks(DENNIS_2026_27_PICKS), DENNIS_2026_27_PICKS);
+  assert.equal(DENNIS_2026_27_PICKS.extras?.champion, "MIN");
   assert.equal(MAX_TOTAL_POINTS, 60);
 });

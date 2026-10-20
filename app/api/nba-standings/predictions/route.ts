@@ -13,6 +13,7 @@ import {
   isParticipant,
   parsePicks,
   normalizeChampionCode,
+  DENNIS_2026_27_PICKS,
 } from "@/lib/sports/nbaStandingsPicks";
 
 // GET /api/nba-standings/predictions
@@ -52,9 +53,15 @@ export async function GET() {
 
   const participants = PARTICIPANTS.map((name) => {
     const record = records[name];
+    const currentSeasonSeed =
+      name === "Dennis" && standings.seasonLabel === "2026-27"
+        ? DENNIS_2026_27_PICKS
+        : null;
     return {
       name,
-      picks: hydratePicks(record?.picks),
+      picks: record?.picks != null
+        ? hydratePicks(record.picks)
+        : currentSeasonSeed ?? hydratePicks(null),
       saved: record?.picks != null && parsePicks(record.picks) !== null,
       updatedAt: record?.updatedAt ?? null,
     };

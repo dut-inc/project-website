@@ -8,7 +8,7 @@ import {
   type ProgressionInput,
 } from "@/lib/sports/nbaProgression";
 import {
-  PARTICIPANTS,
+  PROGRESSION_PARTICIPANTS,
   hydratePicks,
   isParticipant,
 } from "@/lib/sports/nbaStandingsPicks";
@@ -76,7 +76,7 @@ function standingsAt(games: Game[], date: string) {
 }
 
 async function loadParticipants(): Promise<ProgressionInput> {
-  const fallback = PARTICIPANTS.map((name) => ({ name, picks: hydratePicks(null) }));
+  const fallback = PROGRESSION_PARTICIPANTS.map((name) => ({ name, picks: hydratePicks(null) }));
   try {
     const supabase = await createClient();
     const { data, error } = await supabase
@@ -89,7 +89,7 @@ async function loadParticipants(): Promise<ProgressionInput> {
         .filter((row) => isParticipant(row.participant))
         .map((row) => [row.participant, hydratePicks(row.picks)]),
     );
-    return PARTICIPANTS.map((name) => ({ name, picks: records.get(name) ?? hydratePicks(null) }));
+    return PROGRESSION_PARTICIPANTS.map((name) => ({ name, picks: records.get(name) ?? hydratePicks(null) }));
   } catch {
     return fallback;
   }

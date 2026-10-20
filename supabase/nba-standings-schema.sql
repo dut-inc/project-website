@@ -18,9 +18,44 @@ create table if not exists public.nba_standings_predictions (
   constraint nba_standings_predictions_season_participant_key
     unique (season_key, participant),
   constraint nba_standings_predictions_participant_check check (
-    participant in ('Owen', 'Jacob', 'Ben', 'Eli', 'Oliver', 'Ronan', 'Alejandro')
+    participant in ('Owen', 'Jacob', 'Ben', 'Eli', 'Oliver', 'Ronan', 'Alejandro', 'Dennis')
   )
 );
+
+-- Keep existing databases in sync as participants join; CREATE TABLE IF NOT EXISTS
+-- does not update the roster constraint on an already-created table.
+alter table public.nba_standings_predictions
+  drop constraint if exists nba_standings_predictions_participant_check;
+alter table public.nba_standings_predictions
+  add constraint nba_standings_predictions_participant_check check (
+    participant in ('Owen', 'Jacob', 'Ben', 'Eli', 'Oliver', 'Ronan', 'Alejandro', 'Dennis')
+  );
+
+-- Dennis joined for 2026-27 only; never backfill archived seasons.
+insert into public.nba_standings_predictions (season_key, participant, picks, updated_at)
+values (
+  '2026-27',
+  'Dennis',
+  jsonb_build_object(
+    'West', jsonb_build_array('SAS', 'OKC', 'MIN', 'HOU', 'LAL', 'DEN', 'POR', 'UTA', 'PHX', 'DAL', 'GSW', 'MEM', 'SAC', 'NOP', 'LAC'),
+    'East', jsonb_build_array('DET', 'BOS', 'NYK', 'CLE', 'IND', 'TOR', 'PHI', 'MIA', 'ATL', 'ORL', 'WAS', 'CHI', 'CHA', 'BKN', 'MIL'),
+    'extras', jsonb_build_object(
+      'awards', jsonb_build_object(
+        'MVP', 'Anthony Edwards',
+        'MIP', 'Stephon Castle',
+        '6MOY', 'Dylan Harper',
+        'COY', 'Mitch Johnson',
+        'ROY', 'Caleb Wilson',
+        'DPOY', 'Victor Wembanyama',
+        'CPOY', 'Shai Gilgeous-Alexander',
+        'FMVP', 'Anthony Edwards'
+      ),
+      'champion', 'MIN'
+    )
+  ),
+  now()
+)
+on conflict (season_key, participant) do nothing;
 
 create index if not exists nba_standings_predictions_season_idx
   on public.nba_standings_predictions (season_key);
