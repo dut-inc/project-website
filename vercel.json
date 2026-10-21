@@ -1,0 +1,9 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "crons": [
+    {
+      "path": "/api/nba-standings/freeze",
+      "schedule": "0 16 13 4 *"
+    }
+  ]
+}

@@ -52,6 +52,10 @@ NBA_STANDINGS_PASSCODE=choose-a-passcode
 
 On Vercel, add it under **Project Settings → Environment Variables** for every environment that should support editing (for example, Production), then redeploy. Do not use a `NEXT_PUBLIC_` prefix: this value must remain server-only. If it is missing, `/api/nba-standings/access` intentionally returns the “Set NBA_STANDINGS_PASSCODE…” configuration message.
 
+### NBA standings freeze (2026–27)
+
+The live standings freeze at 9:00 AM Pacific on April 13, 2027. A Vercel Cron Job runs at 16:00 UTC (9:00 AM PDT) on April 13, captures the ESPN standings once, and stores the immutable snapshot in `nba_standings_snapshots`; requests after the cutoff serve that saved snapshot. If the cron misses the exact hour, the first request within that same hour can capture it; later requests will not overwrite it with standings potentially affected by play-in games. The scheduled run requires `SUPABASE_SERVICE_ROLE_KEY` and `CRON_SECRET` in the deployment environment. Add the `nba_standings_snapshots` table by running the updated `supabase/nba-standings-schema.sql` in the Supabase SQL editor.
+
 ### Supabase view security
 
 If the database was created before the leaderboard view was updated, run `supabase/game-leaderboard-security-invoker.sql` in the Supabase SQL editor once. New installs can use the `security_invoker` view definition in `supabase/schema.sql`; the view will then evaluate underlying-table RLS using the querying user rather than the view creator.

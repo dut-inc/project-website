@@ -60,6 +60,17 @@ on conflict (season_key, participant) do nothing;
 create index if not exists nba_standings_predictions_season_idx
   on public.nba_standings_predictions (season_key);
 
+-- Immutable copy of ESPN's standings captured when a season's final seeding freezes.
+create table if not exists public.nba_standings_snapshots (
+  season_key text primary key,
+  snapshot jsonb not null,
+  frozen_at timestamptz not null default now()
+);
+
+alter table public.nba_standings_snapshots enable row level security;
+revoke all on table public.nba_standings_snapshots from anon, authenticated;
+grant select, insert on table public.nba_standings_snapshots to service_role;
+
 alter table public.nba_standings_predictions enable row level security;
 
 grant select, insert, update on table public.nba_standings_predictions to anon, authenticated;

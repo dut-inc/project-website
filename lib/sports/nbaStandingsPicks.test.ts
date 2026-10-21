@@ -14,6 +14,14 @@ import {
   MAX_TOTAL_POINTS,
 } from "./nbaStandingsPicks.ts";
 import { NBA_TEAMS, teamFromEspnAbbr, chalkOrder } from "./nbaTeams.ts";
+import {
+  NBA_STANDINGS_FREEZE_AT,
+  NBA_STANDINGS_FREEZE_RECOVERY_WINDOW_MS,
+  NBA_STANDINGS_FREEZE_SEASON,
+  canRecoverMissedNbaStandingsFreeze,
+  parseNbaStandingsRows,
+  shouldFreezeNbaStandings,
+} from "../backend/providers/nbaStandings.ts";
 
 
 test("roster shape: 30 teams, 15 per conference", () => {
@@ -34,6 +42,30 @@ test("ESPN abbreviation fixups resolve to canonical ids", () => {
   assert.equal(teamFromEspnAbbr("BOS")?.id, "BOS");
   assert.equal(teamFromEspnAbbr(undefined), undefined);
   assert.equal(teamFromEspnAbbr("XX"), undefined);
+});
+
+test("NBA standings follow ESPN playoffSeed when entries arrive unsorted", () => {
+  const rows = parseNbaStandingsRows([
+    { team: { abbreviation: "BOS" }, stats: [{ name: "wins", displayValue: "0" }, { name: "losses", displayValue: "1" }, { name: "winPercent", displayValue: ".000" }, { name: "playoffSeed", displayValue: "15" }] },
+    { team: { abbreviation: "ATL" }, stats: [{ name: "wins", displayValue: "0" }, { name: "losses", displayValue: "0" }, { name: "winPercent", displayValue: ".000" }, { name: "playoffSeed", displayValue: "2" }] },
+    { team: { abbreviation: "DET" }, stats: [{ name: "wins", displayValue: "1" }, { name: "losses", displayValue: "0" }, { name: "winPercent", displayValue: "1.000" }, { name: "playoffSeed", displayValue: "1" }] },
+  ]);
+
+  assert.deepEqual(rows.map((row) => row.teamId), ["DET", "ATL", "BOS"]);
+  assert.deepEqual(rows.map((row) => row.winPct), [1, 0, 0]);
+});
+
+test("NBA standings freeze only at/after the 2026-27 Pacific deadline", () => {
+  assert.equal(shouldFreezeNbaStandings(NBA_STANDINGS_FREEZE_SEASON, new Date("2027-04-13T08:59:59-07:00")), false);
+  assert.equal(shouldFreezeNbaStandings(NBA_STANDINGS_FREEZE_SEASON, new Date(NBA_STANDINGS_FREEZE_AT)), true);
+  assert.equal(shouldFreezeNbaStandings(NBA_STANDINGS_FREEZE_SEASON, new Date("2027-04-13T09:00:01-07:00")), true);
+  assert.equal(shouldFreezeNbaStandings("2027-28", new Date("2028-04-13T09:00:00-07:00")), false);
+
+  const cutoff = Date.parse(NBA_STANDINGS_FREEZE_AT);
+  assert.equal(canRecoverMissedNbaStandingsFreeze(new Date(cutoff)), true);
+  assert.equal(canRecoverMissedNbaStandingsFreeze(new Date(cutoff + NBA_STANDINGS_FREEZE_RECOVERY_WINDOW_MS)), true);
+  assert.equal(canRecoverMissedNbaStandingsFreeze(new Date(cutoff + NBA_STANDINGS_FREEZE_RECOVERY_WINDOW_MS + 1)), false);
+  assert.equal(canRecoverMissedNbaStandingsFreeze(new Date(cutoff - 1)), false);
 });
 
 test("slotPoints rubric: 2 exact, 1 within one, 0 otherwise", () => {
