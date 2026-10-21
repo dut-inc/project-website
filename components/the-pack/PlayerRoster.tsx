@@ -1,4 +1,5 @@
 import type { HandRanking, ThePackRoomPlayer } from "@/lib/thePack";
+import PaperNameTag from "./PaperNameTag";
 
 export type PlayerRosterProps = {
   players: ThePackRoomPlayer[];
@@ -16,8 +17,8 @@ export default function PlayerRoster({ players, onlineAuthUserIds, rankings, hos
   return (
     <div>
       <p className="font-mono text-[10px] uppercase tracking-widest text-shelf-ink/60">Table</p>
-      <ul className="mt-2 space-y-1.5">
-        {sorted.map((player) => {
+      <ul className="mt-3 space-y-2.5">
+        {sorted.map((player, index) => {
           const ranking = rankByPlayerId.get(player.id);
           const isOnline = onlineAuthUserIds.has(player.authUserId);
           return (
@@ -27,14 +28,17 @@ export default function PlayerRoster({ players, onlineAuthUserIds, rankings, hos
                   className={`h-2 w-2 rounded-full ${isOnline ? "bg-shelf-forest" : "bg-shelf-paperDark"}`}
                   aria-hidden
                 />
-                {player.displayName}
+                <PaperNameTag name={player.displayName} index={index} />
                 {player.authUserId === hostAuthUserId && (
                   <span className="font-mono text-[9px] uppercase tracking-widest text-shelf-brass">Host</span>
                 )}
               </span>
               {ranking && (
                 <span className="font-mono text-[10px] uppercase tracking-widest text-shelf-ink/60">
-                  #{ranking.rankPosition} · {ranking.label}
+                  #{ranking.rankPosition}
+                  {/* The server only fills in a label for the viewer's own
+                      row -- everyone else's hand type stays hidden. */}
+                  {ranking.label && ` · ${ranking.label}`}
                 </span>
               )}
             </li>

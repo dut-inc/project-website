@@ -58,6 +58,29 @@ export type ThePackChip = {
   version: number;
 };
 
+// One street's archived chip arrangement -- permanent, unlike
+// ThePackChip's live/mutable state. See the_pack_chip_history in the schema.
+export type ThePackChipHistoryEntry = {
+  id: string;
+  roundId: string;
+  street: Street;
+  chipNumber: number;
+  holderRoomPlayerId: string | null;
+  capturedAt: string;
+};
+
+// Poker-chip colors, in street order -- not part of the "shelf" decorative
+// palette on purpose, since these represent physical chip colors. Each bg is
+// a solid (non-pastel) tone paired with whichever number color reads best
+// against it (dark on white/yellow, white on orange/red) -- not the same
+// ink color for every street, since that only holds up on the light ones.
+export const STREET_CHIP_COLOR: Record<Street, { bg: string; border: string; text: string; label: string }> = {
+  preflop: { bg: "bg-white", border: "border-stone-400", text: "text-stone-900", label: "White" },
+  flop: { bg: "bg-yellow-400", border: "border-yellow-600", text: "text-stone-900", label: "Yellow" },
+  turn: { bg: "bg-orange-700", border: "border-orange-900", text: "text-white", label: "Orange" },
+  river: { bg: "bg-red-700", border: "border-red-900", text: "text-white", label: "Red" },
+};
+
 export type HandRanking = {
   roomPlayerId: string;
   displayName: string;
@@ -87,12 +110,11 @@ export type ThePackBroadcastEvent =
         round_id: string;
         street: Street;
         community_cards: Card[];
-        rankings: {
-          room_player_id: string;
-          display_name: string;
-          rank_position: number;
-          label: string;
-        }[];
+        // Deliberately no rankings here -- the_pack_rank_table masks every
+        // row's hand-category label except the caller's own, which only
+        // works per-request. A broadcast is one shared payload for every
+        // recipient, so it can't carry a correctly-masked version of it;
+        // each client calls the_pack_rank_table itself on this event.
       };
     }
   | {
@@ -178,6 +200,19 @@ export function chipFromRow(row: unknown): ThePackChip | null {
     holderRoomPlayerId: typeof row.holder_room_player_id === "string" ? row.holder_room_player_id : null,
     updatedAt: String(row.updated_at ?? ""),
     version: typeof row.version === "number" ? row.version : 0,
+  };
+}
+
+export function chipHistoryEntryFromRow(row: unknown): ThePackChipHistoryEntry | null {
+  if (!isObject(row) || typeof row.id !== "string") return null;
+  const street = row.street;
+  return {
+    id: row.id,
+    roundId: String(row.round_id ?? ""),
+    street: STREETS.includes(street as Street) ? (street as Street) : "preflop",
+    chipNumber: typeof row.chip_number === "number" ? row.chip_number : 0,
+    holderRoomPlayerId: typeof row.holder_room_player_id === "string" ? row.holder_room_player_id : null,
+    capturedAt: String(row.captured_at ?? ""),
   };
 }
 

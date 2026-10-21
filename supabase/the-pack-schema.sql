@@ -99,6 +99,23 @@ create table if not exists public.the_pack_chips (
 
 create index if not exists the_pack_chips_round_idx on public.the_pack_chips (round_id);
 
+-- Permanent snapshot of each street's chip arrangement, captured right
+-- before the group moves on (the next street is revealed, or a fresh round
+-- is dealt). Unlike the_pack_chips (live, mutable), rows here are never
+-- updated -- this is what lets every player review how the group's chip
+-- order evolved across preflop/flop/turn/river after the fact.
+create table if not exists public.the_pack_chip_history (
+  id uuid primary key default gen_random_uuid(),
+  round_id uuid not null references public.the_pack_rounds(id) on delete cascade,
+  street text not null check (street in ('preflop', 'flop', 'turn', 'river')),
+  chip_number smallint not null,
+  holder_room_player_id uuid null references public.the_pack_room_players(id) on delete set null,
+  captured_at timestamptz not null default now(),
+  constraint the_pack_chip_history_round_street_chip_key unique (round_id, street, chip_number)
+);
+
+create index if not exists the_pack_chip_history_round_idx on public.the_pack_chip_history (round_id);
+
 -- ---------------------------------------------------------------------------
 -- Membership helper
 -- ---------------------------------------------------------------------------
@@ -519,6 +536,7 @@ as $$
 declare
   round_room_id uuid;
   round_community text[];
+  caller_room_player_id uuid;
 begin
   select room_id, community_cards into round_room_id, round_community
   from public.the_pack_rounds where id = p_round_id;
@@ -529,6 +547,10 @@ begin
   if not public.the_pack_is_room_member(round_room_id) then
     raise exception 'Not a member of this room';
   end if;
+
+  select id into caller_room_player_id
+  from public.the_pack_room_players
+  where room_id = round_room_id and auth_user_id = auth.uid();
 
   return query
   with scored as (
@@ -544,7 +566,14 @@ begin
     scored.rpid,
     scored.pname,
     dense_rank() over (order by scored.score desc)::int,
-    public.the_pack_hand_category_label(scored.score)
+    -- The relative order is fine for everyone to see (that's the "REVEALED
+    -- ranks" feature), but the hand type itself (pair/two pair/...) is
+    -- exactly what makes the real game's guessing/negotiation meaningful --
+    -- only the caller's own row gets a label; everyone else's is masked.
+    case when scored.rpid = caller_room_player_id
+      then public.the_pack_hand_category_label(scored.score)
+      else null
+    end
   from scored;
 end;
 $$;
@@ -561,6 +590,8 @@ set search_path = public
 as $$
 declare
   room_host uuid;
+  prev_round_id uuid;
+  prev_round_street text;
   ranks text[] := array['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A'];
   suits text[] := array['S', 'H', 'D', 'C'];
   deck text[] := '{}';
@@ -573,7 +604,8 @@ declare
   r text;
   s text;
 begin
-  select host_auth_user_id into room_host from public.the_pack_rooms where id = p_room_id;
+  select host_auth_user_id, current_round_id into room_host, prev_round_id
+  from public.the_pack_rooms where id = p_room_id;
   if room_host is null then
     raise exception 'Room not found';
   end if;
@@ -584,6 +616,18 @@ begin
   select count(*) into player_count from public.the_pack_room_players where room_id = p_room_id;
   if player_count < 2 then
     raise exception 'Need at least 2 players to deal';
+  end if;
+
+  -- Dealing a new round means the previous one is over -- archive wherever
+  -- its chips ended up (normally 'river') before its chip rows are orphaned
+  -- by the fresh the_pack_chips rows below.
+  if prev_round_id is not null then
+    select street into prev_round_street from public.the_pack_rounds where id = prev_round_id;
+    insert into public.the_pack_chip_history (round_id, street, chip_number, holder_room_player_id)
+    select prev_round_id, prev_round_street, c.chip_number, c.holder_room_player_id
+    from public.the_pack_chips c
+    where c.round_id = prev_round_id
+    on conflict (round_id, street, chip_number) do nothing;
   end if;
 
   foreach r in array ranks loop
@@ -656,7 +700,6 @@ declare
   current_deck text[];
   drawn text[];
   updated_community text[];
-  rankings jsonb;
 begin
   select host_auth_user_id, current_round_id into room_host, active_round_id
   from public.the_pack_rooms where id = p_room_id;
@@ -699,28 +742,30 @@ begin
 
   updated_community := round_community || drawn;
 
+  -- Archive the chip arrangement the group settled on for the street that's
+  -- ending, before it moves on and the live the_pack_chips rows change again.
+  insert into public.the_pack_chip_history (round_id, street, chip_number, holder_room_player_id)
+  select active_round_id, round_street, c.chip_number, c.holder_room_player_id
+  from public.the_pack_chips c
+  where c.round_id = active_round_id
+  on conflict (round_id, street, chip_number) do nothing;
+
   update public.the_pack_rounds
   set street = new_street, community_cards = updated_community
   where id = active_round_id;
 
-  -- Community cards are non-secret, so including them (and the freshly
-  -- computed ranking) directly in the payload is simpler than making every
-  -- client re-fetch after each reveal.
-  select jsonb_agg(jsonb_build_object(
-           'room_player_id', t.room_player_id,
-           'display_name', t.display_name,
-           'rank_position', t.rank_position,
-           'label', t.label
-         ) order by t.rank_position)
-  into rankings
-  from public.the_pack_rank_table(active_round_id) t;
-
+  -- Community cards are non-secret, so including them directly in the
+  -- payload is simpler than making every client re-fetch after each reveal.
+  -- Rankings are NOT included here: the_pack_rank_table masks every row's
+  -- hand-category label except the caller's own, which only works for a
+  -- per-client RPC call -- a single broadcast payload is identical for
+  -- every recipient, so it can never carry a correctly-masked version of
+  -- it. Each client calls the_pack_rank_table itself after this event.
   perform realtime.send(
     jsonb_build_object(
       'round_id', active_round_id,
       'street', new_street,
-      'community_cards', to_jsonb(updated_community),
-      'rankings', coalesce(rankings, '[]'::jsonb)
+      'community_cards', to_jsonb(updated_community)
     ),
     'street_revealed',
     'the-pack-room-' || p_room_id::text,
@@ -751,6 +796,7 @@ declare
   room_uuid uuid;
   caller_name text;
   updated_count int;
+  released_chip_number smallint;
 begin
   if auth.uid() is null then
     raise exception 'Must be signed in';
@@ -766,6 +812,26 @@ begin
   if caller_room_player_id is null then
     raise exception 'You are not seated in this room';
   end if;
+
+  -- Each player holds at most one chip at a time -- claiming a new chip
+  -- releases whatever chip they were already holding in this round, the
+  -- same way picking up a different physical chip means putting the old
+  -- one down.
+  for released_chip_number in
+    update public.the_pack_chips
+    set holder_room_player_id = null, version = version + 1, updated_at = now()
+    where round_id = p_round_id
+      and holder_room_player_id = caller_room_player_id
+      and chip_number <> p_chip_number
+    returning chip_number
+  loop
+    perform realtime.send(
+      jsonb_build_object('round_id', p_round_id, 'chip_number', released_chip_number),
+      'chip_released',
+      'the-pack-room-' || room_uuid::text,
+      true
+    );
+  end loop;
 
   update public.the_pack_chips
   set holder_room_player_id = caller_room_player_id,
@@ -860,6 +926,7 @@ declare
   from_holder uuid;
   to_name text;
   updated_count int;
+  released_chip_number smallint;
 begin
   if auth.uid() is null then
     raise exception 'Must be signed in';
@@ -886,6 +953,24 @@ begin
   select holder_room_player_id into from_holder
   from public.the_pack_chips
   where round_id = p_round_id and chip_number = p_chip_number;
+
+  -- Same one-chip-per-player invariant as the_pack_claim_chip: whatever
+  -- other chip the recipient already held in this round gets released.
+  for released_chip_number in
+    update public.the_pack_chips
+    set holder_room_player_id = null, version = version + 1, updated_at = now()
+    where round_id = p_round_id
+      and holder_room_player_id = p_to_room_player_id
+      and chip_number <> p_chip_number
+    returning chip_number
+  loop
+    perform realtime.send(
+      jsonb_build_object('round_id', p_round_id, 'chip_number', released_chip_number),
+      'chip_released',
+      'the-pack-room-' || room_uuid::text,
+      true
+    );
+  end loop;
 
   update public.the_pack_chips
   set holder_room_player_id = p_to_room_player_id,
@@ -923,6 +1008,7 @@ alter table public.the_pack_rounds enable row level security;
 alter table public.the_pack_round_decks enable row level security;
 alter table public.the_pack_hole_cards enable row level security;
 alter table public.the_pack_chips enable row level security;
+alter table public.the_pack_chip_history enable row level security;
 
 drop policy if exists "the pack rooms are readable by any signed-in player" on public.the_pack_rooms;
 create policy "the pack rooms are readable by any signed-in player"
@@ -957,6 +1043,16 @@ create policy "the pack chips are readable by room members"
     )
   );
 
+drop policy if exists "the pack chip history is readable by room members" on public.the_pack_chip_history;
+create policy "the pack chip history is readable by room members"
+  on public.the_pack_chip_history for select to authenticated
+  using (
+    exists (
+      select 1 from public.the_pack_rounds r
+      where r.id = round_id and public.the_pack_is_room_member(r.room_id)
+    )
+  );
+
 -- ---------------------------------------------------------------------------
 -- Realtime Authorization -- one private channel per room
 -- ---------------------------------------------------------------------------
@@ -984,6 +1080,7 @@ grant select on table public.the_pack_room_players to authenticated;
 grant select on table public.the_pack_rounds to authenticated;
 grant select on table public.the_pack_hole_cards to authenticated;
 grant select on table public.the_pack_chips to authenticated;
+grant select on table public.the_pack_chip_history to authenticated;
 -- the_pack_round_decks: intentionally no grants at all.
 
 grant execute on function public.the_pack_is_room_member(uuid) to authenticated;

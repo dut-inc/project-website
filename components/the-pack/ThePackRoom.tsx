@@ -5,6 +5,7 @@ import type { RealtimeChannel } from "@supabase/supabase-js";
 import { createClient } from "@/utils/supabase/client";
 import {
   chipFromRow,
+  chipHistoryEntryFromRow,
   handRankingFromRow,
   holeCardsFromRow,
   roomChannelTopic,
@@ -16,6 +17,7 @@ import {
   type RoomStatus,
   type ThePackBroadcastEvent,
   type ThePackChip,
+  type ThePackChipHistoryEntry,
   type ThePackRoom as ThePackRoomRecord,
   type ThePackRoomPlayer,
   type ThePackRound,
@@ -26,6 +28,7 @@ import RoundControls from "./RoundControls";
 import HoleCards from "./HoleCards";
 import CommunityCards from "./CommunityCards";
 import ChipBoard from "./ChipBoard";
+import ChipHistory from "./ChipHistory";
 
 type LoadState = "loading" | "needs-name" | "blocked" | "ready" | "not-found";
 
@@ -44,11 +47,36 @@ export default function ThePackRoom({ code }: { code: string }) {
   const [round, setRound] = useState<ThePackRound | null>(null);
   const [holeCards, setHoleCards] = useState<Card[] | null>(null);
   const [chips, setChips] = useState<ThePackChip[]>([]);
+  const [chipHistory, setChipHistory] = useState<ThePackChipHistoryEntry[]>([]);
   const [rankings, setRankings] = useState<HandRanking[]>([]);
   const [onlineAuthUserIds, setOnlineAuthUserIds] = useState<Set<string>>(new Set());
   const [nameInput, setNameInput] = useState("");
   const [isJoining, setIsJoining] = useState(false);
   const channelRef = useRef<RealtimeChannel | null>(null);
+
+  // Always a fresh per-request RPC call, never trusted from a broadcast --
+  // the_pack_rank_table masks every row's hand-category label except the
+  // caller's own, which only holds up when each client fetches its own copy.
+  const loadRankings = useCallback(async (roundId: string) => {
+    const supabase = createClient();
+    const { data: rankingRows } = await supabase.rpc("the_pack_rank_table", { p_round_id: roundId });
+    setRankings(
+      (Array.isArray(rankingRows) ? rankingRows : [])
+        .map(handRankingFromRow)
+        .filter((r): r is HandRanking => r !== null),
+    );
+  }, []);
+
+  const loadChipHistory = useCallback(async (roundId: string) => {
+    const supabase = createClient();
+    const { data: historyRows } = await supabase
+      .from("the_pack_chip_history")
+      .select("*")
+      .eq("round_id", roundId);
+    setChipHistory(
+      (historyRows ?? []).map(chipHistoryEntryFromRow).filter((h): h is ThePackChipHistoryEntry => h !== null),
+    );
+  }, []);
 
   // Resume-after-refresh and the post-join path both end up here: load every
   // piece of room state fresh rather than trusting anything seen before.
@@ -69,6 +97,7 @@ export default function ThePackRoom({ code }: { code: string }) {
     if (!loadedRoom?.currentRoundId) {
       setRound(null);
       setChips([]);
+      setChipHistory([]);
       setHoleCards(null);
       setRankings([]);
       return;
@@ -81,6 +110,7 @@ export default function ThePackRoom({ code }: { code: string }) {
 
     const { data: chipRows } = await supabase.from("the_pack_chips").select("*").eq("round_id", roundId);
     setChips((chipRows ?? []).map(chipFromRow).filter((c): c is ThePackChip => c !== null));
+    await loadChipHistory(roundId);
 
     // RLS on the_pack_hole_cards means this can only ever return the
     // caller's own row -- never another player's.
@@ -92,16 +122,11 @@ export default function ThePackRoom({ code }: { code: string }) {
     setHoleCards(holeCardsFromRow(holeRow));
 
     if (loadedRound && loadedRound.street !== "preflop") {
-      const { data: rankingRows } = await supabase.rpc("the_pack_rank_table", { p_round_id: roundId });
-      setRankings(
-        (Array.isArray(rankingRows) ? rankingRows : [])
-          .map(handRankingFromRow)
-          .filter((r): r is HandRanking => r !== null),
-      );
+      await loadRankings(roundId);
     } else {
       setRankings([]);
     }
-  }, []);
+  }, [loadChipHistory, loadRankings]);
 
   // Initial load: resolve the anonymous session, look up the room by code,
   // and decide whether we're already seated, need a name prompt, or are
@@ -188,14 +213,11 @@ export default function ThePackRoom({ code }: { code: string }) {
       setRound((current) =>
         current ? { ...current, street: payload.street, communityCards: payload.community_cards } : current,
       );
-      setRankings(
-        payload.rankings.map((r) => ({
-          roomPlayerId: r.room_player_id,
-          displayName: r.display_name,
-          rankPosition: r.rank_position,
-          label: r.label,
-        })),
-      );
+      // Rankings and chip history both need a per-client/fresh fetch rather
+      // than trusting the broadcast payload -- see loadRankings and
+      // the_pack_rank_table's masking.
+      void loadRankings(payload.round_id);
+      void loadChipHistory(payload.round_id);
     });
 
     channel.on("broadcast", { event: "chip_claimed" }, (message: { payload: EventPayload<"chip_claimed"> }) => {
@@ -249,7 +271,7 @@ export default function ThePackRoom({ code }: { code: string }) {
       channelRef.current = null;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [room?.id, myAuthUserId, loadRoomState]);
+  }, [room?.id, myAuthUserId, loadRoomState, loadChipHistory, loadRankings]);
 
   async function handleJoin(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -380,29 +402,36 @@ export default function ThePackRoom({ code }: { code: string }) {
         )}
       </div>
 
-      <PlayerRoster
-        players={players}
-        onlineAuthUserIds={onlineAuthUserIds}
-        rankings={rankings}
-        hostAuthUserId={room?.hostAuthUserId ?? ""}
-      />
+      {/* The shelf.* palette (ink/paper/forest/brass/...) used throughout
+          this section is only legible on a light surface -- without this
+          panel it sits directly on the page's dark wall-bg. */}
+      <div className="space-y-6 rounded-2xl border-4 border-shelf-walnut bg-shelf-paper p-5 shadow-[0_18px_32px_-14px_rgba(0,0,0,0.65)] sm:p-7">
+        <PlayerRoster
+          players={players}
+          onlineAuthUserIds={onlineAuthUserIds}
+          rankings={rankings}
+          hostAuthUserId={room?.hostAuthUserId ?? ""}
+        />
 
-      {round && (
-        <>
-          <HoleCards cards={holeCards} />
-          <CommunityCards cards={round.communityCards} />
-          {myRoomPlayerId && (
-            <ChipBoard
-              chips={chips}
-              players={players}
-              myRoomPlayerId={myRoomPlayerId}
-              onClaim={handleClaim}
-              onRelease={handleRelease}
-              onTransfer={handleTransfer}
-            />
-          )}
-        </>
-      )}
+        {round && (
+          <>
+            <HoleCards cards={holeCards} />
+            <CommunityCards cards={round.communityCards} />
+            {myRoomPlayerId && (
+              <ChipBoard
+                chips={chips}
+                players={players}
+                myRoomPlayerId={myRoomPlayerId}
+                street={round.street}
+                onClaim={handleClaim}
+                onRelease={handleRelease}
+                onTransfer={handleTransfer}
+              />
+            )}
+            <ChipHistory history={chipHistory} players={players} />
+          </>
+        )}
+      </div>
     </div>
   );
 }

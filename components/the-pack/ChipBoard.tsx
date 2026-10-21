@@ -1,12 +1,13 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import type { ThePackChip, ThePackRoomPlayer } from "@/lib/thePack";
+import { STREET_CHIP_COLOR, type Street, type ThePackChip, type ThePackRoomPlayer } from "@/lib/thePack";
 
 export type ChipBoardProps = {
   chips: ThePackChip[];
   players: ThePackRoomPlayer[];
   myRoomPlayerId: string;
+  street: Street;
   onClaim: (chipNumber: number) => Promise<void>;
   onRelease: (chipNumber: number) => Promise<void>;
   onTransfer: (chipNumber: number, toRoomPlayerId: string) => Promise<void>;
@@ -22,6 +23,7 @@ export default function ChipBoard({
   chips,
   players,
   myRoomPlayerId,
+  street,
   onClaim,
   onRelease,
   onTransfer,
@@ -83,10 +85,13 @@ export default function ChipBoard({
   }
 
   const sortedChips = [...chips].sort((a, b) => a.chipNumber - b.chipNumber);
+  const streetColor = STREET_CHIP_COLOR[street];
 
   return (
     <div>
-      <p className="font-mono text-[10px] uppercase tracking-widest text-shelf-ink/60">Chips</p>
+      <p className="font-mono text-[10px] uppercase tracking-widest text-shelf-ink/60">
+        Chips <span className="text-shelf-ink/40">· {streetColor.label.toLowerCase()} round</span>
+      </p>
       <div className="mt-2 flex flex-wrap gap-3">
         {sortedChips.map((chip) => {
           const holderName = nameFor(chip.holderRoomPlayerId);
@@ -104,12 +109,12 @@ export default function ChipBoard({
                     ? `Chip ${chip.chipNumber}, held by ${holderName}. ${isMine ? "Click to release." : "Click to take it."}`
                     : `Chip ${chip.chipNumber}, unclaimed. Click to claim.`
                 }
-                className={`flex h-14 w-14 items-center justify-center rounded-full border-2 font-display text-lg italic transition-transform hover:-translate-y-0.5 disabled:cursor-wait disabled:opacity-60 ${
+                className={`flex h-14 w-14 items-center justify-center rounded-full border-2 font-display text-lg italic transition-transform hover:-translate-y-0.5 disabled:cursor-wait disabled:opacity-60 ${streetColor.bg} ${streetColor.border} ${streetColor.text} ${
                   isMine
-                    ? "border-shelf-forest bg-shelf-forest/20 text-shelf-ink"
+                    ? "ring-4 ring-shelf-forest"
                     : holderName
-                      ? "border-shelf-brass bg-shelf-brass/15 text-shelf-ink"
-                      : "border-shelf-paperDark/60 bg-shelf-paper text-shelf-ink/70"
+                      ? "ring-4 ring-shelf-brass"
+                      : "ring-2 ring-shelf-paperDark/30"
                 } ${poppingChipIds.has(chip.id) ? "animate-chip-claim-pop" : ""}`}
               >
                 {chip.chipNumber}

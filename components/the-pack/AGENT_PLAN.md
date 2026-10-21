@@ -58,9 +58,10 @@ One private channel per room, topic `the-pack-room-<room_id>`. Events: `player_j
 - Shared types + DB row parsers: `lib/thePack.ts`
 - Hand evaluator (TS port, test oracle for the SQL version): `lib/thePackHandEvaluator.ts`, tested in `lib/thePackHandEvaluator.test.ts` (all 9 categories, kicker tiebreaks, the wheel straight, best-5-of-7, the <5-card reduced evaluator, ties)
 - Pages: `app/the-pack/page.tsx` (create/join), `app/the-pack/room/[code]/page.tsx`
-- Components: `components/the-pack/{CreateOrJoinRoom,ThePackRoom,PlayingCard,HoleCards,CommunityCards,ChipBoard,PlayerRoster,RoundControls}.tsx`
+- Components: `components/the-pack/{CreateOrJoinRoom,ThePackRoom,PlayingCard,HoleCards,CommunityCards,ChipBoard,ChipHistory,PlayerRoster,RoundControls}.tsx`
 - `lib/projects.ts` — new top-level entry, case `"007"`
 - `app/globals.css` — `chip-claim-pop` keyframe, wired into `ChipBoard.tsx` so chip changes pulse for everyone at the table, not just the player who clicked
+- **Chip history (added post-v1):** chips now carry a street color (white/yellow/orange/red for preflop/flop/turn/river, `STREET_CHIP_COLOR` in `lib/thePack.ts`) so the live board visually shows which street's arrangement is in play. Every time the host reveals the next street (or deals a fresh round), the server archives the outgoing street's chip arrangement into the new `the_pack_chip_history` table (`security definer`-only writes, same pattern as everything else) so every player can review how the group's chip order evolved across the whole round — rendered by `ChipHistory.tsx`.
 
 ## 6. Verification
 

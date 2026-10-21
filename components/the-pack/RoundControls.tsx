@@ -72,7 +72,7 @@ export default function RoundControls({ isHost, roomStatus, street, onDeal, onRe
         </button>
       )}
       {error && (
-        <p role="alert" className="text-xs text-shelf-burgundy">
+        <p role="alert" className="text-xs text-pinRed">
           {error}
         </p>
       )}
