@@ -130,6 +130,23 @@ input {
   animation: modal-pop 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
 
+/* ---- The Pack chip board (case 007) ---- */
+@keyframes chip-claim-pop {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-chip-claim-pop {
+  animation: chip-claim-pop 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
 /* ---- Field Watch map (case 003) ---- */
 
 .sighting-marker {
@@ -282,7 +299,8 @@ input {
   .animate-fade-in,
   .animate-backdrop-in,
   .animate-modal-pop,
-  .animate-ball-bounce {
+  .animate-ball-bounce,
+  .animate-chip-claim-pop {
     animation: none;
   }
 }
