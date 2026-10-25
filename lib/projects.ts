@@ -21,7 +21,8 @@ export type ProjectId =
   | "conservation"
   | "board"
   | "board-games"
-  | "dle";
+  | "dle"
+  | "the-pack";
 
 export const statusColor: Record<Status, string> = {
   ACTIVE: "text-pinTeal",
@@ -115,6 +116,20 @@ export const projects: Map<ProjectId, Project> = new Map([
       rotation: 1.5,
       paper: "kraft",
       pin: "gold",
+    },
+  ],
+  [
+    "the-pack",
+    {
+      case: "007",
+      title: "The Pack",
+      href: "/the-pack",
+      status: "PLANNING",
+      updated: "2026-10-20",
+      summary: "a live, cooperative poker party game -- deal a hand, pass chips around the table, and see if the table agrees on who's strongest",
+      rotation: -2.5,
+      paper: "kraft",
+      pin: "navy",
     },
   ],
 ]);
