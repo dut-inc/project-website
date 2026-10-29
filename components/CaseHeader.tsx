@@ -15,7 +15,7 @@ export default function CaseHeader({
   rotation = -1,
   showPin = true,
   backHref = "/",
-  backLabel = "Back to the board",
+  backLabel = "Back to the clubhouse",
   caseNumberControl,
   caseStudyRef,
   onCaseStudyClick,

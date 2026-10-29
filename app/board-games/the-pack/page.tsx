@@ -17,6 +17,8 @@ export default function ThePackPage() {
         paper={project.paper}
         rotation={project.rotation}
         description={project.summary}
+        backHref="/board-games"
+        backLabel="Back to Board Games"
       />
       <CreateOrJoinRoom />
     </div>

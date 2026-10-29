@@ -1,6 +1,6 @@
 import Link from "next/link";
 import CaseHeader from "@/components/CaseHeader";
-import { getProject } from "@/lib/projects";
+import { childProjects, getProject } from "@/lib/projects";
 
 const features = [
   {
@@ -22,6 +22,7 @@ const comingSoon = [
 
 export default function BoardGamesPage() {
   const project = getProject("board-games");
+  const nested = childProjects("board-games");
 
   return (
     <div>
@@ -47,6 +48,25 @@ export default function BoardGamesPage() {
             </h2>
             <p className="mt-2 text-sm leading-relaxed text-cream/55">{f.blurb}</p>
             <span className="mt-4 inline-flex items-center gap-1 font-mono text-[11px] uppercase tracking-widest text-cream/40 transition-colors group-hover:text-pinGreen">
+              Open <span aria-hidden>→</span>
+            </span>
+          </Link>
+        ))}
+        {/* Nested sections (The Pack) — the "special box" on the game shelf. */}
+        {nested.map(([id, child]) => (
+          <Link
+            key={id}
+            href={child.href}
+            className="group relative rounded-2xl border border-pinGold/30 bg-[#1d1712] p-5 transition-colors hover:border-pinGold/70 hover:bg-[#261d15]"
+          >
+            <span className="font-mono text-[10px] uppercase tracking-widest text-pinGold/90">
+              The special box · Case №{child.case}
+            </span>
+            <h2 className="mt-2 font-display text-xl text-cream transition-colors group-hover:text-white">
+              {child.title}
+            </h2>
+            <p className="mt-2 text-sm leading-relaxed text-cream/55">{child.summary}</p>
+            <span className="mt-4 inline-flex items-center gap-1 font-mono text-[11px] uppercase tracking-widest text-cream/40 transition-colors group-hover:text-pinGold">
               Open <span aria-hidden>→</span>
             </span>
           </Link>

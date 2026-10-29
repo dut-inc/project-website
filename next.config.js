@@ -1,6 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  // The Pack moved under Board Games — keep old links and shared room codes working.
+  async redirects() {
+    return [
+      { source: "/the-pack", destination: "/board-games/the-pack", permanent: true },
+      { source: "/the-pack/:path*", destination: "/board-games/the-pack/:path*", permanent: true },
+    ];
+  },
   images: {
     remotePatterns: [
       {

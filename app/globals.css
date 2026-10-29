@@ -490,3 +490,388 @@ input {
     }
   }
 }
+
+/* ---- Clubhouse room (homepage) ----
+   Placement numbers come from lib/clubhouse.ts as CSS custom properties on
+   each .room-object (--m* for mobile, --d* for desktop), so every object is
+   rendered once and simply re-positioned per breakpoint. */
+
+.clubhouse-room {
+  position: relative;
+  width: 100%;
+  max-width: 34rem;
+  margin-inline: auto;
+  aspect-ratio: 1000 / 3000;
+}
+
+.clubhouse-room__backdrop {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 28px;
+  box-shadow: 0 30px 70px -20px rgba(0, 0, 0, 0.75), inset 0 0 0 3px #1e140c;
+}
+
+.room-object {
+  position: absolute;
+  display: block;
+  left: var(--mx);
+  top: var(--my);
+  width: var(--mw);
+  z-index: var(--mz);
+  border-radius: 14px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.room-object__lift {
+  display: block;
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.room-object__plane {
+  display: block;
+  transform: skewY(var(--mskew));
+}
+
+.room-object__label {
+  position: absolute;
+  left: var(--mlx);
+  top: var(--mly);
+  transform: translate(-50%, 6px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+/* Paper tag with the section's name — always visible, so nothing depends on hover. */
+.room-object__title {
+  display: block;
+  padding: 1px 12px 2px;
+  border-radius: 3px;
+  background: #efe7d2;
+  color: #2a2620;
+  font-family: var(--font-sign), cursive;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.4), 0 6px 12px -4px rgba(0, 0, 0, 0.5);
+  transform: rotate(-1.5deg);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.room-object:nth-of-type(even) .room-object__title {
+  transform: rotate(1.5deg);
+}
+
+/* The short hint only appears on hover / focus (desktop). Absolutely placed
+   and visibility-hidden so it never widens the tag or catches stray clicks. */
+.room-object__hint {
+  display: none;
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 50%;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: rgba(14, 15, 17, 0.82);
+  color: #efe7d2;
+  font-family: var(--font-mono), monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, -4px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0.2s;
+}
+
+/* Lift the active object (and its hint) above its neighbours. */
+.room-object:hover,
+.room-object:focus-visible {
+  z-index: 30;
+}
+
+.room-object:hover .room-object__lift,
+.room-object:focus-visible .room-object__lift {
+  transform: translateY(-6px);
+  filter: drop-shadow(0 0 12px rgba(255, 214, 140, 0.55)) drop-shadow(0 12px 14px rgba(0, 0, 0, 0.35));
+}
+
+.room-object:active .room-object__lift {
+  transform: translateY(-2px);
+}
+
+.room-object:hover .room-object__title,
+.room-object:focus-visible .room-object__title {
+  background: #f4d58a;
+  transform: rotate(0deg) scale(1.05);
+}
+
+.room-object:hover .room-object__hint,
+.room-object:focus-visible .room-object__hint {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+  transition-delay: 0s;
+}
+
+.room-object:focus-visible {
+  outline: 3px dashed #f4d58a;
+  outline-offset: 6px;
+}
+
+@media (min-width: 768px) {
+  .clubhouse-room {
+    max-width: none;
+    aspect-ratio: 1600 / 1000;
+  }
+
+  .room-object {
+    left: var(--dx);
+    top: var(--dy);
+    width: var(--dw);
+    z-index: var(--dz);
+  }
+
+  .room-object__plane {
+    transform: skewY(var(--dskew));
+  }
+
+  .room-object__label {
+    left: var(--dlx);
+    top: var(--dly);
+  }
+
+  .room-object__title {
+    font-size: 16px;
+  }
+
+  .room-object__hint {
+    display: block;
+  }
+}
+
+@media (min-width: 1024px) {
+  .room-object__title {
+    font-size: 21px;
+  }
+}
+
+/* Environmental motion — all of it switched off for reduced motion below. */
+@keyframes clubhouse-sway {
+  0%,
+  100% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+
+@keyframes clubhouse-swim {
+  0% {
+    transform: translateX(0) scaleX(1);
+  }
+  46% {
+    transform: translateX(var(--swim, 120px)) scaleX(1);
+  }
+  50% {
+    transform: translateX(var(--swim, 120px)) scaleX(-1);
+  }
+  96% {
+    transform: translateX(0) scaleX(-1);
+  }
+  100% {
+    transform: translateX(0) scaleX(1);
+  }
+}
+
+@keyframes clubhouse-bubble {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-188px);
+    opacity: 0;
+  }
+}
+
+@keyframes clubhouse-flicker {
+  0%,
+  100% {
+    opacity: 0.9;
+  }
+  41% {
+    opacity: 1;
+  }
+  43% {
+    opacity: 0.7;
+  }
+  45% {
+    opacity: 1;
+  }
+  72% {
+    opacity: 0.82;
+  }
+}
+
+@keyframes clubhouse-pulse {
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes clubhouse-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+}
+
+@keyframes clubhouse-ball {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(10px, -4px);
+  }
+}
+
+@keyframes clubhouse-firefly {
+  0%,
+  100% {
+    opacity: 0.15;
+    transform: translate(0, 0);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(8px, -12px);
+  }
+}
+
+@keyframes clubhouse-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03, 1.06);
+  }
+}
+
+@keyframes clubhouse-steam {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.55;
+  }
+  100% {
+    transform: translateY(-16px);
+    opacity: 0;
+  }
+}
+
+.clubhouse-sway {
+  transform-box: fill-box;
+  transform-origin: 50% 0%;
+  animation: clubhouse-sway 6s ease-in-out infinite;
+}
+
+.clubhouse-sway--rooted {
+  transform-origin: 50% 100%;
+}
+
+.clubhouse-sway--slow {
+  animation-duration: 9s;
+  animation-delay: -3s;
+}
+
+.clubhouse-fish {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: clubhouse-swim 18s ease-in-out infinite;
+}
+
+.clubhouse-bubble {
+  animation: clubhouse-bubble 5s ease-in infinite;
+}
+
+.clubhouse-flicker {
+  animation: clubhouse-flicker 4s steps(1, end) infinite;
+}
+
+.clubhouse-glow {
+  animation: clubhouse-pulse 6s ease-in-out infinite;
+}
+
+.clubhouse-blink {
+  animation: clubhouse-blink 1.6s ease-in-out infinite;
+}
+
+.clubhouse-twinkle {
+  animation: clubhouse-pulse 3s ease-in-out infinite;
+}
+
+.clubhouse-ball {
+  animation: clubhouse-ball 2.4s ease-in-out infinite;
+}
+
+.clubhouse-firefly {
+  transform-box: fill-box;
+  animation: clubhouse-firefly 7s ease-in-out infinite;
+}
+
+.clubhouse-breathe {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: clubhouse-breathe 4s ease-in-out infinite;
+}
+
+.clubhouse-steam {
+  animation: clubhouse-steam 3.5s ease-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .clubhouse-sway,
+  .clubhouse-fish,
+  .clubhouse-bubble,
+  .clubhouse-flicker,
+  .clubhouse-glow,
+  .clubhouse-blink,
+  .clubhouse-twinkle,
+  .clubhouse-ball,
+  .clubhouse-firefly,
+  .clubhouse-breathe,
+  .clubhouse-steam {
+    animation: none;
+  }
+
+  .room-object__lift,
+  .room-object__title,
+  .room-object__hint {
+    transition: none;
+  }
+
+  .room-object:hover .room-object__lift,
+  .room-object:focus-visible .room-object__lift {
+    transform: none;
+  }
+}

@@ -7,21 +7,35 @@ people — each project lives on its own route and can grow independently.
 
 ## Design concept
 
-Visual theme is a corkboard mounted on a dark wall. The board itself doesn't
-span the full screen — there's wall showing on the sides, which is where a
-few original (non-logo) Seattle sports stickers live for personality
-(`components/Stickers.tsx`). Projects are pinned index/kraft cards
-(`components/PinnedNote.tsx`), each with a colored pushpin and a status
-(`ACTIVE` / `PLANNING` / `OPEN`). Fraunces for display type, IBM Plex
-Sans/Mono for body and data. Add new projects by adding an entry to
-`lib/projects.ts` (including rotation, paper color, and pin color) — the
-home page grid picks it up automatically.
+The homepage is **the clubhouse**: an illustrated, angled room (a warm,
+slightly magical storybook living room / workshop) where the objects *are*
+the navigation. The top navbar stays as the plain fallback.
 
-The stickers are original art referencing Seattle basketball/baseball
-fandom (a pennant, an anchor, a rain drop) rather than reproductions of
-actual team logos, since those are trademarked. Swap in real merch photos
-of your own stuff if you'd rather — `components/Stickers.tsx` is just three
-small components positioned absolutely in `app/page.tsx`.
+| Object in the room | Section | Route |
+| --- | --- | --- |
+| Aquarium | Fish Stuff | `/fish-stuff` |
+| Television | Sports Lab | `/sports` |
+| Overgrown tree | Nature and Conservation | `/conservation` |
+| Bulletin board | Loose Ends | `/board` |
+| Game shelf | Board Games (incl. **The Pack**) | `/board-games` |
+| Wall calendar | DLE (daily guessing games) | `/dle` |
+
+**The Pack** is nested under Board Games: it lives at `/board-games/the-pack`
+(rooms at `/board-games/the-pack/room/<code>`), shows up as "the special box"
+on the Board Games page, and is drawn on the game shelf. Old `/the-pack/*`
+links permanently redirect there (`next.config.js`). Nesting is driven by
+`parent: "board-games"` in `lib/projects.ts`, which also keeps it out of the
+navbar and the room.
+
+On desktop the room is one angled two-wall composition; on phones it becomes
+a three-storey cutaway of the same clubhouse (loft → den → ground floor) so
+every object stays big enough to tap. Each object has an always-visible paper
+name tag, a hover/focus hint, and is a real link (mouse, keyboard, touch).
+Ambient motion (fish, bubbles, swaying leaves, TV flicker, fireflies) is pure
+CSS and is switched off under `prefers-reduced-motion`.
+
+Inner project pages keep the original corkboard/case-file look
+(`components/CaseHeader.tsx`, `components/Pin.tsx`).
 
 ## Getting started
 
@@ -64,21 +78,72 @@ If the database was created before the leaderboard view was updated, run `supaba
 
 ```
 app/
-  layout.tsx        shared shell: fonts, nav, page container
-  page.tsx           home — the case-file grid
-  fish-stuff/page.tsx
-  sports/page.tsx
-  conservation/page.tsx
-  board/page.tsx
-  dle/page.tsx        daily character guessing game catalog
+  layout.tsx          shared shell: fonts, nav, page container
+  page.tsx            home — the clubhouse room
+  fish-stuff/ sports/ conservation/ board/ dle/
+  board-games/
+    the-pack/         The Pack (nested under Board Games)
 components/
-  Nav.tsx
-  ProjectCard.tsx    card used on the home grid
-  CaseHeader.tsx     shared header used on each project's own page
-  StampBadge.tsx     the status stamp
+  Nav.tsx, NavLinks.tsx   top navbar (top-level sections, current-section highlight)
+  CaseHeader.tsx          shared header used on each project's own page
+  clubhouse/
+    ClubhouseRoom.tsx     the room: backdrop + one RoomObject per destination
+    RoomObject.tsx        a clickable object: link, art, name tag, hover/focus
+    ObjectArt.tsx         custom image with automatic fallback to placeholder SVG
+    art/                  placeholder illustrations (one file per object + backdrops)
 lib/
-  projects.ts        single source of truth for what shows on the home page
+  projects.ts         single source of truth for sections, routes and nesting
+  clubhouse.ts        which object leads where, and where it sits in the room
 ```
+
+## The clubhouse room & replacing the artwork
+
+The room is split into three independent layers, so artwork can be swapped
+without touching navigation:
+
+1. **Routes / titles** — `lib/projects.ts` (title, `href`, `parent`).
+2. **Room layout** — `lib/clubhouse.ts`: for each object, the `projectId` it
+   links to, an accessible `objectName`, a short `hint`, an optional `image`,
+   and separate `desktop` / `mobile` placements.
+3. **Artwork** — `components/clubhouse/art/`: one placeholder SVG component per
+   object (`AquariumArt.tsx`, `TelevisionArt.tsx`, `TreeArt.tsx`,
+   `BulletinBoardArt.tsx`, `GameShelfArt.tsx`, `CalendarArt.tsx`) plus the room
+   shells (`RoomBackdrop.tsx` for desktop, `RoomBackdropMobile.tsx` for phones),
+   registered in `art/index.ts`. The art has no links or logic in it.
+
+### Swapping in a custom illustration for one object
+
+1. Export the illustration with a transparent background (SVG, PNG or WebP),
+   cropped tightly to the object. Draw it in the room's perspective; the
+   placeholders' front faces slope down to the right at about 11° (a 0.2 rise
+   per unit of width), parallel to the right-hand wall.
+2. Drop it in `public/images/clubhouse/`, e.g. `public/images/clubhouse/aquarium.webp`.
+3. In `lib/clubhouse.ts`, set `image: "/images/clubhouse/aquarium.webp"` on
+   that object. If the file is missing or fails to load, the built-in
+   placeholder SVG is shown instead.
+4. Adjust that object's `desktop` / `mobile` placement if the new art has a
+   different shape:
+   - `x`, `y`: top-left corner, as a % of the room; `w`: width as a % of the
+     room (height follows the image's aspect ratio).
+   - `z`: stacking order (higher sits in front).
+   - `label`: where the name tag hangs, as a % of the object's own box
+     (default `{ x: 50, y: 100 }`, centred just below it).
+   - `plane: "left-wall"`: only for flat, front-on art that should be skewed
+     onto the left wall (the corkboard and calendar placeholders use this).
+     Set it to `"none"` (or remove it) if your art is already drawn in
+     perspective.
+
+The room canvases are 1600 × 1000 (desktop) and 1000 × 3000 (mobile) —
+`ROOM_ASPECT` in `lib/clubhouse.ts`. To replace a room shell, either redraw
+`RoomBackdrop.tsx` / `RoomBackdropMobile.tsx` or have them render a single
+`<img>` at the same aspect ratio. To restyle the name tags or hover glow, edit
+the `.room-object*` rules in `app/globals.css`.
+
+### Adding an object
+
+Add the section to `lib/projects.ts`, add an id to `RoomObjectId` and an
+entry to `ROOM_OBJECTS` in `lib/clubhouse.ts`, and register an art component
+in `components/clubhouse/art/index.ts`. TypeScript flags a missing art entry.
 
 ## Daily character games
 
@@ -89,6 +154,7 @@ The retired `/db-management` route redirects to `/dle` so old bookmarks still la
 ## Adding a new project page
 
 1. Add an entry to `lib/projects.ts` (case number, title, route, status, summary).
+   Set `parent` to nest it under an existing section instead of making it top-level.
 2. Create `app/<route>/page.tsx` — copy an existing stub (e.g. `app/board/page.tsx`)
    and swap in a `<CaseHeader />` with the same case number/status.
 3. Build out the actual page content underneath the header.

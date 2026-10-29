@@ -12,6 +12,9 @@ export type Project = {
   paper: "cream" | "kraft";
   pin: PinColor;
   taped?: boolean;
+  // Nested sections live under another project instead of getting their own
+  // top-level nav link / room object (e.g. The Pack sits under Board Games).
+  parent?: ProjectId;
 };
 
 // Map keys are the URL slugs — the single source of truth for project data.
@@ -123,13 +126,15 @@ export const projects: Map<ProjectId, Project> = new Map([
     {
       case: "007",
       title: "The Pack",
-      href: "/the-pack",
+      // Moved under Board Games; /the-pack/* redirects here (next.config.js).
+      href: "/board-games/the-pack",
       status: "PLANNING",
       updated: "2026-10-20",
       summary: "a live, cooperative poker party game -- deal a hand, pass chips around the table, and see if the table agrees on who's strongest",
       rotation: -2.5,
       paper: "kraft",
       pin: "navy",
+      parent: "board-games",
     },
   ],
 ]);
@@ -140,4 +145,13 @@ export function getProject(id: ProjectId): Project {
   const project = projects.get(id);
   if (!project) throw new Error(`Unknown project id: ${id}`);
   return project;
+}
+
+// Top-level sections: the navbar links and the clubhouse room objects.
+export function topLevelProjects(): [ProjectId, Project][] {
+  return [...projects.entries()].filter(([, project]) => !project.parent);
+}
+
+export function childProjects(parent: ProjectId): [ProjectId, Project][] {
+  return [...projects.entries()].filter(([, project]) => project.parent === parent);
 }
