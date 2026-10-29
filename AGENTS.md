@@ -30,6 +30,8 @@ Use perspective, layering, shadows, and object placement to make the environment
 
 Prioritize a convincing composition and usability over complex rendering techniques. Prefer lightweight solutions compatible with the existing stack.
 
+The room is the whole homepage screen, not a framed box or card. It fills the viewport edge to edge, with no page heading, border, or rounded frame around it. On landscape screens the navbar floats over the top of the room's sky rather than pushing the room down. On landscape screens, the room fills the viewport at any aspect ratio without page scrolling or cropping interactive objects; the backdrop artwork extends beyond the core composition to cover the extra space. On phones and portrait screens, the room spans the full screen width and scrolls vertically. The navbar remains visible above the room.
+
 ### Navigation
 
 The room is the primary navigation interface. The existing top navbar remains the fallback.
@@ -141,6 +143,7 @@ Do not spend excessive time perfecting placeholder artwork. Prioritize the overa
 - Provide reasonable fallbacks when an asset is missing.
 - Avoid embedding essential navigation logic inside SVG files.
 - Keep sizing, aspect ratios, positioning, and layering manageable.
+- Delete components, styles, and assets that a change leaves unused.
 
 Replacing an initial SVG or CSS illustration with a future custom illustration should not require rewriting the navigation system.
 

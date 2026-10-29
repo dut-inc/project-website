@@ -57,7 +57,7 @@ export const ROOM_OBJECTS: RoomObject[] = [
     projectId: "conservation",
     objectName: "the overgrown tree",
     hint: "sightings map & field notes",
-    desktop: { x: 0, y: 2, w: 17.5, z: 2, label: { x: 85, y: 90 } },
+    desktop: { x: 0, y: 8, w: 17.5, z: 2, label: { x: 85, y: 90 } },
     mobile: { x: 0, y: 5, w: 30, z: 2, label: { x: 118, y: 93 } },
   },
   {

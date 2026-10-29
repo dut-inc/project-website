@@ -1,23 +1,38 @@
 // Placeholder art: the desktop room shell — night sky, two angled walls
 // meeting in a corner, floorboards, and the non-interactive furniture
 // (armchair, lamp, rug, the cat). Interactive objects sit on top of this.
-// viewBox 1600 × 1000, matching ROOM_ASPECT.desktop in lib/clubhouse.ts.
+// The core composition is 0 0 1600 1000 (ROOM_ASPECT.desktop in
+// lib/clubhouse.ts); the room carries on for 800 units left/right/up and
+// 800 down so it can fill any screen shape without cropping the objects.
 
 // Wall planes: draw flat inside these groups and it lands on the wall.
 // Left wall: flat y 200 (top) → 740 (floor). Right wall: flat y −80 → 460.
 const LEFT = "matrix(1 -0.2 0 1 0 0)";
 const RIGHT = "matrix(1 0.2 0 1 0 0)";
 
+// Full viewBox, including the bleed around the core composition.
+const BLEED = { x: -800, y: -800, width: 3200, height: 2600 };
+
+// Stars: a few placed by hand in the core sky, plus a deterministic scatter
+// for the bleed (anything that lands behind a wall is simply covered).
 const stars: [number, number, number][] = [
   [330, 40, 1.6], [420, 90, 1.2], [520, 28, 1.8], [610, 60, 1.1], [760, 22, 1.4], [860, 52, 1.9],
   [960, 18, 1.2], [1040, 70, 1.5], [1130, 34, 1.1], [1230, 96, 1.6], [1290, 26, 1.3], [1520, 40, 1.7],
   [1560, 150, 1.2], [1480, 170, 1.4], [700, 30, 1], [380, 130, 1],
 ];
+for (let i = 0, seed = 7; i < 90; i++) {
+  seed = (seed * 9301 + 49297) % 233280;
+  const x = BLEED.x + (seed / 233280) * BLEED.width;
+  seed = (seed * 9301 + 49297) % 233280;
+  const y = BLEED.y + (seed / 233280) * 1160;
+  if (y < 0 || x < 0 || x > 1600) stars.push([Math.round(x), Math.round(y), 1 + (i % 4) * 0.3]);
+}
 
-// String lights draped along the top of the walls: [x, y] anchor points.
-const lightAnchors: [number, number][] = [
-  [300, 152], [440, 124], [580, 96], [700, 72], [850, 102], [1000, 132], [1150, 162], [1300, 192], [1450, 222], [1590, 250],
-];
+// String lights draped along the top of the walls: [x, y] anchor points,
+// hung 12 units below the wall tops (left: y = 200 − 0.2x, right: y = 0.2x − 80).
+const lightAnchors: [number, number][] = [];
+for (let x = -750; x < 700; x += 150) lightAnchors.push([x, 212 - 0.2 * x]);
+for (let x = 700; x <= 2400; x += 150) lightAnchors.push([x, 0.2 * x - 68]);
 
 export default function RoomBackdrop({ className = "" }: { className?: string }) {
   const lightPath = lightAnchors
@@ -33,9 +48,15 @@ export default function RoomBackdrop({ className = "" }: { className?: string })
   });
 
   return (
-    <svg viewBox="0 0 1600 1000" className={`block h-full w-full ${className}`} aria-hidden focusable="false">
+    <svg
+      viewBox={`${BLEED.x} ${BLEED.y} ${BLEED.width} ${BLEED.height}`}
+      className={`block ${className}`}
+      aria-hidden
+      focusable="false"
+    >
       <defs>
-        <linearGradient id="rd-sky" x1="0" y1="0" x2="0" y2="1">
+        {/* Solid #0f1520 above y=0 so the sky meets the navbar without a seam. */}
+        <linearGradient id="rd-sky" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="700">
           <stop offset="0" stopColor="#0f1520" />
           <stop offset="1" stopColor="#1f2b38" />
         </linearGradient>
@@ -47,7 +68,7 @@ export default function RoomBackdrop({ className = "" }: { className?: string })
           <stop offset="0" stopColor="#4a6a4f" />
           <stop offset="1" stopColor="#36503d" />
         </linearGradient>
-        <linearGradient id="rd-floor" x1="0" y1="0" x2="0" y2="1">
+        <linearGradient id="rd-floor" gradientUnits="userSpaceOnUse" x1="0" y1="600" x2="0" y2="1000">
           <stop offset="0" stopColor="#6e4c30" />
           <stop offset="1" stopColor="#8a6243" />
         </linearGradient>
@@ -59,7 +80,6 @@ export default function RoomBackdrop({ className = "" }: { className?: string })
         <pattern id="rd-planks" width="160" height="34" patternUnits="userSpaceOnUse" patternTransform="matrix(1 -0.2 0 1 0 0)">
           <rect width="160" height="34" fill="none" />
           <path d="M0 33.5 H160" stroke="#4a3423" strokeWidth="2" opacity="0.55" />
-          <path d="M100 0 V34" stroke="#4a3423" strokeWidth="1.5" opacity="0.4" />
           <path d="M20 12 C 40 10 60 14 80 12" stroke="#a07550" strokeWidth="1" opacity="0.35" fill="none" />
         </pattern>
         <radialGradient id="rd-lamp" cx="0.5" cy="0.5" r="0.5">
@@ -71,9 +91,9 @@ export default function RoomBackdrop({ className = "" }: { className?: string })
           <stop offset="0" stopColor="#f4e6c0" stopOpacity="0.35" />
           <stop offset="1" stopColor="#f4e6c0" stopOpacity="0" />
         </radialGradient>
-        <radialGradient id="rd-vignette" cx="0.5" cy="0.55" r="0.75">
-          <stop offset="0.6" stopColor="#0b0d10" stopOpacity="0" />
-          <stop offset="1" stopColor="#0b0d10" stopOpacity="0.55" />
+        <radialGradient id="rd-vignette" gradientUnits="userSpaceOnUse" cx="800" cy="700" r="1500">
+          <stop offset="0.5" stopColor="#0f1520" stopOpacity="0" />
+          <stop offset="1" stopColor="#0f1520" stopOpacity="0.85" />
         </radialGradient>
         <linearGradient id="rd-window-sky" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stopColor="#1c2a44" />
@@ -82,41 +102,53 @@ export default function RoomBackdrop({ className = "" }: { className?: string })
       </defs>
 
       {/* night sky above the open-roofed room */}
-      <rect width="1600" height="1000" fill="url(#rd-sky)" />
+      <rect x={BLEED.x} y={BLEED.y} width={BLEED.width} height={BLEED.height} fill="url(#rd-sky)" />
       {stars.map(([x, y, r], i) => (
         <circle key={i} cx={x} cy={y} r={r} fill="#f4e6c0" className={i % 4 === 0 ? "clubhouse-twinkle" : undefined} opacity="0.8" />
       ))}
-      <circle cx="1420" cy="86" r="90" fill="url(#rd-moonglow)" />
-      <path d="M1440 56 A 34 34 0 1 0 1440 116 A 26 26 0 1 1 1440 56 Z" fill="#f4e6c0" />
+      {/* moon — low enough to stay clear of the navbar */}
+      <circle cx="1460" cy="172" r="90" fill="url(#rd-moonglow)" />
+      <path d="M1480 142 A 34 34 0 1 0 1480 202 A 26 26 0 1 1 1480 142 Z" fill="#f4e6c0" />
 
       {/* left wall */}
       <g transform={LEFT}>
-        <rect x="0" y="200" width="700" height="540" fill="url(#rd-wall-left)" />
-        <rect x="0" y="200" width="700" height="360" fill="url(#rd-wallpaper)" />
+        <rect x="-800" y="200" width="1500" height="540" fill="url(#rd-wall-left)" />
+        <rect x="-800" y="200" width="1500" height="360" fill="url(#rd-wallpaper)" />
         {/* wainscoting */}
-        <rect x="0" y="560" width="700" height="180" fill="#5a3d26" />
-        {[20, 190, 360, 530].map((x) => (
+        <rect x="-800" y="560" width="1500" height="180" fill="#5a3d26" />
+        {[-660, -490, -320, -150, 20, 190, 360, 530].map((x) => (
           <rect key={x} x={x} y="584" width="150" height="128" rx="4" fill="#62442e" stroke="#3e2b1c" strokeWidth="2" />
         ))}
-        <rect x="0" y="552" width="700" height="12" fill="#8a6243" />
-        <rect x="0" y="724" width="700" height="16" fill="#3a271c" />
+        <rect x="-800" y="552" width="1500" height="12" fill="#8a6243" />
+        <rect x="-800" y="724" width="1500" height="16" fill="#3a271c" />
         {/* wall cap */}
-        <rect x="0" y="186" width="700" height="16" fill="#3a271c" />
-        <rect x="0" y="186" width="700" height="3" fill="#8a6243" />
+        <rect x="-800" y="186" width="1500" height="16" fill="#3a271c" />
+        <rect x="-800" y="186" width="1500" height="3" fill="#8a6243" />
+
+        {/* round porthole window, out past the tree */}
+        <circle cx="-170" cy="380" r="62" fill="url(#rd-window-sky)" />
+        <circle cx="-150" cy="360" r="1.6" fill="#f4e6c0" />
+        <circle cx="-196" cy="400" r="1.2" fill="#f4e6c0" />
+        <path d="M-232 380 H-108 M-170 318 V442" stroke="#5a3d26" strokeWidth="5" />
+        <circle cx="-170" cy="380" r="62" fill="none" stroke="#a98245" strokeWidth="10" />
       </g>
 
       {/* right wall */}
       <g transform={RIGHT}>
-        <rect x="700" y="-80" width="900" height="540" fill="url(#rd-wall-right)" />
-        <rect x="700" y="-80" width="900" height="360" fill="url(#rd-wallpaper)" />
-        <rect x="700" y="280" width="900" height="180" fill="#62442e" />
-        {[720, 900, 1080, 1260, 1440].map((x) => (
+        <rect x="700" y="-80" width="1700" height="540" fill="url(#rd-wall-right)" />
+        <rect x="700" y="-80" width="1700" height="360" fill="url(#rd-wallpaper)" />
+        <rect x="700" y="280" width="1700" height="180" fill="#62442e" />
+        {[720, 900, 1080, 1260, 1440, 1620, 1800, 1980, 2160].map((x) => (
           <rect key={x} x={x} y="304" width="150" height="128" rx="4" fill="#6b4a30" stroke="#3e2b1c" strokeWidth="2" />
         ))}
-        <rect x="700" y="272" width="900" height="12" fill="#9a6e45" />
-        <rect x="700" y="444" width="900" height="16" fill="#3a271c" />
-        <rect x="700" y="-94" width="900" height="16" fill="#3a271c" />
-        <rect x="700" y="-94" width="900" height="3" fill="#9a6e45" />
+        <rect x="700" y="272" width="1700" height="12" fill="#9a6e45" />
+        <rect x="700" y="444" width="1700" height="16" fill="#3a271c" />
+        <rect x="700" y="-94" width="1700" height="16" fill="#3a271c" />
+        <rect x="700" y="-94" width="1700" height="3" fill="#9a6e45" />
+
+        {/* a pennant past the aquarium */}
+        <path d="M1660 0 L1790 26 L1660 52 Z" fill="#2f7a6b" stroke="#2b1d12" strokeWidth="2" />
+        <circle cx="1660" cy="0" r="4" fill="#a98245" />
 
         {/* arched window with the night outside */}
         <path d="M990 130 V 20 A 70 70 0 0 1 1130 20 V 130 Z" fill="url(#rd-window-sky)" />
@@ -149,8 +181,8 @@ export default function RoomBackdrop({ className = "" }: { className?: string })
       <path d="M700 60 L700 600" stroke="#1a1410" strokeWidth="10" opacity="0.35" />
 
       {/* floor */}
-      <path d="M0 740 L700 600 L1600 780 L1600 1000 L0 1000 Z" fill="url(#rd-floor)" />
-      <path d="M0 740 L700 600 L1600 780 L1600 1000 L0 1000 Z" fill="url(#rd-planks)" />
+      <path d="M-800 900 L700 600 L2400 940 L2400 1800 L-800 1800 Z" fill="url(#rd-floor)" />
+      <path d="M-800 900 L700 600 L2400 940 L2400 1800 L-800 1800 Z" fill="url(#rd-planks)" />
 
       {/* vines the tree has pushed along the top of the left wall */}
       <g fill="none" stroke="#355a3a" strokeWidth="4" strokeLinecap="round">
@@ -172,6 +204,18 @@ export default function RoomBackdrop({ className = "" }: { className?: string })
           <circle cx={x} cy={y + 4} r="4.5" fill={["#ffd98a", "#f4a487", "#8fd3c6"][i % 3]} />
         </g>
       ))}
+
+      {/* potted fern past the aquarium */}
+      <ellipse cx="1720" cy="902" rx="46" ry="10" fill="#000000" opacity="0.28" />
+      <g fill="none" strokeLinecap="round" stroke="#4f7f45" strokeWidth="7">
+        <path d="M1720 830 C 1690 780 1660 770 1636 776" />
+        <path d="M1720 830 C 1750 776 1784 766 1806 774" />
+        <path d="M1720 830 C 1712 770 1722 740 1716 716" stroke="#5b8c4c" />
+        <path d="M1720 830 C 1694 800 1676 806 1662 820" stroke="#6f9c55" />
+        <path d="M1720 830 C 1748 800 1766 806 1782 820" stroke="#6f9c55" />
+      </g>
+      <path d="M1684 830 L1756 830 L1746 898 L1694 898 Z" fill="#c1442d" stroke="#2b1d12" strokeWidth="2.5" strokeLinejoin="round" />
+      <path d="M1680 826 H1760 V840 H1680 Z" fill="#a8392a" stroke="#2b1d12" strokeWidth="2.5" />
 
       {/* rug */}
       <ellipse cx="860" cy="868" rx="390" ry="104" fill="#c9a227" />
@@ -236,7 +280,7 @@ export default function RoomBackdrop({ className = "" }: { className?: string })
       ))}
 
       {/* soft vignette to pull focus inward */}
-      <rect width="1600" height="1000" fill="url(#rd-vignette)" />
+      <rect x={BLEED.x} y={BLEED.y} width={BLEED.width} height={BLEED.height} fill="url(#rd-vignette)" />
     </svg>
   );
 }

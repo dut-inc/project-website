@@ -11,7 +11,6 @@ export type Project = {
   rotation: number;
   paper: "cream" | "kraft";
   pin: PinColor;
-  taped?: boolean;
   // Nested sections live under another project instead of getting their own
   // top-level nav link / room object (e.g. The Pack sits under Board Games).
   parent?: ProjectId;

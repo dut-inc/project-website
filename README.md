@@ -8,8 +8,9 @@ people — each project lives on its own route and can grow independently.
 ## Design concept
 
 The homepage is **the clubhouse**: an illustrated, angled room (a warm,
-slightly magical storybook living room / workshop) where the objects *are*
-the navigation. The top navbar stays as the plain fallback.
+slightly magical storybook living room / workshop) that fills the whole
+screen under the navbar, and whose objects *are* the navigation. The top
+navbar stays as the plain fallback.
 
 | Object in the room | Section | Route |
 | --- | --- | --- |
@@ -27,9 +28,14 @@ links permanently redirect there (`next.config.js`). Nesting is driven by
 `parent: "board-games"` in `lib/projects.ts`, which also keeps it out of the
 navbar and the room.
 
-On desktop the room is one angled two-wall composition; on phones it becomes
-a three-storey cutaway of the same clubhouse (loft → den → ground floor) so
-every object stays big enough to tap. Each object has an always-visible paper
+On landscape screens at least 768px wide, the room is one angled two-wall
+composition, scaled to fit the screen without page scroll, with the navbar
+floating over the top of its sky; its backdrop
+keeps going past the composition so any screen shape is filled edge to
+edge. Phones and portrait tablets get a full-width, scrolling three-storey
+cutaway of the same clubhouse (loft → den → ground floor) so every object
+stays big enough to tap. The switch is the `room` screen in
+`tailwind.config.ts` plus the matching media query in `app/globals.css`. Each object has an always-visible paper
 name tag, a hover/focus hint, and is a real link (mouse, keyboard, touch).
 Ambient motion (fish, bubbles, swaying leaves, TV flicker, fireflies) is pure
 CSS and is switched off under `prefers-reduced-motion`.
@@ -134,9 +140,19 @@ without touching navigation:
      perspective.
 
 The room canvases are 1600 × 1000 (desktop) and 1000 × 3000 (mobile) —
-`ROOM_ASPECT` in `lib/clubhouse.ts`. To replace a room shell, either redraw
-`RoomBackdrop.tsx` / `RoomBackdropMobile.tsx` or have them render a single
-`<img>` at the same aspect ratio. To restyle the name tags or hover glow, edit
+`ROOM_ASPECT` in `lib/clubhouse.ts`; object placements are percentages of
+these. The desktop backdrop is drawn larger than its canvas, with a bleed of
+800 units left, right, above and below (viewBox `-800 -800 3200 2600`), so
+wide or tall screens see more wall, sky and floor instead of empty bars. A
+replacement desktop backdrop must keep that layout: a 3200 × 2600 image
+whose central 1600 × 1000 region is the room the objects are placed on. On
+screen, the desktop camera shows y 30 → 1110 of that region (a little sky
+cropped, extra floor below the rug); the numbers live in the `.clubhouse-room`
+rule in `app/globals.css`. Keep
+the very top of the sky `#0f1520` so it meets the navbar without a seam. To
+replace a room shell, either redraw `RoomBackdrop.tsx` /
+`RoomBackdropMobile.tsx` or have them render a single `<img>` with those
+proportions. To restyle the name tags or hover glow, edit
 the `.room-object*` rules in `app/globals.css`.
 
 ### Adding an object

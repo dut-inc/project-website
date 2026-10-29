@@ -56,6 +56,11 @@ const config: Config = {
           brickLight: "#EAD9CB",
         },
       },
+      screens: {
+        // Clubhouse homepage: the angled desktop room vs. the mobile cutaway.
+        // Keep in sync with the matching media query in app/globals.css.
+        room: { raw: "(min-width: 768px) and (min-aspect-ratio: 1/1)" },
+      },
       fontFamily: {
         display: ["var(--font-display)"],
         body: ["var(--font-body)"],
