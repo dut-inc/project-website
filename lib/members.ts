@@ -25,10 +25,7 @@ export const MEMBERS: Member[] = [
   {
     slug: "ben",
     name: "Ben",
-    bio: [
-      "Hi, I'm Ben. My interests include sports, the ocean, conservation, and story writing.",
-      "I have depth in both general software engineering and machine learning.",
-    ],
+    bio: ["Hi, I'm Ben. My interests include sports, the ocean, conservation, and story writing."],
     links: [
       { label: "GitHub", href: "https://github.com/l0stpanda" },
       { label: "LinkedIn", href: "https://www.linkedin.com/in/ben-zeng-15630a133/" },

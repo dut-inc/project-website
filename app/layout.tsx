@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { siteMetadata } from "@/lib/metadata";
 import { Caveat, Fraunces, IBM_Plex_Sans, IBM_Plex_Mono, Playfair_Display, Oswald} from "next/font/google";
 import "./globals.css";
 import WorkspaceShell from "@/components/workspace/WorkspaceShell";
@@ -37,10 +38,7 @@ const sign = Caveat({
   variable: "--font-sign",
 });
 
-export const metadata: Metadata = {
-  title: "Perpetual Studio",
-  description: "A shared workspace for our projects, tools, experiments and loose ends.",
-};
+export const metadata: Metadata = siteMetadata();
 
 export default function RootLayout({
   children,

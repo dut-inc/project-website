@@ -1,6 +1,9 @@
 import Link from "next/link";
 import CaseHeader from "@/components/CaseHeader";
+import { sectionMetadata } from "@/lib/metadata";
 import { childProjects } from "@/lib/projects";
+
+export const metadata = sectionMetadata("board-games");
 
 const features = [
   {

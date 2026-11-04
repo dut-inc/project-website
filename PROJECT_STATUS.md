@@ -64,6 +64,24 @@ The redesign is **uncommitted** in the working tree on `overhaul`.
   here yet." / "Nothing listed yet." until their entries are written.
 - Copy changes requested by the user: welcome.md's description is "What we're
   working on"; The Pack's summary is "cooperative poker".
+- DLE games (user request): renamed "Genshindle" and "Wuwadle", with explorer
+  files `genshin.dle` and `wuwa.dle` (a `file` field in
+  `lib/dleGames.ts`; the URLs `/dle/genshin-impact` and `/dle/wuthering-waves`
+  are unchanged). Both game boxes were compacted so the guess input and the
+  latest clues fit on screen: tighter padding, smaller in-box heading (its
+  JENSHINDLE/WUWADLE kicker was dropped as it repeated the page title),
+  56px clue rows with smaller icons, a table narrow enough not to scroll
+  sideways in the editor, and the Developer tools moved below the board.
+- Link previews (user request): the site description is "View our projects"
+  and every page has its own title and description in its metadata and Open
+  Graph/Twitter tags (`lib/metadata.ts`), the same text as its page header.
+  Section pages use their summary, DLE games their description, member pages
+  the first line of their bio. The tier list gets its metadata from a route
+  `layout.tsx` because the page is a client component; The Pack's page no
+  longer needed `"use client"`. The NBA pool keeps its own title and
+  "View our predictions!!". Offensive Profiles' description is now "search an
+  NBA player to see their offensive profile". Checked in the raw HTML of all
+  21 routes.
 - The logo's infinity loop was re-centred (it sat 0.5 units left of centre).
 - Section titles: "Fish Stuff" became "Fish Lab", and "Nature and Conservation"
   became "Nature & Conservation".

@@ -25,7 +25,7 @@ expands or collapses it. Files inside are the section's tools. The file names
 | Loose Ends (folder) | `/board` |
 | Board Games (folder) / `tier-list.rank` | `/board-games`, `/board-games/tierlist` |
 | Board Games / `the-pack.deal` (+ `room-<code>.deal` while a room is open) | `/board-games/the-pack`, `/board-games/the-pack/room/<code>` |
-| DLE (folder) / `<game>.dle` | `/dle`, `/dle/<slug>` |
+| DLE (folder) / `genshin.dle`, `wuwa.dle` | `/dle`, `/dle/genshin-impact`, `/dle/wuthering-waves` |
 | About Us (folder) / `ben.md`, `dennis.md`, `ivan.md`, `senlin.md` | `/about-us`, `/about-us/<name>` |
 | `welcome.md` | `/` |
 
@@ -117,6 +117,7 @@ lib/
   projects.ts         sections: titles, routes, status, nesting
   workspace.ts        the explorer tree: which file opens which route
   members.ts          the group's members (About Us pages)
+  metadata.ts         link previews: site defaults and per-page title/description
 ```
 
 Routes and titles come from `lib/projects.ts`; the explorer tree (file names,
@@ -145,7 +146,11 @@ The retired `/db-management` route redirects to `/dle` so old bookmarks still la
 3. Add a file (and, for a new section, a folder) for it in `WORKSPACE_TREE` in
    `lib/workspace.ts` so it shows up in the explorer, quick open and the
    welcome page.
-4. Build out the actual page content underneath the header.
+4. Give it a link preview: `export const metadata = pageMetadata("/its/route",
+   { description })` (or `sectionMetadata("…")` for a section page), using the
+   same description as its header. A client-component page puts this in a
+   `layout.tsx` next to it (see `app/board-games/tierlist/`).
+5. Build out the actual page content underneath the header.
 
 
 ## Offensive Archetypes (Sports Lab)

@@ -1,5 +1,8 @@
 import Link from "next/link";
 import CaseHeader from "@/components/CaseHeader";
+import { sectionMetadata } from "@/lib/metadata";
+
+export const metadata = sectionMetadata("sports");
 
 const features = [
   {

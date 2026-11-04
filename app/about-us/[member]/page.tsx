@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import PageHeader, { HeaderLink } from "@/components/PageHeader";
 import { ItemIcon } from "@/components/workspace/icons";
 import { MEMBERS, getMember } from "@/lib/members";
+import { pageMetadata } from "@/lib/metadata";
 import { resolvePath, workspaceFiles, type ResolvedFile } from "@/lib/workspace";
 
 export function generateStaticParams() {
@@ -39,7 +40,15 @@ function ProjectRow({ file, note, nested = false }: { file: ResolvedFile; note?:
   );
 }
 
-export default async function MemberPage({ params }: { params: Promise<{ member: string }> }) {
+type Params = { params: Promise<{ member: string }> };
+
+// The preview uses the start of the member's bio, else the site description.
+export async function generateMetadata({ params }: Params) {
+  const member = getMember((await params).member);
+  return member ? pageMetadata(`/about-us/${member.slug}`, { title: member.name, description: member.bio?.[0] }) : {};
+}
+
+export default async function MemberPage({ params }: Params) {
   const { member: slug } = await params;
   const member = getMember(slug);
 

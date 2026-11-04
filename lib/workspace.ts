@@ -114,7 +114,7 @@ export const WORKSPACE_TREE: WorkspaceNode[] = [
     },
   ),
   folder("dle", "violet", [
-    ...DLE_GAMES.map((game) => file(`${game.slug}.dle`, `/dle/${game.slug}`, "puzzle", `${game.title} dle`)),
+    ...DLE_GAMES.map((game) => file(`${game.file}.dle`, `/dle/${game.slug}`, "puzzle", game.title)),
   ]),
   folder(
     "about-us",

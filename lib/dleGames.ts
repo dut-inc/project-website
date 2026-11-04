@@ -1,7 +1,10 @@
 export type DleGameStatus = "PLANNING" | "IN DEVELOPMENT" | "LIVE";
 
 export type DleGame = {
+  // URL segment (/dle/<slug>); kept stable so saved links keep working.
   slug: string;
+  // The game's file in the explorer is `<file>.dle`.
+  file: string;
   title: string;
   world: string;
   description: string;
@@ -13,7 +16,8 @@ export type DleGame = {
 export const DLE_GAMES: DleGame[] = [
   {
     slug: "genshin-impact",
-    title: "Genshin Impact",
+    file: "genshin",
+    title: "Genshindle",
     world: "Teyvat",
     description: "let's do the genshindle.",
     status: "LIVE",
@@ -21,7 +25,8 @@ export const DLE_GAMES: DleGame[] = [
   },
   {
     slug: "wuthering-waves",
-    title: "Wuthering Waves",
+    file: "wuwa",
+    title: "Wuwadle",
     world: "Solaris-3",
     description: "let's do the wuwadle.",
     status: "LIVE",
