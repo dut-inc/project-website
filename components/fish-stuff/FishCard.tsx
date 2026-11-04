@@ -9,7 +9,7 @@ export default function FishCard({
 }) {
   return (
     <section
-      className="mx-auto max-w-2xl animate-fade-up rounded-2xl border border-white/10 bg-white/[0.03] p-6 text-cream sm:p-8"
+      className="max-w-2xl animate-fade-up rounded-2xl border border-white/10 bg-white/[0.03] p-6 text-cream sm:p-8"
       aria-live={ariaLive}
     >
       {children}

@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useMemo, useState } from "react";
 import {
   getDailyWuwaForteResonator,
@@ -242,20 +241,14 @@ export default function WuwaDle() {
 
   return (
     <>
-      <Link
-        href="/dle"
-        className="mb-6 inline-block font-mono text-xs uppercase tracking-widest text-cream/50 hover:text-pinGold"
-      >
-        &larr; All DLE games
-      </Link>
-      <section className="mx-auto mt-8 max-w-[90rem]" aria-labelledby="wuwa-dle-heading">
+      <section aria-labelledby="wuwa-dle-heading">
       <div className="rounded-lg border border-cream/15 bg-wall2/80 p-5 shadow-[0_18px_34px_-16px_rgba(0,0,0,0.75)] sm:p-8">
         <div className="flex flex-wrap items-end justify-between gap-4 border-b border-cream/10 pb-5">
           <div>
             <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-pinTeal">WUWADLE</p>
-            <h1 id="wuwa-dle-heading" className="mt-2 font-dle text-3xl text-cream sm:text-4xl">
+            <h2 id="wuwa-dle-heading" className="mt-2 font-dle text-3xl text-cream sm:text-4xl">
               {mode === "resonator" ? "Who is today's Resonator?" : "Which Resonator owns this ability?"}
-            </h1>
+            </h2>
             <p className="mt-2 text-sm text-cream/65">
               {mode === "resonator" ? "Guess the Wuthering Waves Resonator." : "Use the clues to identify the Forte Circuit ability's owner."}
             </p>

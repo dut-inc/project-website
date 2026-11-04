@@ -58,9 +58,11 @@ export default function TeamCardGrid({
 
   // Latest props/state mirrored into refs so window listeners never go stale.
   const teamsRef = useRef(teams);
-  teamsRef.current = teams;
   const onReorderRef = useRef(onReorder);
-  onReorderRef.current = onReorder;
+  useLayoutEffect(() => {
+    teamsRef.current = teams;
+    onReorderRef.current = onReorder;
+  });
 
   const byId = useMemo(() => new Map(teams.map((t) => [t.id, t])), [teams]);
 

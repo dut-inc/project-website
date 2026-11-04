@@ -5,6 +5,25 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // Perpetual Studio workspace chrome (components/workspace). The editor
+        // surface keeps the old wall tone so existing pages read the same.
+        studio: {
+          titlebar: "#111215",
+          chrome: "#16171a",
+          sidebar: "#18191c",
+          editor: "#24262A",
+          border: "#2b2d32",
+          hover: "#222428",
+          focus: "#062f4a",
+          selected: "#04395e",
+          muted: "#8b8f98",
+          text: "#c8cad0",
+          bright: "#f0f2f5",
+          // Visual Studio blue: bars, active markers and focus rings.
+          accent: "#007ACC",
+          // The lighter blue for accent-colored text on dark surfaces.
+          link: "#3794FF",
+        },
         wall: "#24262A",
         wall2: "#2E3136",
         cream: "#EFE7D2",

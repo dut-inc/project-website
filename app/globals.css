@@ -42,16 +42,6 @@ input {
   background-size: auto, auto, auto, 19px 19px, 23px 23px, 15px 15px, 27px 27px;
 }
 
-.cork-bg {
-  background-color: #7c5a3c;
-  background-image: radial-gradient(circle at 20% 30%, rgba(94, 68, 41, 0.55) 0, transparent 3px),
-    radial-gradient(circle at 70% 65%, rgba(143, 107, 73, 0.5) 0, transparent 2.5px),
-    radial-gradient(circle at 40% 80%, rgba(94, 68, 41, 0.45) 0, transparent 2px),
-    radial-gradient(circle at 85% 20%, rgba(143, 107, 73, 0.45) 0, transparent 2.5px),
-    radial-gradient(circle at 55% 45%, rgba(94, 68, 41, 0.4) 0, transparent 2px);
-  background-size: 38px 38px, 44px 44px, 30px 30px, 50px 50px, 26px 26px;
-}
-
 .paper-torn {
   clip-path: polygon(
     0% 2%, 6% 0%, 14% 1.5%, 22% 0%, 31% 1%, 40% 0%, 50% 1.2%, 60% 0%, 70% 1%, 80% 0%,
@@ -477,16 +467,112 @@ input {
       --lb-inset: 24px;
     }
   }
+}
 
-  /* Hollow display text — the photocopied-only-pass look. */
-  .text-outline {
-    color: transparent;
-    -webkit-text-stroke: 2px rgba(239, 231, 210, 0.9);
+/* ---- Perpetual Studio workspace shell (components/workspace) ----
+   The title bar is fixed; the explorer is a fixed sidebar on
+   desktop and a drawer on small screens. The window itself scrolls the
+   editor, so pages keep their own scroll locks and fixed dialogs. Shell
+   chrome stays at z-index ≤ 45 so page dialogs (z-50 and up) cover it. */
+
+:root {
+  --ps-titlebar-h: 44px;
+  --ps-sidebar-w: 264px;
+  color-scheme: dark;
+}
+
+.ps-sidebar {
+  position: fixed;
+  top: var(--ps-titlebar-h);
+  bottom: 0;
+  left: 0;
+  z-index: 35;
+  width: var(--ps-sidebar-w);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.ps-editor {
+  min-height: 100vh;
+  padding-top: var(--ps-titlebar-h);
+}
+
+@media (min-width: 768px) {
+  .ps-shell[data-sidebar="open"] .ps-editor {
+    margin-left: var(--ps-sidebar-w);
   }
 
-  @media (max-width: 640px) {
-    .text-outline {
-      -webkit-text-stroke-width: 1.3px;
-    }
+  .ps-shell[data-sidebar="closed"] .ps-sidebar {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  :root {
+    --ps-sidebar-w: 232px;
+  }
+}
+
+@media (max-width: 767px) {
+  :root {
+    --ps-titlebar-h: 52px;
+  }
+
+  .ps-sidebar {
+    width: min(86vw, 320px);
+    transform: translateX(-100%);
+    visibility: hidden;
+    box-shadow: 12px 0 40px -12px rgba(0, 0, 0, 0.7);
+    transition:
+      transform 0.18s ease-out,
+      visibility 0s linear 0.18s;
+  }
+
+  .ps-shell[data-drawer="open"] .ps-sidebar {
+    transform: none;
+    visibility: visible;
+    transition: transform 0.18s ease-out;
+  }
+}
+
+/* Chrome controls draw their own inset focus ring (tight rows would clip the
+   site-wide offset outline). */
+.ps-titlebar :focus-visible,
+.ps-sidebar :focus-visible,
+.ps-tabs :focus-visible {
+  outline: none;
+}
+
+/* Thin, quiet scrollbars for the tab strip and explorer. */
+.ps-scrollbar-thin,
+.ps-sidebar {
+  scrollbar-width: thin;
+  scrollbar-color: #3a3c42 transparent;
+}
+
+.ps-tabs .ps-scrollbar-thin {
+  scrollbar-width: none;
+}
+
+.ps-tabs .ps-scrollbar-thin::-webkit-scrollbar {
+  display: none;
+}
+
+@media (hover: hover) {
+  .ps-tabs:hover .ps-scrollbar-thin {
+    scrollbar-width: thin;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ps-sidebar,
+  .ps-shell[data-drawer="open"] .ps-sidebar {
+    transition: none;
+  }
+
+  .ps-shell *,
+  .ps-shell *::before,
+  .ps-shell *::after {
+    scroll-behavior: auto;
   }
 }

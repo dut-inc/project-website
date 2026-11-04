@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useRef, useState } from "react";
-import Link from "next/link";
+import PageHeader from "@/components/PageHeader";
 import BoardGameTierList from "@/components/board-games/BoardGameTierList";
 import DeveloperAccess from "@/components/board-games/DeveloperAccess";
 import { getProject } from "@/lib/projects";
@@ -18,12 +18,10 @@ export default function BoardGamesTierListPage() {
 
   return (
     <div>
-      <Link
-        href="/board-games"
-        className="mb-6 inline-block font-mono text-xs uppercase tracking-widest text-cream/50 hover:text-pinGold"
-      >
-        &larr; Back to Board Games
-      </Link>
+      <PageHeader
+        href="/board-games/tierlist"
+        description="our group's personal rankings of board games we've played"
+      />
       <DeveloperAccess
         caseNumber={project.case}
         isUnlocked={isEditable}
