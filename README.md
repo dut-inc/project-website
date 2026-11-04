@@ -1,27 +1,60 @@
-# The Log
+# Perpetual Studio
 
-A shared hub site for the group's projects: Fish Quiz, Sports Lab, Field Watch
-(conservation), and The Board (general clubhouse). Built with Next.js 14 (App
-Router) + TypeScript + Tailwind so it's easy to split work across a few
-people — each project lives on its own route and can grow independently.
+A shared workspace site for the group's projects: Fish Lab, Sports Lab, Nature
+& Conservation, Loose Ends, Board Games (incl. The Pack), DLE and About Us. Built with
+Next.js (App Router) + TypeScript + Tailwind so it's easy to split work across
+a few people — each project lives on its own route and can grow independently.
+
 
 ## Design concept
 
-Visual theme is a corkboard mounted on a dark wall. The board itself doesn't
-span the full screen — there's wall showing on the sides, which is where a
-few original (non-logo) Seattle sports stickers live for personality
-(`components/Stickers.tsx`). Projects are pinned index/kraft cards
-(`components/PinnedNote.tsx`), each with a colored pushpin and a status
-(`ACTIVE` / `PLANNING` / `OPEN`). Fraunces for display type, IBM Plex
-Sans/Mono for body and data. Add new projects by adding an entry to
-`lib/projects.ts` (including rotation, paper color, and pin color) — the
-home page grid picks it up automatically.
+The site is an editor-style workspace inspired by the layout of Visual Studio
+Code (not a copy of it): a **title bar** branded Perpetual Studio, a **file
+explorer** on the left that is the primary navigation, and an **editor** on the
+right that shows the selected page under a strip of **tabs**, with breadcrumbs.
+Folders are sections and are pages themselves: clicking a
+folder's name opens the section's page and expands it, and its chevron only
+expands or collapses it. Files inside are the section's tools. The file names
+(`seattle-dashboard.live`, …) are a navigation metaphor, not source filenames.
 
-The stickers are original art referencing Seattle basketball/baseball
-fandom (a pennant, an anchor, a rain drop) rather than reproductions of
-actual team logos, since those are trademarked. Swap in real merch photos
-of your own stuff if you'd rather — `components/Stickers.tsx` is just three
-small components positioned absolutely in `app/page.tsx`.
+| Explorer | Route |
+| --- | --- |
+| Fish Lab (folder) / `which-fish-are-you.quiz` | `/fish-stuff`, `/fish-stuff/personality` |
+| Sports Lab (folder) / `seattle-dashboard.live`, `offensive-archetypes.ipynb`, `nba-standings-pool.csv`, `behind-the-plate.model` | `/sports`, `/sports/dashboard`, `/sports/offensive-profiles`, `/sports/nba-standings`, `/sports/pitch-predictor` |
+| Nature & Conservation (folder) / `sighting-map.geojson` | `/conservation`, `/conservation/sightings` |
+| Loose Ends (folder) | `/board` |
+| Board Games (folder) / `tier-list.rank` | `/board-games`, `/board-games/tierlist` |
+| Board Games / `the-pack.deal` (+ `room-<code>.deal` while a room is open) | `/board-games/the-pack`, `/board-games/the-pack/room/<code>` |
+| DLE (folder) / `<game>.dle` | `/dle`, `/dle/<slug>` |
+| About Us (folder) / `ben.md`, `dennis.md`, `ivan.md`, `senlin.md` | `/about-us`, `/about-us/<name>` |
+| `welcome.md` | `/` |
+
+**The Pack** is nested under Board Games: it lives at `/board-games/the-pack`
+(rooms at `/board-games/the-pack/room/<code>`). Old `/the-pack/*` links
+permanently redirect there (`next.config.js`). Nesting is driven by
+`parent: "board-games"` in `lib/projects.ts`.
+
+How it behaves:
+
+- **The URL is the source of truth.** The active tab is always the current
+  route; tabs and explorer files are real `<Link>`s, so every page keeps its
+  URL and refreshes, deep links and back/forward work.
+- Tabs work like VS Code's preview mode: a single click (or quick open, or a
+  link on a page) opens a page in a temporary tab with an italic name, which
+  the next newly opened page replaces. Double-clicking the file in the
+  explorer, or the tab itself, keeps it as a permanent tab. Clicking a page
+  that already has a tab switches to it (never a duplicate). Closing a tab only removes it from the strip; closing the
+  active one moves to its right-hand neighbour (else the left), and closing
+  the last one shows an empty editor at `/`.
+- Open tabs, collapsed folders and the explorer's visibility persist in
+  `localStorage`. Navigating anywhere reveals the active file's folders.
+- Shortcuts: <kbd>Ctrl/⌘ P</kbd> go to file, <kbd>Ctrl/⌘ B</kbd> toggle the
+  explorer, middle-click closes a tab, arrow keys move through the explorer.
+- Under 768px the explorer becomes a drawer (menu button, Esc or tapping
+  outside closes it) and the tab strip scrolls sideways.
+- The window is the scroll container, so pages' own scroll locks, portals and
+  fixed dialogs keep working. Shell chrome stays at z-index ≤ 45; page dialogs
+  (z-50+) cover it.
 
 ## Getting started
 
@@ -64,21 +97,35 @@ If the database was created before the leaderboard view was updated, run `supaba
 
 ```
 app/
-  layout.tsx        shared shell: fonts, nav, page container
-  page.tsx           home — the case-file grid
-  fish-stuff/page.tsx
-  sports/page.tsx
-  conservation/page.tsx
-  board/page.tsx
-  dle/page.tsx        daily character guessing game catalog
+  layout.tsx          fonts + the WorkspaceShell around every page
+  page.tsx            welcome.md — the workspace start page
+  icon.svg            favicon (the Perpetual Studio mark)
+  fish-stuff/ sports/ conservation/ board/ dle/
+  board-games/
+    the-pack/         The Pack (nested under Board Games)
 components/
-  Nav.tsx
-  ProjectCard.tsx    card used on the home grid
-  CaseHeader.tsx     shared header used on each project's own page
-  StampBadge.tsx     the status stamp
+  workspace/
+    WorkspaceShell.tsx      frame: title bar, explorer, tabs, editor
+    WorkspaceProvider.tsx   tab / folder / sidebar state, keyboard shortcuts
+    Explorer.tsx            file tree
+    EditorTabs.tsx          tab strip + breadcrumbs
+    TitleBar.tsx, QuickOpen.tsx, EmptyEditor.tsx
+    icons.tsx               decorative SVG icons (no routing logic)
+  PageHeader.tsx            shared page header (back link, kicker, title, description) on every page
+  CaseHeader.tsx            PageHeader for a section's own page (title + summary, no kicker)
 lib/
-  projects.ts        single source of truth for what shows on the home page
+  projects.ts         sections: titles, routes, status, nesting
+  workspace.ts        the explorer tree: which file opens which route
+  members.ts          the group's members (About Us pages)
 ```
+
+Routes and titles come from `lib/projects.ts`; the explorer tree (file names,
+icons, which route each file opens) lives in `lib/workspace.ts`; icons are
+drawn in `components/workspace/icons.tsx` and referenced only by kind, so the
+look can change without touching navigation. Workspace colors are the
+`studio.*` Tailwind tokens in `tailwind.config.ts`; shell layout rules are the
+`.ps-*` rules at the end of `app/globals.css`.
+
 
 ## Daily character games
 
@@ -88,16 +135,24 @@ The retired `/db-management` route redirects to `/dle` so old bookmarks still la
 
 ## Adding a new project page
 
-1. Add an entry to `lib/projects.ts` (case number, title, route, status, summary).
-2. Create `app/<route>/page.tsx` — copy an existing stub (e.g. `app/board/page.tsx`)
-   and swap in a `<CaseHeader />` with the same case number/status.
-3. Build out the actual page content underneath the header.
+1. For a new top-level section, add an entry to `lib/projects.ts` (case number,
+   title, route, status, summary). Set `parent` to nest it under an existing
+   section instead.
+2. Create `app/<route>/page.tsx`. A section page starts with
+   `<CaseHeader projectId="…" />` (copy `app/board/page.tsx`); any other page
+   starts with `<PageHeader href="/its/route" … />`, which fills in the back
+   link and file name from the explorer tree.
+3. Add a file (and, for a new section, a folder) for it in `WORKSPACE_TREE` in
+   `lib/workspace.ts` so it shows up in the explorer, quick open and the
+   welcome page.
+4. Build out the actual page content underneath the header.
+
 
 ## Offensive Archetypes (Sports Lab)
 
 `/sports/offensive-profiles` is intentionally a different visual theme from
 the rest of the site — dark, modern, orange-accented — rather than the
-corkboard look, since it's meant to feel like a distinct data tool. Search a
+shared workspace styling, since it's meant to feel like a distinct data tool. Search a
 player by name; their card shows photo/bio/stats on the left and a shot-zone
 efficiency heatmap on the right, with the card's gradient tinted to their
 team's colors (falls back to the default orange gradient if the team isn't

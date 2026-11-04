@@ -41,14 +41,14 @@ export default function CreateOrJoinRoom() {
           .single();
         if (rpcError) throw rpcError;
         if (!isRoomCode(data)) throw new Error("The room could not be created.");
-        router.push(`/the-pack/room/${data.code}`);
+        router.push(`/board-games/the-pack/room/${data.code}`);
       } else {
         const normalizedCode = code.trim().toUpperCase();
         const { error: rpcError } = await supabase
           .rpc("the_pack_join_room", { p_code: normalizedCode, p_display_name: displayName })
           .single();
         if (rpcError) throw rpcError;
-        router.push(`/the-pack/room/${normalizedCode}`);
+        router.push(`/board-games/the-pack/room/${normalizedCode}`);
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong.");

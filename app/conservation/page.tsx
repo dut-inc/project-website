@@ -1,6 +1,5 @@
 import Link from "next/link";
 import CaseHeader from "@/components/CaseHeader";
-import { getProject } from "@/lib/projects";
 
 const features = [
   {
@@ -24,20 +23,10 @@ const comingSoon = [
 ];
 
 export default function ConservationPage() {
-  const project = getProject("conservation");
-
   return (
     <div>
-      <CaseHeader
-        caseNumber={project.case}
-        title={project.title}
-        status={project.status}
-        pin={project.pin}
-        paper={project.paper}
-        rotation={project.rotation}
-        description={project.summary}
-      />
-      <div className="mx-auto mt-10 grid max-w-3xl gap-4 sm:grid-cols-2">
+      <CaseHeader projectId="conservation" />
+      <div className="grid gap-4 sm:grid-cols-2">
         {features.map((f) => (
           <Link
             key={f.href}

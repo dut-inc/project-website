@@ -1,3 +1,4 @@
+import PageHeader from "@/components/PageHeader";
 import DleGameShell from "@/components/dle/DleGameShell";
 import GenshinDle from "@/components/dle/GenshinDle";
 import WuwaDle from "@/components/dle/WuwaDle";
@@ -14,8 +15,16 @@ export default async function DleGamePage({ params }: { params: Promise<{ slug: 
 
   if (!game) notFound();
 
-  if (game.slug === "genshin-impact") return <GenshinDle />;
-  if (game.slug === "wuthering-waves") return <WuwaDle />;
-
-  return <DleGameShell game={game} />;
+  return (
+    <div>
+      <PageHeader href={`/dle/${game.slug}`} title={game.title} meta={[game.world]} description={game.description} />
+      {game.slug === "genshin-impact" ? (
+        <GenshinDle />
+      ) : game.slug === "wuthering-waves" ? (
+        <WuwaDle />
+      ) : (
+        <DleGameShell game={game} />
+      )}
+    </div>
+  );
 }

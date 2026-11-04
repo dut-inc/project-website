@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
 import { useMemo, useState } from "react";
 import {
@@ -212,18 +211,12 @@ export default function GenshinDle() {
 
   return (
     <>
-      <Link
-        href="/dle"
-        className="mb-6 inline-block font-mono text-xs uppercase tracking-widest text-cream/50 hover:text-pinGold"
-      >
-        &larr; All DLE games
-      </Link>
-      <section className="mx-auto mt-8 max-w-6xl" aria-labelledby="genshin-dle-heading">
+      <section aria-labelledby="genshin-dle-heading">
       <div className="rounded-lg border border-cream/15 bg-wall2/80 p-5 shadow-[0_18px_34px_-16px_rgba(0,0,0,0.75)] sm:p-8">
         <div className="flex flex-wrap items-end justify-between gap-4 border-b border-cream/10 pb-5">
           <div>
             <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-pinTeal">JENSHINDLE</p>
-            <h1 id="genshin-dle-heading" className="mt-2 font-dle text-3xl text-cream sm:text-4xl">Who is today&apos;s character?</h1>
+            <h2 id="genshin-dle-heading" className="mt-2 font-dle text-3xl text-cream sm:text-4xl">Who is today&apos;s character?</h2>
             <p className="mt-2 text-sm text-cream/65">Guess the Genshin character.</p>
           </div>
           <div className="text-right font-mono text-[10px] uppercase tracking-widest text-cream/50">

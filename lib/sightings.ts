@@ -170,10 +170,6 @@ export const SIGHTINGS: Sighting[] = []
 //   },
 // ];
 
-export const SIGHTINGS_BY_ID: Record<string, Sighting> = Object.fromEntries(
-  SIGHTINGS.map((s) => [s.id, s]),
-);
-
 // Rough bounding box around the Puget Sound / Olympic peninsula so the map
 // opens framed on the region instead of a single point.
 export const REGION_CENTER: [number, number] = [-122.6, 47.75];
