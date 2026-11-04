@@ -2,10 +2,6 @@ import { GAME_TIERS, GAME_TYPES, type BoardGameEntry, type GameTier, type GameTy
 
 export const BOARD_GAMES_STORAGE_KEY = "the-board:board-game-tiers";
 
-export function makeBoardGameId() {
-  return `game-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
-}
-
 function isGameTier(value: unknown): value is GameTier {
   return typeof value === "string" && GAME_TIERS.includes(value as GameTier);
 }

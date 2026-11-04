@@ -1,47 +1,60 @@
-# The Log
+# Perpetual Studio
 
-A shared hub site for the group's projects: Fish Quiz, Sports Lab, Field Watch
-(conservation), and The Board (general clubhouse). Built with Next.js 14 (App
-Router) + TypeScript + Tailwind so it's easy to split work across a few
-people — each project lives on its own route and can grow independently.
+A shared workspace site for the group's projects: Fish Lab, Sports Lab, Nature
+& Conservation, Loose Ends, Board Games (incl. The Pack), DLE and About Us. Built with
+Next.js (App Router) + TypeScript + Tailwind so it's easy to split work across
+a few people — each project lives on its own route and can grow independently.
+
 
 ## Design concept
 
-The homepage is **the clubhouse**: an illustrated, angled room (a warm,
-slightly magical storybook living room / workshop) that fills the whole
-screen under the navbar, and whose objects *are* the navigation. The top
-navbar stays as the plain fallback.
+The site is an editor-style workspace inspired by the layout of Visual Studio
+Code (not a copy of it): a **title bar** branded Perpetual Studio, a **file
+explorer** on the left that is the primary navigation, and an **editor** on the
+right that shows the selected page under a strip of **tabs**, with breadcrumbs.
+Folders are sections and are pages themselves: clicking a
+folder's name opens the section's page and expands it, and its chevron only
+expands or collapses it. Files inside are the section's tools. The file names
+(`seattle-dashboard.live`, …) are a navigation metaphor, not source filenames.
 
-| Object in the room | Section | Route |
-| --- | --- | --- |
-| Aquarium | Fish Stuff | `/fish-stuff` |
-| Television | Sports Lab | `/sports` |
-| Overgrown tree | Nature and Conservation | `/conservation` |
-| Bulletin board | Loose Ends | `/board` |
-| Game shelf | Board Games (incl. **The Pack**) | `/board-games` |
-| Wall calendar | DLE (daily guessing games) | `/dle` |
+| Explorer | Route |
+| --- | --- |
+| Fish Lab (folder) / `which-fish-are-you.quiz` | `/fish-stuff`, `/fish-stuff/personality` |
+| Sports Lab (folder) / `seattle-dashboard.live`, `offensive-archetypes.ipynb`, `nba-standings-pool.csv`, `behind-the-plate.model` | `/sports`, `/sports/dashboard`, `/sports/offensive-profiles`, `/sports/nba-standings`, `/sports/pitch-predictor` |
+| Nature & Conservation (folder) / `sighting-map.geojson` | `/conservation`, `/conservation/sightings` |
+| Loose Ends (folder) | `/board` |
+| Board Games (folder) / `tier-list.rank` | `/board-games`, `/board-games/tierlist` |
+| Board Games / `the-pack.deal` (+ `room-<code>.deal` while a room is open) | `/board-games/the-pack`, `/board-games/the-pack/room/<code>` |
+| DLE (folder) / `<game>.dle` | `/dle`, `/dle/<slug>` |
+| About Us (folder) / `ben.md`, `dennis.md`, `ivan.md`, `senlin.md` | `/about-us`, `/about-us/<name>` |
+| `welcome.md` | `/` |
 
 **The Pack** is nested under Board Games: it lives at `/board-games/the-pack`
-(rooms at `/board-games/the-pack/room/<code>`), shows up as "the special box"
-on the Board Games page, and is drawn on the game shelf. Old `/the-pack/*`
-links permanently redirect there (`next.config.js`). Nesting is driven by
-`parent: "board-games"` in `lib/projects.ts`, which also keeps it out of the
-navbar and the room.
+(rooms at `/board-games/the-pack/room/<code>`). Old `/the-pack/*` links
+permanently redirect there (`next.config.js`). Nesting is driven by
+`parent: "board-games"` in `lib/projects.ts`.
 
-On landscape screens at least 768px wide, the room is one angled two-wall
-composition, scaled to fit the screen without page scroll, with the navbar
-floating over the top of its sky; its backdrop
-keeps going past the composition so any screen shape is filled edge to
-edge. Phones and portrait tablets get a full-width, scrolling three-storey
-cutaway of the same clubhouse (loft → den → ground floor) so every object
-stays big enough to tap. The switch is the `room` screen in
-`tailwind.config.ts` plus the matching media query in `app/globals.css`. Each object has an always-visible paper
-name tag, a hover/focus hint, and is a real link (mouse, keyboard, touch).
-Ambient motion (fish, bubbles, swaying leaves, TV flicker, fireflies) is pure
-CSS and is switched off under `prefers-reduced-motion`.
+How it behaves:
 
-Inner project pages keep the original corkboard/case-file look
-(`components/CaseHeader.tsx`, `components/Pin.tsx`).
+- **The URL is the source of truth.** The active tab is always the current
+  route; tabs and explorer files are real `<Link>`s, so every page keeps its
+  URL and refreshes, deep links and back/forward work.
+- Tabs work like VS Code's preview mode: a single click (or quick open, or a
+  link on a page) opens a page in a temporary tab with an italic name, which
+  the next newly opened page replaces. Double-clicking the file in the
+  explorer, or the tab itself, keeps it as a permanent tab. Clicking a page
+  that already has a tab switches to it (never a duplicate). Closing a tab only removes it from the strip; closing the
+  active one moves to its right-hand neighbour (else the left), and closing
+  the last one shows an empty editor at `/`.
+- Open tabs, collapsed folders and the explorer's visibility persist in
+  `localStorage`. Navigating anywhere reveals the active file's folders.
+- Shortcuts: <kbd>Ctrl/⌘ P</kbd> go to file, <kbd>Ctrl/⌘ B</kbd> toggle the
+  explorer, middle-click closes a tab, arrow keys move through the explorer.
+- Under 768px the explorer becomes a drawer (menu button, Esc or tapping
+  outside closes it) and the tab strip scrolls sideways.
+- The window is the scroll container, so pages' own scroll locks, portals and
+  fixed dialogs keep working. Shell chrome stays at z-index ≤ 45; page dialogs
+  (z-50+) cover it.
 
 ## Getting started
 
@@ -84,82 +97,35 @@ If the database was created before the leaderboard view was updated, run `supaba
 
 ```
 app/
-  layout.tsx          shared shell: fonts, nav, page container
-  page.tsx            home — the clubhouse room
+  layout.tsx          fonts + the WorkspaceShell around every page
+  page.tsx            welcome.md — the workspace start page
+  icon.svg            favicon (the Perpetual Studio mark)
   fish-stuff/ sports/ conservation/ board/ dle/
   board-games/
     the-pack/         The Pack (nested under Board Games)
 components/
-  Nav.tsx, NavLinks.tsx   top navbar (top-level sections, current-section highlight)
-  CaseHeader.tsx          shared header used on each project's own page
-  clubhouse/
-    ClubhouseRoom.tsx     the room: backdrop + one RoomObject per destination
-    RoomObject.tsx        a clickable object: link, art, name tag, hover/focus
-    ObjectArt.tsx         custom image with automatic fallback to placeholder SVG
-    art/                  placeholder illustrations (one file per object + backdrops)
+  workspace/
+    WorkspaceShell.tsx      frame: title bar, explorer, tabs, editor
+    WorkspaceProvider.tsx   tab / folder / sidebar state, keyboard shortcuts
+    Explorer.tsx            file tree
+    EditorTabs.tsx          tab strip + breadcrumbs
+    TitleBar.tsx, QuickOpen.tsx, EmptyEditor.tsx
+    icons.tsx               decorative SVG icons (no routing logic)
+  PageHeader.tsx            shared page header (back link, kicker, title, description) on every page
+  CaseHeader.tsx            PageHeader for a section's own page (title + summary, no kicker)
 lib/
-  projects.ts         single source of truth for sections, routes and nesting
-  clubhouse.ts        which object leads where, and where it sits in the room
+  projects.ts         sections: titles, routes, status, nesting
+  workspace.ts        the explorer tree: which file opens which route
+  members.ts          the group's members (About Us pages)
 ```
 
-## The clubhouse room & replacing the artwork
+Routes and titles come from `lib/projects.ts`; the explorer tree (file names,
+icons, which route each file opens) lives in `lib/workspace.ts`; icons are
+drawn in `components/workspace/icons.tsx` and referenced only by kind, so the
+look can change without touching navigation. Workspace colors are the
+`studio.*` Tailwind tokens in `tailwind.config.ts`; shell layout rules are the
+`.ps-*` rules at the end of `app/globals.css`.
 
-The room is split into three independent layers, so artwork can be swapped
-without touching navigation:
-
-1. **Routes / titles** — `lib/projects.ts` (title, `href`, `parent`).
-2. **Room layout** — `lib/clubhouse.ts`: for each object, the `projectId` it
-   links to, an accessible `objectName`, a short `hint`, an optional `image`,
-   and separate `desktop` / `mobile` placements.
-3. **Artwork** — `components/clubhouse/art/`: one placeholder SVG component per
-   object (`AquariumArt.tsx`, `TelevisionArt.tsx`, `TreeArt.tsx`,
-   `BulletinBoardArt.tsx`, `GameShelfArt.tsx`, `CalendarArt.tsx`) plus the room
-   shells (`RoomBackdrop.tsx` for desktop, `RoomBackdropMobile.tsx` for phones),
-   registered in `art/index.ts`. The art has no links or logic in it.
-
-### Swapping in a custom illustration for one object
-
-1. Export the illustration with a transparent background (SVG, PNG or WebP),
-   cropped tightly to the object. Draw it in the room's perspective; the
-   placeholders' front faces slope down to the right at about 11° (a 0.2 rise
-   per unit of width), parallel to the right-hand wall.
-2. Drop it in `public/images/clubhouse/`, e.g. `public/images/clubhouse/aquarium.webp`.
-3. In `lib/clubhouse.ts`, set `image: "/images/clubhouse/aquarium.webp"` on
-   that object. If the file is missing or fails to load, the built-in
-   placeholder SVG is shown instead.
-4. Adjust that object's `desktop` / `mobile` placement if the new art has a
-   different shape:
-   - `x`, `y`: top-left corner, as a % of the room; `w`: width as a % of the
-     room (height follows the image's aspect ratio).
-   - `z`: stacking order (higher sits in front).
-   - `label`: where the name tag hangs, as a % of the object's own box
-     (default `{ x: 50, y: 100 }`, centred just below it).
-   - `plane: "left-wall"`: only for flat, front-on art that should be skewed
-     onto the left wall (the corkboard and calendar placeholders use this).
-     Set it to `"none"` (or remove it) if your art is already drawn in
-     perspective.
-
-The room canvases are 1600 × 1000 (desktop) and 1000 × 3000 (mobile) —
-`ROOM_ASPECT` in `lib/clubhouse.ts`; object placements are percentages of
-these. The desktop backdrop is drawn larger than its canvas, with a bleed of
-800 units left, right, above and below (viewBox `-800 -800 3200 2600`), so
-wide or tall screens see more wall, sky and floor instead of empty bars. A
-replacement desktop backdrop must keep that layout: a 3200 × 2600 image
-whose central 1600 × 1000 region is the room the objects are placed on. On
-screen, the desktop camera shows y 30 → 1110 of that region (a little sky
-cropped, extra floor below the rug); the numbers live in the `.clubhouse-room`
-rule in `app/globals.css`. Keep
-the very top of the sky `#0f1520` so it meets the navbar without a seam. To
-replace a room shell, either redraw `RoomBackdrop.tsx` /
-`RoomBackdropMobile.tsx` or have them render a single `<img>` with those
-proportions. To restyle the name tags or hover glow, edit
-the `.room-object*` rules in `app/globals.css`.
-
-### Adding an object
-
-Add the section to `lib/projects.ts`, add an id to `RoomObjectId` and an
-entry to `ROOM_OBJECTS` in `lib/clubhouse.ts`, and register an art component
-in `components/clubhouse/art/index.ts`. TypeScript flags a missing art entry.
 
 ## Daily character games
 
@@ -169,17 +135,24 @@ The retired `/db-management` route redirects to `/dle` so old bookmarks still la
 
 ## Adding a new project page
 
-1. Add an entry to `lib/projects.ts` (case number, title, route, status, summary).
-   Set `parent` to nest it under an existing section instead of making it top-level.
-2. Create `app/<route>/page.tsx` — copy an existing stub (e.g. `app/board/page.tsx`)
-   and swap in a `<CaseHeader />` with the same case number/status.
-3. Build out the actual page content underneath the header.
+1. For a new top-level section, add an entry to `lib/projects.ts` (case number,
+   title, route, status, summary). Set `parent` to nest it under an existing
+   section instead.
+2. Create `app/<route>/page.tsx`. A section page starts with
+   `<CaseHeader projectId="…" />` (copy `app/board/page.tsx`); any other page
+   starts with `<PageHeader href="/its/route" … />`, which fills in the back
+   link and file name from the explorer tree.
+3. Add a file (and, for a new section, a folder) for it in `WORKSPACE_TREE` in
+   `lib/workspace.ts` so it shows up in the explorer, quick open and the
+   welcome page.
+4. Build out the actual page content underneath the header.
+
 
 ## Offensive Archetypes (Sports Lab)
 
 `/sports/offensive-profiles` is intentionally a different visual theme from
 the rest of the site — dark, modern, orange-accented — rather than the
-corkboard look, since it's meant to feel like a distinct data tool. Search a
+shared workspace styling, since it's meant to feel like a distinct data tool. Search a
 player by name; their card shows photo/bio/stats on the left and a shot-zone
 efficiency heatmap on the right, with the card's gradient tinted to their
 team's colors (falls back to the default orange gradient if the team isn't

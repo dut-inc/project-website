@@ -304,7 +304,8 @@ export default function SightingMap({
   }, [focusId]);
 
   return (
-    <div className="relative">
+    // isolate: keeps Leaflet's high z-index panes below the workspace chrome.
+    <div className="relative isolate">
       <div
         ref={containerRef}
         className="h-[420px] w-full overflow-hidden rounded-xl bg-[#DCE7E6] shadow-inner sm:h-[480px]"

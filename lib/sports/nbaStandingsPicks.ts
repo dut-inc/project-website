@@ -49,11 +49,6 @@ export const DENNIS_2026_27_PICKS: PredictionPicks = {
   },
 };
 
-export type PredictionRecord = {
-  picks: PredictionPicks | null;
-  updatedAt: string | null;
-};
-
 // ---------------------------------------------------------------------------
 // Scoring
 // ---------------------------------------------------------------------------
@@ -179,8 +174,4 @@ export function hydratePicks(value: unknown): PredictionPicks {
     West: chalkOrder("West"),
     East: chalkOrder("East"),
   };
-}
-
-export function teamOf(id: string): NbaTeam | undefined {
-  return TEAMS_BY_ID.get(id);
 }

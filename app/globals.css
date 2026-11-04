@@ -467,495 +467,112 @@ input {
       --lb-inset: 24px;
     }
   }
+}
 
-  /* Hollow display text — the photocopied-only-pass look. */
-  .text-outline {
-    color: transparent;
-    -webkit-text-stroke: 2px rgba(239, 231, 210, 0.9);
+/* ---- Perpetual Studio workspace shell (components/workspace) ----
+   The title bar is fixed; the explorer is a fixed sidebar on
+   desktop and a drawer on small screens. The window itself scrolls the
+   editor, so pages keep their own scroll locks and fixed dialogs. Shell
+   chrome stays at z-index ≤ 45 so page dialogs (z-50 and up) cover it. */
+
+:root {
+  --ps-titlebar-h: 44px;
+  --ps-sidebar-w: 264px;
+  color-scheme: dark;
+}
+
+.ps-sidebar {
+  position: fixed;
+  top: var(--ps-titlebar-h);
+  bottom: 0;
+  left: 0;
+  z-index: 35;
+  width: var(--ps-sidebar-w);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.ps-editor {
+  min-height: 100vh;
+  padding-top: var(--ps-titlebar-h);
+}
+
+@media (min-width: 768px) {
+  .ps-shell[data-sidebar="open"] .ps-editor {
+    margin-left: var(--ps-sidebar-w);
   }
 
-  @media (max-width: 640px) {
-    .text-outline {
-      -webkit-text-stroke-width: 1.3px;
-    }
+  .ps-shell[data-sidebar="closed"] .ps-sidebar {
+    display: none;
   }
 }
 
-/* ---- Clubhouse room (homepage) ----
-   The room is the whole screen under the navbar. The page shell (body/main
-   from app/layout.tsx) drops its container padding while the room is shown,
-   and the background matches the top of the room's sky so the navbar sits
-   seamlessly in it.
-   Placement numbers come from lib/clubhouse.ts as CSS custom properties on
-   each .room-object (--m* for mobile, --d* for desktop), so every object is
-   rendered once and simply re-positioned per breakpoint. */
-
-body:has(.clubhouse-screen) {
-  background: #0f1520;
+@media (min-width: 768px) and (max-width: 1023px) {
+  :root {
+    --ps-sidebar-w: 232px;
+  }
 }
 
-body:has(.clubhouse-screen) > main {
-  width: 100%;
-  max-width: none;
-  padding: 0;
+@media (max-width: 767px) {
+  :root {
+    --ps-titlebar-h: 52px;
+  }
+
+  .ps-sidebar {
+    width: min(86vw, 320px);
+    transform: translateX(-100%);
+    visibility: hidden;
+    box-shadow: 12px 0 40px -12px rgba(0, 0, 0, 0.7);
+    transition:
+      transform 0.18s ease-out,
+      visibility 0s linear 0.18s;
+  }
+
+  .ps-shell[data-drawer="open"] .ps-sidebar {
+    transform: none;
+    visibility: visible;
+    transition: transform 0.18s ease-out;
+  }
 }
 
-/* Mobile: the cutaway spans the full width and scrolls. */
-.clubhouse-screen {
-  position: relative;
+/* Chrome controls draw their own inset focus ring (tight rows would clip the
+   site-wide offset outline). */
+.ps-titlebar :focus-visible,
+.ps-sidebar :focus-visible,
+.ps-tabs :focus-visible {
+  outline: none;
 }
 
-
-.clubhouse-room {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 1000 / 3000;
+/* Thin, quiet scrollbars for the tab strip and explorer. */
+.ps-scrollbar-thin,
+.ps-sidebar {
+  scrollbar-width: thin;
+  scrollbar-color: #3a3c42 transparent;
 }
 
-.clubhouse-room__backdrop {
-  position: absolute;
-  inset: 0;
+.ps-tabs .ps-scrollbar-thin {
+  scrollbar-width: none;
 }
 
-.clubhouse-room__backdrop > svg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.room-object {
-  position: absolute;
-  display: block;
-  left: var(--mx);
-  top: var(--my);
-  width: var(--mw);
-  z-index: var(--mz);
-  border-radius: 14px;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.room-object__lift {
-  display: block;
-  transition: transform 0.25s ease, filter 0.25s ease;
-}
-
-.room-object__plane {
-  display: block;
-  transform: skewY(var(--mskew));
-}
-
-.room-object__label {
-  position: absolute;
-  left: var(--mlx);
-  top: var(--mly);
-  transform: translate(-50%, 6px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  white-space: nowrap;
-}
-
-/* Soft lamplit name tag — always visible, so nothing depends on hover. */
-.room-object__title {
-  display: block;
-  padding: 2px 14px 3px;
-  border: 1px solid rgba(244, 213, 138, 0.28);
-  border-radius: 999px;
-  background: rgba(46, 32, 22, 0.72);
-  color: #f3e3c0;
-  font-family: var(--font-sign), cursive;
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 1.2;
-  box-shadow: 0 6px 18px -6px rgba(0, 0, 0, 0.55);
-  -webkit-backdrop-filter: blur(4px);
-  backdrop-filter: blur(4px);
-  transform: rotate(-1deg);
-  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
-}
-
-.room-object:nth-of-type(even) .room-object__title {
-  transform: rotate(1deg);
-}
-
-/* The short hint only appears on hover / focus (desktop). Absolutely placed
-   and visibility-hidden so it never widens the tag or catches stray clicks. */
-.room-object__hint {
+.ps-tabs .ps-scrollbar-thin::-webkit-scrollbar {
   display: none;
-  position: absolute;
-  top: calc(100% + 4px);
-  left: 50%;
-  padding: 3px 8px;
-  border-radius: 999px;
-  background: rgba(30, 22, 16, 0.78);
-  color: rgba(243, 227, 192, 0.9);
-  font-family: var(--font-mono), monospace;
-  font-size: 10px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  opacity: 0;
-  visibility: hidden;
-  transform: translate(-50%, -4px);
-  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0.2s;
 }
 
-/* Lift the active object (and its hint) above its neighbours. */
-.room-object:hover,
-.room-object:focus-visible {
-  z-index: 30;
-}
-
-.room-object:hover .room-object__lift,
-.room-object:focus-visible .room-object__lift {
-  transform: translateY(-6px);
-  filter: drop-shadow(0 0 12px rgba(255, 214, 140, 0.55)) drop-shadow(0 12px 14px rgba(0, 0, 0, 0.35));
-}
-
-.room-object:active .room-object__lift {
-  transform: translateY(-2px);
-}
-
-.room-object:hover .room-object__title,
-.room-object:focus-visible .room-object__title {
-  border-color: rgba(244, 213, 138, 0.7);
-  background: rgba(78, 54, 34, 0.86);
-  color: #ffe9b0;
-  transform: rotate(0deg) scale(1.05);
-}
-
-.room-object:hover .room-object__hint,
-.room-object:focus-visible .room-object__hint {
-  opacity: 1;
-  visibility: visible;
-  transform: translate(-50%, 0);
-  transition-delay: 0s;
-}
-
-.room-object:focus-visible {
-  outline: 3px dashed #f4d58a;
-  outline-offset: 6px;
-}
-
-/* Desktop room: wide enough and landscape (or square). Portrait tablets and
-   phones get the scrolling cutaway instead. Keep in sync with the `room`
-   screen in tailwind.config.ts. */
-@media (min-width: 768px) and (min-aspect-ratio: 1/1) {
-  /* Desktop: exactly one screen tall, no page scroll. */
-  body:has(.clubhouse-screen) {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    height: 100dvh;
-    overflow: hidden;
+@media (hover: hover) {
+  .ps-tabs:hover .ps-scrollbar-thin {
+    scrollbar-width: thin;
   }
-
-  /* The navbar floats over the top of the sky instead of pushing the room
-     down; a soft fade keeps its links readable over the treetop. */
-  body:has(.clubhouse-screen) > header {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    padding-bottom: 20px;
-    background: linear-gradient(to bottom, rgba(15, 21, 32, 0.92), rgba(15, 21, 32, 0.55) 60%, rgba(15, 21, 32, 0));
-    pointer-events: none;
-  }
-
-  body:has(.clubhouse-screen) > header a {
-    pointer-events: auto;
-  }
-
-  body:has(.clubhouse-screen) > main {
-    display: flex;
-    flex: 1 1 auto;
-    flex-direction: column;
-    min-height: 0;
-  }
-
-  .clubhouse-screen {
-    flex: 1 1 auto;
-    min-height: 0;
-    overflow: hidden;
-    container-type: size;
-  }
-
-  /* The stage is the 1600 × 1000 composition that objects are placed on.
-     What gets fitted to the screen is a slightly different camera window:
-     y 30 → 1110 of the composition (1600 × 1080), i.e. a little sky cropped
-     off the top and extra floor (from the backdrop bleed) below the rug.
-       --room-w  stage width = window width, as large as fits
-       0.675     window height / width (1080 / 1600)
-       0.01875   sky cropped off the top, as a share of the width (30 / 1600)
-     On screens taller than the window, most of the spare height goes below
-     the room (more floor) rather than above it (more sky). */
-  .clubhouse-room {
-    --room-w: min(100cqw, calc(100cqh / 0.675));
-    position: absolute;
-    top: calc((100cqh - var(--room-w) * 0.675) * 0.25 - var(--room-w) * 0.01875);
-    left: 50%;
-    width: var(--room-w);
-    aspect-ratio: 1600 / 1000;
-    transform: translateX(-50%);
-  }
-
-  /* Backdrop bleed: the SVG's viewBox is −800 −800 3200 2600 around the
-     0 0 1600 1000 stage (see RoomBackdrop.tsx). */
-  .clubhouse-room__backdrop > svg {
-    inset: auto;
-    left: -50%;
-    top: -80%;
-    width: 200%;
-    height: 260%;
-  }
-
-
-  .room-object {
-    left: var(--dx);
-    top: var(--dy);
-    width: var(--dw);
-    z-index: var(--dz);
-  }
-
-  .room-object__plane {
-    transform: skewY(var(--dskew));
-  }
-
-  .room-object__label {
-    left: var(--dlx);
-    top: var(--dly);
-  }
-
-  .room-object__title {
-    font-size: 16px;
-  }
-
-  .room-object__hint {
-    display: block;
-  }
-}
-
-@media (min-width: 1024px) {
-  .room-object__title {
-    font-size: 21px;
-  }
-}
-
-/* Environmental motion — all of it switched off for reduced motion below. */
-@keyframes clubhouse-sway {
-  0%,
-  100% {
-    transform: rotate(-3deg);
-  }
-  50% {
-    transform: rotate(3deg);
-  }
-}
-
-@keyframes clubhouse-swim {
-  0% {
-    transform: translateX(0) scaleX(1);
-  }
-  46% {
-    transform: translateX(var(--swim, 120px)) scaleX(1);
-  }
-  50% {
-    transform: translateX(var(--swim, 120px)) scaleX(-1);
-  }
-  96% {
-    transform: translateX(0) scaleX(-1);
-  }
-  100% {
-    transform: translateX(0) scaleX(1);
-  }
-}
-
-@keyframes clubhouse-bubble {
-  0% {
-    transform: translateY(0);
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  85% {
-    opacity: 0.8;
-  }
-  100% {
-    transform: translateY(-188px);
-    opacity: 0;
-  }
-}
-
-@keyframes clubhouse-flicker {
-  0%,
-  100% {
-    opacity: 0.9;
-  }
-  41% {
-    opacity: 1;
-  }
-  43% {
-    opacity: 0.7;
-  }
-  45% {
-    opacity: 1;
-  }
-  72% {
-    opacity: 0.82;
-  }
-}
-
-@keyframes clubhouse-pulse {
-  0%,
-  100% {
-    opacity: 0.8;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
-@keyframes clubhouse-blink {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.2;
-  }
-}
-
-@keyframes clubhouse-ball {
-  0%,
-  100% {
-    transform: translate(0, 0);
-  }
-  50% {
-    transform: translate(10px, -4px);
-  }
-}
-
-@keyframes clubhouse-firefly {
-  0%,
-  100% {
-    opacity: 0.15;
-    transform: translate(0, 0);
-  }
-  50% {
-    opacity: 1;
-    transform: translate(8px, -12px);
-  }
-}
-
-@keyframes clubhouse-breathe {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.03, 1.06);
-  }
-}
-
-@keyframes clubhouse-steam {
-  0% {
-    transform: translateY(0);
-    opacity: 0;
-  }
-  40% {
-    opacity: 0.55;
-  }
-  100% {
-    transform: translateY(-16px);
-    opacity: 0;
-  }
-}
-
-.clubhouse-sway {
-  transform-box: fill-box;
-  transform-origin: 50% 0%;
-  animation: clubhouse-sway 6s ease-in-out infinite;
-}
-
-.clubhouse-sway--rooted {
-  transform-origin: 50% 100%;
-}
-
-.clubhouse-sway--slow {
-  animation-duration: 9s;
-  animation-delay: -3s;
-}
-
-.clubhouse-fish {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: clubhouse-swim 18s ease-in-out infinite;
-}
-
-.clubhouse-bubble {
-  animation: clubhouse-bubble 5s ease-in infinite;
-}
-
-.clubhouse-flicker {
-  animation: clubhouse-flicker 4s steps(1, end) infinite;
-}
-
-.clubhouse-glow {
-  animation: clubhouse-pulse 6s ease-in-out infinite;
-}
-
-.clubhouse-blink {
-  animation: clubhouse-blink 1.6s ease-in-out infinite;
-}
-
-.clubhouse-twinkle {
-  animation: clubhouse-pulse 3s ease-in-out infinite;
-}
-
-.clubhouse-ball {
-  animation: clubhouse-ball 2.4s ease-in-out infinite;
-}
-
-.clubhouse-firefly {
-  transform-box: fill-box;
-  animation: clubhouse-firefly 7s ease-in-out infinite;
-}
-
-.clubhouse-breathe {
-  transform-box: fill-box;
-  transform-origin: 50% 100%;
-  animation: clubhouse-breathe 4s ease-in-out infinite;
-}
-
-.clubhouse-steam {
-  animation: clubhouse-steam 3.5s ease-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .clubhouse-sway,
-  .clubhouse-fish,
-  .clubhouse-bubble,
-  .clubhouse-flicker,
-  .clubhouse-glow,
-  .clubhouse-blink,
-  .clubhouse-twinkle,
-  .clubhouse-ball,
-  .clubhouse-firefly,
-  .clubhouse-breathe,
-  .clubhouse-steam {
-    animation: none;
-  }
-
-  .room-object__lift,
-  .room-object__title,
-  .room-object__hint {
+  .ps-sidebar,
+  .ps-shell[data-drawer="open"] .ps-sidebar {
     transition: none;
   }
 
-  .room-object:hover .room-object__lift,
-  .room-object:focus-visible .room-object__lift {
-    transform: none;
+  .ps-shell *,
+  .ps-shell *::before,
+  .ps-shell *::after {
+    scroll-behavior: auto;
   }
 }

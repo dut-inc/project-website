@@ -12,7 +12,7 @@ export type Project = {
   paper: "cream" | "kraft";
   pin: PinColor;
   // Nested sections live under another project instead of getting their own
-  // top-level nav link / room object (e.g. The Pack sits under Board Games).
+  // top-level explorer folder (e.g. The Pack sits under Board Games).
   parent?: ProjectId;
 };
 
@@ -24,7 +24,8 @@ export type ProjectId =
   | "board"
   | "board-games"
   | "dle"
-  | "the-pack";
+  | "the-pack"
+  | "about-us";
 
 export const statusColor: Record<Status, string> = {
   ACTIVE: "text-pinTeal",
@@ -37,7 +38,7 @@ export const projects: Map<ProjectId, Project> = new Map([
     "fish-stuff",
     {
       case: "001",
-      title: "Fish Stuff",
+      title: "Fish Lab",
       href: "/fish-stuff",
       status: "ACTIVE",
       updated: "2026-08-01",
@@ -67,7 +68,7 @@ export const projects: Map<ProjectId, Project> = new Map([
     "conservation",
     {
       case: "003",
-      title: "Nature and Conservation",
+      title: "Nature & Conservation",
       href: "/conservation",
       status: "ACTIVE",
       updated: "2026-08-05",
@@ -129,11 +130,25 @@ export const projects: Map<ProjectId, Project> = new Map([
       href: "/board-games/the-pack",
       status: "PLANNING",
       updated: "2026-10-20",
-      summary: "a live, cooperative poker party game -- deal a hand, pass chips around the table, and see if the table agrees on who's strongest",
+      summary: "cooperative poker",
       rotation: -2.5,
       paper: "kraft",
       pin: "navy",
       parent: "board-games",
+    },
+  ],
+  [
+    "about-us",
+    {
+      case: "008",
+      title: "About Us",
+      href: "/about-us",
+      status: "ACTIVE",
+      updated: "2026-11-03",
+      summary: "Ben, Dennis, Ivan and Senlin",
+      rotation: 1,
+      paper: "cream",
+      pin: "red",
     },
   ],
 ]);
@@ -144,11 +159,6 @@ export function getProject(id: ProjectId): Project {
   const project = projects.get(id);
   if (!project) throw new Error(`Unknown project id: ${id}`);
   return project;
-}
-
-// Top-level sections: the navbar links and the clubhouse room objects.
-export function topLevelProjects(): [ProjectId, Project][] {
-  return [...projects.entries()].filter(([, project]) => !project.parent);
 }
 
 export function childProjects(parent: ProjectId): [ProjectId, Project][] {

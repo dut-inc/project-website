@@ -50,7 +50,3 @@ export const PITCH_COLORS: Record<PitchType, string> = {
   SL: "#22C55E", // green
   ST: "#06B6D4", // cyan
 };
-
-export function isPitchType(value: string): value is PitchType {
-  return (PITCH_TYPES as readonly string[]).includes(value);
-}

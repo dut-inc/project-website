@@ -1,290 +1,240 @@
+
 # AGENTS.md
 
 ## Project Overview
 
-This repository contains a multi-project website being redesigned as a whimsical, interactive clubhouse.
+This project is a shared website for a small group, containing projects, tools, experiments, resources, and other useful or entertaining features.
 
-The homepage should feel like entering a cozy, magical living space. Different physical objects in the room serve as interactive navigation to existing project sections.
+The website is called **Perpetual Studio**.
 
-The goal is a polished, functional website with a distinctive visual identity, maintainable code, and artwork that can be upgraded independently in the future.
+The site should feel like a creative development workspace. Its interface is inspired by Visual Studio Code, with a file explorer on the left and a main editor area on the right.
 
-## 1. Established Design Direction
+The website is a real application. The editor-inspired interface must display actual pages and preserve their existing functionality.
 
-These decisions are final. Follow them throughout implementation.
+## Established Design Direction
 
-### Art Style
+The established design direction is a polished, editor-inspired workspace.
 
-Use a hand-drawn, illustrated storybook aesthetic.
+The interface should include:
 
-The environment should feel warm, imaginative, slightly magical, and lived in. Use organic shapes, layered illustrations, earthy colors, subtle textures, and thoughtful lighting effects.
+- A top application bar branded Perpetual Studio.
+- A left file explorer that serves as the primary navigation.
+- A main editor area that displays the selected page.
+- Tabs for pages that have been opened.
+- Clear active, inactive, hover, and focus states.
+- A cohesive visual identity inspired by development tools.
 
-Avoid generic dashboard styling, uniform project cards, excessive gradients, and emoji as primary artwork.
+Use Visual Studio Code as a reference for layout and interaction patterns, not as a design to copy exactly.
 
-### Room Composition
+Perpetual Studio should have its own personality through its typography, colors, spacing, icons, and details.
 
-Use an angled or isometric room composition.
+Do not revert to the previous illustrated clubhouse, isometric room, or interactive-object navigation concept unless explicitly requested.
 
-The room should feel like a cohesive physical space, with walls, a floor, furniture, and objects arranged to create depth.
+## Required Navigation Structure
 
-Use perspective, layering, shadows, and object placement to make the environment feel natural.
+The top-level website sections are:
 
-Prioritize a convincing composition and usability over complex rendering techniques. Prefer lightweight solutions compatible with the existing stack.
+- Fish Lab
+- Sports Lab
+- Nature & Conservation
+- Loose Ends
+- Board Games
+- DLE
+- About Us (a page per member: Ben, Dennis, Ivan, Senlin; listed in `lib/members.ts`)
 
-The room is the whole homepage screen, not a framed box or card. It fills the viewport edge to edge, with no page heading, border, or rounded frame around it. On landscape screens the navbar floats over the top of the room's sky rather than pushing the room down. On landscape screens, the room fills the viewport at any aspect ratio without page scrolling or cropping interactive objects; the backdrop artwork extends beyond the core composition to cover the extra space. On phones and portrait screens, the room spans the full screen width and scrolls vertically. The navbar remains visible above the room.
+The Pack is a subsection of Board Games. It must not appear as a separate top-level section.
 
-### Navigation
+Use the existing application and documentation to determine the actual pages and purpose of each section. Do not guess what DLE means or invent content for it.
 
-The room is the primary navigation interface. The existing top navbar remains the fallback.
+The explorer's file and folder names are a visual navigation metaphor. They do not need to match the underlying source-code filenames.
 
-Users should be able to click the illustrated objects to access their corresponding sections.
+## File Explorer Behavior
 
-Preserve and adapt the existing navbar rather than introducing a competing navigation system.
+The left sidebar is the primary navigation.
 
-All navigation must remain usable with a mouse, keyboard, and touchscreen.
+It should support:
 
-### Implementation Approach
+- Expanding and collapsing folders.
+- Opening a page by clicking its file-like item.
+- Highlighting the currently active page.
+- Showing open-file indicators where appropriate.
+- Clear hover and keyboard focus states.
+- Usable navigation on both desktop and mobile.
 
-Implement the redesign incrementally in coherent stages, but do not create a separate design-prototype phase.
+Explorer items must connect to real application pages and routes.
 
-Do not generate concept art, AI-generated images, mood boards, or standalone visual mockups as part of the implementation workflow.
+## Editor and Tab Behavior
 
-Build directly in the existing website using lightweight placeholder illustrations and existing assets.
+The main editor area displays the actual page associated with the selected explorer item.
 
-Perform comprehensive visual and functional verification after the implementation is complete.
+The editor should support:
 
-## 2. Required Homepage Objects
+- Opening a page in a tab.
+- Switching between existing tabs.
+- Avoiding duplicate tabs for the same page.
+- Closing tabs without deleting the underlying page.
+- Selecting a sensible remaining tab when the active tab closes.
+- Displaying a useful empty state when no page is open.
 
-The homepage must contain six top-level interactive objects. The Pack is nested under Board Games.
+The active editor tab and active explorer item should remain synchronized.
 
-### Aquarium — Fish Projects
+The editor should display actual website content, not source code, unless a specific page is intended to display code.
 
-Represent fish-related projects with an aquarium.
+## Routing and Functionality
 
-Possible details include fish silhouettes, aquatic plants, bubbles, and subtle underwater lighting.
+Preserve the existing application routing system.
 
-Use simple SVGs, CSS illustrations, or existing assets. Keep the artwork replaceable.
+Every page should retain a real URL and support:
 
-The aquarium navigates to the existing fish-related section.
+- Direct navigation.
+- Browser refresh.
+- Deep links.
+- Existing navigation behavior where applicable.
 
-### Television — Sports Lab
+The editor interface must integrate with the existing routes rather than replacing them with a mock navigation system.
 
-Represent sports analytics and sports-related projects with a television showing a stylized sports scene or scoreboard.
+Do not remove or replace functioning pages, APIs, data, or features with placeholders.
 
-Use original, simple placeholder graphics rather than depending on copyrighted live sports footage.
+Do not make unrelated refactors.
 
-The television navigates to Sports Lab.
+## Asset and Component Architecture
 
-### Overgrown Tree — Nature & Conservation
+Keep the editor shell, file explorer, tab system, and page content appropriately separated.
 
-Represent nature, ecology, and conservation with a tree growing into the room.
+Prefer reusable components for shared interface elements.
 
-Use branches, leaves, vines, and other lightweight illustrated details.
+Navigation logic should remain independent from decorative icons and visual assets. Icons and styling should be replaceable without rewriting route behavior.
 
-The tree navigates to Nature & Conservation.
+Use the project's existing framework, conventions, dependencies, and asset organization.
 
-### Bulletin Board — Loose Ends
+Use existing assets or simple SVG/CSS icons where appropriate. Do not generate images or concept art unless explicitly requested.
 
-Represent miscellaneous projects, utilities, experiments, and ideas with a corkboard.
+## Current Implementation
 
-Use pinned notes, sketches, photographs, and paper scraps as simple illustrations or existing assets.
+- `app/layout.tsx` wraps every route in `components/workspace/WorkspaceShell.tsx` (title bar, explorer, tabs, editor).
+- The URL is the source of truth: the active tab is `usePathname()`, and explorer files and tabs are Next.js `<Link>`s. Tab, folder and sidebar state lives in `WorkspaceProvider.tsx` and persists in `localStorage`.
+- Tabs follow VS Code's preview mode: a newly opened page is the single italic preview tab and replaces the previous preview; double-clicking its explorer row or its tab makes it permanent (`pinTab`).
+- `lib/projects.ts` defines sections, titles, routes and nesting. `lib/workspace.ts` defines the explorer tree (file names, icon kinds, and which route each file opens). New pages must be added there to appear in the explorer.
+- Every page starts with the shared `components/PageHeader.tsx` (section pages via `components/CaseHeader.tsx`), so the back link, kicker, title typography and page width (`max-w-6xl`, set on the editor's `<main>`) are the same everywhere. Each tool's own UI below the header keeps its theme; don't add per-page titles or back links. Exception: the NBA standings pool keeps its own headline and back link (user's request).
+- The Pack is a regular file (`the-pack.deal`) in the Board Games folder, not a nested folder or a special-cased card; its open rooms appear as `room-<code>.deal` files beside it.
+- Folders are pages: a folder's name opens its section's index route (`project.href`) and expands it; its chevron only toggles it. There are no separate README files for sections.
+- Icons live in `components/workspace/icons.tsx` and are referenced only by kind. Workspace colors are the `studio.*` Tailwind tokens (accent is Visual Studio blue `#007ACC`, with `studio.link` `#3794FF` for blue text); shell layout is the `.ps-*` CSS in `app/globals.css`.
+- The window is the scroll container. Shell chrome stays at z-index 45 or below so page dialogs (z-50 and up) cover it.
+- The previous clubhouse room, its artwork and the old top navbar were removed; they remain in Git history.
 
-Where appropriate, individual notes may link to projects.
+## Responsive Design
 
-The board navigates to Loose Ends.
+The desktop workspace is the primary layout.
 
-### Game Shelf — Board Games
+On smaller screens:
 
-Represent board-game-related projects with a shelf of board-game boxes and accessories.
+- The explorer should collapse or open as a drawer.
+- The editor should use the available width.
+- Tabs should remain accessible.
+- Navigation should remain usable through touch.
+- The interface should not create unnecessary horizontal overflow.
 
-The shelf navigates to Board Games.
+Support keyboard navigation, visible focus states, and reduced-motion preferences.
 
-Preserve existing board-game tools, including the Root rulebook portal if present.
+## Animation and Polish
 
-### Calendar — DLE
+Use subtle interaction feedback where it improves usability.
 
-Represent DLE with a desk calendar, wall planner, or similar object.
+Avoid:
 
-Inspect the existing implementation to determine what DLE actually does. Preserve its current content, routes, and functionality. Do not invent a new meaning or purpose.
+- Excessive animation.
+- Unnecessary visual clutter.
+- Autoplay audio.
+- Heavy 3D effects without a clear need.
+- Animations that interfere with navigation or readability.
 
-The calendar navigates to DLE.
+Prioritize a coherent, functional workspace over decorative effects.
 
-### The Pack — Nested Under Board Games
+## Preserve Existing Functionality
 
-The Pack is an existing seventh section, but it must no longer be a top-level homepage category.
+Before modifying the application:
 
-Place it beneath Board Games as a nested destination or sub-area.
+1. Inspect the existing codebase and routes.
+2. Read relevant project documentation.
+3. Identify existing page functionality and dependencies.
+4. Determine how current navigation and content are implemented.
+5. Verify the purpose of DLE and the current implementation of The Pack.
 
-Choose a representation that fits its existing content, such as a special game box, a labeled storage crate, or a smaller object within the Board Games area.
+Preserve all existing functionality unless the user explicitly requests a change.
 
-Preserve existing Pack functionality and important URLs. Update the navigation and information architecture as necessary, using redirects or compatible routes where appropriate.
+Do not assume a page is disposable because it is not immediately visible in the main navigation.
 
-## 3. Asset and Illustration Architecture
+Do not replace real functionality with static mockups or placeholder pages.
 
-The initial illustrations are placeholders, not final commissioned artwork.
+## Implementation Workflow
 
-Do not generate images or introduce a separate image-generation workflow.
+Work incrementally and verify changes as they are made.
 
-Use whichever lightweight approach best fits the existing codebase:
+For substantial changes:
 
-- SVG illustrations.
-- CSS-drawn shapes and environmental details.
-- Existing project assets.
-- Simple placeholder images already available in the repository.
+1. Inspect the relevant implementation.
+2. Identify the smallest appropriate change.
+3. Implement the change using existing conventions.
+4. Test the affected functionality.
+5. Check for regressions in related pages.
+6. Update project documentation when meaningful progress or durable decisions occur.
 
-Do not spend excessive time perfecting placeholder artwork. Prioritize the overall composition, functionality, and maintainability.
+Do not perform broad unrelated refactors.
 
-### Replaceability Requirements
+Do not claim a feature works unless it has been implemented and appropriately checked.
 
-- Keep each major object independently replaceable.
-- Separate artwork from routing, navigation, and application logic.
-- Use reusable components for interactive objects where practical.
-- Centralize shared category metadata and route configuration.
-- Use descriptive filenames and a clear asset directory.
-- Provide reasonable fallbacks when an asset is missing.
-- Avoid embedding essential navigation logic inside SVG files.
-- Keep sizing, aspect ratios, positioning, and layering manageable.
-- Delete components, styles, and assets that a change leaves unused.
+## Quality and Accessibility
 
-Replacing an initial SVG or CSS illustration with a future custom illustration should not require rewriting the navigation system.
+Prioritize:
 
-Document the asset replacement process when the implementation is complete.
+- Functional navigation.
+- Correct routing.
+- Consistent visual design.
+- Responsive behavior.
+- Accessible interaction.
+- Maintainable components.
+- Readable code.
+- Reliable existing functionality.
 
-## 4. Navigation and Interaction
+Verify the actual application in a browser after substantial interface changes. Do not rely only on screenshots of a static mockup or on the absence of build errors.
 
-Implement the room as the primary navigation experience.
+## Project Continuity and Documentation
 
-Requirements:
+Keep this file focused on durable project requirements, design direction, architecture, and recurring workflow expectations.
 
-- Each of the six main objects must navigate to the correct existing section.
-- Interactive objects should have clear hover and focus states.
-- Labels or tooltips should make their purpose discoverable.
-- Keyboard and touchscreen navigation must work.
-- Navigation must not depend on hover alone.
-- The existing top navbar must remain functional.
-- Users must have a straightforward way to return to the homepage.
-- The Pack must appear under Board Games, not as a seventh top-level destination.
-- Preserve existing routes and deep links wherever possible.
+Update `AGENTS.md` when:
 
-Do not replace functional project pages with placeholders.
+- The established design direction changes.
+- A lasting architectural decision is made.
+- A recurring project requirement changes.
+- A durable coding or workflow convention is established.
 
-## 5. Responsive Design
+Do not add one-off bug fixes, temporary experiments, completed task lists, or conversation transcripts.
 
-Design the desktop homepage around the angled, illustrated room.
+Maintain a root-level `PROJECT_STATUS.md` for current project progress, including:
 
-Create an intentional mobile layout rather than shrinking the desktop composition without adjustment.
+- Current implementation state.
+- Completed major features.
+- Outstanding issues and unfinished work.
+- Important technical decisions.
+- Verification performed.
+- Recommended next steps.
 
-Consider repositioning objects, simplifying perspective, adjusting labels, and providing comfortable touch targets.
+Update `PROJECT_STATUS.md` at meaningful milestones and when preparing to switch machines or sessions.
 
-Ensure that:
+When preparing a handoff:
 
-- All six objects remain identifiable.
-- No essential navigation is obscured.
-- Text remains readable.
-- Labels do not overlap important artwork.
-- The top navbar works on small screens.
-- The layout does not introduce unwanted horizontal scrolling.
+- Inspect the actual Git state.
+- Record what changed.
+- Identify uncommitted work.
+- Identify unresolved issues and failed checks.
+- Distinguish completed work from planned or unverified work.
+- Do not discard changes or commit/push without authorization.
 
-## 6. Animation and Polish
-
-After the main structure and navigation are implemented, add a limited number of subtle environmental effects where appropriate.
-
-Examples include gently moving fish, rising bubbles, swaying leaves, or a subtle television flicker.
-
-Prefer lightweight CSS and SVG animations.
-
-Respect reduced-motion preferences. Do not add autoplaying audio or introduce a heavy animation library solely for decorative effects.
-
-Do not allow animation work to delay the completion of essential functionality.
-
-## 7. Preserve Existing Functionality
-
-Before making changes, inspect the repository to understand its architecture, routes, project pages, dependencies, and deployment requirements.
-
-Preserve existing:
-
-- Project pages and content.
-- Application functionality.
-- APIs, integrations, and data flows.
-- Working routes and important deep links.
-- Build and deployment compatibility.
-- The Pack's existing functionality.
-- Additional projects and utilities discovered during the audit.
-
-Avoid unrelated refactoring, unnecessary dependencies, framework replacements, and destructive changes.
-
-Do not assume that the seven known sections represent every page or feature in the repository.
-
-If an existing project does not fit naturally into one of the six main homepage objects, ensure it remains accessible through the appropriate section or existing navigation.
-
-## 8. Implementation Workflow
-
-Work incrementally in the following order.
-
-### Stage 1: Repository Audit
-
-Inspect the existing codebase, identify the framework and architecture, inventory the current pages and routes, and determine which functionality must be preserved.
-
-Develop a concise implementation plan based on the actual repository.
-
-### Stage 2: Structural Implementation
-
-Build the room layout and establish the shared styling, typography, colors, spacing, perspective, and layering.
-
-Use simple placeholder illustrations or existing assets. Do not generate concept art or build a separate visual prototype.
-
-### Stage 3: Navigation Integration
-
-Connect all six objects to the correct existing sections.
-
-Integrate the design with the existing navbar and move The Pack beneath Board Games in the navigation hierarchy.
-
-Preserve important URLs and project functionality.
-
-### Stage 4: Responsive Design and Polish
-
-Implement desktop and mobile layouts, interaction states, keyboard accessibility, reduced-motion support, and a small number of lightweight animations.
-
-### Stage 5: Final Verification
-
-Once the implementation is complete, perform a comprehensive verification pass.
-
-Run the available build, lint, type-check, and test commands. Inspect the rendered website if browser or screenshot tooling is available.
-
-Verify all six top-level destinations, The Pack under Board Games, the navbar, important existing routes, responsive behavior, and interactive controls.
-
-Fix regressions and report any remaining issues.
-
-Do not create separate screenshot reviews, visual mockup deliverables, or image-generation tasks as intermediate milestones. Testing and visual inspection are part of the final verification stage.
-
-## 9. Quality and Accessibility
-
-- Use semantic HTML and accessible interactive elements.
-- Provide descriptive accessible names for interactive objects.
-- Ensure visible keyboard focus indicators.
-- Respect reduced-motion preferences.
-- Maintain readable text and sufficient contrast.
-- Optimize asset loading and animation performance.
-- Avoid unnecessary dependencies and duplicated logic.
-- Never claim that a build, test, or browser check passed unless it was actually performed.
-
-## 10. Completion Report
-
-At the end of the project, report:
-
-- A summary of the redesign.
-- The major files added or changed.
-- The final route and navigation structure.
-- Confirmation that The Pack is nested under Board Games.
-- The build and tests performed, including their actual results.
-- Any remaining placeholders or known limitations.
-- Instructions for replacing the illustrations with custom artwork in the future.
-
-The result must be a working, maintainable website, not just a static illustration or mockup.
+When starting a new session, inspect `AGENTS.md`, `PROJECT_STATUS.md`, and the current Git state before continuing.
 
 ## Final Principle
 
-Build the actual website directly.
+Perpetual Studio should feel like a real, polished development workspace where the website's pages are organized as files and opened in an editor.
 
-Use creative judgment to make the room feel cohesive, charming, and custom-designed. Keep placeholder art simple, preserve existing functionality, and prioritize a complete implementation over unnecessary prototyping.
-
-Implement in stages, then verify the finished experience comprehensively at the end.
+The editor-inspired interface is the navigation and presentation layer. The actual pages, routes, and functionality remain the substance of the website.

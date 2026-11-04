@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Caveat, Fraunces, IBM_Plex_Sans, IBM_Plex_Mono, Playfair_Display, Oswald} from "next/font/google";
 import "./globals.css";
-import Nav from "@/components/Nav";
+import WorkspaceShell from "@/components/workspace/WorkspaceShell";
 
 const display = Fraunces({
   subsets: ["latin"],
@@ -38,8 +38,8 @@ const sign = Caveat({
 });
 
 export const metadata: Metadata = {
-  title: "Ibis Board",
-  description: "Our projects!",
+  title: "Perpetual Studio",
+  description: "A shared workspace for our projects, tools, experiments and loose ends.",
 };
 
 export default function RootLayout({
@@ -50,10 +50,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${display.variable} ${body.variable} ${mono.variable} ${dleHeading.variable} ${sign.variable} font-body wall-bg text-cream min-h-screen`}
+        className={`${display.variable} ${body.variable} ${mono.variable} ${dleHeading.variable} ${sign.variable} font-body bg-studio-editor text-cream min-h-screen`}
       >
-        <Nav />
-        <main className="relative mx-auto max-w-7xl px-4 pb-16 pt-6 sm:px-8">{children}</main>
+        <WorkspaceShell>{children}</WorkspaceShell>
       </body>
     </html>
   );

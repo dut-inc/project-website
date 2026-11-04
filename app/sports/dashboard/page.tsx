@@ -1,15 +1,14 @@
-import Link from "next/link";
+import PageHeader from "@/components/PageHeader";
 import SportsDashboard from "@/components/sports/dashboard/SportsDashboard";
 
 export default function SportsDashboardPage() {
   return (
     <div>
-      <Link
-        href="/sports"
-        className="mb-6 inline-block font-mono text-xs uppercase tracking-widest text-cream/50 hover:text-pinGold"
-      >
-        &larr; Back to Sports Lab
-      </Link>
+      <PageHeader
+        href="/sports/dashboard"
+        title="Seattle Sports Center"
+        description="a hub for seattle sports data and live game tracking"
+      />
       <SportsDashboard />
     </div>
   );
