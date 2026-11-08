@@ -720,6 +720,42 @@
     }
   },
   {
+    "name": "Hsin",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/a/a7/Resonator_Hsin.png/revision/latest?cb=20260930170944",
+    "quality": 5,
+    "element": "Electro",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/c/c1/Electro_Icon.png/revision/latest?cb=20250617044801",
+    "weapon": "Rectifier",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/5/5e/Rectifier_Icon.png/revision/latest?cb=20240225014849",
+    "affiliation": "Sentinels",
+    "faction": "Mengzhou",
+    "class": null,
+    "version": "3.7",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Heartward by Moon",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/0/00/Skill_Heartward_by_Moon.png/revision/latest?cb=20261002004810"
+      },
+      "forte_circuit": {
+        "name": "Forms Turn, Heart Abides",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/f/f3/Skill_Forms_Turn%2C_Heart_Abides.png/revision/latest?cb=20261002004806"
+      },
+      "resonance_liberation": {
+        "name": "Nexus Alight",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/1/15/Skill_Nexus_Alight.png/revision/latest?cb=20261002004809"
+      },
+      "intro_skill": {
+        "name": "Glance on a Whim",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/e/e4/Skill_Glance_on_a_Whim.png/revision/latest?cb=20261002004807"
+      },
+      "outro_skill": {
+        "name": "Herself a Thousand Lanterns",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/8/8a/Skill_Herself_a_Thousand_Lanterns.png/revision/latest?cb=20261002004805"
+      }
+    }
+  },
+  {
     "name": "Iuno",
     "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/8/8c/Resonator_Iuno.png/revision/latest?cb=20250827031142",
     "quality": 5,
@@ -788,6 +824,42 @@
       "outro_skill": {
         "name": "Transcendence",
         "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/8/8e/Skill_Transcendence.png/revision/latest?cb=20240610041045"
+      }
+    }
+  },
+  {
+    "name": "Jingran",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/d/d0/Resonator_Jingran.png/revision/latest?cb=20260820165054",
+    "quality": 5,
+    "element": "Fusion",
+    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/f/f9/Fusion_Icon.png/revision/latest?cb=20250617044759",
+    "weapon": "Broadblade",
+    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/0/09/Broadblade_Icon.png/revision/latest?cb=20240225014720",
+    "affiliation": "Nethermancer",
+    "faction": "Mengzhou",
+    "class": "Natural",
+    "version": "3.6",
+    "status": "released",
+    "forte": {
+      "resonance_skill": {
+        "name": "Malevolent Encounter",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/4/4f/Skill_Malevolent_Encounter.png/revision/latest?cb=20260913142852"
+      },
+      "forte_circuit": {
+        "name": "Upstream Along Santu",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/d/d1/Skill_Upstream_Along_Santu.png/revision/latest?cb=20260913142857"
+      },
+      "resonance_liberation": {
+        "name": "Burial of Thousand Souls",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/8/81/Skill_Burial_of_Thousand_Souls.png/revision/latest?cb=20260913142854"
+      },
+      "intro_skill": {
+        "name": "Question the Tombs",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/a/ae/Skill_Question_the_Tombs.png/revision/latest?cb=20260913142856"
+      },
+      "outro_skill": {
+        "name": "Rising Fortune and Ebbing Evil",
+        "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/c/c0/Skill_Rising_Fortune_and_Ebbing_Evil.png/revision/latest?cb=20260913142858"
       }
     }
   },
@@ -2052,57 +2124,15 @@
     }
   },
   {
-    "name": "Hsin",
-    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/a/a7/Resonator_Hsin.png/revision/latest?cb=20260615174305",
-    "quality": 5,
-    "element": "Electro",
-    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/c/c1/Electro_Icon.png/revision/latest?cb=20250617044801",
-    "weapon": "Rectifier",
-    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/5/5e/Rectifier_Icon.png/revision/latest?cb=20240225014849",
-    "affiliation": "Sentinels",
-    "faction": "Mengzhou",
-    "class": null,
-    "version": "3.7",
-    "status": "upcoming",
-    "forte": {
-      "resonance_skill": null,
-      "forte_circuit": null,
-      "resonance_liberation": null,
-      "intro_skill": null,
-      "outro_skill": null
-    }
-  },
-  {
-    "name": "Jingran",
-    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/d/d0/Resonator_Jingran.png/revision/latest?cb=20260820165054",
-    "quality": 5,
-    "element": "Fusion",
-    "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/f/f9/Fusion_Icon.png/revision/latest?cb=20250617044759",
-    "weapon": "Broadblade",
-    "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/0/09/Broadblade_Icon.png/revision/latest?cb=20240225014720",
-    "affiliation": "Mengzhou",
-    "faction": null,
-    "class": null,
-    "version": "3.6",
-    "status": "upcoming",
-    "forte": {
-      "resonance_skill": null,
-      "forte_circuit": null,
-      "resonance_liberation": null,
-      "intro_skill": null,
-      "outro_skill": null
-    }
-  },
-  {
     "name": "Suoming",
-    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/b/bb/Resonator_Suoming.png/revision/latest?cb=20260615172949",
+    "icon": "https://static.wikia.nocookie.net/wutheringwaves/images/b/bb/Resonator_Suoming.png/revision/latest?cb=20260930171029",
     "quality": 5,
     "element": "Electro",
     "element_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/c/c1/Electro_Icon.png/revision/latest?cb=20250617044801",
     "weapon": "Sword",
     "weapon_icon": "https://static.wikia.nocookie.net/wutheringwaves/images/3/32/Sword_Icon.png/revision/latest?cb=20240306160610",
     "affiliation": "Mengzhou",
-    "faction": null,
+    "faction": "Ministry of Sentinel Affairs",
     "class": null,
     "version": "3.7",
     "status": "upcoming",

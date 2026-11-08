@@ -45,7 +45,18 @@ export const MEMBERS: Member[] = [
     ],
     projects: [{ href: "/board-games/the-pack", note: "Pack Plus, the extended version of The Pack." }],
   },
-  { slug: "ivan", name: "Ivan" },
+  { slug: "ivan",
+    name: "Ivan",
+    bio: ["hey guys! im ivan and i love playing fortnite and getting the one piece! my interests include badminton, speedcubing, and deadlock."],
+    links: [
+      { label: "GitHub", href: "https://github.com/ivnkwok" },
+      { label: "LinkedIn", href: "https://www.linkedin.com/in/ivnkwok/" },
+    ],
+    projects: [
+      { href: "/board-games/tierlist", note: "Our group's personal rankings of the board games we've played." },
+      { href: "/dle/wuthering-waves", note: "Let's do the wuwadle." },
+      { href: "/dle/genshin-impact", note: "Let's do the jenshindle." },
+    ], },
   { slug: "senlin", name: "Senlin" },
 ];
 
