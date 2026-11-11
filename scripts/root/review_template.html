@@ -1,0 +1,222 @@
+<title>Law of Root Extraction Review</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+/* Layout: a sticky review bar over a single column of cards; each card is PDF crop | extracted record, stacking on phones. */
+:root {
+  --bg: #f3f5f2;
+  --surface: #ffffff;
+  --ink: #1c2320;
+  --muted: #5a6560;
+  --line: #d9dfda;
+  --accent: #2f4f86;
+  --accent-soft: #e4eaf5;
+  --ok: #2e7d4f;
+  --ok-soft: #e2f1e7;
+  --bad: #b3261e;
+  --bad-soft: #fbe5e3;
+  --chip: #eceeea;
+  --font-rule: "Libre Baskerville", "Baskerville", Georgia, serif;
+  --font-ui: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #131715; --surface: #1b201e; --ink: #e5eae6; --muted: #9ba69f; --line: #2e3532;
+    --accent: #93b2ea; --accent-soft: #24304a; --ok: #6cc58e; --ok-soft: #1d3326;
+    --bad: #ff8f85; --bad-soft: #3d201e; --chip: #262c29; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #131715; --surface: #1b201e; --ink: #e5eae6; --muted: #9ba69f; --line: #2e3532;
+  --accent: #93b2ea; --accent-soft: #24304a; --ok: #6cc58e; --ok-soft: #1d3326;
+  --bad: #ff8f85; --bad-soft: #3d201e; --chip: #262c29; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink); font-family: var(--font-ui); font-size: 15px; line-height: 1.5;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--surface); }
+.wrap {
+  max-width: 1180px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+header.intro { padding-block: 32px 20px; display: grid; gap: 10px; }
+.eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+h1 { font-family: var(--font-rule); font-weight: 700; font-size: clamp(24px, 4vw, 32px); line-height: 1.2; margin: 0; text-wrap: balance; }
+.intro p { margin: 0; max-width: 68ch; color: var(--muted); }
+.intro ul { margin: 0; padding-left: 20px; color: var(--muted); max-width: 68ch; display: grid; gap: 4px; }
+.intro strong { color: var(--ink); font-weight: 600; }
+
+.bar {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  background: var(--surface); border-bottom: 1px solid var(--line);
+}
+.bar .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; padding-block: 10px; }
+.progress { display: flex; gap: 14px; font-variant-numeric: tabular-nums; font-size: 14px; flex-wrap: wrap; }
+.progress b { font-weight: 600; }
+.progress .n-ok { color: var(--ok); } .progress .n-bad { color: var(--bad); }
+.bar .spacer { flex: 1; }
+.bar label { font-size: 13px; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+select, button, input { font: inherit; color: inherit; }
+select { background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 5px 8px; }
+.copy { background: var(--accent); color: var(--surface); border: 0; border-radius: 6px; padding: 7px 14px; font-weight: 600; cursor: pointer; }
+.copied { font-size: 13px; color: var(--ok); }
+#fallback { width: 100%; min-height: 120px; font-family: var(--font-mono); font-size: 12px; background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 8px; }
+
+main { padding-block: 8px 64px; display: grid; gap: 16px; }
+h2.group { font-family: var(--font-rule); font-size: 20px; margin: 24px 0 0; text-wrap: balance; }
+.card {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 16px;
+}
+.card[data-state="ok"] { border-color: var(--ok); }
+.card[data-state="bad"] { border-color: var(--bad); box-shadow: inset 4px 0 0 var(--bad); }
+.pdf { display: grid; gap: 8px; align-content: start; min-width: 0; }
+.pdf img { width: 100%; height: auto; border: 1px solid var(--line); border-radius: 4px; display: block; }
+.extracted { display: grid; gap: 10px; align-content: start; min-width: 0; }
+.head { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.num { font-family: var(--font-mono); font-weight: 500; font-size: 14px; color: var(--accent); }
+.rid { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+.section-title { font-family: var(--font-rule); font-size: 17px; font-weight: 700; }
+.text { font-family: var(--font-rule); font-size: 15px; line-height: 1.6; overflow-wrap: anywhere; }
+.text p { margin: 0 0 .6em; } .text p:last-child { margin-bottom: 0; }
+.rule-title { font-weight: 700; }
+.reminder { font-style: italic; color: var(--muted); }
+.table-wrap { overflow-x: auto; margin: .4em 0; }
+table { border-collapse: collapse; font-family: var(--font-ui); font-size: 13px; font-variant-numeric: tabular-nums; }
+td, th { border: 1px solid var(--line); padding: 3px 8px; text-align: left; }
+th { background: var(--chip); font-weight: 600; }
+.meta { display: flex; gap: 12px; flex-wrap: wrap; font-size: 12px; color: var(--muted); font-family: var(--font-mono); }
+.chips { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+.chips-label { font-size: 12px; color: var(--muted); margin-right: 2px; }
+.chip { display: inline-block; font-family: var(--font-ui); font-size: 12px; line-height: 1.4; padding: 1px 8px; border-radius: 999px; background: var(--chip); font-style: normal; color: var(--ink); }
+.chip.item { background: var(--accent-soft); }
+.chip.icon, .chip.flag { background: var(--bad-soft); }
+.chip.xref.broken { background: var(--bad-soft); text-decoration: line-through; }
+.verdict { display: flex; gap: 8px; flex-wrap: wrap; padding-top: 4px; border-top: 1px dashed var(--line); margin-top: 2px; }
+.verdict button {
+  border: 1px solid var(--line); background: var(--bg); border-radius: 6px; padding: 6px 14px; cursor: pointer; font-weight: 500;
+}
+.verdict .ok[aria-pressed="true"] { background: var(--ok-soft); border-color: var(--ok); color: var(--ok); }
+.verdict .bad[aria-pressed="true"] { background: var(--bad-soft); border-color: var(--bad); color: var(--bad); }
+.note { flex: 1 1 220px; min-width: 0; border: 1px solid var(--bad); background: var(--bg); border-radius: 6px; padding: 6px 10px; }
+button:focus-visible, select:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (max-width: 760px) {
+  .card { grid-template-columns: minmax(0, 1fr); gap: 14px; padding: 12px; }
+}
+</style>
+
+<header class="wrap intro">
+  <div class="eyebrow">Root Rules Encyclopedia · extraction sample · Law of {{EDITION}}</div>
+  <h1>Does the extracted text match the PDF?</h1>
+  <p>Each card shows a crop of the official PDF on the left and what the extractor produced on the right. Read them side by side and mark each one. You don't need to know the rules, only whether the words match.</p>
+  <ul>
+    <li><strong>Mark “Problem”</strong> if a word, number, or punctuation mark differs, text is missing or extra, the title is wrong, or the faction icons at the end of the rule don't match the “Faction icons” list.</li>
+    <li><strong>Expected differences, not problems:</strong> small capitals appear as normal lowercase; item pictures appear as labels such as <span class="chip item">boots</span>; italic reminder text appears in grey italics.</li>
+    <li>When you're done, press <strong>Copy results</strong> and paste the text back into the chat.</li>
+  </ul>
+</header>
+
+<div class="bar">
+  <div class="wrap">
+    <div class="progress" aria-live="polite">
+      <span><b id="n-done">0</b> of {{COUNT}} checked</span>
+      <span class="n-ok"><b id="n-ok">0</b> match</span>
+      <span class="n-bad"><b id="n-bad">0</b> problems</span>
+    </div>
+    <span class="spacer"></span>
+    <label for="filter">Show
+      <select id="filter">
+        <option value="all">All records</option>
+        <option value="todo">Not yet checked</option>
+        <option value="bad">Problems only</option>
+      </select>
+    </label>
+    <button type="button" class="copy" id="copy">Copy results</button>
+    <span class="copied" id="copied" hidden>Copied</span>
+    <textarea id="fallback" hidden readonly aria-label="Review results"></textarea>
+  </div>
+</div>
+
+<main class="wrap" id="cards">
+{{CARDS}}
+</main>
+
+<script>
+(() => {
+  const KEY = "root-law-review-{{VERSION}}";
+  let state = {};
+  try { state = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { state = {}; }
+  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} };
+  const cards = [...document.querySelectorAll(".card")];
+
+  function paint(card) {
+    const s = state[card.dataset.id] || {};
+    card.dataset.state = s.v || "";
+    card.querySelector(".ok").setAttribute("aria-pressed", String(s.v === "ok"));
+    card.querySelector(".bad").setAttribute("aria-pressed", String(s.v === "bad"));
+    const note = card.querySelector(".note");
+    note.hidden = s.v !== "bad";
+    if (note.value !== (s.note || "")) note.value = s.note || "";
+  }
+  function counts() {
+    let ok = 0, bad = 0;
+    cards.forEach(c => { const v = (state[c.dataset.id] || {}).v; if (v === "ok") ok++; if (v === "bad") bad++; });
+    document.getElementById("n-ok").textContent = ok;
+    document.getElementById("n-bad").textContent = bad;
+    document.getElementById("n-done").textContent = ok + bad;
+  }
+  function applyFilter() {
+    const f = document.getElementById("filter").value;
+    cards.forEach(c => {
+      const v = (state[c.dataset.id] || {}).v;
+      c.hidden = f === "todo" ? !!v : f === "bad" ? v !== "bad" : false;
+    });
+  }
+
+  cards.forEach(card => {
+    const id = card.dataset.id;
+    paint(card);
+    card.querySelector(".ok").addEventListener("click", () => {
+      state[id] = (state[id] || {}).v === "ok" ? {} : { v: "ok" };
+      save(); paint(card); counts();
+    });
+    card.querySelector(".bad").addEventListener("click", () => {
+      const cur = state[id] || {};
+      state[id] = cur.v === "bad" ? {} : { v: "bad", note: cur.note || "" };
+      save(); paint(card); counts();
+      if (state[id].v === "bad") card.querySelector(".note").focus();
+    });
+    card.querySelector(".note").addEventListener("input", e => {
+      state[id] = { v: "bad", note: e.target.value }; save();
+    });
+  });
+  counts();
+  document.getElementById("filter").addEventListener("change", applyFilter);
+
+  document.getElementById("copy").addEventListener("click", () => {
+    const ok = [], bad = [], todo = [];
+    cards.forEach(c => {
+      const s = state[c.dataset.id] || {};
+      if (s.v === "ok") ok.push(c.dataset.label);
+      else if (s.v === "bad") bad.push(`- ${c.dataset.label}${s.note ? ": " + s.note : ""}`);
+      else todo.push(c.dataset.label);
+    });
+    const text = [
+      `Law of Root extraction review ({{VERSION}}): ${ok.length} match, ${bad.length} problems, ${todo.length} not checked.`,
+      bad.length ? "Problems:\n" + bad.join("\n") : "Problems: none",
+      todo.length ? "Not checked: " + todo.map(l => l.split(" ")[0]).join(", ") : ""
+    ].filter(Boolean).join("\n");
+    const fb = document.getElementById("fallback");
+    const done = () => { const m = document.getElementById("copied"); m.hidden = false; setTimeout(() => { m.hidden = true; }, 2000); };
+    const fallback = () => { fb.value = text; fb.hidden = false; fb.focus(); fb.select(); };
+    try {
+      navigator.clipboard.writeText(text).then(done, fallback);
+    } catch (e) { fallback(); }
+  });
+})();
+</script>

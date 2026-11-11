@@ -21,7 +21,7 @@ import { ChevronIcon, CollapseAllIcon, FileTypeIcon, FolderIcon } from "./icons"
 
 const INDENT = 12;
 const ROW =
-  "group relative flex h-[26px] w-full items-center gap-1.5 pr-2 text-left text-[13px] leading-none outline-none transition-colors duration-75 " +
+  "group relative flex h-[26px] w-full items-center gap-1.5 pr-2 text-left text-[13px] leading-normal outline-none transition-colors duration-75 " +
   "focus-visible:bg-studio-focus focus-visible:shadow-[inset_0_0_0_1px_theme(colors.studio.accent)] max-md:h-9 max-md:text-[14px]";
 
 // Up/Down move between visible rows, Left/Right collapse/expand folders, Home/End jump.

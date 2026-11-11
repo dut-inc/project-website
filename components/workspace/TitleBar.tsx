@@ -32,7 +32,7 @@ export default function TitleBar() {
         className="flex shrink-0 items-center gap-2 rounded-md px-1 py-1 outline-none focus-visible:shadow-[inset_0_0_0_1px_theme(colors.studio.accent)]"
       >
         <LogoMark className="h-[22px] w-[22px]" />
-        <span className="font-display text-[17px] italic leading-none tracking-tight text-studio-bright">
+        <span className="font-brand text-[18px] font-medium leading-none text-studio-bright">
           Perpetual <span className="text-studio-link">Studio</span>
         </span>
       </Link>
