@@ -15,7 +15,7 @@ import {
   verificationOf,
   type Section,
 } from "@/lib/root/law";
-import { LAW_PDF_HREF, ROOT_HREF, TOPICS_HREF, chapterHref, factionHref, topicHref } from "@/lib/root/paths";
+import { CONNECT_HREF, LAW_PDF_HREF, ROOT_HREF, TOPICS_HREF, chapterHref, factionHref, topicHref } from "@/lib/root/paths";
 import { topics } from "@/lib/root/topics";
 
 const DESCRIPTION = `Every rule in the Law of Root (${SOURCE.printed_date}), in book order. Search it, or open any rule by its number.`;
@@ -74,7 +74,14 @@ export default function RootEncyclopediaPage() {
         href={ROOT_HREF}
         meta={[`Law of Root · ${SOURCE.printed_date}`, `${rules.length} entries`]}
         description={DESCRIPTION}
-        actions={<HeaderLink href={LAW_PDF_HREF}>Law PDF</HeaderLink>}
+        actions={
+          <>
+            <Link href={CONNECT_HREF} className="hover:text-studio-link">
+              Use with your AI
+            </Link>
+            <HeaderLink href={LAW_PDF_HREF}>Law PDF</HeaderLink>
+          </>
+        }
       />
 
       <SearchBox ids={rules.map((r) => r.id)} />
