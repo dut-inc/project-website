@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useMemo, useState } from "react";
 import {
   getDailyWuwaForteResonator,
@@ -14,7 +13,7 @@ import {
 } from "@/lib/dleWuwa";
 
 const MAX_GUESSES = 6;
-const CELL_CLASS = "flex min-h-20 w-full items-center justify-center rounded border px-2 text-center";
+const CELL_CLASS = "flex min-h-14 w-full items-center justify-center rounded border px-2 text-center";
 
 type GameMode = "resonator" | "forte";
 type GuessResult = "correct" | "partial" | "wrong";
@@ -105,7 +104,7 @@ function Icon({ src, alt, size = 76 }: { src: string | null; alt: string; size?:
 function AttributeIcon({ value, icon, label }: { value: string | null; icon: string | null; label: string }) {
   return (
     <>
-      {icon ? <Icon src={icon} alt={`${value ?? label} ${label.toLowerCase()} icon`} size={48} /> : <span className="text-center text-xs text-cream/65">{value ?? "—"}</span>}
+      {icon ? <Icon src={icon} alt={`${value ?? label} ${label.toLowerCase()} icon`} size={36} /> : <span className="text-center text-xs text-cream/65">{value ?? "—"}</span>}
       <span className="sr-only">{value ?? "Unknown"}</span>
     </>
   );
@@ -242,21 +241,14 @@ export default function WuwaDle() {
 
   return (
     <>
-      <Link
-        href="/dle"
-        className="mb-6 inline-block font-mono text-xs uppercase tracking-widest text-cream/50 hover:text-pinGold"
-      >
-        &larr; All DLE games
-      </Link>
-      <section className="mx-auto mt-8 max-w-[90rem]" aria-labelledby="wuwa-dle-heading">
-      <div className="rounded-lg border border-cream/15 bg-wall2/80 p-5 shadow-[0_18px_34px_-16px_rgba(0,0,0,0.75)] sm:p-8">
-        <div className="flex flex-wrap items-end justify-between gap-4 border-b border-cream/10 pb-5">
+      <section aria-labelledby="wuwa-dle-heading">
+      <div className="rounded-lg border border-cream/15 bg-wall2/80 p-4 shadow-[0_18px_34px_-16px_rgba(0,0,0,0.75)] sm:p-5">
+        <div className="flex flex-wrap items-end justify-between gap-4 border-b border-cream/10 pb-3">
           <div>
-            <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-pinTeal">WUWADLE</p>
-            <h1 id="wuwa-dle-heading" className="mt-2 font-dle text-3xl text-cream sm:text-4xl">
+            <h2 id="wuwa-dle-heading" className="font-dle text-2xl text-cream sm:text-3xl">
               {mode === "resonator" ? "Who is today's Resonator?" : "Which Resonator owns this ability?"}
-            </h1>
-            <p className="mt-2 text-sm text-cream/65">
+            </h2>
+            <p className="mt-1 text-sm text-cream/65">
               {mode === "resonator" ? "Guess the Wuthering Waves Resonator." : "Use the clues to identify the Forte Circuit ability's owner."}
             </p>
           </div>
@@ -266,11 +258,11 @@ export default function WuwaDle() {
           </div>
         </div>
 
-        <div className="mt-5 flex flex-wrap gap-2" aria-label="Wuwadle game modes">
+        <div className="mt-3 flex flex-wrap gap-2" aria-label="Wuwadle game modes">
           <button
             type="button"
             onClick={() => switchMode("resonator")}
-            className={`min-h-11 rounded-full border px-6 py-3 font-mono text-xs uppercase tracking-widest transition-colors ${mode === "resonator" ? "border-pinGold bg-pinGold text-wall" : "border-cream/20 text-cream/65 hover:border-pinGold hover:text-pinGold"}`}
+            className={`min-h-10 rounded-full border px-5 py-2 font-mono text-xs uppercase tracking-widest transition-colors ${mode === "resonator" ? "border-pinGold bg-pinGold text-wall" : "border-cream/20 text-cream/65 hover:border-pinGold hover:text-pinGold"}`}
             aria-pressed={mode === "resonator"}
           >
             Resonator
@@ -279,7 +271,7 @@ export default function WuwaDle() {
           <button
             type="button"
             onClick={() => switchMode("forte")}
-            className={`min-h-11 rounded-full border px-6 py-3 font-mono text-xs uppercase tracking-widest transition-colors ${mode === "forte" ? "border-pinGold bg-pinGold text-wall" : "border-cream/20 text-cream/65 hover:border-pinGold hover:text-pinGold"}`}
+            className={`min-h-10 rounded-full border px-5 py-2 font-mono text-xs uppercase tracking-widest transition-colors ${mode === "forte" ? "border-pinGold bg-pinGold text-wall" : "border-cream/20 text-cream/65 hover:border-pinGold hover:text-pinGold"}`}
             aria-pressed={mode === "forte"}
           >
             Forte Circuit
@@ -287,44 +279,22 @@ export default function WuwaDle() {
           </button>
         </div>
 
-        <details className="mt-6 rounded-md border border-pinGold/30 bg-pinGold/5">
-          <summary className="cursor-pointer px-4 py-3 font-mono text-[10px] uppercase tracking-widest text-pinGold">Developer tools</summary>
-          <div className="grid gap-4 border-t border-pinGold/20 p-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto] sm:items-end">
-            <div>
-              <label htmlFor="wuwa-dev-date" className="font-mono text-[10px] uppercase tracking-widest text-cream/60">Daily date (Pacific)</label>
-              <div className="mt-2 flex gap-2">
-                <button type="button" onClick={() => setDevDate((current) => shiftDate(current, -1))} className="min-h-11 rounded border border-cream/20 px-3 font-mono text-sm text-cream/75 hover:border-pinGold hover:text-pinGold" aria-label="Previous day">&larr;</button>
-                <input id="wuwa-dev-date" type="date" value={devDate} onChange={(event) => setDevDate(event.target.value)} className="min-h-11 min-w-0 flex-1 rounded border border-cream/20 bg-wall/70 px-3 text-sm text-cream" />
-                <button type="button" onClick={() => setDevDate((current) => shiftDate(current, 1))} className="min-h-11 rounded border border-cream/20 px-3 font-mono text-sm text-cream/75 hover:border-pinGold hover:text-pinGold" aria-label="Next day">&rarr;</button>
-              </div>
-            </div>
-            <div>
-              <label htmlFor="wuwa-dev-resonator" className="font-mono text-[10px] uppercase tracking-widest text-cream/60">Custom Resonator target</label>
-              <select id="wuwa-dev-resonator" value={devResonatorName} onChange={(event) => setDevResonatorName(event.target.value)} className="mt-2 min-h-11 w-full rounded border border-cream/20 bg-wall/70 px-3 text-sm text-cream">
-                <option value="">Use daily Resonator</option>
-                {WUWA_RESONATORS.map((resonator) => <option key={resonator.name} value={resonator.name}>{resonator.name}</option>)}
-              </select>
-            </div>
-            <button type="button" onClick={applyTarget} className="min-h-11 rounded-full bg-pinGold px-6 py-3 font-mono text-xs uppercase tracking-widest text-wall hover:bg-cream">Apply target</button>
-          </div>
-          <p className="px-4 pb-3 font-mono text-[9px] uppercase tracking-wider text-cream/45">Applying a target clears both game modes. Controls are local to this browser session.</p>
-        </details>
 
         {mode === "forte" && (
-          <div className="mt-6 flex flex-col items-center gap-4 rounded-md border border-pinGold/35 bg-pinGold/5 p-5 text-center sm:flex-row sm:text-left">
-            <div className="flex h-24 w-24 shrink-0 items-center justify-center rounded-md border border-pinGold/30 bg-wall/50">
-              <Icon src={ability?.icon ?? null} alt="" size={84} />
+          <div className="mt-3 flex flex-col items-center gap-4 rounded-md border border-pinGold/35 bg-pinGold/5 p-3 text-center sm:flex-row sm:text-left">
+            <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-md border border-pinGold/30 bg-wall/50">
+              <Icon src={ability?.icon ?? null} alt="" size={56} />
             </div>
             <div>
               <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-pinGold">Forte Circuit ability</p>
-              <p className="mt-2 font-display text-2xl text-cream">{ability?.name ?? "Unknown ability"}</p>
+              <p className="mt-1 font-display text-xl text-cream">{ability?.name ?? "Unknown ability"}</p>
               <p className="mt-1 text-sm text-cream/55">Which Resonator uses this ability?</p>
             </div>
           </div>
         )}
 
         <div
-          className="relative mt-6"
+          className="relative mt-4"
           onFocus={() => setInputFocused(true)}
           onBlur={(event) => {
             if (!event.currentTarget.contains(event.relatedTarget)) setInputFocused(false);
@@ -354,7 +324,7 @@ export default function WuwaDle() {
                 setHighlightedIndex((index) => Math.max(index - 1, 0));
               }
             }}
-            className="mt-2 min-h-12 w-full rounded-md border border-cream/20 bg-wall/70 px-4 text-sm text-cream placeholder:text-cream/35 disabled:opacity-50"
+            className="mt-1.5 min-h-11 w-full rounded-md border border-cream/20 bg-wall/70 px-4 text-sm text-cream placeholder:text-cream/35 disabled:opacity-50"
           />
           {inputFocused && suggestions.length > 0 && (
             <div className="absolute inset-x-0 top-full z-10 mt-2 overflow-hidden rounded-md border border-cream/15 bg-wall shadow-xl">
@@ -370,7 +340,7 @@ export default function WuwaDle() {
         </div>
 
         {notice && (
-          <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border border-pinGold/50 bg-pinGold/10 px-4 py-3 text-sm text-cream" role="status">
+          <div className="mt-3 flex flex-wrap items-center justify-between gap-3 border border-pinGold/50 bg-pinGold/10 px-4 py-2 text-sm text-cream" role="status">
             <span>{notice}</span>
             {mode === "resonator" && isComplete && (
               <button type="button" onClick={continueToForteMode} className="font-mono text-[10px] uppercase tracking-widest text-pinGold hover:text-cream">Continue to Forte</button>
@@ -420,36 +390,59 @@ export default function WuwaDle() {
           </div>
         )}
 
-        <div className="mt-7 overflow-x-auto">
-          <div className="min-w-[1060px]">
-            <div className="grid grid-cols-[minmax(210px,1.4fr)_144px_repeat(5,minmax(116px,1fr))] gap-2 border-b border-cream/10 px-2 pb-3 font-mono text-[9px] uppercase tracking-widest text-cream/45">
+        <div className="mt-4 overflow-x-auto">
+          <div className="min-w-[720px]">
+            <div className="grid grid-cols-[minmax(140px,1.4fr)_64px_repeat(5,minmax(84px,1fr))] gap-2 border-b border-cream/10 px-2 pb-2 font-mono text-[9px] uppercase tracking-widest text-cream/45">
               <span>Name</span><span>Icon</span>{fields.map((field) => <span key={field.key}>{field.label}</span>)}
             </div>
-            <div className="space-y-2 pt-2">
+            <div className="space-y-1.5 pt-1.5">
               {[...guesses].reverse().map((guess) => (
-                <div key={guess.resonator.name} className="grid grid-cols-[minmax(210px,1.4fr)_144px_repeat(5,minmax(116px,1fr))] items-center gap-2 px-2 text-sm">
+                <div key={guess.resonator.name} className="grid grid-cols-[minmax(140px,1.4fr)_64px_repeat(5,minmax(84px,1fr))] items-center gap-2 px-2 text-sm">
                   <span className={`${CELL_CLASS} justify-start border-cream/10 bg-wall/20 font-medium text-cream`}>{guess.resonator.name}</span>
-                  <span className={`${CELL_CLASS} border-cream/10 bg-wall/20`}><Icon src={guess.resonator.icon} alt={`${guess.resonator.name} icon`} size={76} /></span>
+                  <span className={`${CELL_CLASS} border-cream/10 bg-wall/20`}><Icon src={guess.resonator.icon} alt={`${guess.resonator.name} icon`} size={48} /></span>
                   <span className={`${CELL_CLASS} text-sm ${resultClass(guess.matches.quality)}`}>{guess.resonator.quality ?? "—"}★</span>
                   <span className={`${CELL_CLASS} ${resultClass(guess.matches.element)}`} title={guess.resonator.element ?? "Unknown element"}><AttributeIcon value={guess.resonator.element} icon={guess.resonator.element_icon} label="element" /></span>
                   <span className={`${CELL_CLASS} ${resultClass(guess.matches.weapon)}`} title={guess.resonator.weapon ?? "Unknown weapon"}><AttributeIcon value={guess.resonator.weapon} icon={guess.resonator.weapon_icon} label="weapon" /></span>
                   <span className={`${CELL_CLASS} text-xs ${resultClass(guess.matches.affiliation)}`} title={guess.resonator.affiliation ?? "Unknown affiliation"}>{guess.resonator.affiliation ?? "—"}</span>
                   <span className={`${CELL_CLASS} flex-col text-xs ${resultClass(guess.matches.version)}`} title={guess.versionDirection === "same" ? "Exact version match" : `The answer is ${guess.versionDirection === "higher" ? "lower" : "higher"} than this guess`}>
                     <span>{guess.resonator.version ?? "—"}</span>
-                    {guess.versionDirection !== "same" && <span className="mt-1 font-mono text-[9px] uppercase tracking-wider text-pinGold">{guess.versionDirection === "higher" ? "↓ Lower" : "↑ Higher"}</span>}
+                    {guess.versionDirection !== "same" && <span className="mt-0.5 font-mono text-[9px] uppercase tracking-wider text-pinGold">{guess.versionDirection === "higher" ? "↓ Lower" : "↑ Higher"}</span>}
                   </span>
                 </div>
               ))}
-              {guesses.length === 0 && <p className="border border-dashed border-cream/15 px-4 py-10 text-center text-sm text-cream/45">Your clues will appear here after the first guess.</p>}
+              {guesses.length === 0 && <p className="border border-dashed border-cream/15 px-4 py-5 text-center text-sm text-cream/45">Your clues will appear here after the first guess.</p>}
             </div>
           </div>
         </div>
 
-        <div className="mt-7 grid gap-4 border-t border-cream/10 pt-5 text-xs text-cream/55 sm:grid-cols-3">
+        <div className="mt-4 flex flex-wrap gap-x-6 gap-y-1 border-t border-cream/10 pt-3 text-xs text-cream/55">
           <p><span className="mr-2 inline-block h-2.5 w-2.5 rounded-sm bg-pinTeal align-middle" />Exact match</p>
           <p><span className="mr-2 inline-block h-2.5 w-2.5 rounded-sm bg-pinGold align-middle" />Partial match or version direction</p>
           <p><span className="mr-2 inline-block h-2.5 w-2.5 rounded-sm bg-pinRed align-middle" />Wrong value</p>
         </div>
+
+        <details className="mt-3 rounded-md border border-pinGold/30 bg-pinGold/5">
+          <summary className="cursor-pointer px-3 py-2 font-mono text-[10px] uppercase tracking-widest text-pinGold">Developer tools</summary>
+          <div className="grid gap-4 border-t border-pinGold/20 p-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto] sm:items-end">
+            <div>
+              <label htmlFor="wuwa-dev-date" className="font-mono text-[10px] uppercase tracking-widest text-cream/60">Daily date (Pacific)</label>
+              <div className="mt-2 flex gap-2">
+                <button type="button" onClick={() => setDevDate((current) => shiftDate(current, -1))} className="min-h-11 rounded border border-cream/20 px-3 font-mono text-sm text-cream/75 hover:border-pinGold hover:text-pinGold" aria-label="Previous day">&larr;</button>
+                <input id="wuwa-dev-date" type="date" value={devDate} onChange={(event) => setDevDate(event.target.value)} className="min-h-11 min-w-0 flex-1 rounded border border-cream/20 bg-wall/70 px-3 text-sm text-cream" />
+                <button type="button" onClick={() => setDevDate((current) => shiftDate(current, 1))} className="min-h-11 rounded border border-cream/20 px-3 font-mono text-sm text-cream/75 hover:border-pinGold hover:text-pinGold" aria-label="Next day">&rarr;</button>
+              </div>
+            </div>
+            <div>
+              <label htmlFor="wuwa-dev-resonator" className="font-mono text-[10px] uppercase tracking-widest text-cream/60">Custom Resonator target</label>
+              <select id="wuwa-dev-resonator" value={devResonatorName} onChange={(event) => setDevResonatorName(event.target.value)} className="mt-2 min-h-11 w-full rounded border border-cream/20 bg-wall/70 px-3 text-sm text-cream">
+                <option value="">Use daily Resonator</option>
+                {WUWA_RESONATORS.map((resonator) => <option key={resonator.name} value={resonator.name}>{resonator.name}</option>)}
+              </select>
+            </div>
+            <button type="button" onClick={applyTarget} className="min-h-11 rounded-full bg-pinGold px-6 py-3 font-mono text-xs uppercase tracking-widest text-wall hover:bg-cream">Apply target</button>
+          </div>
+          <p className="px-4 pb-3 font-mono text-[9px] uppercase tracking-wider text-cream/45">Applying a target clears both game modes. Controls are local to this browser session.</p>
+        </details>
       </div>
       </section>
     </>

@@ -1,15 +1,15 @@
-import Link from "next/link";
+import PageHeader from "@/components/PageHeader";
 import ConservationMap from "@/components/conservation/ConservationMap";
+import { pageMetadata } from "@/lib/metadata";
+
+const DESCRIPTION = "shared geotagged map of animal sightings that we see";
+
+export const metadata = pageMetadata("/conservation/sightings", { description: DESCRIPTION });
 
 export default function ConservationSightingsPage() {
   return (
     <div>
-      <Link
-        href="/conservation"
-        className="mb-6 inline-block font-mono text-xs uppercase tracking-widest text-cream/50 hover:text-pinGold"
-      >
-        &larr; Back to Nature and Conservation
-      </Link>
+      <PageHeader href="/conservation/sightings" description={DESCRIPTION} />
       <ConservationMap />
     </div>
   );

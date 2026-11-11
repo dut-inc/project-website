@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { Caveat, Fraunces, IBM_Plex_Sans, IBM_Plex_Mono, Playfair_Display, Oswald} from "next/font/google";
+import { siteMetadata } from "@/lib/metadata";
+import { Caveat, Fraunces, IBM_Plex_Sans, IBM_Plex_Mono, Pixelify_Sans, Playfair_Display, Oswald} from "next/font/google";
 import "./globals.css";
-import Nav from "@/components/Nav";
+import WorkspaceShell from "@/components/workspace/WorkspaceShell";
 
 const display = Fraunces({
   subsets: ["latin"],
@@ -37,10 +38,14 @@ const sign = Caveat({
   variable: "--font-sign",
 });
 
-export const metadata: Metadata = {
-  title: "Ibis Board",
-  description: "Our projects!",
-};
+// Pixel wordmark for "Perpetual Studio" in the title bar.
+const brand = Pixelify_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-brand",
+});
+
+export const metadata: Metadata = siteMetadata();
 
 export default function RootLayout({
   children,
@@ -50,10 +55,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${display.variable} ${body.variable} ${mono.variable} ${dleHeading.variable} ${sign.variable} font-body wall-bg text-cream min-h-screen`}
+        className={`${display.variable} ${body.variable} ${mono.variable} ${dleHeading.variable} ${sign.variable} ${brand.variable} font-body bg-studio-editor text-cream min-h-screen`}
       >
-        <Nav />
-        <main className="relative mx-auto max-w-7xl px-4 pb-16 pt-6 sm:px-8">{children}</main>
+        <WorkspaceShell>{children}</WorkspaceShell>
       </body>
     </html>
   );

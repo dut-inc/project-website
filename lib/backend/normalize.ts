@@ -96,11 +96,6 @@ export function parseEspnPeriodClock(
   return { period: head, clock };
 }
 
-/** Full opponent display name from an ESPN competitor ("Seattle Seahawks"). */
-export function espnTeamDisplay(comp: { team?: { displayName?: string; shortDisplayName?: string } }): string {
-  return comp.team?.displayName ?? comp.team?.shortDisplayName ?? "Unknown";
-}
-
 /**
  * ESPN completed-game note: "Final" -> "F", "Final/OT" -> "OT", etc.
  * Matches the frontend's expectation (formatGameNote renders "F" as "Final").

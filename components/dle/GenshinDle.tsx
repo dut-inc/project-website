@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
 import { useMemo, useState } from "react";
 import {
@@ -12,8 +11,8 @@ import {
 } from "@/lib/dleGenshin";
 
 const MAX_GUESSES = 6;
-const CELL_CLASS = "flex h-20 w-full items-center justify-center rounded border px-2 text-center";
-const CLUE_CELL_CLASS = "flex h-20 w-full items-center justify-center rounded border px-2 text-center";
+const CELL_CLASS = "flex h-14 w-full items-center justify-center rounded border px-2 text-center";
+const CLUE_CELL_CLASS = "flex h-14 w-full items-center justify-center rounded border px-2 text-center";
 
 type GuessResult = "correct" | "partial" | "wrong";
 type VersionDirection = "higher" | "lower" | "same";
@@ -126,7 +125,7 @@ function AttributeIcon({
   return (
     <>
       {icon ? (
-        <Icon src={icon} alt={`${value} ${label.toLowerCase()} icon`} size={48} />
+        <Icon src={icon} alt={`${value} ${label.toLowerCase()} icon`} size={36} />
       ) : (
         <span className="text-center text-xs text-cream/65">{value}</span>
       )}
@@ -212,19 +211,12 @@ export default function GenshinDle() {
 
   return (
     <>
-      <Link
-        href="/dle"
-        className="mb-6 inline-block font-mono text-xs uppercase tracking-widest text-cream/50 hover:text-pinGold"
-      >
-        &larr; All DLE games
-      </Link>
-      <section className="mx-auto mt-8 max-w-6xl" aria-labelledby="genshin-dle-heading">
-      <div className="rounded-lg border border-cream/15 bg-wall2/80 p-5 shadow-[0_18px_34px_-16px_rgba(0,0,0,0.75)] sm:p-8">
-        <div className="flex flex-wrap items-end justify-between gap-4 border-b border-cream/10 pb-5">
+      <section aria-labelledby="genshin-dle-heading">
+      <div className="rounded-lg border border-cream/15 bg-wall2/80 p-4 shadow-[0_18px_34px_-16px_rgba(0,0,0,0.75)] sm:p-5">
+        <div className="flex flex-wrap items-end justify-between gap-4 border-b border-cream/10 pb-3">
           <div>
-            <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-pinTeal">JENSHINDLE</p>
-            <h1 id="genshin-dle-heading" className="mt-2 font-dle text-3xl text-cream sm:text-4xl">Who is today&apos;s character?</h1>
-            <p className="mt-2 text-sm text-cream/65">Guess the Genshin character.</p>
+            <h2 id="genshin-dle-heading" className="font-dle text-2xl text-cream sm:text-3xl">Who is today&apos;s character?</h2>
+            <p className="mt-1 text-sm text-cream/65">Guess the Genshin character.</p>
           </div>
           <div className="text-right font-mono text-[10px] uppercase tracking-widest text-cream/50">
             <p>Daily character</p>
@@ -232,46 +224,9 @@ export default function GenshinDle() {
           </div>
         </div>
 
-        <details className="mt-6 rounded-md border border-pinGold/30 bg-pinGold/5">
-          <summary className="cursor-pointer px-4 py-3 font-mono text-[10px] uppercase tracking-widest text-pinGold">Developer tools</summary>
-          <div className="grid gap-4 border-t border-pinGold/20 p-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto] sm:items-end">
-            <div>
-              <label htmlFor="genshin-dev-date" className="font-mono text-[10px] uppercase tracking-widest text-cream/60">Daily date (Pacific)</label>
-              <div className="mt-2 flex gap-2">
-                <button type="button" onClick={() => setDevDate((current) => shiftDate(current, -1))} className="min-h-11 rounded border border-cream/20 px-3 font-mono text-sm text-cream/75 hover:border-pinGreen hover:text-pinGreen" aria-label="Previous day">&larr;</button>
-                <input id="genshin-dev-date" type="date" value={devDate} onChange={(event) => setDevDate(event.target.value)} className="min-h-11 min-w-0 flex-1 rounded border border-cream/20 bg-wall/70 px-3 text-sm text-cream" />
-                <button type="button" onClick={() => setDevDate((current) => shiftDate(current, 1))} className="min-h-11 rounded border border-cream/20 px-3 font-mono text-sm text-cream/75 hover:border-pinGreen hover:text-pinGreen" aria-label="Next day">&rarr;</button>
-              </div>
-            </div>
-            <div>
-              <label htmlFor="genshin-dev-character" className="font-mono text-[10px] uppercase tracking-widest text-cream/60">Custom character</label>
-              <select id="genshin-dev-character" value={devCharacterName} onChange={(event) => setDevCharacterName(event.target.value)} className="mt-2 min-h-11 w-full rounded border border-cream/20 bg-wall/70 px-3 text-sm text-cream">
-                <option value="">Use character for selected date</option>
-                {GENSHIN_CHARACTERS.map((character) => <option key={character.name} value={character.name}>{character.name}</option>)}
-              </select>
-            </div>
-            <button
-              type="button"
-              onClick={() => {
-                setActiveDate(devDate);
-                setActiveCharacterName(devCharacterName || null);
-                setRandomCharacterName(null);
-                setGuesses([]);
-                setQuery("");
-                setIsComplete(false);
-                setResult(null);
-                setNotice(devCharacterName ? `Custom target set to ${devCharacterName}.` : `Daily target set to ${devDate}.`);
-              }}
-              className="min-h-11 rounded-full bg-pinGold px-6 py-3 font-mono text-xs uppercase tracking-widest text-wall hover:bg-cream"
-            >
-              Apply target
-            </button>
-          </div>
-          <p className="px-4 pb-3 font-mono text-[9px] uppercase tracking-wider text-cream/45">Applying a target clears the current guesses. Controls are local to this browser session.</p>
-        </details>
 
         <div
-          className="relative mt-6"
+          className="relative mt-4"
           onFocus={() => setInputFocused(true)}
           onBlur={(event) => {
             if (!event.currentTarget.contains(event.relatedTarget)) {
@@ -303,7 +258,7 @@ export default function GenshinDle() {
                 setHighlightedIndex((index) => Math.max(index - 1, 0));
               }
             }}
-            className="mt-2 min-h-12 w-full rounded-md border border-cream/20 bg-wall/70 px-4 text-sm text-cream placeholder:text-cream/35 disabled:opacity-50"
+            className="mt-1.5 min-h-11 w-full rounded-md border border-cream/20 bg-wall/70 px-4 text-sm text-cream placeholder:text-cream/35 disabled:opacity-50"
           />
           {inputFocused && suggestions.length > 0 && (
             <div className="absolute inset-x-0 top-full z-10 mt-2 overflow-hidden rounded-md border border-cream/15 bg-wall shadow-xl">
@@ -327,7 +282,7 @@ export default function GenshinDle() {
         </div>
 
         {notice && (
-          <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border border-pinGold/50 bg-pinGold/10 px-4 py-3 text-sm text-cream" role="status">
+          <div className="mt-3 flex flex-wrap items-center justify-between gap-3 border border-pinGold/50 bg-pinGold/10 px-4 py-2 text-sm text-cream" role="status">
             <span>{notice}</span>
             <button type="button" onClick={() => resetGame()} className="font-mono text-[10px] uppercase tracking-widest text-pinGold hover:text-cream">New preview</button>
           </div>
@@ -378,18 +333,18 @@ export default function GenshinDle() {
           </div>
         )}
 
-        <div className="mt-7 overflow-x-auto">
-          <div className="min-w-[1060px]">
-            <div className="grid grid-cols-[minmax(210px,1.4fr)_144px_repeat(5,minmax(116px,1fr))] gap-2 border-b border-cream/10 px-2 pb-3 font-mono text-[9px] uppercase tracking-widest text-cream/45">
+        <div className="mt-4 overflow-x-auto">
+          <div className="min-w-[720px]">
+            <div className="grid grid-cols-[minmax(140px,1.4fr)_64px_repeat(5,minmax(84px,1fr))] gap-2 border-b border-cream/10 px-2 pb-2 font-mono text-[9px] uppercase tracking-widest text-cream/45">
               <span>Name</span>
               <span>Icon</span>
               {fields.map((field) => <span key={field.key}>{field.label}</span>)}
             </div>
-            <div className="space-y-2 pt-2">
+            <div className="space-y-1.5 pt-1.5">
               {[...guesses].reverse().map((guess) => (
-                <div key={guess.character.name} className="grid grid-cols-[minmax(210px,1.4fr)_144px_repeat(5,minmax(116px,1fr))] items-center gap-2 px-2 text-sm">
+                <div key={guess.character.name} className="grid grid-cols-[minmax(140px,1.4fr)_64px_repeat(5,minmax(84px,1fr))] items-center gap-2 px-2 text-sm">
                   <span className={`${CELL_CLASS} justify-start border-cream/10 bg-wall/20 font-medium text-cream`}>{guess.character.name}</span>
-                  <span className={`${CELL_CLASS} border-cream/10 bg-wall/20`}><Icon src={guess.character.icon} alt={`${guess.character.name} icon`} size={76} /></span>
+                  <span className={`${CELL_CLASS} border-cream/10 bg-wall/20`}><Icon src={guess.character.icon} alt={`${guess.character.name} icon`} size={48} /></span>
                   <span className={`${CLUE_CELL_CLASS} text-sm ${resultClass(guess.matches.quality)}`}>{guess.character.quality ?? "—"}★</span>
                   <span className={`${CLUE_CELL_CLASS} ${resultClass(guess.matches.element)}`} title={guess.character.element}>
                     <AttributeIcon value={guess.character.element} icon={guess.character.element_icon} label="element" />
@@ -403,23 +358,61 @@ export default function GenshinDle() {
                   <span className={`${CLUE_CELL_CLASS} flex-col text-xs ${resultClass(guess.matches.version)}`} title={guess.versionDirection === "same" ? "Exact version match" : `The answer is ${guess.versionDirection === "higher" ? "lower" : "higher"} than this guess`}>
                     <span>{guess.character.version}</span>
                     {guess.versionDirection !== "same" && (
-                      <span className="mt-1 font-mono text-[9px] uppercase tracking-wider text-pinGold">
+                      <span className="mt-0.5 font-mono text-[9px] uppercase tracking-wider text-pinGold">
                         {guess.versionDirection === "higher" ? "↓ Lower" : "↑ Higher"}
                       </span>
                     )}
                   </span>
                 </div>
               ))}
-              {guesses.length === 0 && <p className="border border-dashed border-cream/15 px-4 py-10 text-center text-sm text-cream/45">Your clues will appear here after the first guess.</p>}
+              {guesses.length === 0 && <p className="border border-dashed border-cream/15 px-4 py-5 text-center text-sm text-cream/45">Your clues will appear here after the first guess.</p>}
             </div>
           </div>
         </div>
 
-        <div className="mt-7 grid gap-4 border-t border-cream/10 pt-5 text-xs text-cream/55 sm:grid-cols-3">
+        <div className="mt-4 flex flex-wrap gap-x-6 gap-y-1 border-t border-cream/10 pt-3 text-xs text-cream/55">
           <p><span className="mr-2 inline-block h-2.5 w-2.5 rounded-sm bg-pinTeal align-middle" />Exact match</p>
           <p><span className="mr-2 inline-block h-2.5 w-2.5 rounded-sm bg-pinGold align-middle" />Higher or lower version</p>
           <p><span className="mr-2 inline-block h-2.5 w-2.5 rounded-sm bg-pinRed align-middle" />Wrong value</p>
         </div>
+
+        <details className="mt-3 rounded-md border border-pinGold/30 bg-pinGold/5">
+          <summary className="cursor-pointer px-3 py-2 font-mono text-[10px] uppercase tracking-widest text-pinGold">Developer tools</summary>
+          <div className="grid gap-4 border-t border-pinGold/20 p-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto] sm:items-end">
+            <div>
+              <label htmlFor="genshin-dev-date" className="font-mono text-[10px] uppercase tracking-widest text-cream/60">Daily date (Pacific)</label>
+              <div className="mt-2 flex gap-2">
+                <button type="button" onClick={() => setDevDate((current) => shiftDate(current, -1))} className="min-h-11 rounded border border-cream/20 px-3 font-mono text-sm text-cream/75 hover:border-pinGreen hover:text-pinGreen" aria-label="Previous day">&larr;</button>
+                <input id="genshin-dev-date" type="date" value={devDate} onChange={(event) => setDevDate(event.target.value)} className="min-h-11 min-w-0 flex-1 rounded border border-cream/20 bg-wall/70 px-3 text-sm text-cream" />
+                <button type="button" onClick={() => setDevDate((current) => shiftDate(current, 1))} className="min-h-11 rounded border border-cream/20 px-3 font-mono text-sm text-cream/75 hover:border-pinGreen hover:text-pinGreen" aria-label="Next day">&rarr;</button>
+              </div>
+            </div>
+            <div>
+              <label htmlFor="genshin-dev-character" className="font-mono text-[10px] uppercase tracking-widest text-cream/60">Custom character</label>
+              <select id="genshin-dev-character" value={devCharacterName} onChange={(event) => setDevCharacterName(event.target.value)} className="mt-2 min-h-11 w-full rounded border border-cream/20 bg-wall/70 px-3 text-sm text-cream">
+                <option value="">Use character for selected date</option>
+                {GENSHIN_CHARACTERS.map((character) => <option key={character.name} value={character.name}>{character.name}</option>)}
+              </select>
+            </div>
+            <button
+              type="button"
+              onClick={() => {
+                setActiveDate(devDate);
+                setActiveCharacterName(devCharacterName || null);
+                setRandomCharacterName(null);
+                setGuesses([]);
+                setQuery("");
+                setIsComplete(false);
+                setResult(null);
+                setNotice(devCharacterName ? `Custom target set to ${devCharacterName}.` : `Daily target set to ${devDate}.`);
+              }}
+              className="min-h-11 rounded-full bg-pinGold px-6 py-3 font-mono text-xs uppercase tracking-widest text-wall hover:bg-cream"
+            >
+              Apply target
+            </button>
+          </div>
+          <p className="px-4 pb-3 font-mono text-[9px] uppercase tracking-wider text-cream/45">Applying a target clears the current guesses. Controls are local to this browser session.</p>
+        </details>
       </div>
       </section>
     </>

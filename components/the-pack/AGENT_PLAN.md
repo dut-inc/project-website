@@ -1,5 +1,7 @@
 # The Pack — multiplayer "The Gang: Deluxe" (v1 MVP)
 
+> **Update (clubhouse redesign):** The Pack now lives under Board Games at `/board-games/the-pack` (rooms at `/board-games/the-pack/room/<code>`), with `parent: "board-games"` in `lib/projects.ts`. The old `/the-pack` URLs redirect there via `next.config.js`. The routing notes below describe the original v1 decision.
+
 This is the implementation plan this feature was built from, checked in for reference. The live feature itself lives at `/the-pack` (top-level, not nested under `/board-games` — see the routing rationale below); this doc lives here because that's where it was asked to live.
 
 ## Context

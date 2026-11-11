@@ -1,0 +1,63 @@
+{
+  "counts": {
+    "sections": 184,
+    "rules": 707,
+    "by_type": {
+      "chapter-text": 4,
+      "glossary": 36,
+      "rule": 454,
+      "section-text": 78,
+      "sub-rule": 135
+    },
+    "factions": 13
+  },
+  "stopped_at_page": 30,
+  "duplicate_ids": [],
+  "unresolved_cross_references": [],
+  "unknown_item_glyphs": {},
+  "tables": [
+    "rule-5-2"
+  ],
+  "inline_icons": [
+    "rule-h-2-1",
+    "rule-h-2-2",
+    "rule-h-2-3",
+    "rule-h-2-4"
+  ],
+  "expansion_banners": [
+    {
+      "text": "The next two sections refer to factions in The Riverfolk Expansion.",
+      "expansion": "The Riverfolk Expansion",
+      "chapters": 2
+    },
+    {
+      "text": "The next two sections refer to factions in The Underworld Expansion.",
+      "expansion": "The Underworld Expansion",
+      "chapters": 2
+    },
+    {
+      "text": "The next two sections refer to factions in The Marauder Expansion",
+      "expansion": "The Marauder Expansion",
+      "chapters": 2
+    },
+    {
+      "text": "The next three sections refer to factions in The Homeland Expansion",
+      "expansion": "The Homeland Expansion",
+      "chapters": 3
+    }
+  ],
+  "numbering_gaps": [],
+  "warnings": [],
+  "known_limitations": [
+    "Small-caps key terms are encoded as ordinary lowercase text and are not marked.",
+    "Lowercase faction glyphs are mapped to the same faction as the uppercase glyph (checked visually for b, f, s).",
+    "Table layout is flattened to 'cell | cell' rows; check against the PDF."
+  ],
+  "conservation": {
+    "source_characters": 96077,
+    "output_characters": 96077,
+    "missing_from_output": {},
+    "extra_in_output": {},
+    "ok": true
+  }
+}

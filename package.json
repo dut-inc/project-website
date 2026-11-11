@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "test": "node --experimental-strip-types --test lib/backend/providers/normalize.test.ts lib/sports/nbaStandingsPicks.test.ts lib/thePackHandEvaluator.test.ts"
+    "test": "node --experimental-strip-types --test lib/backend/providers/normalize.test.ts lib/sports/nbaStandingsPicks.test.ts lib/thePackHandEvaluator.test.ts lib/root/law.test.ts lib/root/factions.test.ts lib/root/search.test.ts lib/root/topics.test.ts"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.4",

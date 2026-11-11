@@ -1,23 +1,15 @@
 import Link from "next/link";
 import CaseHeader from "@/components/CaseHeader";
+import { sectionMetadata } from "@/lib/metadata";
 import { DLE_GAMES } from "@/lib/dleGames";
-import { getProject } from "@/lib/projects";
+
+export const metadata = sectionMetadata("dle");
 
 export default function DlePage() {
-  const project = getProject("dle");
-
   return (
     <div>
-      <CaseHeader
-        caseNumber={project.case}
-        title={project.title}
-        status={project.status}
-        pin={project.pin}
-        paper={project.paper}
-        rotation={project.rotation}
-        description={project.summary}
-      />
-      <section className="mx-auto mt-10 max-w-3xl" aria-labelledby="dle-games-heading">
+      <CaseHeader projectId="dle" />
+      <section aria-labelledby="dle-games-heading">
         <div className="mb-6">
           <h2 id="dle-games-heading" className="font-display text-3xl italic text-cream sm:text-4xl">
             Choose a dle
