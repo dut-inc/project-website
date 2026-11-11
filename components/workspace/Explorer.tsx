@@ -107,6 +107,8 @@ function FileRow({
   const { activeHref, tabs, noteOpen, pinTab } = useWorkspace();
   const isActive = href === activeHref && tabs.includes(href);
   const isOpen = tabs.includes(href);
+  // The active page lives inside this file (e.g. a rule page in root.law).
+  const containsActive = !isActive && tabs.includes(activeHref) && resolvePath(activeHref).owner === href;
 
   return (
     <div className={`group/row relative ${isActive ? "bg-studio-selected" : "hover:bg-studio-hover"}`}>
@@ -123,13 +125,18 @@ function FileRow({
           noteOpen(href);
         }}
         onDoubleClick={() => pinTab(href)}
-        className={`${ROW} ${isActive ? "text-studio-bright" : "text-studio-text"}`}
+        className={`${ROW} ${isActive || containsActive ? "text-studio-bright" : "text-studio-text"}`}
         style={{ paddingLeft: 8 + depth * INDENT + 16 }}
       >
         <FileTypeIcon icon={icon} className="h-4 w-4 shrink-0" />
         <span className="truncate">{name}</span>
-        {isOpen && !isActive && (
-          <span aria-label="open in a tab" className="ml-auto h-1.5 w-1.5 shrink-0 rounded-full bg-studio-muted/70" />
+        {containsActive ? (
+          <span aria-hidden className="ml-auto h-1.5 w-1.5 shrink-0 rounded-full bg-studio-accent" />
+        ) : (
+          isOpen &&
+          !isActive && (
+            <span aria-label="open in a tab" className="ml-auto h-1.5 w-1.5 shrink-0 rounded-full bg-studio-muted/70" />
+          )
         )}
       </Link>
     </div>

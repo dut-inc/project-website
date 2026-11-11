@@ -125,6 +125,7 @@ const fileColors: Record<FileIcon, string> = {
   cards: "#e2b34b",
   puzzle: "#a08ad8",
   person: "#7cb7e8",
+  law: "#c9a66b",
   file: "#9a978d",
 };
 
@@ -205,6 +206,14 @@ function FileGlyph({ icon }: { icon: FileIcon }) {
         <>
           <circle cx="8" cy="5.5" r="2.75" {...stroke} />
           <path d="M3 13.5c.6-2.6 2.6-4 5-4s4.4 1.4 5 4" {...stroke} />
+        </>
+      );
+    case "law":
+      // An open book.
+      return (
+        <>
+          <path d="M8 4.5C6.6 3.4 4.6 3 2.5 3.2v9c2.1-.2 4.1.2 5.5 1.3 1.4-1.1 3.4-1.5 5.5-1.3v-9C11.4 3 9.4 3.4 8 4.5Z" {...stroke} />
+          <path d="M8 4.5v9" {...stroke} />
         </>
       );
     default:

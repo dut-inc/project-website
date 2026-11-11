@@ -71,11 +71,16 @@ The commands below use `.venv/bin/python`; on Windows use `.venv/Scripts/python`
 | Step | State |
 | --- | --- |
 | Phase 0: inspect the PDF | Done |
-| Extractor, tests, docs (`scripts/root/`) | Done, extractor 0.1.0 |
+| Extractor, tests, docs (`scripts/root/`) | Done, extractor 0.1.1 |
 | Sample review: 80 records (ch. 2, 6, G + 7 edge cases) | **Passed 2026-11-10**: 80 match, 0 problems |
+| Text review batch 2: 126 records (rest of ch. 1, 3, 4, 5 + ch. 7 Eyrie, 8 Alliance) | **Passed 2026-11-11**: all match (owner confirmed in chat). 206 of 707 records now verified. https://claude.ai/artifact/SCnc14yNCx8iaK4RvP2HzX |
+| Later text batches | **Stopped 2026-11-11 by owner decision.** The other 501 records rely on the automated checks (conservation, numbering, cross-references, tests) and say "Extracted automatically, not checked by hand". |
 | Full-book extraction (`data/root/law-2025-10-13/`) | Done: 707 records, clean report |
-| Editorial overlay (`data/root/editorial/`) | Not started |
-| MVP site at `/board-games/root` | **Next** |
+| Editorial overlay (`data/root/editorial/`) | `verification.json` (80 records verified), `topics.json` (**reviewed 2026-11-11**, 20/20 approved) |
+| MVP step 1: contents, chapter pages, rule pages, go-to-rule | **Done 2026-11-11** |
+| MVP step 2: faction pages (own rules, icon-marked rules, name mentions) | **Done 2026-11-11** |
+| MVP step 3: full-text search with faction/chapter filters | **Done 2026-11-11** |
+| MVP step 4: topics + "general rules that apply" (editorial; owner spot-checks) | **Done 2026-11-11** (owner approved all 20 cards) |
 | Edition diff script | Not started |
 | Phase 2+ (synonyms, semantic search, AI assistant) | Not started. AGENTS.md says not yet |
 
@@ -87,7 +92,7 @@ Branch: `root-encyclopedia` (from `main`).
 public/data/root/Root_2025_Law.pdf   source PDF; the site links source pages to it
 scripts/root/extract_law.py          PDF -> JSON (PyMuPDF)
 scripts/root/make_review.py          JSON + PDF -> review page (with review_template.html)
-scripts/root/test_extract_law.py     18 unittest tests
+scripts/root/test_extract_law.py     19 unittest tests
 scripts/root/README.md               full ingestion docs: schema, markup, re-import steps, PDF facts
 data/root/law-2025-10-13/            extracted data (generated; never hand-edit)
   source.json  sections.json  rules.json  factions.json  extraction-report.json
@@ -150,13 +155,122 @@ A good run prints:
 
 ### Source vs editorial
 
-`data/root/law-*/` is regenerated from the PDF. Topics, related-rule links,
-`verification_status` and notes go in `data/root/editorial/` (planned), keyed by
-rule `id`, so a re-import never overwrites human review. Rules in the reviewed
-sample can be marked verified there. Everything else stays `unreviewed` until
-checked.
+`data/root/law-*/` is regenerated from the PDF. Editorial data lives in
+`data/root/editorial/`, keyed by rule and section ids, so a re-import never
+overwrites human review:
 
-### Next: MVP site
+- `verification.json`: text checked by hand against the PDF. It holds the 80
+  sample records; everything else is unreviewed.
+- `topics.json`: the topic vocabulary (17 topics) plus the faction-page extras.
+  - A topic gathers rules in three ways:
+    - whole `sections`;
+    - single `rules`, each with a `reason`;
+    - `title_terms`, matched as whole words in printed titles;
+    - optionally `section_titles` too (for example, every "Faction Setup").
+  - Each topic has a `status` of `draft` or `reviewed`, and pages show it.
+  - Never present topics as rule text.
+
+**Topic review workflow.** Regenerate the review page with
+`node --experimental-strip-types scripts/root/make_topic_review.ts <out.html>` and publish
+it as an artifact. Owner review page (approved in full on 2026-11-11):
+https://claude.ai/artifact/SmnVMk1YzMhpuTMAx789Yi. When the owner pastes results back:
+- fix the problems they report;
+- set the approved topics and extras to `"status": "reviewed"`;
+- add a `review` note (date and result) to `topics.json`;
+- run `npm test`.
+
+**Manual text review is stopped** (owner decision, 2026-11-11). Don't propose more batches
+unless the owner asks, or a new edition or an extractor change makes them necessary.
+Consequences:
+- 206 records are verified, covering chapters 1–8 and G plus the first sample's edge cases.
+  The other 501 are automated extraction only. The site labels them
+  "Extracted automatically, not checked by hand".
+- For the future AI assistant (Phase 3), AGENTS.md says unverified records must not be
+  treated as authoritative. Decide with the owner before building it: either the assistant
+  says when an answer rests on an unchecked rule, or that rule's chapter gets reviewed first.
+- If a player reports a text error, fix the extractor, re-extract, and add a test for it.
+
+**Text review workflow** (kept for later use; the extracted text checked against the PDF):
+
+```
+.venv/bin/python scripts/root/make_review.py --pdf public/data/root/Root_2025_Law.pdf \
+    --data data/root/law-2025-10-13 --chapters 9,V \
+    --skip-verified data/root/editorial/verification.json \
+    --batch "Vagabond" --title "Root Law Review Batch 3" --out <out.html>
+```
+
+Publish the page as an artifact. Each batch saves its own progress in the reviewer's
+browser. When the owner pastes results back:
+- add each record marked "Matches" to `verification.json`, with a new entry in `reviews`
+  (id, date, method, scope, result). Records marked "Problem" stay out until fixed.
+- fix any problem in the extractor, not in the data, and re-extract;
+- update the expected verified count in `lib/root/law.test.ts` ("reviewed records are marked verified…"; 206 after batch 2).
+
+### Site code (steps 1–4)
+
+```
+lib/root/paths.ts       URLs, slug <-> printed number (no data; the shell uses it for tab names)
+lib/root/markup.ts      parses the text markup and cross-reference links; plainText() (pure)
+lib/root/law.ts         data access over the JSON + editorial overlay (server only)
+lib/root/factions.ts    faction page groups: rulesModifiedBy (icons), rulesNaming (name match)
+lib/root/topics.ts      topic membership, topicsOfRule, generalRulesFor(faction) (server only)
+lib/root/search.ts      search engine (pure; runs in the browser)
+lib/root/searchIndex.ts builds the index + faction scopes + topics at build time (server only)
+lib/root/*.test.ts      law, factions, search, topics; run by `npm test`
+lib/root/factionStyle.ts  chip colors/short names (presentation only, not from the PDF)
+components/root/        RuleText, RuleEntry, RuleCard, ChapterBody, Editorial, SearchBox, RootSearch, CopyLinkButton
+app/board-games/root/   page.tsx (contents), law/[chapter], rule/[slug], faction/[faction],
+                        topics, topic/[topic], search  (all static)
+scripts/root/make_topic_review.ts  owner review page for topics.json
+```
+
+- URLs: `/board-games/root/law/6`, `/board-games/root/rule/6-2-3`,
+  `/board-games/root/faction/vagabond`, `/board-games/root/topic/battle`,
+  `/board-games/root/search?q=&faction=&chapter=&topic=`.
+- Faction page order (per AGENTS.md):
+  1. faction rules;
+  2. **general rules that apply**:
+     - the rules its chapter cites (from the Law);
+     - by topic: for each topic where the faction has its own rule, that topic's core and
+       glossary rules;
+     - extras: Appendix V for the Vagabond and K for the Knaves;
+  3. rules it changes (icons);
+  4. named elsewhere.
+
+  Anchors: `#faction-rules`, `#general`, `#changes`, `#named`. Section anchors use the
+  section id (`#section-6-2`) and rule anchors use the rule id.
+- Topic tags on rule pages, the topic filter in search, and topic pages all come from
+  `topics.ts`. A sub-rule inherits its parent's topics.
+- The explorer file is `root.law`. `lib/workspace.ts` gained `pages` on a file, which names
+  routes under it without listing them in the tree. Tabs show names like `6.2.3.law`,
+  `chapter-6.law`, `vagabond.faction`, `search.law`, `topics.law` and `battle.topic`.
+- How search works:
+  - The search page ships the whole index (about 300 KB before compression) and searches in
+    the browser.
+  - Query language: a rule number lists that rule, then the rules under it. Words must all
+    match, with prefixes and simple plurals counting. Text in "quotes" matches as a phrase.
+  - Ranking: a title match beats text matches, and core rules and glossary entries win ties
+    on a title match, so `move` finds 4.2 first.
+  - The faction filter means "what that faction's page lists".
+  - Search boxes: one on the contents page, and one on each faction page, limited to that
+    faction. Typing an existing rule number and pressing Enter opens the rule directly.
+- **Search URL gotcha:** `RootSearch` keeps query and filters in React state. It reads the URL
+  once and writes it back with `history.replaceState`. Don't switch it to reading
+  `useSearchParams` after load or to `router.replace`. On this static page, neither tracked
+  URL changes made from the page once it had loaded with `?q=`: filters silently stopped
+  applying. This was verified in headless Chrome.
+- Faction pages contain three groups, all derived from the PDF:
+  - the faction's own chapter;
+  - "Rules the X changes": rules outside the chapter printed with its icon (`faction_markers`);
+  - "Named elsewhere": a name match using the terms in `NAME_TERMS`. It skips "(Riverfolk)"
+    tags and "… Expansion" lists, and the page says a mention isn't necessarily a rule that applies.
+
+  The Marquise and Keepers have no icons outside their chapters in this edition.
+  "General rules that apply" comes from topics.json (see above).
+- The existing ESPN schedule tests in `lib/backend/providers/normalize.test.ts` fail because
+  their fixtures depend on today's date. That's unrelated to Root.
+
+### MVP plan
 
 Build at `/board-games/root`, reading the JSON at build time. There is no new
 backend, database or search service. The MVP needs:

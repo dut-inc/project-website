@@ -96,10 +96,20 @@ editorial data and will live outside the extracted folder (see below).
 ### Source data vs editorial data
 
 Everything in `data/root/law-*/` comes from the PDF and is regenerated
-on every import, so nothing in it should be edited by hand. Topics, related-rule links,
-verification status and notes are editorial. They will live in separate files keyed by
-rule `id` (planned: `data/root/editorial/`), so a re-import never overwrites
-human review.
+on every import, so nothing in it should be edited by hand. Editorial data lives in
+`data/root/editorial/`, keyed by rule and section `id`, so a re-import never overwrites
+human review:
+
+- `verification.json`: records whose text a reviewer compared with the PDF.
+- `topics.json`: topics and faction-page extras, each `draft` until the owner reviews it.
+  Build the owner's review page with:
+
+  ```
+  node --experimental-strip-types scripts/root/make_topic_review.ts topic-review.html
+  ```
+
+After a new edition, check that every id in these files still exists. `npm test` does
+this for topics.
 
 ## Importing a new edition
 
@@ -148,6 +158,8 @@ Facts about the source that the parser relies on:
 
 ## Changelog
 
+- **0.1.1** (2026-11-11): drop hard line breaks embedded in a few PDF spans. Fixes
+  stray newlines in 5.1.5 and 7.1 ("once-dignified"); no other record changed.
 - **0.1.0** (2026-11-10): first extractor. Parses the whole 2025-10-13 Law (707 records:
   454 rules, 135 sub-rules, 36 glossary entries, 78 section texts and 4 chapter texts),
   with a character conservation check, review page and tests. The owner reviewed a

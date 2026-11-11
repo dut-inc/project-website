@@ -6,8 +6,8 @@
   "pdf_sha256": "d32c8c0681d5bac6d2b483fb75d77efb47e78deaa36cb798bc527a605909c045",
   "pdf_page_count": 32,
   "pdf_modified": "D:20260330154758-05'00'",
-  "extractor_version": "0.1.0",
-  "extracted_at": "2026-11-11T01:58:40+00:00",
+  "extractor_version": "0.1.1",
+  "extracted_at": "2026-11-11T09:54:03+00:00",
   "partial": false,
   "included_chapters": "all"
 }

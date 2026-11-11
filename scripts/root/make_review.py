@@ -6,6 +6,10 @@
         --chapters 2,6,G --extra rule-5-1-5,rule-5-2 \
         --out review.html
 
+Later batches add --batch "core rules, Eyrie, Alliance" (a name shown on the
+page; each batch keeps its own progress in the browser) and --skip-verified
+data/root/editorial/verification.json (leave out records already checked).
+
 Reviewers mark each record "Matches" or "Problem" (kept in their browser) and
 copy a plain-text summary to send back. The page is a review aid only; it is
 not part of the website.
@@ -67,6 +71,9 @@ def main() -> None:
     ap.add_argument("--chapters", default="", help="Chapter keys to include, e.g. 2,6,G")
     ap.add_argument("--extra", default="", help="Extra rule ids to include as edge cases")
     ap.add_argument("--out", required=True, type=Path)
+    ap.add_argument("--batch", default="sample", help="Name of this review batch, shown on the page")
+    ap.add_argument("--title", default="Law of Root Extraction Review", help="Page title (its name in the artifact gallery)")
+    ap.add_argument("--skip-verified", type=Path, help="verification.json: leave out records already checked")
     args = ap.parse_args()
 
     rules = json.loads((args.data / "rules.json").read_text(encoding="utf-8"))
@@ -77,6 +84,9 @@ def main() -> None:
 
     chapters = {c.strip().upper() for c in args.chapters.split(",") if c.strip()}
     extra = [i.strip() for i in args.extra.split(",") if i.strip()]
+    verified: set[str] = set()
+    if args.skip_verified:
+        verified = set(json.loads(args.skip_verified.read_text(encoding="utf-8"))["rules"])
 
     def chapter_key(rule: dict) -> str:
         sid = rule["section_id"]
@@ -93,7 +103,7 @@ def main() -> None:
 
     groups: list[tuple[str, list[dict]]] = []
     for r in rules:
-        if chapter_key(r) in chapters:
+        if chapter_key(r) in chapters and r["id"] not in verified:
             title = chapter_title(r)
             if not groups or groups[-1][0] != title:
                 groups.append((title, []))
@@ -154,6 +164,9 @@ def main() -> None:
         .replace("{{COUNT}}", str(count))
         .replace("{{EDITION}}", html.escape(source.get("printed_date") or source["source_version"]))
         .replace("{{VERSION}}", html.escape(source["source_version"]))
+        .replace("{{TITLE}}", html.escape(args.title))
+        .replace("{{BATCH}}", html.escape(args.batch))
+        .replace("{{BATCH_KEY}}", re.sub(r"[^a-z0-9]+", "-", args.batch.lower()).strip("-"))
     )
     args.out.write_text(page, encoding="utf-8")
     print(f"Wrote {count} records to {args.out} ({args.out.stat().st_size // 1024} KB)")

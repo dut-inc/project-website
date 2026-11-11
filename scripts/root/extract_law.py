@@ -28,7 +28,7 @@ from pathlib import Path
 
 import pymupdf
 
-EXTRACTOR_VERSION = "0.1.0"
+EXTRACTOR_VERSION = "0.1.1"
 
 # --- Font conventions observed in the October 13, 2025 Law ----------------
 
@@ -140,6 +140,9 @@ def find_cross_references(text: str) -> list[str]:
 def clean(text: str) -> str:
     for k, v in LIGATURES.items():
         text = text.replace(k, v)
+    # A few spans end in a hard line break (e.g. "once-\n" in 7.1). Line joining
+    # already decides spacing, so drop it rather than leak "\n" into the text.
+    text = text.replace("\r", "").replace("\n", "")
     return text.replace(" ", " ")
 
 

@@ -1,0 +1,193 @@
+<title>Root Topic Review</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+/* Layout: a sticky review bar over one column of cards, one card per editorial decision. Same tokens as the extraction review. */
+:root {
+  --bg: #f3f5f2;
+  --surface: #ffffff;
+  --ink: #1c2320;
+  --muted: #5a6560;
+  --line: #d9dfda;
+  --accent: #2f4f86;
+  --accent-soft: #e4eaf5;
+  --ok: #2e7d4f;
+  --ok-soft: #e2f1e7;
+  --bad: #b3261e;
+  --bad-soft: #fbe5e3;
+  --unsure: #8a6414;
+  --unsure-soft: #f6ecd6;
+  --chip: #eceeea;
+  --font-rule: "Libre Baskerville", "Baskerville", Georgia, serif;
+  --font-ui: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #131715; --surface: #1b201e; --ink: #e5eae6; --muted: #9ba69f; --line: #2e3532;
+    --accent: #93b2ea; --accent-soft: #24304a; --ok: #6cc58e; --ok-soft: #1d3326;
+    --bad: #ff8f85; --bad-soft: #3d201e; --unsure: #e3c48f; --unsure-soft: #3a3020; --chip: #262c29; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #131715; --surface: #1b201e; --ink: #e5eae6; --muted: #9ba69f; --line: #2e3532;
+  --accent: #93b2ea; --accent-soft: #24304a; --ok: #6cc58e; --ok-soft: #1d3326;
+  --bad: #ff8f85; --bad-soft: #3d201e; --unsure: #e3c48f; --unsure-soft: #3a3020; --chip: #262c29; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--font-ui); font-size: 15px; line-height: 1.5; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--surface); }
+.wrap {
+  max-width: 860px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+header.intro { padding-block: 32px 20px; display: grid; gap: 10px; }
+.eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+h1 { font-family: var(--font-rule); font-weight: 700; font-size: clamp(24px, 4vw, 32px); line-height: 1.2; margin: 0; text-wrap: balance; }
+.intro p { margin: 0; max-width: 68ch; color: var(--muted); }
+.intro ul { margin: 0; padding-left: 20px; color: var(--muted); max-width: 68ch; display: grid; gap: 4px; }
+.intro strong { color: var(--ink); font-weight: 600; }
+
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--surface); border-bottom: 1px solid var(--line); }
+.bar .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; padding-block: 10px; }
+.progress { display: flex; gap: 14px; font-variant-numeric: tabular-nums; font-size: 14px; flex-wrap: wrap; }
+.progress b { font-weight: 600; }
+.progress .n-ok { color: var(--ok); } .progress .n-bad { color: var(--bad); } .progress .n-unsure { color: var(--unsure); }
+.bar .spacer { flex: 1; }
+select, button, input, textarea { font: inherit; color: inherit; }
+.copy { background: var(--accent); color: var(--surface); border: 0; border-radius: 6px; padding: 7px 14px; font-weight: 600; cursor: pointer; }
+.copied { font-size: 13px; color: var(--ok); }
+#fallback { width: 100%; min-height: 120px; font-family: var(--font-mono); font-size: 12px; background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 8px; }
+
+main { padding-block: 8px 64px; display: grid; gap: 16px; }
+h2.group { font-family: var(--font-rule); font-size: 20px; margin: 24px 0 0; text-wrap: balance; }
+.card { display: grid; gap: 12px; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 16px; min-width: 0; }
+.card[data-state="ok"] { border-color: var(--ok); }
+.card[data-state="bad"] { border-color: var(--bad); box-shadow: inset 4px 0 0 var(--bad); }
+.card[data-state="unsure"] { border-color: var(--unsure); }
+.head { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.kind { font-family: var(--font-mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.head h3 { font-family: var(--font-rule); font-size: 19px; margin: 0; }
+.count { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+.desc { margin: 0; color: var(--muted); max-width: 68ch; }
+.question { margin: 0; font-weight: 500; }
+.part { display: grid; gap: 6px; min-width: 0; }
+.part h4 { margin: 0; font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+.part ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 4px; }
+.part ul.inline { display: flex; flex-wrap: wrap; gap: 6px; }
+.part li { min-width: 0; overflow-wrap: anywhere; }
+.num { font-family: var(--font-mono); font-weight: 500; font-size: 13px; color: var(--accent); margin-right: 6px; }
+.why { color: var(--muted); font-style: italic; }
+.muted { color: var(--muted); font-size: 13px; }
+.chip { display: inline-block; font-size: 13px; line-height: 1.4; padding: 2px 9px; border-radius: 999px; background: var(--chip); }
+.chip .num { margin-right: 4px; }
+.chip .fac { color: var(--muted); font-size: 12px; }
+.verdict { display: flex; gap: 8px; flex-wrap: wrap; padding-top: 10px; border-top: 1px dashed var(--line); align-items: center; }
+.verdict button { border: 1px solid var(--line); background: var(--bg); border-radius: 6px; padding: 6px 14px; cursor: pointer; font-weight: 500; }
+.verdict .ok[aria-pressed="true"] { background: var(--ok-soft); border-color: var(--ok); color: var(--ok); }
+.verdict .bad[aria-pressed="true"] { background: var(--bad-soft); border-color: var(--bad); color: var(--bad); }
+.verdict .unsure[aria-pressed="true"] { background: var(--unsure-soft); border-color: var(--unsure); color: var(--unsure); }
+.note { flex: 1 1 240px; min-width: 0; border: 1px solid var(--line); background: var(--bg); border-radius: 6px; padding: 6px 10px; }
+button:focus-visible, select:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+</style>
+
+<header class="wrap intro">
+  <div class="eyebrow">Root Rules Encyclopedia · editorial review · Law of {{VERSION}}</div>
+  <h1>Do these topic groupings make sense?</h1>
+  <p>Topics group rules by subject (Battle, Movement, Crafting…). They are the editor's choices, not part of the Law, so they need a second opinion before the site stops calling them drafts. Each card lists exactly what a topic collects and why.</p>
+  <ul>
+    <li>Rules join a topic in three ways: <strong>a whole section</strong> of the Law, <strong>picked one by one</strong> with a reason, or <strong>a word in the rule's printed title</strong> (that's how every faction's own “Battle” action joins Battle).</li>
+    <li><strong>Looks right</strong> if everything listed belongs and nothing important is missing. <strong>Problem</strong> if something is wrong or missing: say what in the note. <strong>Not sure</strong> is fine too.</li>
+    <li>Faction pages use these topics: a faction with its own rule on a topic gets that topic's core rules under “General rules that apply”. The last card asks about that.</li>
+    <li>When you're done, press <strong>Copy results</strong> and paste the text into the chat.</li>
+  </ul>
+</header>
+
+<div class="bar">
+  <div class="wrap">
+    <div class="progress" aria-live="polite">
+      <span><b id="n-done">0</b> of {{COUNT}} decided</span>
+      <span class="n-ok"><b id="n-ok">0</b> right</span>
+      <span class="n-bad"><b id="n-bad">0</b> problems</span>
+      <span class="n-unsure"><b id="n-unsure">0</b> not sure</span>
+    </div>
+    <span class="spacer"></span>
+    <button type="button" class="copy" id="copy">Copy results</button>
+    <span class="copied" id="copied" hidden>Copied</span>
+    <textarea id="fallback" hidden readonly aria-label="Review results"></textarea>
+  </div>
+</div>
+
+<main class="wrap" id="cards">
+{{CARDS}}
+</main>
+
+<script>
+(() => {
+  const KEY = "root-topic-review-{{VERSION}}-{{DRAFTED}}";
+  let state = {};
+  try { state = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { state = {}; }
+  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} };
+  const cards = [...document.querySelectorAll(".card")];
+  const VERDICTS = ["ok", "bad", "unsure"];
+
+  function paint(card) {
+    const s = state[card.dataset.id] || {};
+    card.dataset.state = s.v || "";
+    VERDICTS.forEach(v => card.querySelector("." + v).setAttribute("aria-pressed", String(s.v === v)));
+    const note = card.querySelector(".note");
+    note.hidden = !s.v;
+    note.placeholder = s.v === "bad" ? "What's wrong or missing?" : "Optional note";
+    if (note.value !== (s.note || "")) note.value = s.note || "";
+  }
+  function counts() {
+    const n = { ok: 0, bad: 0, unsure: 0 };
+    cards.forEach(c => { const v = (state[c.dataset.id] || {}).v; if (v) n[v]++; });
+    document.getElementById("n-ok").textContent = n.ok;
+    document.getElementById("n-bad").textContent = n.bad;
+    document.getElementById("n-unsure").textContent = n.unsure;
+    document.getElementById("n-done").textContent = n.ok + n.bad + n.unsure;
+  }
+
+  cards.forEach(card => {
+    const id = card.dataset.id;
+    paint(card);
+    VERDICTS.forEach(v => card.querySelector("." + v).addEventListener("click", () => {
+      const cur = state[id] || {};
+      state[id] = cur.v === v ? {} : { v, note: cur.note || "" };
+      save(); paint(card); counts();
+      if (state[id].v === "bad") card.querySelector(".note").focus();
+    }));
+    card.querySelector(".note").addEventListener("input", e => {
+      state[id] = { ...(state[id] || {}), note: e.target.value }; save();
+    });
+  });
+  counts();
+
+  document.getElementById("copy").addEventListener("click", () => {
+    // Card labels contain colons ("Topic: Battle"), so keep each label and note apart.
+    const by = { ok: [], bad: [], unsure: [], todo: [] };
+    cards.forEach(c => {
+      const s = state[c.dataset.id] || {};
+      (by[s.v] || by.todo).push({ label: c.dataset.label, note: (s.note || "").trim() });
+    });
+    const withNotes = list => list.map(x => "- " + x.label + (x.note ? " (note: " + x.note + ")" : "")).join("\n");
+    const okNotes = by.ok.filter(x => x.note);
+    const text = [
+      `Root topic review ({{VERSION}}, drafted {{DRAFTED}}): ${by.ok.length} right, ${by.bad.length} problems, ${by.unsure.length} not sure, ${by.todo.length} not decided.`,
+      by.bad.length ? "Problems:\n" + withNotes(by.bad) : "Problems: none",
+      by.unsure.length ? "Not sure:\n" + withNotes(by.unsure) : "",
+      okNotes.length ? "Notes on approved cards:\n" + withNotes(okNotes) : "",
+      by.ok.length ? "Right: " + by.ok.map(x => x.label).join("; ") : "",
+      by.todo.length ? "Not decided: " + by.todo.map(x => x.label).join("; ") : ""
+    ].filter(Boolean).join("\n");
+    const fb = document.getElementById("fallback");
+    const done = () => { const m = document.getElementById("copied"); m.hidden = false; setTimeout(() => { m.hidden = true; }, 2000); };
+    const fallback = () => { fb.value = text; fb.hidden = false; fb.focus(); fb.select(); };
+    try { navigator.clipboard.writeText(text).then(done, fallback); } catch (e) { fallback(); }
+  });
+})();
+</script>

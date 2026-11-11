@@ -149,6 +149,15 @@ class WholeBookTests(unittest.TestCase):
         self.assertLess(locs[0]["bbox"][2], 315)
         self.assertGreater(locs[1]["bbox"][0], 315)
 
+    def test_no_stray_line_breaks(self):
+        # Single newlines only separate table rows; paragraphs use a blank line.
+        for r in self.rules:
+            for paragraph in r["text"].split("\n\n"):
+                lines = paragraph.split("\n")
+                if len(lines) > 1:
+                    self.assertTrue(any(" | " in ln for ln in lines), (r["id"], paragraph[:80]))
+        self.assertIn("once-dignified", self.by_id["rule-7-1"]["text"])
+
     def test_flagged_layouts(self):
         self.assertEqual(self.report["tables"], ["rule-5-2"])
         self.assertEqual(

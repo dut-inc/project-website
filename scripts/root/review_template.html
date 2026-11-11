@@ -1,4 +1,4 @@
-<title>Law of Root Extraction Review</title>
+<title>{{TITLE}}</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -111,7 +111,7 @@ button:focus-visible, select:focus-visible, input:focus-visible { outline: 2px s
 </style>
 
 <header class="wrap intro">
-  <div class="eyebrow">Root Rules Encyclopedia · extraction sample · Law of {{EDITION}}</div>
+  <div class="eyebrow">Root Rules Encyclopedia · text review: {{BATCH}} · Law of {{EDITION}}</div>
   <h1>Does the extracted text match the PDF?</h1>
   <p>Each card shows a crop of the official PDF on the left and what the extractor produced on the right. Read them side by side and mark each one. You don't need to know the rules, only whether the words match.</p>
   <ul>
@@ -148,7 +148,7 @@ button:focus-visible, select:focus-visible, input:focus-visible { outline: 2px s
 
 <script>
 (() => {
-  const KEY = "root-law-review-{{VERSION}}";
+  const KEY = "root-law-review-{{VERSION}}-{{BATCH_KEY}}";
   let state = {};
   try { state = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { state = {}; }
   const save = () => { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} };
@@ -207,7 +207,7 @@ button:focus-visible, select:focus-visible, input:focus-visible { outline: 2px s
       else todo.push(c.dataset.label);
     });
     const text = [
-      `Law of Root extraction review ({{VERSION}}): ${ok.length} match, ${bad.length} problems, ${todo.length} not checked.`,
+      `Law of Root extraction review ({{VERSION}}, {{BATCH}}): ${ok.length} match, ${bad.length} problems, ${todo.length} not checked.`,
       bad.length ? "Problems:\n" + bad.join("\n") : "Problems: none",
       todo.length ? "Not checked: " + todo.map(l => l.split(" ")[0]).join(", ") : ""
     ].filter(Boolean).join("\n");
