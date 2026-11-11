@@ -82,9 +82,11 @@ The commands below use `.venv/bin/python`; on Windows use `.venv/Scripts/python`
 | MVP step 3: full-text search with faction/chapter filters | **Done 2026-11-11** |
 | MVP step 4: topics + "general rules that apply" (editorial; owner spot-checks) | **Done 2026-11-11** (owner approved all 20 cards) |
 | Edition diff script | Not started |
-| Phase 2+ (synonyms, semantic search, AI assistant) | Not started. AGENTS.md says not yet |
+| AI rules assistant | **Built 2026-11-11 as a free, read-only MCP server** (no paid model, by owner decision). See "AI assistant (MCP server)" below |
+| Phase 2 (synonyms, related-rules panel, semantic search) | Not started; add only when real use shows a need |
 
-Branch: `root-encyclopedia` (from `main`).
+Branches: the encyclopedia was merged to `main` as PR #38 (`root-encyclopedia`, now deleted
+locally). The AI work is on `root-ai-assistant`.
 
 ### Layout
 
@@ -185,9 +187,9 @@ Consequences:
 - 206 records are verified, covering chapters 1–8 and G plus the first sample's edge cases.
   The other 501 are automated extraction only. The site labels them
   "Extracted automatically, not checked by hand".
-- For the future AI assistant (Phase 3), AGENTS.md says unverified records must not be
-  treated as authoritative. Decide with the owner before building it: either the assistant
-  says when an answer rests on an unchecked rule, or that rule's chapter gets reviewed first.
+- For the AI assistant, the owner chose "use them, flag them": the MCP tools return every rule
+  with its check status, and the server instructions tell the AI to say when an answer rests
+  on an unchecked rule.
 - If a player reports a text error, fix the extractor, re-extract, and add a test for it.
 
 **Text review workflow** (kept for later use; the extracted text checked against the PDF):
@@ -269,6 +271,48 @@ scripts/root/make_topic_review.ts  owner review page for topics.json
   "General rules that apply" comes from topics.json (see above).
 - The existing ESPN schedule tests in `lib/backend/providers/normalize.test.ts` fail because
   their fixtures depend on today's date. That's unrelated to Root.
+- `next build` sometimes fails with "next/font/google queries have exactly one entry"
+  (Turbopack, while fetching the site's Google fonts). Nothing in the code causes it, and a
+  retry builds.
+
+### AI assistant (MCP server)
+
+**Owner decisions (2026-11-11):**
+- Nothing that costs money: no paid model, no API key, no LLM calls from the site.
+- MCP server only. A "copy a cited prompt to any chatbot" button was offered and declined.
+- Unchecked rules are used but flagged.
+
+**How it works.** `app/api/root/mcp/route.ts` serves a stateless Streamable HTTP MCP endpoint
+at `/api/root/mcp`, built with `@modelcontextprotocol/server` v2 (`createMcpHandler`) and
+`zod` v4. It serves the 2026-07-28 protocol natively, with the SDK's stateless fallback for
+2025-era clients; GET and DELETE answer 405. People connect their own AI app, and the AI runs
+on their account. The site only looks rules up.
+
+- Tools (all read-only, with `readOnlyHint`) live in `lib/root/mcpTools.ts`, as plain
+  functions returning text, tested in `mcpTools.test.ts`:
+  - `search_rules` (query, plus optional faction, topic, chapter and limit);
+  - `get_rule`;
+  - `get_faction_rules` (`full` or `outline`);
+  - `get_related_rules`.
+- `SERVER_INSTRUCTIONS` carries the AGENTS.md grounding rules:
+  - look rules up, and don't answer from memory;
+  - cite rule numbers;
+  - keep the Law's text separate from interpretation;
+  - flag unchecked rules;
+  - topics aren't rules;
+  - ask about ambiguity, and show conflicts instead of resolving them;
+  - this edition has no card text.
+- Links in tool output use the request's origin, so they work on any deployment.
+- The setup page for users is `/board-games/root/connect`, linked from the contents page
+  header.
+- Verified with curl (2025-06-18 handshake, `tools/list`, `tools/call`) and with the official
+  `@modelcontextprotocol/client` 2.4.0, which negotiated 2025-11-25. The SDK's 2026-07-28
+  path wasn't exercised by a client yet.
+- A claude.ai custom connector needs a public URL, so it works only once this is deployed
+  (merged to `main`). Claude Code can connect to localhost for testing:
+  `claude mcp add --transport http root-rules http://localhost:3000/api/root/mcp`.
+- There's no rate limiting. The endpoint is cheap (no model, no database), but if abuse ever
+  shows up on the hosting bill, add a limit in the route.
 
 ### MVP plan
 

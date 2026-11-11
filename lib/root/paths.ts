@@ -36,6 +36,9 @@ export function factionHref(factionId: string, anchor?: string): string {
 }
 
 export const TOPICS_HREF = `${ROOT_HREF}/topics`;
+export const CONNECT_HREF = `${ROOT_HREF}/connect`;
+// The read-only MCP server (app/api/root/mcp/route.ts).
+export const MCP_PATH = "/api/root/mcp";
 
 export function topicHref(topicId: string): string {
   return `${ROOT_HREF}/topic/${topicId}`;
@@ -117,6 +120,7 @@ export function encyclopediaPageName(rest: string): { name: string; title: strin
   }
   if (kind === "search") return { name: "search.law", title: "Search Root rules" };
   if (kind === "topics") return { name: "topics.law", title: "Root rules by topic" };
+  if (kind === "connect") return { name: "connect-ai.law", title: "Use the Root rules with your AI" };
   if (kind === "topic" && slug) return { name: `${slug}.topic`, title: `Root topic: ${slug.replace(/-/g, " ")}` };
   if (kind === "faction" && slug) {
     return { name: `${slug}.faction`, title: `Root faction: ${slug.replace(/-/g, " ")}` };
