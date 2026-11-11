@@ -1,6 +1,7 @@
 import { DLE_GAMES } from "@/lib/dleGames";
 import { MEMBERS } from "@/lib/members";
 import { getProject, type ProjectId } from "@/lib/projects";
+import { ROOT_HREF, encyclopediaPageName } from "@/lib/root/paths";
 
 // The Perpetual Studio explorer: which "files" and "folders" exist and which
 // real route each file opens. Every folder is itself a page: its name opens the
@@ -21,6 +22,7 @@ export type FileIcon =
   | "cards"
   | "puzzle"
   | "person"
+  | "law"
   | "file";
 
 export type FolderTone = "teal" | "orange" | "green" | "sand" | "red" | "violet" | "gold" | "blue";
@@ -33,6 +35,9 @@ export type WorkspaceFile = {
   icon: FileIcon;
   // Human title, used by quick open and the welcome page.
   title: string;
+  // Names the routes under this file's href (e.g. root.law's rule pages).
+  // They open in tabs but are not listed in the explorer.
+  pages?: (rest: string) => { name: string; title: string };
 };
 
 // Files that only exist while open, e.g. a specific The Pack room.
@@ -59,8 +64,14 @@ export type WorkspaceNode = WorkspaceFile | WorkspaceFolder;
 
 export const WORKSPACE_NAME = "perpetual-studio";
 
-function file(name: string, href: string, icon: FileIcon, title: string): WorkspaceFile {
-  return { kind: "file", id: `file:${href}`, name, href, icon, title };
+function file(
+  name: string,
+  href: string,
+  icon: FileIcon,
+  title: string,
+  pages?: WorkspaceFile["pages"],
+): WorkspaceFile {
+  return { kind: "file", id: `file:${href}`, name, href, icon, title, pages };
 }
 
 function folder(
@@ -105,6 +116,7 @@ export const WORKSPACE_TREE: WorkspaceNode[] = [
     [
       file("the-pack.deal", getProject("the-pack").href, "cards", "The Pack"),
       file("tier-list.rank", "/board-games/tierlist", "rank", "Board Games Tier List"),
+      file("root.law", ROOT_HREF, "law", "Root Rules Encyclopedia", encyclopediaPageName),
     ],
     {
       prefix: `${getProject("the-pack").href}/room/`,
@@ -137,6 +149,8 @@ export type ResolvedFile = {
   trail: string[];
   // Present for files that only exist while open (rendered under folderIds' last folder).
   dynamic?: boolean;
+  // For a page inside a file (see WorkspaceFile.pages): that file's href.
+  owner?: string;
   // False for routes the explorer doesn't know (e.g. a 404).
   known: boolean;
 };
@@ -225,6 +239,21 @@ export function resolvePath(pathname: string): ResolvedFile {
 
   const folderPath = FOLDER_PATHS.find((path) => path[path.length - 1].href === href);
   if (folderPath) return resolveFolder(folderPath);
+
+  const parentFile = LOCATED_FILES.find(({ file: f }) => f.pages && href.startsWith(`${f.href}/`));
+  if (parentFile?.file.pages) {
+    const { name, title } = parentFile.file.pages(href.slice(parentFile.file.href.length + 1));
+    return {
+      href,
+      name,
+      title,
+      icon: parentFile.file.icon,
+      folderIds: parentFile.folders.map((x) => x.id),
+      trail: [...parentFile.folders.map((x) => x.name), parentFile.file.name],
+      owner: parentFile.file.href,
+      known: true,
+    };
+  }
 
   for (const path of FOLDER_PATHS) {
     const owner = path[path.length - 1];

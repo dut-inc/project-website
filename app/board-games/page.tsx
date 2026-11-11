@@ -13,13 +13,11 @@ const features = [
     blurb:
       "our group's personal rankings of board games we've played",
   },
-];
-
-const comingSoon = [
   {
-    title: "Root Lawbook Search",
-    blurb:
-      "a tool for searching the lawbook rules of Root",
+    href: "/board-games/root",
+    tag: "Live",
+    title: "Root Rules Encyclopedia",
+    blurb: "every rule in the Law of Root, by chapter and by number",
   },
 ];
 
@@ -51,20 +49,6 @@ export default function BoardGamesPage() {
               Open <span aria-hidden>→</span>
             </span>
           </Link>
-        ))}
-        {comingSoon.map((f) => (
-          <div
-            key={f.title}
-            aria-disabled="true"
-            className="cursor-not-allowed rounded-2xl border border-white/10 bg-white/[0.03] p-5 opacity-55"
-          >
-            <span className="font-mono text-[10px] uppercase tracking-widest text-pinGold/70">Not started</span>
-            <h2 className="mt-2 font-display text-xl text-cream/70">{f.title}</h2>
-            <p className="mt-2 text-sm leading-relaxed text-cream/40">{f.blurb}</p>
-            <span className="mt-4 inline-flex items-center gap-1 font-mono text-[11px] uppercase tracking-widest text-cream/30">
-              Coming soon
-            </span>
-          </div>
         ))}
       </div>
     </div>
