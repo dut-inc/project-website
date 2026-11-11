@@ -1,0 +1,26 @@
+{
+  "_about": "Setup facts the Law of Root (2025-10-13) relies on but doesn't print: which factions have militant setup cards (the Law: 'red name with sword', A.8.2) and each faction's setup order letter (the Law: 'In setup order (A, B, C, etc.)', 5.1.7, printed on the faction boards). Supplied by the project owner. Not official rule text; the site labels them as the owner's. Reach values are NOT here: they come from the Law's own table (5.2).",
+  "source_version": "2025-10-13",
+  "decided": "2026-11-11",
+  "decided_by": "project owner",
+  "setup_letters": {
+    "rule": "lawbook-order",
+    "note": "Setup letters follow the order of the factions in the Law (chapters 6 to 18): A for the Marquise de Cat through M for the Knaves of the Deepwood. Owner decision 2026-11-11."
+  },
+  "setup_cards": {
+    "_note": "Owner, 2026-11-11: 'militant factions have high reach, and insurgents have low reach.'",
+    "marquise-de-cat": "militant",
+    "eyrie-dynasties": "militant",
+    "woodland-alliance": "insurgent",
+    "vagabond": "insurgent",
+    "lizard-cult": "insurgent",
+    "riverfolk-company": "insurgent",
+    "underground-duchy": "militant",
+    "corvid-conspiracy": "insurgent",
+    "lord-of-the-hundreds": "militant",
+    "keepers-in-iron": "militant",
+    "lilypad-diaspora": "militant",
+    "twilight-council": "insurgent",
+    "knaves-of-the-deepwood": "insurgent"
+  }
+}

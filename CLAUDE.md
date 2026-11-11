@@ -83,10 +83,13 @@ The commands below use `.venv/bin/python`; on Windows use `.venv/Scripts/python`
 | MVP step 4: topics + "general rules that apply" (editorial; owner spot-checks) | **Done 2026-11-11** (owner approved all 20 cards) |
 | Edition diff script | Not started |
 | AI rules assistant | **Built 2026-11-11 as a free, read-only MCP server** (no paid model, by owner decision). See "AI assistant (MCP server)" below |
+| Setup tools: reach calculator, standard setup order, advanced draft | **Built 2026-11-11** on `root-gemini-chat`. See "Setup tools" below |
+| On-site rules chat (Gemini free tier) | **Built 2026-11-11** on branch `root-gemini-chat`; needs `GEMINI_API_KEY`. Live-checked with the owner's key. See "Rules chat (Gemini)" below |
 | Phase 2 (synonyms, related-rules panel, semantic search) | Not started; add only when real use shows a need |
 
 Branches: the encyclopedia was merged to `main` as PR #38 (`root-encyclopedia`, now deleted
-locally). The AI work is on `root-ai-assistant`.
+locally). The MCP server (`root-ai-assistant`) was merged as PR #39. The Gemini chat is on
+`root-gemini-chat`.
 
 ### Layout
 
@@ -221,9 +224,15 @@ lib/root/searchIndex.ts builds the index + faction scopes + topics at build time
 lib/root/*.test.ts      law, factions, search, topics; run by `npm test`
 lib/root/factionStyle.ts  chip colors/short names (presentation only, not from the PDF)
 components/root/        RuleText, RuleEntry, RuleCard, ChapterBody, Editorial, SearchBox, RootSearch, CopyLinkButton
-app/board-games/root/   page.tsx (contents), law/[chapter], rule/[slug], faction/[faction],
+app/board-games/root/   page.tsx (dashboard), law/page.tsx (lawbook contents), law/[chapter], rule/[slug], faction/[faction],
                         topics, topic/[topic], search  (all static)
 scripts/root/make_topic_review.ts  owner review page for topics.json
+lib/root/mcpTools.ts    the four read-only rule tools (MCP server and chat share them)
+lib/root/geminiChat.ts  the Gemini tool loop + citation checks (server only)
+lib/root/chatMarkup.ts  the chat's Markdown subset (pure)
+components/root/RulesChat.tsx, app/board-games/root/ask/, app/api/root/chat/   the rules chat
+lib/root/setupPlan.ts   reach check, setup order, A.8 draft (pure); lib/root/setup.ts builds its data
+app/board-games/root/setup/, app/board-games/root/draft/   setup & reach, advanced draft
 ```
 
 - URLs: `/board-games/root/law/6`, `/board-games/root/rule/6-2-3`,
@@ -254,7 +263,7 @@ scripts/root/make_topic_review.ts  owner review page for topics.json
   - Ranking: a title match beats text matches, and core rules and glossary entries win ties
     on a title match, so `move` finds 4.2 first.
   - The faction filter means "what that faction's page lists".
-  - Search boxes: one on the contents page, and one on each faction page, limited to that
+  - Search boxes: one on the lawbook page (`/board-games/root/law`), and one on each faction page, limited to that
     faction. Typing an existing rule number and pressing Enter opens the rule directly.
 - **Search URL gotcha:** `RootSearch` keeps query and filters in React state. It reads the URL
   once and writes it back with `history.replaceState`. Don't switch it to reading
@@ -278,7 +287,8 @@ scripts/root/make_topic_review.ts  owner review page for topics.json
 ### AI assistant (MCP server)
 
 **Owner decisions (2026-11-11):**
-- Nothing that costs money: no paid model, no API key, no LLM calls from the site.
+- Nothing that costs money: no paid model. (No LLM calls from the site was the first rule; it
+  was later replaced by the free-tier Gemini chat, below.)
 - MCP server only. A "copy a cited prompt to any chatbot" button was offered and declined.
 - Unchecked rules are used but flagged.
 
@@ -303,8 +313,9 @@ on their account. The site only looks rules up.
   - ask about ambiguity, and show conflicts instead of resolving them;
   - this edition has no card text.
 - Links in tool output use the request's origin, so they work on any deployment.
-- The setup page for users is `/board-games/root/connect`, linked from the contents page
-  header.
+- There's no page for it on the site. The owner removed the "Use your own AI" page on
+  2026-11-11. The setup notes for users are in `lib/root/USE_YOUR_OWN_AI.md`. The endpoint
+  itself still works.
 - Verified with curl (2025-06-18 handshake, `tools/list`, `tools/call`) and with the official
   `@modelcontextprotocol/client` 2.4.0, which negotiated 2025-11-25. The SDK's 2026-07-28
   path wasn't exercised by a client yet.
@@ -313,6 +324,186 @@ on their account. The site only looks rules up.
   `claude mcp add --transport http root-rules http://localhost:3000/api/root/mcp`.
 - There's no rate limiting. The endpoint is cheap (no model, no database), but if abuse ever
   shows up on the hosting bill, add a limit in the route.
+
+### Layout (owner requests, 2026-11-11): Root Assistant dashboard
+
+- The project is called **Root Assistant**. That name appears in the dashboard title, the
+  `lib/workspace.ts` file title and the Board Games folder card ("AI help with the rules,
+  advanced setup, and reach calculator"). The explorer file is still `root.law`.
+- `/board-games/root` is the **dashboard**, not the lawbook.
+  - The left half is the rules chat: a sticky, full-height panel whose messages scroll inside
+    it.
+  - The right half has the advanced setup draft on top and the reach calculator below.
+  - On phones everything stacks: chat, draft, then reach.
+  - The header has one link, Lawbook. The PDF is linked from the lawbook page.
+  - An empty chat shows "Let's Root" in large type, with no example prompts.
+- **The dashboard is wider than other pages.** Its root element has `.ps-wide`, and
+  `app/globals.css` (`#editor:has(.ps-wide)`) raises the editor's max width from max-w-6xl to
+  96rem. The owner found 112rem too wide. Other pages are unchanged.
+- The lawbook contents live at `/board-games/root/law` (`LAW_HREF`, tab `lawbook.law`).
+  Chapter, faction, search and topics pages link back to it.
+- Root pages don't use the site's `PageHeader`. They use `RootPage` / `RootHeader` from
+  `components/root/ui.tsx`. The **back link sits above the title**, and the title row carries
+  the meta and the actions (kraft `TableLink`s).
+
+### The look (owner request, 2026-11-11): paper and ink on a forest table
+
+The owner asked for something that "says Root", not the editor look. They mentioned the small
+tears found on paper edges, and asked for no generated images. **Everything is drawn in code.**
+
+- `app/board-games/root/layout.tsx` wraps every Root page in `.root-theme`. It loads three
+  fonts (via `next/font`):
+  - IM Fell English: titles;
+  - Alegreya: reading text;
+  - Alegreya SC: labels and numbers, replacing monospace.
+
+  It also injects the torn-edge tiles.
+- `app/board-games/root/root-theme.css` holds:
+  - the palette, as RGB channels behind Tailwind's `root-*` colours (`tailwind.config.ts`);
+  - the table (`.ps-editor:has(.root-theme)`, dark wood under lamplight);
+  - paper grain, fibres and stains (SVG `feTurbulence` data URIs; each filter's region is pinned
+    to its tile so tiles repeat without seams);
+  - torn edges, as two nested masks so the corners tear properly: `.root-torn` (top and
+    bottom) wraps `.root-torn-sides` (left and right);
+  - wooden-token buttons (`.root-btn`) and cardboard faction tokens (`.root-token`, with `--c` as
+    the faction colour);
+  - fields;
+  - setup cards (`.root-card`; a locked card is tilted and stamped, echoing A.8.2.II "turn it
+    sideways");
+  - the reach score track.
+- `lib/root/paperEdges.ts` generates the torn edges, deterministically from a seed.
+  - Each edge is a gently ragged line with **rare, sharp triangular tears**. The owner asked for
+    them like the game's torn-paper edges, and for fewer of them.
+  - A tile of about 450–540px has at most one deep tear and sometimes a small second one.
+  - There are three variants (`torn-a/b/c`), and each edge uses a different tile length so the
+    pattern doesn't line up.
+- **No tape** (the owner removed it on 2026-11-11). There's no Ask button either: in the chat,
+  Enter sends and Shift+Enter adds a new line. The question box starts one line tall and grows
+  to 4 lines, then scrolls; `useLayoutEffect` sizes it.
+- `components/root/ui.tsx` holds:
+  - `Paper` (a sheet with a paper, kraft or cream tone);
+  - `RootHeader` and `RootPage`;
+  - `TableLink`;
+  - `Sword`: the militant marker, an echo of the setup cards' "red name with sword";
+  - `InkHeading` (a heading with an inked squiggle).
+- Root components use only `root-*` colours and `font-root*` families. The old `studio-*`
+  classes were converted by a one-off script. Keep new Root UI in this palette. Faction colours
+  stay presentation only (`factionStyle.ts`).
+- Keep visible text short. The owner asked to drop lines such as "Law of Root · October 13,
+  2025" and "707 entries". The edition stays in page metadata, and the lawbook footer
+  attributes Leder Games.
+- The chat panel, draft and reach calculator are compact: small chips, M/I badges, and setup
+  steps folded in `<details>`. `/board-games/root/setup`, `/draft` and `/ask` reuse the same
+  components on their own pages.
+
+### Setup tools
+
+**Owner decisions (2026-11-11):**
+- Setup letters (5.1.7 "in setup order (A, B, C, etc.)") follow the Law's faction order:
+  A = Marquise … M = Knaves.
+- Militant setup cards: Marquise, Eyrie, Duchy, Hundreds, Keepers and Lilypad. The other seven
+  are insurgent.
+- Both facts are printed on the faction boards and setup cards, **not in the Law**. They live in
+  `data/root/editorial/setup.json`, and the pages say so.
+- The group's own check is to **show the militant/insurgent count only**, with no warning. It
+  is labelled "our own check, not a rule".
+
+**What's derived from the Law:**
+- Reach values and totals: `reachTable()` in `lib/root/setup.ts` parses them from 5.2's text.
+  It throws if a faction is missing.
+- Corner starts: a setup section containing "in a/any corner clearing". That gives 7 factions,
+  and chapter 5 requires the Advanced Setup with 5 or more.
+- The draft procedure, A.8.1–A.8.3.
+
+**Pages:**
+- `/board-games/root/setup` (`setup.law`): pick factions; see reach, counts and the corner
+  rule; then standard setup order with each faction's X.3 setup section.
+- `/board-games/root/draft` (`draft.law`): the on-screen A.8 draft.
+  - Deals one militant card first, then one card per player.
+  - Two players: no insurgents, unless kept (A.8.2.I).
+  - Locks the last card if it's an insurgent.
+  - Vagabond character and Knaves captain notes.
+  - Can't include both the Vagabond and the Knaves.
+  - Choosing: last player first, counterclockwise.
+  - Each faction's setup steps appear as it's chosen.
+
+**Code:**
+- `lib/root/setupPlan.ts`: pure logic, also used in the browser.
+- `lib/root/setup.ts`: builds the data on the server.
+- Components: `SetupHelper`, `AdvancedDraft`, `setupParts` and `FactionSetupSteps`. The last is
+  a server component, passed to the client components as `steps` props.
+- `lib/root/setup.test.ts`: the deal is checked over 200 seeds.
+- State is kept per tab in sessionStorage. The A.1–A.7 one-liners on the draft page are
+  summaries that link to the rules.
+
+### Rules chat (Gemini)
+
+**Owner decision (2026-11-11, later the same day):** add a chat window to the site, backed by
+Google Gemini's **free tier**. This replaces "no LLM calls from the site". It still has to stay
+free: the key must come from a Google Cloud project **without billing**. With billing on, the
+same key is billed on the paid tier.
+
+- Page: `/board-games/root/ask` (tab `ask.law`); `?faction=<id>` preselects "Playing as".
+  Linked from the contents header and from every faction page.
+- `lib/root/geminiChat.ts` runs the loop:
+  - It calls the REST `generateContent` endpoint with function calling (no SDK).
+  - The tools are the same four functions as the MCP server, from `mcpTools.ts`.
+  - The instructions are `SERVER_INSTRUCTIONS` plus chat rules: cite plain rule numbers, no
+    URLs, a short answer shape.
+  - The model's turns go back verbatim, so Gemini 3 thought signatures survive.
+  - At most 6 tool rounds. The last one sets `functionCallingConfig.mode: "NONE"` and adds a
+    "last lookup, answer now" text. If the model still asks for a lookup then, its text is used.
+  - **Model chain.** A 429, a 500/503/504, a 404 or a 20 s timeout moves the question to the next
+    model in `GEMINI_MODELS`, which starts the answer over. The model's own turns are never
+    sent to another model. The whole answer has a 55 s deadline.
+- After an answer, `citationsIn()` resolves every rule number in it. The page links each
+  number and flags these cases:
+  - a rule the tools never returned ("cited without looking it up");
+  - a number that isn't in the Law;
+  - unchecked rule text.
+- `lib/root/chatMarkup.ts` handles formatting. It renders a small Markdown subset as React
+  nodes, never raw HTML, and keeps links only into `/board-games/root`.
+- `app/api/root/chat/route.ts` streams NDJSON `ChatEvent`s. It allows 6 questions a minute and
+  100 a day per IP, counted in memory, so this is a soft limit per instance. Google's free quota
+  is the hard cap, and hitting it costs nothing.
+- Env: `GEMINI_API_KEY` (required) and `GEMINI_MODELS` (optional, comma-separated). The default
+  is `gemini-3.6-flash,gemini-3.5-flash-lite,gemini-3.1-flash-lite`. Findings from probing on
+  2026-11-11:
+  - All three make tool calls correctly in 1–5 s.
+  - `gemini-3.8-flash` returned 503 "high demand" or timed out every time, so it is left out.
+  - `gemini-2.5-flash` returns 404, because it's no longer offered to new keys.
+  - Gemma 4 was overloaded or skipped the tool call, so it isn't used.
+  - Free limits are per model per project. `gemini-3.6-flash` allows 5 requests a minute, and
+    one question takes 2–6 requests, so overflow to the next model is normal.
+  - Usage is visible at https://ai.dev/rate-limit.
+  - Locally, put them in `.env.local`. On Vercel, add them under Project Settings › Environment
+    Variables.
+  - Without the key, the page says the chat isn't set up.
+- Google uses free-tier prompts to improve its products. The page tells visitors this.
+- Tests: `lib/root/geminiChat.test.ts` uses a fake Gemini (no network). It covers:
+  - the loop and the verbatim echo;
+  - the model chain, the deadline, errors and the last-round cutoff;
+  - citations and markup.
+
+  Live check (2026-11-11, owner's key) with three questions: movement paths, Vagabond into a
+  Hostile clearing, and Ambush card text. All three were cited and grounded. The unchecked
+  Vagabond rules were flagged, and "no card text in this edition" was stated. The chain took
+  over from `gemini-3.6-flash` mid-run on its 5-per-minute limit.
+- **Faction links (fix for an owner report, 2026-11-11).**
+  - The bug: playing as the Vagabond, "can I move into a forest with the Knaves in it?" got
+    "yes". The model only searched "forest" and never found 18.2.1, "The Knaves of the Deepwood
+    cannot be played in the same game as the Vagabond". Asked from the Knaves' side, it was
+    right.
+  - The fix: `lib/root/factionLinks.ts` finds the factions a question involves (the
+    playing-as faction plus any named in it). It then finds the Law's rules linking them: rules
+    in one faction's chapter, or naming it, that also belong to or name the other. Rules naming
+    more than 3 factions are lists (5.2) and are skipped; at most 8 rules are kept.
+  - `questionContext()` / `systemText()` give those rules' text to the model up front. They
+    count as looked up for the citation check, and the page shows the step "Checked the rules
+    linking …".
+  - The instructions also say: never conclude something is allowed just because no rule
+    forbids it; with two factions, check first that they can share a game.
+  - Live check: both directions now answer "no" and cite 18.2.1.
 
 ### MVP plan
 

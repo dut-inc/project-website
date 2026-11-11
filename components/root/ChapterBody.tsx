@@ -25,11 +25,11 @@ export default function ChapterBody({ chapter, headingLevel = 2 }: { chapter: Se
       {sectionsOf(chapter.id).map((section) => (
         <section key={section.id} id={section.id} className="mb-12 scroll-mt-28">
           <Heading
-            className={`mb-4 flex items-baseline gap-3 border-b border-studio-border pb-2 font-display text-studio-bright ${
+            className={`mb-4 flex items-baseline gap-3 border-b border-root-line pb-2 font-rootdisplay text-root-ink ${
               headingLevel === 2 ? "text-2xl" : "text-xl"
             }`}
           >
-            <span className="font-mono text-base text-studio-muted">{section.number}</span>
+            <span className="font-rootlabel text-base text-root-muted">{section.number}</span>
             {section.title}
           </Heading>
           <div className="space-y-6">
@@ -52,13 +52,13 @@ export function verificationNote(verified: number, total: number, scope: string)
 
 export function SectionNav({ sections, label = "In this chapter" }: { sections: Section[]; label?: string }) {
   return (
-    <nav aria-label={label} className="mb-8 rounded-lg border border-studio-border bg-white/[0.02] p-4">
-      <h2 className="mb-2 font-mono text-[11px] uppercase tracking-[0.16em] text-studio-muted">{label}</h2>
+    <nav aria-label={label} className="mb-8 rounded-lg border border-root-line bg-root-ink/[0.025] p-4">
+      <h2 className="mb-2 root-kicker">{label}</h2>
       <ul className="grid gap-x-6 gap-y-1 text-[14px] sm:grid-cols-2">
         {sections.map((section) => (
           <li key={section.id}>
-            <a href={`#${section.id}`} className="hover:text-studio-link">
-              <span className="font-mono text-studio-muted">{section.number}</span> {section.title}
+            <a href={`#${section.id}`} className="hover:text-root-link">
+              <span className="font-rootlabel text-root-muted">{section.number}</span> {section.title}
             </a>
           </li>
         ))}

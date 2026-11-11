@@ -85,6 +85,18 @@ NBA_STANDINGS_PASSCODE=choose-a-passcode
 
 On Vercel, add it under **Project Settings → Environment Variables** for every environment that should support editing (for example, Production), then redeploy. Do not use a `NEXT_PUBLIC_` prefix: this value must remain server-only. If it is missing, `/api/nba-standings/access` intentionally returns the “Set NBA_STANDINGS_PASSCODE…” configuration message.
 
+### Root rules chat (Gemini free tier)
+
+The chat at `/board-games/root/ask` answers Root rules questions using Google Gemini's free tier. Set it up like this:
+
+1. Create a key at [Google AI Studio](https://aistudio.google.com/apikey). Use a Google Cloud project with **no billing account**: that keeps the key on the free tier, so it can't cost money.
+2. Add `GEMINI_API_KEY=...` to `.env.local` and restart `npm run dev`.
+3. On Vercel, add the same variable under **Project Settings → Environment Variables**, then redeploy.
+
+Keep the key server-only: no `NEXT_PUBLIC_` prefix. `GEMINI_MODELS` (comma-separated) optionally overrides the list of free models the chat tries in turn. Without the key, the page says the chat isn't set up.
+
+Free-tier limits are per model and shared by every visitor (for example, `gemini-3.6-flash` allows 5 requests a minute, and one question takes 2–6 requests). When one model is busy or out of quota, the chat starts over on the next one. You can see your usage at https://ai.dev/rate-limit. Google may use free-tier prompts to improve its products, and the page tells visitors that.
+
 ### NBA standings freeze (2026–27)
 
 The live standings freeze at 9:00 AM Pacific on April 13, 2027. A Vercel Cron Job runs at 16:00 UTC (9:00 AM PDT) on April 13, captures the ESPN standings once, and stores the immutable snapshot in `nba_standings_snapshots`; requests after the cutoff serve that saved snapshot. If the cron misses the exact hour, the first request within that same hour can capture it; later requests will not overwrite it with standings potentially affected by play-in games. The scheduled run requires `SUPABASE_SERVICE_ROLE_KEY` and `CRON_SECRET` in the deployment environment. Add the `nba_standings_snapshots` table by running the updated `supabase/nba-standings-schema.sql` in the Supabase SQL editor.

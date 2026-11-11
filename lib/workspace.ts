@@ -116,7 +116,7 @@ export const WORKSPACE_TREE: WorkspaceNode[] = [
     [
       file("the-pack.deal", getProject("the-pack").href, "cards", "The Pack"),
       file("tier-list.rank", "/board-games/tierlist", "rank", "Board Games Tier List"),
-      file("root.law", ROOT_HREF, "law", "Root Rules Encyclopedia", encyclopediaPageName),
+      file("root.law", ROOT_HREF, "law", "Root Assistant", encyclopediaPageName),
     ],
     {
       prefix: `${getProject("the-pack").href}/room/`,

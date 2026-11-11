@@ -13,8 +13,11 @@ export default function PageHeader({
   description,
   actions,
   back,
+  compact = false,
   children,
 }: {
+  // A small back link above a smaller title, with meta and actions on the title's row. No kicker.
+  compact?: boolean;
   // This page's route. Supplies the back link, the file name in the kicker and
   // the default title (all from lib/workspace.ts).
   href: string;
@@ -32,6 +35,43 @@ export default function PageHeader({
   const page = resolvePath(href);
   const parent = back === undefined ? parentOf(href) : back;
   const items = kicker ?? [<span key="file" className="normal-case tracking-normal text-studio-text">{page.name}</span>, ...meta];
+
+  if (compact) {
+    return (
+      <header className="mb-5 border-b border-studio-border pb-3">
+        {parent && (
+          <Link
+            href={parent.href}
+            className="mb-1 inline-flex items-center gap-1.5 font-mono text-xs text-studio-muted transition-colors hover:text-studio-link"
+          >
+            <span aria-hidden>&larr;</span> {parent.label}
+          </Link>
+        )}
+        <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+          <h1 className="font-display text-2xl leading-tight tracking-tight text-studio-bright sm:text-3xl">
+            {title ?? page.title}
+          </h1>
+          {meta.length > 0 && (
+            <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 font-mono text-[11px] text-studio-muted">
+              {meta.map((item, index) => (
+                <Fragment key={index}>
+                  {index > 0 && <span aria-hidden className="h-3 w-px bg-studio-border" />}
+                  <span>{item}</span>
+                </Fragment>
+              ))}
+            </div>
+          )}
+          {actions && (
+            <div className="ml-auto flex flex-wrap items-center gap-x-4 gap-y-1 font-mono text-xs text-studio-muted">
+              {actions}
+            </div>
+          )}
+        </div>
+        {description && <p className="mt-1.5 max-w-2xl text-[14px] leading-relaxed text-studio-muted">{description}</p>}
+        {children}
+      </header>
+    );
+  }
 
   return (
     <header className="mb-8 border-b border-studio-border pb-7">

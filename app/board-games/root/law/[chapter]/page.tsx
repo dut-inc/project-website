@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import PageHeader from "@/components/PageHeader";
+import { RootPage, TableLink } from "@/components/root/ui";
 import ChapterBody, { SectionNav, verificationNote } from "@/components/root/ChapterBody";
 import { pageMetadata } from "@/lib/metadata";
 import { factionStyle } from "@/lib/root/factionStyle";
@@ -16,7 +16,7 @@ import {
   verificationOf,
   type Section,
 } from "@/lib/root/law";
-import { ROOT_HREF, chapterHref, chapterSlug, factionHref, pdfPageHref, searchHref } from "@/lib/root/paths";
+import { LAW_HREF, chapterHref, chapterSlug, factionHref, pdfPageHref, searchHref } from "@/lib/root/paths";
 
 type Params = { params: Promise<{ chapter: string }> };
 
@@ -58,58 +58,46 @@ export default async function ChapterPage({ params }: Params) {
   const faction = chapter.faction_id ? getFaction(chapter.faction_id) : undefined;
 
   return (
-    <div className="text-studio-text">
-      <PageHeader
-        href={chapterHref(chapter.id)}
-        back={{ href: ROOT_HREF, label: "root.law" }}
-        title={chapterLabel(chapter)}
-        meta={[
-          <a key="pages" href={pdfPageHref(start)} target="_blank" rel="noopener noreferrer" className="hover:text-studio-link">
+    <RootPage
+      back={{ href: LAW_HREF, label: "Lawbook" }}
+      title={chapterLabel(chapter)}
+      meta={
+        <>
+          <a href={pdfPageHref(start)} target="_blank" rel="noopener noreferrer" className="hover:text-root-cream">
             {start === end ? `PDF p. ${start}` : `PDF pp. ${start}–${end}`}
-          </a>,
-          ...(chapter.expansion ? [chapter.expansion] : []),
-        ]}
-        description={describe(chapter)}
-        actions={
-          <>
-            <Link href={searchHref({ chapter: chapter.id })} className="hover:text-studio-link">
-              Search this chapter
-            </Link>
-            {faction && (
-              <Link href={factionHref(faction.id)} className="hover:text-studio-link">
-                {faction.name} page →
-              </Link>
-            )}
-          </>
-        }
-      >
-        {faction && (
-          <div aria-hidden className="mt-4 h-1 w-16 rounded-full" style={{ backgroundColor: factionStyle(faction.id).color }} />
-        )}
-      </PageHeader>
-
+          </a>
+          {chapter.expansion && <> · {chapter.expansion}</>}
+        </>
+      }
+      actions={
+        <>
+          <TableLink href={searchHref({ chapter: chapter.id })}>Search this chapter</TableLink>
+          {faction && <TableLink href={factionHref(faction.id)}>{factionStyle(faction.id).short} page</TableLink>}
+        </>
+      }
+    >
       {sections.length > 2 && <SectionNav sections={sections} />}
 
       <ChapterBody chapter={chapter} />
 
-      <p className="mt-8 max-w-3xl text-[13px] text-studio-muted">{verificationNote(verified, records.length, "chapter")}</p>
+      <p className="mt-8 max-w-3xl text-[13px] text-root-muted">{verificationNote(verified, records.length, "chapter")}</p>
 
-      <nav aria-label="Chapters" className="mt-6 grid gap-3 border-t border-studio-border pt-5 sm:grid-cols-2">
+      <nav aria-label="Chapters" className="mt-6 grid gap-3 border-t border-root-line pt-5 sm:grid-cols-2">
         {previous ? (
-          <Link href={chapterHref(previous.id)} className="rounded-lg border border-studio-border p-3 hover:border-studio-muted">
-            <span className="block font-mono text-[11px] text-studio-muted">← Previous</span>
-            <span className="text-studio-bright">{chapterLabel(previous)}</span>
+          <Link href={chapterHref(previous.id)} className="rounded-lg border border-root-line p-3 hover:border-root-muted">
+            <span className="block font-rootlabel text-[11px] text-root-muted">← Previous</span>
+            <span className="text-root-ink">{chapterLabel(previous)}</span>
           </Link>
         ) : (
           <span />
         )}
         {next && (
-          <Link href={chapterHref(next.id)} className="rounded-lg border border-studio-border p-3 text-right hover:border-studio-muted">
-            <span className="block font-mono text-[11px] text-studio-muted">Next →</span>
-            <span className="text-studio-bright">{chapterLabel(next)}</span>
+          <Link href={chapterHref(next.id)} className="rounded-lg border border-root-line p-3 text-right hover:border-root-muted">
+            <span className="block font-rootlabel text-[11px] text-root-muted">Next →</span>
+            <span className="text-root-ink">{chapterLabel(next)}</span>
           </Link>
         )}
       </nav>
-    </div>
+    </RootPage>
   );
 }
