@@ -28,12 +28,3 @@ export type PitchPlayerDataset = {
 };
 
 export const pitchPlayerData = data as PitchPlayerDataset;
-
-/** Top pitches a pitcher throws, sorted by usage — drives the pitch picker. */
-export function pitcherTopPitches(pitcher: Pitcher, limit = 6): { type: PitchType; pct: number }[] {
-  return Object.entries(pitcher.usage)
-    .filter(([type]) => type in pitcher.usage)
-    .map(([type, pct]) => ({ type: type as PitchType, pct: pct ?? 0 }))
-    .sort((a, b) => b.pct - a.pct)
-    .slice(0, limit);
-}

@@ -96,7 +96,7 @@ export default function ConservationMap() {
   );
 
   return (
-    <div className="mx-auto mt-10 max-w-6xl">
+    <div>
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_19rem] lg:items-start">
         <div className="relative rotate-1">
           <Pin color="navy" />

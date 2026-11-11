@@ -1,0 +1,3079 @@
+[
+  {
+    "id": "section-reading-the-law",
+    "number": null,
+    "title": "Reading the Law",
+    "level": 1,
+    "parent_section_id": null,
+    "order": 0,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 2,
+    "rule_ids": [
+      "rule-reading-the-law"
+    ]
+  },
+  {
+    "id": "section-1",
+    "number": "1",
+    "title": "Golden Rules",
+    "level": 1,
+    "parent_section_id": null,
+    "order": 1,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 2,
+    "rule_ids": [
+      "rule-1-intro"
+    ]
+  },
+  {
+    "id": "section-1-1",
+    "number": "1.1",
+    "title": "Rules Conflicts",
+    "level": 2,
+    "parent_section_id": "section-1",
+    "order": 2,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 2,
+    "rule_ids": [
+      "rule-1-1-1",
+      "rule-1-1-2",
+      "rule-1-1-3"
+    ]
+  },
+  {
+    "id": "section-1-2",
+    "number": "1.2",
+    "title": "Public and Private Information",
+    "level": 2,
+    "parent_section_id": "section-1",
+    "order": 3,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 2,
+    "rule_ids": [
+      "rule-1-2-1",
+      "rule-1-2-2"
+    ]
+  },
+  {
+    "id": "section-1-3",
+    "number": "1.3",
+    "title": "Negotiation, Deals, and Consent",
+    "level": 2,
+    "parent_section_id": "section-1",
+    "order": 4,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 2,
+    "rule_ids": [
+      "rule-1-3-1",
+      "rule-1-3-2",
+      "rule-1-3-3"
+    ]
+  },
+  {
+    "id": "section-1-4",
+    "number": "1.4",
+    "title": "Game Structure",
+    "level": 2,
+    "parent_section_id": "section-1",
+    "order": 5,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 2,
+    "rule_ids": [
+      "rule-1-4-1",
+      "rule-1-4-2",
+      "rule-1-4-3"
+    ]
+  },
+  {
+    "id": "section-1-5",
+    "number": "1.5",
+    "title": "Pieces",
+    "level": 2,
+    "parent_section_id": "section-1",
+    "order": 6,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 2,
+    "rule_ids": [
+      "rule-1-5-1",
+      "rule-1-5-2",
+      "rule-1-5-3",
+      "rule-1-5-4",
+      "rule-1-5-5",
+      "rule-1-5-5-i"
+    ]
+  },
+  {
+    "id": "section-2",
+    "number": "2",
+    "title": "Key Concepts",
+    "level": 1,
+    "parent_section_id": null,
+    "order": 7,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 3,
+    "rule_ids": [
+      "rule-2-intro"
+    ]
+  },
+  {
+    "id": "section-2-1",
+    "number": "2.1",
+    "title": "Cards",
+    "level": 2,
+    "parent_section_id": "section-2",
+    "order": 8,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 3,
+    "rule_ids": [
+      "rule-2-1",
+      "rule-2-1-1",
+      "rule-2-1-1-i",
+      "rule-2-1-1-ii",
+      "rule-2-1-2",
+      "rule-2-1-3",
+      "rule-2-1-4"
+    ]
+  },
+  {
+    "id": "section-2-2",
+    "number": "2.2",
+    "title": "Clearings and Paths",
+    "level": 2,
+    "parent_section_id": "section-2",
+    "order": 9,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 3,
+    "rule_ids": [
+      "rule-2-2",
+      "rule-2-2-1",
+      "rule-2-2-2",
+      "rule-2-2-3",
+      "rule-2-2-4"
+    ]
+  },
+  {
+    "id": "section-2-3",
+    "number": "2.3",
+    "title": "Rivers",
+    "level": 2,
+    "parent_section_id": "section-2",
+    "order": 10,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 3,
+    "rule_ids": [
+      "rule-2-3"
+    ]
+  },
+  {
+    "id": "section-2-4",
+    "number": "2.4",
+    "title": "Forests",
+    "level": 2,
+    "parent_section_id": "section-2",
+    "order": 11,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 3,
+    "rule_ids": [
+      "rule-2-4",
+      "rule-2-4-1"
+    ]
+  },
+  {
+    "id": "section-2-5",
+    "number": "2.5",
+    "title": "Rule",
+    "level": 2,
+    "parent_section_id": "section-2",
+    "order": 12,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 3,
+    "rule_ids": [
+      "rule-2-5"
+    ]
+  },
+  {
+    "id": "section-3",
+    "number": "3",
+    "title": "Victory",
+    "level": 1,
+    "parent_section_id": null,
+    "order": 13,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 3,
+    "rule_ids": []
+  },
+  {
+    "id": "section-3-1",
+    "number": "3.1",
+    "title": "How to Win",
+    "level": 2,
+    "parent_section_id": "section-3",
+    "order": 14,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 3,
+    "rule_ids": [
+      "rule-3-1",
+      "rule-3-1-1"
+    ]
+  },
+  {
+    "id": "section-3-2",
+    "number": "3.2",
+    "title": "Scoring Victory Points",
+    "level": 2,
+    "parent_section_id": "section-3",
+    "order": 15,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 3,
+    "rule_ids": [
+      "rule-3-2",
+      "rule-3-2-1",
+      "rule-3-2-2"
+    ]
+  },
+  {
+    "id": "section-3-3",
+    "number": "3.3",
+    "title": "Dominance Cards",
+    "level": 2,
+    "parent_section_id": "section-3",
+    "order": 16,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 3,
+    "rule_ids": [
+      "rule-3-3",
+      "rule-3-3-1",
+      "rule-3-3-1-i",
+      "rule-3-3-1-ii",
+      "rule-3-3-2",
+      "rule-3-3-3",
+      "rule-3-3-4"
+    ]
+  },
+  {
+    "id": "section-4",
+    "number": "4",
+    "title": "Key Actions",
+    "level": 1,
+    "parent_section_id": null,
+    "order": 17,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 4,
+    "rule_ids": []
+  },
+  {
+    "id": "section-4-1",
+    "number": "4.1",
+    "title": "Craft",
+    "level": 2,
+    "parent_section_id": "section-4",
+    "order": 18,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 4,
+    "rule_ids": [
+      "rule-4-1",
+      "rule-4-1-1",
+      "rule-4-1-2",
+      "rule-4-1-3",
+      "rule-4-1-4"
+    ]
+  },
+  {
+    "id": "section-4-2",
+    "number": "4.2",
+    "title": "Move",
+    "level": 2,
+    "parent_section_id": "section-4",
+    "order": 19,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 4,
+    "rule_ids": [
+      "rule-4-2",
+      "rule-4-2-1",
+      "rule-4-2-2"
+    ]
+  },
+  {
+    "id": "section-4-3",
+    "number": "4.3",
+    "title": "Battle",
+    "level": 2,
+    "parent_section_id": "section-4",
+    "order": 20,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 4,
+    "rule_ids": [
+      "rule-4-3",
+      "rule-4-3-1",
+      "rule-4-3-1-i",
+      "rule-4-3-1-ii",
+      "rule-4-3-2",
+      "rule-4-3-3",
+      "rule-4-3-3-i",
+      "rule-4-3-4",
+      "rule-4-3-5",
+      "rule-4-3-5-i",
+      "rule-4-3-5-ii",
+      "rule-4-3-5-iii",
+      "rule-4-3-6"
+    ]
+  },
+  {
+    "id": "section-5",
+    "number": "5",
+    "title": "Setup",
+    "level": 1,
+    "parent_section_id": null,
+    "order": 21,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 4,
+    "rule_ids": [
+      "rule-5-intro"
+    ]
+  },
+  {
+    "id": "section-5-1",
+    "number": "5.1",
+    "title": "Standard Setup",
+    "level": 2,
+    "parent_section_id": "section-5",
+    "order": 22,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 5,
+    "rule_ids": [
+      "rule-5-1-1",
+      "rule-5-1-2",
+      "rule-5-1-3",
+      "rule-5-1-4",
+      "rule-5-1-5",
+      "rule-5-1-6",
+      "rule-5-1-7"
+    ]
+  },
+  {
+    "id": "section-5-2",
+    "number": "5.2",
+    "title": "Reach",
+    "level": 2,
+    "parent_section_id": "section-5",
+    "order": 23,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 5,
+    "rule_ids": [
+      "rule-5-2"
+    ]
+  },
+  {
+    "id": "section-6",
+    "number": "6",
+    "title": "Marquise de Cat",
+    "level": 1,
+    "parent_section_id": null,
+    "order": 24,
+    "faction_id": "marquise-de-cat",
+    "expansion": null,
+    "source_page_start": 5,
+    "rule_ids": []
+  },
+  {
+    "id": "section-6-1",
+    "number": "6.1",
+    "title": "Overview",
+    "level": 2,
+    "parent_section_id": "section-6",
+    "order": 25,
+    "faction_id": "marquise-de-cat",
+    "expansion": null,
+    "source_page_start": 5,
+    "rule_ids": [
+      "rule-6-1"
+    ]
+  },
+  {
+    "id": "section-6-2",
+    "number": "6.2",
+    "title": "Faction Rules and Abilities",
+    "level": 2,
+    "parent_section_id": "section-6",
+    "order": 26,
+    "faction_id": "marquise-de-cat",
+    "expansion": null,
+    "source_page_start": 5,
+    "rule_ids": [
+      "rule-6-2-1",
+      "rule-6-2-2",
+      "rule-6-2-3"
+    ]
+  },
+  {
+    "id": "section-6-3",
+    "number": "6.3",
+    "title": "Faction Setup",
+    "level": 2,
+    "parent_section_id": "section-6",
+    "order": 27,
+    "faction_id": "marquise-de-cat",
+    "expansion": null,
+    "source_page_start": 5,
+    "rule_ids": [
+      "rule-6-3-1",
+      "rule-6-3-2",
+      "rule-6-3-3",
+      "rule-6-3-4",
+      "rule-6-3-5"
+    ]
+  },
+  {
+    "id": "section-6-4",
+    "number": "6.4",
+    "title": "Birdsong",
+    "level": 2,
+    "parent_section_id": "section-6",
+    "order": 28,
+    "faction_id": "marquise-de-cat",
+    "expansion": null,
+    "source_page_start": 6,
+    "rule_ids": [
+      "rule-6-4"
+    ]
+  },
+  {
+    "id": "section-6-5",
+    "number": "6.5",
+    "title": "Daylight",
+    "level": 2,
+    "parent_section_id": "section-6",
+    "order": 29,
+    "faction_id": "marquise-de-cat",
+    "expansion": null,
+    "source_page_start": 6,
+    "rule_ids": [
+      "rule-6-5",
+      "rule-6-5-1",
+      "rule-6-5-2",
+      "rule-6-5-3",
+      "rule-6-5-4",
+      "rule-6-5-4-i",
+      "rule-6-5-4-ii",
+      "rule-6-5-4-iii",
+      "rule-6-5-5"
+    ]
+  },
+  {
+    "id": "section-6-6",
+    "number": "6.6",
+    "title": "Evening",
+    "level": 2,
+    "parent_section_id": "section-6",
+    "order": 30,
+    "faction_id": "marquise-de-cat",
+    "expansion": null,
+    "source_page_start": 6,
+    "rule_ids": [
+      "rule-6-6"
+    ]
+  },
+  {
+    "id": "section-7",
+    "number": "7",
+    "title": "Eyrie Dynasties",
+    "level": 1,
+    "parent_section_id": null,
+    "order": 31,
+    "faction_id": "eyrie-dynasties",
+    "expansion": null,
+    "source_page_start": 6,
+    "rule_ids": []
+  },
+  {
+    "id": "section-7-1",
+    "number": "7.1",
+    "title": "Overview",
+    "level": 2,
+    "parent_section_id": "section-7",
+    "order": 32,
+    "faction_id": "eyrie-dynasties",
+    "expansion": null,
+    "source_page_start": 6,
+    "rule_ids": [
+      "rule-7-1"
+    ]
+  },
+  {
+    "id": "section-7-2",
+    "number": "7.2",
+    "title": "Faction Rules and Abilities",
+    "level": 2,
+    "parent_section_id": "section-7",
+    "order": 33,
+    "faction_id": "eyrie-dynasties",
+    "expansion": null,
+    "source_page_start": 6,
+    "rule_ids": [
+      "rule-7-2-1",
+      "rule-7-2-2",
+      "rule-7-2-3"
+    ]
+  },
+  {
+    "id": "section-7-3",
+    "number": "7.3",
+    "title": "Faction Setup",
+    "level": 2,
+    "parent_section_id": "section-7",
+    "order": 34,
+    "faction_id": "eyrie-dynasties",
+    "expansion": null,
+    "source_page_start": 6,
+    "rule_ids": [
+      "rule-7-3-1",
+      "rule-7-3-2",
+      "rule-7-3-3",
+      "rule-7-3-4",
+      "rule-7-3-5"
+    ]
+  },
+  {
+    "id": "section-7-4",
+    "number": "7.4",
+    "title": "Birdsong",
+    "level": 2,
+    "parent_section_id": "section-7",
+    "order": 35,
+    "faction_id": "eyrie-dynasties",
+    "expansion": null,
+    "source_page_start": 6,
+    "rule_ids": [
+      "rule-7-4",
+      "rule-7-4-1",
+      "rule-7-4-2",
+      "rule-7-4-3"
+    ]
+  },
+  {
+    "id": "section-7-5",
+    "number": "7.5",
+    "title": "Daylight",
+    "level": 2,
+    "parent_section_id": "section-7",
+    "order": 36,
+    "faction_id": "eyrie-dynasties",
+    "expansion": null,
+    "source_page_start": 6,
+    "rule_ids": [
+      "rule-7-5",
+      "rule-7-5-1",
+      "rule-7-5-2",
+      "rule-7-5-2-i",
+      "rule-7-5-2-ii",
+      "rule-7-5-2-iii",
+      "rule-7-5-2-iv"
+    ]
+  },
+  {
+    "id": "section-7-6",
+    "number": "7.6",
+    "title": "Evening",
+    "level": 2,
+    "parent_section_id": "section-7",
+    "order": 37,
+    "faction_id": "eyrie-dynasties",
+    "expansion": null,
+    "source_page_start": 7,
+    "rule_ids": [
+      "rule-7-6",
+      "rule-7-6-1",
+      "rule-7-6-2"
+    ]
+  },
+  {
+    "id": "section-7-7",
+    "number": "7.7",
+    "title": "Turmoil",
+    "level": 2,
+    "parent_section_id": "section-7",
+    "order": 38,
+    "faction_id": "eyrie-dynasties",
+    "expansion": null,
+    "source_page_start": 7,
+    "rule_ids": [
+      "rule-7-7",
+      "rule-7-7-1",
+      "rule-7-7-2",
+      "rule-7-7-3",
+      "rule-7-7-3-i",
+      "rule-7-7-4"
+    ]
+  },
+  {
+    "id": "section-7-8",
+    "number": "7.8",
+    "title": "Leaders Reference",
+    "level": 2,
+    "parent_section_id": "section-7",
+    "order": 39,
+    "faction_id": "eyrie-dynasties",
+    "expansion": null,
+    "source_page_start": 7,
+    "rule_ids": [
+      "rule-7-8",
+      "rule-7-8-1",
+      "rule-7-8-2",
+      "rule-7-8-3",
+      "rule-7-8-4"
+    ]
+  },
+  {
+    "id": "section-8",
+    "number": "8",
+    "title": "Woodland Alliance",
+    "level": 1,
+    "parent_section_id": null,
+    "order": 40,
+    "faction_id": "woodland-alliance",
+    "expansion": null,
+    "source_page_start": 7,
+    "rule_ids": []
+  },
+  {
+    "id": "section-8-1",
+    "number": "8.1",
+    "title": "Overview",
+    "level": 2,
+    "parent_section_id": "section-8",
+    "order": 41,
+    "faction_id": "woodland-alliance",
+    "expansion": null,
+    "source_page_start": 7,
+    "rule_ids": [
+      "rule-8-1"
+    ]
+  },
+  {
+    "id": "section-8-2",
+    "number": "8.2",
+    "title": "Faction Rules and Abilities",
+    "level": 2,
+    "parent_section_id": "section-8",
+    "order": 42,
+    "faction_id": "woodland-alliance",
+    "expansion": null,
+    "source_page_start": 7,
+    "rule_ids": [
+      "rule-8-2-1",
+      "rule-8-2-2",
+      "rule-8-2-3",
+      "rule-8-2-3-i",
+      "rule-8-2-4",
+      "rule-8-2-5",
+      "rule-8-2-5-i",
+      "rule-8-2-5-ii",
+      "rule-8-2-6"
+    ]
+  },
+  {
+    "id": "section-8-3",
+    "number": "8.3",
+    "title": "Faction Setup",
+    "level": 2,
+    "parent_section_id": "section-8",
+    "order": 43,
+    "faction_id": "woodland-alliance",
+    "expansion": null,
+    "source_page_start": 8,
+    "rule_ids": [
+      "rule-8-3-1",
+      "rule-8-3-2",
+      "rule-8-3-3",
+      "rule-8-3-4"
+    ]
+  },
+  {
+    "id": "section-8-4",
+    "number": "8.4",
+    "title": "Birdsong",
+    "level": 2,
+    "parent_section_id": "section-8",
+    "order": 44,
+    "faction_id": "woodland-alliance",
+    "expansion": null,
+    "source_page_start": 8,
+    "rule_ids": [
+      "rule-8-4",
+      "rule-8-4-1",
+      "rule-8-4-1-i",
+      "rule-8-4-1-ii",
+      "rule-8-4-1-iii",
+      "rule-8-4-2",
+      "rule-8-4-2-i",
+      "rule-8-4-2-ii",
+      "rule-8-4-2-ii-a",
+      "rule-8-4-2-iii"
+    ]
+  },
+  {
+    "id": "section-8-5",
+    "number": "8.5",
+    "title": "Daylight",
+    "level": 2,
+    "parent_section_id": "section-8",
+    "order": 45,
+    "faction_id": "woodland-alliance",
+    "expansion": null,
+    "source_page_start": 8,
+    "rule_ids": [
+      "rule-8-5",
+      "rule-8-5-1",
+      "rule-8-5-2",
+      "rule-8-5-3"
+    ]
+  },
+  {
+    "id": "section-8-6",
+    "number": "8.6",
+    "title": "Evening",
+    "level": 2,
+    "parent_section_id": "section-8",
+    "order": 46,
+    "faction_id": "woodland-alliance",
+    "expansion": null,
+    "source_page_start": 8,
+    "rule_ids": [
+      "rule-8-6",
+      "rule-8-6-1",
+      "rule-8-6-1-i",
+      "rule-8-6-1-ii",
+      "rule-8-6-1-iii",
+      "rule-8-6-1-iv",
+      "rule-8-6-2"
+    ]
+  },
+  {
+    "id": "section-9",
+    "number": "9",
+    "title": "Vagabond",
+    "level": 1,
+    "parent_section_id": null,
+    "order": 47,
+    "faction_id": "vagabond",
+    "expansion": null,
+    "source_page_start": 8,
+    "rule_ids": []
+  },
+  {
+    "id": "section-9-1",
+    "number": "9.1",
+    "title": "Overview",
+    "level": 2,
+    "parent_section_id": "section-9",
+    "order": 48,
+    "faction_id": "vagabond",
+    "expansion": null,
+    "source_page_start": 8,
+    "rule_ids": [
+      "rule-9-1"
+    ]
+  },
+  {
+    "id": "section-9-2",
+    "number": "9.2",
+    "title": "Faction Rules and Abilities",
+    "level": 2,
+    "parent_section_id": "section-9",
+    "order": 49,
+    "faction_id": "vagabond",
+    "expansion": null,
+    "source_page_start": 9,
+    "rule_ids": [
+      "rule-9-2-1",
+      "rule-9-2-2",
+      "rule-9-2-2-i",
+      "rule-9-2-3",
+      "rule-9-2-4",
+      "rule-9-2-5",
+      "rule-9-2-5-i",
+      "rule-9-2-5-ii",
+      "rule-9-2-6",
+      "rule-9-2-7",
+      "rule-9-2-8",
+      "rule-9-2-9",
+      "rule-9-2-9-i",
+      "rule-9-2-9-i-a",
+      "rule-9-2-9-i-b",
+      "rule-9-2-9-ii",
+      "rule-9-2-9-ii-a",
+      "rule-9-2-9-ii-b",
+      "rule-9-2-9-ii-c",
+      "rule-9-2-9-ii-d",
+      "rule-9-2-9-iii",
+      "rule-9-2-9-iii-a",
+      "rule-9-2-9-iii-b",
+      "rule-9-2-9-iii-c",
+      "rule-9-2-9-iii-d",
+      "rule-9-2-10"
+    ]
+  },
+  {
+    "id": "section-9-3",
+    "number": "9.3",
+    "title": "Faction Setup",
+    "level": 2,
+    "parent_section_id": "section-9",
+    "order": 50,
+    "faction_id": "vagabond",
+    "expansion": null,
+    "source_page_start": 10,
+    "rule_ids": [
+      "rule-9-3-1",
+      "rule-9-3-2",
+      "rule-9-3-3",
+      "rule-9-3-4",
+      "rule-9-3-5",
+      "rule-9-3-6"
+    ]
+  },
+  {
+    "id": "section-9-4",
+    "number": "9.4",
+    "title": "Birdsong",
+    "level": 2,
+    "parent_section_id": "section-9",
+    "order": 51,
+    "faction_id": "vagabond",
+    "expansion": null,
+    "source_page_start": 10,
+    "rule_ids": [
+      "rule-9-4",
+      "rule-9-4-1",
+      "rule-9-4-2"
+    ]
+  },
+  {
+    "id": "section-9-5",
+    "number": "9.5",
+    "title": "Daylight",
+    "level": 2,
+    "parent_section_id": "section-9",
+    "order": 52,
+    "faction_id": "vagabond",
+    "expansion": null,
+    "source_page_start": 10,
+    "rule_ids": [
+      "rule-9-5",
+      "rule-9-5-1",
+      "rule-9-5-2",
+      "rule-9-5-3",
+      "rule-9-5-4",
+      "rule-9-5-5",
+      "rule-9-5-6",
+      "rule-9-5-7",
+      "rule-9-5-8",
+      "rule-9-5-9"
+    ]
+  },
+  {
+    "id": "section-9-6",
+    "number": "9.6",
+    "title": "Evening",
+    "level": 2,
+    "parent_section_id": "section-9",
+    "order": 53,
+    "faction_id": "vagabond",
+    "expansion": null,
+    "source_page_start": 10,
+    "rule_ids": [
+      "rule-9-6",
+      "rule-9-6-1",
+      "rule-9-6-2",
+      "rule-9-6-3",
+      "rule-9-6-4"
+    ]
+  },
+  {
+    "id": "section-9-7",
+    "number": "9.7",
+    "title": "Playing with Two Vagabonds",
+    "level": 2,
+    "parent_section_id": "section-9",
+    "order": 54,
+    "faction_id": "vagabond",
+    "expansion": null,
+    "source_page_start": 10,
+    "rule_ids": [
+      "rule-9-7",
+      "rule-9-7-1",
+      "rule-9-7-2",
+      "rule-9-7-3"
+    ]
+  },
+  {
+    "id": "section-10",
+    "number": "10",
+    "title": "Lizard Cult",
+    "level": 1,
+    "parent_section_id": null,
+    "order": 55,
+    "faction_id": "lizard-cult",
+    "expansion": "The Riverfolk Expansion",
+    "source_page_start": 11,
+    "rule_ids": []
+  },
+  {
+    "id": "section-10-1",
+    "number": "10.1",
+    "title": "Overview",
+    "level": 2,
+    "parent_section_id": "section-10",
+    "order": 56,
+    "faction_id": "lizard-cult",
+    "expansion": null,
+    "source_page_start": 11,
+    "rule_ids": [
+      "rule-10-1"
+    ]
+  },
+  {
+    "id": "section-10-2",
+    "number": "10.2",
+    "title": "Faction Rules and Abilities",
+    "level": 2,
+    "parent_section_id": "section-10",
+    "order": 57,
+    "faction_id": "lizard-cult",
+    "expansion": null,
+    "source_page_start": 11,
+    "rule_ids": [
+      "rule-10-2-1",
+      "rule-10-2-2",
+      "rule-10-2-3",
+      "rule-10-2-4",
+      "rule-10-2-5",
+      "rule-10-2-6"
+    ]
+  },
+  {
+    "id": "section-10-3",
+    "number": "10.3",
+    "title": "Faction Setup",
+    "level": 2,
+    "parent_section_id": "section-10",
+    "order": 58,
+    "faction_id": "lizard-cult",
+    "expansion": null,
+    "source_page_start": 11,
+    "rule_ids": [
+      "rule-10-3-1",
+      "rule-10-3-2",
+      "rule-10-3-3",
+      "rule-10-3-4"
+    ]
+  },
+  {
+    "id": "section-10-4",
+    "number": "10.4",
+    "title": "Birdsong",
+    "level": 2,
+    "parent_section_id": "section-10",
+    "order": 59,
+    "faction_id": "lizard-cult",
+    "expansion": null,
+    "source_page_start": 11,
+    "rule_ids": [
+      "rule-10-4",
+      "rule-10-4-1",
+      "rule-10-4-2",
+      "rule-10-4-3",
+      "rule-10-4-3-i",
+      "rule-10-4-3-ii",
+      "rule-10-4-3-iii"
+    ]
+  },
+  {
+    "id": "section-10-5",
+    "number": "10.5",
+    "title": "Daylight",
+    "level": 2,
+    "parent_section_id": "section-10",
+    "order": 60,
+    "faction_id": "lizard-cult",
+    "expansion": null,
+    "source_page_start": 11,
+    "rule_ids": [
+      "rule-10-5",
+      "rule-10-5-1",
+      "rule-10-5-2",
+      "rule-10-5-3",
+      "rule-10-5-4"
+    ]
+  },
+  {
+    "id": "section-10-6",
+    "number": "10.6",
+    "title": "Evening",
+    "level": 2,
+    "parent_section_id": "section-10",
+    "order": 61,
+    "faction_id": "lizard-cult",
+    "expansion": null,
+    "source_page_start": 12,
+    "rule_ids": [
+      "rule-10-6",
+      "rule-10-6-1",
+      "rule-10-6-2",
+      "rule-10-6-3"
+    ]
+  },
+  {
+    "id": "section-11",
+    "number": "11",
+    "title": "Riverfolk Company",
+    "level": 1,
+    "parent_section_id": null,
+    "order": 62,
+    "faction_id": "riverfolk-company",
+    "expansion": "The Riverfolk Expansion",
+    "source_page_start": 12,
+    "rule_ids": []
+  },
+  {
+    "id": "section-11-1",
+    "number": "11.1",
+    "title": "Overview",
+    "level": 2,
+    "parent_section_id": "section-11",
+    "order": 63,
+    "faction_id": "riverfolk-company",
+    "expansion": null,
+    "source_page_start": 12,
+    "rule_ids": [
+      "rule-11-1"
+    ]
+  },
+  {
+    "id": "section-11-2",
+    "number": "11.2",
+    "title": "Faction Rules and Abilities",
+    "level": 2,
+    "parent_section_id": "section-11",
+    "order": 64,
+    "faction_id": "riverfolk-company",
+    "expansion": null,
+    "source_page_start": 12,
+    "rule_ids": [
+      "rule-11-2-1",
+      "rule-11-2-2",
+      "rule-11-2-3",
+      "rule-11-2-4",
+      "rule-11-2-5",
+      "rule-11-2-5-i",
+      "rule-11-2-6",
+      "rule-11-2-6-i",
+      "rule-11-2-6-ii",
+      "rule-11-2-6-iii",
+      "rule-11-2-7",
+      "rule-11-2-7-i",
+      "rule-11-2-7-ii",
+      "rule-11-2-7-iii",
+      "rule-11-2-7-iii-a",
+      "rule-11-2-7-iii-b"
+    ]
+  },
+  {
+    "id": "section-11-3",
+    "number": "11.3",
+    "title": "Faction Setup",
+    "level": 2,
+    "parent_section_id": "section-11",
+    "order": 65,
+    "faction_id": "riverfolk-company",
+    "expansion": null,
+    "source_page_start": 12,
+    "rule_ids": [
+      "rule-11-3-1",
+      "rule-11-3-2",
+      "rule-11-3-3",
+      "rule-11-3-4",
+      "rule-11-3-5"
+    ]
+  },
+  {
+    "id": "section-11-4",
+    "number": "11.4",
+    "title": "Birdsong",
+    "level": 2,
+    "parent_section_id": "section-11",
+    "order": 66,
+    "faction_id": "riverfolk-company",
+    "expansion": null,
+    "source_page_start": 13,
+    "rule_ids": [
+      "rule-11-4",
+      "rule-11-4-1",
+      "rule-11-4-2",
+      "rule-11-4-3"
+    ]
+  },
+  {
+    "id": "section-11-5",
+    "number": "11.5",
+    "title": "Daylight",
+    "level": 2,
+    "parent_section_id": "section-11",
+    "order": 67,
+    "faction_id": "riverfolk-company",
+    "expansion": null,
+    "source_page_start": 13,
+    "rule_ids": [
+      "rule-11-5",
+      "rule-11-5-1",
+      "rule-11-5-2",
+      "rule-11-5-3",
+      "rule-11-5-3-i",
+      "rule-11-5-4",
+      "rule-11-5-5",
+      "rule-11-5-6",
+      "rule-11-5-6-i",
+      "rule-11-5-6-ii",
+      "rule-11-5-6-iii"
+    ]
+  },
+  {
+    "id": "section-11-6",
+    "number": "11.6",
+    "title": "Evening",
+    "level": 2,
+    "parent_section_id": "section-11",
+    "order": 68,
+    "faction_id": "riverfolk-company",
+    "expansion": null,
+    "source_page_start": 13,
+    "rule_ids": [
+      "rule-11-6",
+      "rule-11-6-1",
+      "rule-11-6-2"
+    ]
+  },
+  {
+    "id": "section-12",
+    "number": "12",
+    "title": "Underground Duchy",
+    "level": 1,
+    "parent_section_id": null,
+    "order": 69,
+    "faction_id": "underground-duchy",
+    "expansion": "The Underworld Expansion",
+    "source_page_start": 13,
+    "rule_ids": []
+  },
+  {
+    "id": "section-12-1",
+    "number": "12.1",
+    "title": "Overview",
+    "level": 2,
+    "parent_section_id": "section-12",
+    "order": 70,
+    "faction_id": "underground-duchy",
+    "expansion": null,
+    "source_page_start": 13,
+    "rule_ids": [
+      "rule-12-1"
+    ]
+  },
+  {
+    "id": "section-12-2",
+    "number": "12.2",
+    "title": "Faction Rules and Abilities",
+    "level": 2,
+    "parent_section_id": "section-12",
+    "order": 71,
+    "faction_id": "underground-duchy",
+    "expansion": null,
+    "source_page_start": 13,
+    "rule_ids": [
+      "rule-12-2-1",
+      "rule-12-2-2",
+      "rule-12-2-3",
+      "rule-12-2-4"
+    ]
+  },
+  {
+    "id": "section-12-3",
+    "number": "12.3",
+    "title": "Faction Setup",
+    "level": 2,
+    "parent_section_id": "section-12",
+    "order": 72,
+    "faction_id": "underground-duchy",
+    "expansion": null,
+    "source_page_start": 14,
+    "rule_ids": [
+      "rule-12-3-1",
+      "rule-12-3-2",
+      "rule-12-3-3",
+      "rule-12-3-4",
+      "rule-12-3-5",
+      "rule-12-3-6"
+    ]
+  },
+  {
+    "id": "section-12-4",
+    "number": "12.4",
+    "title": "Birdsong",
+    "level": 2,
+    "parent_section_id": "section-12",
+    "order": 73,
+    "faction_id": "underground-duchy",
+    "expansion": null,
+    "source_page_start": 14,
+    "rule_ids": [
+      "rule-12-4"
+    ]
+  },
+  {
+    "id": "section-12-5",
+    "number": "12.5",
+    "title": "Daylight",
+    "level": 2,
+    "parent_section_id": "section-12",
+    "order": 74,
+    "faction_id": "underground-duchy",
+    "expansion": null,
+    "source_page_start": 14,
+    "rule_ids": [
+      "rule-12-5",
+      "rule-12-5-1",
+      "rule-12-5-1-i",
+      "rule-12-5-1-ii",
+      "rule-12-5-1-iii",
+      "rule-12-5-1-iv",
+      "rule-12-5-1-v",
+      "rule-12-5-2",
+      "rule-12-5-2-i",
+      "rule-12-5-2-ii",
+      "rule-12-5-2-iii",
+      "rule-12-5-2-iv",
+      "rule-12-5-2-v",
+      "rule-12-5-2-vi",
+      "rule-12-5-2-vii",
+      "rule-12-5-2-viii",
+      "rule-12-5-2-ix",
+      "rule-12-5-3",
+      "rule-12-5-3-i",
+      "rule-12-5-3-ii",
+      "rule-12-5-3-iii"
+    ]
+  },
+  {
+    "id": "section-12-6",
+    "number": "12.6",
+    "title": "Evening",
+    "level": 2,
+    "parent_section_id": "section-12",
+    "order": 75,
+    "faction_id": "underground-duchy",
+    "expansion": null,
+    "source_page_start": 14,
+    "rule_ids": [
+      "rule-12-6",
+      "rule-12-6-1",
+      "rule-12-6-2",
+      "rule-12-6-3"
+    ]
+  },
+  {
+    "id": "section-13",
+    "number": "13",
+    "title": "Corvid Conspiracy",
+    "level": 1,
+    "parent_section_id": null,
+    "order": 76,
+    "faction_id": "corvid-conspiracy",
+    "expansion": "The Underworld Expansion",
+    "source_page_start": 14,
+    "rule_ids": []
+  },
+  {
+    "id": "section-13-1",
+    "number": "13.1",
+    "title": "Overview",
+    "level": 2,
+    "parent_section_id": "section-13",
+    "order": 77,
+    "faction_id": "corvid-conspiracy",
+    "expansion": null,
+    "source_page_start": 14,
+    "rule_ids": [
+      "rule-13-1"
+    ]
+  },
+  {
+    "id": "section-13-2",
+    "number": "13.2",
+    "title": "Faction Rules and Abilities",
+    "level": 2,
+    "parent_section_id": "section-13",
+    "order": 78,
+    "faction_id": "corvid-conspiracy",
+    "expansion": null,
+    "source_page_start": 14,
+    "rule_ids": [
+      "rule-13-2-1",
+      "rule-13-2-2",
+      "rule-13-2-2-i",
+      "rule-13-2-2-ii",
+      "rule-13-2-3",
+      "rule-13-2-4",
+      "rule-13-2-5"
+    ]
+  },
+  {
+    "id": "section-13-3",
+    "number": "13.3",
+    "title": "Faction Setup",
+    "level": 2,
+    "parent_section_id": "section-13",
+    "order": 79,
+    "faction_id": "corvid-conspiracy",
+    "expansion": null,
+    "source_page_start": 15,
+    "rule_ids": [
+      "rule-13-3-1",
+      "rule-13-3-2"
+    ]
+  },
+  {
+    "id": "section-13-4",
+    "number": "13.4",
+    "title": "Birdsong",
+    "level": 2,
+    "parent_section_id": "section-13",
+    "order": 80,
+    "faction_id": "corvid-conspiracy",
+    "expansion": null,
+    "source_page_start": 15,
+    "rule_ids": [
+      "rule-13-4",
+      "rule-13-4-1",
+      "rule-13-4-2",
+      "rule-13-4-3"
+    ]
+  },
+  {
+    "id": "section-13-5",
+    "number": "13.5",
+    "title": "Daylight",
+    "level": 2,
+    "parent_section_id": "section-13",
+    "order": 81,
+    "faction_id": "corvid-conspiracy",
+    "expansion": null,
+    "source_page_start": 15,
+    "rule_ids": [
+      "rule-13-5",
+      "rule-13-5-1",
+      "rule-13-5-2",
+      "rule-13-5-3",
+      "rule-13-5-4"
+    ]
+  },
+  {
+    "id": "section-13-6",
+    "number": "13.6",
+    "title": "Evening",
+    "level": 2,
+    "parent_section_id": "section-13",
+    "order": 82,
+    "faction_id": "corvid-conspiracy",
+    "expansion": null,
+    "source_page_start": 15,
+    "rule_ids": [
+      "rule-13-6",
+      "rule-13-6-1",
+      "rule-13-6-2"
+    ]
+  },
+  {
+    "id": "section-13-7",
+    "number": "13.7",
+    "title": "Plot Tokens Reference",
+    "level": 2,
+    "parent_section_id": "section-13",
+    "order": 83,
+    "faction_id": "corvid-conspiracy",
+    "expansion": null,
+    "source_page_start": 15,
+    "rule_ids": [
+      "rule-13-7-1",
+      "rule-13-7-2",
+      "rule-13-7-3",
+      "rule-13-7-4"
+    ]
+  },
+  {
+    "id": "section-14",
+    "number": "14",
+    "title": "Lord of the Hundreds",
+    "level": 1,
+    "parent_section_id": null,
+    "order": 84,
+    "faction_id": "lord-of-the-hundreds",
+    "expansion": "The Marauder Expansion",
+    "source_page_start": 15,
+    "rule_ids": []
+  },
+  {
+    "id": "section-14-1",
+    "number": "14.1",
+    "title": "Overview",
+    "level": 2,
+    "parent_section_id": "section-14",
+    "order": 85,
+    "faction_id": "lord-of-the-hundreds",
+    "expansion": null,
+    "source_page_start": 15,
+    "rule_ids": [
+      "rule-14-1"
+    ]
+  },
+  {
+    "id": "section-14-2",
+    "number": "14.2",
+    "title": "Faction Rules and Abilities",
+    "level": 2,
+    "parent_section_id": "section-14",
+    "order": 86,
+    "faction_id": "lord-of-the-hundreds",
+    "expansion": null,
+    "source_page_start": 15,
+    "rule_ids": [
+      "rule-14-2-1",
+      "rule-14-2-2",
+      "rule-14-2-3",
+      "rule-14-2-4",
+      "rule-14-2-4-i",
+      "rule-14-2-4-ii",
+      "rule-14-2-5"
+    ]
+  },
+  {
+    "id": "section-14-3",
+    "number": "14.3",
+    "title": "Faction Setup",
+    "level": 2,
+    "parent_section_id": "section-14",
+    "order": 87,
+    "faction_id": "lord-of-the-hundreds",
+    "expansion": null,
+    "source_page_start": 16,
+    "rule_ids": [
+      "rule-14-3-1",
+      "rule-14-3-2",
+      "rule-14-3-3",
+      "rule-14-3-4"
+    ]
+  },
+  {
+    "id": "section-14-4",
+    "number": "14.4",
+    "title": "Birdsong",
+    "level": 2,
+    "parent_section_id": "section-14",
+    "order": 88,
+    "faction_id": "lord-of-the-hundreds",
+    "expansion": null,
+    "source_page_start": 16,
+    "rule_ids": [
+      "rule-14-4",
+      "rule-14-4-1",
+      "rule-14-4-2",
+      "rule-14-4-3",
+      "rule-14-4-4"
+    ]
+  },
+  {
+    "id": "section-14-5",
+    "number": "14.5",
+    "title": "Daylight",
+    "level": 2,
+    "parent_section_id": "section-14",
+    "order": 89,
+    "faction_id": "lord-of-the-hundreds",
+    "expansion": null,
+    "source_page_start": 16,
+    "rule_ids": [
+      "rule-14-5",
+      "rule-14-5-1",
+      "rule-14-5-2",
+      "rule-14-5-2-i",
+      "rule-14-5-2-ii",
+      "rule-14-5-2-iii",
+      "rule-14-5-3"
+    ]
+  },
+  {
+    "id": "section-14-6",
+    "number": "14.6",
+    "title": "Evening",
+    "level": 2,
+    "parent_section_id": "section-14",
+    "order": 90,
+    "faction_id": "lord-of-the-hundreds",
+    "expansion": null,
+    "source_page_start": 16,
+    "rule_ids": [
+      "rule-14-6",
+      "rule-14-6-1",
+      "rule-14-6-2",
+      "rule-14-6-3"
+    ]
+  },
+  {
+    "id": "section-14-7",
+    "number": "14.7",
+    "title": "Moods",
+    "level": 2,
+    "parent_section_id": "section-14",
+    "order": 91,
+    "faction_id": "lord-of-the-hundreds",
+    "expansion": null,
+    "source_page_start": 16,
+    "rule_ids": [
+      "rule-14-7-1",
+      "rule-14-7-2",
+      "rule-14-7-3",
+      "rule-14-7-4",
+      "rule-14-7-5",
+      "rule-14-7-6",
+      "rule-14-7-7",
+      "rule-14-7-8"
+    ]
+  },
+  {
+    "id": "section-15",
+    "number": "15",
+    "title": "Keepers in Iron",
+    "level": 1,
+    "parent_section_id": null,
+    "order": 92,
+    "faction_id": "keepers-in-iron",
+    "expansion": "The Marauder Expansion",
+    "source_page_start": 17,
+    "rule_ids": []
+  },
+  {
+    "id": "section-15-1",
+    "number": "15.1",
+    "title": "Overview",
+    "level": 2,
+    "parent_section_id": "section-15",
+    "order": 93,
+    "faction_id": "keepers-in-iron",
+    "expansion": null,
+    "source_page_start": 17,
+    "rule_ids": [
+      "rule-15-1"
+    ]
+  },
+  {
+    "id": "section-15-2",
+    "number": "15.2",
+    "title": "Faction Rules and Abilities",
+    "level": 2,
+    "parent_section_id": "section-15",
+    "order": 94,
+    "faction_id": "keepers-in-iron",
+    "expansion": null,
+    "source_page_start": 17,
+    "rule_ids": [
+      "rule-15-2-1",
+      "rule-15-2-2",
+      "rule-15-2-3",
+      "rule-15-2-4",
+      "rule-15-2-5"
+    ]
+  },
+  {
+    "id": "section-15-3",
+    "number": "15.3",
+    "title": "Faction Setup",
+    "level": 2,
+    "parent_section_id": "section-15",
+    "order": 95,
+    "faction_id": "keepers-in-iron",
+    "expansion": null,
+    "source_page_start": 17,
+    "rule_ids": [
+      "rule-15-3-1",
+      "rule-15-3-2",
+      "rule-15-3-3",
+      "rule-15-3-4",
+      "rule-15-3-5",
+      "rule-15-3-6"
+    ]
+  },
+  {
+    "id": "section-15-4",
+    "number": "15.4",
+    "title": "Birdsong",
+    "level": 2,
+    "parent_section_id": "section-15",
+    "order": 96,
+    "faction_id": "keepers-in-iron",
+    "expansion": null,
+    "source_page_start": 17,
+    "rule_ids": [
+      "rule-15-4",
+      "rule-15-4-1",
+      "rule-15-4-2",
+      "rule-15-4-3"
+    ]
+  },
+  {
+    "id": "section-15-5",
+    "number": "15.5",
+    "title": "Daylight",
+    "level": 2,
+    "parent_section_id": "section-15",
+    "order": 97,
+    "faction_id": "keepers-in-iron",
+    "expansion": null,
+    "source_page_start": 18,
+    "rule_ids": [
+      "rule-15-5",
+      "rule-15-5-1",
+      "rule-15-5-2",
+      "rule-15-5-2-i",
+      "rule-15-5-2-ii",
+      "rule-15-5-2-ii-a",
+      "rule-15-5-2-ii-b",
+      "rule-15-5-2-iii",
+      "rule-15-5-2-iii-a",
+      "rule-15-5-2-iii-b",
+      "rule-15-5-2-iii-c"
+    ]
+  },
+  {
+    "id": "section-15-6",
+    "number": "15.6",
+    "title": "Evening",
+    "level": 2,
+    "parent_section_id": "section-15",
+    "order": 98,
+    "faction_id": "keepers-in-iron",
+    "expansion": null,
+    "source_page_start": 18,
+    "rule_ids": [
+      "rule-15-6",
+      "rule-15-6-1",
+      "rule-15-6-2",
+      "rule-15-6-3"
+    ]
+  },
+  {
+    "id": "section-16",
+    "number": "16",
+    "title": "Lilypad Diaspora",
+    "level": 1,
+    "parent_section_id": null,
+    "order": 99,
+    "faction_id": "lilypad-diaspora",
+    "expansion": "The Homeland Expansion",
+    "source_page_start": 18,
+    "rule_ids": []
+  },
+  {
+    "id": "section-16-1",
+    "number": "16.1",
+    "title": "Overview",
+    "level": 2,
+    "parent_section_id": "section-16",
+    "order": 100,
+    "faction_id": "lilypad-diaspora",
+    "expansion": null,
+    "source_page_start": 18,
+    "rule_ids": [
+      "rule-16-1"
+    ]
+  },
+  {
+    "id": "section-16-2",
+    "number": "16.2",
+    "title": "Faction Rules and Abilities",
+    "level": 2,
+    "parent_section_id": "section-16",
+    "order": 101,
+    "faction_id": "lilypad-diaspora",
+    "expansion": null,
+    "source_page_start": 18,
+    "rule_ids": [
+      "rule-16-2-1",
+      "rule-16-2-1-i",
+      "rule-16-2-1-ii",
+      "rule-16-2-2",
+      "rule-16-2-2-i",
+      "rule-16-2-2-i-a",
+      "rule-16-2-2-i-b",
+      "rule-16-2-3",
+      "rule-16-2-3-i",
+      "rule-16-2-3-ii",
+      "rule-16-2-4",
+      "rule-16-2-5",
+      "rule-16-2-6",
+      "rule-16-2-7"
+    ]
+  },
+  {
+    "id": "section-16-3",
+    "number": "16.3",
+    "title": "Faction Setup",
+    "level": 2,
+    "parent_section_id": "section-16",
+    "order": 102,
+    "faction_id": "lilypad-diaspora",
+    "expansion": null,
+    "source_page_start": 19,
+    "rule_ids": [
+      "rule-16-3-1",
+      "rule-16-3-2",
+      "rule-16-3-3",
+      "rule-16-3-4"
+    ]
+  },
+  {
+    "id": "section-16-4",
+    "number": "16.4",
+    "title": "Birdsong",
+    "level": 2,
+    "parent_section_id": "section-16",
+    "order": 103,
+    "faction_id": "lilypad-diaspora",
+    "expansion": null,
+    "source_page_start": 19,
+    "rule_ids": [
+      "rule-16-4",
+      "rule-16-4-1",
+      "rule-16-4-2",
+      "rule-16-4-2-i",
+      "rule-16-4-2-ii"
+    ]
+  },
+  {
+    "id": "section-16-5",
+    "number": "16.5",
+    "title": "Daylight",
+    "level": 2,
+    "parent_section_id": "section-16",
+    "order": 104,
+    "faction_id": "lilypad-diaspora",
+    "expansion": null,
+    "source_page_start": 19,
+    "rule_ids": [
+      "rule-16-5",
+      "rule-16-5-1",
+      "rule-16-5-2"
+    ]
+  },
+  {
+    "id": "section-16-6",
+    "number": "16.6",
+    "title": "Evening",
+    "level": 2,
+    "parent_section_id": "section-16",
+    "order": 105,
+    "faction_id": "lilypad-diaspora",
+    "expansion": null,
+    "source_page_start": 19,
+    "rule_ids": [
+      "rule-16-6",
+      "rule-16-6-1",
+      "rule-16-6-2",
+      "rule-16-6-3"
+    ]
+  },
+  {
+    "id": "section-17",
+    "number": "17",
+    "title": "Twilight Council",
+    "level": 1,
+    "parent_section_id": null,
+    "order": 106,
+    "faction_id": "twilight-council",
+    "expansion": "The Homeland Expansion",
+    "source_page_start": 20,
+    "rule_ids": []
+  },
+  {
+    "id": "section-17-1",
+    "number": "17.1",
+    "title": "Overview",
+    "level": 2,
+    "parent_section_id": "section-17",
+    "order": 107,
+    "faction_id": "twilight-council",
+    "expansion": null,
+    "source_page_start": 20,
+    "rule_ids": [
+      "rule-17-1"
+    ]
+  },
+  {
+    "id": "section-17-2",
+    "number": "17.2",
+    "title": "Faction Rules and Abilities",
+    "level": 2,
+    "parent_section_id": "section-17",
+    "order": 108,
+    "faction_id": "twilight-council",
+    "expansion": null,
+    "source_page_start": 20,
+    "rule_ids": [
+      "rule-17-2-1",
+      "rule-17-2-2",
+      "rule-17-2-3",
+      "rule-17-2-4",
+      "rule-17-2-5",
+      "rule-17-2-5-i",
+      "rule-17-2-6"
+    ]
+  },
+  {
+    "id": "section-17-3",
+    "number": "17.3",
+    "title": "Faction Setup",
+    "level": 2,
+    "parent_section_id": "section-17",
+    "order": 109,
+    "faction_id": "twilight-council",
+    "expansion": null,
+    "source_page_start": 20,
+    "rule_ids": [
+      "rule-17-3-1",
+      "rule-17-3-2",
+      "rule-17-3-3"
+    ]
+  },
+  {
+    "id": "section-17-4",
+    "number": "17.4",
+    "title": "Birdsong",
+    "level": 2,
+    "parent_section_id": "section-17",
+    "order": 110,
+    "faction_id": "twilight-council",
+    "expansion": null,
+    "source_page_start": 20,
+    "rule_ids": [
+      "rule-17-4",
+      "rule-17-4-1",
+      "rule-17-4-2",
+      "rule-17-4-3",
+      "rule-17-4-4"
+    ]
+  },
+  {
+    "id": "section-17-5",
+    "number": "17.5",
+    "title": "Daylight",
+    "level": 2,
+    "parent_section_id": "section-17",
+    "order": 111,
+    "faction_id": "twilight-council",
+    "expansion": null,
+    "source_page_start": 20,
+    "rule_ids": [
+      "rule-17-5-1"
+    ]
+  },
+  {
+    "id": "section-17-6",
+    "number": "17.6",
+    "title": "Evening",
+    "level": 2,
+    "parent_section_id": "section-17",
+    "order": 112,
+    "faction_id": "twilight-council",
+    "expansion": null,
+    "source_page_start": 20,
+    "rule_ids": [
+      "rule-17-6",
+      "rule-17-6-1",
+      "rule-17-6-1-i",
+      "rule-17-6-1-i-a",
+      "rule-17-6-1-i-b",
+      "rule-17-6-1-i-c",
+      "rule-17-6-1-ii",
+      "rule-17-6-1-iii",
+      "rule-17-6-2",
+      "rule-17-6-3",
+      "rule-17-6-4",
+      "rule-17-6-5"
+    ]
+  },
+  {
+    "id": "section-18",
+    "number": "18",
+    "title": "Knaves of the Deepwood",
+    "level": 1,
+    "parent_section_id": null,
+    "order": 113,
+    "faction_id": "knaves-of-the-deepwood",
+    "expansion": "The Homeland Expansion",
+    "source_page_start": 21,
+    "rule_ids": []
+  },
+  {
+    "id": "section-18-1",
+    "number": "18.1",
+    "title": "Overview",
+    "level": 2,
+    "parent_section_id": "section-18",
+    "order": 114,
+    "faction_id": "knaves-of-the-deepwood",
+    "expansion": null,
+    "source_page_start": 21,
+    "rule_ids": [
+      "rule-18-1"
+    ]
+  },
+  {
+    "id": "section-18-2",
+    "number": "18.2",
+    "title": "Faction Rules and Abilities",
+    "level": 2,
+    "parent_section_id": "section-18",
+    "order": 115,
+    "faction_id": "knaves-of-the-deepwood",
+    "expansion": null,
+    "source_page_start": 21,
+    "rule_ids": [
+      "rule-18-2-1",
+      "rule-18-2-2",
+      "rule-18-2-3",
+      "rule-18-2-4",
+      "rule-18-2-5",
+      "rule-18-2-6",
+      "rule-18-2-7",
+      "rule-18-2-8"
+    ]
+  },
+  {
+    "id": "section-18-3",
+    "number": "18.3",
+    "title": "Faction Setup",
+    "level": 2,
+    "parent_section_id": "section-18",
+    "order": 116,
+    "faction_id": "knaves-of-the-deepwood",
+    "expansion": null,
+    "source_page_start": 21,
+    "rule_ids": [
+      "rule-18-3-1",
+      "rule-18-3-2",
+      "rule-18-3-3",
+      "rule-18-3-4"
+    ]
+  },
+  {
+    "id": "section-18-4",
+    "number": "18.4",
+    "title": "Birdsong",
+    "level": 2,
+    "parent_section_id": "section-18",
+    "order": 117,
+    "faction_id": "knaves-of-the-deepwood",
+    "expansion": null,
+    "source_page_start": 22,
+    "rule_ids": [
+      "rule-18-4"
+    ]
+  },
+  {
+    "id": "section-18-5",
+    "number": "18.5",
+    "title": "Daylight",
+    "level": 2,
+    "parent_section_id": "section-18",
+    "order": 118,
+    "faction_id": "knaves-of-the-deepwood",
+    "expansion": null,
+    "source_page_start": 22,
+    "rule_ids": [
+      "rule-18-5",
+      "rule-18-5-1",
+      "rule-18-5-1-i",
+      "rule-18-5-1-ii",
+      "rule-18-5-1-iii",
+      "rule-18-5-1-iv",
+      "rule-18-5-1-iv-a",
+      "rule-18-5-1-iv-b",
+      "rule-18-5-1-iv-c",
+      "rule-18-5-1-iv-d",
+      "rule-18-5-1-iv-e",
+      "rule-18-5-1-iv-f",
+      "rule-18-5-1-iv-g",
+      "rule-18-5-2"
+    ]
+  },
+  {
+    "id": "section-18-6",
+    "number": "18.6",
+    "title": "Evening",
+    "level": 2,
+    "parent_section_id": "section-18",
+    "order": 119,
+    "faction_id": "knaves-of-the-deepwood",
+    "expansion": null,
+    "source_page_start": 22,
+    "rule_ids": [
+      "rule-18-6",
+      "rule-18-6-1",
+      "rule-18-6-2",
+      "rule-18-6-3",
+      "rule-18-6-4"
+    ]
+  },
+  {
+    "id": "section-a",
+    "number": "A",
+    "title": "Advanced Setup",
+    "level": 1,
+    "parent_section_id": null,
+    "order": 120,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 22,
+    "rule_ids": []
+  },
+  {
+    "id": "section-a-1",
+    "number": "A.1",
+    "title": "Step 1: Choose and Set up Map",
+    "level": 2,
+    "parent_section_id": "section-a",
+    "order": 121,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 22,
+    "rule_ids": [
+      "rule-a-1"
+    ]
+  },
+  {
+    "id": "section-a-2",
+    "number": "A.2",
+    "title": "Step 2: Choose Deck",
+    "level": 2,
+    "parent_section_id": "section-a",
+    "order": 122,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 22,
+    "rule_ids": [
+      "rule-a-2"
+    ]
+  },
+  {
+    "id": "section-a-3",
+    "number": "A.3",
+    "title": "Step 3: Set Up Bots",
+    "level": 2,
+    "parent_section_id": "section-a",
+    "order": 123,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 22,
+    "rule_ids": [
+      "rule-a-3"
+    ]
+  },
+  {
+    "id": "section-a-4",
+    "number": "A.4",
+    "title": "Step 4: Seat Players",
+    "level": 2,
+    "parent_section_id": "section-a",
+    "order": 124,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 22,
+    "rule_ids": [
+      "rule-a-4"
+    ]
+  },
+  {
+    "id": "section-a-5",
+    "number": "A.5",
+    "title": "Step 5: Set up Landmarks",
+    "level": 2,
+    "parent_section_id": "section-a",
+    "order": 125,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 22,
+    "rule_ids": [
+      "rule-a-5",
+      "rule-a-5-1",
+      "rule-a-5-2",
+      "rule-a-5-3"
+    ]
+  },
+  {
+    "id": "section-a-6",
+    "number": "A.6",
+    "title": "Step 6: Set up Hirelings",
+    "level": 2,
+    "parent_section_id": "section-a",
+    "order": 126,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 23,
+    "rule_ids": [
+      "rule-a-6",
+      "rule-a-6-1",
+      "rule-a-6-2",
+      "rule-a-6-3",
+      "rule-a-6-4",
+      "rule-a-6-5"
+    ]
+  },
+  {
+    "id": "section-a-7",
+    "number": "A.7",
+    "title": "Step 7: Draw Five Cards",
+    "level": 2,
+    "parent_section_id": "section-a",
+    "order": 127,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 23,
+    "rule_ids": [
+      "rule-a-7"
+    ]
+  },
+  {
+    "id": "section-a-8",
+    "number": "A.8",
+    "title": "Step 8: Set Up Factions",
+    "level": 2,
+    "parent_section_id": "section-a",
+    "order": 128,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 23,
+    "rule_ids": [
+      "rule-a-8",
+      "rule-a-8-1",
+      "rule-a-8-2",
+      "rule-a-8-2-i",
+      "rule-a-8-2-ii",
+      "rule-a-8-2-iii",
+      "rule-a-8-2-iv",
+      "rule-a-8-3",
+      "rule-a-8-3-i",
+      "rule-a-8-3-ii",
+      "rule-a-8-3-iii"
+    ]
+  },
+  {
+    "id": "section-a-9",
+    "number": "A.9",
+    "title": "Step 9: Place Score Markers",
+    "level": 2,
+    "parent_section_id": "section-a",
+    "order": 129,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 24,
+    "rule_ids": [
+      "rule-a-9"
+    ]
+  },
+  {
+    "id": "section-a-10",
+    "number": "A.10",
+    "title": "Step 10: Choose Starting Hands",
+    "level": 2,
+    "parent_section_id": "section-a",
+    "order": 130,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 24,
+    "rule_ids": [
+      "rule-a-10"
+    ]
+  },
+  {
+    "id": "section-c",
+    "number": "C",
+    "title": "Components",
+    "level": 1,
+    "parent_section_id": null,
+    "order": 131,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 24,
+    "rule_ids": []
+  },
+  {
+    "id": "section-c-1",
+    "number": "C.1",
+    "title": "Root",
+    "level": 2,
+    "parent_section_id": "section-c",
+    "order": 132,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 24,
+    "rule_ids": [
+      "rule-c-1-1",
+      "rule-c-1-2",
+      "rule-c-1-3",
+      "rule-c-1-4",
+      "rule-c-1-5"
+    ]
+  },
+  {
+    "id": "section-c-2",
+    "number": "C.2",
+    "title": "Riverfolk Expansion",
+    "level": 2,
+    "parent_section_id": "section-c",
+    "order": 133,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 24,
+    "rule_ids": [
+      "rule-c-2-1",
+      "rule-c-2-2",
+      "rule-c-2-3",
+      "rule-c-2-4",
+      "rule-c-2-5"
+    ]
+  },
+  {
+    "id": "section-c-3",
+    "number": "C.3",
+    "title": "Underworld Expansion",
+    "level": 2,
+    "parent_section_id": "section-c",
+    "order": 134,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 24,
+    "rule_ids": [
+      "rule-c-3-1",
+      "rule-c-3-2",
+      "rule-c-3-3",
+      "rule-c-3-4",
+      "rule-c-3-5"
+    ]
+  },
+  {
+    "id": "section-c-4",
+    "number": "C.4",
+    "title": "Marauder Expansion",
+    "level": 2,
+    "parent_section_id": "section-c",
+    "order": 135,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 24,
+    "rule_ids": [
+      "rule-c-4-1",
+      "rule-c-4-2",
+      "rule-c-4-3",
+      "rule-c-4-4",
+      "rule-c-4-5"
+    ]
+  },
+  {
+    "id": "section-c-5",
+    "number": "C.5",
+    "title": "Homeland Expansion",
+    "level": 2,
+    "parent_section_id": "section-c",
+    "order": 136,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 24,
+    "rule_ids": [
+      "rule-c-5-1",
+      "rule-c-5-2",
+      "rule-c-5-3",
+      "rule-c-5-4",
+      "rule-c-5-5"
+    ]
+  },
+  {
+    "id": "section-c-6",
+    "number": "C.6",
+    "title": "Clockwork Expansion",
+    "level": 2,
+    "parent_section_id": "section-c",
+    "order": 137,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 25,
+    "rule_ids": [
+      "rule-c-6-1",
+      "rule-c-6-2",
+      "rule-c-6-3",
+      "rule-c-6-4"
+    ]
+  },
+  {
+    "id": "section-c-7",
+    "number": "C.7",
+    "title": "Clockwork Expansion 2",
+    "level": 2,
+    "parent_section_id": "section-c",
+    "order": 138,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 25,
+    "rule_ids": [
+      "rule-c-7-1",
+      "rule-c-7-2",
+      "rule-c-7-3",
+      "rule-c-7-4"
+    ]
+  },
+  {
+    "id": "section-c-8",
+    "number": "C.8",
+    "title": "Exiles and Partisans Deck",
+    "level": 2,
+    "parent_section_id": "section-c",
+    "order": 139,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 25,
+    "rule_ids": [
+      "rule-c-8-1"
+    ]
+  },
+  {
+    "id": "section-c-9",
+    "number": "C.9",
+    "title": "Squires and Disciples Deck",
+    "level": 2,
+    "parent_section_id": "section-c",
+    "order": 140,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 25,
+    "rule_ids": [
+      "rule-c-9-1"
+    ]
+  },
+  {
+    "id": "section-c-10",
+    "number": "C.10",
+    "title": "Landmarks Pack",
+    "level": 2,
+    "parent_section_id": "section-c",
+    "order": 141,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 25,
+    "rule_ids": [
+      "rule-c-10-1",
+      "rule-c-10-2"
+    ]
+  },
+  {
+    "id": "section-c-11",
+    "number": "C.11",
+    "title": "Vagabond Pack",
+    "level": 2,
+    "parent_section_id": "section-c",
+    "order": 142,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 25,
+    "rule_ids": [
+      "rule-c-11-1",
+      "rule-c-11-2",
+      "rule-c-11-3"
+    ]
+  },
+  {
+    "id": "section-c-12",
+    "number": "C.12",
+    "title": "Hireling Packs",
+    "level": 2,
+    "parent_section_id": "section-c",
+    "order": 143,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 25,
+    "rule_ids": [
+      "rule-c-12-1",
+      "rule-c-12-2",
+      "rule-c-12-3",
+      "rule-c-12-4",
+      "rule-c-12-5"
+    ]
+  },
+  {
+    "id": "section-g",
+    "number": "G",
+    "title": "Glossary",
+    "level": 1,
+    "parent_section_id": null,
+    "order": 144,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 25,
+    "rule_ids": [
+      "rule-g-1",
+      "rule-g-2",
+      "rule-g-3",
+      "rule-g-4",
+      "rule-g-5",
+      "rule-g-6",
+      "rule-g-7",
+      "rule-g-8",
+      "rule-g-9",
+      "rule-g-10",
+      "rule-g-11",
+      "rule-g-12",
+      "rule-g-13",
+      "rule-g-14",
+      "rule-g-15",
+      "rule-g-16",
+      "rule-g-17",
+      "rule-g-18",
+      "rule-g-19",
+      "rule-g-20",
+      "rule-g-21",
+      "rule-g-22",
+      "rule-g-23",
+      "rule-g-24",
+      "rule-g-25",
+      "rule-g-26",
+      "rule-g-27",
+      "rule-g-28",
+      "rule-g-29",
+      "rule-g-30",
+      "rule-g-31",
+      "rule-g-32",
+      "rule-g-33",
+      "rule-g-34",
+      "rule-g-35",
+      "rule-g-36"
+    ]
+  },
+  {
+    "id": "section-h",
+    "number": "H",
+    "title": "Hirelings",
+    "level": 1,
+    "parent_section_id": null,
+    "order": 145,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 26,
+    "rule_ids": []
+  },
+  {
+    "id": "section-h-1",
+    "number": "H.1",
+    "title": "Gaining and Losing Hirelings",
+    "level": 2,
+    "parent_section_id": "section-h",
+    "order": 146,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 26,
+    "rule_ids": [
+      "rule-h-1-1",
+      "rule-h-1-2",
+      "rule-h-1-3"
+    ]
+  },
+  {
+    "id": "section-h-2",
+    "number": "H.2",
+    "title": "Abilities and Actions",
+    "level": 2,
+    "parent_section_id": "section-h",
+    "order": 147,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 26,
+    "rule_ids": [
+      "rule-h-2",
+      "rule-h-2-1",
+      "rule-h-2-2",
+      "rule-h-2-3",
+      "rule-h-2-4"
+    ]
+  },
+  {
+    "id": "section-h-3",
+    "number": "H.3",
+    "title": "Rules",
+    "level": 2,
+    "parent_section_id": "section-h",
+    "order": 148,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 26,
+    "rule_ids": [
+      "rule-h-3-1",
+      "rule-h-3-2",
+      "rule-h-3-3",
+      "rule-h-3-4",
+      "rule-h-3-5",
+      "rule-h-3-6",
+      "rule-h-3-7"
+    ]
+  },
+  {
+    "id": "section-k",
+    "number": "K",
+    "title": "Knave Captains",
+    "level": 1,
+    "parent_section_id": null,
+    "order": 149,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 27,
+    "rule_ids": []
+  },
+  {
+    "id": "section-k-1",
+    "number": "K.1",
+    "title": "Thief",
+    "level": 2,
+    "parent_section_id": "section-k",
+    "order": 150,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 27,
+    "rule_ids": [
+      "rule-k-1-1",
+      "rule-k-1-2"
+    ]
+  },
+  {
+    "id": "section-k-2",
+    "number": "K.2",
+    "title": "Tinker",
+    "level": 2,
+    "parent_section_id": "section-k",
+    "order": 151,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 27,
+    "rule_ids": [
+      "rule-k-2-1",
+      "rule-k-2-2"
+    ]
+  },
+  {
+    "id": "section-k-3",
+    "number": "K.3",
+    "title": "Ranger",
+    "level": 2,
+    "parent_section_id": "section-k",
+    "order": 152,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 27,
+    "rule_ids": [
+      "rule-k-3-1",
+      "rule-k-3-2"
+    ]
+  },
+  {
+    "id": "section-k-4",
+    "number": "K.4",
+    "title": "Vagrant",
+    "level": 2,
+    "parent_section_id": "section-k",
+    "order": 153,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 27,
+    "rule_ids": [
+      "rule-k-4-1",
+      "rule-k-4-2"
+    ]
+  },
+  {
+    "id": "section-k-5",
+    "number": "K.5",
+    "title": "Arbiter",
+    "level": 2,
+    "parent_section_id": "section-k",
+    "order": 154,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 27,
+    "rule_ids": [
+      "rule-k-5-1",
+      "rule-k-5-2"
+    ]
+  },
+  {
+    "id": "section-k-6",
+    "number": "K.6",
+    "title": "Scoundrel",
+    "level": 2,
+    "parent_section_id": "section-k",
+    "order": 155,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 27,
+    "rule_ids": [
+      "rule-k-6-1",
+      "rule-k-6-2"
+    ]
+  },
+  {
+    "id": "section-k-7",
+    "number": "K.7",
+    "title": "Adventurer",
+    "level": 2,
+    "parent_section_id": "section-k",
+    "order": 156,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 27,
+    "rule_ids": [
+      "rule-k-7-1",
+      "rule-k-7-2"
+    ]
+  },
+  {
+    "id": "section-k-8",
+    "number": "K.8",
+    "title": "Harrier",
+    "level": 2,
+    "parent_section_id": "section-k",
+    "order": 157,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 27,
+    "rule_ids": [
+      "rule-k-8-1",
+      "rule-k-8-2"
+    ]
+  },
+  {
+    "id": "section-k-9",
+    "number": "K.9",
+    "title": "Ronin",
+    "level": 2,
+    "parent_section_id": "section-k",
+    "order": 158,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 27,
+    "rule_ids": [
+      "rule-k-9-1",
+      "rule-k-9-2"
+    ]
+  },
+  {
+    "id": "section-k-10",
+    "number": "K.10",
+    "title": "Cheat",
+    "level": 2,
+    "parent_section_id": "section-k",
+    "order": 159,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 27,
+    "rule_ids": [
+      "rule-k-10-1",
+      "rule-k-10-2"
+    ]
+  },
+  {
+    "id": "section-k-11",
+    "number": "K.11",
+    "title": "Gladiator",
+    "level": 2,
+    "parent_section_id": "section-k",
+    "order": 160,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 27,
+    "rule_ids": [
+      "rule-k-11-1",
+      "rule-k-11-2"
+    ]
+  },
+  {
+    "id": "section-k-12",
+    "number": "K.12",
+    "title": "Jailor",
+    "level": 2,
+    "parent_section_id": "section-k",
+    "order": 161,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 27,
+    "rule_ids": [
+      "rule-k-12-1",
+      "rule-k-12-2"
+    ]
+  },
+  {
+    "id": "section-l",
+    "number": "L",
+    "title": "Landmarks",
+    "level": 1,
+    "parent_section_id": null,
+    "order": 162,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 27,
+    "rule_ids": []
+  },
+  {
+    "id": "section-l-1",
+    "number": "L.1",
+    "title": "General Rules",
+    "level": 2,
+    "parent_section_id": "section-l",
+    "order": 163,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 27,
+    "rule_ids": [
+      "rule-l-1-1",
+      "rule-l-1-2"
+    ]
+  },
+  {
+    "id": "section-m",
+    "number": "M",
+    "title": "Maps",
+    "level": 1,
+    "parent_section_id": null,
+    "order": 164,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 27,
+    "rule_ids": []
+  },
+  {
+    "id": "section-m-1",
+    "number": "M.1",
+    "title": "Autumn Map",
+    "level": 2,
+    "parent_section_id": "section-m",
+    "order": 165,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 27,
+    "rule_ids": [
+      "rule-m-1"
+    ]
+  },
+  {
+    "id": "section-m-2",
+    "number": "M.2",
+    "title": "Winter Map",
+    "level": 2,
+    "parent_section_id": "section-m",
+    "order": 166,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 27,
+    "rule_ids": [
+      "rule-m-2-1"
+    ]
+  },
+  {
+    "id": "section-m-3",
+    "number": "M.3",
+    "title": "Lake Map (Underworld)",
+    "level": 2,
+    "parent_section_id": "section-m",
+    "order": 167,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 27,
+    "rule_ids": [
+      "rule-m-3-1",
+      "rule-m-3-2",
+      "rule-m-3-3",
+      "rule-m-3-4",
+      "rule-m-3-5"
+    ]
+  },
+  {
+    "id": "section-m-4",
+    "number": "M.4",
+    "title": "Mountain Map (Underworld)",
+    "level": 2,
+    "parent_section_id": "section-m",
+    "order": 168,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 27,
+    "rule_ids": [
+      "rule-m-4-1",
+      "rule-m-4-2",
+      "rule-m-4-3",
+      "rule-m-4-4",
+      "rule-m-4-5"
+    ]
+  },
+  {
+    "id": "section-m-5",
+    "number": "M.5",
+    "title": "Marsh Map (Homeland)",
+    "level": 2,
+    "parent_section_id": "section-m",
+    "order": 169,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 28,
+    "rule_ids": [
+      "rule-m-5-1",
+      "rule-m-5-1-i",
+      "rule-m-5-1-ii",
+      "rule-m-5-2",
+      "rule-m-5-2-i",
+      "rule-m-5-2-ii"
+    ]
+  },
+  {
+    "id": "section-m-6",
+    "number": "M.6",
+    "title": "Gorge Map (Homeland)",
+    "level": 2,
+    "parent_section_id": "section-m",
+    "order": 170,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 28,
+    "rule_ids": [
+      "rule-m-6-1",
+      "rule-m-6-2",
+      "rule-m-6-3"
+    ]
+  },
+  {
+    "id": "section-v",
+    "number": "V",
+    "title": "Vagabonds",
+    "level": 1,
+    "parent_section_id": null,
+    "order": 171,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 28,
+    "rule_ids": []
+  },
+  {
+    "id": "section-v-1",
+    "number": "V.1",
+    "title": "Thief",
+    "level": 2,
+    "parent_section_id": "section-v",
+    "order": 172,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 28,
+    "rule_ids": [
+      "rule-v-1-1",
+      "rule-v-1-2"
+    ]
+  },
+  {
+    "id": "section-v-2",
+    "number": "V.2",
+    "title": "Tinker",
+    "level": 2,
+    "parent_section_id": "section-v",
+    "order": 173,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 28,
+    "rule_ids": [
+      "rule-v-2-1",
+      "rule-v-2-2"
+    ]
+  },
+  {
+    "id": "section-v-3",
+    "number": "V.3",
+    "title": "Ranger",
+    "level": 2,
+    "parent_section_id": "section-v",
+    "order": 174,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 28,
+    "rule_ids": [
+      "rule-v-3-1",
+      "rule-v-3-2"
+    ]
+  },
+  {
+    "id": "section-v-4",
+    "number": "V.4",
+    "title": "Vagrant (Riverfolk)",
+    "level": 2,
+    "parent_section_id": "section-v",
+    "order": 175,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 28,
+    "rule_ids": [
+      "rule-v-4-1",
+      "rule-v-4-2"
+    ]
+  },
+  {
+    "id": "section-v-5",
+    "number": "V.5",
+    "title": "Arbiter (Riverfolk)",
+    "level": 2,
+    "parent_section_id": "section-v",
+    "order": 176,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 28,
+    "rule_ids": [
+      "rule-v-5-1",
+      "rule-v-5-2"
+    ]
+  },
+  {
+    "id": "section-v-6",
+    "number": "V.6",
+    "title": "Scoundrel (Riverfolk)",
+    "level": 2,
+    "parent_section_id": "section-v",
+    "order": 177,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 28,
+    "rule_ids": [
+      "rule-v-6-1",
+      "rule-v-6-2"
+    ]
+  },
+  {
+    "id": "section-v-7",
+    "number": "V.7",
+    "title": "Adventurer (Vagabond Pack)",
+    "level": 2,
+    "parent_section_id": "section-v",
+    "order": 178,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 28,
+    "rule_ids": [
+      "rule-v-7-1",
+      "rule-v-7-2"
+    ]
+  },
+  {
+    "id": "section-v-8",
+    "number": "V.8",
+    "title": "Harrier (Vagabond Pack)",
+    "level": 2,
+    "parent_section_id": "section-v",
+    "order": 179,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 29,
+    "rule_ids": [
+      "rule-v-8-1",
+      "rule-v-8-2"
+    ]
+  },
+  {
+    "id": "section-v-9",
+    "number": "V.9",
+    "title": "Ronin (Vagabond Pack)",
+    "level": 2,
+    "parent_section_id": "section-v",
+    "order": 180,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 29,
+    "rule_ids": [
+      "rule-v-9-1",
+      "rule-v-9-2"
+    ]
+  },
+  {
+    "id": "section-v-10",
+    "number": "V.10",
+    "title": "Cheat (Homeland)",
+    "level": 2,
+    "parent_section_id": "section-v",
+    "order": 181,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 29,
+    "rule_ids": [
+      "rule-v-10-1",
+      "rule-v-10-2"
+    ]
+  },
+  {
+    "id": "section-v-11",
+    "number": "V.11",
+    "title": "Gladiator (Homeland)",
+    "level": 2,
+    "parent_section_id": "section-v",
+    "order": 182,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 29,
+    "rule_ids": [
+      "rule-v-11-1",
+      "rule-v-11-2"
+    ]
+  },
+  {
+    "id": "section-v-12",
+    "number": "V.12",
+    "title": "Jailor (Homeland)",
+    "level": 2,
+    "parent_section_id": "section-v",
+    "order": 183,
+    "faction_id": null,
+    "expansion": null,
+    "source_page_start": 29,
+    "rule_ids": [
+      "rule-v-12-1",
+      "rule-v-12-2"
+    ]
+  }
+]

@@ -1,6 +1,8 @@
 import Link from "next/link";
 import CaseHeader from "@/components/CaseHeader";
-import { getProject } from "@/lib/projects";
+import { sectionMetadata } from "@/lib/metadata";
+
+export const metadata = sectionMetadata("sports");
 
 const features = [
   {
@@ -34,20 +36,10 @@ const features = [
 ];
 
 export default function SportsPage() {
-  const project = getProject("sports");
-
   return (
     <div>
-      <CaseHeader
-        caseNumber={project.case}
-        title={project.title}
-        status={project.status}
-        pin={project.pin}
-        paper={project.paper}
-        rotation={project.rotation}
-        description={project.summary}
-      />
-      <div className="mx-auto mt-10 grid max-w-3xl gap-4 sm:grid-cols-2">
+      <CaseHeader projectId="sports" />
+      <div className="grid gap-4 sm:grid-cols-2">
         {features.map((f) => (
           <Link
             key={f.href}

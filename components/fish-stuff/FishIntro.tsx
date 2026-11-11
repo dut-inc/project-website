@@ -5,14 +5,7 @@ import { FISHES } from "@/lib/fishStuff";
 export default function FishIntro({ onStart }: { onStart: () => void }) {
   return (
     <FishCard>
-      <h2 className="font-display text-3xl italic text-cream sm:text-4xl">
-        Which Pacific Northwest fish are you?
-      </h2>
-      <p className="mt-3 text-sm leading-relaxed text-cream/70">
-        find out what fish you are!1!1!1!!!!
-      </p>
-
-      <div className="mt-6 flex flex-wrap items-center gap-2" aria-hidden>
+      <div className="flex flex-wrap items-center gap-2" aria-hidden>
         {FISHES.map((f) => (
           <span
             key={f.id}

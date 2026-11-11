@@ -148,7 +148,3 @@ export const TEAM_METADATA: TeamMeta[] = [
     provider: "none",
   },
 ];
-
-export function teamMetaById(id: string): TeamMeta | undefined {
-  return TEAM_METADATA.find((m) => m.id === id);
-}

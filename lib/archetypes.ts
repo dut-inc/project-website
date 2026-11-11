@@ -43,18 +43,3 @@ export function pinForArchetype(archetype: string): PinColor {
   for (let i = 0; i < archetype.length; i++) hash = (hash * 31 + archetype.charCodeAt(i)) >>> 0;
   return PIN_CYCLE[hash % PIN_CYCLE.length];
 }
-
-export function groupByArchetype(players: PlayerArchetype[]) {
-  const groups = new Map<string, PlayerArchetype[]>();
-  for (const p of players) {
-    const list = groups.get(p.archetype) ?? [];
-    list.push(p);
-    groups.set(p.archetype, list);
-  }
-  return Array.from(groups.entries()).map(([archetype, groupPlayers]) => ({
-    archetype,
-    // Copy before sorting so the shared input array isn't mutated in place.
-    players: [...groupPlayers].sort((a, b) => b.total_fga - a.total_fga),
-    pin: pinForArchetype(archetype),
-  }));
-}

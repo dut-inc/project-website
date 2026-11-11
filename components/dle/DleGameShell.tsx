@@ -1,4 +1,3 @@
-import Link from "next/link";
 import type { DleGame } from "@/lib/dleGames";
 
 const statusColor = {
@@ -12,18 +11,14 @@ export default function DleGameShell({ game }: { game: DleGame }) {
 
   return (
     <div>
-      <Link href="/dle" className="mb-6 inline-block font-mono text-xs uppercase tracking-widest text-cream/50 hover:text-pinGold">
-        &larr; All DLE games
-      </Link>
-
-      <section className="mx-auto max-w-3xl" aria-labelledby="dle-game-heading">
+      <section className="max-w-3xl" aria-labelledby="dle-game-heading">
         <div className="relative overflow-hidden rounded-lg border border-cream/15 bg-wall2/80 shadow-[0_18px_34px_-16px_rgba(0,0,0,0.75)]">
           <div className="h-1 bg-pinGold" aria-hidden />
           <div className="p-6 sm:p-9">
             <div className="flex flex-wrap items-start justify-between gap-4">
               <div>
                 <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-cream/45">{game.world} / daily character</p>
-                <h1 id="dle-game-heading" className="mt-2 font-display text-4xl italic text-cream sm:text-5xl">{game.title}</h1>
+                <h2 id="dle-game-heading" className="mt-2 font-display text-4xl italic text-cream sm:text-5xl">{game.title}</h2>
               </div>
               <span className={`font-mono text-[10px] uppercase tracking-widest ${statusColor[game.status]}`}>
                 {game.status}
