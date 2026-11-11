@@ -1,9 +1,11 @@
 import Link from "next/link";
 import StandingsPool from "@/components/sports/nba-standings/StandingsPool";
+import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = {
-  title: "Gradey Dick Fan Club Predictions",
-  description: "View our predictions!!",
+  ...pageMetadata("/sports/nba-standings", { title: "Gradey Dick Fan Club Predictions", description: "View our predictions!!" }),
+  // Keep the tab title exactly as it was (no " · Perpetual Studio").
+  title: { absolute: "Gradey Dick Fan Club Predictions" },
 };
 
 export default function NbaStandingsPage() {

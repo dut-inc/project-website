@@ -1,6 +1,9 @@
 import Link from "next/link";
 import CaseHeader from "@/components/CaseHeader";
+import { sectionMetadata } from "@/lib/metadata";
 import { DLE_GAMES } from "@/lib/dleGames";
+
+export const metadata = sectionMetadata("dle");
 
 export default function DlePage() {
   return (

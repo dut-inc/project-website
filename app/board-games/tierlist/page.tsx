@@ -5,6 +5,7 @@ import PageHeader from "@/components/PageHeader";
 import BoardGameTierList from "@/components/board-games/BoardGameTierList";
 import DeveloperAccess from "@/components/board-games/DeveloperAccess";
 import { getProject } from "@/lib/projects";
+import { TIERLIST_DESCRIPTION } from "./description";
 
 export default function BoardGamesTierListPage() {
   const project = getProject("board-games");
@@ -20,7 +21,7 @@ export default function BoardGamesTierListPage() {
     <div>
       <PageHeader
         href="/board-games/tierlist"
-        description="our group's personal rankings of board games we've played"
+        description={TIERLIST_DESCRIPTION}
       />
       <DeveloperAccess
         caseNumber={project.case}

@@ -81,6 +81,7 @@ const config: Config = {
         mono: ["var(--font-mono)"],
         dle: ["var(--font-dle)"],
         sign: ["var(--font-sign)"],
+        brand: ["var(--font-brand)", "monospace"],
       },
     },
   },

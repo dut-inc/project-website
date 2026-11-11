@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Caveat, Fraunces, IBM_Plex_Sans, IBM_Plex_Mono, Playfair_Display, Oswald} from "next/font/google";
+import { siteMetadata } from "@/lib/metadata";
+import { Caveat, Fraunces, IBM_Plex_Sans, IBM_Plex_Mono, Pixelify_Sans, Playfair_Display, Oswald} from "next/font/google";
 import "./globals.css";
 import WorkspaceShell from "@/components/workspace/WorkspaceShell";
 
@@ -37,10 +38,14 @@ const sign = Caveat({
   variable: "--font-sign",
 });
 
-export const metadata: Metadata = {
-  title: "Perpetual Studio",
-  description: "A shared workspace for our projects, tools, experiments and loose ends.",
-};
+// Pixel wordmark for "Perpetual Studio" in the title bar.
+const brand = Pixelify_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-brand",
+});
+
+export const metadata: Metadata = siteMetadata();
 
 export default function RootLayout({
   children,
@@ -50,7 +55,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${display.variable} ${body.variable} ${mono.variable} ${dleHeading.variable} ${sign.variable} font-body bg-studio-editor text-cream min-h-screen`}
+        className={`${display.variable} ${body.variable} ${mono.variable} ${dleHeading.variable} ${sign.variable} ${brand.variable} font-body bg-studio-editor text-cream min-h-screen`}
       >
         <WorkspaceShell>{children}</WorkspaceShell>
       </body>

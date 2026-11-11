@@ -1,6 +1,9 @@
 import Link from "next/link";
 import CaseHeader from "@/components/CaseHeader";
+import { sectionMetadata } from "@/lib/metadata";
 import { MEMBERS } from "@/lib/members";
+
+export const metadata = sectionMetadata("about-us");
 
 export default function AboutUsPage() {
   return (

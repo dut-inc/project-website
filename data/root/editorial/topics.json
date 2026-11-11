@@ -1,0 +1,271 @@
+{
+  "_about": "Editorial topics for the Root Rules Encyclopedia, keyed by rule and section ids from data/root/law-2025-10-13. Not official rule content. A topic gathers rules in three ways: whole sections (sections), single rules with a stated reason (rules), and rules whose printed title contains one of title_terms (matched as whole words at a word start). section_titles does the same for section headings (e.g. every faction's 'Faction Setup'). status is 'draft' until the project owner has reviewed the topic; see review for the last owner review.",
+  "source_version": "2025-10-13",
+  "drafted": "2026-11-11",
+  "review": {
+    "date": "2026-11-11",
+    "reviewer": "project owner",
+    "method": "Review page built by scripts/root/make_topic_review.ts: one card per topic and faction extra, listing every section, pick (with reason) and title match, plus one card on how faction pages choose general rules.",
+    "result": "20 of 20 cards approved (17 topics, 2 faction extras, and the general-rules method); no problems or notes."
+  },
+  "topics": [
+    {
+      "id": "battle",
+      "name": "Battle",
+      "description": "Ambushes, dice, hits and removing pieces, plus each faction's battle actions.",
+      "sections": ["section-4-3"],
+      "rules": [
+        { "id": "rule-2-1-2", "reason": "Ambush cards are played in battle (4.3.1)." },
+        { "id": "rule-1-5-5-i", "reason": "Who makes the decisions in a forced battle." },
+        { "id": "rule-3-2-1", "reason": "Points for removing enemy buildings and tokens, which battle hits do." },
+        { "id": "rule-8-2-2", "reason": "Changes which side deals the higher roll when the Alliance defends." },
+        { "id": "rule-10-2-3", "reason": "Applies when Cult warriors are removed while defending in battle." },
+        { "id": "rule-10-4-3-i", "reason": "Crusade initiates a battle (optionally after a move)." },
+        { "id": "rule-13-2-5", "reason": "An extra hit for the Corvids when defending." },
+        { "id": "rule-16-2-2-i-a", "reason": "Adds defending warriors when the Diaspora defends at an enclave." },
+        { "id": "rule-16-5-1", "reason": "Settle may initiate a battle." },
+        { "id": "rule-16-6-1", "reason": "Retaliate: the Diaspora must battle at each Militant enclave." },
+        { "id": "rule-17-2-5", "reason": "Council warriors join the defence at assemblies." },
+        { "id": "rule-17-6-1-i", "reason": "Banish initiates a battle." }
+      ],
+      "title_terms": ["Battle", "Ambush"],
+      "status": "reviewed"
+    },
+    {
+      "id": "movement",
+      "name": "Movement",
+      "description": "Moving warriors and pawns between clearings, and each faction's move actions.",
+      "sections": ["section-4-2"],
+      "rules": [
+        { "id": "rule-2-2-1", "reason": "Moves go to an adjacent clearing (4.2)." },
+        { "id": "rule-2-3", "reason": "Rivers are not paths unless a rule says so." },
+        { "id": "rule-g-2", "reason": "Glossary definition of adjacent." },
+        { "id": "rule-g-17", "reason": "Glossary definition of a path." },
+        { "id": "rule-10-4-3-i", "reason": "Crusade can move from an Outcast clearing." },
+        { "id": "rule-13-2-3", "reason": "Nimble: the Corvids move regardless of who rules." },
+        { "id": "rule-16-2-4", "reason": "Swimmers: the Diaspora move along rivers, ignoring rule." },
+        { "id": "rule-16-5-1", "reason": "Settle moves into the chosen clearing." }
+      ],
+      "title_terms": ["Move", "March"],
+      "status": "reviewed"
+    },
+    {
+      "id": "crafting",
+      "name": "Crafting",
+      "description": "Crafting cards with crafting pieces, immediate and persistent effects, and each faction's crafting rules.",
+      "sections": ["section-4-1"],
+      "rules": [
+        { "id": "rule-2-1-4", "reason": "Crafted persistent effects go in your play area." },
+        { "id": "rule-3-2-2", "reason": "Points for crafting items." }
+      ],
+      "title_terms": ["Craft", "Crafting"],
+      "status": "reviewed"
+    },
+    {
+      "id": "items",
+      "name": "Items",
+      "description": "The item supply, gaining items by crafting, and the rules for factions that use items.",
+      "sections": [],
+      "rules": [
+        { "id": "rule-5-1-5", "reason": "Setting up the item supply." },
+        { "id": "rule-4-1-2", "reason": "Crafting a card that shows an item takes it from the supply." },
+        { "id": "rule-3-2-2", "reason": "Points for crafting items." },
+        { "id": "rule-g-13", "reason": "Glossary definition of an item." },
+        { "id": "rule-g-32", "reason": "Defines the item supply." }
+      ],
+      "title_terms": ["Item", "Items"],
+      "status": "reviewed"
+    },
+    {
+      "id": "ruling",
+      "name": "Ruling clearings",
+      "description": "Who rules a clearing, and the rules that depend on ruling.",
+      "sections": ["section-2-5"],
+      "rules": [
+        { "id": "rule-4-2-1", "reason": "Moving requires ruling the origin or destination." },
+        { "id": "rule-3-3-1-i", "reason": "Suit dominance is won by ruling clearings." },
+        { "id": "rule-3-3-1-ii", "reason": "Bird dominance is won by ruling corner clearings." },
+        { "id": "rule-g-35", "reason": "Treating enemy pieces as your own for rule." },
+        { "id": "rule-13-2-3", "reason": "Nimble lets the Corvids move without ruling either clearing." },
+        { "id": "rule-16-2-4", "reason": "Swimmers lets the Diaspora move along rivers ignoring rule." }
+      ],
+      "title_terms": ["Rule"],
+      "status": "reviewed"
+    },
+    {
+      "id": "recruiting",
+      "name": "Recruiting",
+      "description": "Each faction's recruit actions and abilities. The Law has no general recruiting rule; recruiting is defined faction by faction.",
+      "sections": [],
+      "rules": [],
+      "title_terms": ["Recruit"],
+      "status": "reviewed"
+    },
+    {
+      "id": "buildings",
+      "name": "Buildings",
+      "description": "Building slots and ruins, and each faction's build actions.",
+      "sections": [],
+      "rules": [
+        { "id": "rule-2-2-3", "reason": "Buildings fill open slots." },
+        { "id": "rule-2-2-4", "reason": "Ruins fill slots at the start of the game." },
+        { "id": "rule-g-3", "reason": "Glossary definition of a building." },
+        { "id": "rule-g-30", "reason": "Glossary definition of a slot." },
+        { "id": "rule-3-2-1", "reason": "Points for removing enemy buildings." }
+      ],
+      "title_terms": ["Build", "Building", "Buildings"],
+      "status": "reviewed"
+    },
+    {
+      "id": "scoring",
+      "name": "Scoring and winning",
+      "description": "Reaching 30 points, the ways every faction scores, and each faction's own scoring rules.",
+      "sections": ["section-3-1", "section-3-2"],
+      "rules": [
+        { "id": "rule-4-3-6", "reason": "Battle hits that remove buildings or tokens score points." },
+        { "id": "rule-5-1-2", "reason": "Placing score markers at setup." }
+      ],
+      "title_terms": ["Score", "Scoring"],
+      "status": "reviewed"
+    },
+    {
+      "id": "dominance",
+      "name": "Dominance",
+      "description": "Dominance cards: activating them, winning with them, and spending or taking them.",
+      "sections": ["section-3-3"],
+      "rules": [
+        { "id": "rule-2-1-3", "reason": "What dominance cards are." },
+        { "id": "rule-5-1-3", "reason": "Dominance cards are removed in two-player games." },
+        { "id": "rule-g-5", "reason": "Discarded dominance cards go near the map." }
+      ],
+      "title_terms": ["Dominance"],
+      "status": "reviewed"
+    },
+    {
+      "id": "cards",
+      "name": "Cards and hands",
+      "description": "The shared deck, drawing and discarding, bird cards, your hand and play area, and what's public.",
+      "sections": ["section-2-1", "section-1-2"],
+      "rules": [
+        { "id": "rule-1-3-2", "reason": "Giving cards to other players." },
+        { "id": "rule-5-1-3", "reason": "Drawing starting hands." },
+        { "id": "rule-g-5", "reason": "Glossary: discard." },
+        { "id": "rule-g-6", "reason": "Glossary: draw." },
+        { "id": "rule-g-21", "reason": "Glossary: play area." },
+        { "id": "rule-g-22", "reason": "Glossary: random (cards)." },
+        { "id": "rule-g-25", "reason": "Glossary: reveal." },
+        { "id": "rule-g-31", "reason": "Glossary: spend." }
+      ],
+      "title_terms": [],
+      "status": "reviewed"
+    },
+    {
+      "id": "pieces",
+      "name": "Pieces",
+      "description": "What pieces are, who owns them, and how placing, removing, replacing and swapping work.",
+      "sections": ["section-1-5"],
+      "rules": [
+        { "id": "rule-g-3", "reason": "Glossary: building." },
+        { "id": "rule-g-10", "reason": "Glossary: faction piece." },
+        { "id": "rule-g-18", "reason": "Glossary: pawn." },
+        { "id": "rule-g-19", "reason": "Glossary: piece." },
+        { "id": "rule-g-20", "reason": "Glossary: place." },
+        { "id": "rule-g-23", "reason": "Glossary: replace." },
+        { "id": "rule-g-24", "reason": "Glossary: remove." },
+        { "id": "rule-g-32", "reason": "Glossary: supply." },
+        { "id": "rule-g-33", "reason": "Glossary: swap." },
+        { "id": "rule-g-34", "reason": "Glossary: token." },
+        { "id": "rule-g-36", "reason": "Glossary: warrior." }
+      ],
+      "title_terms": [],
+      "status": "reviewed"
+    },
+    {
+      "id": "map",
+      "name": "The map",
+      "description": "Clearings, paths, rivers, forests and ruins, and the alternative maps.",
+      "sections": ["section-2-2", "section-2-3", "section-2-4", "section-m"],
+      "rules": [
+        { "id": "rule-5-1-4", "reason": "Placing ruins at setup." },
+        { "id": "rule-a-1", "reason": "Choosing and setting up a map." },
+        { "id": "rule-g-2", "reason": "Glossary: adjacent." },
+        { "id": "rule-g-11", "reason": "Glossary: forest." },
+        { "id": "rule-g-14", "reason": "Glossary: map." },
+        { "id": "rule-g-15", "reason": "Glossary: map edge." },
+        { "id": "rule-g-17", "reason": "Glossary: path." },
+        { "id": "rule-g-26", "reason": "Glossary: river." },
+        { "id": "rule-g-27", "reason": "Glossary: ruin." },
+        { "id": "rule-g-30", "reason": "Glossary: slot." }
+      ],
+      "title_terms": [],
+      "status": "reviewed"
+    },
+    {
+      "id": "timing",
+      "name": "Precedence and timing",
+      "description": "Which rule wins in a conflict, turn phases, interrupts and the order of simultaneous effects.",
+      "sections": ["section-1-1", "section-1-4"],
+      "rules": [
+        { "id": "rule-g-1", "reason": "Glossary: ability." },
+        { "id": "rule-g-7", "reason": "Glossary: effect." }
+      ],
+      "title_terms": [],
+      "status": "reviewed"
+    },
+    {
+      "id": "deals",
+      "name": "Deals and hidden information",
+      "description": "What players can agree, what they must keep hidden, and what is public.",
+      "sections": ["section-1-2", "section-1-3"],
+      "rules": [],
+      "title_terms": [],
+      "status": "reviewed"
+    },
+    {
+      "id": "setup",
+      "name": "Setup",
+      "description": "Standard and advanced setup, and every faction's own setup steps.",
+      "sections": ["section-5", "section-a"],
+      "section_titles": ["Faction Setup"],
+      "rules": [],
+      "title_terms": ["Setup", "Set Up", "Set up"],
+      "status": "reviewed"
+    },
+    {
+      "id": "hirelings",
+      "name": "Hirelings",
+      "description": "Gaining, controlling and using hirelings.",
+      "sections": ["section-h", "section-a-6", "section-c-12"],
+      "rules": [
+        { "id": "rule-1-4-3", "reason": "Hireling actions at the end of a turn." },
+        { "id": "rule-g-8", "reason": "When a hireling counts as an enemy." },
+        { "id": "rule-g-9", "reason": "Hireling pieces as enemy pieces." }
+      ],
+      "title_terms": ["Hireling", "Hirelings"],
+      "status": "reviewed"
+    },
+    {
+      "id": "landmarks",
+      "name": "Landmarks",
+      "description": "Setting up and using landmarks.",
+      "sections": ["section-l", "section-a-5", "section-c-10"],
+      "rules": [],
+      "title_terms": ["Landmark", "Landmarks"],
+      "status": "reviewed"
+    }
+  ],
+  "faction_extras": [
+    {
+      "faction": "vagabond",
+      "section": "section-v",
+      "reason": "Appendix V lists the Vagabond characters (starting items and special actions).",
+      "status": "reviewed"
+    },
+    {
+      "faction": "knaves-of-the-deepwood",
+      "section": "section-k",
+      "reason": "Appendix K lists the Knave Captains the Knaves play with.",
+      "status": "reviewed"
+    }
+  ]
+}

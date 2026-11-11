@@ -1,4 +1,7 @@
 import CaseHeader from "@/components/CaseHeader";
+import { sectionMetadata } from "@/lib/metadata";
+
+export const metadata = sectionMetadata("board");
 
 export default function BoardPage() {
   return (

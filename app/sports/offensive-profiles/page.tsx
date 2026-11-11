@@ -1,6 +1,11 @@
 import PageHeader, { HeaderLink } from "@/components/PageHeader";
 import PlayerSearchModern from "@/components/sports/PlayerSearchModern";
 import { archetypeData } from "@/lib/archetypes";
+import { pageMetadata } from "@/lib/metadata";
+
+const DESCRIPTION = "search an NBA player to see their offensive profile";
+
+export const metadata = pageMetadata("/sports/offensive-profiles", { description: DESCRIPTION, title: "Offensive Profiles" });
 
 export default function OffensiveProfilesPage() {
   return (
@@ -9,7 +14,7 @@ export default function OffensiveProfilesPage() {
         href="/sports/offensive-profiles"
         title="Offensive Profiles"
         meta={[`Season ${archetypeData.season}`, `${archetypeData.players.length} players`]}
-        description="Shot-based archetypes from K-Means clustering — search a player to see their profile and shot-zone efficiency."
+        description={DESCRIPTION}
         actions={<HeaderLink href="https://github.com/l0stpanda/sports-analytics-portfolio">GitHub</HeaderLink>}
       >
         {archetypeData.sample && (
