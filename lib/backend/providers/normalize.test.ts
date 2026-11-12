@@ -23,6 +23,10 @@ import {
 import { parsePwhlStandings, parseScorebar } from "./pwhl.ts";
 import { buildMlrProvider } from "./mlr.ts";
 
+// The day the schedule fixtures were captured. "Upcoming" is relative to the
+// current date, so the tests pin it rather than depend on the real clock.
+const CAPTURED = "2026-08-06";
+
 function load(name: string): Record<string, unknown> {
   return JSON.parse(readFileSync(new URL(`../fixtures/${name}`, import.meta.url), "utf8")) as Record<string, unknown>;
 }
@@ -69,7 +73,7 @@ test("espnGameNote maps Final/OT/SO", () => {
 
 test("espn schedule: Storm season splits completed / live / upcoming", () => {
   const schedule = load("espn-wnba-schedule.json");
-  const { completed, live, upcoming } = parseScheduleEvents(schedule, 14);
+  const { completed, live, upcoming } = parseScheduleEvents(schedule, 14, CAPTURED);
 
   assert.ok(completed.length >= 30, `expected many completed games, got ${completed.length}`);
   assert.ok(upcoming.length >= 1, `expected upcoming games, got ${upcoming.length}`);
@@ -85,7 +89,7 @@ test("espn schedule: Storm season splits completed / live / upcoming", () => {
 
 test("espn schedule: Kraken off-season has no completed games (upcoming preseason only)", () => {
   const schedule = load("espn-nhl-schedule.json");
-  const { completed, upcoming } = parseScheduleEvents(schedule, 124292);
+  const { completed, upcoming } = parseScheduleEvents(schedule, 124292, CAPTURED);
   assert.equal(completed.length, 0);
   assert.ok(upcoming.length >= 1);
   // Off-season hockey in August: the next game is a preseason opener.

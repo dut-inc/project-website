@@ -1,0 +1,260 @@
+/* Fish Identification Quiz: a field guide read in open water.
+ *
+ * The environment is three restrained layers, all drawn in CSS (no images):
+ *   1. a depth gradient, lit faintly from the surface,
+ *   2. slow light shafts near the top,
+ *   3. marine snow: sparse particles sinking at two speeds.
+ * As a round progresses the water darkens (--fid-depth, set by the quiz).
+ *
+ * Scoped to .fid (app/fish-stuff/identify/layout.tsx). Colours are RGB
+ * channels for Tailwind's fid-* palette (tailwind.config.ts).
+ */
+
+.fid {
+  --fid-abyss: 3 14 22;
+  --fid-navy: 7 29 43;
+  --fid-deep: 11 43 59;
+  --fid-teal: 20 85 102;
+  --fid-foam: 141 185 174;
+  --fid-mist: 168 189 184;
+  --fid-sand: 231 224 204;
+  --fid-white: 241 243 239;
+  --fid-coral: 222 150 116;
+  --fid-ink: 16 34 44;
+
+  /* The shared PageHeader's title uses the field-guide serif here. */
+  --font-display: var(--font-fid-serif);
+
+  position: relative;
+  z-index: 0;
+  color: rgb(var(--fid-mist));
+  font-feature-settings: "kern", "liga";
+}
+
+.fid ::selection {
+  background: rgb(var(--fid-foam) / 0.35);
+  color: rgb(var(--fid-white));
+}
+
+.fid :focus-visible {
+  outline: 1px solid rgb(var(--fid-sand));
+  outline-offset: 3px;
+}
+
+/* The editor behind the page: the darkest water, in case the layer below is late. */
+.ps-editor:has(.fid) {
+  background-color: rgb(7 29 43);
+}
+
+/* The shared header sits on water, so its rule takes the water's line colour. */
+.fid > header:first-child {
+  border-color: rgb(var(--fid-foam) / 0.16);
+}
+
+/* ---- Water ------------------------------------------------------------------ */
+
+.fid-water {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  background:
+    radial-gradient(110% 55% at 50% -12%, rgb(141 185 174 / 0.16), transparent 62%),
+    linear-gradient(180deg, #0f3647 0%, #0b2b3b 22%, #08202f 52%, #051722 78%, #030e16 100%);
+}
+
+/* Light from the surface, broken into a few soft shafts. */
+.fid-water::before {
+  content: "";
+  position: absolute;
+  inset: -10% -15% 35% -15%;
+  background:
+    linear-gradient(103deg, transparent 18%, rgb(231 224 204 / 0.045) 22%, transparent 27%),
+    linear-gradient(97deg, transparent 39%, rgb(231 224 204 / 0.03) 42%, transparent 46%),
+    linear-gradient(80deg, transparent 58%, rgb(231 224 204 / 0.04) 62%, transparent 68%),
+    linear-gradient(86deg, transparent 77%, rgb(231 224 204 / 0.025) 79%, transparent 83%);
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 80%);
+  mask-image: linear-gradient(180deg, #000 0%, transparent 80%);
+  transform-origin: 50% 0;
+  animation: fid-sway 22s ease-in-out infinite alternate;
+}
+
+/* Depth: the round's progress darkens the water. */
+.fid-water::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #01070b;
+  opacity: calc(var(--fid-depth, 0) * 0.42);
+  transition: opacity 1.4s ease;
+}
+
+/* Marine snow. Each layer is one tile taller than the viewport and sinks by
+   exactly one tile, so the loop is seamless and runs on the compositor. */
+.fid-snow {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: calc(var(--tile) * -1);
+  background-size: var(--tile) var(--tile);
+  animation: fid-sink var(--speed) linear infinite;
+  will-change: transform;
+}
+
+.fid-snow-far {
+  --tile: 230px;
+  --speed: 120s;
+  opacity: 0.55;
+  background-image:
+    radial-gradient(circle at 18px 34px, rgb(231 224 204 / 0.5) 0.6px, transparent 1.2px),
+    radial-gradient(circle at 121px 12px, rgb(231 224 204 / 0.35) 0.5px, transparent 1px),
+    radial-gradient(circle at 77px 141px, rgb(141 185 174 / 0.5) 0.6px, transparent 1.2px),
+    radial-gradient(circle at 196px 92px, rgb(231 224 204 / 0.4) 0.5px, transparent 1px),
+    radial-gradient(circle at 160px 201px, rgb(141 185 174 / 0.35) 0.6px, transparent 1.2px),
+    radial-gradient(circle at 42px 188px, rgb(231 224 204 / 0.3) 0.5px, transparent 1px);
+}
+
+.fid-snow-near {
+  --tile: 380px;
+  --speed: 75s;
+  opacity: 0.6;
+  background-image:
+    radial-gradient(circle at 64px 90px, rgb(231 224 204 / 0.45) 0.9px, transparent 1.8px),
+    radial-gradient(circle at 301px 40px, rgb(141 185 174 / 0.4) 1px, transparent 2px),
+    radial-gradient(circle at 212px 266px, rgb(231 224 204 / 0.3) 0.8px, transparent 1.6px),
+    radial-gradient(circle at 350px 330px, rgb(231 224 204 / 0.35) 0.9px, transparent 1.8px);
+}
+
+@keyframes fid-sink {
+  to {
+    transform: translate3d(0, var(--tile), 0);
+  }
+}
+
+@keyframes fid-sway {
+  from {
+    transform: skewX(-1.5deg) translateX(-1%);
+  }
+  to {
+    transform: skewX(1.5deg) translateX(1%);
+  }
+}
+
+/* ---- Plates --------------------------------------------------------------- */
+
+/* A photographic plate: a dark mat, a hairline frame and registration marks
+   just outside each corner. */
+.fid-frame {
+  --mark: rgb(var(--fid-sand) / 0.45);
+  position: relative;
+  aspect-ratio: 3 / 2;
+  border: 1px solid rgb(var(--fid-foam) / 0.2);
+  background: rgb(var(--fid-abyss) / 0.82);
+}
+
+.fid-frame::after {
+  content: "";
+  position: absolute;
+  inset: -7px;
+  pointer-events: none;
+  background:
+    linear-gradient(var(--mark), var(--mark)) left top / 12px 1px no-repeat,
+    linear-gradient(var(--mark), var(--mark)) left top / 1px 12px no-repeat,
+    linear-gradient(var(--mark), var(--mark)) right top / 12px 1px no-repeat,
+    linear-gradient(var(--mark), var(--mark)) right top / 1px 12px no-repeat,
+    linear-gradient(var(--mark), var(--mark)) left bottom / 12px 1px no-repeat,
+    linear-gradient(var(--mark), var(--mark)) left bottom / 1px 12px no-repeat,
+    linear-gradient(var(--mark), var(--mark)) right bottom / 12px 1px no-repeat,
+    linear-gradient(var(--mark), var(--mark)) right bottom / 1px 12px no-repeat;
+}
+
+/* An empty plate, ruled like an unfilled page in a specimen catalogue. */
+.fid-vacant {
+  background-color: rgb(var(--fid-abyss) / 0.6);
+  background-image: repeating-linear-gradient(
+    135deg,
+    rgb(var(--fid-foam) / 0.07) 0 1px,
+    transparent 1px 10px
+  );
+}
+
+/* A museum specimen label for the name modes. */
+.fid-label {
+  background: rgb(var(--fid-sand));
+  color: rgb(var(--fid-ink));
+  box-shadow: 0 1px 0 rgb(0 0 0 / 0.4);
+  outline: 1px solid rgb(var(--fid-ink) / 0.35);
+  outline-offset: -7px;
+}
+
+.fid-reveal {
+  animation: fid-fade 0.45s ease-out both;
+}
+
+@keyframes fid-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+/* ---- Answers -------------------------------------------------------------- */
+
+.fid-answer {
+  border-left: 2px solid transparent;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    opacity 0.2s ease;
+}
+
+.fid-answer[data-state="idle"]:hover {
+  background-color: rgb(var(--fid-foam) / 0.07);
+  border-left-color: rgb(var(--fid-sand) / 0.6);
+}
+
+.fid-answer[data-state="idle"]:hover .fid-key {
+  color: rgb(var(--fid-sand));
+}
+
+.fid-answer[data-state="correct"],
+.fid-answer[data-state="missed"] {
+  background-color: rgb(var(--fid-foam) / 0.1);
+  border-left-color: rgb(var(--fid-foam));
+}
+
+.fid-answer[data-state="wrong"] {
+  background-color: rgb(var(--fid-coral) / 0.09);
+  border-left-color: rgb(var(--fid-coral));
+}
+
+.fid-answer[data-state="dim"] {
+  opacity: 0.42;
+}
+
+.fid-answer:focus-visible {
+  outline-offset: -1px;
+}
+
+/* Keyboard hints only where there is likely a keyboard. */
+@media (hover: none) {
+  .fid-keyhint {
+    display: none;
+  }
+}
+
+/* ---- Motion --------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .fid-snow,
+  .fid-water::before,
+  .fid-reveal {
+    animation: none;
+  }
+
+  .fid-water::after,
+  .fid-answer {
+    transition: none;
+  }
+}
