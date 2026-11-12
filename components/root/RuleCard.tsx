@@ -20,11 +20,11 @@ export function Where({ rule }: { rule: Rule }) {
     ...ancestorsOf(rule).map((a) => ({ href: ruleHref(a.id), label: ruleLabel(a) })),
   ];
   return (
-    <p className="flex flex-wrap items-center gap-x-1.5 text-[12px] text-studio-muted">
+    <p className="flex flex-wrap items-center gap-x-1.5 text-[12px] text-root-muted">
       {parts.map((part, index) => (
         <span key={part.href} className="inline-flex items-center gap-1.5">
           {index > 0 && <span aria-hidden>›</span>}
-          <Link href={part.href} className="hover:text-studio-link">
+          <Link href={part.href} className="hover:text-root-link">
             {part.label}
           </Link>
         </span>
@@ -35,18 +35,18 @@ export function Where({ rule }: { rule: Rule }) {
 
 export default function RuleCard({ rule, note }: { rule: Rule; note?: ReactNode }) {
   return (
-    <div className="rounded-lg border border-studio-border bg-white/[0.02] p-4">
+    <div className="rounded-lg border border-root-line bg-root-ink/[0.025] p-4">
       <Where rule={rule} />
       {note}
       <div className="mt-1.5">
         {(rule.rule_type === "section-text" || rule.rule_type === "chapter-text") && (
           // Section text has no heading of its own; give it its section's number.
           <h3 className="flex items-baseline gap-2.5">
-            <Link href={ruleHref(rule.id)} className="font-mono text-[13px] text-studio-link hover:underline">
+            <Link href={ruleHref(rule.id)} className="font-rootlabel text-[13px] text-root-link hover:underline">
               {rule.rule_number ?? "Introduction"}
             </Link>
             {rule.title && (
-              <span className="font-semibold text-studio-bright">
+              <span className="font-semibold text-root-ink">
                 <RuleTitle title={rule.title} />
               </span>
             )}
@@ -72,10 +72,10 @@ export function GroupHeading({
   children?: ReactNode;
 }) {
   return (
-    <div id={id} className="mb-5 scroll-mt-28 border-b border-studio-border pb-3">
-      <h2 className="flex flex-wrap items-baseline gap-3 font-display text-3xl text-studio-bright">
+    <div id={id} className="mb-5 scroll-mt-28 border-b border-root-line pb-3">
+      <h2 className="flex flex-wrap items-baseline gap-3 font-rootdisplay text-3xl text-root-ink">
         {title}
-        {count !== undefined && <span className="font-mono text-sm text-studio-muted">{count}</span>}
+        {count !== undefined && <span className="font-rootlabel text-sm text-root-muted">{count}</span>}
         {badge}
       </h2>
       {children && <div className="mt-2 max-w-3xl text-[14px] leading-relaxed">{children}</div>}
@@ -89,8 +89,8 @@ export function RuleLinks({ rules }: { rules: Rule[] }) {
     <ul className="flex flex-wrap gap-x-4 gap-y-1">
       {rules.map((rule) => (
         <li key={rule.id}>
-          <Link href={ruleHref(rule.id)} className="text-studio-text hover:text-studio-link">
-            {rule.rule_number && <span className="mr-1.5 font-mono text-[12.5px] text-studio-link">{rule.rule_number}</span>}
+          <Link href={ruleHref(rule.id)} className="text-root-ink2 hover:text-root-link">
+            {rule.rule_number && <span className="mr-1.5 font-rootlabel text-[12.5px] text-root-link">{rule.rule_number}</span>}
             {rule.title ? <RuleTitle title={rule.title} /> : ruleLabel(rule)}
           </Link>
         </li>

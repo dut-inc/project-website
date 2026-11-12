@@ -14,7 +14,7 @@ export function FactionChip({ id }: { id: string }) {
     <Link
       href={faction ? factionHref(faction.id) : "#"}
       title={label}
-      className="inline-flex items-center gap-1.5 rounded-full border border-studio-border bg-studio-chrome px-2 py-0.5 font-mono text-[11px] text-studio-text transition-colors hover:border-studio-muted hover:text-studio-bright"
+      className="inline-flex items-center gap-1.5 rounded-full border border-root-line bg-root-inset px-2 py-0.5 font-rootlabel text-[11px] text-root-ink2 transition-colors hover:border-root-muted hover:text-root-ink"
     >
       <span aria-hidden className="h-2 w-2 rounded-full" style={{ backgroundColor: color }} />
       {short}
@@ -28,7 +28,7 @@ export function FactionMarkers({ ids }: { ids: string[] }) {
   if (ids.length === 0) return null;
   return (
     <div className="mt-2 flex flex-wrap items-center gap-1.5">
-      <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-studio-muted" title="The Law prints these faction icons on rules that the faction's own rules modify.">
+      <span className="root-kicker" title="The Law prints these faction icons on rules that the faction's own rules modify.">
         Modified by
       </span>
       {ids.map((id) => (
@@ -46,7 +46,7 @@ export function PageLink({ rule, className = "" }: { rule: Rule; className?: str
       target="_blank"
       rel="noopener noreferrer"
       title="Open this page of the Law PDF"
-      className={`font-mono text-[11px] text-studio-muted transition-colors hover:text-studio-link ${className}`}
+      className={`font-rootlabel text-[11px] text-root-muted transition-colors hover:text-root-link ${className}`}
     >
       {end && end !== start ? `pp. ${start}–${end}` : `p. ${start}`}
     </a>
@@ -68,18 +68,18 @@ export default function RuleEntry({
   const children = childrenOf(rule.id);
   const numbered = heading && rule.rule_type !== "section-text" && rule.rule_type !== "chapter-text";
   return (
-    <article id={rule.id} className={`scroll-mt-28 ${depth > 0 ? "border-l border-studio-border pl-4" : ""}`}>
+    <article id={rule.id} className={`scroll-mt-28 ${depth > 0 ? "border-l border-root-line pl-4" : ""}`}>
       {numbered && (
         <h4 className="flex flex-wrap items-baseline gap-x-2.5 gap-y-0.5">
           <Link
             href={ruleHref(rule.id)}
-            className="font-mono text-[13px] text-studio-link hover:underline"
+            className="font-rootlabel text-[13px] text-root-link hover:underline"
             title="Open this rule on its own page"
           >
             {rule.rule_number}
           </Link>
           {rule.title && (
-            <span className="font-semibold text-studio-bright">
+            <span className="font-semibold text-root-ink">
               <RuleTitle title={rule.title} />
             </span>
           )}

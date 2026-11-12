@@ -32,7 +32,7 @@ export default function SearchBox({
 
   return (
     <form onSubmit={submit} role="search" className="w-full max-w-xl">
-      <label htmlFor={inputId} className="mb-1.5 block font-mono text-[11px] uppercase tracking-[0.16em] text-studio-muted">
+      <label htmlFor={inputId} className="mb-1.5 block root-kicker">
         {label}
       </label>
       <div className="flex gap-2">
@@ -45,11 +45,11 @@ export default function SearchBox({
           spellCheck={false}
           enterKeyHint="search"
           placeholder={placeholder}
-          className="h-10 min-w-0 flex-1 rounded-md border border-studio-border bg-studio-chrome px-3 text-[15px] text-studio-bright outline-none placeholder:text-studio-muted/60 focus:border-studio-accent"
+          className="root-field h-11 min-w-0 flex-1 px-3 text-[16px] outline-none"
         />
         <button
           type="submit"
-          className="h-10 shrink-0 rounded-md bg-studio-accent px-4 text-sm font-medium text-white transition-colors hover:bg-[#1a8ad4]"
+          className="root-btn h-11 shrink-0 px-5 text-[15px]"
         >
           Search
         </button>

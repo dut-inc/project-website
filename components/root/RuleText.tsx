@@ -13,7 +13,7 @@ export function InlineText({ parts }: { parts: Inline[] }) {
       {parts.map((part, index) => {
         const node = renderPart(part);
         return part.italic ? (
-          <em key={index} className="italic text-studio-text/80">
+          <em key={index} className="italic text-root-ink2/80">
             {node}
           </em>
         ) : (
@@ -34,7 +34,7 @@ function renderPart(part: Inline) {
       return (
         <span
           title="An icon printed in the PDF that can't be shown here. Open the source page to see it."
-          className="mx-0.5 inline-flex h-[1.15em] min-w-[1.15em] items-center justify-center rounded border border-dashed border-studio-muted/60 px-1 align-[-0.15em] font-mono text-[0.6em] uppercase tracking-wider text-studio-muted"
+          className="mx-0.5 inline-flex h-[1.15em] min-w-[1.15em] items-center justify-center rounded border border-dashed border-root-muted/60 px-1 align-[-0.15em] font-rootlabel text-[0.6em] uppercase tracking-wider text-root-muted"
         >
           <span aria-hidden>icon</span>
           <span className="sr-only">(icon, see the PDF)</span>
@@ -45,7 +45,7 @@ function renderPart(part: Inline) {
         <Link
           href={targetHref(part.targetId)}
           title={targetLabel(part.targetId)}
-          className={`${/\s/.test(part.text) ? "" : "font-mono text-[0.92em] "}text-studio-link underline decoration-studio-link/40 underline-offset-2 hover:decoration-studio-link`}
+          className={`${/\s/.test(part.text) ? "" : "font-rootlabel text-[0.95em] "}text-root-link underline decoration-root-link/40 underline-offset-2 hover:decoration-root-link`}
         >
           {part.text}
         </Link>
@@ -56,7 +56,7 @@ function renderPart(part: Inline) {
 // An item icon from the Law ({item:boots}) as a labelled chip.
 export function ItemChip({ item }: { item: string }) {
   return (
-    <span className="mx-px inline-flex items-center rounded-[4px] border border-[#c9a66b]/45 bg-[#c9a66b]/10 px-1.5 py-px align-[0.05em] font-mono text-[0.72em] uppercase leading-tight tracking-wider text-[#e3c48f]">
+    <span className="mx-px inline-flex items-center rounded-[4px] border border-root-ochre/50 bg-root-ochre/10 px-1.5 py-px align-[0.05em] font-rootlabel text-[0.72em] uppercase leading-tight tracking-wider text-root-ochre">
       {item}
     </span>
   );
@@ -88,20 +88,20 @@ export default function RuleText({
           <div key={index} className="overflow-x-auto">
             <table className="min-w-[16rem] border-collapse text-[0.95em]">
               {block.caption && (
-                <caption className="pb-1.5 text-left font-semibold text-studio-bright">
+                <caption className="pb-1.5 text-left font-semibold text-root-ink">
                   <InlineText parts={block.caption} />
                 </caption>
               )}
               <tbody>
                 {block.rows.map((row, r) => (
-                  <tr key={r} className="border-t border-studio-border first:border-t-0">
+                  <tr key={r} className="border-t border-root-line first:border-t-0">
                     {row.map((cell, c) =>
                       c === 0 ? (
-                        <th key={c} scope="row" className="py-1 pr-6 text-left font-normal text-studio-text">
+                        <th key={c} scope="row" className="py-1 pr-6 text-left font-normal text-root-ink2">
                           <InlineText parts={cell} />
                         </th>
                       ) : (
-                        <td key={c} className="px-2 py-1 text-right font-mono tabular-nums text-studio-bright">
+                        <td key={c} className="px-2 py-1 text-right font-rootlabel tabular-nums text-root-ink">
                           <InlineText parts={cell} />
                         </td>
                       ),
