@@ -47,6 +47,7 @@ test("every numbered record round-trips through its slug", () => {
 test("tab names for encyclopedia pages", () => {
   assert.deepEqual(encyclopediaPageName("rule/6-2-3"), { name: "6.2.3.law", title: "Root rule 6.2.3" });
   assert.equal(encyclopediaPageName("law/6").name, "chapter-6.law");
+  assert.equal(encyclopediaPageName("law").name, "lawbook.law");
   assert.equal(encyclopediaPageName("law/g").name, "appendix-g.law");
   assert.equal(encyclopediaPageName("law/reading-the-law").name, "reading-the-law.law");
 });

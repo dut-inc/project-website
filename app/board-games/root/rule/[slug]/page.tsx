@@ -1,12 +1,11 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import PageHeader from "@/components/PageHeader";
 import CopyLinkButton from "@/components/root/CopyLinkButton";
 import RuleEntry, { FactionChip, PageLink } from "@/components/root/RuleEntry";
 import RuleText, { RuleTitle } from "@/components/root/RuleText";
+import { RootPage, TableLink } from "@/components/root/ui";
 import { pageMetadata } from "@/lib/metadata";
 import {
-  SOURCE,
   allRules,
   ancestorsOf,
   chapterLabel,
@@ -46,7 +45,7 @@ export async function generateMetadata({ params }: Params) {
 function Panel({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <section className="mt-8">
-      <h2 className="mb-3 font-mono text-[11px] uppercase tracking-[0.16em] text-studio-muted">{title}</h2>
+      <h2 className="mb-3 root-kicker">{title}</h2>
       {children}
     </section>
   );
@@ -57,8 +56,8 @@ function RuleLinkList({ rules }: { rules: Rule[] }) {
     <ul className="space-y-1.5">
       {rules.map((rule) => (
         <li key={rule.id}>
-          <Link href={ruleHref(rule.id)} className="text-studio-text hover:text-studio-link">
-            {rule.rule_number && <span className="mr-2 font-mono text-[13px] text-studio-link">{rule.rule_number}</span>}
+          <Link href={ruleHref(rule.id)} className="text-root-ink2 hover:text-root-link">
+            {rule.rule_number && <span className="mr-2 font-rootlabel text-[13px] text-root-link">{rule.rule_number}</span>}
             {rule.title ? <RuleTitle title={rule.title} /> : ruleLabel(rule)}
           </Link>
         </li>
@@ -89,62 +88,49 @@ export default async function RulePage({ params }: Params) {
   ];
 
   return (
-    <div className="text-studio-text">
-      <PageHeader
-        href={ruleHref(rule.id)}
-        back={{ href: chapterHref(chapter.id, rule.id), label: chapterLabel(chapter) }}
-        title={ruleLabel(rule)}
-        actions={
-          <Link href={searchHref()} className="hover:text-studio-link">
-            Search the Law
-          </Link>
-        }
-        kicker={[
-          <span key="file" className="normal-case tracking-normal text-studio-text">root.law</span>,
-          rule.rule_type === "glossary" ? "Glossary" : rule.rule_type === "sub-rule" ? "Sub-rule" : "Rule",
-          `PDF p. ${rule.source_page_end !== page ? `${page}–${rule.source_page_end}` : page}`,
-        ]}
-      >
-        <nav aria-label="Where this rule is" className="mt-4 flex flex-wrap items-center gap-x-1.5 gap-y-1 text-[13px] text-studio-muted">
+    <RootPage
+      back={{ href: chapterHref(chapter.id, rule.id), label: chapterLabel(chapter) }}
+      title={ruleLabel(rule)}
+      actions={<TableLink href={searchHref()}>Search the Law</TableLink>}
+      meta={`${rule.rule_type === "glossary" ? "Glossary" : rule.rule_type === "sub-rule" ? "Sub-rule" : "Rule"} · PDF p. ${
+        rule.source_page_end !== page ? `${page}–${rule.source_page_end}` : page
+      }`}
+    >
+        <nav aria-label="Where this rule is" className="-mt-2 mb-2 flex flex-wrap items-center gap-x-1.5 gap-y-1 text-[14px] text-root-muted">
           {trail.map((item, index) => (
             <span key={item.href} className="inline-flex items-center gap-1.5">
               {index > 0 && <span aria-hidden>›</span>}
-              <Link href={item.href} className="hover:text-studio-link">
+              <Link href={item.href} className="hover:text-root-link">
                 {item.label}
               </Link>
             </span>
           ))}
         </nav>
-      </PageHeader>
 
       <div className="max-w-3xl">
         {ancestors.length > 0 && (
           <Panel title={ancestors.length > 1 ? "Parent rules" : "Parent rule"}>
-            <div className="space-y-3 rounded-lg border border-studio-border bg-white/[0.02] p-4 text-[14.5px] leading-relaxed">
+            <div className="space-y-3 rounded-lg border border-root-line bg-root-ink/[0.025] p-4 text-[14.5px] leading-relaxed">
               {ancestors.map((a) => (
                 <div key={a.id}>
-                  <Link href={ruleHref(a.id)} className="font-mono text-[13px] text-studio-link hover:underline">
+                  <Link href={ruleHref(a.id)} className="font-rootlabel text-[13px] text-root-link hover:underline">
                     {a.rule_number}
                   </Link>{" "}
                   {a.title && (
-                    <span className="font-semibold text-studio-bright">
+                    <span className="font-semibold text-root-ink">
                       <RuleTitle title={a.title} />
                     </span>
                   )}
-                  {a.text && <RuleText text={a.text} references={a.cross_references} className="mt-1 text-studio-text/90" />}
+                  {a.text && <RuleText text={a.text} references={a.cross_references} className="mt-1 text-root-ink2/90" />}
                 </div>
               ))}
             </div>
           </Panel>
         )}
 
-        <section aria-label="Rule text" className="mt-8 rounded-lg border border-studio-border bg-studio-chrome/60 p-5 text-[16px] leading-[1.7] sm:p-6">
-          <div className="mb-4 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[11px] uppercase tracking-[0.14em] text-studio-muted">
+        <section aria-label="Rule text" className="mt-8 rounded-lg border border-root-line bg-root-inset/60 p-5 text-[16px] leading-[1.7] sm:p-6">
+          <div className="mb-4 flex flex-wrap items-center gap-x-3 gap-y-1 root-kicker">
             <span>Rule text</span>
-            <span aria-hidden className="h-3 w-px bg-studio-border" />
-            <span className="normal-case tracking-normal">
-              {SOURCE.title}, {SOURCE.printed_date}
-            </span>
             <PageLink rule={rule} className="ml-auto normal-case tracking-normal" />
           </div>
           {/* The record and its sub-rules, as in the book. Its own number is the page title. */}
@@ -152,26 +138,26 @@ export default async function RulePage({ params }: Params) {
         </section>
 
         {rule.layout_flags?.includes("inline-icon") && (
-          <p className="mt-3 text-[13px] text-studio-muted">
+          <p className="mt-3 text-[13px] text-root-muted">
             This rule&apos;s title in the PDF contains an icon that can&apos;t be shown here. See{" "}
-            <a href={pdfPageHref(page)} target="_blank" rel="noopener noreferrer" className="text-studio-link hover:underline">
+            <a href={pdfPageHref(page)} target="_blank" rel="noopener noreferrer" className="text-root-link hover:underline">
               page {page}
             </a>
             .
           </p>
         )}
 
-        <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-[12px] text-studio-muted">
-          <Link href={chapterHref(chapter.id, rule.id)} className="hover:text-studio-link">
+        <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 font-rootlabel text-[12px] text-root-muted">
+          <Link href={chapterHref(chapter.id, rule.id)} className="hover:text-root-link">
             Read in context
           </Link>
-          <a href={pdfPageHref(page)} target="_blank" rel="noopener noreferrer" className="hover:text-studio-link">
+          <a href={pdfPageHref(page)} target="_blank" rel="noopener noreferrer" className="hover:text-root-link">
             Open PDF page {page} ↗
           </a>
-          <CopyLinkButton className="hover:text-studio-link" />
+          <CopyLinkButton className="hover:text-root-link" />
           <span className="ml-auto">
             {verification.status === "verified" ? (
-              <span title={verification.review.method} className="text-[#7fc490]">
+              <span title={verification.review.method} className="text-root-ok">
                 ✓ Text checked against the PDF ({verification.review.date})
               </span>
             ) : (
@@ -189,12 +175,12 @@ export default async function RulePage({ params }: Params) {
                 <Link
                   key={topic.id}
                   href={topicHref(topic.id)}
-                  className="rounded-full border border-studio-border bg-studio-chrome px-2.5 py-0.5 text-[13px] text-studio-text hover:border-studio-muted hover:text-studio-bright"
+                  className="rounded-full border border-root-line bg-root-inset px-2.5 py-0.5 text-[13px] text-root-ink2 hover:border-root-muted hover:text-root-ink"
                 >
                   {topic.name}
                 </Link>
               ))}
-              <span className="text-[12px] text-studio-muted">
+              <span className="text-[12px] text-root-muted">
                 Editorial grouping, not part of the Law
                 {topicTags.some((t) => t.status !== "reviewed") && " (draft)"}
               </span>
@@ -221,7 +207,7 @@ export default async function RulePage({ params }: Params) {
             <ul className="space-y-1.5">
               {cites.map((id) => (
                 <li key={id}>
-                  <Link href={targetHref(id)} className="text-studio-text hover:text-studio-link">
+                  <Link href={targetHref(id)} className="text-root-ink2 hover:text-root-link">
                     {targetLabel(id)}
                   </Link>
                 </li>
@@ -236,23 +222,23 @@ export default async function RulePage({ params }: Params) {
           </Panel>
         )}
 
-        <nav aria-label="Neighbouring rules" className="mt-10 grid gap-3 border-t border-studio-border pt-5 sm:grid-cols-2">
+        <nav aria-label="Neighbouring rules" className="mt-10 grid gap-3 border-t border-root-line pt-5 sm:grid-cols-2">
           {previous ? (
-            <Link href={ruleHref(previous.id)} className="rounded-lg border border-studio-border p-3 hover:border-studio-muted">
-              <span className="block font-mono text-[11px] text-studio-muted">← Previous in the Law</span>
-              <span className="text-studio-bright">{ruleLabel(previous)}</span>
+            <Link href={ruleHref(previous.id)} className="rounded-lg border border-root-line p-3 hover:border-root-muted">
+              <span className="block font-rootlabel text-[11px] text-root-muted">← Previous in the Law</span>
+              <span className="text-root-ink">{ruleLabel(previous)}</span>
             </Link>
           ) : (
             <span />
           )}
           {next && (
-            <Link href={ruleHref(next.id)} className="rounded-lg border border-studio-border p-3 text-right hover:border-studio-muted">
-              <span className="block font-mono text-[11px] text-studio-muted">Next in the Law →</span>
-              <span className="text-studio-bright">{ruleLabel(next)}</span>
+            <Link href={ruleHref(next.id)} className="rounded-lg border border-root-line p-3 text-right hover:border-root-muted">
+              <span className="block font-rootlabel text-[11px] text-root-muted">Next in the Law →</span>
+              <span className="text-root-ink">{ruleLabel(next)}</span>
             </Link>
           )}
         </nav>
       </div>
-    </div>
+    </RootPage>
   );
 }

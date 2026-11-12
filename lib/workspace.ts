@@ -101,8 +101,8 @@ export const WORKSPACE_TREE: WorkspaceNode[] = [
   folder("sports", "orange", [
     file("seattle-dashboard.live", "/sports/dashboard", "live", "Seattle Sports Dashboard"),
     file("offensive-archetypes.ipynb", "/sports/offensive-profiles", "notebook", "Offensive Archetypes"),
-    file("nba-standings-pool.csv", "/sports/nba-standings", "table", "NBA Standings Pool"),
-    file("behind-the-plate.model", "/sports/pitch-predictor", "model", "Behind the Plate"),
+    file("nba-standings-pool.race", "/sports/nba-standings", "table", "NBA Standings Pool"),
+    file("behind-the-plate.ipynb", "/sports/pitch-predictor", "notebook", "Behind the Plate"),
   ]),
   folder("conservation", "green", [
     file("sighting-map.geojson", "/conservation/sightings", "map", "Shared Sighting Map"),
@@ -116,7 +116,7 @@ export const WORKSPACE_TREE: WorkspaceNode[] = [
     [
       file("the-pack.deal", getProject("the-pack").href, "cards", "The Pack"),
       file("tier-list.rank", "/board-games/tierlist", "rank", "Board Games Tier List"),
-      file("root.law", ROOT_HREF, "law", "Root Rules Encyclopedia", encyclopediaPageName),
+      file("root.law", ROOT_HREF, "law", "Root Assistant", encyclopediaPageName),
     ],
     {
       prefix: `${getProject("the-pack").href}/room/`,

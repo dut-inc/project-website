@@ -27,7 +27,6 @@ import {
 } from "@/lib/sports/nbaStandingsPicks";
 import { TEAMS_BY_ID, chalkOrder, type NbaTeam } from "@/lib/sports/nbaTeams";
 import type { NbaStandingRow } from "@/lib/backend/providers/nbaStandings";
-import { CURRENT_PROGRESSION_SEASON, type ProgressionSnapshot } from "@/lib/sports/nbaProgression";
 // ---------------------------------------------------------------------------
 // Types
 // ---------------------------------------------------------------------------
@@ -552,74 +551,6 @@ function NameScrap({
 // ---------------------------------------------------------------------------
 // Leaderboard
 // ---------------------------------------------------------------------------
-
-function ProgressionChart({
-  snapshots,
-}: {
-  snapshots: ProgressionSnapshot[];
-}) {
-  const names = PARTICIPANTS.filter((name) => snapshots.some((snapshot) => snapshot.scores[name] !== undefined));
-  const width = Math.max(720, snapshots.length * 72);
-  const height = 280;
-  const maxScore = Math.max(1, ...snapshots.flatMap((snapshot) => Object.values(snapshot.scores)));
-  const x = (index: number) => (snapshots.length === 1 ? width / 2 : (index / (snapshots.length - 1)) * (width - 48) + 24);
-  const y = (score: number) => height - 34 - (score / maxScore) * (height - 62);
-  const colors = ["#C1442D", "#E8642F", "#2F7A6B", "#274B6D", "#7A5C2E", "#5B3C88", "#1A1410"];
-
-  return (
-    <div className="paper-sheet cut-c overflow-hidden p-4 sm:p-6">
-      <div className="mb-4 flex flex-wrap items-end justify-between gap-3">
-        <div>
-          <span className="scrap cutout-b -rotate-[0.4deg]">
-            <span className="scrap-cut block bg-ink px-4 py-1.5 font-sign text-2xl font-bold uppercase tracking-wide text-cream">Season prediction race</span>
-          </span>
-
-        </div>
-      </div>
-      {snapshots.length === 0 ? (
-        <p className="graph-paper scrap-cut-lg p-5 font-mono text-xs uppercase tracking-wider text-ink/65">Season has not started yet!</p>
-      ) : (
-      <div className="overflow-x-auto pb-2">
-        <svg viewBox={`0 0 ${width} ${height}`} role="img" aria-label="Weekly prediction progression chart" className="min-w-[720px] w-full">
-          <line x1="24" y1={height - 34} x2={width - 24} y2={height - 34} stroke="#2A2620" strokeWidth="1.5" />
-          <line x1="24" y1="18" x2="24" y2={height - 34} stroke="#2A2620" strokeWidth="1.5" />
-          {[0, Math.ceil(maxScore / 2), maxScore].map((tick) => (
-            <g key={tick}>
-              <line x1="24" y1={y(tick)} x2={width - 24} y2={y(tick)} stroke="#2A2620" strokeOpacity="0.14" strokeDasharray="3 5" />
-              <text x="18" y={y(tick) + 4} textAnchor="end" fontSize="9" fill="#2A2620">{tick}</text>
-            </g>
-          ))}
-          {names.map((name, nameIndex) => {
-            const points = snapshots.map((snapshot, index) => `${x(index)},${y(snapshot.scores[name] ?? 0)}`).join(" ");
-            return (
-              <g key={name}>
-                <polyline points={points} fill="none" stroke={colors[nameIndex % colors.length]} strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round" />
-                {snapshots.map((snapshot, index) => (
-                  <circle key={`${name}-${snapshot.week}`} cx={x(index)} cy={y(snapshot.scores[name] ?? 0)} r="3.5" fill={colors[nameIndex % colors.length]}>
-                    <title>Week {snapshot.week} — {new Date(`${snapshot.date}T00:00:00Z`).toLocaleDateString(undefined, { month: "short", day: "numeric" })} — {name}: {snapshot.scores[name] ?? 0} points</title>
-                  </circle>
-                ))}
-              </g>
-            );
-          })}
-          {snapshots.map((snapshot, index) => (
-            index === 0 || index === snapshots.length - 1 || index % 4 === 0 ? (
-              <text key={snapshot.week} x={x(index)} y={height - 12} textAnchor="middle" fontSize="9" fill="#2A2620">{new Date(`${snapshot.date}T00:00:00Z`).toLocaleDateString(undefined, { month: "short", day: "numeric" })}</text>
-            ) : null
-          ))}
-        </svg>
-      </div>
-      )}
-      {snapshots.length > 0 && <div className="mt-3 flex flex-wrap gap-x-4 gap-y-2">
-        {names.map((name, index) => (
-          <span key={name} className="scrap cutout-b">
-            <span className="scrap-cut-b block bg-cream px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-wider text-ink" style={{ borderLeft: `4px solid ${colors[index % colors.length]}` }}>{name}</span>
-          </span>
-        ))}
-      </div>}
-    </div>
-  );
-}
 
 function Leaderboard({
   rows,
@@ -1152,7 +1083,6 @@ export default function StandingsPool() {
   const [saving, setSaving] = useState(false);
   const [saveError, setSaveError] = useState<string | null>(null);
   const [showPastYears, setShowPastYears] = useState(false);
-  const [progression, setProgression] = useState<ProgressionSnapshot[]>([]);
   const [deadlineReached, setDeadlineReached] = useState(false);
 
   const pendingUnlockRef = useRef<string | null>(null);
@@ -1187,21 +1117,6 @@ export default function StandingsPool() {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     void load();
   }, [load]);
-
-  useEffect(() => {
-    let cancelled = false;
-    fetch("/api/nba-standings/progression", { cache: "no-store" })
-      .then((response) => response.json() as Promise<{ checkpoints?: ProgressionSnapshot[] }>)
-      .then((payload) => {
-        if (!cancelled) setProgression(payload.checkpoints ?? []);
-      })
-      .catch(() => {
-        if (!cancelled) setProgression([]);
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, []);
 
   useEffect(() => {
     const msUntilLock = Math.max(0, new Date(SEASON_TIP_OFF_ISO).getTime() - Date.now());
@@ -1507,8 +1422,6 @@ export default function StandingsPool() {
         </div>
       </div>
 
-      <ProgressionChart snapshots={progression} />
-
       <div className="flex justify-center px-4">
         <button
           type="button"
@@ -1588,17 +1501,6 @@ export default function StandingsPool() {
             Run supabase/nba-standings-schema.sql in the Supabase SQL editor, then refresh. Boards fall back to chalk order until then.
           </p>
           </div>
-        </div>
-      )}
-
-      {/* Lock banner when the season has started */}
-      {locked && (
-        <div className="relative flex justify-center">
-          <p className="scrap cutout relative -rotate-[0.6deg]">
-            <span className="scrap-cut-b block bg-cream px-6 py-2.5 text-center font-mono text-[10px] uppercase tracking-[0.2em] text-ink/80">
-              The ball went up on Oct 20 — boards are read-only until next season.
-            </span>
-          </p>
         </div>
       )}
 
