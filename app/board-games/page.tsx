@@ -16,8 +16,8 @@ const features = [
   {
     href: "/board-games/root",
     tag: "Live",
-    title: "Root Rules Encyclopedia",
-    blurb: "every rule in the Law of Root, by chapter and by number",
+    title: "Root Assistant",
+    blurb: "AI help with the rules, advanced setup, and reach calculator",
   },
 ];
 

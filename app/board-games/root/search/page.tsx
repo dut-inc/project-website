@@ -1,10 +1,10 @@
 import { Suspense } from "react";
-import PageHeader from "@/components/PageHeader";
+import { RootPage } from "@/components/root/ui";
 import RootSearch from "@/components/root/RootSearch";
 import { pageMetadata } from "@/lib/metadata";
 import { factionStyle } from "@/lib/root/factionStyle";
 import { SOURCE, factions } from "@/lib/root/law";
-import { ROOT_HREF, searchHref } from "@/lib/root/paths";
+import { LAW_HREF, searchHref } from "@/lib/root/paths";
 import { buildSearchIndex, chapterOptions, topicOptions } from "@/lib/root/searchIndex";
 
 const DESCRIPTION = `Search every rule in the Law of Root (${SOURCE.printed_date}) by number, word or phrase.`;
@@ -17,16 +17,10 @@ export default function RootSearchPage() {
   const factionOptions = factions().map((f) => ({ id: f.id, name: f.name, color: factionStyle(f.id).color }));
 
   return (
-    <div className="text-studio-text">
-      <PageHeader
-        href={searchHref()}
-        back={{ href: ROOT_HREF, label: "root.law" }}
-        title="Search the Law"
-        meta={[`Law of Root · ${SOURCE.printed_date}`]}
-      />
-      <Suspense fallback={<p className="text-studio-muted">Loading search…</p>}>
+    <RootPage back={{ href: LAW_HREF, label: "Lawbook" }} title="Search the Law">
+      <Suspense fallback={<p className="text-root-muted">Loading search…</p>}>
         <RootSearch index={index} factions={factionOptions} chapters={chapterOptions()} topics={topicOptions()} />
       </Suspense>
-    </div>
+    </RootPage>
   );
 }

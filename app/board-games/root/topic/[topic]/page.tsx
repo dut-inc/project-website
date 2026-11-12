@@ -1,6 +1,5 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import PageHeader from "@/components/PageHeader";
+import { RootPage, TableLink } from "@/components/root/ui";
 import { EditorialNote, ViaLabel } from "@/components/root/Editorial";
 import RuleCard, { GroupHeading } from "@/components/root/RuleCard";
 import { FactionChip } from "@/components/root/RuleEntry";
@@ -37,23 +36,16 @@ export default async function TopicPage({ params }: Params) {
   const topic = getTopic((await params).topic);
   if (!topic) notFound();
 
-  const { all, top } = topicMembers(topic.id);
+  const { top } = topicMembers(topic.id);
   const groups = groupMembers(top);
 
   return (
-    <div className="text-studio-text">
-      <PageHeader
-        href={topicHref(topic.id)}
-        back={{ href: TOPICS_HREF, label: "topics.law" }}
-        title={topic.name}
-        meta={["Topic", `${all.length} entries`]}
-        description={topic.description}
-        actions={
-          <Link href={searchHref({ topic: topic.id })} className="hover:text-studio-link">
-            Search this topic
-          </Link>
-        }
-      />
+    <RootPage
+      back={{ href: TOPICS_HREF, label: "Topics" }}
+      title={topic.name}
+      actions={<TableLink href={searchHref({ topic: topic.id })}>Search this topic</TableLink>}
+    >
+      <p className="-mt-2 mb-5 max-w-2xl text-[15px] italic text-root-muted">{topic.description}</p>
 
       <EditorialNote status={topic.status} />
 
@@ -70,7 +62,7 @@ export default async function TopicPage({ params }: Params) {
                 .filter(({ members }) => members.length > 0)
                 .map(({ faction, members }) => (
                   <div key={faction.id}>
-                    <h3 className="mb-3 flex items-center gap-2 text-[15px] font-semibold text-studio-bright">
+                    <h3 className="mb-3 flex items-center gap-2 text-[15px] font-semibold text-root-ink">
                       <FactionChip id={faction.id} />
                       {faction.name}
                     </h3>
@@ -83,6 +75,6 @@ export default async function TopicPage({ params }: Params) {
           )}
         </section>
       ))}
-    </div>
+    </RootPage>
   );
 }

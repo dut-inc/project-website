@@ -497,6 +497,12 @@ input {
   padding-top: var(--ps-titlebar-h);
 }
 
+/* A page that wants more width than the editor's usual max-w-6xl (the Root
+   Assistant dashboard) puts .ps-wide on its root element. */
+#editor:has(.ps-wide) {
+  max-width: 96rem;
+}
+
 @media (min-width: 768px) {
   .ps-shell[data-sidebar="open"] .ps-editor {
     margin-left: var(--ps-sidebar-w);
