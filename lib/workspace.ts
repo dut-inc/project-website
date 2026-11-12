@@ -101,8 +101,8 @@ export const WORKSPACE_TREE: WorkspaceNode[] = [
   folder("sports", "orange", [
     file("seattle-dashboard.live", "/sports/dashboard", "live", "Seattle Sports Dashboard"),
     file("offensive-archetypes.ipynb", "/sports/offensive-profiles", "notebook", "Offensive Archetypes"),
-    file("nba-standings-pool.csv", "/sports/nba-standings", "table", "NBA Standings Pool"),
-    file("behind-the-plate.model", "/sports/pitch-predictor", "model", "Behind the Plate"),
+    file("nba-standings-pool.race", "/sports/nba-standings", "table", "NBA Standings Pool"),
+    file("behind-the-plate.ipynb", "/sports/pitch-predictor", "notebook", "Behind the Plate"),
   ]),
   folder("conservation", "green", [
     file("sighting-map.geojson", "/conservation/sightings", "map", "Shared Sighting Map"),

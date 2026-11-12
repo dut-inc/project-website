@@ -87,8 +87,10 @@ export default async function MemberPage({ params }: Params) {
         </h2>
         {projects.length ? (
           <ul className="mt-3 divide-y divide-studio-border border-y border-studio-border">
-            {projects.map(({ file, note }) => {
-              const children = file.tone ? filesIn(file) : [];
+            {projects.map(({ file, note, files }) => {
+              const children = file.tone
+                ? filesIn(file).filter((child) => !files || files.includes(child.href))
+                : [];
               return (
                 <li key={file.href} className="py-1">
                   <ProjectRow file={file} note={note} />

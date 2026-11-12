@@ -4,6 +4,8 @@ export type MemberProject = {
   // A route from lib/workspace.ts. A folder's route also lists its files.
   href: string;
   note: string;
+  // For a folder: list only these of its files (default: all of them).
+  files?: string[];
 };
 
 export type MemberLink = {
@@ -32,7 +34,11 @@ export const MEMBERS: Member[] = [
     ],
     projects: [
       { href: "/sports", note: "Seattle sports, NBA and MLB data, and the models behind them." },
-      { href: "/board-games/tierlist", note: "Our group's personal rankings of the board games we've played." },
+      {
+        href: "/board-games",
+        note: "Our board game tier list, and Root Assistant: AI help with the rules, advanced setup, and reach calculator.",
+        files: ["/board-games/tierlist", "/board-games/root"],
+      },
     ],
   },
   {

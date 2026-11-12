@@ -20,7 +20,7 @@ expands or collapses it. Files inside are the section's tools. The file names
 | Explorer | Route |
 | --- | --- |
 | Fish Lab (folder) / `which-fish-are-you.quiz` | `/fish-stuff`, `/fish-stuff/personality` |
-| Sports Lab (folder) / `seattle-dashboard.live`, `offensive-archetypes.ipynb`, `nba-standings-pool.csv`, `behind-the-plate.model` | `/sports`, `/sports/dashboard`, `/sports/offensive-profiles`, `/sports/nba-standings`, `/sports/pitch-predictor` |
+| Sports Lab (folder) / `seattle-dashboard.live`, `offensive-archetypes.ipynb`, `nba-standings-pool.race`, `behind-the-plate.ipynb` | `/sports`, `/sports/dashboard`, `/sports/offensive-profiles`, `/sports/nba-standings`, `/sports/pitch-predictor` |
 | Nature & Conservation (folder) / `sighting-map.geojson` | `/conservation`, `/conservation/sightings` |
 | Loose Ends (folder) | `/board` |
 | Board Games (folder) / `tier-list.rank` | `/board-games`, `/board-games/tierlist` |
