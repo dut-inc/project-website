@@ -68,15 +68,26 @@ const config: Config = {
           ochre: "rgb(var(--root-ochre) / <alpha-value>)",
           cream: "rgb(var(--root-cream) / <alpha-value>)",
         },
+        // Fish Identification Quiz: open water at depth. RGB channels set on
+        // .fid (app/fish-stuff/identify/fish-id.css) so opacity modifiers work.
+        fid: {
+          abyss: "rgb(var(--fid-abyss) / <alpha-value>)",
+          navy: "rgb(var(--fid-navy) / <alpha-value>)",
+          deep: "rgb(var(--fid-deep) / <alpha-value>)",
+          teal: "rgb(var(--fid-teal) / <alpha-value>)",
+          foam: "rgb(var(--fid-foam) / <alpha-value>)",
+          mist: "rgb(var(--fid-mist) / <alpha-value>)",
+          sand: "rgb(var(--fid-sand) / <alpha-value>)",
+          white: "rgb(var(--fid-white) / <alpha-value>)",
+          coral: "rgb(var(--fid-coral) / <alpha-value>)",
+          ink: "rgb(var(--fid-ink) / <alpha-value>)",
+        },
         sports: {
-          bg: "#0B0B0D",
           accent: "#FF9552",
         },
-        // NBA standings pool — courtside at night: warm charcoal panels,
-        // cream court paint, basketball-leather orange accent.
+        // NBA standings pool — courtside at night: basketball-leather
+        // orange accent on a leather-brown modal wash.
         pool: {
-          ink: "#1A1410", // panel base
-          ink2: "#251C15", // raised / active panel
           leather: "#3D2412", // modal backdrop wash
           orange: "#E8642F", // basketball leather accent
         },
@@ -108,6 +119,8 @@ const config: Config = {
         rootdisplay: ["var(--font-root-display)", "Georgia", "serif"],
         rootbody: ["var(--font-root-body)", "Georgia", "serif"],
         rootlabel: ["var(--font-root-label)", "Georgia", "serif"],
+        // Fish Identification Quiz (app/fish-stuff/identify/layout.tsx).
+        fidserif: ["var(--font-fid-serif)", "Georgia", "serif"],
       },
     },
   },

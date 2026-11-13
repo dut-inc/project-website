@@ -12,14 +12,15 @@ const features = [
     blurb:
       "find out what fish you are!1!1!1!!!!",
   },
+  {
+    href: "/fish-stuff/identify",
+    tag: "Live",
+    title: "Identify the Fish",
+    blurb: "name that fish! by photo, common name or scientific name",
+  },
 ];
 
 const comingSoon = [
-  {
-    title: "Identify the fish quiz",
-    blurb:
-      "name that fish!",
-  },
   {
     title: "Species ID Model",
     blurb:

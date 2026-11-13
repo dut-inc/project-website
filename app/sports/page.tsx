@@ -33,6 +33,13 @@ const features = [
     blurb:
       "predicting an MLB pitcher's next pitch",
   },
+  {
+    href: "/sports/doom-score",
+    tag: "Draft",
+    title: "Doom Score",
+    blurb:
+      "doom score vs. winning percentage across five leagues",
+  },
 ];
 
 export default function SportsPage() {
