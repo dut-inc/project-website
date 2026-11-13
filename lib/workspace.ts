@@ -104,6 +104,7 @@ export const WORKSPACE_TREE: WorkspaceNode[] = [
     file("offensive-archetypes.ipynb", "/sports/offensive-profiles", "notebook", "Offensive Archetypes"),
     file("nba-standings-pool.race", "/sports/nba-standings", "table", "NBA Standings Pool"),
     file("behind-the-plate.ipynb", "/sports/pitch-predictor", "notebook", "Behind the Plate"),
+    file("doom-score.plot", "/sports/doom-score", "notebook", "Doom Score"),
   ]),
   folder("conservation", "green", [
     file("sighting-map.geojson", "/conservation/sightings", "map", "Shared Sighting Map"),

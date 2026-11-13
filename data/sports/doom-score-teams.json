@@ -1,0 +1,2090 @@
+{
+  "_comment": "PLACEHOLDER numbers (seeded random), not real stats. Replace doomScore, winPct, draftPicks (picks owned over the next 3 drafts), avgAge and capSpaceM ($M under the cap; negative = over; MLB = room under the luxury-tax line) with real data.",
+  "teams": [
+    {
+      "id": "NBA-ATL",
+      "league": "NBA",
+      "abbr": "ATL",
+      "name": "Atlanta Hawks",
+      "logo": "/images/NBA/ATL.png",
+      "doomScore": 80,
+      "winPct": 0.334,
+      "draftPicks": {
+        "firsts": 5,
+        "total": 8
+      },
+      "avgAge": 25,
+      "capSpaceM": 14.9
+    },
+    {
+      "id": "NBA-BOS",
+      "league": "NBA",
+      "abbr": "BOS",
+      "name": "Boston Celtics",
+      "logo": "/images/NBA/BOS.png",
+      "doomScore": 33,
+      "winPct": 0.402,
+      "draftPicks": {
+        "firsts": 3,
+        "total": 7
+      },
+      "avgAge": 26.7,
+      "capSpaceM": 22.3
+    },
+    {
+      "id": "NBA-BKN",
+      "league": "NBA",
+      "abbr": "BKN",
+      "name": "Brooklyn Nets",
+      "logo": "/images/NBA/BKN.png",
+      "doomScore": 6,
+      "winPct": 0.496,
+      "draftPicks": {
+        "firsts": 2,
+        "total": 4
+      },
+      "avgAge": 25.7,
+      "capSpaceM": 4.5
+    },
+    {
+      "id": "NBA-CHA",
+      "league": "NBA",
+      "abbr": "CHA",
+      "name": "Charlotte Hornets",
+      "logo": "/images/NBA/CHA.png",
+      "doomScore": 97,
+      "winPct": 0.627,
+      "draftPicks": {
+        "firsts": 1,
+        "total": 2
+      },
+      "avgAge": 28.2,
+      "capSpaceM": 5.7
+    },
+    {
+      "id": "NBA-CHI",
+      "league": "NBA",
+      "abbr": "CHI",
+      "name": "Chicago Bulls",
+      "logo": "/images/NBA/CHI.png",
+      "doomScore": 45,
+      "winPct": 0.607,
+      "draftPicks": {
+        "firsts": 5,
+        "total": 11
+      },
+      "avgAge": 24.3,
+      "capSpaceM": 1.9
+    },
+    {
+      "id": "NBA-CLE",
+      "league": "NBA",
+      "abbr": "CLE",
+      "name": "Cleveland Cavaliers",
+      "logo": "/images/NBA/CLE.png",
+      "doomScore": 65,
+      "winPct": 0.326,
+      "draftPicks": {
+        "firsts": 5,
+        "total": 11
+      },
+      "avgAge": 25.4,
+      "capSpaceM": -21
+    },
+    {
+      "id": "NBA-DAL",
+      "league": "NBA",
+      "abbr": "DAL",
+      "name": "Dallas Mavericks",
+      "logo": "/images/NBA/DAL.png",
+      "doomScore": 66,
+      "winPct": 0.612,
+      "draftPicks": {
+        "firsts": 4,
+        "total": 5
+      },
+      "avgAge": 25.5,
+      "capSpaceM": -5.2
+    },
+    {
+      "id": "NBA-DEN",
+      "league": "NBA",
+      "abbr": "DEN",
+      "name": "Denver Nuggets",
+      "logo": "/images/NBA/DEN.png",
+      "doomScore": 22,
+      "winPct": 0.69,
+      "draftPicks": {
+        "firsts": 4,
+        "total": 8
+      },
+      "avgAge": 28.7,
+      "capSpaceM": 9.8
+    },
+    {
+      "id": "NBA-DET",
+      "league": "NBA",
+      "abbr": "DET",
+      "name": "Detroit Pistons",
+      "logo": "/images/NBA/DET-2.png",
+      "doomScore": 61,
+      "winPct": 0.313,
+      "draftPicks": {
+        "firsts": 1,
+        "total": 2
+      },
+      "avgAge": 24.9,
+      "capSpaceM": 17.5
+    },
+    {
+      "id": "NBA-GSW",
+      "league": "NBA",
+      "abbr": "GSW",
+      "name": "Golden State Warriors",
+      "logo": "/images/NBA/GSW.png",
+      "doomScore": 85,
+      "winPct": 0.595,
+      "draftPicks": {
+        "firsts": 4,
+        "total": 10
+      },
+      "avgAge": 24.1,
+      "capSpaceM": -29.5
+    },
+    {
+      "id": "NBA-HOU",
+      "league": "NBA",
+      "abbr": "HOU",
+      "name": "Houston Rockets",
+      "logo": "/images/NBA/HOU.png",
+      "doomScore": 32,
+      "winPct": 0.275,
+      "draftPicks": {
+        "firsts": 4,
+        "total": 8
+      },
+      "avgAge": 29.1,
+      "capSpaceM": 15.2
+    },
+    {
+      "id": "NBA-IND",
+      "league": "NBA",
+      "abbr": "IND",
+      "name": "Indiana Pacers",
+      "logo": "/images/NBA/IND.png",
+      "doomScore": 9,
+      "winPct": 0.507,
+      "draftPicks": {
+        "firsts": 5,
+        "total": 8
+      },
+      "avgAge": 27.7,
+      "capSpaceM": 19.2
+    },
+    {
+      "id": "NBA-LAC",
+      "league": "NBA",
+      "abbr": "LAC",
+      "name": "LA Clippers",
+      "logo": "/images/NBA/LAC.png",
+      "doomScore": 28,
+      "winPct": 0.737,
+      "draftPicks": {
+        "firsts": 2,
+        "total": 3
+      },
+      "avgAge": 26.2,
+      "capSpaceM": 20
+    },
+    {
+      "id": "NBA-LAL",
+      "league": "NBA",
+      "abbr": "LAL",
+      "name": "Los Angeles Lakers",
+      "logo": "/images/NBA/LAL.png",
+      "doomScore": 58,
+      "winPct": 0.506,
+      "draftPicks": {
+        "firsts": 3,
+        "total": 4
+      },
+      "avgAge": 25.3,
+      "capSpaceM": -8.9
+    },
+    {
+      "id": "NBA-MEM",
+      "league": "NBA",
+      "abbr": "MEM",
+      "name": "Memphis Grizzlies",
+      "logo": "/images/NBA/MEM.png",
+      "doomScore": 5,
+      "winPct": 0.497,
+      "draftPicks": {
+        "firsts": 1,
+        "total": 2
+      },
+      "avgAge": 27.4,
+      "capSpaceM": -11.6
+    },
+    {
+      "id": "NBA-MIA",
+      "league": "NBA",
+      "abbr": "MIA",
+      "name": "Miami Heat",
+      "logo": "/images/NBA/MIA-2.png",
+      "doomScore": 58,
+      "winPct": 0.25,
+      "draftPicks": {
+        "firsts": 5,
+        "total": 7
+      },
+      "avgAge": 28.2,
+      "capSpaceM": -8.4
+    },
+    {
+      "id": "NBA-MIL",
+      "league": "NBA",
+      "abbr": "MIL",
+      "name": "Milwaukee Bucks",
+      "logo": "/images/NBA/MIL.png",
+      "doomScore": 7,
+      "winPct": 0.368,
+      "draftPicks": {
+        "firsts": 5,
+        "total": 7
+      },
+      "avgAge": 26.6,
+      "capSpaceM": -21.2
+    },
+    {
+      "id": "NBA-MIN",
+      "league": "NBA",
+      "abbr": "MIN",
+      "name": "Minnesota Timberwolves",
+      "logo": "/images/NBA/MIN.png",
+      "doomScore": 92,
+      "winPct": 0.589,
+      "draftPicks": {
+        "firsts": 1,
+        "total": 4
+      },
+      "avgAge": 25.9,
+      "capSpaceM": -1.6
+    },
+    {
+      "id": "NBA-NOP",
+      "league": "NBA",
+      "abbr": "NOP",
+      "name": "New Orleans Pelicans",
+      "logo": "/images/NBA/NOP.png",
+      "doomScore": 6,
+      "winPct": 0.294,
+      "draftPicks": {
+        "firsts": 5,
+        "total": 11
+      },
+      "avgAge": 29,
+      "capSpaceM": -9.2
+    },
+    {
+      "id": "NBA-NYK",
+      "league": "NBA",
+      "abbr": "NYK",
+      "name": "New York Knicks",
+      "logo": "/images/NBA/NYK.png",
+      "doomScore": 8,
+      "winPct": 0.647,
+      "draftPicks": {
+        "firsts": 1,
+        "total": 5
+      },
+      "avgAge": 28.5,
+      "capSpaceM": 5.6
+    },
+    {
+      "id": "NBA-OKC",
+      "league": "NBA",
+      "abbr": "OKC",
+      "name": "Oklahoma City Thunder",
+      "logo": "/images/NBA/OKC.png",
+      "doomScore": 71,
+      "winPct": 0.605,
+      "draftPicks": {
+        "firsts": 1,
+        "total": 4
+      },
+      "avgAge": 26.3,
+      "capSpaceM": -12.6
+    },
+    {
+      "id": "NBA-ORL",
+      "league": "NBA",
+      "abbr": "ORL",
+      "name": "Orlando Magic",
+      "logo": "/images/NBA/ORL.png",
+      "doomScore": 94,
+      "winPct": 0.732,
+      "draftPicks": {
+        "firsts": 4,
+        "total": 9
+      },
+      "avgAge": 26.7,
+      "capSpaceM": 24.8
+    },
+    {
+      "id": "NBA-PHI",
+      "league": "NBA",
+      "abbr": "PHI",
+      "name": "Philadelphia 76ers",
+      "logo": "/images/NBA/PHI.png",
+      "doomScore": 73,
+      "winPct": 0.639,
+      "draftPicks": {
+        "firsts": 1,
+        "total": 5
+      },
+      "avgAge": 24.9,
+      "capSpaceM": -14.7
+    },
+    {
+      "id": "NBA-PHX",
+      "league": "NBA",
+      "abbr": "PHX",
+      "name": "Phoenix Suns",
+      "logo": "/images/NBA/PHX.png",
+      "doomScore": 31,
+      "winPct": 0.461,
+      "draftPicks": {
+        "firsts": 2,
+        "total": 4
+      },
+      "avgAge": 24.3,
+      "capSpaceM": 18.7
+    },
+    {
+      "id": "NBA-POR",
+      "league": "NBA",
+      "abbr": "POR",
+      "name": "Portland Trail Blazers",
+      "logo": "/images/NBA/POR.png",
+      "doomScore": 64,
+      "winPct": 0.704,
+      "draftPicks": {
+        "firsts": 4,
+        "total": 8
+      },
+      "avgAge": 25.5,
+      "capSpaceM": 28.7
+    },
+    {
+      "id": "NBA-SAC",
+      "league": "NBA",
+      "abbr": "SAC",
+      "name": "Sacramento Kings",
+      "logo": "/images/NBA/SAC.png",
+      "doomScore": 49,
+      "winPct": 0.435,
+      "draftPicks": {
+        "firsts": 3,
+        "total": 7
+      },
+      "avgAge": 29.6,
+      "capSpaceM": 21.9
+    },
+    {
+      "id": "NBA-SAS",
+      "league": "NBA",
+      "abbr": "SAS",
+      "name": "San Antonio Spurs",
+      "logo": "/images/NBA/SAS.png",
+      "doomScore": 59,
+      "winPct": 0.507,
+      "draftPicks": {
+        "firsts": 2,
+        "total": 8
+      },
+      "avgAge": 24.5,
+      "capSpaceM": 27.7
+    },
+    {
+      "id": "NBA-TOR",
+      "league": "NBA",
+      "abbr": "TOR",
+      "name": "Toronto Raptors",
+      "logo": "/images/NBA/TOR.png",
+      "doomScore": 49,
+      "winPct": 0.724,
+      "draftPicks": {
+        "firsts": 5,
+        "total": 7
+      },
+      "avgAge": 24.1,
+      "capSpaceM": 28.5
+    },
+    {
+      "id": "NBA-UTA",
+      "league": "NBA",
+      "abbr": "UTA",
+      "name": "Utah Jazz",
+      "logo": "/images/NBA/UTA.png",
+      "doomScore": 100,
+      "winPct": 0.733,
+      "draftPicks": {
+        "firsts": 5,
+        "total": 11
+      },
+      "avgAge": 27.3,
+      "capSpaceM": -24
+    },
+    {
+      "id": "NBA-WAS",
+      "league": "NBA",
+      "abbr": "WAS",
+      "name": "Washington Wizards",
+      "logo": "/images/NBA/WAS.png",
+      "doomScore": 46,
+      "winPct": 0.56,
+      "draftPicks": {
+        "firsts": 2,
+        "total": 8
+      },
+      "avgAge": 25.9,
+      "capSpaceM": -4
+    },
+    {
+      "id": "NHL-ANA",
+      "league": "NHL",
+      "abbr": "ANA",
+      "name": "Anaheim Ducks",
+      "logo": null,
+      "doomScore": 4,
+      "winPct": 0.63,
+      "draftPicks": {
+        "firsts": 4,
+        "total": 5
+      },
+      "avgAge": 25.3,
+      "capSpaceM": -28.5
+    },
+    {
+      "id": "NHL-BOS",
+      "league": "NHL",
+      "abbr": "BOS",
+      "name": "Boston Bruins",
+      "logo": null,
+      "doomScore": 8,
+      "winPct": 0.668,
+      "draftPicks": {
+        "firsts": 2,
+        "total": 3
+      },
+      "avgAge": 28.4,
+      "capSpaceM": -10.2
+    },
+    {
+      "id": "NHL-BUF",
+      "league": "NHL",
+      "abbr": "BUF",
+      "name": "Buffalo Sabres",
+      "logo": null,
+      "doomScore": 12,
+      "winPct": 0.42,
+      "draftPicks": {
+        "firsts": 4,
+        "total": 7
+      },
+      "avgAge": 25.6,
+      "capSpaceM": -14.5
+    },
+    {
+      "id": "NHL-CGY",
+      "league": "NHL",
+      "abbr": "CGY",
+      "name": "Calgary Flames",
+      "logo": null,
+      "doomScore": 19,
+      "winPct": 0.392,
+      "draftPicks": {
+        "firsts": 5,
+        "total": 7
+      },
+      "avgAge": 25.3,
+      "capSpaceM": 24.5
+    },
+    {
+      "id": "NHL-CAR",
+      "league": "NHL",
+      "abbr": "CAR",
+      "name": "Carolina Hurricanes",
+      "logo": null,
+      "doomScore": 81,
+      "winPct": 0.298,
+      "draftPicks": {
+        "firsts": 5,
+        "total": 11
+      },
+      "avgAge": 27.5,
+      "capSpaceM": 5.4
+    },
+    {
+      "id": "NHL-CHI",
+      "league": "NHL",
+      "abbr": "CHI",
+      "name": "Chicago Blackhawks",
+      "logo": null,
+      "doomScore": 5,
+      "winPct": 0.575,
+      "draftPicks": {
+        "firsts": 3,
+        "total": 4
+      },
+      "avgAge": 28.8,
+      "capSpaceM": -17
+    },
+    {
+      "id": "NHL-COL",
+      "league": "NHL",
+      "abbr": "COL",
+      "name": "Colorado Avalanche",
+      "logo": null,
+      "doomScore": 63,
+      "winPct": 0.747,
+      "draftPicks": {
+        "firsts": 3,
+        "total": 4
+      },
+      "avgAge": 29.9,
+      "capSpaceM": 14
+    },
+    {
+      "id": "NHL-CBJ",
+      "league": "NHL",
+      "abbr": "CBJ",
+      "name": "Columbus Blue Jackets",
+      "logo": null,
+      "doomScore": 88,
+      "winPct": 0.747,
+      "draftPicks": {
+        "firsts": 2,
+        "total": 8
+      },
+      "avgAge": 24.9,
+      "capSpaceM": -6.8
+    },
+    {
+      "id": "NHL-DAL",
+      "league": "NHL",
+      "abbr": "DAL",
+      "name": "Dallas Stars",
+      "logo": null,
+      "doomScore": 47,
+      "winPct": 0.264,
+      "draftPicks": {
+        "firsts": 5,
+        "total": 7
+      },
+      "avgAge": 27.1,
+      "capSpaceM": 10.9
+    },
+    {
+      "id": "NHL-DET",
+      "league": "NHL",
+      "abbr": "DET",
+      "name": "Detroit Red Wings",
+      "logo": null,
+      "doomScore": 39,
+      "winPct": 0.385,
+      "draftPicks": {
+        "firsts": 5,
+        "total": 9
+      },
+      "avgAge": 27.2,
+      "capSpaceM": 1.8
+    },
+    {
+      "id": "NHL-EDM",
+      "league": "NHL",
+      "abbr": "EDM",
+      "name": "Edmonton Oilers",
+      "logo": null,
+      "doomScore": 97,
+      "winPct": 0.424,
+      "draftPicks": {
+        "firsts": 2,
+        "total": 3
+      },
+      "avgAge": 24.5,
+      "capSpaceM": -16.3
+    },
+    {
+      "id": "NHL-FLA",
+      "league": "NHL",
+      "abbr": "FLA",
+      "name": "Florida Panthers",
+      "logo": null,
+      "doomScore": 78,
+      "winPct": 0.617,
+      "draftPicks": {
+        "firsts": 3,
+        "total": 5
+      },
+      "avgAge": 24.2,
+      "capSpaceM": -3.5
+    },
+    {
+      "id": "NHL-LAK",
+      "league": "NHL",
+      "abbr": "LAK",
+      "name": "Los Angeles Kings",
+      "logo": null,
+      "doomScore": 25,
+      "winPct": 0.321,
+      "draftPicks": {
+        "firsts": 4,
+        "total": 9
+      },
+      "avgAge": 28.7,
+      "capSpaceM": 19.7
+    },
+    {
+      "id": "NHL-MIN",
+      "league": "NHL",
+      "abbr": "MIN",
+      "name": "Minnesota Wild",
+      "logo": null,
+      "doomScore": 35,
+      "winPct": 0.316,
+      "draftPicks": {
+        "firsts": 4,
+        "total": 9
+      },
+      "avgAge": 24.6,
+      "capSpaceM": -24.3
+    },
+    {
+      "id": "NHL-MTL",
+      "league": "NHL",
+      "abbr": "MTL",
+      "name": "Montreal Canadiens",
+      "logo": null,
+      "doomScore": 66,
+      "winPct": 0.556,
+      "draftPicks": {
+        "firsts": 4,
+        "total": 6
+      },
+      "avgAge": 29.3,
+      "capSpaceM": 17.3
+    },
+    {
+      "id": "NHL-NSH",
+      "league": "NHL",
+      "abbr": "NSH",
+      "name": "Nashville Predators",
+      "logo": null,
+      "doomScore": 3,
+      "winPct": 0.639,
+      "draftPicks": {
+        "firsts": 5,
+        "total": 6
+      },
+      "avgAge": 29.1,
+      "capSpaceM": 16.5
+    },
+    {
+      "id": "NHL-NJD",
+      "league": "NHL",
+      "abbr": "NJD",
+      "name": "New Jersey Devils",
+      "logo": null,
+      "doomScore": 27,
+      "winPct": 0.642,
+      "draftPicks": {
+        "firsts": 5,
+        "total": 8
+      },
+      "avgAge": 26.1,
+      "capSpaceM": -12.5
+    },
+    {
+      "id": "NHL-NYI",
+      "league": "NHL",
+      "abbr": "NYI",
+      "name": "New York Islanders",
+      "logo": null,
+      "doomScore": 56,
+      "winPct": 0.57,
+      "draftPicks": {
+        "firsts": 1,
+        "total": 4
+      },
+      "avgAge": 24.8,
+      "capSpaceM": 21.4
+    },
+    {
+      "id": "NHL-NYR",
+      "league": "NHL",
+      "abbr": "NYR",
+      "name": "New York Rangers",
+      "logo": null,
+      "doomScore": 41,
+      "winPct": 0.387,
+      "draftPicks": {
+        "firsts": 3,
+        "total": 9
+      },
+      "avgAge": 25.6,
+      "capSpaceM": -9.4
+    },
+    {
+      "id": "NHL-OTT",
+      "league": "NHL",
+      "abbr": "OTT",
+      "name": "Ottawa Senators",
+      "logo": null,
+      "doomScore": 18,
+      "winPct": 0.667,
+      "draftPicks": {
+        "firsts": 5,
+        "total": 9
+      },
+      "avgAge": 24.8,
+      "capSpaceM": 21.9
+    },
+    {
+      "id": "NHL-PHI",
+      "league": "NHL",
+      "abbr": "PHI",
+      "name": "Philadelphia Flyers",
+      "logo": null,
+      "doomScore": 13,
+      "winPct": 0.358,
+      "draftPicks": {
+        "firsts": 1,
+        "total": 6
+      },
+      "avgAge": 28.5,
+      "capSpaceM": -18.4
+    },
+    {
+      "id": "NHL-PIT",
+      "league": "NHL",
+      "abbr": "PIT",
+      "name": "Pittsburgh Penguins",
+      "logo": null,
+      "doomScore": 18,
+      "winPct": 0.69,
+      "draftPicks": {
+        "firsts": 5,
+        "total": 6
+      },
+      "avgAge": 24.3,
+      "capSpaceM": -10.8
+    },
+    {
+      "id": "NHL-SJS",
+      "league": "NHL",
+      "abbr": "SJS",
+      "name": "San Jose Sharks",
+      "logo": null,
+      "doomScore": 75,
+      "winPct": 0.43,
+      "draftPicks": {
+        "firsts": 1,
+        "total": 4
+      },
+      "avgAge": 29.8,
+      "capSpaceM": 6.4
+    },
+    {
+      "id": "NHL-SEA",
+      "league": "NHL",
+      "abbr": "SEA",
+      "name": "Seattle Kraken",
+      "logo": "/images/Seattle/Kraken.png",
+      "doomScore": 99,
+      "winPct": 0.712,
+      "draftPicks": {
+        "firsts": 3,
+        "total": 5
+      },
+      "avgAge": 28.9,
+      "capSpaceM": -6.9
+    },
+    {
+      "id": "NHL-STL",
+      "league": "NHL",
+      "abbr": "STL",
+      "name": "St. Louis Blues",
+      "logo": null,
+      "doomScore": 25,
+      "winPct": 0.698,
+      "draftPicks": {
+        "firsts": 1,
+        "total": 7
+      },
+      "avgAge": 24.1,
+      "capSpaceM": 7.4
+    },
+    {
+      "id": "NHL-TBL",
+      "league": "NHL",
+      "abbr": "TBL",
+      "name": "Tampa Bay Lightning",
+      "logo": null,
+      "doomScore": 21,
+      "winPct": 0.695,
+      "draftPicks": {
+        "firsts": 2,
+        "total": 7
+      },
+      "avgAge": 27.1,
+      "capSpaceM": -7.1
+    },
+    {
+      "id": "NHL-TOR",
+      "league": "NHL",
+      "abbr": "TOR",
+      "name": "Toronto Maple Leafs",
+      "logo": null,
+      "doomScore": 32,
+      "winPct": 0.66,
+      "draftPicks": {
+        "firsts": 3,
+        "total": 7
+      },
+      "avgAge": 27.7,
+      "capSpaceM": -10.7
+    },
+    {
+      "id": "NHL-UTA",
+      "league": "NHL",
+      "abbr": "UTA",
+      "name": "Utah Mammoth",
+      "logo": null,
+      "doomScore": 74,
+      "winPct": 0.334,
+      "draftPicks": {
+        "firsts": 4,
+        "total": 6
+      },
+      "avgAge": 24.2,
+      "capSpaceM": -24.3
+    },
+    {
+      "id": "NHL-VAN",
+      "league": "NHL",
+      "abbr": "VAN",
+      "name": "Vancouver Canucks",
+      "logo": null,
+      "doomScore": 81,
+      "winPct": 0.426,
+      "draftPicks": {
+        "firsts": 1,
+        "total": 2
+      },
+      "avgAge": 25.9,
+      "capSpaceM": -27.7
+    },
+    {
+      "id": "NHL-VGK",
+      "league": "NHL",
+      "abbr": "VGK",
+      "name": "Vegas Golden Knights",
+      "logo": null,
+      "doomScore": 13,
+      "winPct": 0.743,
+      "draftPicks": {
+        "firsts": 1,
+        "total": 3
+      },
+      "avgAge": 25.3,
+      "capSpaceM": 26.4
+    },
+    {
+      "id": "NHL-WSH",
+      "league": "NHL",
+      "abbr": "WSH",
+      "name": "Washington Capitals",
+      "logo": null,
+      "doomScore": 61,
+      "winPct": 0.698,
+      "draftPicks": {
+        "firsts": 3,
+        "total": 4
+      },
+      "avgAge": 27.2,
+      "capSpaceM": -12.7
+    },
+    {
+      "id": "NHL-WPG",
+      "league": "NHL",
+      "abbr": "WPG",
+      "name": "Winnipeg Jets",
+      "logo": null,
+      "doomScore": 46,
+      "winPct": 0.29,
+      "draftPicks": {
+        "firsts": 2,
+        "total": 6
+      },
+      "avgAge": 29.5,
+      "capSpaceM": -5.4
+    },
+    {
+      "id": "NFL-ARI",
+      "league": "NFL",
+      "abbr": "ARI",
+      "name": "Arizona Cardinals",
+      "logo": null,
+      "doomScore": 45,
+      "winPct": 0.561,
+      "draftPicks": {
+        "firsts": 1,
+        "total": 6
+      },
+      "avgAge": 24.1,
+      "capSpaceM": 15.2
+    },
+    {
+      "id": "NFL-ATL",
+      "league": "NFL",
+      "abbr": "ATL",
+      "name": "Atlanta Falcons",
+      "logo": null,
+      "doomScore": 34,
+      "winPct": 0.652,
+      "draftPicks": {
+        "firsts": 2,
+        "total": 4
+      },
+      "avgAge": 26.4,
+      "capSpaceM": -2
+    },
+    {
+      "id": "NFL-BAL",
+      "league": "NFL",
+      "abbr": "BAL",
+      "name": "Baltimore Ravens",
+      "logo": null,
+      "doomScore": 59,
+      "winPct": 0.679,
+      "draftPicks": {
+        "firsts": 4,
+        "total": 6
+      },
+      "avgAge": 25.7,
+      "capSpaceM": 16.7
+    },
+    {
+      "id": "NFL-BUF",
+      "league": "NFL",
+      "abbr": "BUF",
+      "name": "Buffalo Bills",
+      "logo": null,
+      "doomScore": 19,
+      "winPct": 0.701,
+      "draftPicks": {
+        "firsts": 2,
+        "total": 4
+      },
+      "avgAge": 25.5,
+      "capSpaceM": 23.3
+    },
+    {
+      "id": "NFL-CAR",
+      "league": "NFL",
+      "abbr": "CAR",
+      "name": "Carolina Panthers",
+      "logo": null,
+      "doomScore": 95,
+      "winPct": 0.515,
+      "draftPicks": {
+        "firsts": 3,
+        "total": 7
+      },
+      "avgAge": 26.4,
+      "capSpaceM": 8.3
+    },
+    {
+      "id": "NFL-CHI",
+      "league": "NFL",
+      "abbr": "CHI",
+      "name": "Chicago Bears",
+      "logo": null,
+      "doomScore": 89,
+      "winPct": 0.258,
+      "draftPicks": {
+        "firsts": 3,
+        "total": 6
+      },
+      "avgAge": 25,
+      "capSpaceM": -28.9
+    },
+    {
+      "id": "NFL-CIN",
+      "league": "NFL",
+      "abbr": "CIN",
+      "name": "Cincinnati Bengals",
+      "logo": null,
+      "doomScore": 63,
+      "winPct": 0.589,
+      "draftPicks": {
+        "firsts": 2,
+        "total": 8
+      },
+      "avgAge": 24.2,
+      "capSpaceM": -27
+    },
+    {
+      "id": "NFL-CLE",
+      "league": "NFL",
+      "abbr": "CLE",
+      "name": "Cleveland Browns",
+      "logo": null,
+      "doomScore": 63,
+      "winPct": 0.68,
+      "draftPicks": {
+        "firsts": 5,
+        "total": 8
+      },
+      "avgAge": 26.3,
+      "capSpaceM": -26.2
+    },
+    {
+      "id": "NFL-DAL",
+      "league": "NFL",
+      "abbr": "DAL",
+      "name": "Dallas Cowboys",
+      "logo": null,
+      "doomScore": 91,
+      "winPct": 0.673,
+      "draftPicks": {
+        "firsts": 2,
+        "total": 3
+      },
+      "avgAge": 25.9,
+      "capSpaceM": -10.7
+    },
+    {
+      "id": "NFL-DEN",
+      "league": "NFL",
+      "abbr": "DEN",
+      "name": "Denver Broncos",
+      "logo": null,
+      "doomScore": 66,
+      "winPct": 0.407,
+      "draftPicks": {
+        "firsts": 4,
+        "total": 7
+      },
+      "avgAge": 28.1,
+      "capSpaceM": -1.9
+    },
+    {
+      "id": "NFL-DET",
+      "league": "NFL",
+      "abbr": "DET",
+      "name": "Detroit Lions",
+      "logo": null,
+      "doomScore": 53,
+      "winPct": 0.747,
+      "draftPicks": {
+        "firsts": 1,
+        "total": 3
+      },
+      "avgAge": 25.9,
+      "capSpaceM": -19
+    },
+    {
+      "id": "NFL-GB",
+      "league": "NFL",
+      "abbr": "GB",
+      "name": "Green Bay Packers",
+      "logo": null,
+      "doomScore": 68,
+      "winPct": 0.727,
+      "draftPicks": {
+        "firsts": 2,
+        "total": 5
+      },
+      "avgAge": 25.4,
+      "capSpaceM": 27.5
+    },
+    {
+      "id": "NFL-HOU",
+      "league": "NFL",
+      "abbr": "HOU",
+      "name": "Houston Texans",
+      "logo": null,
+      "doomScore": 7,
+      "winPct": 0.45,
+      "draftPicks": {
+        "firsts": 2,
+        "total": 6
+      },
+      "avgAge": 24.7,
+      "capSpaceM": -26.1
+    },
+    {
+      "id": "NFL-IND",
+      "league": "NFL",
+      "abbr": "IND",
+      "name": "Indianapolis Colts",
+      "logo": null,
+      "doomScore": 61,
+      "winPct": 0.664,
+      "draftPicks": {
+        "firsts": 5,
+        "total": 6
+      },
+      "avgAge": 27.4,
+      "capSpaceM": 10.1
+    },
+    {
+      "id": "NFL-JAX",
+      "league": "NFL",
+      "abbr": "JAX",
+      "name": "Jacksonville Jaguars",
+      "logo": null,
+      "doomScore": 65,
+      "winPct": 0.613,
+      "draftPicks": {
+        "firsts": 5,
+        "total": 11
+      },
+      "avgAge": 29.5,
+      "capSpaceM": 21.8
+    },
+    {
+      "id": "NFL-KC",
+      "league": "NFL",
+      "abbr": "KC",
+      "name": "Kansas City Chiefs",
+      "logo": null,
+      "doomScore": 2,
+      "winPct": 0.429,
+      "draftPicks": {
+        "firsts": 2,
+        "total": 6
+      },
+      "avgAge": 26.4,
+      "capSpaceM": -27
+    },
+    {
+      "id": "NFL-LV",
+      "league": "NFL",
+      "abbr": "LV",
+      "name": "Las Vegas Raiders",
+      "logo": null,
+      "doomScore": 12,
+      "winPct": 0.685,
+      "draftPicks": {
+        "firsts": 2,
+        "total": 3
+      },
+      "avgAge": 25.3,
+      "capSpaceM": -1.5
+    },
+    {
+      "id": "NFL-LAC",
+      "league": "NFL",
+      "abbr": "LAC",
+      "name": "Los Angeles Chargers",
+      "logo": null,
+      "doomScore": 12,
+      "winPct": 0.275,
+      "draftPicks": {
+        "firsts": 1,
+        "total": 7
+      },
+      "avgAge": 24.4,
+      "capSpaceM": -26.1
+    },
+    {
+      "id": "NFL-LAR",
+      "league": "NFL",
+      "abbr": "LAR",
+      "name": "Los Angeles Rams",
+      "logo": null,
+      "doomScore": 34,
+      "winPct": 0.62,
+      "draftPicks": {
+        "firsts": 4,
+        "total": 9
+      },
+      "avgAge": 25.1,
+      "capSpaceM": 12.3
+    },
+    {
+      "id": "NFL-MIA",
+      "league": "NFL",
+      "abbr": "MIA",
+      "name": "Miami Dolphins",
+      "logo": null,
+      "doomScore": 51,
+      "winPct": 0.483,
+      "draftPicks": {
+        "firsts": 1,
+        "total": 7
+      },
+      "avgAge": 24.4,
+      "capSpaceM": -17.1
+    },
+    {
+      "id": "NFL-MIN",
+      "league": "NFL",
+      "abbr": "MIN",
+      "name": "Minnesota Vikings",
+      "logo": null,
+      "doomScore": 34,
+      "winPct": 0.606,
+      "draftPicks": {
+        "firsts": 1,
+        "total": 2
+      },
+      "avgAge": 27.1,
+      "capSpaceM": -6.1
+    },
+    {
+      "id": "NFL-NE",
+      "league": "NFL",
+      "abbr": "NE",
+      "name": "New England Patriots",
+      "logo": null,
+      "doomScore": 11,
+      "winPct": 0.488,
+      "draftPicks": {
+        "firsts": 5,
+        "total": 6
+      },
+      "avgAge": 24.6,
+      "capSpaceM": 16.5
+    },
+    {
+      "id": "NFL-NO",
+      "league": "NFL",
+      "abbr": "NO",
+      "name": "New Orleans Saints",
+      "logo": null,
+      "doomScore": 79,
+      "winPct": 0.451,
+      "draftPicks": {
+        "firsts": 4,
+        "total": 6
+      },
+      "avgAge": 24.7,
+      "capSpaceM": -3.7
+    },
+    {
+      "id": "NFL-NYG",
+      "league": "NFL",
+      "abbr": "NYG",
+      "name": "New York Giants",
+      "logo": null,
+      "doomScore": 10,
+      "winPct": 0.59,
+      "draftPicks": {
+        "firsts": 1,
+        "total": 2
+      },
+      "avgAge": 27.6,
+      "capSpaceM": 19.8
+    },
+    {
+      "id": "NFL-NYJ",
+      "league": "NFL",
+      "abbr": "NYJ",
+      "name": "New York Jets",
+      "logo": null,
+      "doomScore": 63,
+      "winPct": 0.645,
+      "draftPicks": {
+        "firsts": 1,
+        "total": 6
+      },
+      "avgAge": 24.5,
+      "capSpaceM": 18.2
+    },
+    {
+      "id": "NFL-PHI",
+      "league": "NFL",
+      "abbr": "PHI",
+      "name": "Philadelphia Eagles",
+      "logo": null,
+      "doomScore": 7,
+      "winPct": 0.692,
+      "draftPicks": {
+        "firsts": 3,
+        "total": 7
+      },
+      "avgAge": 27.5,
+      "capSpaceM": 0.2
+    },
+    {
+      "id": "NFL-PIT",
+      "league": "NFL",
+      "abbr": "PIT",
+      "name": "Pittsburgh Steelers",
+      "logo": null,
+      "doomScore": 75,
+      "winPct": 0.259,
+      "draftPicks": {
+        "firsts": 5,
+        "total": 9
+      },
+      "avgAge": 29.1,
+      "capSpaceM": -7.8
+    },
+    {
+      "id": "NFL-SF",
+      "league": "NFL",
+      "abbr": "SF",
+      "name": "San Francisco 49ers",
+      "logo": null,
+      "doomScore": 79,
+      "winPct": 0.572,
+      "draftPicks": {
+        "firsts": 1,
+        "total": 6
+      },
+      "avgAge": 29.6,
+      "capSpaceM": -14.9
+    },
+    {
+      "id": "NFL-SEA",
+      "league": "NFL",
+      "abbr": "SEA",
+      "name": "Seattle Seahawks",
+      "logo": "/images/Seattle/Seahawks.png",
+      "doomScore": 82,
+      "winPct": 0.305,
+      "draftPicks": {
+        "firsts": 1,
+        "total": 5
+      },
+      "avgAge": 24.9,
+      "capSpaceM": 18
+    },
+    {
+      "id": "NFL-TB",
+      "league": "NFL",
+      "abbr": "TB",
+      "name": "Tampa Bay Buccaneers",
+      "logo": null,
+      "doomScore": 54,
+      "winPct": 0.323,
+      "draftPicks": {
+        "firsts": 5,
+        "total": 11
+      },
+      "avgAge": 27.5,
+      "capSpaceM": -27.1
+    },
+    {
+      "id": "NFL-TEN",
+      "league": "NFL",
+      "abbr": "TEN",
+      "name": "Tennessee Titans",
+      "logo": null,
+      "doomScore": 43,
+      "winPct": 0.259,
+      "draftPicks": {
+        "firsts": 3,
+        "total": 4
+      },
+      "avgAge": 24.5,
+      "capSpaceM": -15.4
+    },
+    {
+      "id": "NFL-WAS",
+      "league": "NFL",
+      "abbr": "WAS",
+      "name": "Washington Commanders",
+      "logo": null,
+      "doomScore": 82,
+      "winPct": 0.738,
+      "draftPicks": {
+        "firsts": 5,
+        "total": 7
+      },
+      "avgAge": 27.7,
+      "capSpaceM": -26.2
+    },
+    {
+      "id": "MLB-ARI",
+      "league": "MLB",
+      "abbr": "ARI",
+      "name": "Arizona Diamondbacks",
+      "logo": null,
+      "doomScore": 68,
+      "winPct": 0.307,
+      "draftPicks": {
+        "firsts": 3,
+        "total": 9
+      },
+      "avgAge": 29.7,
+      "capSpaceM": 1
+    },
+    {
+      "id": "MLB-ATH",
+      "league": "MLB",
+      "abbr": "ATH",
+      "name": "Athletics",
+      "logo": null,
+      "doomScore": 10,
+      "winPct": 0.689,
+      "draftPicks": {
+        "firsts": 3,
+        "total": 4
+      },
+      "avgAge": 27.6,
+      "capSpaceM": -12.3
+    },
+    {
+      "id": "MLB-ATL",
+      "league": "MLB",
+      "abbr": "ATL",
+      "name": "Atlanta Braves",
+      "logo": null,
+      "doomScore": 20,
+      "winPct": 0.419,
+      "draftPicks": {
+        "firsts": 2,
+        "total": 4
+      },
+      "avgAge": 28,
+      "capSpaceM": 7.1
+    },
+    {
+      "id": "MLB-BAL",
+      "league": "MLB",
+      "abbr": "BAL",
+      "name": "Baltimore Orioles",
+      "logo": null,
+      "doomScore": 12,
+      "winPct": 0.495,
+      "draftPicks": {
+        "firsts": 1,
+        "total": 4
+      },
+      "avgAge": 27.7,
+      "capSpaceM": 26.5
+    },
+    {
+      "id": "MLB-BOS",
+      "league": "MLB",
+      "abbr": "BOS",
+      "name": "Boston Red Sox",
+      "logo": null,
+      "doomScore": 48,
+      "winPct": 0.67,
+      "draftPicks": {
+        "firsts": 1,
+        "total": 2
+      },
+      "avgAge": 27.1,
+      "capSpaceM": 20.1
+    },
+    {
+      "id": "MLB-CHC",
+      "league": "MLB",
+      "abbr": "CHC",
+      "name": "Chicago Cubs",
+      "logo": null,
+      "doomScore": 35,
+      "winPct": 0.655,
+      "draftPicks": {
+        "firsts": 4,
+        "total": 9
+      },
+      "avgAge": 27,
+      "capSpaceM": -15.6
+    },
+    {
+      "id": "MLB-CWS",
+      "league": "MLB",
+      "abbr": "CWS",
+      "name": "Chicago White Sox",
+      "logo": null,
+      "doomScore": 73,
+      "winPct": 0.402,
+      "draftPicks": {
+        "firsts": 4,
+        "total": 9
+      },
+      "avgAge": 27.6,
+      "capSpaceM": 11.4
+    },
+    {
+      "id": "MLB-CIN",
+      "league": "MLB",
+      "abbr": "CIN",
+      "name": "Cincinnati Reds",
+      "logo": null,
+      "doomScore": 11,
+      "winPct": 0.489,
+      "draftPicks": {
+        "firsts": 2,
+        "total": 6
+      },
+      "avgAge": 29.7,
+      "capSpaceM": -27.5
+    },
+    {
+      "id": "MLB-CLE",
+      "league": "MLB",
+      "abbr": "CLE",
+      "name": "Cleveland Guardians",
+      "logo": null,
+      "doomScore": 75,
+      "winPct": 0.715,
+      "draftPicks": {
+        "firsts": 1,
+        "total": 3
+      },
+      "avgAge": 24.1,
+      "capSpaceM": -9.5
+    },
+    {
+      "id": "MLB-COL",
+      "league": "MLB",
+      "abbr": "COL",
+      "name": "Colorado Rockies",
+      "logo": null,
+      "doomScore": 37,
+      "winPct": 0.402,
+      "draftPicks": {
+        "firsts": 3,
+        "total": 7
+      },
+      "avgAge": 25.8,
+      "capSpaceM": 26.2
+    },
+    {
+      "id": "MLB-DET",
+      "league": "MLB",
+      "abbr": "DET",
+      "name": "Detroit Tigers",
+      "logo": null,
+      "doomScore": 32,
+      "winPct": 0.331,
+      "draftPicks": {
+        "firsts": 2,
+        "total": 6
+      },
+      "avgAge": 26.2,
+      "capSpaceM": -1.2
+    },
+    {
+      "id": "MLB-HOU",
+      "league": "MLB",
+      "abbr": "HOU",
+      "name": "Houston Astros",
+      "logo": null,
+      "doomScore": 36,
+      "winPct": 0.573,
+      "draftPicks": {
+        "firsts": 2,
+        "total": 6
+      },
+      "avgAge": 28.4,
+      "capSpaceM": 16.8
+    },
+    {
+      "id": "MLB-KC",
+      "league": "MLB",
+      "abbr": "KC",
+      "name": "Kansas City Royals",
+      "logo": null,
+      "doomScore": 69,
+      "winPct": 0.477,
+      "draftPicks": {
+        "firsts": 5,
+        "total": 6
+      },
+      "avgAge": 24.3,
+      "capSpaceM": 12.3
+    },
+    {
+      "id": "MLB-LAA",
+      "league": "MLB",
+      "abbr": "LAA",
+      "name": "Los Angeles Angels",
+      "logo": null,
+      "doomScore": 34,
+      "winPct": 0.622,
+      "draftPicks": {
+        "firsts": 2,
+        "total": 5
+      },
+      "avgAge": 28.6,
+      "capSpaceM": -5.5
+    },
+    {
+      "id": "MLB-LAD",
+      "league": "MLB",
+      "abbr": "LAD",
+      "name": "Los Angeles Dodgers",
+      "logo": null,
+      "doomScore": 28,
+      "winPct": 0.41,
+      "draftPicks": {
+        "firsts": 5,
+        "total": 10
+      },
+      "avgAge": 27.7,
+      "capSpaceM": -1.3
+    },
+    {
+      "id": "MLB-MIA",
+      "league": "MLB",
+      "abbr": "MIA",
+      "name": "Miami Marlins",
+      "logo": null,
+      "doomScore": 81,
+      "winPct": 0.474,
+      "draftPicks": {
+        "firsts": 1,
+        "total": 2
+      },
+      "avgAge": 27.6,
+      "capSpaceM": -12.2
+    },
+    {
+      "id": "MLB-MIL",
+      "league": "MLB",
+      "abbr": "MIL",
+      "name": "Milwaukee Brewers",
+      "logo": null,
+      "doomScore": 37,
+      "winPct": 0.258,
+      "draftPicks": {
+        "firsts": 1,
+        "total": 5
+      },
+      "avgAge": 25.7,
+      "capSpaceM": -16.2
+    },
+    {
+      "id": "MLB-MIN",
+      "league": "MLB",
+      "abbr": "MIN",
+      "name": "Minnesota Twins",
+      "logo": null,
+      "doomScore": 95,
+      "winPct": 0.36,
+      "draftPicks": {
+        "firsts": 4,
+        "total": 9
+      },
+      "avgAge": 27.4,
+      "capSpaceM": -24.6
+    },
+    {
+      "id": "MLB-NYM",
+      "league": "MLB",
+      "abbr": "NYM",
+      "name": "New York Mets",
+      "logo": null,
+      "doomScore": 53,
+      "winPct": 0.473,
+      "draftPicks": {
+        "firsts": 5,
+        "total": 7
+      },
+      "avgAge": 25.8,
+      "capSpaceM": -19.5
+    },
+    {
+      "id": "MLB-NYY",
+      "league": "MLB",
+      "abbr": "NYY",
+      "name": "New York Yankees",
+      "logo": null,
+      "doomScore": 58,
+      "winPct": 0.725,
+      "draftPicks": {
+        "firsts": 5,
+        "total": 8
+      },
+      "avgAge": 24.1,
+      "capSpaceM": 1.7
+    },
+    {
+      "id": "MLB-PHI",
+      "league": "MLB",
+      "abbr": "PHI",
+      "name": "Philadelphia Phillies",
+      "logo": null,
+      "doomScore": 53,
+      "winPct": 0.563,
+      "draftPicks": {
+        "firsts": 5,
+        "total": 6
+      },
+      "avgAge": 29.8,
+      "capSpaceM": 22.6
+    },
+    {
+      "id": "MLB-PIT",
+      "league": "MLB",
+      "abbr": "PIT",
+      "name": "Pittsburgh Pirates",
+      "logo": null,
+      "doomScore": 68,
+      "winPct": 0.565,
+      "draftPicks": {
+        "firsts": 2,
+        "total": 7
+      },
+      "avgAge": 25.6,
+      "capSpaceM": 21.8
+    },
+    {
+      "id": "MLB-SD",
+      "league": "MLB",
+      "abbr": "SD",
+      "name": "San Diego Padres",
+      "logo": null,
+      "doomScore": 20,
+      "winPct": 0.389,
+      "draftPicks": {
+        "firsts": 3,
+        "total": 9
+      },
+      "avgAge": 24.4,
+      "capSpaceM": -22.4
+    },
+    {
+      "id": "MLB-SF",
+      "league": "MLB",
+      "abbr": "SF",
+      "name": "San Francisco Giants",
+      "logo": null,
+      "doomScore": 91,
+      "winPct": 0.52,
+      "draftPicks": {
+        "firsts": 4,
+        "total": 7
+      },
+      "avgAge": 28.1,
+      "capSpaceM": -25.5
+    },
+    {
+      "id": "MLB-SEA",
+      "league": "MLB",
+      "abbr": "SEA",
+      "name": "Seattle Mariners",
+      "logo": "/images/Seattle/Mariners.png",
+      "doomScore": 72,
+      "winPct": 0.647,
+      "draftPicks": {
+        "firsts": 4,
+        "total": 8
+      },
+      "avgAge": 26.7,
+      "capSpaceM": -29.1
+    },
+    {
+      "id": "MLB-STL",
+      "league": "MLB",
+      "abbr": "STL",
+      "name": "St. Louis Cardinals",
+      "logo": null,
+      "doomScore": 20,
+      "winPct": 0.625,
+      "draftPicks": {
+        "firsts": 5,
+        "total": 7
+      },
+      "avgAge": 26.1,
+      "capSpaceM": 1.8
+    },
+    {
+      "id": "MLB-TB",
+      "league": "MLB",
+      "abbr": "TB",
+      "name": "Tampa Bay Rays",
+      "logo": null,
+      "doomScore": 7,
+      "winPct": 0.651,
+      "draftPicks": {
+        "firsts": 5,
+        "total": 10
+      },
+      "avgAge": 25.9,
+      "capSpaceM": -29.1
+    },
+    {
+      "id": "MLB-TEX",
+      "league": "MLB",
+      "abbr": "TEX",
+      "name": "Texas Rangers",
+      "logo": null,
+      "doomScore": 46,
+      "winPct": 0.586,
+      "draftPicks": {
+        "firsts": 2,
+        "total": 5
+      },
+      "avgAge": 27.8,
+      "capSpaceM": 5.4
+    },
+    {
+      "id": "MLB-TOR",
+      "league": "MLB",
+      "abbr": "TOR",
+      "name": "Toronto Blue Jays",
+      "logo": null,
+      "doomScore": 97,
+      "winPct": 0.311,
+      "draftPicks": {
+        "firsts": 2,
+        "total": 3
+      },
+      "avgAge": 28.8,
+      "capSpaceM": -23.9
+    },
+    {
+      "id": "MLB-WSH",
+      "league": "MLB",
+      "abbr": "WSH",
+      "name": "Washington Nationals",
+      "logo": null,
+      "doomScore": 69,
+      "winPct": 0.376,
+      "draftPicks": {
+        "firsts": 4,
+        "total": 9
+      },
+      "avgAge": 24.6,
+      "capSpaceM": 7.9
+    },
+    {
+      "id": "WNBA-ATL",
+      "league": "WNBA",
+      "abbr": "ATL",
+      "name": "Atlanta Dream",
+      "logo": null,
+      "doomScore": 84,
+      "winPct": 0.38,
+      "draftPicks": {
+        "firsts": 2,
+        "total": 6
+      },
+      "avgAge": 24.9,
+      "capSpaceM": 21.2
+    },
+    {
+      "id": "WNBA-CHI",
+      "league": "WNBA",
+      "abbr": "CHI",
+      "name": "Chicago Sky",
+      "logo": null,
+      "doomScore": 1,
+      "winPct": 0.403,
+      "draftPicks": {
+        "firsts": 4,
+        "total": 5
+      },
+      "avgAge": 28,
+      "capSpaceM": 1.7
+    },
+    {
+      "id": "WNBA-CON",
+      "league": "WNBA",
+      "abbr": "CON",
+      "name": "Connecticut Sun",
+      "logo": null,
+      "doomScore": 98,
+      "winPct": 0.747,
+      "draftPicks": {
+        "firsts": 5,
+        "total": 7
+      },
+      "avgAge": 26.1,
+      "capSpaceM": 24.3
+    },
+    {
+      "id": "WNBA-DAL",
+      "league": "WNBA",
+      "abbr": "DAL",
+      "name": "Dallas Wings",
+      "logo": null,
+      "doomScore": 94,
+      "winPct": 0.415,
+      "draftPicks": {
+        "firsts": 2,
+        "total": 5
+      },
+      "avgAge": 27.4,
+      "capSpaceM": -22.4
+    },
+    {
+      "id": "WNBA-GSV",
+      "league": "WNBA",
+      "abbr": "GSV",
+      "name": "Golden State Valkyries",
+      "logo": null,
+      "doomScore": 25,
+      "winPct": 0.439,
+      "draftPicks": {
+        "firsts": 3,
+        "total": 6
+      },
+      "avgAge": 25.8,
+      "capSpaceM": 7.2
+    },
+    {
+      "id": "WNBA-IND",
+      "league": "WNBA",
+      "abbr": "IND",
+      "name": "Indiana Fever",
+      "logo": null,
+      "doomScore": 41,
+      "winPct": 0.608,
+      "draftPicks": {
+        "firsts": 5,
+        "total": 7
+      },
+      "avgAge": 29.6,
+      "capSpaceM": -19.1
+    },
+    {
+      "id": "WNBA-LVA",
+      "league": "WNBA",
+      "abbr": "LVA",
+      "name": "Las Vegas Aces",
+      "logo": null,
+      "doomScore": 81,
+      "winPct": 0.449,
+      "draftPicks": {
+        "firsts": 3,
+        "total": 8
+      },
+      "avgAge": 24.4,
+      "capSpaceM": 23.7
+    },
+    {
+      "id": "WNBA-LAS",
+      "league": "WNBA",
+      "abbr": "LAS",
+      "name": "Los Angeles Sparks",
+      "logo": null,
+      "doomScore": 34,
+      "winPct": 0.74,
+      "draftPicks": {
+        "firsts": 3,
+        "total": 9
+      },
+      "avgAge": 27.3,
+      "capSpaceM": 19.1
+    },
+    {
+      "id": "WNBA-MIN",
+      "league": "WNBA",
+      "abbr": "MIN",
+      "name": "Minnesota Lynx",
+      "logo": null,
+      "doomScore": 47,
+      "winPct": 0.488,
+      "draftPicks": {
+        "firsts": 4,
+        "total": 5
+      },
+      "avgAge": 29.8,
+      "capSpaceM": 16.9
+    },
+    {
+      "id": "WNBA-NYL",
+      "league": "WNBA",
+      "abbr": "NYL",
+      "name": "New York Liberty",
+      "logo": null,
+      "doomScore": 88,
+      "winPct": 0.532,
+      "draftPicks": {
+        "firsts": 4,
+        "total": 9
+      },
+      "avgAge": 29.3,
+      "capSpaceM": 0.7
+    },
+    {
+      "id": "WNBA-PHO",
+      "league": "WNBA",
+      "abbr": "PHO",
+      "name": "Phoenix Mercury",
+      "logo": null,
+      "doomScore": 48,
+      "winPct": 0.423,
+      "draftPicks": {
+        "firsts": 1,
+        "total": 3
+      },
+      "avgAge": 28.1,
+      "capSpaceM": -14.7
+    },
+    {
+      "id": "WNBA-POR",
+      "league": "WNBA",
+      "abbr": "POR",
+      "name": "Portland Fire",
+      "logo": null,
+      "doomScore": 17,
+      "winPct": 0.707,
+      "draftPicks": {
+        "firsts": 5,
+        "total": 8
+      },
+      "avgAge": 27.4,
+      "capSpaceM": -25.6
+    },
+    {
+      "id": "WNBA-SEA",
+      "league": "WNBA",
+      "abbr": "SEA",
+      "name": "Seattle Storm",
+      "logo": "/images/Seattle/Storm.png",
+      "doomScore": 54,
+      "winPct": 0.609,
+      "draftPicks": {
+        "firsts": 5,
+        "total": 6
+      },
+      "avgAge": 29.7,
+      "capSpaceM": -4.8
+    },
+    {
+      "id": "WNBA-TOR",
+      "league": "WNBA",
+      "abbr": "TOR",
+      "name": "Toronto Tempo",
+      "logo": null,
+      "doomScore": 58,
+      "winPct": 0.273,
+      "draftPicks": {
+        "firsts": 3,
+        "total": 5
+      },
+      "avgAge": 28.4,
+      "capSpaceM": -11
+    },
+    {
+      "id": "WNBA-WAS",
+      "league": "WNBA",
+      "abbr": "WAS",
+      "name": "Washington Mystics",
+      "logo": null,
+      "doomScore": 18,
+      "winPct": 0.544,
+      "draftPicks": {
+        "firsts": 4,
+        "total": 6
+      },
+      "avgAge": 29.1,
+      "capSpaceM": -4.1
+    }
+  ]
+}
