@@ -2,72 +2,52 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import type { RefObject } from "react";
+import { useEffect, useRef, useState, type RefObject } from "react";
 import { verdictOf, type Entry, type Summary } from "@/lib/fishId/engine";
 import { quizHref, type QuizMode } from "@/lib/fishId/modes";
 import type { SpeciesSet } from "@/lib/fishId/sets";
+import { shareText } from "@/lib/fishId/share";
 import FishName from "./FishName";
 import { buttonClass } from "./buttons";
 import { isRemote, thumbSrc } from "./photo";
 
-// End of a run: the streak, how it compares with this browser's best, what
-// ended it, and a field log of every plate to learn from.
+// End of a run: the score, a way to send the run to friends (the code is in
+// the run bar above), and a field log of every plate.
 export default function Results({
   headingRef,
   set,
   mode,
+  code,
   log,
   summary,
-  best,
-  newBest,
   onRestart,
 }: {
   headingRef: RefObject<HTMLHeadingElement>;
   set: SpeciesSet;
   mode: QuizMode;
+  code: string;
   log: Entry[];
   summary: Summary;
-  best: number | null;
-  newBest: boolean;
   onRestart: () => void;
 }) {
-  const last = log[log.length - 1];
-  const missed = last && verdictOf(last.question, last.outcome) === "wrong" ? last : null;
-
   return (
     <section aria-labelledby="fid-results" className="mt-10">
-      <div className="grid gap-8 border-b border-fid-foam/15 pb-10 md:grid-cols-[1fr_auto] md:items-end">
+      <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-end">
         <div>
-          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-fid-foam/80">
-            {newBest ? <span className="text-fid-sand">New best</span> : "Run over"}
-            {!newBest && best ? <span className="text-fid-mist/60"> · Your best is {best}</span> : null}
-          </p>
-          <h2 id="fid-results" ref={headingRef} tabIndex={-1} className="mt-3 font-fidserif leading-none text-fid-white outline-none">
-            <span className="text-[clamp(4rem,12vw,6.5rem)] tabular-nums">{summary.streak}</span>
-            <span className="ml-3 text-[clamp(1.5rem,4vw,2.25rem)] italic text-fid-mist">in a row</span>
+          <h2 id="fid-results" ref={headingRef} tabIndex={-1} className="font-fidserif leading-none text-fid-white outline-none">
+            <span className="text-[clamp(4rem,12vw,6.5rem)] tabular-nums">{summary.score}</span>
+            <span className="ml-3 text-[clamp(1.5rem,4vw,2.25rem)] italic text-fid-mist">of {log.length}</span>
           </h2>
-          {missed && typeof missed.outcome === "number" && (
-            <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-fid-mist">
-              Ended on plate {log.length}: <span className="text-fid-white">{missed.question.fish.commonName}</span>{" "}
-              <FishName field="scientificName" className="font-fidserif text-fid-sand">
-                {missed.question.fish.scientificName}
-              </FishName>
-              , answered as{" "}
-              <FishName field={missed.question.answer} className="font-fidserif text-fid-coral">
-                {missed.question.choices[missed.outcome].label}
-              </FishName>
-              .
-            </p>
-          )}
           {summary.skipped > 0 && (
             <p className="mt-3 text-[14px] text-fid-mist/80">
               {summary.skipped} {summary.skipped === 1 ? "plate was" : "plates were"} skipped because a photograph failed to
-              load, and {summary.skipped === 1 ? "doesn’t" : "don’t"} count.
+              load, and {summary.skipped === 1 ? "doesn’t" : "don’t"} score.
             </p>
           )}
         </div>
         <div className="flex flex-wrap gap-3">
-          <button type="button" onClick={onRestart} className={buttonClass("primary")}>
+          <CopyResults code={code} set={set} mode={mode} log={log} score={summary.score} />
+          <button type="button" onClick={onRestart} className={buttonClass("quiet")}>
             New run
           </button>
           <Link href={quizHref(set)} className={buttonClass("quiet")}>
@@ -76,10 +56,8 @@ export default function Results({
         </div>
       </div>
 
-      <table className="mt-8 w-full border-collapse text-left">
-        <caption className="mb-3 text-left font-mono text-[11px] uppercase tracking-[0.2em] text-fid-foam/80">
-          Field log <span className="text-fid-mist/50">· {set.title} · {mode.title}</span>
-        </caption>
+      <table className="mt-10 w-full border-collapse text-left">
+        <caption className="sr-only">Field log</caption>
         <thead className="sr-only">
           <tr>
             <th scope="col">Plate</th>
@@ -94,7 +72,7 @@ export default function Results({
             const image = q.fish.image;
             return (
               <tr key={i} className="border-t border-fid-foam/12 align-top">
-                <td className="w-12 py-4 pr-3 font-mono text-[11px] tracking-[0.12em] text-fid-foam/70">
+                <td className="w-12 py-4 pr-3 font-fidserif font-medium text-[13px] lining-nums tabular-nums tracking-[0.08em] text-fid-foam/70">
                   {String(i + 1).padStart(2, "0")}
                 </td>
                 <td className="py-3 pr-4">
@@ -116,7 +94,7 @@ export default function Results({
                 </td>
                 <td className="py-4 text-right sm:text-left">
                   <p
-                    className={`font-mono text-[10px] uppercase tracking-[0.16em] ${
+                    className={`font-fidserif font-medium lining-nums text-[12px] uppercase tracking-[0.14em] ${
                       verdict === "correct" ? "text-fid-foam" : verdict === "wrong" ? "text-fid-coral" : "text-fid-mist/70"
                     }`}
                   >
@@ -134,5 +112,54 @@ export default function Results({
         </tbody>
       </table>
     </section>
+  );
+}
+
+// Copies the run as text: score, one square per plate, and a link to the same code.
+// If the clipboard is unavailable, the text is shown to copy by hand.
+function CopyResults(props: Omit<Parameters<typeof shareText>[0], "origin">) {
+  const [status, setStatus] = useState<"idle" | "copied" | "manual">("idle");
+  const [text, setText] = useState("");
+  const manualRef = useRef<HTMLTextAreaElement>(null);
+
+  useEffect(() => {
+    if (status === "manual") manualRef.current?.select();
+    if (status !== "copied") return;
+    const timer = window.setTimeout(() => setStatus("idle"), 2500);
+    return () => window.clearTimeout(timer);
+  }, [status]);
+
+  async function copy() {
+    const value = shareText({ ...props, origin: window.location.origin });
+    setText(value);
+    try {
+      await navigator.clipboard.writeText(value);
+      setStatus("copied");
+    } catch {
+      setStatus("manual");
+    }
+  }
+
+  return (
+    <>
+      <button type="button" onClick={copy} className={buttonClass("primary")}>
+        {status === "copied" ? "Copied" : "Copy results"}
+      </button>
+      <span aria-live="polite" className="sr-only">
+        {status === "copied" ? "Results copied to the clipboard." : ""}
+      </span>
+      {status === "manual" && (
+        <label className="block basis-full">
+          <span className="block text-[13px] text-fid-mist">Copying isn’t allowed here. Select the text and copy it:</span>
+          <textarea
+            ref={manualRef}
+            readOnly
+            value={text}
+            rows={4}
+            className="mt-2 w-full max-w-md rounded-[2px] border border-fid-foam/25 bg-fid-abyss/60 p-3 font-mono text-[13px] text-fid-white"
+          />
+        </label>
+      )}
+    </>
   );
 }

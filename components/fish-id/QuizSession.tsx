@@ -1,9 +1,11 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useReducer, useRef, useState } from "react";
-import { newSeed, phaseOf, questionAt, runReducer, startRun, summarize, verdictOf } from "@/lib/fishId/engine";
-import { FIELD_LABEL, quizHref, type QuizMode } from "@/lib/fishId/modes";
+import { parseCode, randomCode } from "@/lib/fishId/codes";
+import { RUN_LENGTH, phaseOf, questionAt, runReducer, startRun, summarize, verdictOf } from "@/lib/fishId/engine";
+import { quizHref, type QuizMode } from "@/lib/fishId/modes";
 import type { SpeciesSet } from "@/lib/fishId/sets";
 import type { Fish } from "@/lib/fishId/types";
 import AnswerList, { ANSWER_KEYS } from "./AnswerList";
@@ -11,34 +13,35 @@ import FieldNote from "./FieldNote";
 import Results from "./Results";
 import SpecimenPlate from "./SpecimenPlate";
 import Water from "./Water";
-import { bestKey, recordStreak, useBestStreak } from "./streakStore";
+import { bestKey, recordBest, useBest } from "./streakStore";
 import { buttonClass } from "./buttons";
 
-// The streak at which the water reaches its darkest.
-const FULL_DEPTH_STREAK = 30;
-
-// One run of any mode over one species set. The engine (lib/fishId/engine.ts)
-// owns the rules; this component renders its state and wires up input, focus,
-// feedback and the stored best streak.
+// One run of any mode over one species set, dealt from a four-letter code.
+// The engine (lib/fishId/engine.ts) owns the rules; this component renders
+// its state and wires up input, focus, feedback and the stored best score.
+// `shared` is true when the code came from the URL (a friend's link).
 export default function QuizSession({
   set,
   mode,
   pool,
-  seed,
+  code: initialCode,
+  shared,
 }: {
   set: SpeciesSet;
   mode: QuizMode;
   pool: readonly Fish[];
-  seed: number;
+  code: string;
+  shared: boolean;
 }) {
-  const [state, dispatch] = useReducer(runReducer, { mode, pool, seed }, startRun);
+  const router = useRouter();
+  const [code, setCode] = useState(initialCode);
+  const [state, dispatch] = useReducer(runReducer, { mode, pool, seed: parseCode(initialCode)!.seed }, startRun);
   const [failedPhotos, setFailedPhotos] = useState<ReadonlySet<number>>(new Set());
-  const [newBest, setNewBest] = useState(false);
   const phase = phaseOf(state);
   const { question, outcome, index } = state;
   const summary = summarize(state);
   const key = bestKey(set.id, mode.id);
-  const best = useBestStreak(key);
+  const best = useBest(key);
 
   const headingRef = useRef<HTMLHeadingElement>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
@@ -58,7 +61,7 @@ export default function QuizSession({
 
   // Fetch the next plate's photograph while this one is being answered, so
   // the run doesn't stall on the network.
-  const upcoming = useMemo(() => questionAt(state.run, index + 1), [state.run, index]);
+  const upcoming = useMemo(() => (index + 1 < RUN_LENGTH ? questionAt(state.run, index + 1) : null), [state.run, index]);
   const upcomingSrc = upcoming?.fish.image?.src;
   useEffect(() => {
     if (!upcomingSrc) return;
@@ -70,7 +73,7 @@ export default function QuizSession({
     if (phase !== "answering" || !question) return;
     dispatch({ type: "answer", choice });
     // Saved as it happens, so leaving mid-run still keeps a record.
-    if (choice === question.correctIndex && recordStreak(key, summary.streak + 1)) setNewBest(true);
+    if (choice === question.correctIndex) recordBest(key, summary.score + 1);
   }
 
   // A–D or 1–4 answer the current question.
@@ -95,9 +98,16 @@ export default function QuizSession({
   }, [phase]);
 
   function restart() {
+    // A friend's code stays in the URL until the player starts their own run;
+    // leaving it remounts this session with a fresh code from the server.
+    if (shared) {
+      router.replace(quizHref(set, mode), { scroll: false });
+      return;
+    }
+    const next = randomCode(set, mode);
     setFailedPhotos(new Set());
-    setNewBest(false);
-    dispatch({ type: "restart", seed: newSeed() });
+    setCode(next.code);
+    dispatch({ type: "restart", seed: next.seed });
   }
 
   if (!question && state.log.length === 0) {
@@ -118,31 +128,35 @@ export default function QuizSession({
   const verdict = question ? verdictOf(question, outcome) : null;
   const photoFailed = failedPhotos.has(index);
   const plateNo = String(index + 1).padStart(2, "0");
+  const lastPlate = index + 1 >= RUN_LENGTH;
   const announcement =
     question && verdict
       ? verdict === "skipped"
         ? "Skipped."
         : verdict === "correct"
-          ? `Correct. ${question.fish.commonName}, ${question.fish.scientificName}. Streak ${summary.streak}.`
-          : `Incorrect. It was ${question.fish.commonName}, ${question.fish.scientificName}. The run ends at ${summary.streak}.`
+          ? `Correct. ${question.fish.commonName}, ${question.fish.scientificName}. Score ${summary.score}.`
+          : `Incorrect. It was ${question.fish.commonName}, ${question.fish.scientificName}. Score ${summary.score}.`
       : "";
 
   return (
     <>
-      <Water depth={summary.streak / FULL_DEPTH_STREAK} />
+      <Water depth={summary.score / RUN_LENGTH} />
 
-      <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2 border-b border-fid-foam/15 pb-3">
-        <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-fid-mist/75">
+      {/* Pulled up to the page header's rule, so the text sits centred between the two lines. */}
+      <div className="-mt-5 flex flex-wrap items-center justify-between gap-x-6 gap-y-2 border-b border-fid-foam/15 py-3">
+        <p className="font-fidserif font-medium lining-nums text-[13px] uppercase tracking-[0.14em] text-fid-mist/75">
           {set.title}
           <span aria-hidden className="mx-2 text-fid-foam/40">/</span>
-          <span className="text-fid-foam">{mode.numeral}</span> {mode.title}
+          {mode.title}
         </p>
-        <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-fid-mist/75">
-          Streak <span className="text-fid-sand">{summary.streak}</span>
-          {best !== null && (
+        <p className="font-fidserif font-medium lining-nums text-[13px] uppercase tracking-[0.14em] text-fid-mist/75">
+          Code <span className="text-fid-sand">{code}</span>
+          <span aria-hidden className="mx-2 text-fid-foam/40">/</span>
+          Score <span className="text-fid-sand">{summary.score}</span>
+          {best !== null && best > 0 && (
             <>
               <span aria-hidden className="mx-2 text-fid-foam/40">/</span>
-              Best <span className="text-fid-sand">{Math.max(best, summary.streak)}</span>
+              Best <span className="text-fid-sand">{Math.max(best, summary.score)}</span>
             </>
           )}
         </p>
@@ -153,10 +167,9 @@ export default function QuizSession({
           headingRef={resultsRef}
           set={set}
           mode={mode}
+          code={code}
           log={state.log}
           summary={summary}
-          best={best}
-          newBest={newBest}
           onRestart={restart}
         />
       ) : (
@@ -164,7 +177,6 @@ export default function QuizSession({
           <SpecimenPlate
             key={`${state.run.seed}-${index}`}
             fish={question.fish}
-            number={index + 1}
             prompt={question.prompt}
             revealed={phase === "feedback"}
             photoFailed={photoFailed}
@@ -172,8 +184,8 @@ export default function QuizSession({
           />
 
           <section aria-labelledby="fid-question">
-            <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-fid-foam/80">
-              Plate {plateNo} <span aria-hidden className="mx-1.5 text-fid-foam/40">·</span> Answer with the {FIELD_LABEL[question.answer].toLowerCase()}
+            <p className="font-fidserif font-medium lining-nums text-[13px] uppercase tracking-[0.14em] text-fid-foam/80">
+              Plate {plateNo} of {RUN_LENGTH}
             </p>
             <h2
               id="fid-question"
@@ -209,25 +221,15 @@ export default function QuizSession({
               <div className="mt-6 border-t border-fid-foam/15 pt-5">
                 <FieldNote fish={question.fish} verdict={verdict} />
                 <button ref={nextRef} type="button" onClick={() => dispatch({ type: "next" })} className={`mt-6 ${buttonClass("primary")}`}>
-                  {verdict === "wrong" ? "End of the run" : "Next plate"} <span aria-hidden>→</span>
+                  {lastPlate ? "See results" : "Next plate"} <span aria-hidden>→</span>
                 </button>
               </div>
             )}
 
-            {phase === "answering" && (
-              <p className="fid-keyhint mt-4 font-mono text-[10px] uppercase tracking-[0.16em] text-fid-mist/45">
-                Keys A–D or 1–4 to answer
-              </p>
-            )}
           </section>
         </div>
       )}
 
-      <div className="mt-12 border-t border-fid-foam/10 pt-4">
-        <Link href={quizHref(set)} className="font-mono text-[11px] uppercase tracking-[0.18em] text-fid-mist/70 transition-colors hover:text-fid-sand">
-          <span aria-hidden>←</span> All quiz modes
-        </Link>
-      </div>
     </>
   );
 }

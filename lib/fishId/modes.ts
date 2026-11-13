@@ -15,7 +15,8 @@ export type QuizMode = {
   numeral: string;
   prompt: PromptKind;
   answer: NameField;
-  // Shown on the selection screen.
+  // Shown on the selection screen. Summaries are lowercase with no closing
+  // punctuation (owner request, 2026-11-12).
   title: string;
   summary: string;
   // The question asked on every plate.
@@ -29,7 +30,7 @@ export const QUIZ_MODES: readonly QuizMode[] = [
     prompt: "photo",
     answer: "commonName",
     title: "Photograph to common name",
-    summary: "Study the photograph and name the species.",
+    summary: "study the photograph and name the species",
     question: "Which species is this?",
   },
   {
@@ -38,7 +39,7 @@ export const QUIZ_MODES: readonly QuizMode[] = [
     prompt: "photo",
     answer: "scientificName",
     title: "Photograph to scientific name",
-    summary: "Study the photograph and give its binomial name.",
+    summary: "study the photograph and give its binomial name",
     question: "What is its scientific name?",
   },
   {
@@ -47,7 +48,7 @@ export const QUIZ_MODES: readonly QuizMode[] = [
     prompt: "scientificName",
     answer: "commonName",
     title: "Scientific name to common name",
-    summary: "Read the binomial and find the name it goes by.",
+    summary: "read the binomial and find the name it goes by",
     question: "What is this species commonly called?",
   },
   {
@@ -56,7 +57,7 @@ export const QUIZ_MODES: readonly QuizMode[] = [
     prompt: "commonName",
     answer: "scientificName",
     title: "Common name to scientific name",
-    summary: "Read the common name and find its binomial.",
+    summary: "read the common name and find its binomial",
     question: "What is its scientific name?",
   },
 ];
@@ -66,6 +67,11 @@ export const QUIZ_HREF = "/fish-stuff/identify";
 // The selection screen for a set, or a run of one mode over it.
 export function quizHref(set: SpeciesSet, mode?: QuizMode): string {
   return `${QUIZ_HREF}?set=${set.id}${mode ? `&mode=${mode.id}` : ""}`;
+}
+
+// A run from a four-letter code (lib/fishId/codes.ts); the code names its set and mode.
+export function codeHref(code: string): string {
+  return `${QUIZ_HREF}?code=${code}`;
 }
 
 export function getMode(id: string | null | undefined): QuizMode | undefined {

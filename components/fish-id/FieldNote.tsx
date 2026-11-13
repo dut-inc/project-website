@@ -20,7 +20,7 @@ export default function FieldNote({ fish, verdict }: { fish: Fish; verdict: Verd
 
   return (
     <div className="fid-reveal">
-      <p className={`font-mono text-[11px] uppercase tracking-[0.2em] ${VERDICT[verdict].className}`}>{VERDICT[verdict].label}</p>
+      <p className={`font-fidserif font-medium lining-nums text-[13px] uppercase tracking-[0.14em] ${VERDICT[verdict].className}`}>{VERDICT[verdict].label}</p>
       <p className="mt-2 font-fidserif text-2xl leading-tight text-fid-white">
         {fish.commonName}
         <span className="text-fid-mist/60"> · </span>
@@ -32,7 +32,7 @@ export default function FieldNote({ fish, verdict }: { fish: Fish; verdict: Verd
         <dl className="mt-3 grid grid-cols-[4.75rem_1fr] items-baseline gap-x-3 gap-y-1 text-[13px] leading-relaxed">
           {facts.map(([term, value]) => (
             <div key={term} className="contents">
-              <dt className="font-mono text-[10px] uppercase tracking-[0.16em] text-fid-foam/70">{term}</dt>
+              <dt className="font-fidserif font-medium lining-nums text-[12px] uppercase tracking-[0.14em] text-fid-foam/70">{term}</dt>
               <dd className="m-0 text-fid-mist">{value}</dd>
             </div>
           ))}

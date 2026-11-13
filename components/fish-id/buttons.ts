@@ -1,7 +1,7 @@
 // The quiz's two button treatments, shared by <button> and <Link>.
 // Square-cornered, hairline-bordered: labels on a specimen drawer, not pills.
 const BASE =
-  "inline-flex items-center justify-center gap-2 rounded-[2px] px-5 py-2.5 font-mono text-[11px] uppercase tracking-[0.18em] transition-colors";
+  "inline-flex items-center justify-center gap-2 rounded-[2px] px-5 py-2.5 font-fidserif font-medium lining-nums text-[13px] uppercase tracking-[0.14em] transition-colors";
 
 export function buttonClass(kind: "primary" | "quiet"): string {
   return kind === "primary"

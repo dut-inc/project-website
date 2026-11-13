@@ -2,12 +2,12 @@
 
 import { useSyncExternalStore } from "react";
 
-// Each viewer's best streak per set and mode, kept in their own browser.
+// Each viewer's best score (out of RUN_LENGTH) per set and mode, kept in their own browser.
 // Storage can be unavailable (private windows, blocked site data), so every
 // access is guarded and the quiz works without it.
 
 export function bestKey(setId: string, modeId: string): string {
-  return `fid-best:${setId}:${modeId}`;
+  return `fid-score:${setId}:${modeId}`;
 }
 
 const listeners = new Set<() => void>();
@@ -31,7 +31,7 @@ function read(key: string): number {
 }
 
 // null during server rendering and hydration, then the stored best (0 if none).
-export function useBestStreak(key: string): number | null {
+export function useBest(key: string): number | null {
   return useSyncExternalStore(
     subscribe,
     () => read(key),
@@ -39,11 +39,11 @@ export function useBestStreak(key: string): number | null {
   );
 }
 
-// Saves `streak` if it beats the stored best. Returns whether it did.
-export function recordStreak(key: string, streak: number): boolean {
-  if (streak <= read(key)) return false;
+// Saves `score` if it beats the stored best. Returns whether it did.
+export function recordBest(key: string, score: number): boolean {
+  if (score <= read(key)) return false;
   try {
-    window.localStorage.setItem(key, String(streak));
+    window.localStorage.setItem(key, String(score));
   } catch {
     return false;
   }

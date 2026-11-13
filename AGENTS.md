@@ -342,15 +342,17 @@ Updated 2026-11-12. These decisions came after the brief above. Where they diffe
   - **Pacific Northwest** covers Washington, Oregon, Idaho and British Columbia.
 
   Every mode works on either set.
-- **Streak runs replace fixed-length quizzes.** A run has no set length: it continues until the first wrong answer, and the score is the streak.
-  - The end-of-run screen is the "final results screen".
-  - "Question progress" is the plate number plus the current streak.
-  - Each browser keeps a best streak per set and mode.
+- **12-plate runs with shareable codes** (later on 2026-11-12; this replaced the streak runs). Each run is 12 plates and is scored out of 12. A wrong answer doesn't end it.
+  - Every run has a four-letter code, and the code fixes the set, mode, plates and choices. A friend who plays the code gets the same quiz.
+  - The results screen has "Copy results": the score, one square per plate, and a link to the code.
+  - The selection screen has a box for a friend's code. Each browser keeps a best score per set and mode.
+- **Slightly easier.** At most two of the three wrong answers are close relatives (same genus or family).
+- **Selection screen trimmed.** The "field guide" eyebrow, the species lede, the rules line and the species/families counts were removed.
 - **Common names follow iNaturalist**, so no choice stands out by its style. This renamed some of the original hand-picked species, for example Ocean Sunfish → Common Mola, Regal Blue Tang → Palette Tang, Picasso Triggerfish → Lagoon Triggerfish.
 
 ### Status
 
-The Definition of Done (section 9) is met, adapted to streak runs.
+The Definition of Done (section 9) is met, adapted to 12-plate coded runs.
 
 - All four modes run on both sets.
 - 1,231 species: World 1,004, Pacific Northwest 326 (some are in both).
@@ -359,8 +361,8 @@ The Definition of Done (section 9) is met, adapted to streak runs.
 
 Open items:
 
-- No production build has been run since the streak work. Run `npm run build` once, with the dev server stopped.
+- No production build has been run since the streak and code work. Run `npm run build` once, with the dev server stopped.
 - 114 species have no description note, and 1 has no family (*Schuettea scalaripinnis*). The UI handles both.
-- Wrong answers favour the same genus or family, so runs are hard. There is no difficulty setting. The owner hasn't asked for one yet.
+- Wrong answers still favour the same genus or family, capped at two of three. There is no difficulty setting.
 
 Implementation notes for agents are in `CLAUDE.md` ("Fish Identification Quiz"). The overview is in `README.md`.

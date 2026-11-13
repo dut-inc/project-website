@@ -76,23 +76,44 @@ gitignored, so create it on each machine (Python 3.12):
 `/fish-stuff/identify`, explorer file `identify-the-fish.quiz` under the
 `fish-stuff` folder.
 - `?set=world|pnw` picks the species set (default `world`).
-- `&mode=<id>` starts a run.
+- `&mode=<id>` starts a run with a fresh code.
+- `?code=<4 letters>` plays a shared run. The code names its own set and mode,
+  so it overrides `set` and `mode`.
 
 The modes are `photo-common`, `photo-scientific`, `scientific-common` and
 `common-scientific`.
 
 ### How it plays
 
-A run is endless and ends at the first wrong answer. The score is the streak.
+Owner decisions (2026-11-12): runs are a fixed 12 plates (`RUN_LENGTH`), each
+dealt from a four-letter code so friends can replay the same run, and the
+distractors were made slightly easier. A wrong answer no longer ends the run.
 
-- **Order.** The run deals every askable species in the set once, in a shuffled
-  order, then reshuffles.
-- **Best streak.** Each browser stores its best streak per set and mode, in
-  localStorage under `fid-best:<set>:<mode>`.
+- **Score.** The number correct out of 12. The header shows the code, score and
+  best.
+- **Codes.** `lib/fishId/codes.ts` writes a number in base 24 (A–Z without I
+  and O). The number modulo 8 picks the set and mode (`COMBOS`, sets × modes);
+  the rest gives the seed. `parseCode` ignores case and spaces. The server
+  picks a random code for a new run (`randomCode`).
+  - Adding a set or mode, or re-importing species, changes what old codes deal.
+    Codes are for sharing today, not for keeping.
+  - "New run" deals a fresh code locally. On a friend's link (`shared`), it
+    instead replaces the URL with the plain mode URL, which remounts the session
+    with a server-picked code.
+  - The selection screen has a "Play a friend's code" box (`next/form`, GET
+    `?code=`). A bad code shows the selection screen with an error.
+- **Copy results.** `lib/fishId/share.ts` builds the text: code, set and mode,
+  `9/12` with one square per plate (🟩 correct, 🟥 wrong, ⬜ skipped), and a link
+  `<origin>/fish-stuff/identify?code=XXXX`. If the clipboard is blocked, the
+  text appears in a box to copy by hand.
+- **Order.** A run deals 12 different species from a shuffled deck of the set.
+- **Best score.** Each browser stores its best score per set and mode, in
+  localStorage under `fid-score:<set>:<mode>`. (The old streak key
+  `fid-best:` is no longer read.)
 - **Missing photos.** A plate whose photo fails to load can be skipped. A skip
-  doesn't score and doesn't end the run.
-- **Water.** The background darkens as the streak grows, reaching its darkest at
-  a streak of 30 (`FULL_DEPTH_STREAK` in `QuizSession.tsx`).
+  doesn't score but still uses up one of the 12 plates.
+- **Water.** The background darkens as the score grows, reaching its darkest at
+  12.
 - **Keys.** A–D or 1–4 answer. Focus moves to the question, then to the Next
   button, then to the results.
 
@@ -107,6 +128,8 @@ lib/fishId/species.ts             SPECIES, speciesIn(set): imports the JSON, ser
 lib/fishId/sets.ts                SPECIES_SETS (world, pnw), getSet, DEFAULT_SET
 lib/fishId/modes.ts               QUIZ_MODES (configuration only), canAsk, quizHref(set, mode?)
 lib/fishId/engine.ts              seeded question generation, distractors, run reducer, summary (no React)
+lib/fishId/codes.ts               four-letter codes <-> set, mode, seed (pure; client-safe)
+lib/fishId/share.ts               the copied results text (pure)
 lib/fishId/engine.test.ts         data integrity + engine tests (part of npm test)
 app/fish-stuff/identify/          page.tsx (reads set/mode, picks the seed), layout.tsx (EB Garamond), fish-id.css (theme)
 components/fish-id/               ModeSelect (server), QuizSession, SpecimenPlate, AnswerList, FieldNote,
@@ -121,14 +144,17 @@ components/fish-id/               ModeSelect (server), QuizSession, SpecimenPlat
     render the same first question.
   - Restart dispatches a new seed.
 - **Distractors.** `pickDistractors` favours the same genus, then the same family
-  (`kinship`). Names are deduplicated, so a choice can't appear twice. Fewer
-  than four distinct answers throws.
+  (`kinship`), but at most `MAX_RELATIVES` (2) of the three are relatives, so
+  at least one wrong answer is from outside the family. This is the owner's
+  "slightly easier" setting (2026-11-12); before it, a species from a big
+  family could get three lookalikes. Names are deduplicated, so a choice can't
+  appear twice. Fewer than four distinct answers throws.
 - **Askable species.** `askable(mode, pool)` drops species that can't be asked:
   photo modes need `image`.
 - **Run state.** `runReducer` handles `answer`, `skip`, `next` and
   `restart{seed}`. `phaseOf` returns `answering`, `feedback` or `over`.
-  `summarize` gives `{ streak, skipped, settled }`. Wrong answers end the run on
-  `next`.
+  `summarize` gives `{ score, wrong, skipped, settled }`. The run ends on the
+  `next` after plate 12.
 - **Adding a mode.** A new mode is a new entry in `QUIZ_MODES` (prompt field and
   answer field). The engine and UI don't change.
 
@@ -198,19 +224,63 @@ Never invent species facts or image URLs. If something is missing, leave it
 - **Remote images.** They use `next/image` with `unoptimized` (`isRemote()` in
   `photo.ts`), so no `remotePatterns` config is needed. Thumbnails use `thumb`.
   The next plate's photo is preloaded while the current one is answered.
-- **Best streak.** `streakStore.ts` reads localStorage via
+- **Best score.** `streakStore.ts` reads localStorage via
   `useSyncExternalStore`. The server snapshot is `null`, and every storage call
   is wrapped in try/catch.
+- **Back link.** During a run, the page header's back link goes to the set's
+  mode list ("Identify the Fish"). On the mode list it goes to Fish Lab. There
+  is no footer link in a run.
+- **Run bar.** The set/mode and code/score bar is pulled up to the header's rule
+  (`-mt-5 py-3`), so its text sits centred between the two lines. The owner
+  asked for no mode numeral there, no "Answer with the …" line and no key hint;
+  the A–D / 1–4 keys still work.
+- **Name-mode plate.** In the two name modes, the plate is just the beige label
+  until the question is answered, with no dark photo frame around it. The label
+  holds only the name, centred. The owner removed "Specimen", "No. 01" and the
+  field name. The framed photo replaces the label on reveal.
+- **Plate caption.** It's only the photo credit (author, license, and the source
+  link after answering), and only while a photo is on show. The owner removed
+  the "Pl. 01" number and "Photograph shown after you answer" from every mode.
 - **Scientific names.** Always italic. `FieldNote` italicises the binomial
   wherever it appears inside a Wikipedia note.
 - **Styling.**
   - Colours are the `fid-*` Tailwind tokens (RGB variables in `fish-id.css`).
-  - Titles and species names use EB Garamond; the interface uses the site's IBM
-    Plex Sans and Mono.
+  - Titles and species names use EB Garamond. Body text uses the site's IBM
+    Plex Sans.
+  - The small all-caps labels, buttons and A–D keys use EB Garamond capitals:
+    `font-fidserif font-medium lining-nums uppercase tracking-[0.14em]`, at
+    12–13px. The owner asked on 2026-11-12 for a caps face that blends better
+    than Plex Mono. Only the photo credit and the copy fallback box are still
+    mono.
+  - In the name modes, the label plate is `lg:self-center`, so it sits centred
+    against the question and choices the way a photo's height does.
+  - The back link in a run reads "All Quizzes".
+  - The results screen shows only the score ("9 of 12") and the buttons, then
+    the field log, with no rule between them. The code is shown in the run bar,
+    so it isn't repeated. The owner removed:
+    - the "New best / Run complete · Your best is" line;
+    - the "Field log · set · mode" caption (kept as an sr-only caption);
+    - the code line under the score.
   - Stay inside this palette and keep the restraint the brief asks for.
   - Respect `prefers-reduced-motion`.
 
-### Verification done (2026-11-12)
+### Verification done for codes and 12-plate runs (2026-11-12, Mac)
+
+- `node --test lib/fishId/engine.test.ts` passed 23 tests, including codes,
+  the relative cap and the share text. ESLint is clean on the fish files, and
+  `tsc` shows no fish errors. (On the Mac, `tsc` reports the Root MCP route
+  because `@modelcontextprotocol/server` isn't installed there; that has nothing
+  to do with the quiz.)
+- Headless Chrome against the dev server:
+  - It played code KQZT through 12 plates to the results.
+  - Copy results fell back to the manual box, because headless Chrome blocks
+    the clipboard. The text was right.
+  - "New run" from the shared link dropped the code from the URL.
+  - Typing `kqzt` in the code box on a 390px screen dealt the same first plate
+    as on desktop.
+  - There was no horizontal scroll.
+
+### Verification done (2026-11-12, before codes)
 
 - **Tests.** `npm test` passed all 126 tests, 18 of them for the fish quiz.
   Lint and `tsc` are clean.

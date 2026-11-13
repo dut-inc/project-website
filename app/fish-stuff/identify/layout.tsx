@@ -6,7 +6,8 @@ import "./fish-id.css";
 //
 // EB Garamond, a revival of the faces natural-history monographs were set in,
 // carries titles and every species name; its italic is the convention for
-// binomials. Interface text stays in the site's IBM Plex Sans and Mono.
+// binomials. Interface text stays in the site's IBM Plex Sans; the small all-caps labels
+// and buttons are set in EB Garamond capitals too.
 
 const serif = EB_Garamond({
   subsets: ["latin"],

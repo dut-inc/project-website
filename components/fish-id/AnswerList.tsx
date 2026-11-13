@@ -46,14 +46,14 @@ export default function AnswerList({
               data-state={state}
               className="fid-answer grid min-h-[3.5rem] w-full grid-cols-[2rem_1fr_auto] items-center gap-x-3 px-3 py-3 text-left disabled:cursor-default sm:px-4"
             >
-              <span aria-hidden className="fid-key font-mono text-xs text-fid-foam/70">
+              <span aria-hidden className="fid-key font-fidserif font-medium lining-nums text-[14px] text-fid-foam/70">
                 {ANSWER_KEYS[index]}
               </span>
               <FishName field={question.answer} className="font-fidserif text-[1.3rem] leading-snug text-fid-white">
                 {choice.label}
               </FishName>
               {mark ? (
-                <span className={`font-mono text-[10px] uppercase tracking-[0.16em] ${mark.className}`}>{mark.text}</span>
+                <span className={`font-fidserif font-medium lining-nums text-[12px] uppercase tracking-[0.14em] ${mark.className}`}>{mark.text}</span>
               ) : (
                 <span />
               )}

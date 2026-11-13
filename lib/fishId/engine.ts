@@ -3,13 +3,17 @@
 // random streams, so it is testable and has no React in it. The components
 // in components/fish-id/ only render what this produces.
 //
-// A run is endless: it asks about one species after another until the first
-// wrong answer, and the score is the streak.
+// A run is RUN_LENGTH plates long and the score is the number answered
+// correctly. Its seed comes from a four-letter code (lib/fishId/codes.ts), so
+// friends who play the same code get the same plates and choices.
 
 import { canAsk, type NameField, type PromptKind, type QuizMode } from "./modes.ts";
 import type { Fish } from "./types.ts";
 
 export const CHOICES_PER_QUESTION = 4;
+
+// Plates in one run.
+export const RUN_LENGTH = 12;
 
 // Returns a number in [0, 1), like Math.random.
 export type Random = () => number;
@@ -68,6 +72,11 @@ function kinship(a: Fish, b: Fish): number {
 // Random noise added to kinship: big enough that relatives are favoured, not guaranteed.
 const KINSHIP_NOISE = 2;
 
+// At most this many distractors are close relatives (same genus or family),
+// so at least one choice comes from outside the family. This keeps the quiz
+// from being all lookalikes.
+export const MAX_RELATIVES = 2;
+
 export function pickDistractors(subject: Fish, pool: readonly Fish[], field: NameField, random: Random): Fish[] {
   const taken = new Set([subject[field]]);
   const candidates = shuffle(pool, random)
@@ -76,11 +85,15 @@ export function pickDistractors(subject: Fish, pool: readonly Fish[], field: Nam
     .sort((a, b) => b.weight - a.weight);
 
   const picked: Fish[] = [];
+  let relatives = 0;
   for (const { fish } of candidates) {
     // Never show the same label twice, and never a second copy of the right answer.
     if (taken.has(fish[field])) continue;
+    const related = kinship(subject, fish) > 0;
+    if (related && relatives === MAX_RELATIVES) continue;
     taken.add(fish[field]);
     picked.push(fish);
+    if (related) relatives++;
     if (picked.length === CHOICES_PER_QUESTION - 1) return picked;
   }
   throw new Error(`Not enough distinct ${field} values to build a question for ${subject.id}`);
@@ -181,13 +194,13 @@ export function runReducer(state: RunState, action: RunAction): RunState {
       return { ...state, outcome: action.choice };
     }
     case "skip":
-      // Only for a plate whose photograph failed to load; it neither scores nor ends the run.
+      // Only for a plate whose photograph failed to load; it doesn't score.
       return phase === "answering" ? { ...state, outcome: "skipped" } : state;
     case "next": {
       if (phase !== "feedback") return state;
       const question = state.question!;
       const log = [...state.log, { question, outcome: state.outcome! }];
-      if (verdictOf(question, state.outcome) === "wrong") return { ...state, log, outcome: null, over: true };
+      if (log.length >= RUN_LENGTH) return { ...state, log, outcome: null, over: true };
       const index = state.index + 1;
       return { ...state, index, question: questionAt(state.run, index), outcome: null, log };
     }
@@ -197,8 +210,9 @@ export function runReducer(state: RunState, action: RunAction): RunState {
 }
 
 export type Summary = {
-  // Correct answers in a row: the run's score.
-  streak: number;
+  // Correct answers: the run's score.
+  score: number;
+  wrong: number;
   skipped: number;
   // Plates answered or skipped so far.
   settled: number;
@@ -208,12 +222,14 @@ export type Summary = {
 export function summarize(state: RunState): Summary {
   const entries = [...state.log];
   if (phaseOf(state) === "feedback") entries.push({ question: state.question!, outcome: state.outcome! });
-  let streak = 0;
+  let score = 0;
+  let wrong = 0;
   let skipped = 0;
   for (const { question, outcome } of entries) {
     const verdict = verdictOf(question, outcome);
-    if (verdict === "correct") streak++;
-    else if (verdict === "skipped") skipped++;
+    if (verdict === "correct") score++;
+    else if (verdict === "wrong") wrong++;
+    else skipped++;
   }
-  return { streak, skipped, settled: entries.length };
+  return { score, wrong, skipped, settled: entries.length };
 }

@@ -7,20 +7,16 @@ import type { SetId } from "./types.ts";
 export type SpeciesSet = {
   id: SetId;
   title: string;
-  // Follows the species count on the selection screen: "1004 fishes, ..."
-  lede: string;
 };
 
 export const SPECIES_SETS: readonly SpeciesSet[] = [
   {
     id: "world",
     title: "World",
-    lede: "the ones iNaturalist observers record most often in the wild, from coral reefs to rivers.",
   },
   {
     id: "pnw",
     title: "Pacific Northwest",
-    lede: "recorded in Washington, Oregon, Idaho and British Columbia, from tide pools to mountain lakes.",
   },
 ];
 

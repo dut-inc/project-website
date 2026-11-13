@@ -237,13 +237,6 @@
   outline-offset: -1px;
 }
 
-/* Keyboard hints only where there is likely a keyboard. */
-@media (hover: none) {
-  .fid-keyhint {
-    display: none;
-  }
-}
-
 /* ---- Motion --------------------------------------------------------------- */
 
 @media (prefers-reduced-motion: reduce) {

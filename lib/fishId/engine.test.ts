@@ -8,8 +8,11 @@ import { existsSync } from "node:fs";
 
 import {
   CHOICES_PER_QUESTION,
+  MAX_RELATIVES,
+  RUN_LENGTH,
   askable,
   buildQuestion,
+  genusOf,
   mulberry32,
   phaseOf,
   questionAt,
@@ -19,7 +22,9 @@ import {
   type Run,
   type RunState,
 } from "./engine.ts";
-import { QUIZ_MODES, canAsk, getMode } from "./modes.ts";
+import { CODE_LENGTH, parseCode, randomCode } from "./codes.ts";
+import { QUIZ_MODES, canAsk, codeHref, getMode } from "./modes.ts";
+import { shareText } from "./share.ts";
 import { SPECIES_SETS, getSet } from "./sets.ts";
 import { SPECIES, speciesIn, type Fish } from "./species.ts";
 
@@ -151,6 +156,23 @@ test("the correct answer's position is randomised", () => {
   assert.deepEqual([...positions].sort(), [0, 1, 2, 3]);
 });
 
+test("at most two distractors are close relatives, so one choice is from outside the family", () => {
+  const related = (a: Fish, b: Fish) => genusOf(a) === genusOf(b) || (a.family !== null && a.family === b.family);
+  // Subjects from big families, where every distractor could otherwise be a relative.
+  const subjects = world.filter((fish) => world.filter((other) => other.id !== fish.id && related(fish, other)).length >= 6);
+  assert.ok(subjects.length >= 20);
+  const mode = getMode("photo-common")!;
+  let sawTwo = false;
+  for (const [i, subject] of subjects.slice(0, 40).entries()) {
+    const question = buildQuestion(mode, subject, world, mulberry32(i + 1));
+    const relatives = question.choices.filter((c) => c.fishId !== subject.id && related(subject, world.find((f) => f.id === c.fishId)!)).length;
+    assert.ok(relatives <= MAX_RELATIVES, `${subject.id}: ${relatives} relatives`);
+    if (relatives === MAX_RELATIVES) sawTwo = true;
+  }
+  // Still hard: relatives are usually there.
+  assert.ok(sawTwo);
+});
+
 test("a duplicated name in the pool cannot produce a duplicate choice", () => {
   const [subject, twin] = world;
   const pool = [...world, { ...twin, id: "twin-copy" }, { ...twin, id: "subject-namesake", commonName: subject.commonName }];
@@ -176,7 +198,7 @@ const right = (s: RunState) => runReducer(s, { type: "answer", choice: s.questio
 const wrong = (s: RunState) => runReducer(s, { type: "answer", choice: (s.question!.correctIndex + 1) % 4 });
 const next = (s: RunState) => runReducer(s, { type: "next" });
 
-test("correct answers build a streak; the first wrong answer ends the run", () => {
+test("a run is RUN_LENGTH plates; wrong answers score nothing but don't end it", () => {
   let state = startRun(run("photo-scientific", 11));
   assert.equal(phaseOf(state), "answering");
   // "next" does nothing before an answer.
@@ -184,31 +206,31 @@ test("correct answers build a streak; the first wrong answer ends the run", () =
 
   state = right(state);
   assert.equal(phaseOf(state), "feedback");
-  assert.equal(summarize(state).streak, 1);
+  assert.equal(summarize(state).score, 1);
   // A second answer to the same plate is ignored.
   assert.equal(wrong(state), state);
 
-  state = next(right(next(state)));
-  assert.equal(summarize(state).streak, 2);
-  state = next(state);
+  state = next(wrong(next(state)));
+  assert.equal(phaseOf(state), "answering");
   assert.equal(state.index, 2);
   assert.equal(state.question!.fish.id, questionAt(state.run, 2)!.fish.id);
+  assert.deepEqual(summarize(state), { score: 1, wrong: 1, skipped: 0, settled: 2 });
 
-  state = wrong(state);
-  assert.equal(phaseOf(state), "feedback");
-  state = next(state);
+  for (let i = 2; i < RUN_LENGTH; i++) state = next(right(state));
   assert.equal(phaseOf(state), "over");
-  assert.deepEqual(summarize(state), { streak: 2, skipped: 0, settled: 3 });
+  assert.equal(state.log.length, RUN_LENGTH);
+  assert.equal(new Set(state.log.map((e) => e.question.fish.id)).size, RUN_LENGTH);
+  assert.deepEqual(summarize(state), { score: RUN_LENGTH - 1, wrong: 1, skipped: 0, settled: RUN_LENGTH });
   // Nothing more can be answered once the run is over.
   assert.equal(right(state), state);
 });
 
-test("skipping a plate neither scores nor ends the run", () => {
+test("skipping a plate doesn't score", () => {
   let state = right(startRun(run("photo-common", 2)));
   state = next(state);
   state = next(runReducer(state, { type: "skip" }));
   assert.equal(phaseOf(state), "answering");
-  assert.deepEqual(summarize(state), { streak: 1, skipped: 1, settled: 2 });
+  assert.deepEqual(summarize(state), { score: 1, wrong: 0, skipped: 1, settled: 2 });
   // Skip only applies to an unanswered plate.
   const answered = right(state);
   assert.equal(runReducer(answered, { type: "skip" }), answered);
@@ -224,4 +246,62 @@ test("out-of-range answers are ignored and restart begins a fresh run", () => {
   assert.equal(state.index, 0);
   assert.equal(state.log.length, 0);
   assert.equal(state.run.seed, 77);
+});
+
+// ---- Codes -------------------------------------------------------------------
+
+test("a code names its set and mode, and the same code deals the same run", () => {
+  const random = mulberry32(5);
+  for (const set of SPECIES_SETS) {
+    for (const mode of QUIZ_MODES) {
+      for (let i = 0; i < 25; i++) {
+        const made = randomCode(set, mode, random);
+        assert.match(made.code, new RegExp(`^[A-Z]{${CODE_LENGTH}}$`));
+        assert.doesNotMatch(made.code, /[IO]/);
+        const parsed = parseCode(made.code.toLowerCase())!;
+        assert.equal(parsed.set.id, set.id);
+        assert.equal(parsed.mode.id, mode.id);
+        assert.equal(parsed.seed, made.seed);
+      }
+    }
+  }
+  const a = parseCode("KQZT")!;
+  const deal = () => {
+    const r: Run = { mode: a.mode, pool: speciesIn(a.set), seed: a.seed };
+    return Array.from({ length: RUN_LENGTH }, (_, i) => questionAt(r, i)!.choices.map((c) => c.fishId).join()).join("|");
+  };
+  assert.equal(deal(), deal());
+});
+
+test("different codes for the same mode deal different runs", () => {
+  const set = getSet("pnw")!;
+  const mode = getMode("photo-common")!;
+  const random = mulberry32(8);
+  const firsts = new Set<string>();
+  for (let i = 0; i < 30; i++) {
+    const { seed } = randomCode(set, mode, random);
+    firsts.add(questionAt({ mode, pool: speciesIn(set), seed }, 0)!.fish.id);
+  }
+  assert.ok(firsts.size >= 25);
+});
+
+test("malformed codes are rejected", () => {
+  for (const bad of ["", "ABC", "ABCDE", "AB1D", "ABIO", "AB D", null, undefined]) assert.equal(parseCode(bad), null, String(bad));
+  assert.equal(parseCode("  kqzt ")!.code, "KQZT");
+});
+
+test("the shared text has the code, score, one square per plate and a link", () => {
+  let state = startRun(run("photo-common", 4));
+  for (let i = 0; i < RUN_LENGTH; i++) state = next(i % 3 === 0 ? wrong(state) : right(state));
+  const text = shareText({
+    code: "KQZT",
+    set: getSet("world")!,
+    mode: getMode("photo-common")!,
+    log: state.log,
+    score: summarize(state).score,
+    origin: "https://example.test",
+  });
+  assert.match(text, /KQZT/);
+  assert.match(text, new RegExp(`^8/${RUN_LENGTH} (🟥🟩🟩){4}$`, "mu"));
+  assert.ok(text.endsWith(`https://example.test${codeHref("KQZT")}`));
 });
