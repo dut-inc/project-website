@@ -93,8 +93,6 @@ const VARIANTS = [
   { name: "c", seed: 4243, lengths: { top: 449, bottom: 503, left: 479, right: 541 } },
 ] as const;
 
-export const EDGE_VARIANTS = VARIANTS.map((v) => v.name);
-
 // The CSS that defines --torn-* for each variant (.torn-a, .torn-b, .torn-c).
 export function tornEdgeCss(): string {
   return VARIANTS.map(({ name, seed, lengths }) => {

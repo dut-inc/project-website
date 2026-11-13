@@ -97,6 +97,7 @@ function folder(
 export const WORKSPACE_TREE: WorkspaceNode[] = [
   folder("fish-stuff", "teal", [
     file("which-fish-are-you.quiz", "/fish-stuff/personality", "quiz", "Which Pacific Northwest Fish Are You?"),
+    file("identify-the-fish.quiz", "/fish-stuff/identify", "quiz", "Identify the Fish"),
   ]),
   folder("sports", "orange", [
     file("seattle-dashboard.live", "/sports/dashboard", "live", "Seattle Sports Dashboard"),

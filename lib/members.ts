@@ -33,6 +33,11 @@ export const MEMBERS: Member[] = [
       { label: "LinkedIn", href: "https://www.linkedin.com/in/ben-zeng-15630a133/" },
     ],
     projects: [
+      {
+        href: "/fish-stuff",
+        note: "Identify the Fish: name fish from their photos, common names and scientific names, and share a run with friends by its code.",
+        files: ["/fish-stuff/identify"],
+      },
       { href: "/sports", note: "Seattle sports, NBA and MLB data, and the models behind them." },
       {
         href: "/board-games",

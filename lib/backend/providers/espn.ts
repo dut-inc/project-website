@@ -152,14 +152,14 @@ export function parseEspnEvent(event: unknown, teamId: number): ParsedEspnGame |
 /**
  * Split an ESPN schedule response into completed / live / upcoming games.
  * Postponed / delayed / cancelled games are excluded from every bucket, and
- * "upcoming" is guarded to future dates so a stale pre-game can never
- * surface as a next fixture.
+ * "upcoming" is guarded to dates on or after `today` (default: the real
+ * current date) so a stale pre-game can never surface as a next fixture.
  */
 export function parseScheduleEvents(
   schedule: { events?: unknown[] },
   teamId: number,
+  today: string = todayKey(),
 ): { completed: ParsedEspnGame[]; live: ParsedEspnGame | null; upcoming: ParsedEspnGame[] } {
-  const today = todayKey();
   const games = (schedule.events ?? [])
     .map((e) => parseEspnEvent(e, teamId))
     .filter((g): g is ParsedEspnGame => g !== null)

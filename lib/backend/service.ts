@@ -134,8 +134,3 @@ export async function getDashboard(): Promise<DashboardPayload> {
     dashboardTtlMs(payload.teams.some((t) => t.currentGame !== undefined)),
   );
 }
-
-export async function getTeam(id: string): Promise<Team | undefined> {
-  const { teams } = await getDashboard();
-  return teams.find((t) => t.id === id);
-}

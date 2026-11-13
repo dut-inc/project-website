@@ -43,7 +43,7 @@ export const projects: Map<ProjectId, Project> = new Map([
       status: "ACTIVE",
       updated: "2026-08-01",
       summary:
-        "pnw fish personality quiz live, guess the fish quiz and photo-based species ID coming soon",
+        "pnw fish personality quiz and fish identification quiz live, photo-based species ID model coming soon",
       rotation: -2,
       paper: "cream",
       pin: "teal",

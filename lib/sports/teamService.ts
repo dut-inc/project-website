@@ -26,7 +26,6 @@ export interface DashboardMetadata {
 export interface TeamService {
   /** All teams, in the default presentation order. */
   getTeams(): Promise<Team[]>;
-  getTeam(id: string): Promise<Team | undefined>;
   /** Snapshot info for the page header badge. */
   getMetadata(): Promise<DashboardMetadata>;
 }
@@ -34,9 +33,6 @@ export interface TeamService {
 export const mockTeamService: TeamService = {
   async getTeams() {
     return mockTeams;
-  },
-  async getTeam(id) {
-    return mockTeams.find((t) => t.id === id);
   },
   async getMetadata() {
     return {
@@ -60,10 +56,6 @@ export const httpTeamService: TeamService = {
     if (!Array.isArray(data.teams)) throw new Error("Dashboard API returned no teams");
     return data.teams;
   },
-  async getTeam(id) {
-    const teams = await this.getTeams();
-    return teams.find((t) => t.id === id);
-  },
   async getMetadata() {
     const res = await fetch("/api/teams", { cache: "no-store" });
     if (!res.ok) throw new Error(`Dashboard API responded ${res.status}`);
@@ -83,13 +75,6 @@ export const defaultTeamService: TeamService = {
       return await httpTeamService.getTeams();
     } catch {
       return mockTeamService.getTeams();
-    }
-  },
-  async getTeam(id) {
-    try {
-      return await httpTeamService.getTeam(id);
-    } catch {
-      return mockTeamService.getTeam(id);
     }
   },
   async getMetadata() {

@@ -14,12 +14,8 @@ import { factions, getRule, rulesIn, sectionsOf, type Rule, type Section } from 
 import type { FactionSetup, ReachTable, SetupCard } from "./setupPlan.ts";
 
 const EDITORIAL = setupData as unknown as {
-  decided: string;
-  setup_letters: { rule: string; note: string };
   setup_cards: Record<string, string>;
 };
-
-export const SETUP_SOURCE = { decided: EDITORIAL.decided, lettersNote: EDITORIAL.setup_letters.note };
 
 export const REACH_RULE_ID = "rule-5-2";
 

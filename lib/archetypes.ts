@@ -1,5 +1,4 @@
 import data from "@/public/data/player-archetypes-25-26.json";
-import type { PinColor } from "@/lib/projects";
 
 export type PlayerArchetype = {
   player_id: number;
@@ -34,12 +33,3 @@ export type ArchetypeDataset = {
 };
 
 export const archetypeData = data as ArchetypeDataset;
-
-// Same palette as the site-wide pins so archetype pins match the board look.
-const PIN_CYCLE: readonly PinColor[] = ["navy", "teal", "gold", "red"];
-
-export function pinForArchetype(archetype: string): PinColor {
-  let hash = 0;
-  for (let i = 0; i < archetype.length; i++) hash = (hash * 31 + archetype.charCodeAt(i)) >>> 0;
-  return PIN_CYCLE[hash % PIN_CYCLE.length];
-}
