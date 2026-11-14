@@ -51,9 +51,13 @@ variables.
   stopping the dev server.
 - `next build` rewrites `next-env.d.ts`. Revert it with
   `git checkout next-env.d.ts`.
-- `next build` sometimes fails with "next/font/google queries have exactly one
-  entry" (Turbopack, while fetching Google fonts). Nothing in the code causes
-  it, and a retry builds.
+- `npm run build` uses webpack (`next build --webpack`); dev still uses
+  Turbopack. Turbopack's production build failed on Vercel (2026-11-12) with
+  "next/font/google queries have exactly one entry" for IBM Plex Sans in
+  `app/layout.tsx`, even though it built locally. The error is in Turbopack's
+  Google-font URL rewriting, which webpack doesn't use. Try going back to plain
+  `next build` only after a Next.js upgrade, and check it on a Vercel deploy,
+  not just locally.
 - Git has `core.autocrlf=true` on the Windows PC, so files there are CRLF and the
   repo stores LF. When editing on Windows by script, keep a file's line endings.
 
